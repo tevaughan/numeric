@@ -5,7 +5,6 @@ config.log
 config.status
 libtool
 Makefile
-m4
 
 # Compiled Object files
 *.slo
