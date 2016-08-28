@@ -103,7 +103,8 @@ CONFIG_HEADER = $(top_builddir)/src/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 PROGRAMS = $(noinst_PROGRAMS)
-am_tests_OBJECTS = integral_test.$(OBJEXT) tests.$(OBJEXT)
+am_tests_OBJECTS = integral_test.$(OBJEXT) interpolant_test.$(OBJEXT) \
+	tests.$(OBJEXT)
 tests_OBJECTS = $(am_tests_OBJECTS)
 tests_LDADD = $(LDADD)
 AM_V_lt = $(am__v_lt_@AM_V@)
@@ -297,6 +298,7 @@ top_srcdir = @top_srcdir@
 AM_CPPFLAGS = -Wall -I../src
 tests_SOURCES = \
 	       integral_test.cpp\
+	       interpolant_test.cpp\
 	       tests.cpp
 
 all: all-am
@@ -353,6 +355,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/integral_test.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/interpolant_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tests.Po@am__quote@
 
 .cpp.o:

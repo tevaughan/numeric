@@ -18,6 +18,9 @@ namespace num
 template <typename I, typename D> using ipoint = std::pair<I, D>;
 
 /// List of points used to constrain a linear interpolant.
+///
+/// An instance of ilist can be used to initialize an instance of interpolant.
+///
 /// \tparam I  Type of independent variable (x value).
 /// \tparam D  Type of dependent variable (y value).
 template <typename I, typename D> using ilist = std::vector<ipoint<I, D>>;
@@ -73,8 +76,12 @@ template <typename I, typename D> class interpolant
    }
 
 public:
+   /// Initialize ifrom an ilist.
+   /// \param d  Data stored in ilist.
    interpolant(list d = list()) : data_(std::move(d)) { sort(); }
 
+   /// Initialize from the first two columns of a space-delimited ASCII file.
+   /// \param fname  Name of input file.
    interpolant(std::string fname)
    {
       using namespace std;
@@ -86,6 +93,9 @@ public:
       sort();
    }
 
+   /// Interpolate.
+   /// \param x  Value of independent variable.
+   /// \return   Interpolated value of dependent variable.
    D operator()(I x) const
    {
       if (data_.size() == 0) {

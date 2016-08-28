@@ -5,5 +5,6 @@ noinst_PROGRAMS = tests
 
 tests_SOURCES =\
 	       integral_test.cpp\
+	       interpolant_test.cpp\
 	       tests.cpp
 
