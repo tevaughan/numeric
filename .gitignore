@@ -6,6 +6,8 @@ config.status
 libtool
 Makefile
 
+*.pyc
+
 # Compiled Object files
 *.slo
 *.lo

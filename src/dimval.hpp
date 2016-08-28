@@ -5,7 +5,7 @@
 #include <cmath>   // for M_PI
 #include <utility> // for std::forward()
 
-namespace numeric
+namespace num
 {
 double constexpr deg = M_PI / 180.0;
 double constexpr arcmin = deg / 60.0;

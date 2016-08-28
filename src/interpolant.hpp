@@ -10,7 +10,7 @@
 #include <utility>   // for pair
 #include <vector>    // for vector
 
-namespace numeric
+namespace num
 {
 /// Point used as one of the constraints of a linear interpolant.
 /// \tparam I  Type of independent variable (x value).

@@ -14,7 +14,7 @@
 #include <utility>  // for foward<>()
 
 /// Namespace for C++-11 library enabling numerical computation.
-namespace numeric
+namespace num
 {
 /// Type of each element on the stack used by integral().
 /// \tparam A  Type of argument to function integrated by integral().
