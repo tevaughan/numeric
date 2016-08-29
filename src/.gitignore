@@ -2,3 +2,4 @@ config.h
 .deps
 .libs
 stamp-h1
+dimensions.hpp
