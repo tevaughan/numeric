@@ -105,10 +105,11 @@ CONFIG_HEADER = $(top_builddir)/src/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 PROGRAMS = $(noinst_PROGRAMS)
-am_tests_OBJECTS = integral_test.$(OBJEXT) interpolant_test.$(OBJEXT) \
-	tests.$(OBJEXT)
+am_tests_OBJECTS = dimval_test.$(OBJEXT) integral_test.$(OBJEXT) \
+	interpolant_test.$(OBJEXT) tests.$(OBJEXT)
 tests_OBJECTS = $(am_tests_OBJECTS)
 tests_LDADD = $(LDADD)
+tests_DEPENDENCIES = ../src/libnumeric.la
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
@@ -298,7 +299,9 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 AM_CPPFLAGS = -Wall -I../src
+LDADD = ../src/libnumeric.la
 tests_SOURCES = \
+	       dimval_test.cpp\
 	       integral_test.cpp\
 	       interpolant_test.cpp\
 	       tests.cpp
@@ -356,6 +359,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dimval_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/integral_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/interpolant_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tests.Po@am__quote@
