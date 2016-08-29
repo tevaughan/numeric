@@ -8,14 +8,26 @@ AC_CONFIG_HEADERS([src/config.h])
 AC_CONFIG_MACRO_DIRS([m4])
 AC_CONFIG_SRCDIR([src/dimval.hpp])
 AM_INIT_AUTOMAKE([-Wall foreign])
+AC_LANG([C++])
 
 # Checks for programs.
+
 AC_PROG_CXX
 AX_CXX_COMPILE_STDCXX_11
+
 AM_PROG_AR
+# LT_INIT must follow AM_PROG_AR.
 LT_INIT
 
+AC_PATH_PROG([PERL], [perl], [not-found])
+if test "$PERL" = "not-found"; then
+   echo "ERROR: perl not found"
+   exit 1
+fi
+
 # Checks for libraries.
+
+AC_CHECK_LIB([m], [pow])
 
 # Checks for header files.
 
