@@ -3,6 +3,7 @@ autom4te.cache
 config.log
 config.status
 Makefile
+libtool
 
 *.pyc
 
