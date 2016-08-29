@@ -135,7 +135,7 @@ am__uninstall_files_from_dir = { \
 am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(includedir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
 libnumeric_la_LIBADD =
-am_libnumeric_la_OBJECTS = dimval.lo
+am_libnumeric_la_OBJECTS = units.lo
 libnumeric_la_OBJECTS = $(am_libnumeric_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -335,16 +335,17 @@ include_HEADERS = \
 		 dimensions.hpp\
 		 dimval.hpp\
 		 integral.hpp\
-		 interpolant.hpp
+		 interpolant.hpp\
+		 units.hpp
 
 BUILT_SOURCES = \
-	       dimensions.hpp
+	       dimensions.hpp\
+	       units.cpp\
+	       units.hpp
 
-CLEANFILES = \
-	    dimensions.hpp
-
+CLEANFILES = $(BUILT_SOURCES)
 lib_LTLIBRARIES = libnumeric.la
-libnumeric_la_SOURCES = dimval.cpp
+libnumeric_la_SOURCES = units.cpp
 libnumeric_la_LDFLAGS = -version-info 0:0:0
 all: $(BUILT_SOURCES) config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-am
@@ -440,7 +441,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dimval.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/units.Plo@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -707,6 +708,9 @@ uninstall-am: uninstall-includeHEADERS uninstall-libLTLIBRARIES
 
 dimensions.hpp : dimensions.txt dimensions
 	./dimensions
+
+units.hpp units.cpp : units.txt units
+	./units
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

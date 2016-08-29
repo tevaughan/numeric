@@ -1,5 +1,7 @@
 config.h
 .deps
+dimensions.hpp
 .libs
 stamp-h1
-dimensions.hpp
+units.cpp
+units.hpp
