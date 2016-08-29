@@ -11,6 +11,7 @@ AM_INIT_AUTOMAKE([-Wall foreign])
 
 # Checks for programs.
 AC_PROG_CXX
+AX_CXX_COMPILE_STDCXX_11
 AM_PROG_AR
 LT_INIT
 
