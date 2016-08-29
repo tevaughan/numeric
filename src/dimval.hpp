@@ -2,8 +2,9 @@
 #ifndef NUMERIC_DIMVAL_HPP
 #define NUMERIC_DIMVAL_HPP
 
-#include <cmath>   // for M_PI
-#include <utility> // for std::forward()
+#include <cmath>    // for M_PI
+#include <iostream> // for ostream
+#include <utility>  // for forward()
 
 namespace num
 {
@@ -114,6 +115,37 @@ public:
    }
 
    friend dimval fabs(dimval dv) { return fabs(dv.v_); }
+
+   friend std::ostream &operator<<(std::ostream &os, dimval dv)
+   {
+      os << "[" << dv.v_;
+      if (M == 1) {
+         os << " kg";
+      } else if(M != 0) {
+         os << " kg^" << M;
+      }
+      if (D == 1) {
+         os << " m";
+      } else if(D != 0) {
+         os << " m^" << D;
+      }
+      if (TI == 1) {
+         os << " s";
+      } else if(TI != 0) {
+         os << " s^" << TI;
+      }
+      if (C == 1) {
+         os << " C";
+      } else if(C != 0) {
+         os << " C^" << C;
+      }
+      if (TE == 1) {
+         os << " K";
+      } else if(TE != 0) {
+         os << " K^" << TE;
+      }
+      return os << "]";
+   }
 };
 
 /// Specialization for dimensionless value.
@@ -197,6 +229,11 @@ public:
    }
 
    friend double fabs(dimval dv) { return fabs(dv.v); }
+
+   friend std::ostream &operator<<(std::ostream &os, dimval dv)
+   {
+      return os << dv.v;
+   }
 };
 }
 

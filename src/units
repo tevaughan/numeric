@@ -30,6 +30,13 @@ while(<INPUT>) {
 
 struct $pnm : public $dim {
    $pnm(double v) : $dim(v * $cnv) {}
+   $pnm($pnm const& dv) = default;
+   static double constexpr c = 1.0 / $cnv;
+
+   friend std::ostream& operator<<(std::ostream& os, $pnm const& dv)
+   {
+      return os << "[" << c * dv.v_ << " $snm]";
+   }
 };
 
 extern $pnm const $snm;
