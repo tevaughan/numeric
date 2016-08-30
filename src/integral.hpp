@@ -12,7 +12,7 @@
 #include <iostream>   // for cerr
 #include <limits>     // for numeric_limits
 #include <stack>      // for stack
-#include <utility>    // for foward<>()
+#include <utility>    // for foward()
 
 /// Namespace for C++-11 library enabling numerical computation.
 namespace num
@@ -203,6 +203,19 @@ namespace num
    }
 
    /// Integrate an ordinary function by way of its function pointer.
+   /// Transform the passed-in function pointer into an instance of function<>,
+   /// and call integrate(function<>,...).
+   ///
+   /// \tparam R   Type of instance returned by function.
+   /// \tparam A   Type of argument to function.
+   /// \tparam A1  Type of lower limit of integration; A1 must convert to A.
+   /// \tparam A2  Type of upper limit of integration; A2 must convert to A.
+   /// \param  f   Function to be integrated.
+   /// \param  a   Lower limit of integration.
+   /// \param  b   Upper limit of integration.
+   /// \param  t   Error tolerance.
+   /// \param  n   Initial number of evenly spaced samples of the function.
+   /// \return     Numeric integral of function.
    template <typename R, typename A, typename A1, typename A2>
    auto integral(R (*f)(A), A1 a, A2 b, double t = 1.0E-06, unsigned n = 16)
          // See Page 28 of Effective Modern C++ by Scott Meyers.

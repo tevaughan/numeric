@@ -9,12 +9,20 @@
 
 namespace num
 {
-   double constexpr deg = M_PI / 180.0;
-   double constexpr arcmin = deg / 60.0;
-   double constexpr arcsec = arcmin / 60.0;
+   double constexpr deg = M_PI / 180.0;     ///< Radians per degree.
+   double constexpr arcmin = deg / 60.0;    ///< Radians per arcminute.
+   double constexpr arcsec = arcmin / 60.0; ///< Radians per arcsecond.
 
+   /// \param n  Number of degrees.
+   /// \return   Corresponding number of radians.
    inline double degs(double n) { return n * deg; }
+
+   /// \param n  Number of arcminutes.
+   /// \return   Corresponding number of radians.
    inline double arcmins(double n) { return n * arcmin; }
+
+   /// \param n  Number of arcseconds.
+   /// \return   Corresponding number of radians.
    inline double arcsecs(double n) { return n * arcsec; }
 
    /// Model of a dimensioned value.
@@ -29,21 +37,28 @@ namespace num
    protected:
       double v_; ///< Value in MKS.
 
+      /// Construct from double that is known to contain value in MKS.
       explicit dimval(double vv) : v_(vv) {}
 
    public:
+      /// By default, construct a zero-valued quantity.
       dimval() : v_(0.0) {}
 
+      /// Make every kind of dimval be a friend to every other.
       template <int OTI, int OD, int OM, int OC, int OTE>
       friend class dimval;
 
+      /// Type of std::function that can be integrated.  A single-argument
+      /// function is required.
       template <typename R, typename A>
       using func = std::function<R(A)>;
 
+      /// Allow integral() to construct from known MKS quantity.
       template <typename R, typename A, typename A1, typename A2>
       friend auto integral(func<R, A> f, A1 a, A2 b, double t, unsigned n)
             -> decltype(std::forward<func<R, A>>(f)(a) * a);
 
+      /// Allow integral() to construct from known MKS quantity.
       template <typename R, typename A, typename A1, typename A2>
       friend auto integral(R (*f)(A), A1 a, A2 b, double t, unsigned n)
             -> decltype(std::forward<R (*)(A)>(f)(a) * a);
@@ -119,21 +134,32 @@ namespace num
          return *this;
       }
 
+      /// Less-than comparison.
       bool operator<(dimval dv) const { return v_ < dv.v_; }
+
+      /// Greater-than comparison.
       bool operator>(dimval dv) const { return v_ > dv.v_; }
+
+      /// Less-than-or-equal-to comparison.
       bool operator<=(dimval dv) const { return v_ <= dv.v_; }
+
+      /// Greater-than-or-equal-to comparison.
       bool operator>=(dimval dv) const { return v_ >= dv.v_; }
+
+      /// Equality comparison.
       bool operator==(dimval dv) const { return v_ == dv.v_; }
+
+      /// Inequality comparison.
       bool operator!=(dimval dv) const { return v_ != dv.v_; }
 
-      /// Exponentiation.
+      /// \return Integer power.
       template <int E>
       dimval<TI * E, D * E, M * E, C * E, TE * E> pow() const
       {
          return dimval<TI * E, D * E, M * E, C * E, TE * E>(std::pow(v_, E));
       }
 
-      /// Root.
+      /// \return Integer root.
       template <unsigned E>
       dimval<TI / E, D / E, M / E, C / E, TE / E> root() const
       {
@@ -147,8 +173,10 @@ namespace num
          return dimval<TI / E, D / E, M / E, C / E, TE / E>(pow(v_, e));
       }
 
+      /// \return Absolute value.
       friend dimval fabs(dimval dv) { return dimval(fabs(dv.v_)); }
 
+      /// Write dimensioned value to output stream.
       friend std::ostream &operator<<(std::ostream &os, dimval dv)
       {
          os << "[" << dv.v_;
