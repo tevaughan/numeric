@@ -35,6 +35,22 @@ TEST_CASE("Verify file input.", "[interpolant]")
    REQUIRE(i(1100) == 0.0);
 }
 
+TEST_CASE("Verify file input and interoperation with units.", "[interpolant]")
+{
+   interpolant<length, num::time> i("interpolant_test.txt", nm, s);
+   REQUIRE(i(-1 * nm) == 0.0 * s);
+   REQUIRE(i(299 * nm) == 0.0 * s);
+   REQUIRE(i(300 * nm) == 0.0 * s);
+   REQUIRE(i(350 * nm) / s == Approx(40.0));
+   REQUIRE(i(400 * nm) == 80.0 * s);
+   REQUIRE(i(450 * nm) == 80.0 * s);
+   REQUIRE(i(500 * nm) == 80.0 * s);
+   REQUIRE(i(900 * nm) == 80.0 * s);
+   REQUIRE(i(950 * nm) / s == Approx(40.0));
+   REQUIRE(i(1000 * nm) == 0.0 * s);
+   REQUIRE(i(1100 * nm) == 0.0 * s);
+}
+
 TEST_CASE("Verify interoperation with units.", "[interpolant]")
 {
    ilist<length, double> list = {{300 * nm, 0.0},

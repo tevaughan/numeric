@@ -61,7 +61,7 @@ template <typename I, typename D> class interpolant
       return p;
    }
 
-   static point get_point(std::string line)
+   static point get_point(std::string line, I x_unit, D y_unit)
    {
       using namespace std;
       istringstream iss(line);
@@ -72,7 +72,7 @@ template <typename I, typename D> class interpolant
       if (!(iss >> y)) {
          throw "error reading dependent variable";
       }
-      return point(x, y);
+      return point(x * x_unit, y * y_unit);
    }
 
 public:
@@ -82,7 +82,7 @@ public:
 
    /// Initialize from the first two columns of a space-delimited ASCII file.
    /// \param fname  Name of input file.
-   interpolant(std::string fname)
+   interpolant(std::string fname, I x_unit = 1.0, D y_unit = 1.0)
    {
       using namespace std;
       unique_ptr<ifstream> is = ifstr(fname);
@@ -92,7 +92,7 @@ public:
          if (p == string::npos || line[p] == '#') {
             continue;
          }
-         data_.push_back(get_point(line));
+         data_.push_back(get_point(line, x_unit, y_unit));
       }
       sort();
    }
@@ -112,7 +112,7 @@ public:
          return data_.rbegin()->second;
       }
       using namespace std;
-      point const xp{x, 0.0}; // Dummy point used for search.
+      point const xp{x, data_[0].second}; // Dummy y-coord used for search.
       auto const j = upper_bound(data_.begin(), data_.end(), xp, cmpr_pts);
       auto const i = j - 1;
       I const &xi = i->first;
