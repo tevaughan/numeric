@@ -88,6 +88,10 @@ public:
       unique_ptr<ifstream> is = ifstr(fname);
       string line;
       while (getline(*is, line)) {
+         size_t const p = line.find_first_not_of(" \f\n\r\t");
+         if (p == string::npos || line[p] == '#') {
+            continue;
+         }
          data_.push_back(get_point(line));
       }
       sort();

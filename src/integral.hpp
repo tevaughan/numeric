@@ -122,6 +122,9 @@ auto integral(F f, A a, A b, double t = 1.0E-06, unsigned n = 16)
    I sum(0.0); // return value
    bool tol_achieved = true;
    double tol_worst = t;
+   I ds_worst(0.0);
+   double constexpr eps = std::numeric_limits<double>::epsilon();
+   double constexpr min = std::numeric_limits<double>::min();
    while (s.size()) {
       using interval = integration_interval<A, R>;
       interval const r = s.top();
@@ -150,8 +153,6 @@ auto integral(F f, A a, A b, double t = 1.0E-06, unsigned n = 16)
          // numerical inability to make improvement.
          R const u3 = fabs(u1 - u2);
          double constexpr ulp = 5.0;
-         double constexpr eps = std::numeric_limits<double>::epsilon();
-         double constexpr min = std::numeric_limits<double>::min();
          // If the two sides of the inequality u1 < u2 be different by fewer
          // than about ulp last-place units (in terms of machine epsilon), or
          // if the difference between the sides be subnormal, then stop
@@ -162,9 +163,14 @@ auto integral(F f, A a, A b, double t = 1.0E-06, unsigned n = 16)
          if (u3 <= R(min) || u3 < eps * (u1 + u2) * ulp) {
             // Stop refining estimate because of inability to reach desired
             // accuracy.
-            sum += rmean * len;
+            I const ds = rmean * len;
+            sum += ds;
             tol_achieved = false;
             R const a2 = fabs(rmean);
+            I const ads = fabs(ds);
+            if (ads > ds_worst) {
+               ds_worst = ads;
+            }
             // integral() must be friend of dimval for R(min) to work when R be
             // a dimval.
             if (a2 > R(min)) {
@@ -180,9 +186,12 @@ auto integral(F f, A a, A b, double t = 1.0E-06, unsigned n = 16)
          }
       }
    }
-   if (!tol_achieved) {
+   I const as = fabs(sum);
+   if (!tol_achieved && as > I(min) && ds_worst / as > t) {
       std::cerr << "integral: WARNING: worst-case final refinement was "
-                << tol_worst << " > tolerance=" << t << "." << std::endl;
+                << tol_worst << " > tolerance=" << t << ".\n"
+                << "                   total fractional contribution: "
+                << ds_worst / as << std::endl;
    }
    return sum;
 }
