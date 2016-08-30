@@ -10,14 +10,14 @@ using namespace std;
 
 TEST_CASE("Verify numeric integration of linear function.", "[integral]")
 {
-   auto lambda = [](double x) { return x; };
-   REQUIRE(integral(lambda, 0.0, 1.0) == Approx(0.5));
+   auto linear = [](double x) { return x; };
+   REQUIRE(integral(linear, 0.0, 1.0) == Approx(0.5));
 }
 
 TEST_CASE("Verify interoperation with dimval.", "[integral]")
 {
-   auto lambda = [](length x) { return x * x; };
-   volume const i = integral(lambda, 0.0 * cm, 1.0 * cm);
+   auto square = [](length x) { return x * x; };
+   volume const i = integral(square, 0.0 * cm, 1.0 * cm);
    ostringstream oss;
    oss << i;
    REQUIRE(oss.str() == "[3.33333e-07 m^3]");
