@@ -3709,6 +3709,12 @@ else
 fi
 
 
+echo "CXX='$CXX'"
+if test "$CXX" != "clang++"; then
+   echo "ERROR: clang++ is required because g++ requires only ASCII"
+   echo "       characters in an identifier."
+   exit 1
+fi
 
       ax_cxx_compile_cxx11_required=true
   ac_ext=cpp
