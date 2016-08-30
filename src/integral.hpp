@@ -119,10 +119,7 @@ auto integral(F f, A a, A b, double t = 1.0E-06, unsigned n = 16)
    integration_subinterval_stack<A, R> s(n, a, b, f);
    // Allow return value to be either a double or a dimval, whose default
    // constructor produces a zero value.
-   I sum; // return value
-   if (std::is_same<I, double>::value) {
-      sum = 0.0; // in case I be double, which has no default constructor
-   }
+   I sum(0.0); // return value
    bool tol_achieved = true;
    double tol_worst = t;
    while (s.size()) {
@@ -160,17 +157,17 @@ auto integral(F f, A a, A b, double t = 1.0E-06, unsigned n = 16)
          // if the difference between the sides be subnormal, then stop
          // subdividing.  See example at
          // <http://en.cppreference.com/w/cpp/types/numeric_limits/epsilon>.
-         // integral() must be friend of dimval for double(u3) to work when R
-         // be a dimval.
-         if (double(u3) <= min || u3 < eps * (u1 + u2) * ulp) {
+         // integral() must be friend of dimval for R(min) to work when R be a
+         // dimval.
+         if (u3 <= R(min) || u3 < eps * (u1 + u2) * ulp) {
             // Stop refining estimate because of inability to reach desired
             // accuracy.
             sum += rmean * len;
             tol_achieved = false;
             R const a2 = fabs(rmean);
-            // integral() must be friend of dimval for double(a2) to work when
-            // R be a dimval.
-            if (double(a2) > min) {
+            // integral() must be friend of dimval for R(min) to work when R be
+            // a dimval.
+            if (a2 > R(min)) {
                double const tol_cur = u1 / a2;
                if (tol_cur > tol_worst) {
                   tol_worst = tol_cur;

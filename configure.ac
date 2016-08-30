@@ -14,6 +14,12 @@ AC_LANG([C++])
 # Checks for programs.
 
 AC_PROG_CXX([clang++])
+echo "CXX='$CXX'"
+if test "$CXX" != "clang++"; then
+   echo "ERROR: clang++ is required because g++ requires only ASCII"
+   echo "       characters in an identifier."
+   exit 1
+fi
 AX_CXX_COMPILE_STDCXX_11
 
 AM_PROG_AR

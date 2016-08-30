@@ -24,13 +24,10 @@ inline double arcsecs(double n) { return n * arcsec; }
 /// \tparam TE  Exponent of temperature.
 template <int TI, int D, int M, int C, int TE> class dimval
 {
-   /// Used by friend integral().
-   operator double() const { return v_; }
-
 protected:
    double v_; ///< Value in MKS.
 
-   dimval(double vv) : v_(vv) {}
+   explicit dimval(double vv) : v_(vv) {}
 
 public:
    dimval() : v_(0.0) {}
@@ -42,67 +39,73 @@ public:
          -> decltype(std::forward<F>(f)(a) * a);
 
    /// Add dimensioned values.
-   dimval operator+(dimval dv) const { return v_ + dv; }
+   dimval operator+(dimval dv) const { return dimval(v_ + dv.v_); }
 
    /// Subtract dimensioned values.
-   dimval operator-(dimval dv) const { return v_ - dv; }
+   dimval operator-(dimval dv) const { return dimval(v_ - dv.v_); }
 
    /// Additive assignment.
-   dimval &operator+=(dimval dv) { return v_ += dv; }
+   dimval &operator+=(dimval dv) { v_ += dv.v_; return *this; }
 
    /// Subtractive assignment.
-   dimval &operator-=(dimval dv) { return v_ -= dv; }
+   dimval &operator-=(dimval dv) { v_ -= dv.v_; return *this; }
 
    /// Multiply dimensioned values.
    template <int OTI, int OD, int OM, int OC, int OTE>
    dimval<TI + OTI, D + OD, M + OM, C + OC, TE + OTE>
    operator*(dimval<OTI, OD, OC, OM, OTE> dv) const
    {
-      return v_ * dv;
+      return dimval<TI + OTI, D + OD, M + OM, C + OC, TE + OTE>(v_ * dv.v_);
    }
 
    /// Multiplication by number on right side.
-   dimval operator*(double s) const { return v_ * s; }
+   dimval operator*(double s) const { return dimval(v_ * s); }
 
    /// Multiplication of dimval by number on left side.
-   friend dimval operator*(double s, dimval dv) { return s * dv.v_; }
+   friend dimval operator*(double s, dimval dv) { return dimval(s * dv.v_); }
 
    /// Division resulting in double.
-   double operator/(dimval dv) const { return v_ / dv; }
+   double operator/(dimval dv) const { return v_ / dv.v_; }
 
    /// Divide dimensioned values.
    template <int OTI, int OD, int OM, int OC, int OTE>
    dimval<TI - OTI, D - OD, M - OM, C - OC, TE - OTE>
    operator/(dimval<OTI, OD, OM, OC, OTE> dv) const
    {
-      return v_ / dv;
+      return dimval<TI - OTI, D - OD, M - OM, C - OC, TE - OTE>(v_ / dv.v_);
+   }
+
+   /// Divide scalar by dimensioned value.
+   friend dimval<-TI, -D, -M, -C, -TE> operator/(double s, dimval dv)
+   {
+      return dimval<-TI, -D, -M, -C, -TE>(s / dv.v_);
    }
 
    /// Division by number.
-   dimval operator/(double s) const { return v_ / s; }
+   dimval operator/(double s) const { return dimval(v_ / s); }
 
    /// Multiplicative assignment against double.
-   dimval &operator*=(double s) { return v_ *= s; }
+   dimval &operator*=(double s) { v_ *= s; return *this; }
 
    /// Multiplicative division against double.
-   dimval &operator/=(double s) { return v_ /= s; }
+   dimval &operator/=(double s) { v_ /= s; return *this; }
 
-   bool operator<(dimval dv) const { return v_ < dv; }
-   bool operator>(dimval dv) const { return v_ > dv; }
-   bool operator<=(dimval dv) const { return v_ <= dv; }
-   bool operator>=(dimval dv) const { return v_ >= dv; }
-   bool operator==(dimval dv) const { return v_ == dv; }
-   bool operator!=(dimval dv) const { return v_ != dv; }
+   bool operator<(dimval dv) const { return v_ < dv.v_; }
+   bool operator>(dimval dv) const { return v_ > dv.v_; }
+   bool operator<=(dimval dv) const { return v_ <= dv.v_; }
+   bool operator>=(dimval dv) const { return v_ >= dv.v_; }
+   bool operator==(dimval dv) const { return v_ == dv.v_; }
+   bool operator!=(dimval dv) const { return v_ != dv.v_; }
 
    /// Exponentiation.
    template <int E> dimval<TI * E, D * E, M * E, C * E, TE * E> pow() const
    {
-      return pow(v_, E);
+      return dimval<TI * E, D * E, M * E, C * E, TE * E>(std::pow(v_, E));
    }
 
    /// Root.
    template <unsigned E>
-   dimval<TI / E, D / E, M / E, C / E, TE / E> pow() const
+   dimval<TI / E, D / E, M / E, C / E, TE / E> root() const
    {
       static_assert(E, "zeroth root");
       static_assert(D / E * E == D, "illegal root along distance");
@@ -111,10 +114,10 @@ public:
       static_assert(TI / E * E == TI, "illegal root along time");
       static_assert(TE / E * E == TE, "illegal root along temperature");
       double constexpr e = 1.0 / E;
-      return pow(v_, e);
+      return dimval<TI / E, D / E, M / E, C / E, TE / E>(pow(v_, e));
    }
 
-   friend dimval fabs(dimval dv) { return fabs(dv.v_); }
+   friend dimval fabs(dimval dv) { return dimval(fabs(dv.v_)); }
 
    friend std::ostream &operator<<(std::ostream &os, dimval dv)
    {
@@ -159,23 +162,23 @@ public:
    operator double &() { return v; }
 
    /// Add dimensioned values.
-   double operator+(dimval dv) const { return v + dv; }
+   double operator+(dimval dv) const { return v + dv.v; }
 
    /// Subtract dimensioned values.
-   double operator-(dimval dv) const { return v - dv; }
+   double operator-(dimval dv) const { return v - dv.v; }
 
    /// Additive assignment.
-   double &operator+=(dimval dv) { return v += dv; }
+   double &operator+=(dimval dv) { return v += dv.v; }
 
    /// Subtractive assignment.
-   double &operator-=(dimval dv) { return v -= dv; }
+   double &operator-=(dimval dv) { return v -= dv.v; }
 
    /// Multiply dimensioned values.
    template <int OTI, int OD, int OM, int OC, int OTE>
    dimval<OTI, OD, OM, OC, OTE>
    operator*(dimval<OTI, OD, OC, OM, OTE> dv) const
    {
-      return v * dv;
+      return dimval<OTI, OD, OM, OC, OTE>(v * dv.v);
    }
 
    /// Multiplication by number on right side.
@@ -185,15 +188,17 @@ public:
    friend double operator*(double s, dimval dv) { return s * dv.v; }
 
    /// Division resulting in double.
-   double operator/(dimval dv) const { return v / dv; }
+   double operator/(dimval dv) const { return v / dv.v; }
 
    /// Divide dimensioned values.
    template <int OTI, int OD, int OM, int OC, int OTE>
    dimval<-OTI, -OD, -OM, -OC, -OTE>
    operator/(dimval<OTI, OD, OM, OC, OTE> dv) const
    {
-      return v / dv;
+      return dimval<-OTI, -OD, -OM, -OC, -OTE>(v / dv.v);
    }
+
+   friend double operator/(double s, dimval dv) { return s / dv.v; }
 
    /// Division by number.
    double operator/(double s) const { return v / s; }
@@ -204,25 +209,25 @@ public:
    /// Multiplicative division against double.
    double &operator/=(double s) { return v /= s; }
 
-   bool operator<(dimval dv) const { return v < dv; }
-   bool operator>(dimval dv) const { return v > dv; }
-   bool operator<=(dimval dv) const { return v <= dv; }
-   bool operator>=(dimval dv) const { return v >= dv; }
-   bool operator==(dimval dv) const { return v == dv; }
-   bool operator!=(dimval dv) const { return v != dv; }
+   bool operator<(dimval dv) const { return v < dv.v; }
+   bool operator>(dimval dv) const { return v > dv.v; }
+   bool operator<=(dimval dv) const { return v <= dv.v; }
+   bool operator>=(dimval dv) const { return v >= dv.v; }
+   bool operator==(dimval dv) const { return v == dv.v; }
+   bool operator!=(dimval dv) const { return v != dv.v; }
 
-   bool operator<(double dv) const { return v < dv; }
-   bool operator>(double dv) const { return v > dv; }
-   bool operator<=(double dv) const { return v <= dv; }
-   bool operator>=(double dv) const { return v >= dv; }
-   bool operator==(double dv) const { return v == dv; }
-   bool operator!=(double dv) const { return v != dv; }
+   bool operator<(double s) const { return v < s; }
+   bool operator>(double s) const { return v > s; }
+   bool operator<=(double s) const { return v <= s; }
+   bool operator>=(double s) const { return v >= s; }
+   bool operator==(double s) const { return v == s; }
+   bool operator!=(double s) const { return v != s; }
 
    /// Exponentiation.
    template <int E> double pow() const { return std::pow(v, E); }
 
    /// Root.
-   template <unsigned E> double pow() const
+   template <unsigned E> double root() const
    {
       double constexpr e = 1.0 / E;
       return std::pow(v, e);
