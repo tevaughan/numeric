@@ -1,3 +1,4 @@
+config.h
 .deps
 dimensions.hpp
 .libs

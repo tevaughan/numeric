@@ -40,5 +40,9 @@ TEST_CASE("Verify integration of member function (via lambda).", "[integral]")
    double const i = integral(s, 0, M_PI);
    // Verify that integral of sin(x) from 0 to pi is 2.
    REQUIRE(i == Approx(2.0));
+   f.freq = 2.0;
+   double const j = integral(s, 0, M_PI);
+   // Verify that integral of sin(2*x) from 0 to pi is 0.
+   REQUIRE(j == Approx(0.0));
 }
 

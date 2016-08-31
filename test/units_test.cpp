@@ -26,11 +26,12 @@ TEST_CASE("Verify string conversion.", "[units]")
    REQUIRE(oss1.str() == "[2 N]");
    REQUIRE(oss2.str() == "[3 kg m s^-2]");
    microkelvins const t1(2.5);
-   temperature const t2 = 2.5 * μK;
+   temperature const t2 = 2.5 * muK;
+
    ostringstream oss3, oss4;
    oss3 << t1;
    oss4 << t2;
-   REQUIRE(oss3.str() == "[2.5 μK]");
+   REQUIRE(oss3.str() == "[2.5 muK]");
    REQUIRE(oss4.str() == "[2.5e-06 K]");
 }
 

@@ -24,7 +24,8 @@ using namespace num;
 EOF2
 
 while(<INPUT>) {
-   next if /^\s*$/;
+   s/#.*$//;         # Remove comment.
+   next if /^\s*$/;  # Skip blank line.
    my($pnm, $snm, $dim, $cnv) = split;
    print OUT_H <<"EOF3";
 
