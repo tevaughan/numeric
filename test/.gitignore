@@ -1,3 +1,8 @@
 .deps
+*.gcda
+*.gcno
 .libs
 tests
+tests.log
+tests.trs
+test-suite.log

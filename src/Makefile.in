@@ -14,6 +14,25 @@
 
 @SET_MAKE@
 
+# A compiled library is built for numeric.  At the moment, this library exists
+# only to support units for dimval.
+
+# Libtool's versioning system:
+#
+# current
+#
+#     The most recent interface number that this library implements.
+#
+# revision
+#
+#     The implementation number of the current interface.
+#
+# age
+#
+#     The difference between the newest and oldest interfaces that this library
+#     implements. In other words, the library implements all the interface
+#     numbers in the range from number current - age to current.
+
 
 VPATH = @srcdir@
 am__is_gnu_make = { \
@@ -344,6 +363,15 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
+current = 1
+revision = 1
+age = 0
+EXTRA_DIST = \
+	    dimensions.pl\
+	    dimensions.txt\
+	    units.pl\
+	    units.txt
+
 include_HEADERS = \
 		 dimensions.hpp\
 		 dimval.hpp\
@@ -351,7 +379,7 @@ include_HEADERS = \
 		 interpolant.hpp\
 		 units.hpp
 
-BUILT_SOURCES = \
+nodist_BUILT_SOURCES = \
 	       dimensions.hpp\
 	       units.cpp\
 	       units.hpp
@@ -362,9 +390,9 @@ libnumeric_la_SOURCES = units.cpp
 libnumeric_la_CPPFLAGS = $(CODE_COVERAGE_CPPFLAGS)
 libnumeric_la_CXXFLAGS = $(CODE_COVERAGE_CXXFLAGS)
 libnumeric_la_CFLAGS = $(CODE_COVERAGE_CFLAGS)
-libnumeric_la_LDFLAGS = -version-info 0:0:0
+libnumeric_la_LDFLAGS = -version-info $(current):$(revision):$(age)
 libnumeric_la_LIBADD = $(CODE_COVERAGE_LIBS)
-all: $(BUILT_SOURCES) config.h
+all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-am
 
 .SUFFIXES:
@@ -598,15 +626,13 @@ distdir: $(DISTFILES)
 	  fi; \
 	done
 check-am: all-am
-check: $(BUILT_SOURCES)
-	$(MAKE) $(AM_MAKEFLAGS) check-am
+check: check-am
 all-am: Makefile $(LTLIBRARIES) $(HEADERS) config.h
 installdirs:
 	for dir in "$(DESTDIR)$(libdir)" "$(DESTDIR)$(includedir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
-install: $(BUILT_SOURCES)
-	$(MAKE) $(AM_MAKEFLAGS) install-am
+install: install-am
 install-exec: install-exec-am
 install-data: install-data-am
 uninstall: uninstall-am
@@ -637,7 +663,6 @@ distclean-generic:
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
-	-test -z "$(BUILT_SOURCES)" || rm -f $(BUILT_SOURCES)
 clean: clean-am
 
 clean-am: clean-generic clean-libLTLIBRARIES clean-libtool clean-local \
@@ -709,7 +734,7 @@ ps-am:
 
 uninstall-am: uninstall-includeHEADERS uninstall-libLTLIBRARIES
 
-.MAKE: all check install install-am install-strip
+.MAKE: all install-am install-strip
 
 .PHONY: CTAGS GTAGS TAGS all all-am check check-am clean clean-generic \
 	clean-libLTLIBRARIES clean-libtool clean-local cscopelist-am \
@@ -730,11 +755,11 @@ uninstall-am: uninstall-includeHEADERS uninstall-libLTLIBRARIES
 .PRECIOUS: Makefile
 
 
-dimensions.hpp : dimensions.txt dimensions
-	./dimensions
+dimensions.hpp : dimensions.txt dimensions.pl
+	./dimensions.pl
 
-units.hpp units.cpp : units.txt units
-	./units
+units.hpp units.cpp : units.txt units.pl
+	./units.pl
 
 clean-local :
 	@rm -fv *.gcno

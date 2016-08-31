@@ -1,6 +1,8 @@
 
 @CODE_COVERAGE_RULES@
 
+EXTRA_DIST = interpolant_test.txt
+
 TESTS = tests
 
 check_PROGRAMS = tests

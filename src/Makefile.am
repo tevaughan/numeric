@@ -1,4 +1,33 @@
 
+# A compiled library is built for numeric.  At the moment, this library exists
+# only to support units for dimval.
+
+# Libtool's versioning system:
+#
+# current
+#
+#     The most recent interface number that this library implements.
+#
+# revision
+#
+#     The implementation number of the current interface.
+#
+# age
+#
+#     The difference between the newest and oldest interfaces that this library
+#     implements. In other words, the library implements all the interface
+#     numbers in the range from number current - age to current.
+
+current  = 1
+revision = 1
+age      = 0
+
+EXTRA_DIST =\
+	    dimensions.pl\
+	    dimensions.txt\
+	    units.pl\
+	    units.txt
+
 include_HEADERS =\
 		 dimensions.hpp\
 		 dimval.hpp\
@@ -6,7 +35,7 @@ include_HEADERS =\
 		 interpolant.hpp\
 		 units.hpp
 
-BUILT_SOURCES =\
+nodist_BUILT_SOURCES =\
 	       dimensions.hpp\
 	       units.cpp\
 	       units.hpp
@@ -23,15 +52,15 @@ libnumeric_la_CXXFLAGS = $(CODE_COVERAGE_CXXFLAGS)
 
 libnumeric_la_CFLAGS = $(CODE_COVERAGE_CFLAGS)
 
-libnumeric_la_LDFLAGS = -version-info 0:0:0
+libnumeric_la_LDFLAGS = -version-info $(current):$(revision):$(age)
 
 libnumeric_la_LIBADD = $(CODE_COVERAGE_LIBS)
 
-dimensions.hpp : dimensions.txt dimensions
-	./dimensions
+dimensions.hpp : dimensions.txt dimensions.pl
+	./dimensions.pl
 
-units.hpp units.cpp : units.txt units
-	./units
+units.hpp units.cpp : units.txt units.pl
+	./units.pl
 
 clean-local :
 	@rm -fv *.gcno
