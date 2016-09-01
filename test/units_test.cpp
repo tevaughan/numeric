@@ -152,6 +152,7 @@ TEST_CASE("Verify integer root.", "[units]")
 {
    volume const v = 8 * km * km * km;
    REQUIRE(v.root<3>() / km == Approx(2.0));
+   REQUIRE(sqrt(v * 2 * km) / (km * km) == Approx(4.0));
 }
 
 TEST_CASE("Verify absolute value.", "[units]")

@@ -179,6 +179,18 @@ namespace num
          return dimval<TI / E, D / E, M / E, C / E, TE / E>(std::pow(v_, e));
       }
 
+      /// \return Square root.
+      friend dimval<TI / 2, D / 2, M / 2, C / 2, TE / 2> sqrt(dimval dv)
+      {
+         return dv.root<2>();
+      }
+
+      /// \return Square root.
+      dimval<TI / 2, D / 2, M / 2, C / 2, TE / 2> sqrt() const
+      {
+         return root<2>();
+      }
+
       /// \return Absolute value.
       friend dimval fabs(dimval dv) { return dimval(fabs(dv.v_)); }
 
