@@ -22,29 +22,19 @@ current  = 1
 revision = 1
 age      = 0
 
-EXTRA_DIST =\
-	    dimensions.pl\
-	    dimensions.txt\
-	    units.pl\
-	    units.txt
-
-include_HEADERS =\
-		 dimensions.hpp\
-		 dimval.hpp\
-		 integral.hpp\
-		 interpolant.hpp\
-		 units.hpp
-
-nodist_BUILT_SOURCES =\
-	       dimensions.hpp\
-	       units.cpp\
-	       units.hpp
+BUILT_SOURCES = dimensions.hpp units.cpp units.hpp
 
 CLEANFILES = $(BUILT_SOURCES)
 
+EXTRA_DIST = dimensions.pl dimensions.txt units.pl units.txt
+
+include_HEADERS = dimval.hpp integral.hpp interpolant.hpp
+
+nodist_include_HEADERS = dimensions.hpp units.hpp
+
 lib_LTLIBRARIES = libnumeric.la
 
-libnumeric_la_SOURCES = units.cpp
+nodist_libnumeric_la_SOURCES = units.cpp
 
 libnumeric_la_CPPFLAGS = $(CODE_COVERAGE_CPPFLAGS)
 

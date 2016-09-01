@@ -150,10 +150,11 @@ namespace num
          // refined estimate.  That fraction is just the specified tolerance t.
          R const u1 = fabs(mean - rmean);
          R const u2 = fabs(rmean) * t;
+         I const ds = rmean * len;
          if (u1 < u2) {
             // Stop refining estimate because desired accuracy has been
             // reached.
-            sum += rmean * len;
+            sum += ds;
          } else {
             // Check to see if we should stop refining estimate because of
             // numerical inability to make improvement.
@@ -166,33 +167,33 @@ namespace num
             // <http://en.cppreference.com/w/cpp/types/numeric_limits/epsilon>.
             // integral() must be friend of dimval for R(min) to work when R be
             // a dimval.
-            if (u3 <= R(min) || u3 < eps * (u1 + u2) * ulp) {
-               // Stop refining estimate because of inability to reach desired
-               // accuracy.
-               I const ds = rmean * len;
-               sum += ds;
-               tol_achieved = false;
-               R const a2 = fabs(rmean);
-               I const ads = fabs(ds);
-               if (ads > ds_worst) {
-                  ds_worst = ads;
+            if (u3 > R(min)) {
+               if (u3 > eps * (u1 + u2) * ulp) {
+                  // Continue refining estimate.
+                  s.push(interval{r.a, midp, r.fa, fmid});
+                  s.push(interval{midp, r.b, fmid, r.fb});
+                  continue;
                }
-               // integral() must be friend of dimval for R(min) to work when R
-               // be a dimval.
-               if (a2 > R(min)) {
-                  double const tol_cur = u1 / a2;
-                  if (tol_cur > tol_worst) {
-                     tol_worst = tol_cur;
-                  }
+            }
+            // Unable to reach desired accuracy; stop refining estimate.
+            sum += ds;
+            tol_achieved = false;
+            R const a2 = fabs(rmean);
+            I const ads = fabs(ds);
+            if (ads > ds_worst) {
+               ds_worst = ads;
+            }
+            // integral() must be friend of dimval when R be dimval.
+            if (a2 > R(min)) {
+               double const tol_cur = u1 / a2;
+               if (tol_cur > tol_worst) {
+                  tol_worst = tol_cur;
                }
-            } else {
-               // Continue refining estimate.
-               s.push(interval{r.a, midp, r.fa, fmid});
-               s.push(interval{midp, r.b, fmid, r.fb});
             }
          }
       }
       I const as = fabs(sum);
+      // integral() must be friend of dimval when I be dimval.
       if (!tol_achieved && as > I(min) && ds_worst / as > t) {
          std::cerr << "integral: WARNING: worst-case final refinement was "
                    << tol_worst << " > tolerance=" << t << ".\n"

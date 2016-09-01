@@ -30,7 +30,7 @@ TEST_CASE("Verify integration of (dimval) global function.", "[integral]")
 struct my_sin {
    double freq;
    double sin(double x) { return std::sin(freq * x); }
-   my_sin(double f = 1.0) : freq(f) {}
+   explicit my_sin(double f = 1.0) : freq(f) {}
 };
 
 TEST_CASE("Verify integration of member function (via lambda).", "[integral]")
@@ -44,5 +44,13 @@ TEST_CASE("Verify integration of member function (via lambda).", "[integral]")
    double const j = integral(s, 0, M_PI);
    // Verify that integral of sin(2*x) from 0 to pi is 0.
    REQUIRE(j == Approx(0.0));
+}
+
+TEST_CASE("Trigger coverage of code requiring at least two samples.",
+          "[integral]")
+{
+   volume const i = integral(square, 1 * cm, 2 * cm, 1.0E-06, 0);
+   // Verify that integral of x^2 from 1 cm  to  2 cm  is  7/3 cm^3.
+   REQUIRE(i / cm.pow<3>() == Approx(7.0 / 3.0));
 }
 

@@ -11,6 +11,7 @@ AC_CONFIG_SRCDIR([src/dimval.hpp])
 AM_INIT_AUTOMAKE([-Wall foreign])
 CPPFLAGS="$CPPFLAGS -finput-charset=UTF-8 -fexec-charset=UTF-8"
 AC_LANG([C++])
+
 AX_CODE_COVERAGE
 if test -n "$CODE_COVERAGE_CXXFLAGS"; then
    CXXFLAGS="-Wall $CXXFLAGS"

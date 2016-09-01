@@ -1,8 +1,9 @@
-.deps
 *.gcda
 *.gcno
+.deps
 .libs
+numeric*coverage*
+test-suite.log
 tests
 tests.log
 tests.trs
-test-suite.log
