@@ -6,15 +6,21 @@
 Included at present are physically dimensioned quantities, linear
 interpolation, and integration by adaptive quadrature.
 
-These inter-operate!
+Linear interpolation and integration are header-only template facilities.
+
+Physically dimensioned quantities require linking with '-lnumeric'.
+
+Build and install via './configure; make; sudo make install'.
+
+All classes and functions inter-operate!
 
 ## Physically dimensioned quantities.
 
 Base class 'dimval' has public default constructor for zero-valued quantity.
 ```c++
+#include <units.hpp>
 dimval<-1,1,0,0,0> foo; // A speed with initial value of zero.
 ```
-
 Each of dimval's template value parameters is an integer representing the
 exponent of one of five fundamental units.
 
@@ -26,11 +32,13 @@ exponent of one of five fundamental units.
 
 Aliases are available for convenience.
 ```c++
+#include <units.hpp>
 speed foo; // A speed with initial value of zero.
 ```
 
 A wide array of units can be used for initialization and computation.
 ```c++
+#include <units.hpp>
 speed v = 2.3 * mi / hr;  // Speed with initial value 2.3 miles/hour.
 ```
 
@@ -38,10 +46,12 @@ sqrt() and fabs() are supported.
 
 Member functions allow for integer power or root.
 ```c++
+#include <units.hpp>
 length x = 2 * cm;
 area a = x.pow<2>();
 length y = 0.5 * a.root<2>().
 ```
+
 ## Linear interpolation
 
 TBS
