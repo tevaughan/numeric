@@ -7,6 +7,10 @@ minutes         min   time          60.0
 hours           hr    time          3600.0
 days            day   time          86400.0
 weeks           week  time          604800.0
+hertz           Hz    frequency     1.0
+kilohertz       kHz   frequency     1000.0
+megahertz       MHz   frequency     1.0E+06
+gigahertz       GHz   frequency     1.0E+09
 meters          m     length        1.0
 centimeters     cm    length        0.01
 millimeters     mm    length        0.001
