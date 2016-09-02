@@ -35,6 +35,22 @@ TEST_CASE("Verify product of interpolants.", "[interpolant]")
    REQUIRE(i3(2.00) == 0.0);
 }
 
+TEST_CASE("Verify quotient of interpolants.", "[interpolant]")
+{
+   ilist<double, double> list1 = {{0.00, 0.00}, {0.50, 0.25}, {1.00, 1.00}};
+   ilist<double, double> list2 = {{0.25, 2.00}, {0.75, 1.00}, {1.25, 0.50}};
+   interpolantd i1(list1);
+   interpolantd i2(list2);
+   interpolantd i3(i1 / i2);
+   REQUIRE(i3(-1.0) == 0.0);
+   REQUIRE(i3(0.0) == 0.0);
+   REQUIRE(i3(0.25) == (0.25 / 2.0) / 2.0);
+   REQUIRE(i3(0.50) == 0.25 / 1.5);
+   REQUIRE(i3(0.75) == Approx(1.25 / 2.0));
+   REQUIRE(i3(1.00) == 1.0 / 0.75);
+   REQUIRE(i3(2.00) == 1.0 / 0.5);
+}
+
 TEST_CASE("Verify file input.", "[interpolant]")
 {
    interpolantd i("interpolant_test.txt");

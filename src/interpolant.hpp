@@ -80,6 +80,65 @@ namespace num
          return point(x * x_unit, y * y_unit);
       }
 
+      /// Combine the present instance I1 with another interpolant I2 such that
+      /// there is a point in the combined interpolant I3 at every unique x
+      /// coordinate across I1 and I2.  Each new y coordinate is the
+      /// combination of a y coordinate, in either I1 or I2, and the
+      /// corresponding interpolated y coordinate in the other.  The
+      /// combination is represented by a passed-in function.
+      ///
+      /// combine() is used to support multiplication and division of
+      /// interpolants.
+      ///
+      /// \tparam OD    Type of y coordinate in other interpolant.
+      /// \param  oint  Reference to other interpolant.
+      /// \param  f     Combining function.
+      /// \return       Combined interpolant.
+      template <typename OD>
+      auto combine(interpolant<I, OD> const &oint,
+                   std::function<decltype(D() * OD())(D, OD)> f) const
+            -> interpolant<I, decltype(D() * OD())>
+      {
+         using PD = decltype(D() * OD());
+         ilist<I, PD> pl;
+         ilist<I, D> const &l1 = data_;
+         ilist<I, OD> const &l2 = oint.data_;
+         unsigned const s1 = l1.size();
+         unsigned const s2 = l2.size();
+         unsigned n1 = 0;
+         unsigned n2 = 0;
+         I ind;
+         if (s1 == 0 || s2 == 0) {
+            return pl;
+         }
+         while (n1 < s1 || n2 < s2) {
+            if (n1 < s1 && n2 < s2) {
+               I const i1 = l1[n1].first;
+               I const i2 = l2[n2].first;
+               D const d1 = l1[n1].second;
+               OD const d2 = l2[n2].second;
+               if (i1 < i2) {
+                  pl.push_back({i1, f(d1, oint(i1))});
+                  ++n1;
+               } else {
+                  pl.push_back({i2, f((*this)(i2), d2)});
+                  ++n2;
+               }
+            } else if (n1 < s1) {
+               I const i1 = l1[n1].first;
+               D const d1 = l1[n1].second;
+               pl.push_back({i1, f(d1, oint(i1))});
+               ++n1;
+            } else {
+               I const i2 = l2[n2].first;
+               OD const d2 = l2[n2].second;
+               pl.push_back({i2, f((*this)(i2), d2)});
+               ++n2;
+            }
+         }
+         return pl;
+      }
+
    public:
       /// Initialize ifrom an ilist.
       /// \param d  Data stored in ilist.
@@ -135,57 +194,40 @@ namespace num
          return yi + (yj - yi) * ((x - xi) / (xj - xi));
       }
 
-      /// Multiply two interpolants together such that there is a point in the
-      /// product interpolant at every unique x coordinate across both
-      /// interpolants.  Each new y coordinate is the product of a y coordinate
-      /// in one interpolant and the corresponding interpolated y coordinate in
-      /// the other.
+      /// Multiply the present instance I1 by another interpolant I2 such that
+      /// there is a point in the product interpolant I3 at every unique x
+      /// coordinate across I1 and I2.  Each new y coordinate is the
+      /// product of a y coordinate, in either I1 or I2, and the
+      /// corresponding interpolated y coordinate in the other.
       ///
       /// \tparam OD    Type of y coordinate in other interpolant.
       /// \param  oint  Reference to other interpolant.
       /// \return       Product interpolant.
       template <typename OD>
       auto operator*(interpolant<I, OD> const &oint) const
-            -> interpolant<I, decltype(data_[0].second *oint(data_[0].first))>
+            -> interpolant<I, decltype(D() * OD())>
       {
-         using PD = decltype(data_[0].second *oint(data_[0].first));
-         ilist<I, PD> pl;
-         ilist<I, D> const& l1 = data_;
-         ilist<I, OD> const& l2 = oint.data_;
-         unsigned const s1 = l1.size();
-         unsigned const s2 = l2.size();
-         unsigned n1 = 0;
-         unsigned n2 = 0;
-         I ind;
-         if (s1 == 0 || s2 == 0) {
-            return pl;
-         }
-         while (n1 < s1 || n2 < s2) {
-            if (n1 < s1 && n2 < s2) {
-               I const i1 = l1[n1].first;
-               I const i2 = l2[n2].first;
-               D const d1 = l1[n1].second;
-               OD const d2 = l2[n2].second;
-               if (i1 < i2) {
-                  pl.push_back({i1, d1 * oint(i1)});
-                  ++n1;
-               } else {
-                  pl.push_back({i2, (*this)(i2) * d2});
-                  ++n2;
-               }
-            } else if (n1 < s1) {
-               I const i1 = l1[n1].first;
-               D const d1 = l1[n1].second;
-               pl.push_back({i1, d1 * oint(i1)});
-               ++n1;
-            } else {
-               I const i2 = l2[n2].first;
-               OD const d2 = l2[n2].second;
-               pl.push_back({i2, (*this)(i2)*d2});
-               ++n2;
-            }
-         }
-         return pl;
+         using D3 = decltype(D() * OD());
+         std::function<D3(D, OD)> f = [](D y1, OD y2) { return y1 * y2; };
+         return combine(oint, f);
+      }
+
+      /// Divide the present instance I1 by another interpolant I2 such that
+      /// there is a point in the product interpolant I3 at every unique x
+      /// coordinate across I1 and I2.  Each new y coordinate is the quotient
+      /// of a y coordinate, in either I1 or I2, and the corresponding
+      /// interpolated y coordinate in the other.
+      ///
+      /// \tparam OD    Type of y coordinate in other interpolant.
+      /// \param  oint  Reference to other interpolant.
+      /// \return       Quotient interpolant.
+      template <typename OD>
+      auto operator/(interpolant<I, OD> const &oint) const
+            -> interpolant<I, decltype(D() * OD())>
+      {
+         using D3 = decltype(D() * OD());
+         std::function<D3(D, OD)> f = [](D y1, OD y2) { return y1 / y2; };
+         return combine(oint, f);
       }
 
       /// Multiply every y-value of interpolant by a scale factor on the
