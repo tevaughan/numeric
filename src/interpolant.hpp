@@ -47,15 +47,21 @@ namespace num
       using list = ilist<I, D>;
       using point = ipoint<I, D>;
 
-      list data_;
+      list d_; ///< x-y points between which to interpolate.
 
+      /// Compare points so that they can be sorted.
+      /// \return True only if p1 lie to the left of p2.
       static bool cmpr_pts(point const &p1, point const &p2)
       {
          return p1.first < p2.first;
       }
 
-      void sort() { std::sort(data_.begin(), data_.end(), cmpr_pts); }
+      /// Sort points.
+      void sort() { std::sort(d_.begin(), d_.end(), cmpr_pts); }
 
+      /// Open file.
+      /// \param fname  Name of file.
+      /// \return       Pointer to input stream from file.
       static std::unique_ptr<std::ifstream> ifstr(std::string fname)
       {
          using namespace std;
@@ -66,6 +72,10 @@ namespace num
          return p;
       }
 
+      /// Extract point from space-delimited ASCII line.
+      /// \param line    Line of text from input ASCII file.
+      /// \param x_unit  Factor to multiply against first column.
+      /// \param y_unit  Factor to multiply against second column.
       static point get_point(std::string line, I x_unit, D y_unit)
       {
          using namespace std;
@@ -101,8 +111,8 @@ namespace num
       {
          using PD = decltype(D() * OD());
          ilist<I, PD> pl;
-         ilist<I, D> const &l1 = data_;
-         ilist<I, OD> const &l2 = oint.data_;
+         ilist<I, D> const &l1 = d_;
+         ilist<I, OD> const &l2 = oint.d_;
          unsigned const s1 = l1.size();
          unsigned const s2 = l2.size();
          unsigned n1 = 0;
@@ -142,7 +152,7 @@ namespace num
    public:
       /// Initialize ifrom an ilist.
       /// \param d  Data stored in ilist.
-      interpolant(list d = list()) : data_(std::move(d)) { sort(); }
+      interpolant(list d = list()) : d_(std::move(d)) { sort(); }
 
       /// Initialize from the first two columns of a space-delimited ASCII
       /// file.
@@ -164,7 +174,7 @@ namespace num
             if (p == string::npos || line[p] == '#') {
                continue;
             }
-            data_.push_back(get_point(line, x_unit, y_unit));
+            d_.push_back(get_point(line, x_unit, y_unit));
          }
          sort();
       }
@@ -174,24 +184,66 @@ namespace num
       /// \return   Interpolated value of dependent variable.
       D operator()(I x) const
       {
-         if (data_.size() == 0) {
+         if (d_.size() == 0) {
             throw "interpolating on empty interpolant";
          }
-         if (x <= data_.begin()->first) {
-            return data_.begin()->second;
+         if (x <= d_.begin()->first) {
+            return d_.begin()->second;
          }
-         if (x >= data_.rbegin()->first) {
-            return data_.rbegin()->second;
+         if (x >= d_.rbegin()->first) {
+            return d_.rbegin()->second;
          }
          using namespace std;
-         point const xp{x, data_[0].second}; // Dummy y-coord used for search.
-         auto const j = upper_bound(data_.begin(), data_.end(), xp, cmpr_pts);
+         point const xp{x, D()}; // Dummy y-coord used for search.
+         auto const j = upper_bound(d_.begin(), d_.end(), xp, cmpr_pts);
          auto const i = j - 1;
          I const &xi = i->first;
          I const &xj = j->first;
          D const &yi = i->second;
          D const &yj = j->second;
          return yi + (yj - yi) * ((x - xi) / (xj - xi));
+      }
+
+      /// Integrate interpolant.
+      /// \param x1  Beginning of interval of integration.
+      /// \param x2  End of interval of integration.
+      /// \return    Numerical result of definite integral.
+      auto integral(I x1, I x2) const -> decltype(I() * D())
+      {
+         if (d_.size() == 0) {
+            throw "integrating on empty interpolant";
+         }
+         double sign = 1.0;
+         if (x1 > x2) {
+            std::swap(x1, x2);
+            sign = -1.0;
+         }
+         using R = decltype(I() * D());
+         R sum(0);
+         point const x1p{x1, D()}; // Dummy y-coord for search.
+         auto i = upper_bound(d_.begin(), d_.end(), x1p, cmpr_pts);
+         if (i == d_.end()) {
+            // We need only calculate one piece to the right of all points.
+            return sign * (x2 - x1) * d_.rbegin()->second;
+         } else {
+            // Handle first piece up to x coord of stored point.
+            D const y1 = (*this)(x1);
+            if (x2 <= i->first) {
+               // We need calculate only one piece.
+               return 0.5 * sign * (x2 - x1) * (y1 + (*this)(x2));
+            }
+            sum += 0.5 * (i->first - x1) * (y1 + i->second);
+         }
+         auto j = i + 1;
+         while (j != d_.end() && x2 >= j->first) {
+            // Handle piece between current point and next point.
+            sum += 0.5 * (j->first - i->first) * (i->second + j->second);
+            ++j;
+            i = j - 1;
+         }
+         // Handle last piece.
+         sum += 0.5 * (x2 - i->first) * (i->second + (*this)(x2));
+         return sign * sum;
       }
 
       /// Multiply the present instance I1 by another interpolant I2 such that
@@ -238,9 +290,9 @@ namespace num
       auto operator*(double s) const -> interpolant<I, decltype(D() * s)>
       {
          using ND = decltype(D() * s);
-         ilist<I, ND> nl(data_.size());
-         for (unsigned i = 0; i < data_.size(); ++i) {
-            nl[i] = ipoint<I, ND>(data_[i].first, data_[i].second * s);
+         ilist<I, ND> nl(d_.size());
+         for (unsigned i = 0; i < d_.size(); ++i) {
+            nl[i] = ipoint<I, ND>(d_[i].first, d_[i].second * s);
          }
          return nl;
       }
@@ -268,9 +320,9 @@ namespace num
             -> interpolant<I, decltype(D() * s)>
       {
          using ND = decltype(D() * s);
-         ilist<I, ND> nl(data_.size());
-         for (unsigned i = 0; i < data_.size(); ++i) {
-            nl[i] = ipoint<I, ND>(data_[i].first, data_[i].second * s);
+         ilist<I, ND> nl(d_.size());
+         for (unsigned i = 0; i < d_.size(); ++i) {
+            nl[i] = ipoint<I, ND>(d_[i].first, d_[i].second * s);
          }
          return nl;
       }
@@ -299,9 +351,9 @@ namespace num
       auto operator/(Y s) const -> interpolant<I, decltype(D() / s)>
       {
          using ND = decltype(D() / s);
-         ilist<I, ND> nl(data_.size());
-         for (unsigned i = 0; i < data_.size(); ++i) {
-            nl[i] = ipoint<I, ND>(data_[i].first, data_[i].second / s);
+         ilist<I, ND> nl(d_.size());
+         for (unsigned i = 0; i < d_.size(); ++i) {
+            nl[i] = ipoint<I, ND>(d_[i].first, d_[i].second / s);
          }
          return nl;
       }
