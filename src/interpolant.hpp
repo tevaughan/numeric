@@ -235,10 +235,9 @@ namespace num
       ///
       /// \param  s  Scale factor for y-values.
       /// \return    Scaled interpolant.
-      auto operator*(double s) const
-            -> interpolant<I, decltype(data_[0].second *s)>
+      auto operator*(double s) const -> interpolant<I, decltype(D() * s)>
       {
-         using ND = decltype(data_[0].second *s);
+         using ND = decltype(D() * s);
          ilist<I, ND> nl(data_.size());
          for (unsigned i = 0; i < data_.size(); ++i) {
             nl[i] = ipoint<I, ND>(data_[i].first, data_[i].second * s);
@@ -254,7 +253,7 @@ namespace num
       /// \param  i  Interpolant to scale.
       /// \return    Scaled interpolant.
       friend auto operator*(double s, interpolant const &i)
-            -> interpolant<I, decltype(data_[0].second *s)>
+            -> interpolant<I, decltype(D() * s)>
       {
          return i * s;
       }
@@ -266,9 +265,9 @@ namespace num
       /// \return    Scaled interpolant.
       template <int TI, int ID, int M, int C, int TE>
       auto operator*(dimval<TI, ID, M, C, TE> s) const
-            -> interpolant<I, decltype(data_[0].second *s)>
+            -> interpolant<I, decltype(D() * s)>
       {
-         using ND = decltype(data_[0].second *s);
+         using ND = decltype(D() * s);
          ilist<I, ND> nl(data_.size());
          for (unsigned i = 0; i < data_.size(); ++i) {
             nl[i] = ipoint<I, ND>(data_[i].first, data_[i].second * s);
@@ -285,7 +284,7 @@ namespace num
       /// \return    Scaled interpolant.
       template <int TI, int ID, int M, int C, int TE>
       friend auto operator*(dimval<TI, ID, M, C, TE> s, interpolant const &i)
-            -> interpolant<I, decltype(data_[0].second *s)>
+            -> interpolant<I, decltype(D() * s)>
       {
          return i * s;
       }
@@ -297,10 +296,9 @@ namespace num
       /// \param  s  Scale factor for y-values.
       /// \return    Scaled interpolant.
       template <typename Y>
-      auto operator/(Y s) const
-            -> interpolant<I, decltype(data_[0].second / s)>
+      auto operator/(Y s) const -> interpolant<I, decltype(D() / s)>
       {
-         using ND = decltype(data_[0].second / s);
+         using ND = decltype(D() / s);
          ilist<I, ND> nl(data_.size());
          for (unsigned i = 0; i < data_.size(); ++i) {
             nl[i] = ipoint<I, ND>(data_[i].first, data_[i].second / s);
