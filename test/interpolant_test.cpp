@@ -19,6 +19,22 @@ TEST_CASE("Verify interpolation on vector of points.", "[interpolant]")
    REQUIRE(i(2.00) == 1.00);
 }
 
+TEST_CASE("Verify product of interpolants.", "[interpolant]")
+{
+   ilist<double, double> list1 = {{0.00, 0.00}, {0.50, 0.25}, {1.00, 1.00}};
+   ilist<double, double> list2 = {{0.25, 2.00}, {0.75, 1.00}, {1.25, 0.00}};
+   interpolantd i1(list1);
+   interpolantd i2(list2);
+   interpolantd i3(i1 * i2);
+   REQUIRE(i3(-1.0) == 0.0);
+   REQUIRE(i3(0.0) == 0.0);
+   REQUIRE(i3(0.25) == 0.25);
+   REQUIRE(i3(0.50) == 0.25 * 1.5);
+   REQUIRE(i3(0.75) == Approx(1.25 / 2.0));
+   REQUIRE(i3(1.00) == 0.5);
+   REQUIRE(i3(2.00) == 0.0);
+}
+
 TEST_CASE("Verify file input.", "[interpolant]")
 {
    interpolantd i("interpolant_test.txt");
@@ -73,7 +89,8 @@ TEST_CASE("Verify interoperation with units.", "[interpolant]")
    REQUIRE(i(1100 * nm) == 0.0);
 }
 
-TEST_CASE("Verify multiplication of interpolant on right.", "[interpolant]")
+TEST_CASE("Verify scalar multiplication of interpolant on right.",
+          "[interpolant]")
 {
    interpolant<length, num::time> i("interpolant_test.txt", nm, s);
    interpolant<length, length> j = i * (2 * m / s);
@@ -90,7 +107,8 @@ TEST_CASE("Verify multiplication of interpolant on right.", "[interpolant]")
    REQUIRE(j(1100 * nm) == 0.0 * m);
 }
 
-TEST_CASE("Verify multiplication of interpolant on left.", "[interpolant]")
+TEST_CASE("Verify scalar multiplication of interpolant on left.",
+          "[interpolant]")
 {
    interpolant<length, num::time> i("interpolant_test.txt", nm, s);
    interpolant<length, length> j = (2 * m / s) * i;
@@ -105,5 +123,22 @@ TEST_CASE("Verify multiplication of interpolant on left.", "[interpolant]")
    REQUIRE(j(950 * nm) / m == Approx(80.0));
    REQUIRE(j(1000 * nm) == 0.0 * m);
    REQUIRE(j(1100 * nm) == 0.0 * m);
+}
+
+TEST_CASE("Verify scalar division of interpolant.", "[interpolant]")
+{
+   interpolant<length, num::time> i("interpolant_test.txt", nm, s);
+   interpolant<length, double> j = i / (2 * s);
+   REQUIRE(j(-1 * nm) == 0.0);
+   REQUIRE(j(299 * nm) == 0.0);
+   REQUIRE(j(300 * nm) == 0.0);
+   REQUIRE(j(350 * nm) == Approx(20.0));
+   REQUIRE(j(400 * nm) == 40.0);
+   REQUIRE(j(450 * nm) == 40.0);
+   REQUIRE(j(500 * nm) == 40.0);
+   REQUIRE(j(900 * nm) == 40.0);
+   REQUIRE(j(950 * nm) == Approx(20.0));
+   REQUIRE(j(1000 * nm) == 0.0);
+   REQUIRE(j(1100 * nm) == 0.0);
 }
 
