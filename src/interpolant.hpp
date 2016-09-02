@@ -34,9 +34,7 @@ namespace num
    /// who wrote it in 2016.
    ///
    /// Class interpolant is designed with the idea that either of its template
-   /// type parameters may be a double or else a plural-name descendant (like
-   /// meters) of dimval.  In that way, the corresponding value can always be
-   /// constructed from an initializer of type double.
+   /// type parameters may be a double or else a dimval.
    ///
    /// \tparam I  Type of independent variable (x value).
    /// \tparam D  Type of dependent variable (y value).
@@ -86,7 +84,14 @@ namespace num
 
       /// Initialize from the first two columns of a space-delimited ASCII
       /// file.
-      /// \param fname  Name of input file.
+      ///
+      /// \param fname   Name of input file.
+      ///
+      /// \param x_unit  Factor multiplied against each number in file's first
+      ///                space-delimited column. Product is stored as x value.
+      ///
+      /// \param y_unit  Factor multiplied against each number in file's second
+      ///                space-delimited column. Product is stored as y value.
       interpolant(std::string fname, I x_unit = 1.0, D y_unit = 1.0)
       {
          using namespace std;
@@ -125,6 +130,38 @@ namespace num
          D const &yi = i->second;
          D const &yj = j->second;
          return yi + (yj - yi) * ((x - xi) / (xj - xi));
+      }
+
+      /// Multiply every y-value of interpolant by a scale factor on the right,
+      /// and return the resultant interpolant.
+      ///
+      /// \tparam Y  Type of scale factor for y-values.
+      /// \param  s  Scale factor for y-values.
+      /// \return    Scaled interpolant.
+      template <typename Y>
+      auto operator*(Y s) const -> interpolant<I, decltype(data_[0].second *s)>
+      {
+         using ND = decltype(data_[0].second *s);
+         ilist<I, ND> nl(data_.size());
+         for (unsigned i = 0; i < data_.size(); ++i) {
+            nl[i] = ipoint<I, ND>(data_[i].first, data_[i].second * s);
+         }
+         return nl;
+      }
+
+      /// Multiply every y-value of interpolant by a scale factor on the left,
+      /// and return the resultant interpolant.  Assume that multiplication of
+      /// y-values is commutative.
+      ///
+      /// \tparam Y  Type of scale factor for y-values.
+      /// \param  s  Scale factor for y-values.
+      /// \param  i  Interpolant to scale.
+      /// \return    Scaled interpolant.
+      template <typename Y>
+      friend auto operator*(Y s, interpolant const &i)
+            -> interpolant<I, decltype(data_[0].second *s)>
+      {
+         return i * s;
       }
    };
 

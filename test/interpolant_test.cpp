@@ -73,3 +73,37 @@ TEST_CASE("Verify interoperation with units.", "[interpolant]")
    REQUIRE(i(1100 * nm) == 0.0);
 }
 
+TEST_CASE("Verify multiplication of interpolant on right.", "[interpolant]")
+{
+   interpolant<length, num::time> i("interpolant_test.txt", nm, s);
+   interpolant<length, length> j = i * (2 * m / s);
+   REQUIRE(j(-1 * nm) == 0.0 * m);
+   REQUIRE(j(299 * nm) == 0.0 * m);
+   REQUIRE(j(300 * nm) == 0.0 * m);
+   REQUIRE(j(350 * nm) / m == Approx(80.0));
+   REQUIRE(j(400 * nm) == 160.0 * m);
+   REQUIRE(j(450 * nm) == 160.0 * m);
+   REQUIRE(j(500 * nm) == 160.0 * m);
+   REQUIRE(j(900 * nm) == 160.0 * m);
+   REQUIRE(j(950 * nm) / m == Approx(80.0));
+   REQUIRE(j(1000 * nm) == 0.0 * m);
+   REQUIRE(j(1100 * nm) == 0.0 * m);
+}
+
+TEST_CASE("Verify multiplication of interpolant on left.", "[interpolant]")
+{
+   interpolant<length, num::time> i("interpolant_test.txt", nm, s);
+   interpolant<length, length> j = (2 * m / s) * i;
+   REQUIRE(j(-1 * nm) == 0.0 * m);
+   REQUIRE(j(299 * nm) == 0.0 * m);
+   REQUIRE(j(300 * nm) == 0.0 * m);
+   REQUIRE(j(350 * nm) / m == Approx(80.0));
+   REQUIRE(j(400 * nm) == 160.0 * m);
+   REQUIRE(j(450 * nm) == 160.0 * m);
+   REQUIRE(j(500 * nm) == 160.0 * m);
+   REQUIRE(j(900 * nm) == 160.0 * m);
+   REQUIRE(j(950 * nm) / m == Approx(80.0));
+   REQUIRE(j(1000 * nm) == 0.0 * m);
+   REQUIRE(j(1100 * nm) == 0.0 * m);
+}
+
