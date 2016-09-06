@@ -19,6 +19,19 @@ TEST_CASE("Verify interpolation on vector of points.", "[interpolant]")
    REQUIRE(i(2.00) == 1.00);
 }
 
+TEST_CASE("Verify integral of interpolant.", "[interpolant]")
+{
+   ilist<double, double> list = {{0.00, 0.50}, {0.50, 1.00}, {1.00, -1.00}};
+   interpolantd i(list);
+   REQUIRE(i.integral(-0.50, -0.10) == 0.2);
+   REQUIRE(i.integral(-0.25, +0.25) == 0.25 * 0.5 + 0.25 * 0.5 * (0.5 + 0.75));
+   REQUIRE(i.integral(+0.25, +1.25) == 0.5 * 0.25 * (0.75 + 1.0) - 0.25);
+   REQUIRE(i.integral(+0.55, +0.95) == 0.0);
+   REQUIRE(i.integral(+0.75, +1.25) == -0.375);
+   REQUIRE(i.integral(+1.25, +1.50) == -0.25);
+   REQUIRE(i.integral(+1.50, +1.25) == +0.25);
+}
+
 TEST_CASE("Verify product of interpolants.", "[interpolant]")
 {
    ilist<double, double> list1 = {{0.00, 0.00}, {0.50, 0.25}, {1.00, 1.00}};
@@ -53,6 +66,9 @@ TEST_CASE("Verify quotient of interpolants.", "[interpolant]")
 
 TEST_CASE("Verify file input.", "[interpolant]")
 {
+   REQUIRE_THROWS(interpolantd j("nonexistent-file"));
+   REQUIRE_THROWS(interpolantd k("interpolant_test-badinput.txt"));
+   REQUIRE_THROWS(interpolantd m("interpolant_test-badinput2.txt"));
    interpolantd i("interpolant_test.txt");
    REQUIRE(i(-1) == 0.0);
    REQUIRE(i(299) == 0.0);

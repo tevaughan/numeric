@@ -2,7 +2,7 @@
 # This is a comment.
 
 300 0  # This is another comment.
-400 80
+400    # Missing y value.
 900 80
 1000 0
 
