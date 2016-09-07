@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 
 # Copyright 2016  Thomas E. Vaughan
-# Distributable under the terms of the GNU GPL, Version 3 or later.
+# Distributable under the terms of the GNU LGPL, Version 3 or later.
 
 open(INPUT, '<', "units.txt");
 open(OUT_H, '>', "units.hpp");
