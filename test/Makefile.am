@@ -22,6 +22,7 @@ tests_CXXFLAGS = $(CODE_COVERAGE_CXXFLAGS)
 tests_CFLAGS = $(CODE_COVERAGE_CFLAGS)
 
 clean-local :
-	@rm -fv *.gcno
+	@rm -frv numeric-*-coverage
 	@rm -fv *.gcda
+	@rm -fv *.gcno
 

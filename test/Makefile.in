@@ -1047,8 +1047,9 @@ uninstall-am:
 @CODE_COVERAGE_RULES@
 
 clean-local :
-	@rm -fv *.gcno
+	@rm -frv numeric-*-coverage
 	@rm -fv *.gcda
+	@rm -fv *.gcno
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

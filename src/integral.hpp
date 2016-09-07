@@ -113,6 +113,7 @@ namespace num
    /// \param  b   Upper limit of integration.
    /// \param  t   Error tolerance.
    /// \param  n   Initial number of evenly spaced samples of the function.
+   /// \param  ms  Maximum number of samples of function.
    /// \return     Numeric integral of function.
    template <typename R, typename A, typename A1, typename A2>
    auto integral(std::function<R(A)> f, A1 a, A2 b, double t = 1.0E-06,
@@ -122,14 +123,9 @@ namespace num
    {
       using I = decltype(std::forward<std::function<R(A)>>(f)(a) * a);
       integration_subinterval_stack<A, R> s(n, a, b, f);
-      // Allow return value to be either a double or a dimval, whose default
-      // constructor produces a zero value.
       I sum(0.0); // return value
       bool tol_achieved = true;
-      double tol_worst = t;
-      I ds_worst(0.0);
-      double constexpr eps = std::numeric_limits<double>::epsilon();
-      double constexpr min = std::numeric_limits<double>::min();
+      double const c = std::numeric_limits<double>::epsilon() / t;
       while (s.size()) {
          using interval = integration_interval<A, R>;
          interval const r = s.top();
@@ -150,55 +146,26 @@ namespace num
          // refined estimate.  That fraction is just the specified tolerance t.
          R const u1 = fabs(mean - rmean);
          R const u2 = fabs(rmean) * t;
+         R const u3 = fabs(mean) + fabs(rmean);
          I const ds = rmean * len;
-         if (u1 < u2) {
+         if (u1 < u3 * c) {
+            // Stop refining estimate because of roundoff error.
+            sum += ds;
+            tol_achieved = false;
+         } else if (u1 <= u2) {
             // Stop refining estimate because desired accuracy has been
             // reached.
             sum += ds;
          } else {
-            // Check to see if we should stop refining estimate because of
-            // numerical inability to make improvement.
-            R const u3 = fabs(u1 - u2);
-            double constexpr ulp = 5.0;
-            // If the two sides of the inequality u1 < u2 be different by fewer
-            // than about ulp last-place units (in terms of machine epsilon),
-            // or if the difference between the sides be subnormal, then stop
-            // subdividing.  See example at
-            // <http://en.cppreference.com/w/cpp/types/numeric_limits/epsilon>.
-            // integral() must be friend of dimval for R(min) to work when R be
-            // a dimval.
-            if (u3 > R(min)) {
-               if (u3 > eps * (u1 + u2) * ulp) {
-                  // Continue refining estimate.
-                  s.push(interval{r.a, midp, r.fa, fmid});
-                  s.push(interval{midp, r.b, fmid, r.fb});
-                  continue;
-               }
-            }
-            // Unable to reach desired accuracy; stop refining estimate.
-            sum += ds;
-            tol_achieved = false;
-            R const a2 = fabs(rmean);
-            I const ads = fabs(ds);
-            if (ads > ds_worst) {
-               ds_worst = ads;
-            }
-            // integral() must be friend of dimval when R be dimval.
-            if (a2 > R(min)) {
-               double const tol_cur = u1 / a2;
-               if (tol_cur > tol_worst) {
-                  tol_worst = tol_cur;
-               }
-            }
+            // Continue refining estimate.
+            s.push(interval{r.a, midp, r.fa, fmid});
+            s.push(interval{midp, r.b, fmid, r.fb});
          }
       }
       I const as = fabs(sum);
-      // integral() must be friend of dimval when I be dimval.
-      if (!tol_achieved && as > I(min) && ds_worst / as > t) {
-         std::cerr << "integral: WARNING: worst-case final refinement was "
-                   << tol_worst << " > tolerance=" << t << ".\n"
-                   << "                   total fractional contribution: "
-                   << ds_worst / as << std::endl;
+      if (!tol_achieved) {
+         std::cerr << "integral: WARNING: tolerance " << t << " not achieved"
+                   << std::endl;
       }
       return sum;
    }

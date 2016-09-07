@@ -215,7 +215,7 @@ CODE_COVERAGE_GENHTML_OPTIONS_DEFAULT ?=\
 $(if $(CODE_COVERAGE_BRANCH_COVERAGE),\
 --rc genhtml_branch_coverage=$(CODE_COVERAGE_BRANCH_COVERAGE))
 CODE_COVERAGE_GENHTML_OPTIONS ?= $(CODE_COVERAGE_GENHTML_OPTIONS_DEFAULTS)
-CODE_COVERAGE_IGNORE_PATTERN ?= catch.hpp
+CODE_COVERAGE_IGNORE_PATTERN ?= test/*
 
 code_coverage_v_lcov_cap = $(code_coverage_v_lcov_cap_$(V))
 code_coverage_v_lcov_cap_ = $(code_coverage_v_lcov_cap_$(AM_DEFAULT_VERBOSITY))

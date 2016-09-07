@@ -3,8 +3,9 @@ autom4te.cache
 config.log
 config.status
 doc
-Makefile
 libtool
+Makefile
+numeric-*-coverage*
 
 *.pyc
 

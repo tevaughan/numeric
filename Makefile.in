@@ -818,11 +818,14 @@ uninstall-am:
 .PRECIOUS: Makefile
 
 
+@CODE_COVERAGE_RULES@
+
 doc :
 	doxygen
 
 clean-local :
 	@rm -frv doc
+	@rm -frv numeric-*-coverage*
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
