@@ -164,8 +164,8 @@ namespace num
       }
       I const as = fabs(sum);
       if (!tol_achieved) {
-         std::cerr << "integral: WARNING: tolerance " << t << " not achieved"
-                   << std::endl;
+         std::cerr << "integral: WARNING: tolerance " << t
+                   << " not achieved on at least one subinterval" << std::endl;
       }
       return sum;
    }
