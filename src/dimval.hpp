@@ -56,12 +56,7 @@ namespace num
       /// Allow integral() to construct from known MKS quantity.
       template <typename R, typename A, typename A1, typename A2>
       friend auto integral(func<R, A> f, A1 a, A2 b, double t, unsigned n)
-            -> decltype(std::forward<func<R, A>>(f)(a) * a);
-
-      /// Allow integral() to construct from known MKS quantity.
-      template <typename R, typename A, typename A1, typename A2>
-      friend auto integral(R (*f)(A), A1 a, A2 b, double t, unsigned n)
-            -> decltype(std::forward<R (*)(A)>(f)(a) * a);
+            -> decltype(std::forward<func<R, A>>(f)(A()) * A());
 
       /// Add dimensioned values.
       dimval operator+(dimval dv) const { return dimval(v_ + dv.v_); }

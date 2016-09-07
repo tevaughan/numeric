@@ -7,12 +7,14 @@
 #ifndef NUMERIC_INTEGRAL_HPP
 #define NUMERIC_INTEGRAL_HPP
 
+#include <algorithm>  // for sort()
 #include <cmath>      // for fabs()
 #include <functional> // for function
 #include <iostream>   // for cerr
 #include <limits>     // for numeric_limits
 #include <stack>      // for stack
 #include <utility>    // for foward()
+#include <vector>     // for vector
 
 /// Namespace for C++-11 library enabling numerical computation.
 namespace num
@@ -109,23 +111,34 @@ namespace num
    /// \tparam A1  Type of lower limit of integration; A1 must convert to A.
    /// \tparam A2  Type of upper limit of integration; A2 must convert to A.
    /// \param  f   Function to be integrated.
-   /// \param  a   Lower limit of integration.
-   /// \param  b   Upper limit of integration.
+   /// \param  aa  Lower limit of integration.
+   /// \param  bb  Upper limit of integration.
    /// \param  t   Error tolerance.
    /// \param  n   Initial number of evenly spaced samples of the function.
    /// \param  ms  Maximum number of samples of function.
    /// \return     Numeric integral of function.
    template <typename R, typename A, typename A1, typename A2>
-   auto integral(std::function<R(A)> f, A1 a, A2 b, double t = 1.0E-06,
+   auto integral(std::function<R(A)> f, A1 aa, A2 bb, double t = 1.0E-06,
                  unsigned n = 16)
          // See Page 28 of Effective Modern C++ by Scott Meyers.
-         -> decltype(std::forward<std::function<R(A)>>(f)(a) * a)
+         -> decltype(std::forward<std::function<R(A)>>(f)(A()) * A())
    {
-      using I = decltype(std::forward<std::function<R(A)>>(f)(a) * a);
+      if (t <= 0.0) {
+         throw "tolerance not positive";
+      }
+      using I = decltype(std::forward<std::function<R(A)>>(f)(A()) * A());
+      double constexpr eps = std::numeric_limits<double>::epsilon();
+      double sign = 1.0;
+      A a = aa;
+      A b = bb;
+      if (a > b) {
+         std::swap(a, b);
+         sign = -1.0;
+      }
       integration_subinterval_stack<A, R> s(n, a, b, f);
-      I sum(0.0); // return value
-      bool tol_achieved = true;
-      double const c = std::numeric_limits<double>::epsilon() / t;
+      std::vector<I> areas; // area of each trapezoid
+      I sum_roundoff(0.0);  // sum of estimated roundoff error
+      double const c = eps / t;
       while (s.size()) {
          using interval = integration_interval<A, R>;
          interval const r = s.top();
@@ -135,39 +148,49 @@ namespace num
          R const mean = 0.5 * (r.fa + r.fb);  // mean of function values
          R const fmid = f(midp);              // function value at midpoint
          R const rmean = 0.5 * (mean + fmid); // refined mean
-         // The trapezoidal rule gives len*mean.  The composite trapezoidal
-         // rule gives 0.5*len*(mean + fmid).  The first is the current
-         // estimate for the current subinterval.  The second is the refined
+         // Trapezoidal rule len*mean is estimate for current subinterval.
+         // Composite trapezoidal rule 0.5*len*(mean + fmid) is refined
          // estimate obtained by subdividing the current subinterval.
-         //
-         // The magnitude of the difference between the current estimate and
-         // the refined estimate is u1.  We are done refining our estimate when
-         // u1 become smaller than a certain fraction of the magnitude of the
-         // refined estimate.  That fraction is just the specified tolerance t.
+         // Magnitude of difference between them is u1.  Stop refining when u1
+         // become smaller than tolerance t times magnitude of refined
+         // estimate.
          R const u1 = fabs(mean - rmean);
-         R const u2 = fabs(rmean) * t;
-         R const u3 = fabs(mean) + fabs(rmean);
+         R const u2 = fabs(mean) + fabs(rmean);
+         R const u3 = fabs(rmean) * t;
          I const ds = rmean * len;
-         if (u1 < u3 * c) {
-            // Stop refining estimate because of roundoff error.
-            sum += ds;
-            tol_achieved = false;
-         } else if (u1 <= u2) {
+         if (u1 < u2 * c) {
+            // Stop refining estimate because of roundoff error.  The current
+            // refinement is so small as not to provide an improvement within
+            // the precision of the tolerance.
+            sum_roundoff += (mean - rmean) * len;
+            areas.push_back(ds);
+         } else if (u1 <= u3) {
             // Stop refining estimate because desired accuracy has been
             // reached.
-            sum += ds;
+            areas.push_back(ds);
          } else {
             // Continue refining estimate.
             s.push(interval{r.a, midp, r.fa, fmid});
             s.push(interval{midp, r.b, fmid, r.fb});
          }
       }
-      I const as = fabs(sum);
-      if (!tol_achieved) {
-         std::cerr << "integral: WARNING: tolerance " << t
-                   << " not achieved on at least one subinterval" << std::endl;
+      std::sort(areas.begin(), areas.end());
+      I sum(0.0);
+      for (auto a : areas) {
+         sum += a;
       }
-      return sum;
+      if (fabs(sum_roundoff) > fabs(sum) * c) {
+         std::cerr << "integral: WARNING: tolerance " << t
+                   << " might not be met because of roundoff error";
+         if (fabs(sum) > I(0.0)) {
+            std::cerr << "\n"
+                      << "          fractional roundoff error: "
+                      << fabs(sum_roundoff) / fabs(sum) << "\n"
+                      << "          on sum: " << sum;;
+         }
+         std::cerr << std::endl;
+      }
+      return sign * sum;
    }
 
    /// Integrate an ordinary function by way of its function pointer.
@@ -187,7 +210,7 @@ namespace num
    template <typename R, typename A, typename A1, typename A2>
    auto integral(R (*f)(A), A1 a, A2 b, double t = 1.0E-06, unsigned n = 16)
          // See Page 28 of Effective Modern C++ by Scott Meyers.
-         -> decltype(std::forward<R (*)(A)>(f)(a) * a)
+         -> decltype(std::forward<R (*)(A)>(f)(A()) * A())
    {
       return integral(std::function<R(A)>(f), a, b, t, n);
    }

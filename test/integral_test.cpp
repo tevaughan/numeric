@@ -58,7 +58,7 @@ TEST_CASE("Verify limit of tolerance.", "[integral]")
    f.freq = 2.0;
    double const j = integral(s, 0, M_PI, tol);
    // Verify that integral of sin(2*x) from 0 to pi is 0.
-   REQUIRE(j == Approx(0.0).epsilon(1.0E-04));
+   REQUIRE(j == Approx(0.0));
 }
 
 TEST_CASE("Trigger coverage of code requiring at least two samples.",
@@ -86,5 +86,10 @@ TEST_CASE("Verify integration of interpolant.", "[integral]")
    REQUIRE(integral(f, +0.75, +1.25) == Approx(-0.375));
    REQUIRE(integral(f, +1.25, +1.50) == Approx(-0.25));
    REQUIRE(integral(f, +1.50, +1.25) == Approx(+0.25));
+}
+
+TEST_CASE("Verify throw on illegal tolerance.", "[integral]")
+{
+   REQUIRE_THROWS(integral(square, 1 * cm, 2 * cm, -1.0E-06));
 }
 
