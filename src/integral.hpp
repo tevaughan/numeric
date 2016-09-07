@@ -136,8 +136,8 @@ namespace num
          sign = -1.0;
       }
       integration_subinterval_stack<A, R> s(n, a, b, f);
-      std::vector<I> areas; // area of each trapezoid
-      I sum_roundoff(0.0);  // sum of estimated roundoff error
+      std::vector<I> areas;          // area of each trapezoid
+      std::vector<I> areas_roundoff; // estimate roundoff errors
       double const c = eps / t;
       while (s.size()) {
          using interval = integration_interval<A, R>;
@@ -162,7 +162,7 @@ namespace num
             // Stop refining estimate because of roundoff error.  The current
             // refinement is so small as not to provide an improvement within
             // the precision of the tolerance.
-            sum_roundoff += (mean - rmean) * len;
+            areas_roundoff.push_back((mean - rmean) * len);
             areas.push_back(ds);
          } else if (u1 <= u3) {
             // Stop refining estimate because desired accuracy has been
@@ -174,19 +174,25 @@ namespace num
             s.push(interval{midp, r.b, fmid, r.fb});
          }
       }
-      std::sort(areas.begin(), areas.end());
+      auto comp = [](I a1, I a2) { return fabs(a1) < fabs(a2); };
+      std::sort(areas.begin(), areas.end(), comp);
+      std::sort(areas_roundoff.begin(), areas_roundoff.end(), comp);
       I sum(0.0);
+      I sum_roundoff(0.0);
       for (auto a : areas) {
          sum += a;
       }
-      if (fabs(sum_roundoff) > fabs(sum) * c) {
-         std::cerr << "integral: WARNING: tolerance " << t
-                   << " might not be met because of roundoff error";
-         if (fabs(sum) > I(0.0)) {
-            std::cerr << "\n"
-                      << "          fractional roundoff error: "
-                      << fabs(sum_roundoff) / fabs(sum) << "\n"
-                      << "          on sum: " << sum;;
+      for (auto a : areas_roundoff) {
+         sum_roundoff += a;
+      }
+      I const fsr = fabs(sum_roundoff);
+      I const fs = fabs(sum);
+      if (fsr > fs * c) {
+         std::cerr << "integral: WARNING: Tolerance " << t
+                   << " not met because of roundoff error.";
+         if (fs > I(0.0)) {
+            std::cerr << "\n          fractional roundoff error " << fsr / fs
+                      << " on sum " << sum;
          }
          std::cerr << std::endl;
       }
