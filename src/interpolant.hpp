@@ -90,6 +90,10 @@ namespace num
          return point(x * x_unit, y * y_unit);
       }
 
+      /// combine() needs to be friendly with another kind of interpolant.
+      template <typename OI, typename OD>
+      friend class interpolant;
+
       /// Combine the present instance I1 with another interpolant I2 such that
       /// there is a point in the combined interpolant I3 at every unique x
       /// coordinate across I1 and I2.  Each new y coordinate is the

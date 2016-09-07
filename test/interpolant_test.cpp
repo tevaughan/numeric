@@ -30,6 +30,8 @@ TEST_CASE("Verify integral of interpolant.", "[interpolant]")
    REQUIRE(i.integral(+0.75, +1.25) == -0.375);
    REQUIRE(i.integral(+1.25, +1.50) == -0.25);
    REQUIRE(i.integral(+1.50, +1.25) == +0.25);
+   interpolantd j;
+   REQUIRE_THROWS(j.integral(0.0, 1.0));
 }
 
 TEST_CASE("Verify product of interpolants.", "[interpolant]")
@@ -39,6 +41,7 @@ TEST_CASE("Verify product of interpolants.", "[interpolant]")
    interpolantd i1(list1);
    interpolantd i2(list2);
    interpolantd i3(i1 * i2);
+   interpolantd i4(i2 * i1);
    REQUIRE(i3(-1.0) == 0.0);
    REQUIRE(i3(0.0) == 0.0);
    REQUIRE(i3(0.25) == 0.25);
@@ -46,6 +49,13 @@ TEST_CASE("Verify product of interpolants.", "[interpolant]")
    REQUIRE(i3(0.75) == Approx(1.25 / 2.0));
    REQUIRE(i3(1.00) == 0.5);
    REQUIRE(i3(2.00) == 0.0);
+   REQUIRE(i4(-1.0) == 0.0);
+   REQUIRE(i4(0.0) == 0.0);
+   REQUIRE(i4(0.25) == 0.25);
+   REQUIRE(i4(0.50) == 0.25 * 1.5);
+   REQUIRE(i4(0.75) == Approx(1.25 / 2.0));
+   REQUIRE(i4(1.00) == 0.5);
+   REQUIRE(i4(2.00) == 0.0);
 }
 
 TEST_CASE("Verify quotient of interpolants.", "[interpolant]")
@@ -137,6 +147,18 @@ TEST_CASE("Verify scalar multiplication of interpolant on right.",
    REQUIRE(j(950 * nm) / m == Approx(80.0));
    REQUIRE(j(1000 * nm) == 0.0 * m);
    REQUIRE(j(1100 * nm) == 0.0 * m);
+   interpolant<length, num::time> k = i * 2.0;
+   REQUIRE(k(-1 * nm) == 0.0 * s);
+   REQUIRE(k(299 * nm) == 0.0 * s);
+   REQUIRE(k(300 * nm) == 0.0 * s);
+   REQUIRE(k(350 * nm) / s == Approx(80.0));
+   REQUIRE(k(400 * nm) == 160.0 * s);
+   REQUIRE(k(450 * nm) == 160.0 * s);
+   REQUIRE(k(500 * nm) == 160.0 * s);
+   REQUIRE(k(900 * nm) == 160.0 * s);
+   REQUIRE(k(950 * nm) / s == Approx(80.0));
+   REQUIRE(k(1000 * nm) == 0.0 * s);
+   REQUIRE(k(1100 * nm) == 0.0 * s);
 }
 
 TEST_CASE("Verify scalar multiplication of interpolant on left.",
@@ -155,6 +177,18 @@ TEST_CASE("Verify scalar multiplication of interpolant on left.",
    REQUIRE(j(950 * nm) / m == Approx(80.0));
    REQUIRE(j(1000 * nm) == 0.0 * m);
    REQUIRE(j(1100 * nm) == 0.0 * m);
+   interpolant<length, num::time> k = 2.0 * i;
+   REQUIRE(k(-1 * nm) == 0.0 * s);
+   REQUIRE(k(299 * nm) == 0.0 * s);
+   REQUIRE(k(300 * nm) == 0.0 * s);
+   REQUIRE(k(350 * nm) / s == Approx(80.0));
+   REQUIRE(k(400 * nm) == 160.0 * s);
+   REQUIRE(k(450 * nm) == 160.0 * s);
+   REQUIRE(k(500 * nm) == 160.0 * s);
+   REQUIRE(k(900 * nm) == 160.0 * s);
+   REQUIRE(k(950 * nm) / s == Approx(80.0));
+   REQUIRE(k(1000 * nm) == 0.0 * s);
+   REQUIRE(k(1100 * nm) == 0.0 * s);
 }
 
 TEST_CASE("Verify scalar division of interpolant.", "[interpolant]")
@@ -172,5 +206,15 @@ TEST_CASE("Verify scalar division of interpolant.", "[interpolant]")
    REQUIRE(j(950 * nm) == Approx(20.0));
    REQUIRE(j(1000 * nm) == 0.0);
    REQUIRE(j(1100 * nm) == 0.0);
+}
+
+TEST_CASE(
+      "Verify that multiplication of interpolant by empty interpolant is "
+      "empty",
+      "[interpolant]")
+{
+   interpolant<length, num::time> i("interpolant_test.txt", nm, s);
+   interpolant<length, double> j;
+   REQUIRE_THROWS((i * j)(0 * cm));
 }
 
