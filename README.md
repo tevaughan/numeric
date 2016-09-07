@@ -130,3 +130,10 @@ int main()
 
  - Incorporate and adapt code from my linear regression project on github.
 
+# License
+
+Copyright 2016
+Thomas E. Vaughan
+
+Distributable under the terms of the GNU LGPL, Version 3 or later.
+
