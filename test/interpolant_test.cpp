@@ -1,4 +1,9 @@
 
+// Copyright 2016  Thomas E. Vaughan
+//
+// This software is distributable under the terms of the GNU GPL, Version 3 or
+// later.
+
 #include "catch.hpp"
 #include "interpolant.hpp"
 #include "units.hpp"
