@@ -6,11 +6,22 @@
 Included at present are physically dimensioned quantities, linear
 interpolation, and integration by adaptive quadrature.
 
-Linear interpolation and integration are header-only template facilities.
+ - Linear interpolation and integration are header-only template facilities.
 
-Physically dimensioned quantities require linking with '-lnumeric'.
+ - Physically dimensioned quantities require linking with '-lnumeric'.
 
-Build and install via './configure; make; sudo make install'.
+See [the releases page](https://github.com/tevaughan/numeric/releases).
+
+Grab the 'tar.gz' file.
+
+Build and install:
+```
+tar fvxz numeric-x.y.tar.gz
+cd numeric-x.y
+./configure
+make
+sudo make install
+```
 
 All classes and functions inter-operate!
 

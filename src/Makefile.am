@@ -18,9 +18,9 @@
 #     implements. In other words, the library implements all the interface
 #     numbers in the range from number current - age to current.
 
-current  = 2
+current  = 3
 revision = 1
-age      = 1
+age      = 0
 
 BUILT_SOURCES = dimensions.hpp units.cpp units.hpp
 
