@@ -68,6 +68,10 @@ length z = 0.1 * v.root<3>();
 
 ## Linear interpolation
 
+A linear interpolant can be initialized directly from a file with two
+space-delimited columns.  Then it can be scaled, multiplied by another
+interpolant with no loss of information, integrated, etc.
+
 ```c++
 #include <iostream>
 #include <interpolant.hpp>
@@ -102,6 +106,29 @@ int main()
 }
 ```
 
+A linear interpolant can also be initialized from an existing, continuous
+function.
+
+```c++
+#include <cmath> // for erf()
+#include <interpolant.hpp>
+
+using namespace num;
+
+int main()
+{
+   // 'interpolantd' is an alias for 'interpolant<double, double>'.
+   interpolantd const i(erf, -1.0, 2.0);
+
+   // Now you can use, for example i(1.3), to do a quick table-lookup of erf(),
+   // etc.  This is useful especially for a continuous function that takes a
+   // long time to calculate, when it has to be used over and over again in a
+   // loop.
+
+   return 0;
+}
+```
+
 ## Integration
 
 ```c++
@@ -123,10 +150,6 @@ int main()
 ```
 
 ## To do:
-
- - Make new class whose constructor takes a smooth function and a range of its
-   argument.  After construction, the instance will contain a linear
-   interpolant for the function.
 
  - Incorporate and adapt code from my linear regression project on github.
 

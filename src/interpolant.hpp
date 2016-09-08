@@ -16,7 +16,7 @@
 #include <utility>   // for pair
 #include <vector>    // for vector
 
-#include "interval.hpp"  // for interval and subinterval_stack
+#include "interval.hpp" // for interval and subinterval_stack
 
 namespace num
 {
@@ -180,39 +180,25 @@ namespace num
          d_.push_back({r.a, r.fa});
       }
 
-   public:
-      /// Initialize ifrom an ilist.
-      /// \param d  Data stored in ilist.
-      interpolant(list d = list()) : d_(std::move(d)) { sort(); }
-
-      /// Initialize from the first two columns of a space-delimited ASCII
-      /// file.
+      /// Initialize from continuous function and interval of its domain. The
+      /// initial number of evenly spaced samples should be sufficient to allow
+      /// recursive subdivision to produce an interpolant with the desired
+      /// fractional tolerance as an approximation of the function.
       ///
-      /// \param fname   Name of input file.
+      /// \tparam A1  Type of value indicating left edge of domain.  An
+      ///             instance of A1 must be convertible to type I.
       ///
-      /// \param x_unit  Factor multiplied against each number in file's first
-      ///                space-delimited column. Product is stored as x value.
+      /// \tparam A2  Type of value indicating right edge of domain.  An
+      ///             instance of A2 must be convertible to type I.
       ///
-      /// \param y_unit  Factor multiplied against each number in file's second
-      ///                space-delimited column. Product is stored as y value.
-      interpolant(std::string fname, I x_unit = 1.0, D y_unit = 1.0)
-      {
-         using namespace std;
-         unique_ptr<ifstream> is = ifstr(fname);
-         string line;
-         while (getline(*is, line)) {
-            size_t const p = line.find_first_not_of(" \f\n\r\t");
-            if (p == string::npos || line[p] == '#') {
-               continue;
-            }
-            d_.push_back(get_point(line, x_unit, y_unit));
-         }
-         sort();
-      }
-
+      /// \param  f   Function to approximate via interpolation.
+      /// \param  aa  Left edge of domain.
+      /// \param  bb  Right edge of domain.
+      /// \param  t   Fractional tolerance of approximation.
+      /// \param  n   Initial number of evenly spaced samples of function.
       template <typename A1, typename A2>
-      interpolant(std::function<D(I)> f, A1 aa, A2 bb, double t = 1.0E-06,
-                  unsigned n = 16)
+      void init(std::function<D(I)> f, A1 aa, A2 bb, double t = 1.0E-06,
+                unsigned n = 16)
       {
          if (t <= 0.0) {
             throw "tolerance not positive";
@@ -255,6 +241,81 @@ namespace num
             }
          }
          sort();
+      }
+
+   public:
+      /// Initialize ifrom an ilist.
+      /// \param d  Data stored in ilist.
+      interpolant(list d = list()) : d_(std::move(d)) { sort(); }
+
+      /// Initialize from the first two columns of a space-delimited ASCII
+      /// file.
+      ///
+      /// \param fname   Name of input file.
+      ///
+      /// \param x_unit  Factor multiplied against each number in file's first
+      ///                space-delimited column. Product is stored as x value.
+      ///
+      /// \param y_unit  Factor multiplied against each number in file's second
+      ///                space-delimited column. Product is stored as y value.
+      interpolant(std::string fname, I x_unit = 1.0, D y_unit = 1.0)
+      {
+         using namespace std;
+         unique_ptr<ifstream> is = ifstr(fname);
+         string line;
+         while (getline(*is, line)) {
+            size_t const p = line.find_first_not_of(" \f\n\r\t");
+            if (p == string::npos || line[p] == '#') {
+               continue;
+            }
+            d_.push_back(get_point(line, x_unit, y_unit));
+         }
+         sort();
+      }
+
+      /// Initialize from continuous function and interval of its domain. The
+      /// initial number of evenly spaced samples should be sufficient to allow
+      /// recursive subdivision to produce an interpolant with the desired
+      /// fractional tolerance as an approximation of the function.
+      ///
+      /// \tparam A1  Type of value indicating left edge of domain.  An
+      ///             instance of A1 must be convertible to type I.
+      ///
+      /// \tparam A2  Type of value indicating right edge of domain.  An
+      ///             instance of A2 must be convertible to type I.
+      ///
+      /// \param  f   Function to approximate via interpolation.
+      /// \param  aa  Left edge of domain.
+      /// \param  bb  Right edge of domain.
+      /// \param  t   Fractional tolerance of approximation.
+      /// \param  n   Initial number of evenly spaced samples of function.
+      template <typename A1, typename A2>
+      interpolant(std::function<D(I)> f, A1 aa, A2 bb, double t = 1.0E-06,
+                  unsigned n = 16)
+      {
+         init(f, aa, bb, t, n);
+      }
+
+      /// Initialize from continuous function and interval of its domain. The
+      /// initial number of evenly spaced samples should be sufficient to allow
+      /// recursive subdivision to produce an interpolant with the desired
+      /// fractional tolerance as an approximation of the function.
+      ///
+      /// \tparam A1  Type of value indicating left edge of domain.  An
+      ///             instance of A1 must be convertible to type I.
+      ///
+      /// \tparam A2  Type of value indicating right edge of domain.  An
+      ///             instance of A2 must be convertible to type I.
+      ///
+      /// \param  f   Function to approximate via interpolation.
+      /// \param  aa  Left edge of domain.
+      /// \param  bb  Right edge of domain.
+      /// \param  t   Fractional tolerance of approximation.
+      /// \param  n   Initial number of evenly spaced samples of function.
+      template <typename A1, typename A2>
+      interpolant(D (*f)(I), A1 aa, A2 bb, double t = 1.0E-06, unsigned n = 16)
+      {
+         init(std::function<D(I)>(f), aa, bb, t, n);
       }
 
       /// Interpolate.

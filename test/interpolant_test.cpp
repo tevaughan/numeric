@@ -4,6 +4,8 @@
 // This software is distributable under the terms of the GNU LGPL, Version 3 or
 // later.
 
+#include <cmath> // for erf()
+
 #include "catch.hpp"
 #include "integral.hpp"
 #include "interpolant.hpp"
@@ -224,6 +226,8 @@ TEST_CASE(
    REQUIRE_THROWS((i * j)(0 * cm));
 }
 
+double my_erf(double x) { return erf(x); }
+
 TEST_CASE("Verify that interpolant of function produces right integral.",
           "[interpolant]")
 {
@@ -231,5 +235,11 @@ TEST_CASE("Verify that interpolant of function produces right integral.",
    volume const i = integral(square, 0 * cm, 1 * cm);
    interpolant<length, area> const j(square, 0 * cm, 1 * cm);
    REQUIRE(j.integral(0 * cm, 1 * cm) / i == Approx(1.0));
+   interpolant<length, area> const k(square, 1 * cm, 0 * cm);
+   REQUIRE(k.integral(0 * cm, 1 * cm) / i == Approx(1.0));
+   REQUIRE_THROWS(
+         (interpolant<length, area>(square, 0 * cm, 1 * cm, -1.0E-06)));
+   interpolantd const e(erf, -1.0, 2.0);
+   REQUIRE(e.integral(-1.0, 2.0) / integral(my_erf, -1.0, 2.0) == Approx(1.0));
 }
 
