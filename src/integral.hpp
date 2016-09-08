@@ -17,65 +17,14 @@
 #include <functional> // for function
 #include <iostream>   // for cerr
 #include <limits>     // for numeric_limits
-#include <stack>      // for stack
 #include <utility>    // for foward()
 #include <vector>     // for vector
+
+#include "interval.hpp" // for interval and subinterval_stack
 
 /// Namespace for C++-11 library enabling numerical computation.
 namespace num
 {
-   /// Type of each element on the stack used by integral().
-   /// \tparam A  Type of argument to function integrated by integral().
-   /// \tparam R  Type returned by function.
-   template <typename A, typename R>
-   struct integration_interval {
-      A a;  ///< Beginning of interval.
-      A b;  ///< End of interval.
-      R fa; ///< Value of integrand at beginning of interval.
-      R fb; ///< Value of integrand at end of interval.
-   };
-
-   /// Stack used by integral().
-   ///
-   /// On construction, an instance of integration_subinterval_stack contains a
-   /// partition of the interval of integration into subintervals of equal
-   /// length.  As integral() executes, however, each of these is adaptively
-   /// subdivided as necessary to achieve the desired accuracy.
-   ///
-   /// \tparam A  Type of argument to function integrated by integral().
-   /// \tparam R  Type returned by function.
-   template <typename A, typename R>
-   struct integration_subinterval_stack
-         : public std::stack<integration_interval<A, R>> {
-      /// Initialize stack on construction.
-      ///
-      /// Evaluate integrand at each of n equally spaced points across the
-      /// interval of the variable of integration.  The integrand is evaluated
-      /// at a minimum of two points (the end points).  The n-1 corresponding
-      /// instances of integration_interval are pushed onto the stack.
-      ///
-      /// \tparam F  Type of function object representing integrand.
-      /// \param  n  Initial number of points at which function is evaluated.
-      /// \param  a  Starting value of variable of integration.
-      /// \param  b  Ending value of variable of integration.
-      /// \param  f  Function that represents integrand.
-      template <typename F>
-      integration_subinterval_stack(unsigned n, A a, A b, F &&f)
-      {
-         if (n < 2) {
-            n = 2;
-         }
-         A const d = (b - a) / (n - 1);
-         A ta = a;
-         // Loop starts at 1 (not zero) to ensure n-1 iterations (not n).
-         for (unsigned j = 1; j < n; ++j) {
-            A const tb = ta + d;
-            this->push(integration_interval<A, R>{ta, tb, f(ta), f(tb)});
-            ta = tb;
-         }
-      }
-   };
-
    /// Numerically integrate a function, and return the result.
    ///
    /// Use the trapezoidal rule with adaptive quadrature.
@@ -132,7 +81,6 @@ namespace num
          throw "tolerance not positive";
       }
       using I = decltype(std::forward<std::function<R(A)>>(f)(A()) * A());
-      double constexpr eps = std::numeric_limits<double>::epsilon();
       double sign = 1.0;
       A a = aa;
       A b = bb;
@@ -140,12 +88,13 @@ namespace num
          std::swap(a, b);
          sign = -1.0;
       }
-      integration_subinterval_stack<A, R> s(n, a, b, f);
+      subinterval_stack<A, R> s(n, a, b, f);
       std::vector<I> areas;          // area of each trapezoid
       std::vector<I> areas_roundoff; // estimate roundoff errors
+      double constexpr eps = std::numeric_limits<double>::epsilon();
       double const c = eps / t;
       while (s.size()) {
-         using interval = integration_interval<A, R>;
+         using interval = interval<A, R>;
          interval const r = s.top();
          s.pop();
          A const len = r.b - r.a;             // length of interval

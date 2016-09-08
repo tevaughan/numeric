@@ -63,6 +63,10 @@ namespace num
       friend auto integral(func<R, A> f, A1 a, A2 b, double t, unsigned n)
             -> decltype(std::forward<func<R, A>>(f)(A()) * A());
 
+      /// Allow interpolant to construct from known MKS quantity.
+      template <typename A, typename R>
+      friend class interpolant;
+
       /// Add dimensioned values.
       dimval operator+(dimval dv) const { return dimval(v_ + dv.v_); }
 

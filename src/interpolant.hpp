@@ -9,11 +9,14 @@
 
 #include <algorithm> // for sort()
 #include <fstream>   // for ifstream
+#include <limits>    // for numeric_limits::epsilon()
 #include <memory>    // for unique_ptr
 #include <sstream>   // for istringstream
 #include <string>    // for string
 #include <utility>   // for pair
 #include <vector>    // for vector
+
+#include "interval.hpp"  // for interval and subinterval_stack
 
 namespace num
 {
@@ -158,6 +161,25 @@ namespace num
          return pl;
       }
 
+      // Initialize control points from copy of initial subinterval_stack.
+      void init_from_stack(subinterval_stack<I, D> s)
+      {
+         using interval = interval<I, D>;
+         // Work from right-most to left-most subinterval.
+         while (s.size() > 1) {
+            // Push right-most end of every subinterval except for left-most
+            // subinterval.
+            interval const r = s.top();
+            s.pop();
+            d_.push_back({r.b, r.fb});
+         }
+         // For left-most subinterval, push both ends.
+         interval const r = s.top();
+         s.pop();
+         d_.push_back({r.b, r.fb});
+         d_.push_back({r.a, r.fa});
+      }
+
    public:
       /// Initialize ifrom an ilist.
       /// \param d  Data stored in ilist.
@@ -184,6 +206,53 @@ namespace num
                continue;
             }
             d_.push_back(get_point(line, x_unit, y_unit));
+         }
+         sort();
+      }
+
+      template <typename A1, typename A2>
+      interpolant(std::function<D(I)> f, A1 aa, A2 bb, double t = 1.0E-06,
+                  unsigned n = 16)
+      {
+         if (t <= 0.0) {
+            throw "tolerance not positive";
+         }
+         I a = aa;
+         I b = bb;
+         if (a > b) {
+            std::swap(a, b);
+         }
+         subinterval_stack<I, D> s(n, a, b, f);
+         init_from_stack(s); // Add initial n points to d_.
+         double constexpr eps = std::numeric_limits<double>::epsilon();
+         double const c = eps / t;
+         while (s.size()) {
+            using interval = interval<I, D>;
+            interval const r = s.top();
+            s.pop();
+            I const midp = 0.5 * (r.a + r.b);
+            D const mean = 0.5 * (r.fa + r.fb);
+            D const fmid = f(midp);
+            D const rmean = 0.5 * (mean + fmid);
+            // Use logic similar to trapezoid-rule integration. Refine by
+            // subdivision until estimate of area of trapezoid either reaches
+            // tolerance or grows no better. Trapezoid-rule integration is
+            // based on estimating the area of the current interval, but this
+            // is just proportional to the estimate of the function's mean
+            // value over the interval.  The variable 'mean' holds the estimate
+            // for the current interval; the variable 'rmean' holds the refined
+            // estimate obtained by subdivision of the current interval.
+            D const u1 = fabs(mean - rmean);
+            D const u2 = fabs(mean) + fabs(rmean);
+            D const u3 = fabs(rmean) * t;
+            if (u1 < u2 * c || u1 <= u3) {
+               // Stop subdividing; add current midpoint to d_.
+               d_.push_back({midp, fmid});
+            } else {
+               // Continue subdividing.
+               s.push(interval{r.a, midp, r.fa, fmid});
+               s.push(interval{midp, r.b, fmid, r.fb});
+            }
          }
          sort();
       }

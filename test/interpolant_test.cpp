@@ -5,6 +5,7 @@
 // later.
 
 #include "catch.hpp"
+#include "integral.hpp"
 #include "interpolant.hpp"
 #include "units.hpp"
 
@@ -221,5 +222,14 @@ TEST_CASE(
    interpolant<length, num::time> i("interpolant_test.txt", nm, s);
    interpolant<length, double> j;
    REQUIRE_THROWS((i * j)(0 * cm));
+}
+
+TEST_CASE("Verify that interpolant of function produces right integral.",
+          "[interpolant]")
+{
+   function<area(length)> square = [](length x) { return x * x; };
+   volume const i = integral(square, 0 * cm, 1 * cm);
+   interpolant<length, area> const j(square, 0 * cm, 1 * cm);
+   REQUIRE(j.integral(0 * cm, 1 * cm) / i == Approx(1.0));
 }
 
