@@ -18,7 +18,7 @@
 #     implements. In other words, the library implements all the interface
 #     numbers in the range from number current - age to current.
 
-current  = 3
+current  = 4
 revision = 1
 age      = 0
 
@@ -26,8 +26,8 @@ BUILT_SOURCES = dimensions.hpp units.cpp units.hpp
 CLEANFILES = $(BUILT_SOURCES)
 EXTRA_DIST = dimensions.pl dimensions.txt units.pl units.txt
 
-include_HEADERS = dimval.hpp integral.hpp interpolant.hpp interval.hpp
-nodist_include_HEADERS = dimensions.hpp units.hpp
+pkginclude_HEADERS = dimval.hpp integral.hpp interpolant.hpp interval.hpp
+nodist_pkginclude_HEADERS = dimensions.hpp units.hpp
 
 lib_LTLIBRARIES = libnumeric.la
 nodist_libnumeric_la_SOURCES = units.cpp
