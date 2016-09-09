@@ -92,7 +92,8 @@ namespace num
       std::vector<I> areas;          // area of each trapezoid
       std::vector<I> areas_roundoff; // estimate roundoff errors
       double constexpr eps = std::numeric_limits<double>::epsilon();
-      double const c = eps / t;
+      double constexpr min = std::numeric_limits<double>::min();
+      double const c = 10.0 * eps;
       while (s.size()) {
          using interval = interval<A, R>;
          interval const r = s.top();
@@ -112,15 +113,14 @@ namespace num
          R const u2 = fabs(mean) + fabs(rmean);
          R const u3 = fabs(rmean) * t;
          I const ds = rmean * len;
-         if (u1 < u2 * c) {
-            // Stop refining estimate because of roundoff error.  The current
-            // refinement is so small as not to provide an improvement within
-            // the precision of the tolerance.
+         if (midp * c > len || u2 * c > u3) {
+            // Stop refining estimate because of roundoff error.
             areas_roundoff.push_back((mean - rmean) * len);
             areas.push_back(ds);
          } else if (u1 <= u3) {
             // Stop refining estimate because desired accuracy has been
             // reached.
+            areas_roundoff.push_back((mean - rmean) * len);
             areas.push_back(ds);
          } else {
             // Continue refining estimate.
@@ -141,14 +141,12 @@ namespace num
       }
       I const fsr = fabs(sum_roundoff);
       I const fs = fabs(sum);
-      if (fsr > fs * c) {
-         std::cerr << "integral: WARNING: Tolerance " << t
-                   << " not met because of roundoff error.";
+      if (fsr > fs * t) {
+         std::cerr << "integral: WARNING: Fractional round-off error ";
          if (fs > I(0.0)) {
-            std::cerr << "\n          fractional roundoff error " << fsr / fs
-                      << " on sum " << sum;
+            std::cerr << fsr / fs;
          }
-         std::cerr << std::endl;
+         std::cerr << " > tolerance " << t << " for sum " << sum << std::endl;
       }
       return sign * sum;
    }

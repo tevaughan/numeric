@@ -19,6 +19,9 @@ TEST_CASE("Verify integration of lambda.", "[integral]")
    function<double(double)> linear = [](double x) { return x; };
    // Verify that integral of x of 0 to 1 is 1/2.
    REQUIRE(integral(linear, 0, 1) == Approx(0.5));
+   function<double(double)> f = [](double x) { return 1.0 / (1.0 + x * x); };
+   double constexpr max = sqrt(1.0 / numeric_limits<double>::min());
+   REQUIRE(integral(f, -max, +max) == Approx(M_PI));
 }
 
 area square(length x) { return x * x; }
