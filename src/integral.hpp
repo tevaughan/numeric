@@ -92,8 +92,7 @@ namespace num
       std::vector<I> areas;          // area of each trapezoid
       std::vector<I> areas_roundoff; // estimate roundoff errors
       double constexpr eps = std::numeric_limits<double>::epsilon();
-      double constexpr min = std::numeric_limits<double>::min();
-      double const c = 10.0 * eps;
+      double const c = 2.0 * eps;
       while (s.size()) {
          using interval = interval<A, R>;
          interval const r = s.top();
