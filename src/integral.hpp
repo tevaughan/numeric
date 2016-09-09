@@ -89,10 +89,11 @@ namespace num
          sign = -1.0;
       }
       subinterval_stack<A, R> s(n, a, b, f);
-      std::vector<I> areas;          // area of each trapezoid
-      std::vector<I> areas_roundoff; // estimate roundoff errors
+      using I2 = decltype(I() * I());
+      std::vector<I> areas;   // area of each trapezoid
+      std::vector<I2> sqdevs; // estimate of each square error
       double constexpr eps = std::numeric_limits<double>::epsilon();
-      double const c = 2.0 * eps;
+      double const c = 2 * eps;
       while (s.size()) {
          using interval = interval<A, R>;
          interval const r = s.top();
@@ -112,14 +113,13 @@ namespace num
          R const u2 = fabs(mean) + fabs(rmean);
          R const u3 = fabs(rmean) * t;
          I const ds = rmean * len;
-         if (midp * c > len || u2 * c > u3) {
-            // Stop refining estimate because of roundoff error.
-            areas_roundoff.push_back((mean - rmean) * len);
-            areas.push_back(ds);
-         } else if (u1 <= u3) {
-            // Stop refining estimate because desired accuracy has been
-            // reached.
-            areas_roundoff.push_back((mean - rmean) * len);
+         if (u1 <= u3          // estimated error sufficiently small
+             || midp * c > len // length of interval too small
+             || u2 * c > u3    // desired error too small
+             ) {
+            // Stop refining estimate.
+            I const dev = u1 * len;
+            sqdevs.push_back(dev * dev);
             areas.push_back(ds);
          } else {
             // Continue refining estimate.
@@ -129,25 +129,26 @@ namespace num
       }
       auto comp = [](I a1, I a2) { return fabs(a1) < fabs(a2); };
       std::sort(areas.begin(), areas.end(), comp);
-      std::sort(areas_roundoff.begin(), areas_roundoff.end(), comp);
-      I sum(0.0);
-      I sum_roundoff(0.0);
+      std::sort(sqdevs.begin(), sqdevs.end());
+      I sum_areas(0.0);
+      I2 sum_sqdevs(0.0);
       for (auto a : areas) {
-         sum += a;
+         sum_areas += a;
       }
-      for (auto a : areas_roundoff) {
-         sum_roundoff += a;
+      for (auto a : sqdevs) {
+         sum_sqdevs += a;
       }
-      I const fsr = fabs(sum_roundoff);
-      I const fs = fabs(sum);
-      if (fsr > fs * t) {
+      I const sigma = sqrt(sum_sqdevs / sqdevs.size());
+      I const farea = fabs(sum_areas);
+      if (sigma > farea * t) {
          std::cerr << "integral: WARNING: Fractional round-off error ";
-         if (fs > I(0.0)) {
-            std::cerr << fsr / fs;
+         if (farea > I(0.0)) {
+            std::cerr << sigma / farea << " ";
          }
-         std::cerr << " > tolerance " << t << " for sum " << sum << std::endl;
+         std::cerr << "on result " << farea << " is greater than tolerance "
+                   << t << "." << std::endl;
       }
-      return sign * sum;
+      return sign * sum_areas;
    }
 
    /// Integrate an ordinary function by way of its function pointer.
