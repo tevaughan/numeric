@@ -20,7 +20,7 @@ TEST_CASE("Verify integration of lambda.", "[integral]")
    // Verify that integral of x of 0 to 1 is 1/2.
    REQUIRE(integral(linear, 0, 1) == Approx(0.5));
    function<double(double)> f = [](double x) { return 1.0 / (1.0 + x * x); };
-   double constexpr max = sqrt(1.0 / numeric_limits<double>::min());
+   double const max = sqrt(1.0 / numeric_limits<double>::min());
    REQUIRE(integral(f, -max, +max) == Approx(M_PI));
 }
 
@@ -55,11 +55,17 @@ TEST_CASE("Verify integration of member function (via lambda).", "[integral]")
    REQUIRE(j == Approx(0.0));
 }
 
+double catch_epsilon(double tol)
+{
+   double constexpr eps = 100.0 * numeric_limits<double>::epsilon();
+   return (tol < eps ? eps : tol);
+}
+
 TEST_CASE("Verify limit of tolerance.", "[integral]")
 {
    my_sin f;
    function<double(double)> s = [&f](double x) { return f.sin(x); };
-   double constexpr tol = 1.0E-11;
+   double constexpr tol = 1.0E-17;
    double const i = integral(s, 0, M_PI, tol);
    // Verify that integral of sin(x) from 0 to pi is 2.
    REQUIRE(i == Approx(2.0));

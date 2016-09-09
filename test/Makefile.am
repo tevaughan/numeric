@@ -21,6 +21,8 @@ tests_CXXFLAGS = $(CODE_COVERAGE_CXXFLAGS)
 
 tests_CFLAGS = $(CODE_COVERAGE_CFLAGS)
 
+all-local : tests
+
 clean-local :
 	@rm -frv numeric-*-coverage
 	@rm -fv *.gcda

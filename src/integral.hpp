@@ -25,6 +25,38 @@
 /// Namespace for C++-11 library enabling numerical computation.
 namespace num
 {
+   /// Summary of statistics on trapezoids in integral.
+   /// \tparam I  Type of integral, corresponding to "area" under curve.
+   template <typename I>
+   class integral_stats
+   {
+      using S = decltype(I() * I());
+
+      unsigned num_; ///< Number of trapezoids.
+      I area_;       ///< Total area of trapezoids.
+      S sqdv_;       ///< Sum of estimated square deviations in area.
+
+   public:
+      /// Construct null statistical summary.
+      integral_stats() : num_(0), area_(0), sqdv_(0) {}
+
+      /// Add a trapezoidal area and an estimated error in area.
+      /// \param a  Trapezoidal area.
+      /// \param d  Estimated error in area.
+      void add(I const &a, I const &d)
+      {
+         ++num_;
+         area_ += a;
+         sqdv_ += d * d;
+      }
+
+      /// Total area of trapezoids.
+      I const &area() const { return area_; }
+
+      /// Standard deviation of estimated total area in trapezoids.
+      I stdev() const { return sqrt(sqdv_ / num_); }
+   };
+
    /// Numerically integrate a function, and return the result.
    ///
    /// Use the trapezoidal rule with adaptive quadrature.
@@ -77,8 +109,13 @@ namespace num
          // See Page 28 of Effective Modern C++ by Scott Meyers.
          -> decltype(std::forward<std::function<R(A)>>(f)(A()) * A())
    {
-      if (t <= 0.0) {
+      double constexpr eps = std::numeric_limits<double>::epsilon();
+      double constexpr min_tol = 1000.0 * eps;
+      double tol = t;
+      if (tol <= 0.0) {
          throw "tolerance not positive";
+      } else if (tol < min_tol) {
+         tol = min_tol;
       }
       using I = decltype(std::forward<std::function<R(A)>>(f)(A()) * A());
       double sign = 1.0;
@@ -89,19 +126,15 @@ namespace num
          sign = -1.0;
       }
       subinterval_stack<A, R> s(n, a, b, f);
-      using I2 = decltype(I() * I());
-      std::vector<I> areas;   // area of each trapezoid
-      std::vector<I2> sqdevs; // estimate of each square error
-      double constexpr eps = std::numeric_limits<double>::epsilon();
-      double const c = 2 * eps;
+      integral_stats<I> stats;
       while (s.size()) {
          using interval = interval<A, R>;
          interval const r = s.top();
          s.pop();
-         A const len = r.b - r.a;             // length of interval
          A const midp = 0.5 * (r.a + r.b);    // midpoint of interval
-         R const mean = 0.5 * (r.fa + r.fb);  // mean of function values
          R const fmid = f(midp);              // function value at midpoint
+         A const len = r.b - r.a;             // length of interval
+         R const mean = 0.5 * (r.fa + r.fb);  // mean of function values
          R const rmean = 0.5 * (mean + fmid); // refined mean
          // Trapezoidal rule len*mean is estimate for current subinterval.
          // Composite trapezoidal rule 0.5*len*(mean + fmid) is refined
@@ -109,46 +142,42 @@ namespace num
          // Magnitude of difference between them is u1.  Stop refining when u1
          // become smaller than tolerance t times magnitude of refined
          // estimate.
+         R const u0 = fabs(rmean);
          R const u1 = fabs(mean - rmean);
-         R const u2 = fabs(mean) + fabs(rmean);
-         R const u3 = fabs(rmean) * t;
+         R const u2 = fabs(mean + rmean);
+         R const u3 = u0 * tol;
          I const ds = rmean * len;
-         if (u1 <= u3          // estimated error sufficiently small
-             || midp * c > len // length of interval too small
-             || u2 * c > u3    // desired error too small
-             ) {
-            // Stop refining estimate.
-            I const dev = u1 * len;
-            sqdevs.push_back(dev * dev);
-            areas.push_back(ds);
+         if (u1 <= u3) {
+            // Estimated error sufficiently small.  Stop refining estimate.
+            stats.add(ds, u1 * len);
+         } else if (u1 <= u2 * min_tol) {
+            // Calculated error too small.  Stop refining estimate.
+            stats.add(ds, u1 * len);
+         } else if (len <= fabs(midp) * min_tol) {
+            // Length of interval too small.  Stop refining estimate.
+            stats.add(ds, u1 * len);
          } else {
             // Continue refining estimate.
             s.push(interval{r.a, midp, r.fa, fmid});
             s.push(interval{midp, r.b, fmid, r.fb});
          }
       }
-      auto comp = [](I a1, I a2) { return fabs(a1) < fabs(a2); };
-      std::sort(areas.begin(), areas.end(), comp);
-      std::sort(sqdevs.begin(), sqdevs.end());
-      I sum_areas(0.0);
-      I2 sum_sqdevs(0.0);
-      for (auto a : areas) {
-         sum_areas += a;
+      I const farea = fabs(stats.area());
+      I const sigma = stats.stdev(); // statistical error
+      I const nres = I(1.0) + farea; // normalized result
+      I const derr = nres * t;       // desired error
+      I const rerr = nres * eps;     // round-off error
+      I eerr; // greater of statistical and round-off error
+      if (sigma < rerr) {
+         eerr = rerr;
+      } else {
+         eerr = sigma;
       }
-      for (auto a : sqdevs) {
-         sum_sqdevs += a;
+      if (eerr > derr) {
+         std::cerr << "integral: WARNING: Estimated error " << eerr / nres
+                   << " is greater than tolerance " << t << "." << std::endl;
       }
-      I const sigma = sqrt(sum_sqdevs / sqdevs.size());
-      I const farea = fabs(sum_areas);
-      if (sigma > farea * t) {
-         std::cerr << "integral: WARNING: Fractional round-off error ";
-         if (farea > I(0.0)) {
-            std::cerr << sigma / farea << " ";
-         }
-         std::cerr << "on result " << farea << " is greater than tolerance "
-                   << t << "." << std::endl;
-      }
-      return sign * sum_areas;
+      return sign * stats.area();
    }
 
    /// Integrate an ordinary function by way of its function pointer.

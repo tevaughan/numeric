@@ -53,6 +53,9 @@ namespace num
       template <int OTI, int OD, int OM, int OC, int OTE>
       friend class dimval;
 
+      template <typename I>
+      friend class integral_stats;
+
       /// Type of std::function that can be integrated.  A single-argument
       /// function is required.
       template <typename R, typename A>
