@@ -12,13 +12,11 @@
 #ifndef NUMERIC_INTEGRAL_HPP
 #define NUMERIC_INTEGRAL_HPP
 
-#include <algorithm>  // for sort()
 #include <cmath>      // for fabs()
 #include <functional> // for function
 #include <iostream>   // for cerr
 #include <limits>     // for numeric_limits
 #include <utility>    // for foward()
-#include <vector>     // for vector
 
 #include "integral_stats.hpp" // for integral_stats
 #include "interval.hpp"       // for interval and subinterval_stack
@@ -98,8 +96,8 @@ namespace num
       integral_stats<I> stats;
       while (s.size()) {
          using interval = interval<A, R>;
-         interval const r = s.top();
-         s.pop();
+         interval const r = *s.rbegin();
+         s.pop_back();
          A const midp = 0.5 * (r.a + r.b);    // midpoint of interval
          R const fmid = f(midp);              // function value at midpoint
          A const len = r.b - r.a;             // length of interval
@@ -119,19 +117,19 @@ namespace num
          if (u1 <= u3) {
             // Estimated error sufficiently small.  Stop refining estimate.
             stats.add(ds, u1 * len);
-         } else if (u1 <= u2 * min_tol) {
+         } else if (u1 <= u2 * tol) {
             // Calculated error too small.  Stop refining estimate.
             stats.add(ds, u1 * len);
-         } else if (len <= fabs(midp) * min_tol) {
+         } else if (len <= fabs(midp) * tol) {
             // Length of interval too small.  Stop refining estimate.
             stats.add(ds, u1 * len);
-         } else if (fabs(ds) <= fabs(stats.area()) * min_tol) {
+         } else if (fabs(ds) <= fabs(stats.area()) * tol) {
             // Increment to integral too small.  Stop refining estimate.
             stats.add(ds, u1 * len);
          } else {
             // Continue refining estimate.
-            s.push(interval{r.a, midp, r.fa, fmid});
-            s.push(interval{midp, r.b, fmid, r.fb});
+            s.push_back(interval{r.a, midp, r.fa, fmid});
+            s.push_back(interval{midp, r.b, fmid, r.fb});
          }
       }
       I const farea = fabs(stats.area());

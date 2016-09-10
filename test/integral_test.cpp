@@ -46,7 +46,7 @@ TEST_CASE("Verify integration of member function (via lambda).", "[integral]")
 {
    my_sin f;
    function<double(double)> s = [&f](double x) { return f.sin(x); };
-   double const i = integral(s, 0, M_PI);
+   double const i = integral(s, 0, M_PI, 1.0E-09);
    // Verify that integral of sin(x) from 0 to pi is 2.
    REQUIRE(i == Approx(2.0));
    f.freq = 2.0;

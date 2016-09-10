@@ -242,14 +242,16 @@ TEST_CASE("Verify that interpolant of function produces right integral.",
    REQUIRE_THROWS(
          (interpolant<length, area>(square, 0 * cm, 1 * cm, -1.0E-06)));
 
-   interpolantd const e(erf, -1.0, 2.0);
-   REQUIRE(e.integral(-1.0, 2.0) / integral(my_erf, -1.0, 2.0) == Approx(1.0));
+   double tol = 1.0E-04;
+   interpolantd const e(erf, -1.0, 2.0, tol);
+   REQUIRE(e.integral(-1.0, 2.0) / integral(my_erf, -1.0, 2.0, tol) ==
+           Approx(1.0).epsilon(tol));
 
+   tol = 1.0E-03;
    function<double(double)> g = [](double x) { return exp(-0.5 * x * x); };
-   interpolantd const ig(g, -10.0, +10.0, 1.0E-03);
-   REQUIRE(ig.integral() == Approx(sqrt(2.0 * M_PI)).epsilon(1.0E-03));
-
-   ofstream of("gaussian.dat");
-   of << ig.points();
+   interpolantd const ig(g, -5.0, +5.0, tol);
+   REQUIRE(ig.integral() == Approx(sqrt(2.0 * M_PI)).epsilon(tol));
+   ofstream ofg("gaussian.dat");
+   ofg << ig.points();
 }
 

@@ -197,17 +197,22 @@ namespace num
       void init_from_stack(subinterval_stack<I, D> s)
       {
          using interval = interval<I, D>;
+         // Default ordering of stack is not what we want here.
+         auto comp = [](interval const &i1, interval const &i2) {
+            return i1.a < i2.a;
+         };
          // Work from right-most to left-most subinterval.
+         std::sort(s.begin(), s.end(), comp);
          while (s.size() > 1) {
             // Push right-most end of every subinterval except for left-most
             // subinterval.
-            interval const r = s.top();
-            s.pop();
+            interval const r = *s.rbegin();
+            s.pop_back();
             d_.push_back({r.b, r.fb});
          }
          // For left-most subinterval, push both ends.
-         interval const r = s.top();
-         s.pop();
+         interval const r = *s.rbegin();
+         s.pop_back();
          d_.push_back({r.b, r.fb});
          d_.push_back({r.a, r.fa});
       }
@@ -253,8 +258,8 @@ namespace num
          integral_stats<A> stats;
          while (s.size()) {
             using interval = interval<I, D>;
-            interval const r = s.top();
-            s.pop();
+            interval const r = *s.rbegin();
+            s.pop_back();
             I const midp = 0.5 * (r.a + r.b);    // midpoint of interval
             D const fmid = f(midp);              // function value at midpoint
             I const len = r.b - r.a;             // length of interval
@@ -269,22 +274,22 @@ namespace num
                // Estimated error sufficiently small.  Stop refining estimate.
                stats.add(ds, u1 * len);
                d_.push_back({midp, fmid});
-            } else if (u1 <= u2 * min_tol) {
+            } else if (u1 <= u2 * tol) {
                // Calculated error too small.  Stop refining estimate.
                stats.add(ds, u1 * len);
                d_.push_back({midp, fmid});
-            } else if (len <= fabs(midp) * min_tol) {
+            } else if (len <= fabs(midp) * tol) {
                // Length of interval too small.  Stop refining estimate.
                stats.add(ds, u1 * len);
                d_.push_back({midp, fmid});
-            } else if (fabs(ds) <= fabs(stats.area()) * min_tol) {
+            } else if (fabs(ds) <= fabs(stats.area()) * tol) {
                // Increment to integral too small.  Stop refining estimate.
                stats.add(ds, u1 * len);
                d_.push_back({midp, fmid});
             } else {
                // Continue subdividing.
-               s.push(interval{r.a, midp, r.fa, fmid});
-               s.push(interval{midp, r.b, fmid, r.fb});
+               s.push_back(interval{r.a, midp, r.fa, fmid});
+               s.push_back(interval{midp, r.b, fmid, r.fb});
             }
          }
          A const farea = fabs(stats.area());
