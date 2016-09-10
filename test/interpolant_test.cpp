@@ -235,14 +235,21 @@ TEST_CASE("Verify that interpolant of function produces right integral.",
    volume const i = integral(square, 0 * cm, 1 * cm);
    interpolant<length, area> const j(square, 0 * cm, 1 * cm, 1.0E-17);
    REQUIRE(j.integral() / i == Approx(1.0));
-   cerr << "i=" << i << " j.integral(0*cm,1*cm)=" << j.integral(0 * cm, 1 * cm)
-        << endl;
    REQUIRE(j.integral(0 * cm, 1 * cm) / i == Approx(1.0));
+
    interpolant<length, area> const k(square, 1 * cm, 0 * cm);
    REQUIRE(k.integral(0 * cm, 1 * cm) / i == Approx(1.0));
    REQUIRE_THROWS(
          (interpolant<length, area>(square, 0 * cm, 1 * cm, -1.0E-06)));
+
    interpolantd const e(erf, -1.0, 2.0);
    REQUIRE(e.integral(-1.0, 2.0) / integral(my_erf, -1.0, 2.0) == Approx(1.0));
+
+   function<double(double)> g = [](double x) { return exp(-0.5 * x * x); };
+   interpolantd const ig(g, -10.0, +10.0, 1.0E-03);
+   REQUIRE(ig.integral() == Approx(sqrt(2.0 * M_PI)).epsilon(1.0E-03));
+
+   ofstream of("gaussian.dat");
+   of << ig.points();
 }
 

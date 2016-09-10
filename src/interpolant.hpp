@@ -29,7 +29,18 @@ namespace num
    /// \tparam I  Type of independent variable (x value).
    /// \tparam D  Type of dependent variable (y value).
    template <typename I, typename D>
-   using ipoint = std::pair<I, D>;
+   struct ipoint : public std::pair<I, D> {
+      using std::pair<I, D>::pair;
+   };
+
+   /// Send point to output stream.
+   /// \tparam I  Type of independent variable (x value).
+   /// \tparam D  Type of dependent variable (y value).
+   template <typename I, typename D>
+   std::ostream &operator<<(std::ostream &os, ipoint<I, D> const &p)
+   {
+      return os << p.first << " " << p.second;
+   }
 
    /// List of points used to constrain a linear interpolant.
    ///
@@ -39,7 +50,21 @@ namespace num
    /// \tparam I  Type of independent variable (x value).
    /// \tparam D  Type of dependent variable (y value).
    template <typename I, typename D>
-   using ilist = std::vector<ipoint<I, D>>;
+   struct ilist : public std::vector<ipoint<I, D>> {
+      using std::vector<ipoint<I, D>>::vector;
+   };
+
+   /// Send ilist to output stream.
+   /// \tparam I  Type of independent variable (x value).
+   /// \tparam D  Type of dependent variable (y value).
+   template <typename I, typename D>
+   std::ostream &operator<<(std::ostream &os, ilist<I, D> const &list)
+   {
+      for (auto const &p : list) {
+         os << p << "\n";
+      }
+      return os;
+   }
 
    /// Linear interpolant.
    ///
@@ -369,6 +394,9 @@ namespace num
       {
          init(std::function<D(I)>(f), aa, bb, t, n);
       }
+
+      /// \return  Control points for interpolant.
+      list const &points() const { return d_; }
 
       /// Interpolate.
       /// \param x  Value of independent variable.
