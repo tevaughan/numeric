@@ -587,7 +587,10 @@ namespace num
       }
    };
 
+   /// Alias for interpolant and maps from double to double.
    using interpolantd = interpolant<double, double>;
+
+   /// Alias for initializer for interpolantd.
    using ilistd = ilist<double, double>;
 }
 

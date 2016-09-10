@@ -53,9 +53,10 @@ namespace num
    /// \tparam R  Type returned by function.
    template <typename A, typename R>
    struct subinterval_stack : public std::vector<interval<A, R>> {
-      using I = interval<A, R>;
 
-      // Allow sorting of intervals by function value.
+      using I = interval<A, R>; ///< Type of interval on stack.
+
+      /// Allow sorting of intervals by function value.
       static bool compare(I const &iv1, I const &iv2)
       {
          R const a1 = fabs(iv1.fa);

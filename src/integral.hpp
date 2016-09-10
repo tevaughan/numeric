@@ -68,7 +68,6 @@ namespace num
    /// \param  bb  Upper limit of integration.
    /// \param  t   Error tolerance.
    /// \param  n   Initial number of evenly spaced samples of the function.
-   /// \param  ms  Maximum number of samples of function.
    /// \return     Numeric integral of function.
    template <typename R, typename A, typename A1, typename A2>
    auto integral(std::function<R(A)> f, A1 aa, A2 bb, double t = 1.0E-06,

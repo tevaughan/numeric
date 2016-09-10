@@ -32,17 +32,25 @@ while(<INPUT>) {
    my($pnm, $snm, $dim, $cnv) = split;
    print OUT_H <<"EOF3";
 
+/// Machine-generated structure providing public constructor, which takes a
+/// double-precision number of $pnm.
 struct $pnm : public $dim {
-   $pnm(double v) : $dim(v * $cnv) {}
-   $pnm($pnm const& dv) = default;
+   /// Factor that converts double-precision number of $pnm to
+   /// double-precision number of the equivalent MKS unit.
    static double constexpr c = 1.0 / $cnv;
-
+   /// Construct a dimensioned quantity from a double-precision number of
+   /// $pnm.
+   $pnm(double v) : $dim(v * $cnv) {}
+   /// Allow default copying.
+   $pnm($pnm const& dv) = default;
+   /// Write representation to output stream.
    friend std::ostream& operator<<(std::ostream& os, $pnm const& dv)
    {
       return os << "[" << c * dv.v_ << " $snm]";
    }
 };
 
+/// Declaration of symbol $snm representing a unit of $dim.
 extern $pnm const $snm;
 EOF3
    print OUT_C "$pnm const num::$snm(1.0);\n";

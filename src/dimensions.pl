@@ -33,6 +33,7 @@ while(<$iput>) {
    # length, mass, charge, and temperature.
    my($nam, $tim, $len, $mas, $chg, $tmp) = split;
    # Write C++ alias definition into header file.
+   print $oput "/// Alias for generic dimensioned quantity.\n";
    print $oput "using $nam = dimval<$tim, $len, $mas, $chg, $tmp>;\n";
 }
 
