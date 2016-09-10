@@ -9,6 +9,7 @@
 
 #include <algorithm> // for sort()
 #include <fstream>   // for ifstream
+#include <iostream>  // for cerr, endl
 #include <limits>    // for numeric_limits::epsilon()
 #include <memory>    // for unique_ptr
 #include <sstream>   // for istringstream
@@ -16,7 +17,8 @@
 #include <utility>   // for pair
 #include <vector>    // for vector
 
-#include "interval.hpp" // for interval and subinterval_stack
+#include "integral_stats.hpp" // for integral_stats
+#include "interval.hpp"       // for interval and subinterval_stack
 
 namespace num
 {
@@ -52,10 +54,15 @@ namespace num
    template <typename I, typename D>
    class interpolant
    {
-      using list = ilist<I, D>;
-      using point = ipoint<I, D>;
+      using point = ipoint<I, D>;    ///< Type of points defining interpolant.
+      using list = ilist<I, D>;      ///< Type of list of points.
+      using A = decltype(I() * D()); ///< Type of area under interpolant.
 
       list d_; ///< x-y points between which to interpolate.
+
+      /// Value of definite integral between first and last point defining
+      /// interpolant.
+      A integral_;
 
       /// Compare points so that they can be sorted.
       /// \return True only if p1 lie to the left of p2.
@@ -180,10 +187,11 @@ namespace num
          d_.push_back({r.a, r.fa});
       }
 
-      /// Initialize from continuous function and interval of its domain. The
-      /// initial number of evenly spaced samples should be sufficient to allow
-      /// recursive subdivision to produce an interpolant with the desired
-      /// fractional tolerance as an approximation of the function.
+      /// Initialize from a continuous function and from an interval on its
+      /// domain.  The initial number of evenly spaced samples should be
+      /// sufficient to allow recursive subdivision to produce an interpolant
+      /// with the desired fractional tolerance as an approximation of the
+      /// function.
       ///
       /// \tparam A1  Type of value indicating left edge of domain.  An
       ///             instance of A1 must be convertible to type I.
@@ -200,39 +208,53 @@ namespace num
       void init(std::function<D(I)> f, A1 aa, A2 bb, double t = 1.0E-06,
                 unsigned n = 16)
       {
-         if (t <= 0.0) {
+         double constexpr eps = std::numeric_limits<double>::epsilon();
+         double constexpr min_tol = 1000.0 * eps;
+         double tol = t;
+         if (tol <= 0.0) {
             throw "tolerance not positive";
+         } else if (tol < min_tol) {
+            tol = min_tol;
          }
+         double sign = 1.0;
          I a = aa;
          I b = bb;
          if (a > b) {
             std::swap(a, b);
+            sign = -1.0;
          }
          subinterval_stack<I, D> s(n, a, b, f);
          init_from_stack(s); // Add initial n points to d_.
-         double constexpr eps = std::numeric_limits<double>::epsilon();
-         double const c = eps / t;
+         integral_stats<A> stats;
          while (s.size()) {
             using interval = interval<I, D>;
             interval const r = s.top();
             s.pop();
-            I const midp = 0.5 * (r.a + r.b);
-            D const mean = 0.5 * (r.fa + r.fb);
-            D const fmid = f(midp);
-            D const rmean = 0.5 * (mean + fmid);
-            // Use logic similar to trapezoid-rule integration. Refine by
-            // subdivision until estimate of area of trapezoid either reaches
-            // tolerance or grows no better. Trapezoid-rule integration is
-            // based on estimating the area of the current interval, but this
-            // is just proportional to the estimate of the function's mean
-            // value over the interval.  The variable 'mean' holds the estimate
-            // for the current interval; the variable 'rmean' holds the refined
-            // estimate obtained by subdivision of the current interval.
+            I const midp = 0.5 * (r.a + r.b);    // midpoint of interval
+            D const fmid = f(midp);              // function value at midpoint
+            I const len = r.b - r.a;             // length of interval
+            D const mean = 0.5 * (r.fa + r.fb);  // mean of function values
+            D const rmean = 0.5 * (mean + fmid); // refined mean
+            D const u0 = fabs(rmean);
             D const u1 = fabs(mean - rmean);
-            D const u2 = fabs(mean) + fabs(rmean);
-            D const u3 = fabs(rmean) * t;
-            if (u1 < u2 * c || u1 <= u3) {
-               // Stop subdividing; add current midpoint to d_.
+            D const u2 = fabs(mean + rmean);
+            D const u3 = u0 * tol;
+            A const ds = rmean * len;
+            if (u1 <= u3) {
+               // Estimated error sufficiently small.  Stop refining estimate.
+               stats.add(ds, u1 * len);
+               d_.push_back({midp, fmid});
+            } else if (u1 <= u2 * min_tol) {
+               // Calculated error too small.  Stop refining estimate.
+               stats.add(ds, u1 * len);
+               d_.push_back({midp, fmid});
+            } else if (len <= fabs(midp) * min_tol) {
+               // Length of interval too small.  Stop refining estimate.
+               stats.add(ds, u1 * len);
+               d_.push_back({midp, fmid});
+            } else if (fabs(ds) <= fabs(stats.area()) * min_tol) {
+               // Increment to integral too small.  Stop refining estimate.
+               stats.add(ds, u1 * len);
                d_.push_back({midp, fmid});
             } else {
                // Continue subdividing.
@@ -240,13 +262,38 @@ namespace num
                s.push(interval{midp, r.b, fmid, r.fb});
             }
          }
+         A const farea = fabs(stats.area());
+         A const sigma = stats.stdev(); // statistical error
+         A const nres = A(1.0) + farea; // normalized result
+         A const derr = nres * t;       // desired error
+         A const rerr = nres * eps;     // round-off error
+         A eerr; // greater of statistical and round-off error
+         if (sigma < rerr) {
+            eerr = rerr;
+         } else {
+            eerr = sigma;
+         }
+         if (eerr > derr) {
+            std::cerr << "integral: WARNING: Estimated error " << eerr / nres
+                      << " is greater than tolerance " << t << "."
+                      << std::endl;
+         }
+         integral_ = sign * stats.area();
          sort();
       }
 
    public:
       /// Initialize ifrom an ilist.
       /// \param d  Data stored in ilist.
-      interpolant(list d = list()) : d_(std::move(d)) { sort(); }
+      interpolant(list d = list()) : d_(std::move(d))
+      {
+         if (d_.size() < 2) {
+            integral_ = A(0.0);
+            return;
+         }
+         sort();
+         integral_ = integral(d_.begin()->first, d_.rbegin()->first);
+      }
 
       /// Initialize from the first two columns of a space-delimited ASCII
       /// file.
@@ -270,7 +317,12 @@ namespace num
             }
             d_.push_back(get_point(line, x_unit, y_unit));
          }
+         if (d_.size() < 2) {
+            integral_ = A(0.0);
+            return;
+         }
          sort();
+         integral_ = integral(d_.begin()->first, d_.rbegin()->first);
       }
 
       /// Initialize from continuous function and interval of its domain. The
@@ -347,7 +399,7 @@ namespace num
       /// \param x1  Beginning of interval of integration.
       /// \param x2  End of interval of integration.
       /// \return    Numerical result of definite integral.
-      auto integral(I x1, I x2) const -> decltype(I() * D())
+      A integral(I x1, I x2) const
       {
          if (d_.size() == 0) {
             throw "integrating on empty interpolant";
@@ -384,6 +436,10 @@ namespace num
          sum += 0.5 * (x2 - i->first) * (i->second + (*this)(x2));
          return sign * sum;
       }
+
+      /// \return  Definite integral of interpolant between first and last
+      ///          control point.
+      A integral() const { return integral_; }
 
       /// Multiply the present instance I1 by another interpolant I2 such that
       /// there is a point in the product interpolant I3 at every unique x

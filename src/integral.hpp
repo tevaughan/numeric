@@ -20,43 +20,12 @@
 #include <utility>    // for foward()
 #include <vector>     // for vector
 
-#include "interval.hpp" // for interval and subinterval_stack
+#include "integral_stats.hpp" // for integral_stats
+#include "interval.hpp"       // for interval and subinterval_stack
 
 /// Namespace for C++-11 library enabling numerical computation.
 namespace num
 {
-   /// Summary of statistics on trapezoids in integral.
-   /// \tparam I  Type of integral, corresponding to "area" under curve.
-   template <typename I>
-   class integral_stats
-   {
-      using S = decltype(I() * I());
-
-      unsigned num_; ///< Number of trapezoids.
-      I area_;       ///< Total area of trapezoids.
-      S sqdv_;       ///< Sum of estimated square deviations in area.
-
-   public:
-      /// Construct null statistical summary.
-      integral_stats() : num_(0), area_(0), sqdv_(0) {}
-
-      /// Add a trapezoidal area and an estimated error in area.
-      /// \param a  Trapezoidal area.
-      /// \param d  Estimated error in area.
-      void add(I const &a, I const &d)
-      {
-         ++num_;
-         area_ += a;
-         sqdv_ += d * d;
-      }
-
-      /// Total area of trapezoids.
-      I const &area() const { return area_; }
-
-      /// Standard deviation of estimated total area in trapezoids.
-      I stdev() const { return sqrt(sqdv_ / num_); }
-   };
-
    /// Numerically integrate a function, and return the result.
    ///
    /// Use the trapezoidal rule with adaptive quadrature.
@@ -117,7 +86,6 @@ namespace num
       } else if (tol < min_tol) {
          tol = min_tol;
       }
-      using I = decltype(std::forward<std::function<R(A)>>(f)(A()) * A());
       double sign = 1.0;
       A a = aa;
       A b = bb;
@@ -126,6 +94,7 @@ namespace num
          sign = -1.0;
       }
       subinterval_stack<A, R> s(n, a, b, f);
+      using I = decltype(std::forward<std::function<R(A)>>(f)(A()) * A());
       integral_stats<I> stats;
       while (s.size()) {
          using interval = interval<A, R>;
@@ -155,6 +124,9 @@ namespace num
             stats.add(ds, u1 * len);
          } else if (len <= fabs(midp) * min_tol) {
             // Length of interval too small.  Stop refining estimate.
+            stats.add(ds, u1 * len);
+         } else if (fabs(ds) <= fabs(stats.area()) * min_tol) {
+            // Increment to integral too small.  Stop refining estimate.
             stats.add(ds, u1 * len);
          } else {
             // Continue refining estimate.

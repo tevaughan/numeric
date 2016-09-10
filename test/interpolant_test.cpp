@@ -233,7 +233,10 @@ TEST_CASE("Verify that interpolant of function produces right integral.",
 {
    function<area(length)> square = [](length x) { return x * x; };
    volume const i = integral(square, 0 * cm, 1 * cm);
-   interpolant<length, area> const j(square, 0 * cm, 1 * cm);
+   interpolant<length, area> const j(square, 0 * cm, 1 * cm, 1.0E-17);
+   REQUIRE(j.integral() / i == Approx(1.0));
+   cerr << "i=" << i << " j.integral(0*cm,1*cm)=" << j.integral(0 * cm, 1 * cm)
+        << endl;
    REQUIRE(j.integral(0 * cm, 1 * cm) / i == Approx(1.0));
    interpolant<length, area> const k(square, 1 * cm, 0 * cm);
    REQUIRE(k.integral(0 * cm, 1 * cm) / i == Approx(1.0));
