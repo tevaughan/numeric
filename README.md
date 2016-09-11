@@ -153,8 +153,6 @@ int main()
 
 [Doxygen pages](https://tevaughan.github.io/numeric/doxygen-html/index.html)
 
-[experimental link](docs/doxygen-html/index.html)
-
 ## To do:
 
  - Incorporate and adapt code from my linear regression project on github.
