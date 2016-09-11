@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['root',['root',['../classnum_1_1dimval.html#ad0b65239299d967ba4a82af721ca279e',1,'num::dimval']]]
+  ['root',['root',['../classnum_1_1dimval.html#aba6c406d93dcf4c55d731e2eb1899c7d',1,'num::dimval']]]
 ];

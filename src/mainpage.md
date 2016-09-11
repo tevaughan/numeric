@@ -3,71 +3,25 @@
 
 The numeric library provides
 
- - header-only classes for numerical integration and for interpolation and
+ - a compiled library (linked with `-lnumeric`) for dimensioned quantities and
 
- - a compiled library (linked with '-lnumeric') for dimensioned quantities,
-   which can be used with the integrator and with the interpolator.
-
-## Installation
-
-Grab the latest 'tar.gz' file from [the releases
-page](https://github.com/tevaughan/numeric/releases).
-
-Or clone from [github](https://github.com/tevaughan/numeric).
-
-Build and install:
-```
-tar fvxz numeric-x.y.tar.gz
-cd numeric-x.y
-./configure
-make
-sudo make install
-```
-
-All classes and functions inter-operate!
+ - a header-only library for
+   - numerical integration and
+   - interpolation.
 
 ## Physically dimensioned quantities.
 
-Base class 'dimval' has public default constructor for zero-valued quantity.
-
-~~~~{.c++}
-#include <units.hpp>
-dimval<-1,1,0,0,0> foo; // A speed with initial value of zero.
-~~~~
-
-Each of dimval's template value parameters is an integer representing the
-exponent of one of five fundamental units.
-
-1. second
-2. meter
-3. kilogram
-4. coulomb
-5. kelvin
-
-Aliases are available for convenience.
-```.c++
-#include <units.hpp>
-num::speed foo; // A speed with initial value of zero.
-```
-
-A wide array of units can be used for initialization and computation.
-```c++
-#include <units.hpp>
-num::speed v = 2.3 * mi / hr;  // Speed with initial value 2.3 miles/hour.
-```
-
-sqrt() and fabs() are supported.
-
-Member functions allow for integer power or root.
-```c++
+Physically dimensioned quantities allow one to do things like this:
+```cpp
 #include <units.hpp>
 using namespace num;
-length x = 2 * cm;
-area a = x.pow<2>();
-length y = 0.5 * sqrt(a);
-volume v = x.pow<3>();
-length z = 0.1 * v.root<3>();
+acceleration const g = 9.81 * m / pow<2>(s); // acceleration of gravity
+length ell = 1 * m;                          // length of pendulum
+frequency f = sqrt(g / ell);                 // frequency of small oscillations
 ```
+The compiler will tell you if you make a mistake dimensionally.
+
+[Details of how to use dimensions and units.](\ref dimvals)
 
 ## Linear interpolation
 
@@ -75,7 +29,7 @@ A linear interpolant can be initialized directly from a file with two
 space-delimited columns.  Then it can be scaled, multiplied by another
 interpolant with no loss of information, integrated, etc.
 
-```c++
+```cpp
 #include <iostream>
 #include <interpolant.hpp>
 #include <units.hpp>
@@ -112,7 +66,7 @@ int main()
 A linear interpolant can also be initialized from an existing, continuous
 function.
 
-```.c++
+```.cpp
 #include <cmath> // for erf()
 #include <interpolant.hpp>
 
@@ -134,7 +88,7 @@ int main()
 
 ## Integration
 
-```c++
+```cpp
 #include <iostream>
 #include <integral.hpp>
 #include <units.hpp>
@@ -151,6 +105,24 @@ int main()
    return 0;
 }
 ```
+
+## Installation
+
+Either
+
+ - Grab the latest 'tar.gz' file from [the releases
+   page](https://github.com/tevaughan/numeric/releases),
+
+ - or clone from [github](https://github.com/tevaughan/numeric).
+
+Build and install:
+```
+./configure
+make
+sudo make install
+```
+
+All classes and functions inter-operate!
 
 ## License
 

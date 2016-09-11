@@ -33,7 +33,7 @@ TEST_CASE("Verify integration of (dimval) global function.", "[integral]")
    oss << i;
    // Verify that integral of x^2 from  0 cm  to  1 cm  is  1/3 cm^3.
    REQUIRE(oss.str() == "[3.33333e-07 m^3]");
-   REQUIRE(i / cm.pow<3>() == Approx(1.0 / 3.0));
+   REQUIRE(i / pow<3>(cm) == Approx(1.0 / 3.0));
 }
 
 struct my_sin {
@@ -80,7 +80,7 @@ TEST_CASE("Trigger coverage of code requiring at least two samples.",
 {
    volume const i = integral(square, 1 * cm, 2 * cm, 1.0E-06, 0);
    // Verify that integral of x^2 from 1 cm  to  2 cm  is  7/3 cm^3.
-   REQUIRE(i / cm.pow<3>() == Approx(7.0 / 3.0));
+   REQUIRE(i / pow<3>(cm) == Approx(7.0 / 3.0));
 }
 
 // This is a bit silly because interpolant has its own, optimized

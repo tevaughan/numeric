@@ -174,16 +174,33 @@ namespace num
       /// Inequality comparison.
       bool operator!=(dimval dv) const { return v_ != dv.v_; }
 
+      /// Type of integer power of present instance.
+      /// \tparam E  Integer exponent indicating power.
+      template <int E>
+      using dimval_power = dimval<TI * E, D * E, M * E, C * E, TE * E>;
+
       /// \return Integer power.
       template <int E>
-      dimval<TI * E, D * E, M * E, C * E, TE * E> pow() const
+      dimval_power<E> pow() const
       {
-         return dimval<TI * E, D * E, M * E, C * E, TE * E>(std::pow(v_, E));
+         return dimval_power<E>(std::pow(v_, E));
       }
+
+      /// \return Integer power.
+      template <int E>
+      friend dimval_power<E> pow(dimval const& dv)
+      {
+         return dv.pow<E>();
+      }
+
+      /// Type of integer root of present instance.
+      /// \tparam E  Integer indicating degree of root.
+      template <unsigned E>
+      using dimval_root = dimval<TI / E, D / E, M / E, C / E, TE / E>;
 
       /// \return Integer root.
       template <unsigned E>
-      dimval<TI / E, D / E, M / E, C / E, TE / E> root() const
+      dimval_root<E> root() const
       {
          static_assert(E, "zeroth root");
          static_assert(D / E * E == D, "illegal root along distance");
@@ -192,20 +209,21 @@ namespace num
          static_assert(TI / E * E == TI, "illegal root along time");
          static_assert(TE / E * E == TE, "illegal root along temperature");
          double constexpr e = 1.0 / E;
-         return dimval<TI / E, D / E, M / E, C / E, TE / E>(std::pow(v_, e));
+         return dimval_root<E>(std::pow(v_, e));
+      }
+
+      /// \return Integer root.
+      template <unsigned E>
+      friend dimval_root<E> root(dimval const &dv)
+      {
+         return dv.root<E>();
       }
 
       /// \return Square root.
-      friend dimval<TI / 2, D / 2, M / 2, C / 2, TE / 2> sqrt(dimval dv)
-      {
-         return dv.root<2>();
-      }
+      friend dimval_root<2> sqrt(dimval dv) { return dv.root<2>(); }
 
       /// \return Square root.
-      dimval<TI / 2, D / 2, M / 2, C / 2, TE / 2> sqrt() const
-      {
-         return root<2>();
-      }
+      dimval_root<2> sqrt() const { return root<2>(); }
 
       /// \return Absolute value.
       friend dimval fabs(dimval dv) { return dimval(fabs(dv.v_)); }
