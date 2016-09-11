@@ -4,6 +4,9 @@
 // This software is distributable under the terms of the GNU LGPL, Version 3 or
 // later.
 
+/// \file   dimval.hpp
+/// \brief  Source code for num::dimval and for conversions dealing with angle.
+
 #ifndef NUMERIC_DIMVAL_HPP
 #define NUMERIC_DIMVAL_HPP
 
@@ -18,22 +21,25 @@ namespace num
    double constexpr arcmin = deg / 60.0;    ///< Radians per arcminute.
    double constexpr arcsec = arcmin / 60.0; ///< Radians per arcsecond.
 
-   /// \param n  Number of degrees.
-   /// \return   Corresponding number of radians.
-   inline double degs(double n) { return n * deg; }
+   /// \return   Number of radians, converted from number of degrees.
+   inline double degs(double n /**< Number of degrees. */) { return n * deg; }
 
-   /// \param n  Number of arcminutes.
-   /// \return   Corresponding number of radians.
-   inline double arcmins(double n) { return n * arcmin; }
+   /// \return   Number of radians, converted from number of arcminutes.
+   inline double arcmins(double n /**< Number of arcminutes. */)
+   {
+      return n * arcmin;
+   }
 
-   /// \param n  Number of arcseconds.
-   /// \return   Corresponding number of radians.
-   inline double arcsecs(double n) { return n * arcsec; }
+   /// \return   Number of radians, converted from number of arcseconds.
+   inline double arcsecs(double n /**< Number of arcseconds. */)
+   {
+      return n * arcsec;
+   }
 
    /// Model of a dimensioned value.
-   /// \tparam TI  Exponent of time.
+   /// \tparam TI  Exponent of time
    /// \tparam D   Exponent of distance.
-   /// \tparam M   Exponent of mass.
+   /// \tparam M   Exponent of mass
    /// \tparam C   Exponent of charge.
    /// \tparam TE  Exponent of temperature.
    template <int TI, int D, int M, int C, int TE>
@@ -43,7 +49,10 @@ namespace num
       double v_; ///< Value in MKS.
 
       /// Construct from double that is known to contain value in MKS.
-      explicit dimval(double vv) : v_(vv) {}
+      explicit dimval(double vv /** Numeric coefficient of MKS unit. */)
+            : v_(vv)
+      {
+      }
 
    public:
       /// By default, construct a zero-valued quantity.
@@ -234,13 +243,6 @@ namespace num
       }
    };
 }
-
-/// \mainpage
-///
-/// The numeric library provides header-only classes for numerical integration
-/// and for interpolation.  There is also a compiled library for dimensioned
-/// quantities, which can be used with the integrator and with the
-/// interpolator.
 
 #endif // ndef NUMERIC_DIMVAL_HPP
 

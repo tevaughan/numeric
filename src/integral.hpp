@@ -21,7 +21,6 @@
 #include "integral_stats.hpp" // for integral_stats
 #include "interval.hpp"       // for interval and subinterval_stack
 
-/// Namespace for C++-11 library enabling numerical computation.
 namespace num
 {
    /// Numerically integrate a function, and return the result.

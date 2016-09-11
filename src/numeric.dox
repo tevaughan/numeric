@@ -1,0 +1,19 @@
+
+/** \namespace  num
+    \brief      Namespace for C++-11 library enabling numerical computation.
+
+The numeric library, whose symbols are encapsulated within the namespace \a
+num, defines facilities that include
+ - compile-time dimensioned variables,
+ - interpolation, and
+ - numerical integration.
+
+\mainpage
+
+The numeric library provides header-only classes for numerical integration
+and for interpolation.  There is also a compiled library for dimensioned
+quantities, which can be used with the integrator and with the
+interpolator.
+
+*/
+
