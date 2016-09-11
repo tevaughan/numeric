@@ -8,8 +8,6 @@ EXTRA_DIST = .clang-format
 dox :
 	doxygen
 
-all-local : dox
-
 clean-local :
 	@rm -frv numeric-*-coverage*
 
