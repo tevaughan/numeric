@@ -151,7 +151,7 @@ int main()
 
 ## API documentation
 
-[Doxygen pages](https://tevaughan.github.io/numeric/doxygen-html/index.html)
+[Doxygen pages](https://tevaughan.github.io/numeric/doxygen-html)
 
 ## To do:
 
