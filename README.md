@@ -149,6 +149,10 @@ int main()
 }
 ```
 
+## API documentation
+
+[Doxygen pages](https://tevaughan.github.io/numeric/doxygen-html/index.html)
+
 ## To do:
 
  - Incorporate and adapt code from my linear regression project on github.
