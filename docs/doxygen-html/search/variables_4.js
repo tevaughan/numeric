@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['erg',['erg',['../namespacenum.html#a388d6b78d5a9dc4d9be7b31ff4b692bc',1,'num']]],
-  ['ev',['eV',['../namespacenum.html#a90afbbec61811b73666a1707ed886db7',1,'num']]]
+  ['v_5f',['v_',['../classnum_1_1dimval.html#a86a64dc61584662005f038d00103295a',1,'num::dimval']]]
 ];

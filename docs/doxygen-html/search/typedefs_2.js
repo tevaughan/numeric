@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['density',['density',['../namespacenum.html#a309bf56325be8cd4371f056b2b20109f',1,'num']]],
-  ['dimval_5fpower',['dimval_power',['../classnum_1_1dimval.html#a647059d6a2dbff168126a0518c57621a',1,'num::dimval']]],
-  ['dimval_5froot',['dimval_root',['../classnum_1_1dimval.html#a3601e60743a074563ce91910f487fa61',1,'num::dimval']]]
+  ['i',['I',['../structnum_1_1subinterval__stack.html#a1c6b0632b18dff39e54cf4d146418f40',1,'num::subinterval_stack']]],
+  ['ilistd',['ilistd',['../namespacenum.html#a2b90d965d199cebc0002bca80ee2b149',1,'num']]],
+  ['interpolantd',['interpolantd',['../namespacenum.html#a2168d41aa428e5eee9875db4d3d109bb',1,'num']]]
 ];

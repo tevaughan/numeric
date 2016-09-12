@@ -1,15 +1,19 @@
 var searchData=
 [
-  ['k',['K',['../namespacenum.html#acdca3a48566effb3cd16c57d4b1356b9',1,'num']]],
-  ['kelvins',['kelvins',['../structnum_1_1kelvins.html',1,'num']]],
-  ['kelvins',['kelvins',['../structnum_1_1kelvins.html#a426039f1c91f1901596abcf8a9c6cdde',1,'num::kelvins::kelvins(double v)'],['../structnum_1_1kelvins.html#a6a715dd726a51c12ae73b800b2ca9f0f',1,'num::kelvins::kelvins(kelvins const &amp;dv)=default']]],
-  ['kg',['kg',['../namespacenum.html#afb6486acb4151dde8f90298045bb6e33',1,'num']]],
-  ['khz',['kHz',['../namespacenum.html#a538359e48d8b2e4cd6be71a6351965d4',1,'num']]],
-  ['kilograms',['kilograms',['../structnum_1_1kilograms.html',1,'num']]],
-  ['kilograms',['kilograms',['../structnum_1_1kilograms.html#a953d9afeb1d4b8655f3ff744d05c467b',1,'num::kilograms::kilograms(double v)'],['../structnum_1_1kilograms.html#aa1cd391e69b706e08043015e9a98dfc7',1,'num::kilograms::kilograms(kilograms const &amp;dv)=default']]],
-  ['kilohertz',['kilohertz',['../structnum_1_1kilohertz.html',1,'num']]],
-  ['kilohertz',['kilohertz',['../structnum_1_1kilohertz.html#a0b9d59f1ea09168510b05448654ee849',1,'num::kilohertz::kilohertz(double v)'],['../structnum_1_1kilohertz.html#a17c7006da8ab96a84be4c025da1b8b39',1,'num::kilohertz::kilohertz(kilohertz const &amp;dv)=default']]],
-  ['kilometers',['kilometers',['../structnum_1_1kilometers.html#a37989aaa748813fcca7e33cad954596b',1,'num::kilometers::kilometers(double v)'],['../structnum_1_1kilometers.html#a4f58cb0f0730c80c466d7ce92fd5567b',1,'num::kilometers::kilometers(kilometers const &amp;dv)=default']]],
-  ['kilometers',['kilometers',['../structnum_1_1kilometers.html',1,'num']]],
-  ['km',['km',['../namespacenum.html#a2c376d877e2c07bd7b2b57eee7215471',1,'num']]]
+  ['operator_21_3d',['operator!=',['../classnum_1_1dimval.html#a2a56a2a42f6b592e5630b852e3071cde',1,'num::dimval']]],
+  ['operator_28_29',['operator()',['../classnum_1_1interpolant.html#a4f6673358ce1b5269ec4d4278012aff0',1,'num::interpolant']]],
+  ['operator_2a',['operator*',['../classnum_1_1interpolant.html#afe9578d3ffbb657000ca66318323eb53',1,'num::interpolant::operator*(interpolant&lt; I, OD &gt; const &amp;oint) const -&gt; interpolant&lt; I, decltype(D() *OD())&gt;'],['../classnum_1_1interpolant.html#afe6be0dff1cd3a81f221862550900257',1,'num::interpolant::operator*(double s) const -&gt; interpolant&lt; I, decltype(D() *s)&gt;'],['../classnum_1_1interpolant.html#ac4b1dc5841c1e14704a047e24ec4671d',1,'num::interpolant::operator*()'],['../classnum_1_1interpolant.html#a2166ea9566e36465ee859838d3409a17',1,'num::interpolant::operator*(dimval&lt; TI, ID, M, C, TE &gt; s) const -&gt; interpolant&lt; I, decltype(D() *s)&gt;'],['../classnum_1_1interpolant.html#a71a143075aee0d88d7cd000b2ef08806',1,'num::interpolant::operator*()'],['../classnum_1_1dimval.html#a745bb2843139207a0bfd823ba60561fd',1,'num::dimval::operator*(dimval&lt;-TI, -D, -M, -C, -TE &gt; dv) const'],['../classnum_1_1dimval.html#a4c8f604b3e2f4b5d71ae6ad12a1d3501',1,'num::dimval::operator*(dimval&lt; OTI, OD, OC, OM, OTE &gt; dv) const'],['../classnum_1_1dimval.html#a16789c68a5f5eff57bc2fb762e287469',1,'num::dimval::operator*(double s) const'],['../classnum_1_1dimval.html#a2e309a2b58952757d95715656a0b1017',1,'num::dimval::operator*()']]],
+  ['operator_2a_3d',['operator*=',['../classnum_1_1dimval.html#a3d2f289744ea906e63fc2deca24a8a53',1,'num::dimval']]],
+  ['operator_2b',['operator+',['../classnum_1_1dimval.html#aaf4f278620c211b2d8ac578a66189ccf',1,'num::dimval']]],
+  ['operator_2b_3d',['operator+=',['../classnum_1_1dimval.html#a69b0f6ba08c721a94a0636a5adfb66fb',1,'num::dimval']]],
+  ['operator_2d',['operator-',['../classnum_1_1dimval.html#ac558ce67b552db601c6c6ab74f71e445',1,'num::dimval']]],
+  ['operator_2d_3d',['operator-=',['../classnum_1_1dimval.html#a0b4b7d2f5523393b16eec1335848991a',1,'num::dimval']]],
+  ['operator_2f',['operator/',['../classnum_1_1interpolant.html#a29926e463a76a0a50e6f7acaa227104a',1,'num::interpolant::operator/(interpolant&lt; I, OD &gt; const &amp;oint) const -&gt; interpolant&lt; I, decltype(D() *OD())&gt;'],['../classnum_1_1interpolant.html#a8faf37180c9d8f4d122f60962a7325b9',1,'num::interpolant::operator/(Y s) const -&gt; interpolant&lt; I, decltype(D()/s)&gt;'],['../classnum_1_1dimval.html#a87ef32158065559c5ecf1cfea0714d93',1,'num::dimval::operator/(dimval dv) const'],['../classnum_1_1dimval.html#a5036cfc59962486fcf590040cdd2c552',1,'num::dimval::operator/(dimval&lt; OTI, OD, OM, OC, OTE &gt; dv) const'],['../classnum_1_1dimval.html#aa5a821867fed6f9c15b6d0f01b250644',1,'num::dimval::operator/()'],['../classnum_1_1dimval.html#a8815399780fac883ac0088aa1c866880',1,'num::dimval::operator/(double s) const']]],
+  ['operator_2f_3d',['operator/=',['../classnum_1_1dimval.html#ad69870ac0434f790a82982a85c6cc195',1,'num::dimval']]],
+  ['operator_3c',['operator&lt;',['../classnum_1_1dimval.html#a5d9d207f336e336759e1c66abfbb55d0',1,'num::dimval']]],
+  ['operator_3c_3c',['operator&lt;&lt;',['../classnum_1_1dimval.html#a9d732113e9cfaf22eccec8640ae51797',1,'num::dimval::operator&lt;&lt;()'],['../namespacenum.html#a702f02a1b8109d5fdf12d6b187e93f07',1,'num::operator&lt;&lt;(std::ostream &amp;os, ipoint&lt; I, D &gt; const &amp;p)'],['../namespacenum.html#aa5eb307b1a69d6c912cdf820e0b7f7cc',1,'num::operator&lt;&lt;(std::ostream &amp;os, ilist&lt; I, D &gt; const &amp;list)']]],
+  ['operator_3c_3d',['operator&lt;=',['../classnum_1_1dimval.html#ab3373faf2ab82c90a896def7e1ff3ee1',1,'num::dimval']]],
+  ['operator_3d_3d',['operator==',['../classnum_1_1dimval.html#a850291c35fc2202aebcce79cbbd1c8e8',1,'num::dimval']]],
+  ['operator_3e',['operator&gt;',['../classnum_1_1dimval.html#a937fc9b95a97788685aab7c522a038f9',1,'num::dimval']]],
+  ['operator_3e_3d',['operator&gt;=',['../classnum_1_1dimval.html#a09db187dfa052e91ec344868c5966f91',1,'num::dimval']]]
 ];

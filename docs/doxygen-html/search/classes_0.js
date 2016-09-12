@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['amperes',['amperes',['../structnum_1_1amperes.html',1,'num']]]
+  ['dimval',['dimval',['../classnum_1_1dimval.html',1,'num']]]
 ];

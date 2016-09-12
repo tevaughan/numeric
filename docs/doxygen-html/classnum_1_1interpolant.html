@@ -112,15 +112,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a29926e463a76a0a50e6f7acaa227104a"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1interpolant.html#a29926e463a76a0a50e6f7acaa227104a">operator/</a> (<a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; I, OD &gt; const &amp;oint) const -&gt; <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; I, decltype(D() *OD())&gt;</td></tr>
 <tr class="memdesc:a29926e463a76a0a50e6f7acaa227104a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divide the present instance I1 by another interpolant I2 such that there is a point in the product interpolant I3 at every unique x coordinate across I1 and I2.  <a href="#a29926e463a76a0a50e6f7acaa227104a">More...</a><br /></td></tr>
 <tr class="separator:a29926e463a76a0a50e6f7acaa227104a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe6be0dff1cd3a81f221862550900257"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1interpolant.html#afe6be0dff1cd3a81f221862550900257">operator*</a> (double <a class="el" href="namespacenum.html#a69ec21a3e079d644e0704a51f6bbf844">s</a>) const -&gt; <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; I, decltype(D() *<a class="el" href="namespacenum.html#a69ec21a3e079d644e0704a51f6bbf844">s</a>)&gt;</td></tr>
+<tr class="memitem:afe6be0dff1cd3a81f221862550900257"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1interpolant.html#afe6be0dff1cd3a81f221862550900257">operator*</a> (double s) const -&gt; <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; I, decltype(D() *s)&gt;</td></tr>
 <tr class="memdesc:afe6be0dff1cd3a81f221862550900257"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply every y-value of interpolant by a scale factor on the right, and return the resultant interpolant.  <a href="#afe6be0dff1cd3a81f221862550900257">More...</a><br /></td></tr>
 <tr class="separator:afe6be0dff1cd3a81f221862550900257"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2166ea9566e36465ee859838d3409a17"><td class="memTemplParams" colspan="2">template&lt;int TI, int ID, int M, int C, int TE&gt; </td></tr>
-<tr class="memitem:a2166ea9566e36465ee859838d3409a17"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1interpolant.html#a2166ea9566e36465ee859838d3409a17">operator*</a> (<a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, ID, M, <a class="el" href="namespacenum.html#a6f6e145198f4bff44e2a8de89c1dd751">C</a>, TE &gt; <a class="el" href="namespacenum.html#a69ec21a3e079d644e0704a51f6bbf844">s</a>) const -&gt; <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; I, decltype(D() *<a class="el" href="namespacenum.html#a69ec21a3e079d644e0704a51f6bbf844">s</a>)&gt;</td></tr>
+<tr class="memitem:a2166ea9566e36465ee859838d3409a17"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1interpolant.html#a2166ea9566e36465ee859838d3409a17">operator*</a> (<a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, ID, M, C, TE &gt; s) const -&gt; <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; I, decltype(D() *s)&gt;</td></tr>
 <tr class="memdesc:a2166ea9566e36465ee859838d3409a17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply every y-value of interpolant by a dimval scale factor on the right, and return the resultant interpolant.  <a href="#a2166ea9566e36465ee859838d3409a17">More...</a><br /></td></tr>
 <tr class="separator:a2166ea9566e36465ee859838d3409a17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8faf37180c9d8f4d122f60962a7325b9"><td class="memTemplParams" colspan="2">template&lt;typename Y &gt; </td></tr>
-<tr class="memitem:a8faf37180c9d8f4d122f60962a7325b9"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1interpolant.html#a8faf37180c9d8f4d122f60962a7325b9">operator/</a> (Y <a class="el" href="namespacenum.html#a69ec21a3e079d644e0704a51f6bbf844">s</a>) const -&gt; <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; I, decltype(D()/<a class="el" href="namespacenum.html#a69ec21a3e079d644e0704a51f6bbf844">s</a>)&gt;</td></tr>
+<tr class="memitem:a8faf37180c9d8f4d122f60962a7325b9"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1interpolant.html#a8faf37180c9d8f4d122f60962a7325b9">operator/</a> (Y s) const -&gt; <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; I, decltype(D()/s)&gt;</td></tr>
 <tr class="memdesc:a8faf37180c9d8f4d122f60962a7325b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divide every y-value of interpolant by a scale factor, and return the resultant interpolant.  <a href="#a8faf37180c9d8f4d122f60962a7325b9">More...</a><br /></td></tr>
 <tr class="separator:a8faf37180c9d8f4d122f60962a7325b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -131,11 +131,11 @@ template&lt;typename OI , typename OD &gt; </td></tr>
 <tr class="memitem:a1bf07d2865c0692bdb0e7abed75f5b75"><td class="memTemplItemLeft" align="right" valign="top">class&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1interpolant.html#a1bf07d2865c0692bdb0e7abed75f5b75">interpolant</a></td></tr>
 <tr class="memdesc:a1bf07d2865c0692bdb0e7abed75f5b75"><td class="mdescLeft">&#160;</td><td class="mdescRight">combine() needs to be friendly with another kind of interpolant. <br /></td></tr>
 <tr class="separator:a1bf07d2865c0692bdb0e7abed75f5b75"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4b1dc5841c1e14704a047e24ec4671d"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1interpolant.html#ac4b1dc5841c1e14704a047e24ec4671d">operator*</a> (double <a class="el" href="namespacenum.html#a69ec21a3e079d644e0704a51f6bbf844">s</a>, <a class="el" href="classnum_1_1interpolant.html">interpolant</a> const &amp;i) -&gt; <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; I, decltype(D() *<a class="el" href="namespacenum.html#a69ec21a3e079d644e0704a51f6bbf844">s</a>)&gt;</td></tr>
+<tr class="memitem:ac4b1dc5841c1e14704a047e24ec4671d"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1interpolant.html#ac4b1dc5841c1e14704a047e24ec4671d">operator*</a> (double s, <a class="el" href="classnum_1_1interpolant.html">interpolant</a> const &amp;i) -&gt; <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; I, decltype(D() *s)&gt;</td></tr>
 <tr class="memdesc:ac4b1dc5841c1e14704a047e24ec4671d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply every y-value of interpolant by a scale factor on the left, and return the resultant interpolant.  <a href="#ac4b1dc5841c1e14704a047e24ec4671d">More...</a><br /></td></tr>
 <tr class="separator:ac4b1dc5841c1e14704a047e24ec4671d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71a143075aee0d88d7cd000b2ef08806"><td class="memTemplParams" colspan="2">template&lt;int TI, int ID, int M, int C, int TE&gt; </td></tr>
-<tr class="memitem:a71a143075aee0d88d7cd000b2ef08806"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1interpolant.html#a71a143075aee0d88d7cd000b2ef08806">operator*</a> (<a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, ID, M, <a class="el" href="namespacenum.html#a6f6e145198f4bff44e2a8de89c1dd751">C</a>, TE &gt; <a class="el" href="namespacenum.html#a69ec21a3e079d644e0704a51f6bbf844">s</a>, <a class="el" href="classnum_1_1interpolant.html">interpolant</a> const &amp;i) -&gt; <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; I, decltype(D() *<a class="el" href="namespacenum.html#a69ec21a3e079d644e0704a51f6bbf844">s</a>)&gt;</td></tr>
+<tr class="memitem:a71a143075aee0d88d7cd000b2ef08806"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1interpolant.html#a71a143075aee0d88d7cd000b2ef08806">operator*</a> (<a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, ID, M, C, TE &gt; s, <a class="el" href="classnum_1_1interpolant.html">interpolant</a> const &amp;i) -&gt; <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; I, decltype(D() *s)&gt;</td></tr>
 <tr class="memdesc:a71a143075aee0d88d7cd000b2ef08806"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply every y-value of interpolant by a dimval scale factor on the left, and return the resultant interpolant.  <a href="#a71a143075aee0d88d7cd000b2ef08806">More...</a><br /></td></tr>
 <tr class="separator:a71a143075aee0d88d7cd000b2ef08806"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -595,7 +595,7 @@ template&lt;typename I, typename D&gt; </div>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>s</em></td><td>)</td>
-          <td> const -&gt; <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt;I, decltype(D() * <a class="el" href="namespacenum.html#a69ec21a3e079d644e0704a51f6bbf844">s</a>)&gt;
+          <td> const -&gt; <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt;I, decltype(D() * s)&gt;
       </td>
         </tr>
       </table>
@@ -635,9 +635,9 @@ template&lt;int TI, int ID, int M, int C, int TE&gt; </div>
         <tr>
           <td class="memname">auto <a class="el" href="classnum_1_1interpolant.html">num::interpolant</a>&lt; I, D &gt;::operator* </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, ID, M, <a class="el" href="namespacenum.html#a6f6e145198f4bff44e2a8de89c1dd751">C</a>, TE &gt;&#160;</td>
+          <td class="paramtype"><a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, ID, M, C, TE &gt;&#160;</td>
           <td class="paramname"><em>s</em></td><td>)</td>
-          <td> const -&gt; <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt;I, decltype(D() * <a class="el" href="namespacenum.html#a69ec21a3e079d644e0704a51f6bbf844">s</a>)&gt;
+          <td> const -&gt; <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt;I, decltype(D() * s)&gt;
       </td>
         </tr>
       </table>
@@ -728,7 +728,7 @@ template&lt;typename Y &gt; </div>
           <td>(</td>
           <td class="paramtype">Y&#160;</td>
           <td class="paramname"><em>s</em></td><td>)</td>
-          <td> const -&gt; <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt;I, decltype(D() / <a class="el" href="namespacenum.html#a69ec21a3e079d644e0704a51f6bbf844">s</a>)&gt;
+          <td> const -&gt; <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt;I, decltype(D() / s)&gt;
       </td>
         </tr>
       </table>
@@ -815,7 +815,7 @@ template&lt;typename I, typename D&gt; </div>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td> -&gt; <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt;I, decltype(D() * <a class="el" href="namespacenum.html#a69ec21a3e079d644e0704a51f6bbf844">s</a>)&gt;
+          <td></td><td> -&gt; <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt;I, decltype(D() * s)&gt;
       </td>
         </tr>
       </table>
@@ -857,7 +857,7 @@ template&lt;int TI, int ID, int M, int C, int TE&gt; </div>
         <tr>
           <td class="memname">auto operator* </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, ID, M, <a class="el" href="namespacenum.html#a6f6e145198f4bff44e2a8de89c1dd751">C</a>, TE &gt;&#160;</td>
+          <td class="paramtype"><a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, ID, M, C, TE &gt;&#160;</td>
           <td class="paramname"><em>s</em>, </td>
         </tr>
         <tr>
@@ -869,7 +869,7 @@ template&lt;int TI, int ID, int M, int C, int TE&gt; </div>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td> -&gt; <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt;I, decltype(D() * <a class="el" href="namespacenum.html#a69ec21a3e079d644e0704a51f6bbf844">s</a>)&gt;
+          <td></td><td> -&gt; <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt;I, decltype(D() * s)&gt;
       </td>
         </tr>
       </table>

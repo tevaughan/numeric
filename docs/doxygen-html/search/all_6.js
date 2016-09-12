@@ -1,12 +1,21 @@
 var searchData=
 [
-  ['g',['g',['../namespacenum.html#acfd3a886dc04759aafe53aac4b905812',1,'num::g()'],['../interp__1_8cpp.html#ac84831571c8f3d0bca83c1747a32e8d6',1,'g():&#160;interp_1.cpp']]],
-  ['gees',['gees',['../structnum_1_1gees.html#a0b82f9f84a67490b871f8b29d1c75a2a',1,'num::gees::gees(double v)'],['../structnum_1_1gees.html#a7c6fbdcc5b1873597aa5d465d742658d',1,'num::gees::gees(gees const &amp;dv)=default']]],
-  ['gees',['gees',['../structnum_1_1gees.html',1,'num']]],
-  ['ghz',['GHz',['../namespacenum.html#a1b26865eaf88c3e8096c7f4c5a362e16',1,'num']]],
-  ['gigahertz',['gigahertz',['../structnum_1_1gigahertz.html',1,'num']]],
-  ['gigahertz',['gigahertz',['../structnum_1_1gigahertz.html#ac76411cab38322da9d32ab28cb8069ba',1,'num::gigahertz::gigahertz(double v)'],['../structnum_1_1gigahertz.html#a6945b223df28a7786025f8592e1d850e',1,'num::gigahertz::gigahertz(gigahertz const &amp;dv)=default']]],
-  ['gn',['gn',['../namespacenum.html#a3fb3214fef706e1e8d9ce3e45ee3eef9',1,'num']]],
-  ['grams',['grams',['../structnum_1_1grams.html',1,'num']]],
-  ['grams',['grams',['../structnum_1_1grams.html#a0d162bbc8782944850f86f22763af5a9',1,'num::grams::grams(double v)'],['../structnum_1_1grams.html#a434d97c34c0a0a8d395ca85f58c387a4',1,'num::grams::grams(grams const &amp;dv)=default']]]
+  ['i',['I',['../structnum_1_1subinterval__stack.html#a1c6b0632b18dff39e54cf4d146418f40',1,'num::subinterval_stack']]],
+  ['ilist',['ilist',['../structnum_1_1ilist.html',1,'num']]],
+  ['ilistd',['ilistd',['../namespacenum.html#a2b90d965d199cebc0002bca80ee2b149',1,'num']]],
+  ['introduction',['Introduction',['../index.html',1,'']]],
+  ['integral',['integral',['../classnum_1_1interpolant.html#af9763298777611dda79ceac53df3b0b8',1,'num::interpolant::integral(I x1, I x2) const'],['../classnum_1_1interpolant.html#a8087628a2eaa233fc86e472c1c71a8c6',1,'num::interpolant::integral() const'],['../classnum_1_1dimval.html#a430c972f99588db6f3783f06e756f3c3',1,'num::dimval::integral()'],['../namespacenum.html#a03a3a99cfa02da2a2bbd88f3c7eaaba0',1,'num::integral(std::function&lt; R(A)&gt; f, A1 aa, A2 bb, double t=1.0E-06, unsigned n=16) -&gt; decltype(std::forward&lt; std::function&lt; R(A)&gt;&gt;(f)(A()) *A())'],['../namespacenum.html#aab34b06bd38fe715c4f7133469ff827c',1,'num::integral(R(*f)(A), A1 a, A2 b, double t=1.0E-06, unsigned n=16) -&gt; decltype(std::forward&lt; R(*)(A)&gt;(f)(A()) *A())']]],
+  ['integral_2ehpp',['integral.hpp',['../integral_8hpp.html',1,'']]],
+  ['integral_5fstats',['integral_stats',['../classnum_1_1integral__stats.html',1,'num']]],
+  ['integral_5fstats',['integral_stats',['../classnum_1_1integral__stats.html#a04750b03f649fa13a05597f5e49a6e04',1,'num::integral_stats']]],
+  ['integral_5fstats_2ehpp',['integral_stats.hpp',['../integral__stats_8hpp.html',1,'']]],
+  ['integration',['Integration',['../integrals.html',1,'']]],
+  ['interp_5f1_2ecpp',['interp_1.cpp',['../interp__1_8cpp.html',1,'']]],
+  ['interpolant',['interpolant',['../classnum_1_1interpolant.html#a1bf07d2865c0692bdb0e7abed75f5b75',1,'num::interpolant::interpolant()'],['../classnum_1_1dimval.html#a1bf07d2865c0692bdb0e7abed75f5b75',1,'num::dimval::interpolant()'],['../classnum_1_1interpolant.html#a8778f561e4283cb4f2c4aa950696ca15',1,'num::interpolant::interpolant(list d=list())'],['../classnum_1_1interpolant.html#a064bb39591dfa83ae961190e3fc811a4',1,'num::interpolant::interpolant(std::string fname, I x_unit=1.0, D y_unit=1.0)'],['../classnum_1_1interpolant.html#a3b255d9b040fd8e4ea858a57c16488d7',1,'num::interpolant::interpolant(std::function&lt; D(I)&gt; f, A1 aa, A2 bb, double t=1.0E-06, unsigned n=16)'],['../classnum_1_1interpolant.html#a7ec596c43c54f6fd3d093478137a9d9f',1,'num::interpolant::interpolant(D(*f)(I), A1 aa, A2 bb, double t=1.0E-06, unsigned n=16)']]],
+  ['interpolant',['interpolant',['../classnum_1_1interpolant.html',1,'num']]],
+  ['interpolant_2ehpp',['interpolant.hpp',['../interpolant_8hpp.html',1,'']]],
+  ['interpolantd',['interpolantd',['../namespacenum.html#a2168d41aa428e5eee9875db4d3d109bb',1,'num']]],
+  ['interval',['interval',['../structnum_1_1interval.html',1,'num']]],
+  ['interval_2ehpp',['interval.hpp',['../interval_8hpp.html',1,'']]],
+  ['ipoint',['ipoint',['../structnum_1_1ipoint.html',1,'num']]]
 ];

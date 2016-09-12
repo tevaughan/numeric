@@ -37,7 +37,7 @@ speed.
 
 An adaptive-quadrature, trapezoid-rule, global integration function,
 num::integral allows the definite integral of any continuous function of one
-variable to be computed a specified tolerance.
+variable to be computed to a specified tolerance.
 
 The global num::integral is designed to be able to interoperate with units.
 
