@@ -9,13 +9,13 @@ The C++-11 numeric library provides physical units, an adaptive quadrature
 integrator, and the ability to instantiate a linear interpolant in various,
 convenient ways.
 
-# [Documentation](https://tevaughan.github.io/numeric/doxygen-html)
+***[Visit the documentation site.](https://tevaughan.github.io/numeric/doxygen-html)***
 
 ## To do:
 
  - Incorporate and adapt code from my linear regression project on github.
 
-# License
+## License
 
 Copyright 2016
 Thomas E. Vaughan
