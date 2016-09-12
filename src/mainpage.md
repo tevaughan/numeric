@@ -5,7 +5,7 @@ The C++-11 numeric library provides physical units, an adaptive quadrature
 integrator, and the ability to instantiate a linear interpolant in various,
 convenient ways.
 
-## Physically dimensioned quantities.
+## Physically Dimensioned Quantities
 
 The implementation of physical units with compile-time checking for dimensions
 allows one to do things like this:
