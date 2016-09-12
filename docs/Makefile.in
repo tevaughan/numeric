@@ -637,6 +637,7 @@ uninstall-am:
 
 
 dox :
+	(cd examples; make dox)
 	doxygen
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.

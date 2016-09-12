@@ -9,5 +9,6 @@ SUBDIRS = examples .
 EXTRA_DIST = Doxyfile
 
 dox :
+	(cd examples; make dox)
 	doxygen
 
