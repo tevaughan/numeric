@@ -37,9 +37,9 @@ Member functions allow for integer power or root.
 #include <units.hpp>
 using namespace num;
 length x = 2 * cm;
-area a = x.pow<2>();
+area a = pow<2>(x);
 length y = 0.5 * sqrt(a);
-volume v = x.pow<3>();
-length z = 0.1 * v.root<3>();
+volume v = pow<3>(x);
+length z = 0.1 * root<3>(v);
 ```
 
