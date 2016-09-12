@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['g',['g',['../namespacenum.html#acfd3a886dc04759aafe53aac4b905812',1,'num::g()'],['../interp__1_8cpp.html#ac84831571c8f3d0bca83c1747a32e8d6',1,'g():&#160;interp_1.cpp']]],
+  ['g',['g',['../namespacenum.html#acfd3a886dc04759aafe53aac4b905812',1,'num']]],
   ['gees',['gees',['../structnum_1_1gees.html#a0b82f9f84a67490b871f8b29d1c75a2a',1,'num::gees::gees(double v)'],['../structnum_1_1gees.html#a7c6fbdcc5b1873597aa5d465d742658d',1,'num::gees::gees(gees const &amp;dv)=default']]],
   ['gees',['gees',['../structnum_1_1gees.html',1,'num']]],
   ['ghz',['GHz',['../namespacenum.html#a1b26865eaf88c3e8096c7f4c5a362e16',1,'num']]],

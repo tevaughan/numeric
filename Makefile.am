@@ -6,7 +6,6 @@ ACLOCAL_AMFLAGS = -I m4
 EXTRA_DIST = .clang-format
 
 dox :
-	@(cd src; make dox)
 	@(cd docs; make dox)
 
 clean-local :

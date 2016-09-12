@@ -1,6 +1,4 @@
 
-SUBDIRS = . examples
-
 # A compiled library is built for numeric.  At the moment, this library exists
 # only to support units for dimval.
 
@@ -53,7 +51,4 @@ units.hpp units.cpp : units.txt units.pl
 
 clean-local :
 	@rm -fv *.gcno
-
-dox :
-	@(cd examples; make dox)
 

@@ -48,8 +48,8 @@ AC_C_INLINE
 AC_CHECK_FUNCS([pow])
 
 AC_CONFIG_FILES([Makefile
+                 docs/examples/Makefile
                  docs/Makefile
-                 src/examples/Makefile
                  src/Makefile
                  test/Makefile])
 AC_OUTPUT

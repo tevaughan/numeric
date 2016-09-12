@@ -89,7 +89,7 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 noinst_PROGRAMS = units_1$(EXEEXT) interp_1$(EXEEXT)
-subdir = src/examples
+subdir = docs/examples
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
 	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
@@ -109,7 +109,7 @@ PROGRAMS = $(noinst_PROGRAMS)
 am_interp_1_OBJECTS = interp_1.$(OBJEXT)
 interp_1_OBJECTS = $(am_interp_1_OBJECTS)
 interp_1_LDADD = $(LDADD)
-interp_1_DEPENDENCIES = ../libnumeric.la
+interp_1_DEPENDENCIES = ../../src/libnumeric.la
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
@@ -117,7 +117,7 @@ am__v_lt_1 =
 am_units_1_OBJECTS = units_1.$(OBJEXT)
 units_1_OBJECTS = $(am_units_1_OBJECTS)
 units_1_LDADD = $(LDADD)
-units_1_DEPENDENCIES = ../libnumeric.la
+units_1_DEPENDENCIES = ../../src/libnumeric.la
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -314,7 +314,7 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 EXTRA_DIST = interp_1.gpi
-LDADD = ../libnumeric.la
+LDADD = ../../src/libnumeric.la
 units_1_SOURCES = units_1.cpp
 interp_1_SOURCES = interp_1.cpp
 all: all-am
@@ -330,9 +330,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign src/examples/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign docs/examples/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --foreign src/examples/Makefile
+	  $(AUTOMAKE) --foreign docs/examples/Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
 	  *config.status*) \

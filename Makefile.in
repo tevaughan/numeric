@@ -821,7 +821,6 @@ uninstall-am:
 @CODE_COVERAGE_RULES@
 
 dox :
-	@(cd src; make dox)
 	@(cd docs; make dox)
 
 clean-local :
