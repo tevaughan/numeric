@@ -1,4 +1,5 @@
 
+EXTRA_DIST = interp_1.gpi
 LDADD = ../libnumeric.la
 
 noinst_PROGRAMS = units_1 interp_1

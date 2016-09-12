@@ -313,6 +313,7 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
+EXTRA_DIST = interp_1.gpi
 LDADD = ../libnumeric.la
 units_1_SOURCES = units_1.cpp
 interp_1_SOURCES = interp_1.cpp
