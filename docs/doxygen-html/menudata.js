@@ -105,4 +105,7 @@ var menudata={children:[
 {text:'r',url:'functions_rela.html#index_r'},
 {text:'s',url:'functions_rela.html#index_s'}]}]}]},
 {text:'Files',url:'files.html',children:[
-{text:'File List',url:'files.html'}]}]}
+{text:'File List',url:'files.html'},
+{text:'File Members',url:'globals.html',children:[
+{text:'All',url:'globals.html'},
+{text:'Functions',url:'globals_func.html'}]}]}]}

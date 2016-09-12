@@ -1,6 +1,7 @@
 var searchData=
 [
   ['m',['m',['../namespacenum.html#a73ac0e06b3728ba6cd99dabd183067e1',1,'num']]],
+  ['main',['main',['../interp__1_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;interp_1.cpp'],['../units__1_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;units_1.cpp']]],
   ['mass',['mass',['../namespacenum.html#afc368b006a9e1ce6c67ca7aa2e27c8f1',1,'num']]],
   ['megahertz',['megahertz',['../structnum_1_1megahertz.html',1,'num']]],
   ['megahertz',['megahertz',['../structnum_1_1megahertz.html#aa5f4e3dfa40f7514fb8c5cb27d857362',1,'num::megahertz::megahertz(double v)'],['../structnum_1_1megahertz.html#a9fa1f23e42237b28ad9b964486539624',1,'num::megahertz::megahertz(megahertz const &amp;dv)=default']]],

@@ -62,7 +62,10 @@ algorithm employed in num::integral is used, but the intermediate results of
 the adaptive subdivision are stored for use as points for interpolation.  So
 the interpolant is intelligently constructed to have a high density of points
 only where necessary to ensure an accurate representation of the function and
-its integral.
+its integral. Notice how the points are distributed in the following
+interpolant for a Gaussian:
+
+![Interpolant of Gaussian for Tolerance=1.0E-03 on Value of Integral](interp_1.png)
 
 The num::interpolant class is designed to interoperate with units.
 

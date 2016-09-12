@@ -8,6 +8,7 @@
 using namespace num;
 using namespace std;
 
+/// Main function for units_1.cpp.
 int main()
 {
    // 'ft' stands for one foot.

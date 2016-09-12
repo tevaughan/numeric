@@ -88,7 +88,7 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-noinst_PROGRAMS = units_1$(EXEEXT)
+noinst_PROGRAMS = units_1$(EXEEXT) interp_1$(EXEEXT)
 subdir = src/examples
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
@@ -106,14 +106,18 @@ CONFIG_HEADER = $(top_builddir)/src/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 PROGRAMS = $(noinst_PROGRAMS)
-am_units_1_OBJECTS = units_1.$(OBJEXT)
-units_1_OBJECTS = $(am_units_1_OBJECTS)
-units_1_LDADD = $(LDADD)
-units_1_DEPENDENCIES = ../libnumeric.la
+am_interp_1_OBJECTS = interp_1.$(OBJEXT)
+interp_1_OBJECTS = $(am_interp_1_OBJECTS)
+interp_1_LDADD = $(LDADD)
+interp_1_DEPENDENCIES = ../libnumeric.la
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+am_units_1_OBJECTS = units_1.$(OBJEXT)
+units_1_OBJECTS = $(am_units_1_OBJECTS)
+units_1_LDADD = $(LDADD)
+units_1_DEPENDENCIES = ../libnumeric.la
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -148,8 +152,8 @@ AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-SOURCES = $(units_1_SOURCES)
-DIST_SOURCES = $(units_1_SOURCES)
+SOURCES = $(interp_1_SOURCES) $(units_1_SOURCES)
+DIST_SOURCES = $(interp_1_SOURCES) $(units_1_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -311,6 +315,7 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 LDADD = ../libnumeric.la
 units_1_SOURCES = units_1.cpp
+interp_1_SOURCES = interp_1.cpp
 all: all-am
 
 .SUFFIXES:
@@ -354,6 +359,10 @@ clean-noinstPROGRAMS:
 	echo " rm -f" $$list; \
 	rm -f $$list
 
+interp_1$(EXEEXT): $(interp_1_OBJECTS) $(interp_1_DEPENDENCIES) $(EXTRA_interp_1_DEPENDENCIES) 
+	@rm -f interp_1$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(interp_1_OBJECTS) $(interp_1_LDADD) $(LIBS)
+
 units_1$(EXEEXT): $(units_1_OBJECTS) $(units_1_DEPENDENCIES) $(EXTRA_units_1_DEPENDENCIES) 
 	@rm -f units_1$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(units_1_OBJECTS) $(units_1_LDADD) $(LIBS)
@@ -364,6 +373,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/interp_1.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/units_1.Po@am__quote@
 
 .cpp.o:
