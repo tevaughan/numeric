@@ -1,6 +1,6 @@
 
 set term pngcairo
-set title "Linear Interpolation of Gaussian\nArea Accurate to One Part in a Thousand\nAdaptive Quadrature: 84 Points"
+set title "Linear Interpolation of Gaussian,\nArea Accurate to One Part in a Thousand,\nAdaptive Quadrature: 84 Points"
 set output "interp_1.png"
 set yrange [-0.05:0.45]
 
