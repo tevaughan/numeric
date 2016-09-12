@@ -19,7 +19,7 @@ double g(double x)
 /// Main function for interp_1.cpp.
 int main()
 {
-   interpolantd const i(g, -5.0, 5.0, 1.0E-03);
+   interpolantd const i(g, -5.0, 5.0, 1.0E-04);
    cout << i.points();
    return 0;
 }
