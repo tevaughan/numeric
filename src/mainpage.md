@@ -1,9 +1,9 @@
 
 # Introduction  {#mainpage}
 
-The C++-11 numeric library provides physical units, an adaptive quadrature
-integrator, and the ability to instantiate a linear interpolant in various,
-convenient ways.
+The "numeric" project is a C++-11 library that provides physical units, an
+adaptive quadrature integrator, and the ability to instantiate a linear
+interpolant in various, convenient ways.
 
 ## Physically Dimensioned Quantities
 

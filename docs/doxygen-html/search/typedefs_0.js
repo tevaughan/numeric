@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['dimval_5fpower',['dimval_power',['../classnum_1_1dimval.html#a647059d6a2dbff168126a0518c57621a',1,'num::dimval']]],
-  ['dimval_5froot',['dimval_root',['../classnum_1_1dimval.html#a3601e60743a074563ce91910f487fa61',1,'num::dimval']]]
+  ['acceleration',['acceleration',['../namespacenum.html#a0d21dd40cc6526ddaeb4754943ab4eaf',1,'num']]],
+  ['area',['area',['../namespacenum.html#a67153cf09115a6465b566af1f2fcc3e4',1,'num']]]
 ];

@@ -1,12 +1,12 @@
 
 @CODE_COVERAGE_RULES@
 
-SUBDIRS = src test .
+SUBDIRS = src test docs .
 ACLOCAL_AMFLAGS = -I m4
 EXTRA_DIST = .clang-format
 
 dox :
-	doxygen
+	@(cd docs; make dox)
 
 clean-local :
 	@rm -frv numeric-*-coverage*

@@ -26,7 +26,7 @@ age      = 0
 
 BUILT_SOURCES = dimensions.hpp units.cpp units.hpp
 CLEANFILES = $(BUILT_SOURCES)
-EXTRA_DIST = dimensions.pl dimensions.txt units.pl units.txt
+EXTRA_DIST = *.pl *.txt *.md
 
 pkginclude_HEADERS =\
  dimval.hpp\

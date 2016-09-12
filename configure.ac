@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT([numeric], [1.3], [tevaughan@gmail.com])
+AC_INIT([numeric], [1.3.1], [tevaughan@gmail.com])
 AC_CONFIG_AUX_DIR([aux-scripts])
 # AC_CONFIG_HEADERS reduces line length on standard output during build.
 AC_CONFIG_HEADERS([src/config.h])
@@ -48,6 +48,7 @@ AC_C_INLINE
 AC_CHECK_FUNCS([pow])
 
 AC_CONFIG_FILES([Makefile
+                 docs/Makefile
                  src/examples/Makefile
                  src/Makefile
                  test/Makefile])

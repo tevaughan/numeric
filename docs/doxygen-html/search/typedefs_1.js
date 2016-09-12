@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['func',['func',['../classnum_1_1dimval.html#ad1628995b6c7c0007c5c50ac964ccc3b',1,'num::dimval']]]
+  ['charge',['charge',['../namespacenum.html#aa40f7df5985e4cb1592dad0f976acfe9',1,'num']]],
+  ['current',['current',['../namespacenum.html#aa26479204abe171a2d0abb1770a6aad4',1,'num']]]
 ];
