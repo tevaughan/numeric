@@ -54,3 +54,6 @@ units.hpp units.cpp : units.txt units.pl
 clean-local :
 	@rm -fv *.gcno
 
+dox :
+	@(cd examples; make dox)
+
