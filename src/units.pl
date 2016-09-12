@@ -41,9 +41,6 @@ while(<INPUT>) {
 /// Machine-generated structure providing public constructor, which takes a
 /// double-precision number of $pnm.
 struct $pnm : public $dim {
-   /// Factor that converts double-precision number of $pnm to
-   /// double-precision number of the equivalent MKS unit.
-   static double constexpr c = 1.0 / $cnv;
    /// Construct a dimensioned quantity from a double-precision number of
    /// $pnm.
    $pnm(double v) : $dim(v * $cnv) {}
@@ -52,6 +49,9 @@ struct $pnm : public $dim {
    /// Write representation to output stream.
    friend std::ostream& operator<<(std::ostream& os, $pnm const& dv)
    {
+      /// Factor that converts to the number of $pnm from the number of the
+      /// equivalent MKS unit.
+      static double constexpr c = 1.0 / $cnv;
       return os << "[" << c * dv.v_ << " $snm]";
    }
 };

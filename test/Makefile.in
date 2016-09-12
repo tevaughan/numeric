@@ -13,6 +13,11 @@
 # PARTICULAR PURPOSE.
 
 @SET_MAKE@
+
+# Copyright 2016  Thomas E. Vaughan
+#
+# As part of the numeric library, this file may be distributed under the terms
+# of the GNU LPGL, Version 3 or later.
 VPATH = @srcdir@
 am__is_gnu_make = { \
   if test -z '$(MAKELEVEL)'; then \
@@ -106,8 +111,8 @@ CONFIG_HEADER = $(top_builddir)/src/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am_tests_OBJECTS = tests-integral_test.$(OBJEXT) \
-	tests-interpolant_test.$(OBJEXT) tests-units_test.$(OBJEXT) \
-	tests-tests.$(OBJEXT)
+	tests-interpolant_test.$(OBJEXT) tests-tests.$(OBJEXT) \
+	tests-units_test.$(OBJEXT)
 tests_OBJECTS = $(am_tests_OBJECTS)
 am__DEPENDENCIES_1 =
 tests_DEPENDENCIES = ../src/libnumeric.la $(am__DEPENDENCIES_1)
@@ -518,12 +523,16 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-EXTRA_DIST = interpolant_test.txt
+EXTRA_DIST = \
+ interpolant_test-badinput2.txt\
+ interpolant_test-badinput.txt\
+ interpolant_test.txt
+
 tests_SOURCES = \
-	       integral_test.cpp\
-	       interpolant_test.cpp\
-	       units_test.cpp\
-	       tests.cpp
+ integral_test.cpp\
+ interpolant_test.cpp\
+ tests.cpp\
+ units_test.cpp
 
 tests_LDADD = ../src/libnumeric.la $(CODE_COVERAGE_LIBS)
 tests_CPPFLAGS = $(CODE_COVERAGE_CPPFLAGS)
@@ -636,20 +645,6 @@ tests-interpolant_test.obj: interpolant_test.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tests_CPPFLAGS) $(CPPFLAGS) $(tests_CXXFLAGS) $(CXXFLAGS) -c -o tests-interpolant_test.obj `if test -f 'interpolant_test.cpp'; then $(CYGPATH_W) 'interpolant_test.cpp'; else $(CYGPATH_W) '$(srcdir)/interpolant_test.cpp'; fi`
 
-tests-units_test.o: units_test.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tests_CPPFLAGS) $(CPPFLAGS) $(tests_CXXFLAGS) $(CXXFLAGS) -MT tests-units_test.o -MD -MP -MF $(DEPDIR)/tests-units_test.Tpo -c -o tests-units_test.o `test -f 'units_test.cpp' || echo '$(srcdir)/'`units_test.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/tests-units_test.Tpo $(DEPDIR)/tests-units_test.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='units_test.cpp' object='tests-units_test.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tests_CPPFLAGS) $(CPPFLAGS) $(tests_CXXFLAGS) $(CXXFLAGS) -c -o tests-units_test.o `test -f 'units_test.cpp' || echo '$(srcdir)/'`units_test.cpp
-
-tests-units_test.obj: units_test.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tests_CPPFLAGS) $(CPPFLAGS) $(tests_CXXFLAGS) $(CXXFLAGS) -MT tests-units_test.obj -MD -MP -MF $(DEPDIR)/tests-units_test.Tpo -c -o tests-units_test.obj `if test -f 'units_test.cpp'; then $(CYGPATH_W) 'units_test.cpp'; else $(CYGPATH_W) '$(srcdir)/units_test.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/tests-units_test.Tpo $(DEPDIR)/tests-units_test.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='units_test.cpp' object='tests-units_test.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tests_CPPFLAGS) $(CPPFLAGS) $(tests_CXXFLAGS) $(CXXFLAGS) -c -o tests-units_test.obj `if test -f 'units_test.cpp'; then $(CYGPATH_W) 'units_test.cpp'; else $(CYGPATH_W) '$(srcdir)/units_test.cpp'; fi`
-
 tests-tests.o: tests.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tests_CPPFLAGS) $(CPPFLAGS) $(tests_CXXFLAGS) $(CXXFLAGS) -MT tests-tests.o -MD -MP -MF $(DEPDIR)/tests-tests.Tpo -c -o tests-tests.o `test -f 'tests.cpp' || echo '$(srcdir)/'`tests.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/tests-tests.Tpo $(DEPDIR)/tests-tests.Po
@@ -663,6 +658,20 @@ tests-tests.obj: tests.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='tests.cpp' object='tests-tests.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tests_CPPFLAGS) $(CPPFLAGS) $(tests_CXXFLAGS) $(CXXFLAGS) -c -o tests-tests.obj `if test -f 'tests.cpp'; then $(CYGPATH_W) 'tests.cpp'; else $(CYGPATH_W) '$(srcdir)/tests.cpp'; fi`
+
+tests-units_test.o: units_test.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tests_CPPFLAGS) $(CPPFLAGS) $(tests_CXXFLAGS) $(CXXFLAGS) -MT tests-units_test.o -MD -MP -MF $(DEPDIR)/tests-units_test.Tpo -c -o tests-units_test.o `test -f 'units_test.cpp' || echo '$(srcdir)/'`units_test.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/tests-units_test.Tpo $(DEPDIR)/tests-units_test.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='units_test.cpp' object='tests-units_test.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tests_CPPFLAGS) $(CPPFLAGS) $(tests_CXXFLAGS) $(CXXFLAGS) -c -o tests-units_test.o `test -f 'units_test.cpp' || echo '$(srcdir)/'`units_test.cpp
+
+tests-units_test.obj: units_test.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tests_CPPFLAGS) $(CPPFLAGS) $(tests_CXXFLAGS) $(CXXFLAGS) -MT tests-units_test.obj -MD -MP -MF $(DEPDIR)/tests-units_test.Tpo -c -o tests-units_test.obj `if test -f 'units_test.cpp'; then $(CYGPATH_W) 'units_test.cpp'; else $(CYGPATH_W) '$(srcdir)/units_test.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/tests-units_test.Tpo $(DEPDIR)/tests-units_test.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='units_test.cpp' object='tests-units_test.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tests_CPPFLAGS) $(CPPFLAGS) $(tests_CXXFLAGS) $(CXXFLAGS) -c -o tests-units_test.obj `if test -f 'units_test.cpp'; then $(CYGPATH_W) 'units_test.cpp'; else $(CYGPATH_W) '$(srcdir)/units_test.cpp'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo

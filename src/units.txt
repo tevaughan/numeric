@@ -1,4 +1,9 @@
 
+# Copyright 2016  Thomas E. Vaughan
+#
+# As part of the numeric library, this file may be distributed under the terms
+# of the GNU LGPL, Version 3 or later.
+
 seconds         s     time          1.0
 milliseconds    ms    time          0.001
 microseconds    mus   time          1.0E-06
