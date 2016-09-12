@@ -14,7 +14,7 @@ the interpolant in comparison with that of the originl function.  The
 constructor chooses the minimum number of points necessary to produce that
 accuracy.  Notice that points are dense where the curvature is large.
 
-![Interpolant of Gaussian for Tolerance=1.0E-03 on Value of Integral](src/examples/interp_1.png)
+![Interpolant of Gaussian for Tolerance=1.0E-03 on Value of Integral](docs/examples/interp_1.png)
 
 ## Documentation
 
