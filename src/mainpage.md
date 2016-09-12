@@ -11,11 +11,21 @@ The implementation of physical units with compile-time checking for dimensions
 allows one to do things like this:
 
 ```cpp
+#include <iostream>
 #include <units.hpp>
+
 using namespace num;
-acceleration const g = 9.81 * m / pow<2>(s); // acceleration of gravity
-length ell = 1 * m;                          // length of pendulum
-frequency f = sqrt(g / ell);                 // frequency of small oscillations
+using namespace std;
+
+int main()
+{
+   // 'ft' stands for one foot.
+   length ell = 2.1 * ft;                    // length of pendulum
+   // 'gn' stands for one standard gravity.
+   frequency f = sqrt(gn / ell);             // frequency of small oscillations
+   cout << f << endl;                        // [3.9142 s^-1]
+   return 0;
+}
 ```
 
 The compiler would produce an error if, say, a distance were assigned to a

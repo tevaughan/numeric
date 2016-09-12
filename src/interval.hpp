@@ -7,7 +7,7 @@
 /// \file interval.hpp
 ///
 /// \brief  Source for class interval and class subinterval_stack, which are
-///         used by function integral() and by class interpolant.
+///         used by num::integral() and by num::interpolant.
 
 #ifndef NUMERIC_INTERVAL_HPP
 #define NUMERIC_INTERVAL_HPP

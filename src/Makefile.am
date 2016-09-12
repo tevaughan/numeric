@@ -1,4 +1,6 @@
 
+SUBDIRS = . examples
+
 # A compiled library is built for numeric.  At the moment, this library exists
 # only to support units for dimval.
 

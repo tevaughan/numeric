@@ -4,6 +4,11 @@
 // This software is distributable under the terms of the GNU LGPL, Version 3 or
 // later.
 
+/// \file   integral_stats.hpp
+///
+/// \brief  Source for num::integral_stats, which is used by num::integral()
+///         and by num::interpolant.
+
 #ifndef NUMERIC_INTEGRAL_STATS_HPP
 #define NUMERIC_INTEGRAL_STATS_HPP
 

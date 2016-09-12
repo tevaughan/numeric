@@ -6,8 +6,8 @@
 
 /// \file integral.hpp
 ///
-/// \brief  Source for integral(), which numerically integrates via adaptive
-///         quadrature and the trapezoidal rule.
+/// \brief  Source for num::integral(), which numerically integrates via
+///         adaptive quadrature and the trapezoidal rule.
 
 #ifndef NUMERIC_INTEGRAL_HPP
 #define NUMERIC_INTEGRAL_HPP

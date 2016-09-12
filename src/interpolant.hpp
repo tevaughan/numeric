@@ -4,6 +4,11 @@
 // This software is distributable under the terms of the GNU LGPL, Version 3 or
 // later.
 
+/// \file   interpolant.hpp
+///
+/// \brief  Source code for num::interpolant, num::ipoint, num::ilist,
+///         num::interpolantd, and num::ilistd.
+
 #ifndef NUMERIC_INTERPOLANT_HPP
 #define NUMERIC_INTERPOLANT_HPP
 

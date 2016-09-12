@@ -195,14 +195,14 @@ namespace num
 
       /// Type of integer root of present instance.
       /// \tparam E  Integer indicating degree of root.
-      template <unsigned E>
+      template <int E>
       using dimval_root = dimval<TI / E, D / E, M / E, C / E, TE / E>;
 
       /// \return Integer root.
-      template <unsigned E>
+      template <int E>
       dimval_root<E> root() const
       {
-         static_assert(E, "zeroth root");
+         static_assert(E > 0, "zero or negative root");
          static_assert(D / E * E == D, "illegal root along distance");
          static_assert(M / E * E == M, "illegal root along mass");
          static_assert(C / E * E == C, "illegal root along charge");
@@ -213,7 +213,7 @@ namespace num
       }
 
       /// \return Integer root.
-      template <unsigned E>
+      template <int E>
       friend dimval_root<E> root(dimval const &dv)
       {
          return dv.root<E>();
