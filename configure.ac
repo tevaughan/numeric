@@ -9,7 +9,6 @@ AC_CONFIG_HEADERS([src/config.h])
 AC_CONFIG_MACRO_DIRS([m4])
 AC_CONFIG_SRCDIR([src/dimval.hpp])
 AM_INIT_AUTOMAKE([-Wall foreign])
-CPPFLAGS="$CPPFLAGS -finput-charset=UTF-8 -fexec-charset=UTF-8"
 AC_LANG([C++])
 
 AX_CODE_COVERAGE
@@ -46,6 +45,7 @@ AC_C_INLINE
 
 # Checks for library functions.
 AC_CHECK_FUNCS([pow])
+AC_CHECK_FUNCS([sqrt])
 
 AC_CONFIG_FILES([Makefile
                  docs/examples/Makefile

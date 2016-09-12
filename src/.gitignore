@@ -1,4 +1,5 @@
 config.h
+config.h.in~
 .deps
 dimensions.hpp
 *.gcno
