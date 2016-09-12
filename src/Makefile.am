@@ -28,7 +28,13 @@ BUILT_SOURCES = dimensions.hpp units.cpp units.hpp
 CLEANFILES = $(BUILT_SOURCES)
 EXTRA_DIST = dimensions.pl dimensions.txt units.pl units.txt
 
-pkginclude_HEADERS = dimval.hpp integral.hpp interpolant.hpp interval.hpp
+pkginclude_HEADERS =\
+ dimval.hpp\
+ integral.hpp\
+ integral_stats.hpp\
+ interpolant.hpp\
+ interval.hpp
+
 nodist_pkginclude_HEADERS = dimensions.hpp units.hpp
 
 lib_LTLIBRARIES = libnumeric.la
