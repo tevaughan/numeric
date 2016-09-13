@@ -36,6 +36,12 @@ namespace num
       return n * arcsec;
    }
 
+   // Forward declaration needed to allow interpolant to call A(0.0).  The
+   // dimval's friend declaration for interpolant seems to work only if this
+   // forward declaration be present.
+   template <typename A, typename R>
+   class interpolant;
+
    /// Model of a dimensioned value.
    /// \tparam TI  Exponent of time
    /// \tparam D   Exponent of distance.
