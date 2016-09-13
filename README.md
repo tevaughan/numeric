@@ -3,8 +3,8 @@
 
 ## C++-11 library for numerical computation
 
-The "numeric" project is a C++-11 library. It provides
-- types that allow an expression's dimension to be determined at compile time
+The "numeric" project is a C++-11 library. It provides:
+- Types that allow an expression's dimension to be determined at compile time.
 ```cpp
   #include <iostream>
   #include <units.hpp>
@@ -20,7 +20,7 @@ The "numeric" project is a C++-11 library. It provides
      return 0;
   }
 ```
-- an adaptive-quadrature integrator
+- An adaptive-quadrature integrator.
 ```cpp
   #include <cmath>
   #include <iostream>
@@ -39,19 +39,22 @@ The "numeric" project is a C++-11 library. It provides
      return 0;
   }
 ```
-- an interpolant class with various, convenient constructors
+- An interpolant class with various, convenient constructors (from first two
+  columns of ASCII file, from list of points, or from a continuous function
+  that the constructed interpolant should approximate to a given tolerance).
 
-The following plot shows, as an example, the result of constructing a linear
-interpolant for a Gaussian.  One specifies a desired accuracy for the area of
-the interpolant in comparison with that of the originl function.  The
-constructor chooses the minimum number of points necessary to produce that
-accuracy.  Notice that points are dense where the curvature is large.
+  The following plot shows, as an example, the result of constructing a linear
+  interpolant for a Gaussian.  One specifies a desired accuracy for the area of
+  the interpolant.  Class num::interpolant's constructor, whose signature is
+  the same as that for the global function integral() shown above, chooses the
+  minimum number of points necessary to produce that accuracy.  Notice that
+  points are dense where the curvature is large.
 
 ![Interpolant of Gaussian for Tolerance=1.0E-03 on Value of Integral](docs/examples/interp_1.png)
 
 ## Documentation
 
-***[Documentation can be viewed on the Github-Pages site for numeric.](https://tevaughan.github.io/numeric/doxygen-html)***
+***[Documentation on the Github-Pages site for numeric.](https://tevaughan.github.io/numeric/doxygen-html)***
 
 ## To do:
 
