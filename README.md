@@ -58,6 +58,12 @@ The "numeric" project is a C++-11 library. It provides:
 
 ## To do:
 
+ - Implement interpolant::invert() to return inverse function.
+   - This will produce an error if the function be not invertible.
+   - invert() will be useful if one want a quick, approximate inverse of a
+     function that is invertible but not analytically invertible.
+   - After an interpolant of sufficient accuracy is constructed, an interpolant
+     for the inverse function is easy to construct!
  - Incorporate and adapt code from my linear regression project on github.
 
 ## License
