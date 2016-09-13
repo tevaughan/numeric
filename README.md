@@ -5,7 +5,7 @@
 
 The "numeric" project is a C++-11 library. It provides
 - types that allow an expression's dimension to be determined at compile time
-  ```cpp
+```cpp
   #include <iostream>
   #include <units.hpp>
   using namespace num;
@@ -19,7 +19,7 @@ The "numeric" project is a C++-11 library. It provides
      std::cout << (x0 + v * t) / yd << " yd" << std::endl;  // "986.439 yd"
      return 0;
   }
-  ```
+```
 - an adaptive-quadrature integrator
 - an interpolant class with various, convenient constructors
 
