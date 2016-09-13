@@ -10,10 +10,12 @@ LDADD = ../../src/libnumeric.la
 noinst_PROGRAMS =\
  units_1\
  units_2\
+ integral_1\
  interp_1
 
 units_1_SOURCES = units_1.cpp
 units_2_SOURCES = units_2.cpp
+integral_1_SOURCES = integral_1.cpp
 interp_1_SOURCES = interp_1.cpp
 
 dox : interp_1.png

@@ -93,7 +93,8 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-noinst_PROGRAMS = units_1$(EXEEXT) units_2$(EXEEXT) interp_1$(EXEEXT)
+noinst_PROGRAMS = units_1$(EXEEXT) units_2$(EXEEXT) \
+	integral_1$(EXEEXT) interp_1$(EXEEXT)
 subdir = docs/examples
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/aux/m4/libtool.m4 \
@@ -113,14 +114,18 @@ CONFIG_HEADER = $(top_builddir)/src/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 PROGRAMS = $(noinst_PROGRAMS)
-am_interp_1_OBJECTS = interp_1.$(OBJEXT)
-interp_1_OBJECTS = $(am_interp_1_OBJECTS)
-interp_1_LDADD = $(LDADD)
-interp_1_DEPENDENCIES = ../../src/libnumeric.la
+am_integral_1_OBJECTS = integral_1.$(OBJEXT)
+integral_1_OBJECTS = $(am_integral_1_OBJECTS)
+integral_1_LDADD = $(LDADD)
+integral_1_DEPENDENCIES = ../../src/libnumeric.la
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+am_interp_1_OBJECTS = interp_1.$(OBJEXT)
+interp_1_OBJECTS = $(am_interp_1_OBJECTS)
+interp_1_LDADD = $(LDADD)
+interp_1_DEPENDENCIES = ../../src/libnumeric.la
 am_units_1_OBJECTS = units_1.$(OBJEXT)
 units_1_OBJECTS = $(am_units_1_OBJECTS)
 units_1_LDADD = $(LDADD)
@@ -163,9 +168,10 @@ AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-SOURCES = $(interp_1_SOURCES) $(units_1_SOURCES) $(units_2_SOURCES)
-DIST_SOURCES = $(interp_1_SOURCES) $(units_1_SOURCES) \
+SOURCES = $(integral_1_SOURCES) $(interp_1_SOURCES) $(units_1_SOURCES) \
 	$(units_2_SOURCES)
+DIST_SOURCES = $(integral_1_SOURCES) $(interp_1_SOURCES) \
+	$(units_1_SOURCES) $(units_2_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -329,6 +335,7 @@ EXTRA_DIST = interp_1.gpi
 LDADD = ../../src/libnumeric.la
 units_1_SOURCES = units_1.cpp
 units_2_SOURCES = units_2.cpp
+integral_1_SOURCES = integral_1.cpp
 interp_1_SOURCES = interp_1.cpp
 all: all-am
 
@@ -373,6 +380,10 @@ clean-noinstPROGRAMS:
 	echo " rm -f" $$list; \
 	rm -f $$list
 
+integral_1$(EXEEXT): $(integral_1_OBJECTS) $(integral_1_DEPENDENCIES) $(EXTRA_integral_1_DEPENDENCIES) 
+	@rm -f integral_1$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(integral_1_OBJECTS) $(integral_1_LDADD) $(LIBS)
+
 interp_1$(EXEEXT): $(interp_1_OBJECTS) $(interp_1_DEPENDENCIES) $(EXTRA_interp_1_DEPENDENCIES) 
 	@rm -f interp_1$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(interp_1_OBJECTS) $(interp_1_LDADD) $(LIBS)
@@ -391,6 +402,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/integral_1.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/interp_1.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/units_1.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/units_2.Po@am__quote@

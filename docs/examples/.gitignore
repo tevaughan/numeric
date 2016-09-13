@@ -1,4 +1,5 @@
 .deps
+integral_?
 interp_?
 .libs
 Makefile
