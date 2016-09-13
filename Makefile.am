@@ -7,7 +7,7 @@
 @CODE_COVERAGE_RULES@
 
 SUBDIRS = src test docs .
-ACLOCAL_AMFLAGS = -I m4
+ACLOCAL_AMFLAGS = -I aux/m4
 EXTRA_DIST = .clang-format
 
 dox :

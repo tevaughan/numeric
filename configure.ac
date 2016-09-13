@@ -3,10 +3,10 @@
 
 AC_PREREQ([2.69])
 AC_INIT([numeric], [1.3.2], [tevaughan@gmail.com])
-AC_CONFIG_AUX_DIR([aux-scripts])
+AC_CONFIG_AUX_DIR([aux/scripts])
+AC_CONFIG_MACRO_DIRS([aux/m4])
 # AC_CONFIG_HEADERS reduces line length on standard output during build.
 AC_CONFIG_HEADERS([src/config.h])
-AC_CONFIG_MACRO_DIRS([m4])
 AC_CONFIG_SRCDIR([src/dimval.hpp])
 AM_INIT_AUTOMAKE([-Wall foreign])
 AC_LANG([C++])

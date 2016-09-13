@@ -94,12 +94,14 @@ build_triplet = @build@
 host_triplet = @host@
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
-	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
-	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
-	$(top_srcdir)/m4/m4_ax_code_coverage.m4 \
-	$(top_srcdir)/m4/m4_ax_cxx_compile_stdcxx.m4 \
-	$(top_srcdir)/m4/m4_ax_cxx_compile_stdcxx_11.m4 \
+am__aclocal_m4_deps = $(top_srcdir)/aux/m4/libtool.m4 \
+	$(top_srcdir)/aux/m4/ltoptions.m4 \
+	$(top_srcdir)/aux/m4/ltsugar.m4 \
+	$(top_srcdir)/aux/m4/ltversion.m4 \
+	$(top_srcdir)/aux/m4/lt~obsolete.m4 \
+	$(top_srcdir)/aux/m4/m4_ax_code_coverage.m4 \
+	$(top_srcdir)/aux/m4/m4_ax_cxx_compile_stdcxx.m4 \
+	$(top_srcdir)/aux/m4/m4_ax_cxx_compile_stdcxx_11.m4 \
 	$(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
@@ -168,17 +170,17 @@ CTAGS = ctags
 CSCOPE = cscope
 DIST_SUBDIRS = $(SUBDIRS)
 am__DIST_COMMON = $(srcdir)/Makefile.in \
-	$(top_srcdir)/aux-scripts/ar-lib \
-	$(top_srcdir)/aux-scripts/compile \
-	$(top_srcdir)/aux-scripts/config.guess \
-	$(top_srcdir)/aux-scripts/config.sub \
-	$(top_srcdir)/aux-scripts/install-sh \
-	$(top_srcdir)/aux-scripts/ltmain.sh \
-	$(top_srcdir)/aux-scripts/missing aux-scripts/ar-lib \
-	aux-scripts/compile aux-scripts/config.guess \
-	aux-scripts/config.sub aux-scripts/depcomp \
-	aux-scripts/install-sh aux-scripts/ltmain.sh \
-	aux-scripts/missing
+	$(top_srcdir)/aux/scripts/ar-lib \
+	$(top_srcdir)/aux/scripts/compile \
+	$(top_srcdir)/aux/scripts/config.guess \
+	$(top_srcdir)/aux/scripts/config.sub \
+	$(top_srcdir)/aux/scripts/install-sh \
+	$(top_srcdir)/aux/scripts/ltmain.sh \
+	$(top_srcdir)/aux/scripts/missing aux/scripts/ar-lib \
+	aux/scripts/compile aux/scripts/config.guess \
+	aux/scripts/config.sub aux/scripts/depcomp \
+	aux/scripts/install-sh aux/scripts/ltmain.sh \
+	aux/scripts/missing
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 distdir = $(PACKAGE)-$(VERSION)
 top_distdir = $(distdir)
@@ -354,7 +356,7 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 SUBDIRS = src test docs .
-ACLOCAL_AMFLAGS = -I m4
+ACLOCAL_AMFLAGS = -I aux/m4
 EXTRA_DIST = .clang-format
 all: all-recursive
 
