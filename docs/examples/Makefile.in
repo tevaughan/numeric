@@ -93,7 +93,7 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-noinst_PROGRAMS = units_1$(EXEEXT) interp_1$(EXEEXT)
+noinst_PROGRAMS = units_1$(EXEEXT) units_2$(EXEEXT) interp_1$(EXEEXT)
 subdir = docs/examples
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/aux/m4/libtool.m4 \
@@ -125,6 +125,10 @@ am_units_1_OBJECTS = units_1.$(OBJEXT)
 units_1_OBJECTS = $(am_units_1_OBJECTS)
 units_1_LDADD = $(LDADD)
 units_1_DEPENDENCIES = ../../src/libnumeric.la
+am_units_2_OBJECTS = units_2.$(OBJEXT)
+units_2_OBJECTS = $(am_units_2_OBJECTS)
+units_2_LDADD = $(LDADD)
+units_2_DEPENDENCIES = ../../src/libnumeric.la
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -159,8 +163,9 @@ AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-SOURCES = $(interp_1_SOURCES) $(units_1_SOURCES)
-DIST_SOURCES = $(interp_1_SOURCES) $(units_1_SOURCES)
+SOURCES = $(interp_1_SOURCES) $(units_1_SOURCES) $(units_2_SOURCES)
+DIST_SOURCES = $(interp_1_SOURCES) $(units_1_SOURCES) \
+	$(units_2_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -323,6 +328,7 @@ top_srcdir = @top_srcdir@
 EXTRA_DIST = interp_1.gpi
 LDADD = ../../src/libnumeric.la
 units_1_SOURCES = units_1.cpp
+units_2_SOURCES = units_2.cpp
 interp_1_SOURCES = interp_1.cpp
 all: all-am
 
@@ -375,6 +381,10 @@ units_1$(EXEEXT): $(units_1_OBJECTS) $(units_1_DEPENDENCIES) $(EXTRA_units_1_DEP
 	@rm -f units_1$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(units_1_OBJECTS) $(units_1_LDADD) $(LIBS)
 
+units_2$(EXEEXT): $(units_2_OBJECTS) $(units_2_DEPENDENCIES) $(EXTRA_units_2_DEPENDENCIES) 
+	@rm -f units_2$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(units_2_OBJECTS) $(units_2_LDADD) $(LIBS)
+
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
 
@@ -383,6 +393,7 @@ distclean-compile:
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/interp_1.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/units_1.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/units_2.Po@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<

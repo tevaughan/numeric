@@ -3,10 +3,25 @@
 
 ## C++-11 library for numerical computation
 
-The "numeric" project is a C++-11 library that provides physical units for
-compile-time checking of physical modeling, an adaptive quadrature integrator,
-and the ability to instantiate a linear interpolant in various, convenient
-ways.
+The "numeric" project is a C++-11 library. It provides
+- types that allow an expression's dimension to be determined at compile time
+  ```cpp
+  #include <iostream>
+  #include <units.hpp>
+  using namespace num;
+  int main() {
+     using time = num::time;  // in case of conflict with C library's time()
+     length x0 = 2 * m;       // meters
+     speed  v  = 5 * m / s;   // meters per second
+     time   t  = 3 * min;     // minutes
+     // Output distance in meters (the default) and in yards.
+     std::cout << x0 + v * t << std::endl;                  // "[902 m]"
+     std::cout << (x0 + v * t) / yd << " yd" << std::endl;  // "986.439 yd"
+     return 0;
+  }
+  ```
+- an adaptive-quadrature integrator
+- an interpolant class with various, convenient constructors
 
 The following plot shows, as an example, the result of constructing a linear
 interpolant for a Gaussian.  One specifies a desired accuracy for the area of
