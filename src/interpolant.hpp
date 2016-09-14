@@ -515,6 +515,26 @@ namespace num
          return combine(oint, f);
       }
 
+      /// Modify every y-value by scalar multiplication.
+      /// \return  Reference to present instance.
+      interpolant& operator*=(double s /**< Scale factor. */)
+      {
+         for (unsigned i = 0; i < d_.size(); ++i) {
+            d_[i].second *= s;
+         }
+         return *this;
+      }
+
+      /// Modify every y-value by scalar division.
+      /// \return  Reference to present instance.
+      interpolant& operator/=(double s /**< Inverse scale factor. */)
+      {
+         for (unsigned i = 0; i < d_.size(); ++i) {
+            d_[i].second /= s;
+         }
+         return *this;
+      }
+
       /// Multiply every y-value of interpolant by a scale factor on the
       /// right, and return the resultant interpolant.
       ///
