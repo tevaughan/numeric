@@ -112,6 +112,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a29926e463a76a0a50e6f7acaa227104a"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1interpolant.html#a29926e463a76a0a50e6f7acaa227104a">operator/</a> (<a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; I, OD &gt; const &amp;oint) const -&gt; <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; I, decltype(D() *OD())&gt;</td></tr>
 <tr class="memdesc:a29926e463a76a0a50e6f7acaa227104a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divide the present instance I1 by another interpolant I2 such that there is a point in the product interpolant I3 at every unique x coordinate across I1 and I2.  <a href="#a29926e463a76a0a50e6f7acaa227104a">More...</a><br /></td></tr>
 <tr class="separator:a29926e463a76a0a50e6f7acaa227104a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af694026f0c9a6f1de3402c7261427b80"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1interpolant.html">interpolant</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1interpolant.html#af694026f0c9a6f1de3402c7261427b80">operator*=</a> (double <a class="el" href="namespacenum.html#a69ec21a3e079d644e0704a51f6bbf844">s</a>)</td></tr>
+<tr class="memdesc:af694026f0c9a6f1de3402c7261427b80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modify every y-value by scalar multiplication.  <a href="#af694026f0c9a6f1de3402c7261427b80">More...</a><br /></td></tr>
+<tr class="separator:af694026f0c9a6f1de3402c7261427b80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae669c567d79150df055907270f696cde"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1interpolant.html">interpolant</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1interpolant.html#ae669c567d79150df055907270f696cde">operator/=</a> (double <a class="el" href="namespacenum.html#a69ec21a3e079d644e0704a51f6bbf844">s</a>)</td></tr>
+<tr class="memdesc:ae669c567d79150df055907270f696cde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modify every y-value by scalar division.  <a href="#ae669c567d79150df055907270f696cde">More...</a><br /></td></tr>
+<tr class="separator:ae669c567d79150df055907270f696cde"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe6be0dff1cd3a81f221862550900257"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1interpolant.html#afe6be0dff1cd3a81f221862550900257">operator*</a> (double <a class="el" href="namespacenum.html#a69ec21a3e079d644e0704a51f6bbf844">s</a>) const -&gt; <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; I, decltype(D() *<a class="el" href="namespacenum.html#a69ec21a3e079d644e0704a51f6bbf844">s</a>)&gt;</td></tr>
 <tr class="memdesc:afe6be0dff1cd3a81f221862550900257"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply every y-value of interpolant by a scale factor on the right, and return the resultant interpolant.  <a href="#afe6be0dff1cd3a81f221862550900257">More...</a><br /></td></tr>
 <tr class="separator:afe6be0dff1cd3a81f221862550900257"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -154,7 +160,7 @@ class num::interpolant&lt; I, D &gt;</h3>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00085">85</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00043">43</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8778f561e4283cb4f2c4aa950696ca15"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8778f561e4283cb4f2c4aa950696ca15">&sect;&nbsp;</a></span>interpolant() <span class="overload">[1/4]</span></h2>
@@ -615,7 +621,7 @@ template&lt;typename I, typename D&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Scaled interpolant. </dd></dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00523">523</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00543">543</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
@@ -657,7 +663,46 @@ template&lt;int TI, int ID, int M, int C, int TE&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Scaled interpolant. </dd></dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00552">552</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00572">572</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+
+</div>
+</div>
+<a id="af694026f0c9a6f1de3402c7261427b80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af694026f0c9a6f1de3402c7261427b80">&sect;&nbsp;</a></span>operator*=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename I, typename D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classnum_1_1interpolant.html">interpolant</a>&amp; <a class="el" href="classnum_1_1interpolant.html">num::interpolant</a>&lt; I, D &gt;::operator*= </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Modify every y-value by scalar multiplication. </p>
+<dl class="section return"><dt>Returns</dt><dd>Reference to present instance. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>Scale factor. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00520">520</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
@@ -754,7 +799,46 @@ template&lt;typename Y &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Scaled interpolant. </dd></dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00584">584</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00604">604</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ae669c567d79150df055907270f696cde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae669c567d79150df055907270f696cde">&sect;&nbsp;</a></span>operator/=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename I, typename D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classnum_1_1interpolant.html">interpolant</a>&amp; <a class="el" href="classnum_1_1interpolant.html">num::interpolant</a>&lt; I, D &gt;::operator/= </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Modify every y-value by scalar division. </p>
+<dl class="section return"><dt>Returns</dt><dd>Reference to present instance. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>Inverse scale factor. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00530">530</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
@@ -837,7 +921,7 @@ template&lt;typename I, typename D&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Scaled interpolant. </dd></dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00540">540</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00560">560</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
@@ -891,11 +975,12 @@ template&lt;int TI, int ID, int M, int C, int TE&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Scaled interpolant. </dd></dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00571">571</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00591">591</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li><a class="el" href="dimval_8hpp_source.html">dimval.hpp</a></li>
 <li><a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a></li>
 </ul>
 </div><!-- contents -->

@@ -665,7 +665,6 @@ template&lt;typename R , typename A , typename A1 , typename A2 &gt; </div>
 
 <p>Numerically integrate a function, and return the result. </p>
 <p>Use the trapezoidal rule with adaptive quadrature.</p>
-<p>NOTE: If the function itself call <a class="el" href="namespacenum.html#a03a3a99cfa02da2a2bbd88f3c7eaaba0" title="Numerically integrate a function, and return the result. ">integral()</a>, as for a double, a triple, or a higher-level integral, then the tolerance specified for the innermost integral must be the tightest, and the ratio of the tolerance between any integral and the integral at the next level out must be at most about 0.05. So, for example, a double integral with tolerance 1.0E-03 should have the outer tolerance set to 1.0E-03 and the inner tolerance set at most to 5.0E-05. Otherwise, the outer integral will fruitlessly make too many subdivisions and consume too much time, possibly never to converge.</p>
 <p>The specified tolerance is on the relative accuracy of the estimated mean value of the function over each subdivided interval of the variable of integration. Every interval is recursively subdivided into equal halves. At each stage in the subdivision, the estimated mean height of the function over the undivided interval is compared to the refined estimate after subdivision of the interval. If the magnitude of the difference between these estimates be smaller than the product of the tolerance and the refined estimate, then recursion at the current interval ceases.</p>
 <p>Recursion is not done by way of the function-call stack but rather by way of a stack with dynamically allocated memory.</p>
 <p>The basic idea for the algorithm is found in the notes of Jim Lambers. <a href="http://www.math.usm.edu/lambers/mat460/fall09/lecture30.pdf">http://www.math.usm.edu/lambers/mat460/fall09/lecture30.pdf</a></p>
@@ -691,7 +690,7 @@ template&lt;typename R , typename A , typename A1 , typename A2 &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Numeric integral of function. </dd></dl>
 
-<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00072">72</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
+<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00062">62</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
 
 </div>
 </div>
@@ -765,7 +764,7 @@ template&lt;typename R , typename A , typename A1 , typename A2 &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Numeric integral of function. </dd></dl>
 
-<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00166">166</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
+<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00156">156</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
 
 </div>
 </div>

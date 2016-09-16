@@ -27,16 +27,6 @@ namespace num
    ///
    /// Use the trapezoidal rule with adaptive quadrature.
    ///
-   /// NOTE: If the function itself call integral(), as for a double, a triple,
-   /// or a higher-level integral, then the tolerance specified for the
-   /// innermost integral must be the tightest, and the ratio of the tolerance
-   /// between any integral and the integral at the next level out must be at
-   /// most about 0.05.  So, for example, a double integral with tolerance
-   /// 1.0E-03 should have the outer tolerance set to 1.0E-03 and the inner
-   /// tolerance set at most to 5.0E-05.  Otherwise, the outer integral will
-   /// fruitlessly make too many subdivisions and consume too much time,
-   /// possibly never to converge.
-   ///
    /// The specified tolerance is on the relative accuracy of the estimated
    /// mean value of the function over each subdivided interval of the variable
    /// of integration.  Every interval is recursively subdivided into equal
@@ -71,7 +61,7 @@ namespace num
    template <typename R, typename A, typename A1, typename A2>
    auto integral(std::function<R(A)> f, A1 aa, A2 bb, double t = 1.0E-06,
                  unsigned n = 16)
-         // See Page 28 of Effective Modern C++ by Scott Meyers.
+         // Meyers, Scott. Effective Modern C++ (first ed., 2015), page 28.
          -> decltype(std::forward<std::function<R(A)>>(f)(A()) * A())
    {
       double constexpr eps = std::numeric_limits<double>::epsilon();

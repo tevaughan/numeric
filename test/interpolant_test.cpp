@@ -99,6 +99,9 @@ TEST_CASE("Verify file input.", "[interpolant]")
    REQUIRE(i(950) == Approx(40.0));
    REQUIRE(i(1000) == 0.0);
    REQUIRE(i(1100) == 0.0);
+   interpolantd n("interpolant_test-shortinput.txt");
+   cout << "n.points().size()=" << n.points().size() << endl;
+   REQUIRE(n.integral() == 0.0);
 }
 
 TEST_CASE("Verify file input and interoperation with units.", "[interpolant]")
@@ -167,6 +170,18 @@ TEST_CASE("Verify scalar multiplication of interpolant on right.",
    REQUIRE(k(950 * nm) / s == Approx(80.0));
    REQUIRE(k(1000 * nm) == 0.0 * s);
    REQUIRE(k(1100 * nm) == 0.0 * s);
+   i *= 2.0;
+   REQUIRE(i(-1 * nm) == 0.0 * s);
+   REQUIRE(i(299 * nm) == 0.0 * s);
+   REQUIRE(i(300 * nm) == 0.0 * s);
+   REQUIRE(i(350 * nm) / s == Approx(80.0));
+   REQUIRE(i(400 * nm) == 160.0 * s);
+   REQUIRE(i(450 * nm) == 160.0 * s);
+   REQUIRE(i(500 * nm) == 160.0 * s);
+   REQUIRE(i(900 * nm) == 160.0 * s);
+   REQUIRE(i(950 * nm) / s == Approx(80.0));
+   REQUIRE(i(1000 * nm) == 0.0 * s);
+   REQUIRE(i(1100 * nm) == 0.0 * s);
 }
 
 TEST_CASE("Verify scalar multiplication of interpolant on left.",
@@ -214,6 +229,18 @@ TEST_CASE("Verify scalar division of interpolant.", "[interpolant]")
    REQUIRE(j(950 * nm) == Approx(20.0));
    REQUIRE(j(1000 * nm) == 0.0);
    REQUIRE(j(1100 * nm) == 0.0);
+   i /= 2.0;
+   REQUIRE(i(-1 * nm) == 0.0 * s);
+   REQUIRE(i(299 * nm) == 0.0 * s);
+   REQUIRE(i(300 * nm) == 0.0 * s);
+   REQUIRE(i(350 * nm) / s == Approx(20.0));
+   REQUIRE(i(400 * nm) == 40.0 * s);
+   REQUIRE(i(450 * nm) == 40.0 * s);
+   REQUIRE(i(500 * nm) == 40.0 * s);
+   REQUIRE(i(900 * nm) == 40.0 * s);
+   REQUIRE(i(950 * nm) / s == Approx(20.0));
+   REQUIRE(i(1000 * nm) == 0.0 * s);
+   REQUIRE(i(1100 * nm) == 0.0 * s);
 }
 
 TEST_CASE(
