@@ -14,6 +14,9 @@ print OUT_H <<'EOF1';
 /// \file   units.hpp
 /// \brief  Automatically generated header file for units.
 
+#ifndef NUMERIC_UNITS_HPP
+#define NUMERIC_UNITS_HPP
+
 #include "dimensions.hpp"
 
 namespace num {
@@ -62,6 +65,12 @@ EOF3
    print OUT_C "$pnm const num::$snm(1.0);\n";
 }
 
-print OUT_H "}\n";
+print OUT_H <<'EOF4';
+}
+
+#endif // ndef NUMERIC_UNITS_HPP
+
+EOF4
+
 print OUT_C "\n";
 

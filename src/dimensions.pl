@@ -20,6 +20,9 @@ print $oput <<'EOF';
 /// \file   dimensions.hpp
 /// \brief  Automatically generated source for generic-dimension types.
 
+#ifndef NUMERIC_DIMENSIONS_HPP
+#define NUMERIC_DIMENSIONS_HPP
+
 #include "dimval.hpp"
 
 namespace num {
@@ -40,9 +43,11 @@ while(<$iput>) {
    print $oput "using $nam = dimval<$tim, $len, $mas, $chg, $tmp>;\n";
 }
 
-# Write last two lines of C++ header file.
+# Write last few lines of C++ header file.
 print $oput <<'EOF';
 }
+
+#endif // ndef NUMERIC_DIMENSIONS_HPP
 
 EOF
 # Done writing last two lines of C++ header file.
