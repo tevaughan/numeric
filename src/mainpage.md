@@ -2,8 +2,8 @@
 # Introduction  {#mainpage}
 
 The "numeric" project is a C++-11 library that provides physical units, an
-adaptive quadrature integrator, and the ability to instantiate a linear
-interpolant in various, convenient ways.
+adaptive quadrature integrator, and various ways to represent a functional
+relation numerically.
 
 ## Physically Dimensioned Quantities
 
@@ -46,16 +46,48 @@ However, if dimensioned quantities be not used, then one need only include
 
 [Details of integration.](\ref integrals)
 
-## Linear Interpolation
+## Functional Relations
 
-There are two basic ways to construct a linear interpolant:
+A function written in a computer language like C or C++ can be used to model
+many a mathematical function.  Sometimes, though, a C++ function, when it is
+called, can take more time to return than is practical. There are various ways
+to trade memory in order to gain faster access to an approximation of the value
+that the function would return for a given input.
 
-1. from a list of points and
-2. from a continuous function and an interval on its domain.
+### Table
 
-Once a linear interpolant is constructed, it can be integrated efficiently and
-exactly over any interval. An interpolant can also be multiplied by another
-interpolant or by a scalar without any loss of information.
+If memory be abundant and fast, an approximant may be built from a table of
+pairs of values, one from the function's domain and the other from the
+function's range.  Then, for a given argument to the function, the approximant
+returns the range's element corresponding to the nearest tabulated element in
+the domain or to an interpolant over nearby tabulated elements.
+
+#### Dense Table
+
+The fastest version of this approach can be applied when fast memory is most
+abundant and when there is no constraint on the time required to set up the
+table before it is used.  This approach requires that every entry in the table
+be separated from the next by the same distance in the domain.  Such an
+approach allows the approximate element of the range to be returned in constant
+time, independent of the number of entries in the table.  The num::dense\_table
+class is an implementation of this approach.
+
+#### Sparse Table
+
+A slower version of this approach requires less memory.  In this approach,
+there is no requirement of uniformity imposed on the distance in the domain
+between one entry in the table and the next.  Such an approach allows the
+approximate element of the range to be returned in a time proportional to the
+logarithm of the number of entries in the table. The num::sparse\_table class
+is an implementation of this approach.
+
+### Interpolation
+
+Regardless of whether a dense table or a sparse table be used to store values
+of a function, the question of how to make use of the stored values remains.
+The simplest
+
+TBS
 
 When the interpolant is constructed from a continuous function, the same
 algorithm employed in num::integral is used, but the intermediate results of

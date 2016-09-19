@@ -12,6 +12,12 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" src="../MathJax/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -64,7 +70,7 @@ $(function() {
 <div class="title">Introduction </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>The "numeric" project is a C++-11 library that provides physical units, an adaptive quadrature integrator, and the ability to instantiate a linear interpolant in various, convenient ways.</p>
+<div class="textblock"><p>The "numeric" project is a C++-11 library that provides physical units, an adaptive quadrature integrator, and various ways to represent a functional relation numerically.</p>
 <h2>Physically Dimensioned Quantities</h2>
 <p>The implementation of physical units with compile-time checking for dimensions allows one to do things like this:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="units_8hpp.html">units.hpp</a>&gt;</span></div><div class="line"></div><div class="line"><span class="keyword">using namespace </span><a class="code" href="namespacenum.html">num</a>;</div><div class="line"><span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div><div class="line"></div><div class="line"><span class="keywordtype">int</span> main()</div><div class="line">{</div><div class="line">   <span class="comment">// &#39;ft&#39; stands for one foot.</span></div><div class="line">   <a class="code" href="classnum_1_1dimval.html">length</a> ell = 2.1 * <a class="code" href="namespacenum.html#a87bcd6f8d0cca349f98a058ba2eab098">ft</a>;                    <span class="comment">// length of pendulum</span></div><div class="line">   <span class="comment">// &#39;gn&#39; stands for one standard gravity.</span></div><div class="line">   <a class="code" href="classnum_1_1dimval.html">frequency</a> f = sqrt(<a class="code" href="namespacenum.html#a3fb3214fef706e1e8d9ce3e45ee3eef9">gn</a> / ell);             <span class="comment">// frequency of small oscillations</span></div><div class="line">   cout &lt;&lt; f &lt;&lt; endl;                        <span class="comment">// [3.9142 s^-1]</span></div><div class="line">   <span class="keywordflow">return</span> 0;</div><div class="line">}</div></div><!-- fragment --><p>The compiler would produce an error if, say, a distance were assigned to a speed.</p>
@@ -74,13 +80,17 @@ $(function() {
 <p>The global <a class="el" href="namespacenum.html#a03a3a99cfa02da2a2bbd88f3c7eaaba0" title="Numerically integrate a function, and return the result. ">num::integral</a> is designed to be able to interoperate with units.</p>
 <p>However, if dimensioned quantities be not used, then one need only include <a class="el" href="integral_8hpp.html">integral.hpp</a> and need not link against <code>libnumeric.so</code>.</p>
 <p><a class="el" href="integrals.html">Details of integration.</a></p>
-<h2>Linear Interpolation</h2>
-<p>There are two basic ways to construct a linear interpolant:</p>
-<ol type="1">
-<li>from a list of points and</li>
-<li>from a continuous function and an interval on its domain.</li>
-</ol>
-<p>Once a linear interpolant is constructed, it can be integrated efficiently and exactly over any interval. An interpolant can also be multiplied by another interpolant or by a scalar without any loss of information.</p>
+<h2>Functional Relations</h2>
+<p>A function written in a computer language like C or C++ can be used to model many a mathematical function. Sometimes, though, a C++ function, when it is called, can take more time to return than is practical. There are various ways to trade memory in order to gain faster access to an approximation of the value that the function would return for a given input.</p>
+<h3>Table</h3>
+<p>If memory be abundant and fast, an approximant may be built from a table of pairs of values, one from the function's domain and the other from the function's range. Then, for a given argument to the function, the approximant returns the range's element corresponding to the nearest tabulated element in the domain or to an interpolant over nearby tabulated elements.</p>
+<h4>Dense Table</h4>
+<p>The fastest version of this approach can be applied when fast memory is most abundant and when there is no constraint on the time required to set up the table before it is used. This approach requires that every entry in the table be separated from the next by the same distance in the domain. Such an approach allows the approximate element of the range to be returned in constant time, independent of the number of entries in the table. The <a class="el" href="classnum_1_1dense__table.html" title="Simple, constant-time-lookup model of a function of a continuous variable. ">num::dense_table</a> class is an implementation of this approach.</p>
+<h4>Sparse Table</h4>
+<p>A slower version of this approach requires less memory. In this approach, there is no requirement of uniformity imposed on the distance in the domain between one entry in the table and the next. Such an approach allows the approximate element of the range to be returned in a time proportional to the logarithm of the number of entries in the table. The num::sparse_table class is an implementation of this approach.</p>
+<h3>Interpolation</h3>
+<p>Regardless of whether a dense table or a sparse table be used to store values of a function, the question of how to make use of the stored values remains. The simplest</p>
+<p>TBS</p>
 <p>When the interpolant is constructed from a continuous function, the same algorithm employed in <a class="el" href="namespacenum.html#a03a3a99cfa02da2a2bbd88f3c7eaaba0" title="Numerically integrate a function, and return the result. ">num::integral</a> is used, but the intermediate results of the adaptive subdivision are stored for use as points for interpolation. So the interpolant is intelligently constructed to have a high density of points only where necessary to ensure an accurate representation of the function and its integral. Notice how the points are distributed in the following interpolant for a Gaussian:</p>
 <div class="image">
 <img src="interp_1.png" alt="interp_1.png"/>
