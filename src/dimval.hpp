@@ -81,12 +81,29 @@ namespace num
       friend auto integral(func<R, A> f, A1 a, A2 b, double t, unsigned n)
             -> decltype(std::forward<func<R, A>>(f)(A()) * A());
 
+      /// Allow integral_rk() to construct from known MKS quantity.
+      template <typename R, typename A, typename A1, typename A2>
+      friend auto integral_rk(func<R, A> f, A1 x1, A2 x2, A h1, double t)
+            -> decltype(std::forward<func<R, A>>(f)(A()) * A());
+
+      /// Allow rkqs() to construct from known MKS quantity.
+      template <typename X, typename Y>
+      friend void rkqs(Y &y, decltype(Y() / X()) const &dydx, X &x,
+                       X const &htry, double eps, Y const &yscal, X &hdid,
+                       X &hnext, std::function<decltype(Y() / X())(X)> deriv);
+
       /// Allow interpolant to construct from known MKS quantity.
       template <typename A, typename R>
       friend class interpolant;
 
       /// Add dimensioned values.
       dimval operator+(dimval dv) const { return dimval(v_ + dv.v_); }
+
+      /// Unary position.
+      friend dimval operator+(dimval dv) { return dv; }
+
+      /// Unary negation.
+      friend dimval operator-(dimval dv) { return dimval(-dv.v_); }
 
       /// Subtract dimensioned values.
       dimval operator-(dimval dv) const { return dimval(v_ - dv.v_); }
@@ -194,7 +211,7 @@ namespace num
 
       /// \return Integer power.
       template <int E>
-      friend dimval_power<E> pow(dimval const& dv)
+      friend dimval_power<E> pow(dimval const &dv)
       {
          return dv.pow<E>();
       }

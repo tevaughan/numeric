@@ -36,8 +36,8 @@ namespace num
    /// solution for \a y over an interval \a h, and return the incremented
    /// variable as \a yout.  Also, return, by way of the embedded fourth-order
    /// method, an estimate \a yerr of the local truncation error in \a yout.
-   /// The supplied function \a deriv gives returns the derivative (just like
-   /// dydx) at any value of the independent variable.
+   /// The supplied function \a deriv returns the derivative (just like dydx)
+   /// at any value of the independent variable.
    ///
    /// This function is based on a simplified version of `rkck()` found on Page
    /// 719 in Numerical Recipes in C, Second Edition.  The simplification is
@@ -116,7 +116,8 @@ namespace num
          // Truncation error is too large.  Reduce stepsize no more than a
          // factor of 10.
          X const tenth = 0.1 * h;
-         if (h >= 0.0) {
+         static X const zero(0.0);
+         if (h >= zero) {
             if (htemp > tenth) {
                h = htemp;
             } else {
@@ -146,8 +147,9 @@ namespace num
    }
 
    /// Numerically integrate a function, and return the result.  Use
-   /// fifth-order Runge-Kutta for adaptive quadrature.  The initial guess for
-   /// the step size is used at the lower limit of integration.
+   /// fifth-order Runge-Kutta with adaptive stepsize for quadrature.  The
+   /// initial guess for the step size is used at the lower limit of
+   /// integration.
    ///
    /// This function is based on `odeint()` on Page 721 of Numerical Recipes in
    /// C, Second Edition.
@@ -168,7 +170,7 @@ namespace num
          -> decltype(std::forward<std::function<R(A)>>(f)(A()) * A())
    {
       using Y = decltype(std::forward<std::function<R(A)>>(f)(A()) * A());
-      A const hmin = 0.0;
+      A const hmin(0.0);
       A x = x1;
       A h;
       if (x2 - x1 > A(0.0)) {
@@ -181,7 +183,7 @@ namespace num
       int constexpr MAXSTP = 10000;
       for (int nstp = 0; nstp < MAXSTP; ++nstp) {
          R const dydx = f(x);
-         double constexpr TINY = 1.0E-300;
+         static Y const TINY(1.0E-300);
          // General-purpose scaling used to monitor accuracy.
          Y const yscal = fabs(y) + fabs(dydx * h) + TINY;
          A const xh = x + h;
@@ -208,6 +210,28 @@ namespace num
       }
       std::cerr << "integral_rk: WARNING: too many steps" << std::endl;
       return y;
+   }
+
+   /// Integrate an ordinary C function by way of its function pointer.
+   /// Transform the passed-in function pointer into an instance of function<>,
+   /// and call integrate_rk(function<>,...).
+   ///
+   /// \tparam R   Type of instance returned by function.
+   /// \tparam A   Type of argument to function.
+   /// \tparam A1  Type of lower limit of integration; A1 must convert to A.
+   /// \tparam A2  Type of upper limit of integration; A2 must convert to A.
+   /// \return     Numeric integral of function.
+   template <typename R, typename A, typename A1, typename A2>
+   auto integral_rk(R (*f)(A),         ///< Function to be integrated.
+                    A1 x1,             ///< Lower limit of integration.
+                    A2 x2,             ///< Upper limit of integration.
+                    A h1,              ///< Initial guess for step size.
+                    double t = 1.0E-06 ///< Error tolerance.
+                    )
+         // See Page 28 of Effective Modern C++ by Scott Meyers.
+         -> decltype(std::forward<R (*)(A)>(f)(A()) * A())
+   {
+      return integral_rk(std::function<R(A)>(f), x1, x2, h1, t);
    }
 
    /// Numerically integrate a function, and return the result.
@@ -332,14 +356,14 @@ namespace num
    /// \tparam A   Type of argument to function.
    /// \tparam A1  Type of lower limit of integration; A1 must convert to A.
    /// \tparam A2  Type of upper limit of integration; A2 must convert to A.
-   /// \param  f   Function to be integrated.
-   /// \param  a   Lower limit of integration.
-   /// \param  b   Upper limit of integration.
-   /// \param  t   Error tolerance.
-   /// \param  n   Initial number of evenly spaced samples of the function.
    /// \return     Numeric integral of function.
    template <typename R, typename A, typename A1, typename A2>
-   auto integral(R (*f)(A), A1 a, A2 b, double t = 1.0E-06, unsigned n = 16)
+   auto integral(R (*f)(A),          ///< Function to be integrated.
+                 A1 a,               ///< Lower limit of integration.
+                 A2 b,               ///< Upper limit of integration.
+                 double t = 1.0E-06, ///< Error tolerance.
+                 unsigned n = 16 ///< Initial number of evenly spaced samples.
+                 )
          // See Page 28 of Effective Modern C++ by Scott Meyers.
          -> decltype(std::forward<R (*)(A)>(f)(A()) * A())
    {

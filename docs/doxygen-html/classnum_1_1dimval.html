@@ -273,6 +273,24 @@ template&lt;typename R , typename A , typename A1 , typename A2 &gt; </td></tr>
 <tr class="memitem:a430c972f99588db6f3783f06e756f3c3"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#a430c972f99588db6f3783f06e756f3c3">integral</a> (<a class="el" href="classnum_1_1dimval.html#ad1628995b6c7c0007c5c50ac964ccc3b">func</a>&lt; R, <a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a> &gt; f, A1 a, A2 b, double t, unsigned n) -&gt; decltype(std::forward&lt; <a class="el" href="classnum_1_1dimval.html#ad1628995b6c7c0007c5c50ac964ccc3b">func</a>&lt; R, <a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a> &gt;&gt;(f)(<a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>()) *<a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>())</td></tr>
 <tr class="memdesc:a430c972f99588db6f3783f06e756f3c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow <a class="el" href="classnum_1_1dimval.html#a430c972f99588db6f3783f06e756f3c3" title="Allow integral() to construct from known MKS quantity. ">integral()</a> to construct from known MKS quantity. <br /></td></tr>
 <tr class="separator:a430c972f99588db6f3783f06e756f3c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae46d41b0393d2e25250c783afe7b6cd7"><td class="memTemplParams" colspan="2"><a id="ae46d41b0393d2e25250c783afe7b6cd7"></a>
+template&lt;typename R , typename A , typename A1 , typename A2 &gt; </td></tr>
+<tr class="memitem:ae46d41b0393d2e25250c783afe7b6cd7"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#ae46d41b0393d2e25250c783afe7b6cd7">integral_rk</a> (<a class="el" href="classnum_1_1dimval.html#ad1628995b6c7c0007c5c50ac964ccc3b">func</a>&lt; R, <a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a> &gt; f, A1 x1, A2 x2, <a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a> h1, double t) -&gt; decltype(std::forward&lt; <a class="el" href="classnum_1_1dimval.html#ad1628995b6c7c0007c5c50ac964ccc3b">func</a>&lt; R, <a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a> &gt;&gt;(f)(<a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>()) *<a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>())</td></tr>
+<tr class="memdesc:ae46d41b0393d2e25250c783afe7b6cd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow <a class="el" href="classnum_1_1dimval.html#ae46d41b0393d2e25250c783afe7b6cd7" title="Allow integral_rk() to construct from known MKS quantity. ">integral_rk()</a> to construct from known MKS quantity. <br /></td></tr>
+<tr class="separator:ae46d41b0393d2e25250c783afe7b6cd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6c94eda64dbcb29533376a8b54f0dba"><td class="memTemplParams" colspan="2"><a id="ac6c94eda64dbcb29533376a8b54f0dba"></a>
+template&lt;typename X , typename Y &gt; </td></tr>
+<tr class="memitem:ac6c94eda64dbcb29533376a8b54f0dba"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#ac6c94eda64dbcb29533376a8b54f0dba">rkqs</a> (Y &amp;y, decltype(Y()/X()) const &amp;dydx, X &amp;x, X const &amp;htry, double eps, Y const &amp;yscal, X &amp;hdid, X &amp;hnext, std::function&lt; decltype(Y()/X())(X)&gt; deriv)</td></tr>
+<tr class="memdesc:ac6c94eda64dbcb29533376a8b54f0dba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow <a class="el" href="classnum_1_1dimval.html#ac6c94eda64dbcb29533376a8b54f0dba" title="Allow rkqs() to construct from known MKS quantity. ">rkqs()</a> to construct from known MKS quantity. <br /></td></tr>
+<tr class="separator:ac6c94eda64dbcb29533376a8b54f0dba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d192b5dc21e6fb3940730be6b946809"><td class="memItemLeft" align="right" valign="top"><a id="a5d192b5dc21e6fb3940730be6b946809"></a>
+<a class="el" href="classnum_1_1dimval.html">dimval</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#a5d192b5dc21e6fb3940730be6b946809">operator+</a> (<a class="el" href="classnum_1_1dimval.html">dimval</a> dv)</td></tr>
+<tr class="memdesc:a5d192b5dc21e6fb3940730be6b946809"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unary position. <br /></td></tr>
+<tr class="separator:a5d192b5dc21e6fb3940730be6b946809"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef92273f61464b2dd32d64af4578b042"><td class="memItemLeft" align="right" valign="top"><a id="aef92273f61464b2dd32d64af4578b042"></a>
+<a class="el" href="classnum_1_1dimval.html">dimval</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#aef92273f61464b2dd32d64af4578b042">operator-</a> (<a class="el" href="classnum_1_1dimval.html">dimval</a> dv)</td></tr>
+<tr class="memdesc:aef92273f61464b2dd32d64af4578b042"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unary negation. <br /></td></tr>
+<tr class="separator:aef92273f61464b2dd32d64af4578b042"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e309a2b58952757d95715656a0b1017"><td class="memItemLeft" align="right" valign="top"><a id="a2e309a2b58952757d95715656a0b1017"></a>
 <a class="el" href="classnum_1_1dimval.html">dimval</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#a2e309a2b58952757d95715656a0b1017">operator*</a> (double <a class="el" href="namespacenum.html#a69ec21a3e079d644e0704a51f6bbf844">s</a>, <a class="el" href="classnum_1_1dimval.html">dimval</a> dv)</td></tr>
 <tr class="memdesc:a2e309a2b58952757d95715656a0b1017"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplication of dimval by number on left side. <br /></td></tr>
@@ -338,7 +356,7 @@ template&lt;int E&gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00186">186</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00203">203</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>
@@ -366,7 +384,7 @@ template&lt;int E&gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00205">205</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00222">222</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>
@@ -509,7 +527,7 @@ template&lt;int E&gt; </div>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>Integer power. </dd></dl>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00190">190</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00207">207</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>
@@ -541,7 +559,7 @@ template&lt;int E&gt; </div>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>Integer root. </dd></dl>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00209">209</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00226">226</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>
@@ -571,7 +589,7 @@ template&lt;int TI, int D, int M, int C, int TE&gt; </div>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>Square root. </dd></dl>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00232">232</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00249">249</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>
@@ -603,7 +621,7 @@ template&lt;int TI, int D, int M, int C, int TE&gt; </div>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>Absolute value. </dd></dl>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00235">235</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00252">252</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>
@@ -636,7 +654,7 @@ template&lt;int E&gt; </div>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>Integer power. </dd></dl>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00197">197</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00214">214</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>
@@ -669,7 +687,7 @@ template&lt;int E&gt; </div>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>Integer root. </dd></dl>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00223">223</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00240">240</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>
@@ -700,7 +718,7 @@ template&lt;int TI, int D, int M, int C, int TE&gt; </div>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>Square root. </dd></dl>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00229">229</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00246">246</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>

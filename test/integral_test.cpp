@@ -30,11 +30,13 @@ area square(length x) { return x * x; }
 TEST_CASE("Verify integration of (dimval) global function.", "[integral]")
 {
    volume const i = integral(square, 0 * cm, 1 * cm);
+   volume const j = integral_rk(square, 0 * cm, 1 * cm, 0.1 * cm);
    ostringstream oss;
    oss << i;
    // Verify that integral of x^2 from  0 cm  to  1 cm  is  1/3 cm^3.
    REQUIRE(oss.str() == "[3.33333e-07 m^3]");
    REQUIRE(i / pow<3>(cm) == Approx(1.0 / 3.0));
+   REQUIRE(j / pow<3>(cm) == Approx(1.0 / 3.0));
 }
 
 struct my_sin {
