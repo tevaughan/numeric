@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['g',['g',['../namespacenum.html#acfd3a886dc04759aafe53aac4b905812',1,'num']]],
-  ['ghz',['GHz',['../namespacenum.html#a1b26865eaf88c3e8096c7f4c5a362e16',1,'num']]],
-  ['gn',['gn',['../namespacenum.html#a3fb3214fef706e1e8d9ce3e45ee3eef9',1,'num']]]
+  ['g',['g',['../units_8hpp.html#a8492c15a7e6fc638032dfc5d3d140614',1,'num::u']]],
+  ['ghz',['GHz',['../units_8hpp.html#a80a963b49741d863ffe87c4e604f27a4',1,'num::u']]],
+  ['gn',['gn',['../units_8hpp.html#a335c4eae528dcb3113476fad868bf490',1,'num::u']]]
 ];

@@ -138,15 +138,15 @@ Inheritance diagram for num::dimval&lt; TI, D, M, C, TE &gt;:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:ad1628995b6c7c0007c5c50ac964ccc3b"><td class="memTemplParams" colspan="2">template&lt;typename R , typename A &gt; </td></tr>
-<tr class="memitem:ad1628995b6c7c0007c5c50ac964ccc3b"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#ad1628995b6c7c0007c5c50ac964ccc3b">func</a> = std::function&lt; R(<a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>)&gt;</td></tr>
+<tr class="memitem:ad1628995b6c7c0007c5c50ac964ccc3b"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#ad1628995b6c7c0007c5c50ac964ccc3b">func</a> = std::function&lt; R(A)&gt;</td></tr>
 <tr class="memdesc:ad1628995b6c7c0007c5c50ac964ccc3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of std::function that can be integrated.  <a href="#ad1628995b6c7c0007c5c50ac964ccc3b">More...</a><br /></td></tr>
 <tr class="separator:ad1628995b6c7c0007c5c50ac964ccc3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a647059d6a2dbff168126a0518c57621a"><td class="memTemplParams" colspan="2">template&lt;int E&gt; </td></tr>
-<tr class="memitem:a647059d6a2dbff168126a0518c57621a"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#a647059d6a2dbff168126a0518c57621a">dimval_power</a> = <a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI *E, D *E, M *E, <a class="el" href="namespacenum.html#a6f6e145198f4bff44e2a8de89c1dd751">C</a> *E, TE *E &gt;</td></tr>
+<tr class="memitem:a647059d6a2dbff168126a0518c57621a"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#a647059d6a2dbff168126a0518c57621a">dimval_power</a> = <a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI *E, D *E, M *E, C *E, TE *E &gt;</td></tr>
 <tr class="memdesc:a647059d6a2dbff168126a0518c57621a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of integer power of present instance.  <a href="#a647059d6a2dbff168126a0518c57621a">More...</a><br /></td></tr>
 <tr class="separator:a647059d6a2dbff168126a0518c57621a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3601e60743a074563ce91910f487fa61"><td class="memTemplParams" colspan="2">template&lt;int E&gt; </td></tr>
-<tr class="memitem:a3601e60743a074563ce91910f487fa61"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#a3601e60743a074563ce91910f487fa61">dimval_root</a> = <a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI/E, D/E, M/E, <a class="el" href="namespacenum.html#a6f6e145198f4bff44e2a8de89c1dd751">C</a>/E, TE/E &gt;</td></tr>
+<tr class="memitem:a3601e60743a074563ce91910f487fa61"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#a3601e60743a074563ce91910f487fa61">dimval_root</a> = <a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI/E, D/E, M/E, C/E, TE/E &gt;</td></tr>
 <tr class="memdesc:a3601e60743a074563ce91910f487fa61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of integer root of present instance.  <a href="#a3601e60743a074563ce91910f487fa61">More...</a><br /></td></tr>
 <tr class="separator:a3601e60743a074563ce91910f487fa61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -173,16 +173,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a0b4b7d2f5523393b16eec1335848991a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subtractive assignment. <br /></td></tr>
 <tr class="separator:a0b4b7d2f5523393b16eec1335848991a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a745bb2843139207a0bfd823ba60561fd"><td class="memItemLeft" align="right" valign="top"><a id="a745bb2843139207a0bfd823ba60561fd"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#a745bb2843139207a0bfd823ba60561fd">operator*</a> (<a class="el" href="classnum_1_1dimval.html">dimval</a>&lt;-TI, -D, -M, -<a class="el" href="namespacenum.html#a6f6e145198f4bff44e2a8de89c1dd751">C</a>, -TE &gt; dv) const</td></tr>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#a745bb2843139207a0bfd823ba60561fd">operator*</a> (<a class="el" href="classnum_1_1dimval.html">dimval</a>&lt;-TI, -D, -M, -C, -TE &gt; dv) const</td></tr>
 <tr class="memdesc:a745bb2843139207a0bfd823ba60561fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply oppositely dimensioned values. <br /></td></tr>
 <tr class="separator:a745bb2843139207a0bfd823ba60561fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c8f604b3e2f4b5d71ae6ad12a1d3501"><td class="memTemplParams" colspan="2"><a id="a4c8f604b3e2f4b5d71ae6ad12a1d3501"></a>
 template&lt;int OTI, int OD, int OM, int OC, int OTE&gt; </td></tr>
-<tr class="memitem:a4c8f604b3e2f4b5d71ae6ad12a1d3501"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI+OTI, D+OD, M+OM, <a class="el" href="namespacenum.html#a6f6e145198f4bff44e2a8de89c1dd751">C</a>+OC, TE+OTE &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#a4c8f604b3e2f4b5d71ae6ad12a1d3501">operator*</a> (<a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; OTI, OD, OC, OM, OTE &gt; dv) const</td></tr>
+<tr class="memitem:a4c8f604b3e2f4b5d71ae6ad12a1d3501"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI+OTI, D+OD, M+OM, C+OC, TE+OTE &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#a4c8f604b3e2f4b5d71ae6ad12a1d3501">operator*</a> (<a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; OTI, OD, OC, OM, OTE &gt; dv) const</td></tr>
 <tr class="memdesc:a4c8f604b3e2f4b5d71ae6ad12a1d3501"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply dimensioned values. <br /></td></tr>
 <tr class="separator:a4c8f604b3e2f4b5d71ae6ad12a1d3501"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16789c68a5f5eff57bc2fb762e287469"><td class="memItemLeft" align="right" valign="top"><a id="a16789c68a5f5eff57bc2fb762e287469"></a>
-<a class="el" href="classnum_1_1dimval.html">dimval</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#a16789c68a5f5eff57bc2fb762e287469">operator*</a> (double <a class="el" href="namespacenum.html#a69ec21a3e079d644e0704a51f6bbf844">s</a>) const</td></tr>
+<a class="el" href="classnum_1_1dimval.html">dimval</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#a16789c68a5f5eff57bc2fb762e287469">operator*</a> (double s) const</td></tr>
 <tr class="memdesc:a16789c68a5f5eff57bc2fb762e287469"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplication by number on right side. <br /></td></tr>
 <tr class="separator:a16789c68a5f5eff57bc2fb762e287469"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87ef32158065559c5ecf1cfea0714d93"><td class="memItemLeft" align="right" valign="top"><a id="a87ef32158065559c5ecf1cfea0714d93"></a>
@@ -191,19 +191,19 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 <tr class="separator:a87ef32158065559c5ecf1cfea0714d93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5036cfc59962486fcf590040cdd2c552"><td class="memTemplParams" colspan="2"><a id="a5036cfc59962486fcf590040cdd2c552"></a>
 template&lt;int OTI, int OD, int OM, int OC, int OTE&gt; </td></tr>
-<tr class="memitem:a5036cfc59962486fcf590040cdd2c552"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI - OTI, D - OD, M - OM, <a class="el" href="namespacenum.html#a6f6e145198f4bff44e2a8de89c1dd751">C</a> - OC, TE - OTE &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#a5036cfc59962486fcf590040cdd2c552">operator/</a> (<a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; OTI, OD, OM, OC, OTE &gt; dv) const</td></tr>
+<tr class="memitem:a5036cfc59962486fcf590040cdd2c552"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI - OTI, D - OD, M - OM, C - OC, TE - OTE &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#a5036cfc59962486fcf590040cdd2c552">operator/</a> (<a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; OTI, OD, OM, OC, OTE &gt; dv) const</td></tr>
 <tr class="memdesc:a5036cfc59962486fcf590040cdd2c552"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divide dimensioned values. <br /></td></tr>
 <tr class="separator:a5036cfc59962486fcf590040cdd2c552"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8815399780fac883ac0088aa1c866880"><td class="memItemLeft" align="right" valign="top"><a id="a8815399780fac883ac0088aa1c866880"></a>
-<a class="el" href="classnum_1_1dimval.html">dimval</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#a8815399780fac883ac0088aa1c866880">operator/</a> (double <a class="el" href="namespacenum.html#a69ec21a3e079d644e0704a51f6bbf844">s</a>) const</td></tr>
+<a class="el" href="classnum_1_1dimval.html">dimval</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#a8815399780fac883ac0088aa1c866880">operator/</a> (double s) const</td></tr>
 <tr class="memdesc:a8815399780fac883ac0088aa1c866880"><td class="mdescLeft">&#160;</td><td class="mdescRight">Division by number. <br /></td></tr>
 <tr class="separator:a8815399780fac883ac0088aa1c866880"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d2f289744ea906e63fc2deca24a8a53"><td class="memItemLeft" align="right" valign="top"><a id="a3d2f289744ea906e63fc2deca24a8a53"></a>
-<a class="el" href="classnum_1_1dimval.html">dimval</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#a3d2f289744ea906e63fc2deca24a8a53">operator*=</a> (double <a class="el" href="namespacenum.html#a69ec21a3e079d644e0704a51f6bbf844">s</a>)</td></tr>
+<a class="el" href="classnum_1_1dimval.html">dimval</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#a3d2f289744ea906e63fc2deca24a8a53">operator*=</a> (double s)</td></tr>
 <tr class="memdesc:a3d2f289744ea906e63fc2deca24a8a53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplicative assignment against double. <br /></td></tr>
 <tr class="separator:a3d2f289744ea906e63fc2deca24a8a53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad69870ac0434f790a82982a85c6cc195"><td class="memItemLeft" align="right" valign="top"><a id="ad69870ac0434f790a82982a85c6cc195"></a>
-<a class="el" href="classnum_1_1dimval.html">dimval</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#ad69870ac0434f790a82982a85c6cc195">operator/=</a> (double <a class="el" href="namespacenum.html#a69ec21a3e079d644e0704a51f6bbf844">s</a>)</td></tr>
+<a class="el" href="classnum_1_1dimval.html">dimval</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#ad69870ac0434f790a82982a85c6cc195">operator/=</a> (double s)</td></tr>
 <tr class="memdesc:ad69870ac0434f790a82982a85c6cc195"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divisive assignment against double. <br /></td></tr>
 <tr class="separator:ad69870ac0434f790a82982a85c6cc195"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d9d207f336e336759e1c66abfbb55d0"><td class="memItemLeft" align="right" valign="top"><a id="a5d9d207f336e336759e1c66abfbb55d0"></a>
@@ -270,12 +270,12 @@ template&lt;typename A , typename R &gt; </td></tr>
 <tr class="separator:a1bf07d2865c0692bdb0e7abed75f5b75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a430c972f99588db6f3783f06e756f3c3"><td class="memTemplParams" colspan="2"><a id="a430c972f99588db6f3783f06e756f3c3"></a>
 template&lt;typename R , typename A , typename A1 , typename A2 &gt; </td></tr>
-<tr class="memitem:a430c972f99588db6f3783f06e756f3c3"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#a430c972f99588db6f3783f06e756f3c3">integral</a> (<a class="el" href="classnum_1_1dimval.html#ad1628995b6c7c0007c5c50ac964ccc3b">func</a>&lt; R, <a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a> &gt; f, A1 a, A2 b, double t, unsigned n) -&gt; decltype(std::forward&lt; <a class="el" href="classnum_1_1dimval.html#ad1628995b6c7c0007c5c50ac964ccc3b">func</a>&lt; R, <a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a> &gt;&gt;(f)(<a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>()) *<a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>())</td></tr>
+<tr class="memitem:a430c972f99588db6f3783f06e756f3c3"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#a430c972f99588db6f3783f06e756f3c3">integral</a> (<a class="el" href="classnum_1_1dimval.html#ad1628995b6c7c0007c5c50ac964ccc3b">func</a>&lt; R, A &gt; f, A1 a, A2 b, double t, unsigned n) -&gt; decltype(std::forward&lt; <a class="el" href="classnum_1_1dimval.html#ad1628995b6c7c0007c5c50ac964ccc3b">func</a>&lt; R, A &gt;&gt;(f)(A()) *A())</td></tr>
 <tr class="memdesc:a430c972f99588db6f3783f06e756f3c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow <a class="el" href="classnum_1_1dimval.html#a430c972f99588db6f3783f06e756f3c3" title="Allow integral() to construct from known MKS quantity. ">integral()</a> to construct from known MKS quantity. <br /></td></tr>
 <tr class="separator:a430c972f99588db6f3783f06e756f3c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae46d41b0393d2e25250c783afe7b6cd7"><td class="memTemplParams" colspan="2"><a id="ae46d41b0393d2e25250c783afe7b6cd7"></a>
 template&lt;typename R , typename A , typename A1 , typename A2 &gt; </td></tr>
-<tr class="memitem:ae46d41b0393d2e25250c783afe7b6cd7"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#ae46d41b0393d2e25250c783afe7b6cd7">integral_rk</a> (<a class="el" href="classnum_1_1dimval.html#ad1628995b6c7c0007c5c50ac964ccc3b">func</a>&lt; R, <a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a> &gt; f, A1 x1, A2 x2, <a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a> h1, double t) -&gt; decltype(std::forward&lt; <a class="el" href="classnum_1_1dimval.html#ad1628995b6c7c0007c5c50ac964ccc3b">func</a>&lt; R, <a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a> &gt;&gt;(f)(<a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>()) *<a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>())</td></tr>
+<tr class="memitem:ae46d41b0393d2e25250c783afe7b6cd7"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#ae46d41b0393d2e25250c783afe7b6cd7">integral_rk</a> (<a class="el" href="classnum_1_1dimval.html#ad1628995b6c7c0007c5c50ac964ccc3b">func</a>&lt; R, A &gt; f, A1 x1, A2 x2, A h1, double t) -&gt; decltype(std::forward&lt; <a class="el" href="classnum_1_1dimval.html#ad1628995b6c7c0007c5c50ac964ccc3b">func</a>&lt; R, A &gt;&gt;(f)(A()) *A())</td></tr>
 <tr class="memdesc:ae46d41b0393d2e25250c783afe7b6cd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow <a class="el" href="classnum_1_1dimval.html#ae46d41b0393d2e25250c783afe7b6cd7" title="Allow integral_rk() to construct from known MKS quantity. ">integral_rk()</a> to construct from known MKS quantity. <br /></td></tr>
 <tr class="separator:ae46d41b0393d2e25250c783afe7b6cd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6c94eda64dbcb29533376a8b54f0dba"><td class="memTemplParams" colspan="2"><a id="ac6c94eda64dbcb29533376a8b54f0dba"></a>
@@ -292,11 +292,11 @@ template&lt;typename X , typename Y &gt; </td></tr>
 <tr class="memdesc:aef92273f61464b2dd32d64af4578b042"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unary negation. <br /></td></tr>
 <tr class="separator:aef92273f61464b2dd32d64af4578b042"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e309a2b58952757d95715656a0b1017"><td class="memItemLeft" align="right" valign="top"><a id="a2e309a2b58952757d95715656a0b1017"></a>
-<a class="el" href="classnum_1_1dimval.html">dimval</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#a2e309a2b58952757d95715656a0b1017">operator*</a> (double <a class="el" href="namespacenum.html#a69ec21a3e079d644e0704a51f6bbf844">s</a>, <a class="el" href="classnum_1_1dimval.html">dimval</a> dv)</td></tr>
+<a class="el" href="classnum_1_1dimval.html">dimval</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#a2e309a2b58952757d95715656a0b1017">operator*</a> (double s, <a class="el" href="classnum_1_1dimval.html">dimval</a> dv)</td></tr>
 <tr class="memdesc:a2e309a2b58952757d95715656a0b1017"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplication of dimval by number on left side. <br /></td></tr>
 <tr class="separator:a2e309a2b58952757d95715656a0b1017"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5a821867fed6f9c15b6d0f01b250644"><td class="memItemLeft" align="right" valign="top"><a id="aa5a821867fed6f9c15b6d0f01b250644"></a>
-<a class="el" href="classnum_1_1dimval.html">dimval</a>&lt;-TI, -D, -M, -<a class="el" href="namespacenum.html#a6f6e145198f4bff44e2a8de89c1dd751">C</a>, -TE &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#aa5a821867fed6f9c15b6d0f01b250644">operator/</a> (double <a class="el" href="namespacenum.html#a69ec21a3e079d644e0704a51f6bbf844">s</a>, <a class="el" href="classnum_1_1dimval.html">dimval</a> dv)</td></tr>
+<a class="el" href="classnum_1_1dimval.html">dimval</a>&lt;-TI, -D, -M, -C, -TE &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#aa5a821867fed6f9c15b6d0f01b250644">operator/</a> (double s, <a class="el" href="classnum_1_1dimval.html">dimval</a> dv)</td></tr>
 <tr class="memdesc:aa5a821867fed6f9c15b6d0f01b250644"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divide number by dimensioned value. <br /></td></tr>
 <tr class="separator:aa5a821867fed6f9c15b6d0f01b250644"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa162317483fea3fb00cfbdfa96279519"><td class="memTemplParams" colspan="2">template&lt;int E&gt; </td></tr>
@@ -343,7 +343,7 @@ template&lt;int TI, int D, int M, int C, int TE&gt; </div>
 template&lt;int E&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classnum_1_1dimval.html">num::dimval</a>&lt; TI, D, M, <a class="el" href="namespacenum.html#a6f6e145198f4bff44e2a8de89c1dd751">C</a>, TE &gt;::<a class="el" href="classnum_1_1dimval.html#a647059d6a2dbff168126a0518c57621a">dimval_power</a> =  <a class="el" href="classnum_1_1dimval.html">dimval</a>&lt;TI * E, D * E, M * E, <a class="el" href="namespacenum.html#a6f6e145198f4bff44e2a8de89c1dd751">C</a> * E, TE * E&gt;</td>
+          <td class="memname">using <a class="el" href="classnum_1_1dimval.html">num::dimval</a>&lt; TI, D, M, C, TE &gt;::<a class="el" href="classnum_1_1dimval.html#a647059d6a2dbff168126a0518c57621a">dimval_power</a> =  <a class="el" href="classnum_1_1dimval.html">dimval</a>&lt;TI * E, D * E, M * E, C * E, TE * E&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -371,7 +371,7 @@ template&lt;int TI, int D, int M, int C, int TE&gt; </div>
 template&lt;int E&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classnum_1_1dimval.html">num::dimval</a>&lt; TI, D, M, <a class="el" href="namespacenum.html#a6f6e145198f4bff44e2a8de89c1dd751">C</a>, TE &gt;::<a class="el" href="classnum_1_1dimval.html#a3601e60743a074563ce91910f487fa61">dimval_root</a> =  <a class="el" href="classnum_1_1dimval.html">dimval</a>&lt;TI / E, D / E, M / E, <a class="el" href="namespacenum.html#a6f6e145198f4bff44e2a8de89c1dd751">C</a> / E, TE / E&gt;</td>
+          <td class="memname">using <a class="el" href="classnum_1_1dimval.html">num::dimval</a>&lt; TI, D, M, C, TE &gt;::<a class="el" href="classnum_1_1dimval.html#a3601e60743a074563ce91910f487fa61">dimval_root</a> =  <a class="el" href="classnum_1_1dimval.html">dimval</a>&lt;TI / E, D / E, M / E, C / E, TE / E&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -399,7 +399,7 @@ template&lt;int TI, int D, int M, int C, int TE&gt; </div>
 template&lt;typename R , typename A &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classnum_1_1dimval.html">num::dimval</a>&lt; TI, D, M, <a class="el" href="namespacenum.html#a6f6e145198f4bff44e2a8de89c1dd751">C</a>, TE &gt;::<a class="el" href="classnum_1_1dimval.html#ad1628995b6c7c0007c5c50ac964ccc3b">func</a> =  std::function&lt;R(<a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>)&gt;</td>
+          <td class="memname">using <a class="el" href="classnum_1_1dimval.html">num::dimval</a>&lt; TI, D, M, C, TE &gt;::<a class="el" href="classnum_1_1dimval.html#ad1628995b6c7c0007c5c50ac964ccc3b">func</a> =  std::function&lt;R(A)&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -424,7 +424,7 @@ template&lt;int TI, int D, int M, int C, int TE&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classnum_1_1dimval.html">num::dimval</a>&lt; TI, D, M, <a class="el" href="namespacenum.html#a6f6e145198f4bff44e2a8de89c1dd751">C</a>, TE &gt;::<a class="el" href="classnum_1_1dimval.html">dimval</a> </td>
+          <td class="memname"><a class="el" href="classnum_1_1dimval.html">num::dimval</a>&lt; TI, D, M, C, TE &gt;::<a class="el" href="classnum_1_1dimval.html">dimval</a> </td>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>vv</em></td><td>)</td>
@@ -513,7 +513,7 @@ template&lt;int E&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classnum_1_1dimval.html#a647059d6a2dbff168126a0518c57621a">dimval_power</a>&lt;E&gt; <a class="el" href="classnum_1_1dimval.html">num::dimval</a>&lt; TI, D, M, <a class="el" href="namespacenum.html#a6f6e145198f4bff44e2a8de89c1dd751">C</a>, TE &gt;::pow </td>
+          <td class="memname"><a class="el" href="classnum_1_1dimval.html#a647059d6a2dbff168126a0518c57621a">dimval_power</a>&lt;E&gt; <a class="el" href="classnum_1_1dimval.html">num::dimval</a>&lt; TI, D, M, C, TE &gt;::pow </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -545,7 +545,7 @@ template&lt;int E&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classnum_1_1dimval.html#a3601e60743a074563ce91910f487fa61">dimval_root</a>&lt;E&gt; <a class="el" href="classnum_1_1dimval.html">num::dimval</a>&lt; TI, D, M, <a class="el" href="namespacenum.html#a6f6e145198f4bff44e2a8de89c1dd751">C</a>, TE &gt;::root </td>
+          <td class="memname"><a class="el" href="classnum_1_1dimval.html#a3601e60743a074563ce91910f487fa61">dimval_root</a>&lt;E&gt; <a class="el" href="classnum_1_1dimval.html">num::dimval</a>&lt; TI, D, M, C, TE &gt;::root </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -575,7 +575,7 @@ template&lt;int TI, int D, int M, int C, int TE&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classnum_1_1dimval.html#a3601e60743a074563ce91910f487fa61">dimval_root</a>&lt;2&gt; <a class="el" href="classnum_1_1dimval.html">num::dimval</a>&lt; TI, D, M, <a class="el" href="namespacenum.html#a6f6e145198f4bff44e2a8de89c1dd751">C</a>, TE &gt;::sqrt </td>
+          <td class="memname"><a class="el" href="classnum_1_1dimval.html#a3601e60743a074563ce91910f487fa61">dimval_root</a>&lt;2&gt; <a class="el" href="classnum_1_1dimval.html">num::dimval</a>&lt; TI, D, M, C, TE &gt;::sqrt </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -608,7 +608,7 @@ template&lt;int TI, int D, int M, int C, int TE&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="classnum_1_1dimval.html">dimval</a> fabs </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, D, M, <a class="el" href="namespacenum.html#a6f6e145198f4bff44e2a8de89c1dd751">C</a>, TE &gt;&#160;</td>
+          <td class="paramtype"><a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, D, M, C, TE &gt;&#160;</td>
           <td class="paramname"><em>dv</em></td><td>)</td>
           <td></td>
         </tr>
@@ -641,7 +641,7 @@ template&lt;int E&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="classnum_1_1dimval.html#a647059d6a2dbff168126a0518c57621a">dimval_power</a>&lt;E&gt; pow </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, D, M, <a class="el" href="namespacenum.html#a6f6e145198f4bff44e2a8de89c1dd751">C</a>, TE &gt; const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, D, M, C, TE &gt; const &amp;&#160;</td>
           <td class="paramname"><em>dv</em></td><td>)</td>
           <td></td>
         </tr>
@@ -674,7 +674,7 @@ template&lt;int E&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="classnum_1_1dimval.html#a3601e60743a074563ce91910f487fa61">dimval_root</a>&lt;E&gt; root </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, D, M, <a class="el" href="namespacenum.html#a6f6e145198f4bff44e2a8de89c1dd751">C</a>, TE &gt; const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, D, M, C, TE &gt; const &amp;&#160;</td>
           <td class="paramname"><em>dv</em></td><td>)</td>
           <td></td>
         </tr>
@@ -705,7 +705,7 @@ template&lt;int TI, int D, int M, int C, int TE&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="classnum_1_1dimval.html#a3601e60743a074563ce91910f487fa61">dimval_root</a>&lt;2&gt; sqrt </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, D, M, <a class="el" href="namespacenum.html#a6f6e145198f4bff44e2a8de89c1dd751">C</a>, TE &gt;&#160;</td>
+          <td class="paramtype"><a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, D, M, C, TE &gt;&#160;</td>
           <td class="paramname"><em>dv</em></td><td>)</td>
           <td></td>
         </tr>

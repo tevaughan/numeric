@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['k',['K',['../namespacenum.html#acdca3a48566effb3cd16c57d4b1356b9',1,'num']]],
-  ['kg',['kg',['../namespacenum.html#afb6486acb4151dde8f90298045bb6e33',1,'num']]],
-  ['khz',['kHz',['../namespacenum.html#a538359e48d8b2e4cd6be71a6351965d4',1,'num']]],
-  ['km',['km',['../namespacenum.html#a2c376d877e2c07bd7b2b57eee7215471',1,'num']]]
+  ['k',['K',['../units_8hpp.html#a28cf08de9c9735c53c36dfc1fdc70af8',1,'num::u']]],
+  ['kg',['kg',['../units_8hpp.html#aa23ac19a3c715d0122604592c3eb388c',1,'num::u']]],
+  ['khz',['kHz',['../units_8hpp.html#a33e4fe92e190854d6a53ecd2f72dc39b',1,'num::u']]],
+  ['km',['km',['../units_8hpp.html#ae458966717818a1356742688e5b74ab7',1,'num::u']]]
 ];

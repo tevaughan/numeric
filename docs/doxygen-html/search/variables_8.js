@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['in',['in',['../namespacenum.html#a013d5ac331f94c1d6bf9b728d47fae84',1,'num']]]
+  ['in',['in',['../units_8hpp.html#aaedb457a079234338eaf96eb3591872d',1,'num::u']]]
 ];

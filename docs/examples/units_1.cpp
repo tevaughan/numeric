@@ -6,6 +6,7 @@
 #include "units.hpp"
 
 using namespace num;
+using namespace num::u;
 using namespace std;
 
 /// Main function for units_1.cpp.

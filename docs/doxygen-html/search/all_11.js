@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['s',['s',['../namespacenum.html#a69ec21a3e079d644e0704a51f6bbf844',1,'num']]],
+  ['s',['s',['../units_8hpp.html#ab137b17f15cca1e4148fece0e5fdb2a7',1,'num::u']]],
   ['seconds',['seconds',['../structnum_1_1seconds.html',1,'num']]],
   ['seconds',['seconds',['../structnum_1_1seconds.html#af9f33346eac4a6f251ff71819c1c3c83',1,'num::seconds::seconds(double v)'],['../structnum_1_1seconds.html#abea4b439e4e89b434646d8c24d9d940e',1,'num::seconds::seconds(seconds const &amp;dv)=default']]],
   ['speed',['speed',['../namespacenum.html#a66a2fb70968143158383f1d16ef1429f',1,'num']]],

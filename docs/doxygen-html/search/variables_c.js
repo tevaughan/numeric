@@ -1,15 +1,15 @@
 var searchData=
 [
-  ['m',['m',['../namespacenum.html#a73ac0e06b3728ba6cd99dabd183067e1',1,'num']]],
-  ['mg',['mg',['../namespacenum.html#a1cbd3be9828459380ca94df20db2647a',1,'num']]],
-  ['mhz',['MHz',['../namespacenum.html#a9289c7bbe20adc4fbecd1eb63e5abeaf',1,'num']]],
-  ['mi',['mi',['../namespacenum.html#a7fc6629c3f4ad043749872f13f2dd1a5',1,'num']]],
-  ['min',['min',['../namespacenum.html#aca556356debd0f057f0131b1b113b196',1,'num']]],
-  ['mk',['mK',['../namespacenum.html#a5e593c37764391c7319f69f3176306d5',1,'num']]],
-  ['mm',['mm',['../namespacenum.html#a23749152e29a91ebdfe209e4e865b059',1,'num']]],
-  ['ms',['ms',['../namespacenum.html#ac509e68b236c73409375f3fd5ab494c5',1,'num']]],
-  ['mug',['mug',['../namespacenum.html#aba3bc8b532dfcb1eb28de11b19256f10',1,'num']]],
-  ['muk',['muK',['../namespacenum.html#a64753502661c653761190233b4793ab4',1,'num']]],
-  ['mum',['mum',['../namespacenum.html#aa6f32ac284717eb494a13eca90a862d0',1,'num']]],
-  ['mus',['mus',['../namespacenum.html#a5599aadea6767876ac644c83ec0dd906',1,'num']]]
+  ['m',['m',['../units_8hpp.html#ad013e86cf38d6ef91337dab244f2cf00',1,'num::u']]],
+  ['mg',['mg',['../units_8hpp.html#a4de9247123e0027943f6c4e32b228dcd',1,'num::u']]],
+  ['mhz',['MHz',['../units_8hpp.html#ad7caa7a4f71c3bb8a96638a529d59eb9',1,'num::u']]],
+  ['mi',['mi',['../units_8hpp.html#abcf6ab5afcd94178ed3e95a07b31531f',1,'num::u']]],
+  ['min',['min',['../units_8hpp.html#a7be2eee10f8b44dc9beb8a242601bc24',1,'num::u']]],
+  ['mk',['mK',['../units_8hpp.html#a49dc3ca6f72eb7a35de691fed1e2676d',1,'num::u']]],
+  ['mm',['mm',['../units_8hpp.html#ad17690cd9e69b5c9fbc7d6976d9c10bc',1,'num::u']]],
+  ['ms',['ms',['../units_8hpp.html#a550d4c2e7e6bc37ebdb9caeece878dfc',1,'num::u']]],
+  ['mug',['mug',['../units_8hpp.html#a8ef4ef5b5c062aded302ecc908d31f8d',1,'num::u']]],
+  ['muk',['muK',['../units_8hpp.html#a69d4e25b3e14c9b495636f41137eb3ce',1,'num::u']]],
+  ['mum',['mum',['../units_8hpp.html#a1bb43ea5ddd18bde1e1c57a76d9aba2d',1,'num::u']]],
+  ['mus',['mus',['../units_8hpp.html#a6dc8e87e8e3561402a6c63f1e4a4c5ef',1,'num::u']]]
 ];

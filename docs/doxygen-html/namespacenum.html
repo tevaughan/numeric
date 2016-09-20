@@ -329,19 +329,19 @@ Functions</h2></td></tr>
 <tr class="memdesc:a75f50a7ad70fcbfc471f7126e69920a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fifth-order Runge-Kutta step with monitoring of local truncation error to ensure accurcy and adjust stepsize.  <a href="#a75f50a7ad70fcbfc471f7126e69920a5">More...</a><br /></td></tr>
 <tr class="separator:a75f50a7ad70fcbfc471f7126e69920a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f7a691f26bbeb52040773444218a549"><td class="memTemplParams" colspan="2">template&lt;typename R , typename A , typename A1 , typename A2 &gt; </td></tr>
-<tr class="memitem:a6f7a691f26bbeb52040773444218a549"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a6f7a691f26bbeb52040773444218a549">integral_rk</a> (std::function&lt; R(<a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>)&gt; f, A1 x1, A2 x2, <a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a> h1, double t=1.0E-06) -&gt; decltype(std::forward&lt; std::function&lt; R(A)&gt;&gt;(f)(A()) *A())</td></tr>
+<tr class="memitem:a6f7a691f26bbeb52040773444218a549"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a6f7a691f26bbeb52040773444218a549">integral_rk</a> (std::function&lt; R(A)&gt; f, A1 x1, A2 x2, A h1, double t=1.0E-06) -&gt; decltype(std::forward&lt; std::function&lt; R(A)&gt;&gt;(f)(A()) *A())</td></tr>
 <tr class="memdesc:a6f7a691f26bbeb52040773444218a549"><td class="mdescLeft">&#160;</td><td class="mdescRight">Numerically integrate a function, and return the result.  <a href="#a6f7a691f26bbeb52040773444218a549">More...</a><br /></td></tr>
 <tr class="separator:a6f7a691f26bbeb52040773444218a549"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ad82a5523fea4fd71e8a96628bbf062"><td class="memTemplParams" colspan="2">template&lt;typename R , typename A , typename A1 , typename A2 &gt; </td></tr>
-<tr class="memitem:a4ad82a5523fea4fd71e8a96628bbf062"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a4ad82a5523fea4fd71e8a96628bbf062">integral_rk</a> (R(*f)(<a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>), A1 x1, A2 x2, <a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a> h1, double t=1.0E-06) -&gt; decltype(std::forward&lt; R(*)(A)&gt;(f)(A()) *A())</td></tr>
+<tr class="memitem:a4ad82a5523fea4fd71e8a96628bbf062"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a4ad82a5523fea4fd71e8a96628bbf062">integral_rk</a> (R(*f)(A), A1 x1, A2 x2, A h1, double t=1.0E-06) -&gt; decltype(std::forward&lt; R(*)(A)&gt;(f)(A()) *A())</td></tr>
 <tr class="memdesc:a4ad82a5523fea4fd71e8a96628bbf062"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integrate an ordinary C function by way of its function pointer.  <a href="#a4ad82a5523fea4fd71e8a96628bbf062">More...</a><br /></td></tr>
 <tr class="separator:a4ad82a5523fea4fd71e8a96628bbf062"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03a3a99cfa02da2a2bbd88f3c7eaaba0"><td class="memTemplParams" colspan="2">template&lt;typename R , typename A , typename A1 , typename A2 &gt; </td></tr>
-<tr class="memitem:a03a3a99cfa02da2a2bbd88f3c7eaaba0"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a03a3a99cfa02da2a2bbd88f3c7eaaba0">integral</a> (std::function&lt; R(<a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>)&gt; f, A1 aa, A2 bb, double t=1.0E-06, unsigned n=16) -&gt; decltype(std::forward&lt; std::function&lt; R(A)&gt;&gt;(f)(A()) *A())</td></tr>
+<tr class="memitem:a03a3a99cfa02da2a2bbd88f3c7eaaba0"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a03a3a99cfa02da2a2bbd88f3c7eaaba0">integral</a> (std::function&lt; R(A)&gt; f, A1 aa, A2 bb, double t=1.0E-06, unsigned n=16) -&gt; decltype(std::forward&lt; std::function&lt; R(A)&gt;&gt;(f)(A()) *A())</td></tr>
 <tr class="memdesc:a03a3a99cfa02da2a2bbd88f3c7eaaba0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Numerically integrate a function, and return the result.  <a href="#a03a3a99cfa02da2a2bbd88f3c7eaaba0">More...</a><br /></td></tr>
 <tr class="separator:a03a3a99cfa02da2a2bbd88f3c7eaaba0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab34b06bd38fe715c4f7133469ff827c"><td class="memTemplParams" colspan="2">template&lt;typename R , typename A , typename A1 , typename A2 &gt; </td></tr>
-<tr class="memitem:aab34b06bd38fe715c4f7133469ff827c"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#aab34b06bd38fe715c4f7133469ff827c">integral</a> (R(*f)(<a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>), A1 a, A2 b, double t=1.0E-06, unsigned n=16) -&gt; decltype(std::forward&lt; R(*)(A)&gt;(f)(A()) *A())</td></tr>
+<tr class="memitem:aab34b06bd38fe715c4f7133469ff827c"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#aab34b06bd38fe715c4f7133469ff827c">integral</a> (R(*f)(A), A1 a, A2 b, double t=1.0E-06, unsigned n=16) -&gt; decltype(std::forward&lt; R(*)(A)&gt;(f)(A()) *A())</td></tr>
 <tr class="memdesc:aab34b06bd38fe715c4f7133469ff827c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integrate an ordinary function by way of its function pointer.  <a href="#aab34b06bd38fe715c4f7133469ff827c">More...</a><br /></td></tr>
 <tr class="separator:aab34b06bd38fe715c4f7133469ff827c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a702f02a1b8109d5fdf12d6b187e93f07"><td class="memTemplParams" colspan="2">template&lt;typename I , typename D &gt; </td></tr>
@@ -355,170 +355,6 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a69ec21a3e079d644e0704a51f6bbf844"><td class="memItemLeft" align="right" valign="top"><a id="a69ec21a3e079d644e0704a51f6bbf844"></a>
-<a class="el" href="structnum_1_1seconds.html">seconds</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a69ec21a3e079d644e0704a51f6bbf844">s</a></td></tr>
-<tr class="memdesc:a69ec21a3e079d644e0704a51f6bbf844"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol s representing a unit of time. <br /></td></tr>
-<tr class="separator:a69ec21a3e079d644e0704a51f6bbf844"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac509e68b236c73409375f3fd5ab494c5"><td class="memItemLeft" align="right" valign="top"><a id="ac509e68b236c73409375f3fd5ab494c5"></a>
-<a class="el" href="structnum_1_1milliseconds.html">milliseconds</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#ac509e68b236c73409375f3fd5ab494c5">ms</a></td></tr>
-<tr class="memdesc:ac509e68b236c73409375f3fd5ab494c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol ms representing a unit of time. <br /></td></tr>
-<tr class="separator:ac509e68b236c73409375f3fd5ab494c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5599aadea6767876ac644c83ec0dd906"><td class="memItemLeft" align="right" valign="top"><a id="a5599aadea6767876ac644c83ec0dd906"></a>
-<a class="el" href="structnum_1_1microseconds.html">microseconds</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a5599aadea6767876ac644c83ec0dd906">mus</a></td></tr>
-<tr class="memdesc:a5599aadea6767876ac644c83ec0dd906"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol mus representing a unit of time. <br /></td></tr>
-<tr class="separator:a5599aadea6767876ac644c83ec0dd906"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff0dafb06c691f3f6e6038c73ebe32e0"><td class="memItemLeft" align="right" valign="top"><a id="aff0dafb06c691f3f6e6038c73ebe32e0"></a>
-<a class="el" href="structnum_1_1nanoseconds.html">nanoseconds</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#aff0dafb06c691f3f6e6038c73ebe32e0">ns</a></td></tr>
-<tr class="memdesc:aff0dafb06c691f3f6e6038c73ebe32e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol ns representing a unit of time. <br /></td></tr>
-<tr class="separator:aff0dafb06c691f3f6e6038c73ebe32e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca556356debd0f057f0131b1b113b196"><td class="memItemLeft" align="right" valign="top"><a id="aca556356debd0f057f0131b1b113b196"></a>
-<a class="el" href="structnum_1_1minutes.html">minutes</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#aca556356debd0f057f0131b1b113b196">min</a></td></tr>
-<tr class="memdesc:aca556356debd0f057f0131b1b113b196"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol min representing a unit of time. <br /></td></tr>
-<tr class="separator:aca556356debd0f057f0131b1b113b196"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf854227a866fdad9b3a823fc7d91395"><td class="memItemLeft" align="right" valign="top"><a id="adf854227a866fdad9b3a823fc7d91395"></a>
-<a class="el" href="structnum_1_1hours.html">hours</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#adf854227a866fdad9b3a823fc7d91395">hr</a></td></tr>
-<tr class="memdesc:adf854227a866fdad9b3a823fc7d91395"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol hr representing a unit of time. <br /></td></tr>
-<tr class="separator:adf854227a866fdad9b3a823fc7d91395"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56902d05a4e06a7b9deda0652f41f524"><td class="memItemLeft" align="right" valign="top"><a id="a56902d05a4e06a7b9deda0652f41f524"></a>
-<a class="el" href="structnum_1_1days.html">days</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a56902d05a4e06a7b9deda0652f41f524">day</a></td></tr>
-<tr class="memdesc:a56902d05a4e06a7b9deda0652f41f524"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol day representing a unit of time. <br /></td></tr>
-<tr class="separator:a56902d05a4e06a7b9deda0652f41f524"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9be5e2c4613d49348398ee28467dda7a"><td class="memItemLeft" align="right" valign="top"><a id="a9be5e2c4613d49348398ee28467dda7a"></a>
-<a class="el" href="structnum_1_1weeks.html">weeks</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a9be5e2c4613d49348398ee28467dda7a">week</a></td></tr>
-<tr class="memdesc:a9be5e2c4613d49348398ee28467dda7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol week representing a unit of time. <br /></td></tr>
-<tr class="separator:a9be5e2c4613d49348398ee28467dda7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acbf757e4a4b0e0b51c0e0ace5059af9e"><td class="memItemLeft" align="right" valign="top"><a id="acbf757e4a4b0e0b51c0e0ace5059af9e"></a>
-<a class="el" href="structnum_1_1hertz.html">hertz</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#acbf757e4a4b0e0b51c0e0ace5059af9e">Hz</a></td></tr>
-<tr class="memdesc:acbf757e4a4b0e0b51c0e0ace5059af9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol Hz representing a unit of frequency. <br /></td></tr>
-<tr class="separator:acbf757e4a4b0e0b51c0e0ace5059af9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a538359e48d8b2e4cd6be71a6351965d4"><td class="memItemLeft" align="right" valign="top"><a id="a538359e48d8b2e4cd6be71a6351965d4"></a>
-<a class="el" href="structnum_1_1kilohertz.html">kilohertz</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a538359e48d8b2e4cd6be71a6351965d4">kHz</a></td></tr>
-<tr class="memdesc:a538359e48d8b2e4cd6be71a6351965d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol kHz representing a unit of frequency. <br /></td></tr>
-<tr class="separator:a538359e48d8b2e4cd6be71a6351965d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9289c7bbe20adc4fbecd1eb63e5abeaf"><td class="memItemLeft" align="right" valign="top"><a id="a9289c7bbe20adc4fbecd1eb63e5abeaf"></a>
-<a class="el" href="structnum_1_1megahertz.html">megahertz</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a9289c7bbe20adc4fbecd1eb63e5abeaf">MHz</a></td></tr>
-<tr class="memdesc:a9289c7bbe20adc4fbecd1eb63e5abeaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol MHz representing a unit of frequency. <br /></td></tr>
-<tr class="separator:a9289c7bbe20adc4fbecd1eb63e5abeaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b26865eaf88c3e8096c7f4c5a362e16"><td class="memItemLeft" align="right" valign="top"><a id="a1b26865eaf88c3e8096c7f4c5a362e16"></a>
-<a class="el" href="structnum_1_1gigahertz.html">gigahertz</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a1b26865eaf88c3e8096c7f4c5a362e16">GHz</a></td></tr>
-<tr class="memdesc:a1b26865eaf88c3e8096c7f4c5a362e16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol GHz representing a unit of frequency. <br /></td></tr>
-<tr class="separator:a1b26865eaf88c3e8096c7f4c5a362e16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73ac0e06b3728ba6cd99dabd183067e1"><td class="memItemLeft" align="right" valign="top"><a id="a73ac0e06b3728ba6cd99dabd183067e1"></a>
-<a class="el" href="structnum_1_1meters.html">meters</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a73ac0e06b3728ba6cd99dabd183067e1">m</a></td></tr>
-<tr class="memdesc:a73ac0e06b3728ba6cd99dabd183067e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol m representing a unit of length. <br /></td></tr>
-<tr class="separator:a73ac0e06b3728ba6cd99dabd183067e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa11c6d8d29f688ed874282e71ad800ad"><td class="memItemLeft" align="right" valign="top"><a id="aa11c6d8d29f688ed874282e71ad800ad"></a>
-<a class="el" href="structnum_1_1centimeters.html">centimeters</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#aa11c6d8d29f688ed874282e71ad800ad">cm</a></td></tr>
-<tr class="memdesc:aa11c6d8d29f688ed874282e71ad800ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol cm representing a unit of length. <br /></td></tr>
-<tr class="separator:aa11c6d8d29f688ed874282e71ad800ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a23749152e29a91ebdfe209e4e865b059"><td class="memItemLeft" align="right" valign="top"><a id="a23749152e29a91ebdfe209e4e865b059"></a>
-<a class="el" href="structnum_1_1millimeters.html">millimeters</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a23749152e29a91ebdfe209e4e865b059">mm</a></td></tr>
-<tr class="memdesc:a23749152e29a91ebdfe209e4e865b059"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol mm representing a unit of length. <br /></td></tr>
-<tr class="separator:a23749152e29a91ebdfe209e4e865b059"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa6f32ac284717eb494a13eca90a862d0"><td class="memItemLeft" align="right" valign="top"><a id="aa6f32ac284717eb494a13eca90a862d0"></a>
-<a class="el" href="structnum_1_1micrometers.html">micrometers</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#aa6f32ac284717eb494a13eca90a862d0">mum</a></td></tr>
-<tr class="memdesc:aa6f32ac284717eb494a13eca90a862d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol mum representing a unit of length. <br /></td></tr>
-<tr class="separator:aa6f32ac284717eb494a13eca90a862d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91956546c97e7ff0f4fb9fd85f51f40b"><td class="memItemLeft" align="right" valign="top"><a id="a91956546c97e7ff0f4fb9fd85f51f40b"></a>
-<a class="el" href="structnum_1_1nanometers.html">nanometers</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a91956546c97e7ff0f4fb9fd85f51f40b">nm</a></td></tr>
-<tr class="memdesc:a91956546c97e7ff0f4fb9fd85f51f40b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol nm representing a unit of length. <br /></td></tr>
-<tr class="separator:a91956546c97e7ff0f4fb9fd85f51f40b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c376d877e2c07bd7b2b57eee7215471"><td class="memItemLeft" align="right" valign="top"><a id="a2c376d877e2c07bd7b2b57eee7215471"></a>
-<a class="el" href="structnum_1_1kilometers.html">kilometers</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a2c376d877e2c07bd7b2b57eee7215471">km</a></td></tr>
-<tr class="memdesc:a2c376d877e2c07bd7b2b57eee7215471"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol km representing a unit of length. <br /></td></tr>
-<tr class="separator:a2c376d877e2c07bd7b2b57eee7215471"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a013d5ac331f94c1d6bf9b728d47fae84"><td class="memItemLeft" align="right" valign="top"><a id="a013d5ac331f94c1d6bf9b728d47fae84"></a>
-<a class="el" href="structnum_1_1inches.html">inches</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a013d5ac331f94c1d6bf9b728d47fae84">in</a></td></tr>
-<tr class="memdesc:a013d5ac331f94c1d6bf9b728d47fae84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol in representing a unit of length. <br /></td></tr>
-<tr class="separator:a013d5ac331f94c1d6bf9b728d47fae84"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87bcd6f8d0cca349f98a058ba2eab098"><td class="memItemLeft" align="right" valign="top"><a id="a87bcd6f8d0cca349f98a058ba2eab098"></a>
-<a class="el" href="structnum_1_1feet.html">feet</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a87bcd6f8d0cca349f98a058ba2eab098">ft</a></td></tr>
-<tr class="memdesc:a87bcd6f8d0cca349f98a058ba2eab098"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol ft representing a unit of length. <br /></td></tr>
-<tr class="separator:a87bcd6f8d0cca349f98a058ba2eab098"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06b97fd23404587149105d6d5ec09ace"><td class="memItemLeft" align="right" valign="top"><a id="a06b97fd23404587149105d6d5ec09ace"></a>
-<a class="el" href="structnum_1_1yards.html">yards</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a06b97fd23404587149105d6d5ec09ace">yd</a></td></tr>
-<tr class="memdesc:a06b97fd23404587149105d6d5ec09ace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol yd representing a unit of length. <br /></td></tr>
-<tr class="separator:a06b97fd23404587149105d6d5ec09ace"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7fc6629c3f4ad043749872f13f2dd1a5"><td class="memItemLeft" align="right" valign="top"><a id="a7fc6629c3f4ad043749872f13f2dd1a5"></a>
-<a class="el" href="structnum_1_1miles.html">miles</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a7fc6629c3f4ad043749872f13f2dd1a5">mi</a></td></tr>
-<tr class="memdesc:a7fc6629c3f4ad043749872f13f2dd1a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol mi representing a unit of length. <br /></td></tr>
-<tr class="separator:a7fc6629c3f4ad043749872f13f2dd1a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb6486acb4151dde8f90298045bb6e33"><td class="memItemLeft" align="right" valign="top"><a id="afb6486acb4151dde8f90298045bb6e33"></a>
-<a class="el" href="structnum_1_1kilograms.html">kilograms</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#afb6486acb4151dde8f90298045bb6e33">kg</a></td></tr>
-<tr class="memdesc:afb6486acb4151dde8f90298045bb6e33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol kg representing a unit of mass. <br /></td></tr>
-<tr class="separator:afb6486acb4151dde8f90298045bb6e33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acfd3a886dc04759aafe53aac4b905812"><td class="memItemLeft" align="right" valign="top"><a id="acfd3a886dc04759aafe53aac4b905812"></a>
-<a class="el" href="structnum_1_1grams.html">grams</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#acfd3a886dc04759aafe53aac4b905812">g</a></td></tr>
-<tr class="memdesc:acfd3a886dc04759aafe53aac4b905812"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol g representing a unit of mass. <br /></td></tr>
-<tr class="separator:acfd3a886dc04759aafe53aac4b905812"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1cbd3be9828459380ca94df20db2647a"><td class="memItemLeft" align="right" valign="top"><a id="a1cbd3be9828459380ca94df20db2647a"></a>
-<a class="el" href="structnum_1_1milligrams.html">milligrams</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a1cbd3be9828459380ca94df20db2647a">mg</a></td></tr>
-<tr class="memdesc:a1cbd3be9828459380ca94df20db2647a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol mg representing a unit of mass. <br /></td></tr>
-<tr class="separator:a1cbd3be9828459380ca94df20db2647a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba3bc8b532dfcb1eb28de11b19256f10"><td class="memItemLeft" align="right" valign="top"><a id="aba3bc8b532dfcb1eb28de11b19256f10"></a>
-<a class="el" href="structnum_1_1micrograms.html">micrograms</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#aba3bc8b532dfcb1eb28de11b19256f10">mug</a></td></tr>
-<tr class="memdesc:aba3bc8b532dfcb1eb28de11b19256f10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol mug representing a unit of mass. <br /></td></tr>
-<tr class="separator:aba3bc8b532dfcb1eb28de11b19256f10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7d4d174d416401e7b4310fe730acd1b"><td class="memItemLeft" align="right" valign="top"><a id="aa7d4d174d416401e7b4310fe730acd1b"></a>
-<a class="el" href="structnum_1_1nanograms.html">nanograms</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#aa7d4d174d416401e7b4310fe730acd1b">ng</a></td></tr>
-<tr class="memdesc:aa7d4d174d416401e7b4310fe730acd1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol ng representing a unit of mass. <br /></td></tr>
-<tr class="separator:aa7d4d174d416401e7b4310fe730acd1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89fdde5f1bd3ad413b7d9fcc014b78ad"><td class="memItemLeft" align="right" valign="top"><a id="a89fdde5f1bd3ad413b7d9fcc014b78ad"></a>
-<a class="el" href="structnum_1_1pounds__m.html">pounds_m</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a89fdde5f1bd3ad413b7d9fcc014b78ad">lbm</a></td></tr>
-<tr class="memdesc:a89fdde5f1bd3ad413b7d9fcc014b78ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol lbm representing a unit of mass. <br /></td></tr>
-<tr class="separator:a89fdde5f1bd3ad413b7d9fcc014b78ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f6e145198f4bff44e2a8de89c1dd751"><td class="memItemLeft" align="right" valign="top"><a id="a6f6e145198f4bff44e2a8de89c1dd751"></a>
-<a class="el" href="structnum_1_1coulombs.html">coulombs</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a6f6e145198f4bff44e2a8de89c1dd751">C</a></td></tr>
-<tr class="memdesc:a6f6e145198f4bff44e2a8de89c1dd751"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol C representing a unit of charge. <br /></td></tr>
-<tr class="separator:a6f6e145198f4bff44e2a8de89c1dd751"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acdca3a48566effb3cd16c57d4b1356b9"><td class="memItemLeft" align="right" valign="top"><a id="acdca3a48566effb3cd16c57d4b1356b9"></a>
-<a class="el" href="structnum_1_1kelvins.html">kelvins</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#acdca3a48566effb3cd16c57d4b1356b9">K</a></td></tr>
-<tr class="memdesc:acdca3a48566effb3cd16c57d4b1356b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol K representing a unit of temperature. <br /></td></tr>
-<tr class="separator:acdca3a48566effb3cd16c57d4b1356b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e593c37764391c7319f69f3176306d5"><td class="memItemLeft" align="right" valign="top"><a id="a5e593c37764391c7319f69f3176306d5"></a>
-<a class="el" href="structnum_1_1millikelvins.html">millikelvins</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a5e593c37764391c7319f69f3176306d5">mK</a></td></tr>
-<tr class="memdesc:a5e593c37764391c7319f69f3176306d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol mK representing a unit of temperature. <br /></td></tr>
-<tr class="separator:a5e593c37764391c7319f69f3176306d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64753502661c653761190233b4793ab4"><td class="memItemLeft" align="right" valign="top"><a id="a64753502661c653761190233b4793ab4"></a>
-<a class="el" href="structnum_1_1microkelvins.html">microkelvins</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a64753502661c653761190233b4793ab4">muK</a></td></tr>
-<tr class="memdesc:a64753502661c653761190233b4793ab4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol muK representing a unit of temperature. <br /></td></tr>
-<tr class="separator:a64753502661c653761190233b4793ab4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3fb3214fef706e1e8d9ce3e45ee3eef9"><td class="memItemLeft" align="right" valign="top"><a id="a3fb3214fef706e1e8d9ce3e45ee3eef9"></a>
-<a class="el" href="structnum_1_1gees.html">gees</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a3fb3214fef706e1e8d9ce3e45ee3eef9">gn</a></td></tr>
-<tr class="memdesc:a3fb3214fef706e1e8d9ce3e45ee3eef9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol gn representing a unit of acceleration. <br /></td></tr>
-<tr class="separator:a3fb3214fef706e1e8d9ce3e45ee3eef9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa74214ceab802ae23aef68b8dfa7b77b"><td class="memItemLeft" align="right" valign="top"><a id="aa74214ceab802ae23aef68b8dfa7b77b"></a>
-<a class="el" href="structnum_1_1newtons.html">newtons</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#aa74214ceab802ae23aef68b8dfa7b77b">N</a></td></tr>
-<tr class="memdesc:aa74214ceab802ae23aef68b8dfa7b77b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol N representing a unit of force. <br /></td></tr>
-<tr class="separator:aa74214ceab802ae23aef68b8dfa7b77b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af219899ab9a13e620ab8c3fda85fd7e7"><td class="memItemLeft" align="right" valign="top"><a id="af219899ab9a13e620ab8c3fda85fd7e7"></a>
-<a class="el" href="structnum_1_1dynes.html">dynes</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#af219899ab9a13e620ab8c3fda85fd7e7">dyn</a></td></tr>
-<tr class="memdesc:af219899ab9a13e620ab8c3fda85fd7e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol dyn representing a unit of force. <br /></td></tr>
-<tr class="separator:af219899ab9a13e620ab8c3fda85fd7e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a69e94163c9248406c1d3bfd36e18ce95"><td class="memItemLeft" align="right" valign="top"><a id="a69e94163c9248406c1d3bfd36e18ce95"></a>
-<a class="el" href="structnum_1_1pounds__f.html">pounds_f</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a69e94163c9248406c1d3bfd36e18ce95">lbf</a></td></tr>
-<tr class="memdesc:a69e94163c9248406c1d3bfd36e18ce95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol lbf representing a unit of force. <br /></td></tr>
-<tr class="separator:a69e94163c9248406c1d3bfd36e18ce95"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2638a5cc42fbfe0180fb5923a61856bd"><td class="memItemLeft" align="right" valign="top"><a id="a2638a5cc42fbfe0180fb5923a61856bd"></a>
-<a class="el" href="structnum_1_1joules.html">joules</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a2638a5cc42fbfe0180fb5923a61856bd">J</a></td></tr>
-<tr class="memdesc:a2638a5cc42fbfe0180fb5923a61856bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol J representing a unit of energy. <br /></td></tr>
-<tr class="separator:a2638a5cc42fbfe0180fb5923a61856bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a388d6b78d5a9dc4d9be7b31ff4b692bc"><td class="memItemLeft" align="right" valign="top"><a id="a388d6b78d5a9dc4d9be7b31ff4b692bc"></a>
-<a class="el" href="structnum_1_1ergs.html">ergs</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a388d6b78d5a9dc4d9be7b31ff4b692bc">erg</a></td></tr>
-<tr class="memdesc:a388d6b78d5a9dc4d9be7b31ff4b692bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol erg representing a unit of energy. <br /></td></tr>
-<tr class="separator:a388d6b78d5a9dc4d9be7b31ff4b692bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90afbbec61811b73666a1707ed886db7"><td class="memItemLeft" align="right" valign="top"><a id="a90afbbec61811b73666a1707ed886db7"></a>
-<a class="el" href="structnum_1_1electron__volts.html">electron_volts</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a90afbbec61811b73666a1707ed886db7">eV</a></td></tr>
-<tr class="memdesc:a90afbbec61811b73666a1707ed886db7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol eV representing a unit of energy. <br /></td></tr>
-<tr class="separator:a90afbbec61811b73666a1707ed886db7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d50ac5ceff2ca2bcbba30725d953419"><td class="memItemLeft" align="right" valign="top"><a id="a0d50ac5ceff2ca2bcbba30725d953419"></a>
-<a class="el" href="structnum_1_1watts.html">watts</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a0d50ac5ceff2ca2bcbba30725d953419">W</a></td></tr>
-<tr class="memdesc:a0d50ac5ceff2ca2bcbba30725d953419"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol W representing a unit of power. <br /></td></tr>
-<tr class="separator:a0d50ac5ceff2ca2bcbba30725d953419"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ba8bb9495ebc37e961e07ea5b5fd0f4"><td class="memItemLeft" align="right" valign="top"><a id="a9ba8bb9495ebc37e961e07ea5b5fd0f4"></a>
-<a class="el" href="structnum_1_1amperes.html">amperes</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a></td></tr>
-<tr class="memdesc:a9ba8bb9495ebc37e961e07ea5b5fd0f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of symbol A representing a unit of current. <br /></td></tr>
-<tr class="separator:a9ba8bb9495ebc37e961e07ea5b5fd0f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab600cc6de1cd65d7dfceaa9d0dbdc2b4"><td class="memItemLeft" align="right" valign="top"><a id="ab600cc6de1cd65d7dfceaa9d0dbdc2b4"></a>
 double constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#ab600cc6de1cd65d7dfceaa9d0dbdc2b4">deg</a> = M_PI / 180.0</td></tr>
 <tr class="memdesc:ab600cc6de1cd65d7dfceaa9d0dbdc2b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Radians per degree. <br /></td></tr>
@@ -684,7 +520,7 @@ template&lt;typename R , typename A , typename A1 , typename A2 &gt; </div>
         <tr>
           <td class="memname">auto num::integral </td>
           <td>(</td>
-          <td class="paramtype">std::function&lt; R(<a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>)&gt;&#160;</td>
+          <td class="paramtype">std::function&lt; R(A)&gt;&#160;</td>
           <td class="paramname"><em>f</em>, </td>
         </tr>
         <tr>
@@ -714,7 +550,7 @@ template&lt;typename R , typename A , typename A1 , typename A2 &gt; </div>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td> -&gt; decltype(std::forward&lt;std::function&lt;R(<a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>)&gt;&gt;(f)(<a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>()) * <a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>())
+          <td></td><td> -&gt; decltype(std::forward&lt;std::function&lt;R(A)&gt;&gt;(f)(A()) * A())
    </td>
         </tr>
       </table>
@@ -762,7 +598,7 @@ template&lt;typename R , typename A , typename A1 , typename A2 &gt; </div>
         <tr>
           <td class="memname">auto num::integral </td>
           <td>(</td>
-          <td class="paramtype">R(*)(<a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>)&#160;</td>
+          <td class="paramtype">R(*)(A)&#160;</td>
           <td class="paramname"><em>f</em>, </td>
         </tr>
         <tr>
@@ -792,7 +628,7 @@ template&lt;typename R , typename A , typename A1 , typename A2 &gt; </div>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td> -&gt; decltype(std::forward&lt;R (*)(<a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>)&gt;(f)(<a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>()) * <a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>())
+          <td></td><td> -&gt; decltype(std::forward&lt;R (*)(A)&gt;(f)(A()) * A())
    </td>
         </tr>
       </table>
@@ -836,7 +672,7 @@ template&lt;typename R , typename A , typename A1 , typename A2 &gt; </div>
         <tr>
           <td class="memname">auto num::integral_rk </td>
           <td>(</td>
-          <td class="paramtype">std::function&lt; R(<a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>)&gt;&#160;</td>
+          <td class="paramtype">std::function&lt; R(A)&gt;&#160;</td>
           <td class="paramname"><em>f</em>, </td>
         </tr>
         <tr>
@@ -854,7 +690,7 @@ template&lt;typename R , typename A , typename A1 , typename A2 &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>&#160;</td>
+          <td class="paramtype">A&#160;</td>
           <td class="paramname"><em>h1</em>, </td>
         </tr>
         <tr>
@@ -866,7 +702,7 @@ template&lt;typename R , typename A , typename A1 , typename A2 &gt; </div>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td> -&gt; decltype(std::forward&lt;std::function&lt;R(<a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>)&gt;&gt;(f)(<a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>()) * <a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>())
+          <td></td><td> -&gt; decltype(std::forward&lt;std::function&lt;R(A)&gt;&gt;(f)(A()) * A())
    </td>
         </tr>
       </table>
@@ -911,7 +747,7 @@ template&lt;typename R , typename A , typename A1 , typename A2 &gt; </div>
         <tr>
           <td class="memname">auto num::integral_rk </td>
           <td>(</td>
-          <td class="paramtype">R(*)(<a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>)&#160;</td>
+          <td class="paramtype">R(*)(A)&#160;</td>
           <td class="paramname"><em>f</em>, </td>
         </tr>
         <tr>
@@ -929,7 +765,7 @@ template&lt;typename R , typename A , typename A1 , typename A2 &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>&#160;</td>
+          <td class="paramtype">A&#160;</td>
           <td class="paramname"><em>h1</em>, </td>
         </tr>
         <tr>
@@ -941,7 +777,7 @@ template&lt;typename R , typename A , typename A1 , typename A2 &gt; </div>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td> -&gt; decltype(std::forward&lt;R (*)(<a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>)&gt;(f)(<a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>()) * <a class="el" href="namespacenum.html#a9ba8bb9495ebc37e961e07ea5b5fd0f4">A</a>())
+          <td></td><td> -&gt; decltype(std::forward&lt;R (*)(A)&gt;(f)(A()) * A())
    </td>
         </tr>
       </table>

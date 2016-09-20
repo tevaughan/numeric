@@ -3,7 +3,7 @@ var searchData=
   ['i',['I',['../structnum_1_1subinterval__stack.html#a1c6b0632b18dff39e54cf4d146418f40',1,'num::subinterval_stack']]],
   ['ilist',['ilist',['../structnum_1_1ilist.html',1,'num']]],
   ['ilistd',['ilistd',['../namespacenum.html#a2b90d965d199cebc0002bca80ee2b149',1,'num']]],
-  ['in',['in',['../namespacenum.html#a013d5ac331f94c1d6bf9b728d47fae84',1,'num']]],
+  ['in',['in',['../units_8hpp.html#aaedb457a079234338eaf96eb3591872d',1,'num::u']]],
   ['inches',['inches',['../structnum_1_1inches.html',1,'num']]],
   ['inches',['inches',['../structnum_1_1inches.html#a3473a0434140c20896adcdda18331651',1,'num::inches::inches(double v)'],['../structnum_1_1inches.html#a05328fd248e15765a44432b64ca903db',1,'num::inches::inches(inches const &amp;dv)=default']]],
   ['introduction',['Introduction',['../index.html',1,'']]],

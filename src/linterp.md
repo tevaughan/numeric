@@ -18,7 +18,7 @@ using namespace std;
 // Second column is interpreted as a double-precision time in seconds.
 // Explicit namespace scoping for num::time might be required to avoid
 // conflict with C library's time() function.
-interpolant<length, num::time> i("file.txt", nm, s);
+interpolant<length, num::time> i("file.txt", u::nm, u::s);
 
 // Read in first two columns of space-delimited file.
 // Each column is interpreted as a double.
@@ -26,13 +26,13 @@ interpolantd j("file.txt");
 
 int main()
 {
-   cout << i(500 * nm) << endl;
+   cout << i(500 * u::nm) << endl;
    cout << j(500) << endl;
    // Class interpolant knows how to integrate itself exactly.
-   cout << i.integral(300 * nm, 900 * nm) << endl;
+   cout << i.integral(300 * u::nm, 900 * u::nm) << endl;
 
    // Product of interpolants is interpolant with no loss of information.
-   interpolant<length, double> k("file2.txt", nm, 1.0);
+   interpolant<length, double> k("file2.txt", u::nm, 1.0);
    interpolant<length, num::time> m = i * k;
 
    return 0;

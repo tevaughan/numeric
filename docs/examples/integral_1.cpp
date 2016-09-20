@@ -8,6 +8,7 @@
 #include "units.hpp"
 
 using namespace num;
+using namespace num::u;
 
 using prob_density = decltype(1.0 / length());
 

@@ -4,6 +4,7 @@
 #include <iostream>
 #include "units.hpp"
 using namespace num;
+using namespace num::u;
 int main() {
    using time = num::time;  // in case of conflict with C library's time()
    length x0 = 2 * m;       // meters

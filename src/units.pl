@@ -59,10 +59,12 @@ struct $pnm : public $dim {
    }
 };
 
+namespace u {
 /// Declaration of symbol $snm representing a unit of $dim.
 extern $pnm const $snm;
+}
 EOF3
-   print OUT_C "$pnm const num::$snm(1.0);\n";
+   print OUT_C "$pnm const num::u::$snm(1.0);\n";
 }
 
 print OUT_H <<'EOF4';

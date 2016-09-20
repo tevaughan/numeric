@@ -54,7 +54,8 @@ that is used at library build time to generate the corresponding C++ file
 units.hpp.
 ```cpp
 #include <units.hpp>
-num::speed v = 2.3 * mi / hr;  // Speed with initial value 2.3 miles/hour.
+using namespace num;
+speed v = 2.3 * u::mi / u::hr;  // Speed with initial value 2.3 miles/hour.
 ```
 
 sqrt() and fabs() are supported.
@@ -64,7 +65,7 @@ allows for an integer root.
 ```cpp
 #include <units.hpp>
 using namespace num;
-length x = 2 * cm;
+length x = 2 * u::cm;
 area a = pow<2>(x);
 length y = 0.5 * sqrt(a);
 volume v = pow<3>(x);
@@ -78,9 +79,9 @@ Standard-library output streams are supported.
   using namespace num;
   int main() {
      using time = num::time;  // in case of conflict with C library's time()
-     length x0 = 2 * m;       // meters
-     speed  v  = 5 * m / s;   // meters per second
-     time   t  = 3 * min;     // minutes
+     length x0 = 2 * u::m;         // meters
+     speed  v  = 5 * u::m / u::s;  // meters per second
+     time   t  = 3 * u::min;       // minutes
      // Output distance in meters (the default) and in yards.
      std::cout << x0 + v * t << std::endl;                  // "[902 m]"
      std::cout << (x0 + v * t) / yd << " yd" << std::endl;  // "986.439 yd"

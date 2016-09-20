@@ -12,6 +12,7 @@
 #include "units.hpp"
 
 using namespace num;
+using namespace num::u;
 using namespace std;
 
 TEST_CASE("Verify interpolation on vector of points.", "[interpolant]")

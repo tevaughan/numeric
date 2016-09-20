@@ -20,9 +20,9 @@ using namespace std;
 int main()
 {
    // 'ft' stands for one foot.
-   length ell = 2.1 * ft;                    // length of pendulum
+   length ell = 2.1 * u::ft;                 // length of pendulum
    // 'gn' stands for one standard gravity.
-   frequency f = sqrt(gn / ell);             // frequency of small oscillations
+   frequency f = sqrt(u::gn / ell);          // frequency of small oscillations
    cout << f << endl;                        // [3.9142 s^-1]
    return 0;
 }

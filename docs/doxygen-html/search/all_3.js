@@ -1,7 +1,7 @@
 var searchData=
 [
   ['da',['da',['../classnum_1_1dense__table.html#a234dca49a7383ca349e29e3079b4d8b2',1,'num::dense_table']]],
-  ['day',['day',['../namespacenum.html#a56902d05a4e06a7b9deda0652f41f524',1,'num']]],
+  ['day',['day',['../units_8hpp.html#aa8e7b59d272a8a6120fa519d3e641ea5',1,'num::u']]],
   ['days',['days',['../structnum_1_1days.html',1,'num']]],
   ['days',['days',['../structnum_1_1days.html#a79469f122c75cd5491284fb339d21245',1,'num::days::days(double v)'],['../structnum_1_1days.html#a6853d474797d6095053f1ce20bece1d9',1,'num::days::days(days const &amp;dv)=default']]],
   ['deg',['deg',['../namespacenum.html#ab600cc6de1cd65d7dfceaa9d0dbdc2b4',1,'num']]],
@@ -17,7 +17,7 @@ var searchData=
   ['dimval_2ehpp',['dimval.hpp',['../dimval_8hpp.html',1,'']]],
   ['dimval_5fpower',['dimval_power',['../classnum_1_1dimval.html#a647059d6a2dbff168126a0518c57621a',1,'num::dimval']]],
   ['dimval_5froot',['dimval_root',['../classnum_1_1dimval.html#a3601e60743a074563ce91910f487fa61',1,'num::dimval']]],
-  ['dyn',['dyn',['../namespacenum.html#af219899ab9a13e620ab8c3fda85fd7e7',1,'num']]],
+  ['dyn',['dyn',['../units_8hpp.html#a26af50d6f46e58a095f8bbd81372e4e7',1,'num::u']]],
   ['dynes',['dynes',['../structnum_1_1dynes.html',1,'num']]],
   ['dynes',['dynes',['../structnum_1_1dynes.html#af72f14ada39dffdfe9e001a4077c364f',1,'num::dynes::dynes(double v)'],['../structnum_1_1dynes.html#a5f635c0251692a635a591e77b20e067e',1,'num::dynes::dynes(dynes const &amp;dv)=default']]]
 ];

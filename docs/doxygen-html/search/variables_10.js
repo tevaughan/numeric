@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['w',['W',['../namespacenum.html#a0d50ac5ceff2ca2bcbba30725d953419',1,'num']]],
-  ['week',['week',['../namespacenum.html#a9be5e2c4613d49348398ee28467dda7a',1,'num']]]
+  ['w',['W',['../units_8hpp.html#a2a41990d0f96ef5cd33659ef8b7bfecd',1,'num::u']]],
+  ['week',['week',['../units_8hpp.html#aa413e7a825a739421a6f0b322403a491',1,'num::u']]]
 ];

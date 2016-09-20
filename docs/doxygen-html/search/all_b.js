@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['lbf',['lbf',['../namespacenum.html#a69e94163c9248406c1d3bfd36e18ce95',1,'num']]],
-  ['lbm',['lbm',['../namespacenum.html#a89fdde5f1bd3ad413b7d9fcc014b78ad',1,'num']]],
+  ['lbf',['lbf',['../units_8hpp.html#a9ba87b76e9424b85343358933deae233',1,'num::u']]],
+  ['lbm',['lbm',['../units_8hpp.html#ac6f6d5c02d6ce75915852118a722a757',1,'num::u']]],
   ['length',['length',['../namespacenum.html#a3997c6b0cde686199597c405646da2f7',1,'num']]],
   ['linear_20interpolation',['Linear Interpolation',['../linterp.html',1,'']]]
 ];

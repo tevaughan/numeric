@@ -10,6 +10,7 @@
 #include "units.hpp"
 
 using namespace num;
+using namespace num::u;
 using namespace std;
 
 TEST_CASE("Verify basic operation of units.", "[units]")

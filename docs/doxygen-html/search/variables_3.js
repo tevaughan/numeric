@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['day',['day',['../namespacenum.html#a56902d05a4e06a7b9deda0652f41f524',1,'num']]],
+  ['day',['day',['../units_8hpp.html#aa8e7b59d272a8a6120fa519d3e641ea5',1,'num::u']]],
   ['deg',['deg',['../namespacenum.html#ab600cc6de1cd65d7dfceaa9d0dbdc2b4',1,'num']]],
-  ['dyn',['dyn',['../namespacenum.html#af219899ab9a13e620ab8c3fda85fd7e7',1,'num']]]
+  ['dyn',['dyn',['../units_8hpp.html#a26af50d6f46e58a095f8bbd81372e4e7',1,'num::u']]]
 ];

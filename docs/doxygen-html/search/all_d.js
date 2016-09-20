@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['n',['N',['../namespacenum.html#aa74214ceab802ae23aef68b8dfa7b77b',1,'num']]],
+  ['n',['N',['../units_8hpp.html#ad3197f25f13b56a096015b133c48df24',1,'num::u']]],
   ['nanograms',['nanograms',['../structnum_1_1nanograms.html',1,'num']]],
   ['nanograms',['nanograms',['../structnum_1_1nanograms.html#a62f9db269b712d0877a016719df11d5f',1,'num::nanograms::nanograms(double v)'],['../structnum_1_1nanograms.html#a4f69774f02889d88f852c3dd3ba5ad78',1,'num::nanograms::nanograms(nanograms const &amp;dv)=default']]],
   ['nanometers',['nanometers',['../structnum_1_1nanometers.html',1,'num']]],
@@ -9,8 +9,8 @@ var searchData=
   ['nanoseconds',['nanoseconds',['../structnum_1_1nanoseconds.html',1,'num']]],
   ['newtons',['newtons',['../structnum_1_1newtons.html#a72ef105a37e4f3ef9f9fe232648716d7',1,'num::newtons::newtons(double v)'],['../structnum_1_1newtons.html#aa95b6211781fdeff09d6f89120a7f666',1,'num::newtons::newtons(newtons const &amp;dv)=default']]],
   ['newtons',['newtons',['../structnum_1_1newtons.html',1,'num']]],
-  ['ng',['ng',['../namespacenum.html#aa7d4d174d416401e7b4310fe730acd1b',1,'num']]],
-  ['nm',['nm',['../namespacenum.html#a91956546c97e7ff0f4fb9fd85f51f40b',1,'num']]],
-  ['ns',['ns',['../namespacenum.html#aff0dafb06c691f3f6e6038c73ebe32e0',1,'num']]],
+  ['ng',['ng',['../units_8hpp.html#aeee65afe50c41173993fba7e335e137d',1,'num::u']]],
+  ['nm',['nm',['../units_8hpp.html#a454bd380076606597ace0c7e0d726801',1,'num::u']]],
+  ['ns',['ns',['../units_8hpp.html#a27a966b74f5b0852e8beef71ec3efc32',1,'num::u']]],
   ['num',['num',['../namespacenum.html',1,'']]]
 ];

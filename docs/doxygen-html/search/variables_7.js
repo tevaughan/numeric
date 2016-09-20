@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['hr',['hr',['../namespacenum.html#adf854227a866fdad9b3a823fc7d91395',1,'num']]],
-  ['hz',['Hz',['../namespacenum.html#acbf757e4a4b0e0b51c0e0ace5059af9e',1,'num']]]
+  ['hr',['hr',['../units_8hpp.html#a0515807910c696bc1cc22cf6a84136af',1,'num::u']]],
+  ['hz',['Hz',['../units_8hpp.html#a88a6b8fe95a1d33c3829055ba0ddf226',1,'num::u']]]
 ];
