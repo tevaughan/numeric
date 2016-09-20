@@ -23,6 +23,193 @@
 
 namespace num
 {
+   /// Type of derivative of a function, whose return type is \a Y, and
+   /// argument type \a X.
+   ///
+   /// \tparam Y  Function's return type.
+   /// \tparam X  Function's argument type.
+   template <typename Y, typename X>
+   using DER = decltype(Y() / X());
+
+   /// Given the value for variable \a y and the value for its derivative \a
+   /// dydx, use the fifth-order Cash-Karp Runge-Kutta method to advance the
+   /// solution for \a y over an interval \a h, and return the incremented
+   /// variable as \a yout.  Also, return, by way of the embedded fourth-order
+   /// method, an estimate \a yerr of the local truncation error in \a yout.
+   /// The supplied function \a deriv gives returns the derivative (just like
+   /// dydx) at any value of the independent variable.
+   ///
+   /// This function is based on a simplified version of `rkck()` found on Page
+   /// 719 in Numerical Recipes in C, Second Edition.  The simplification is
+   /// due mainly to the fact that the present function is used for quadrature,
+   /// and so \a deriv does not require \a y as input.
+   ///
+   /// \tparam X  Type of independent variable.
+   /// \tparam Y  Type of variable that is accumulated during integration.
+   template <typename X, typename Y>
+   void rkck(Y const &y,            ///< Initial value of accumulated variable.
+             DER<Y, X> const &dydx, ///< Derivative at beginning of interval.
+             X const &x,            ///< Initial value of independent variable.
+             X const &h,            ///< Length of interval.
+             Y &yout,               ///< Accumulated value at end of interval.
+             Y &yerr,               ///< Estimate of local truncation error.
+             std::function<DER<Y, X>(X)> deriv ///< Function for derivative.
+             )
+   {
+      double constexpr a3 = 0.3, a4 = 0.6, a5 = 1.0, a6 = 0.875;
+      double constexpr c1 = 37.0 / 378.0, c3 = 250.0 / 621.0;
+      double constexpr c4 = 125.0 / 594.0, c6 = 512.0 / 1771.0;
+      double constexpr dc1 = c1 - 2825.0 / 27648.0;
+      double constexpr dc3 = c3 - 18575.0 / 48384.0;
+      double constexpr dc4 = c4 - 13525.0 / 55296.0;
+      double constexpr dc5 = -277.0 / 14336.0;
+      double constexpr dc6 = c6 - 0.25;
+      // 1st step is given as dydx on input.
+      // 2nd step not needed because deriv() does not need y as input.
+      DER<Y, X> const ak3 = deriv(x + a3 * h); // 3rd step.
+      DER<Y, X> const ak4 = deriv(x + a4 * h); // 4th step.
+      DER<Y, X> const ak5 = deriv(x + a5 * h); // 5th step.
+      DER<Y, X> const ak6 = deriv(x + a6 * h); // 6th step.
+      // Accumulate increments with proper weights.
+      yout = y + h * (c1 * dydx + c3 * ak3 + c4 * ak4 + c6 * ak6);
+      // Estimate error as difference between fourth- and fifth-order methods.
+      yerr = h * (dc1 * dydx + dc3 * ak3 + dc4 * ak4 + dc5 * ak5 + dc6 * ak6);
+   }
+
+   /// Fifth-order Runge-Kutta step with monitoring of local truncation error
+   /// to ensure accurcy and adjust stepsize. Input are the accumulated
+   /// variable \a y and its derivative \a dydx at the starting value of the
+   /// independent variable \a x.  Also input are the stepsize \a htry to be
+   /// attempted and the required accuracy \a eps.  On output, \a y and \a x
+   /// are replaced by their new values, \a hdid is the stepsize that was
+   /// actually accomplished, and \a hnext is the estimated next stepsize.  The
+   /// supplied function \a deriv returns the derivative (just like dydx) at
+   /// any value of the independent variable.
+   ///
+   /// This function is based on `rkqs()` found on Page 719 in Numerical
+   /// Recipes in C, Second Edition.
+   template <typename X, typename Y>
+   void rkqs(Y &y,                  ///< Accumulated variable.
+             DER<Y, X> const &dydx, ///< Derivative at beginning of interval.
+             X &x,                  ///< Independent variable.
+             X const &htry,         ///< Stepsize to be attempted.
+             double eps,            ///< Required accuracy.
+             Y const &yscal,        ///< Scaling used to monitor accuracy.
+             X &hdid,               ///< Stepsize that was accomplished.
+             X &hnext,              ///< Estimated next stepsize.
+             std::function<DER<Y, X>(X)> deriv ///< Function for derivative.
+             )
+   {
+      double constexpr SAFETY = 0.9, PGROW = -0.2, PSHRNK = -0.25;
+      double constexpr ERRCON = pow(5.0 / SAFETY, 1.0 / PGROW);
+      double err;
+      Y yerr;
+      Y ytemp;
+      X h = htry; // Set stepsize to the initial trial value.
+      while (true) {
+         rkck(y, dydx, x, h, ytemp, yerr, deriv); // Take a step.
+         err = fabs(yerr / yscal / eps);
+         if (err <= 1.0) {
+            break;
+         }
+         X const htemp = SAFETY * h * pow(err, PSHRNK);
+         // Truncation error is too large.  Reduce stepsize no more than a
+         // factor of 10.
+         X const tenth = 0.1 * h;
+         if (h >= 0.0) {
+            if (htemp > tenth) {
+               h = htemp;
+            } else {
+               h = tenth;
+            }
+         } else {
+            if (htemp < tenth) {
+               h = htemp;
+            } else {
+               h = tenth;
+            }
+         }
+         X const xnew = x + h;
+         if (xnew == x) {
+            std::cerr << "rkqs: WARNING: stepsize underflow" << std::endl;
+            break;
+         }
+      }
+      // Increase stepsize no more than a factor of 5.
+      if (err > ERRCON) {
+         hnext = SAFETY * h * pow(err, PGROW);
+      } else {
+         hnext = 5.0 * h;
+      }
+      x += (hdid = h);
+      y = ytemp;
+   }
+
+   /// Numerically integrate a function, and return the result.  Use
+   /// fifth-order Runge-Kutta for adaptive quadrature.  The initial guess for
+   /// the step size is used at the lower limit of integration.
+   ///
+   /// This function is based on `odeint()` on Page 721 of Numerical Recipes in
+   /// C, Second Edition.
+   ///
+   /// \tparam R   Type of instance returned by function.
+   /// \tparam A   Type of argument to function.
+   /// \tparam A1  Type of lower limit of integration; A1 must convert to A.
+   /// \tparam A2  Type of upper limit of integration; A2 must convert to A.
+   /// \return     Numeric integral of function.
+   template <typename R, typename A, typename A1, typename A2>
+   auto integral_rk(std::function<R(A)> f, ///< Function to be integrated.
+                    A1 x1,                 ///< Lower limit of integration.
+                    A2 x2,                 ///< Upper limit of integration.
+                    A h1,                  ///< Initial guess for step size.
+                    double t = 1.0E-06     ///< Error tolerance.
+                    )
+         // Meyers, Scott. Effective Modern C++ (first ed., 2015), page 28.
+         -> decltype(std::forward<std::function<R(A)>>(f)(A()) * A())
+   {
+      using Y = decltype(std::forward<std::function<R(A)>>(f)(A()) * A());
+      A const hmin = 0.0;
+      A x = x1;
+      A h;
+      if (x2 - x1 > A(0.0)) {
+         h = +fabs(h1);
+      } else {
+         h = -fabs(h1);
+      }
+      int nok = 0, nbad = 0;
+      Y y(0.0);
+      int constexpr MAXSTP = 10000;
+      for (int nstp = 0; nstp < MAXSTP; ++nstp) {
+         R const dydx = f(x);
+         double constexpr TINY = 1.0E-300;
+         // General-purpose scaling used to monitor accuracy.
+         Y const yscal = fabs(y) + fabs(dydx * h) + TINY;
+         A const xh = x + h;
+         using X2 = decltype(A() * A());
+         if ((xh - x2) * (xh - x1) > X2(0.0)) {
+            h = x2 - x; // Decrease stepsize to avoid overshoot.
+         }
+         A hdid, hnext;
+         rkqs(y, dydx, x, h, t, yscal, hdid, hnext, f);
+         if (hdid == h) {
+            ++nok;
+         } else {
+            ++nbad;
+         }
+         if ((x - x2) * (x2 - x1) >= X2(0.0)) {
+            return y; // We are done; exit normally.
+         }
+         if (fabs(hnext) <= hmin) {
+            std::cerr << "integral_rk: WARNING: step size too small"
+                      << std::endl;
+            return y;
+         }
+         h = hnext;
+      }
+      std::cerr << "integral_rk: WARNING: too many steps" << std::endl;
+      return y;
+   }
+
    /// Numerically integrate a function, and return the result.
    ///
    /// Use the trapezoidal rule with adaptive quadrature.
@@ -52,15 +239,14 @@ namespace num
    /// \tparam A   Type of argument to function.
    /// \tparam A1  Type of lower limit of integration; A1 must convert to A.
    /// \tparam A2  Type of upper limit of integration; A2 must convert to A.
-   /// \param  f   Function to be integrated.
-   /// \param  aa  Lower limit of integration.
-   /// \param  bb  Upper limit of integration.
-   /// \param  t   Error tolerance.
-   /// \param  n   Initial number of evenly spaced samples of the function.
    /// \return     Numeric integral of function.
    template <typename R, typename A, typename A1, typename A2>
-   auto integral(std::function<R(A)> f, A1 aa, A2 bb, double t = 1.0E-06,
-                 unsigned n = 16)
+   auto integral(std::function<R(A)> f, ///< Function to be integrated.
+                 A1 aa,                 ///< Lower limit of integration.
+                 A2 bb,                 ///< Upper limit of integration.
+                 double t = 1.0E-06,    ///< Error tolerance.
+                 unsigned n = 16 ///< Initial number of evenly spaced samples.
+                 )
          // Meyers, Scott. Effective Modern C++ (first ed., 2015), page 28.
          -> decltype(std::forward<std::function<R(A)>>(f)(A()) * A())
    {

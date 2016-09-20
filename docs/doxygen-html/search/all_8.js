@@ -9,6 +9,7 @@ var searchData=
   ['introduction',['Introduction',['../index.html',1,'']]],
   ['integral',['integral',['../classnum_1_1dimval.html#a430c972f99588db6f3783f06e756f3c3',1,'num::dimval::integral()'],['../classnum_1_1interpolant.html#af9763298777611dda79ceac53df3b0b8',1,'num::interpolant::integral(I x1, I x2) const'],['../classnum_1_1interpolant.html#a8087628a2eaa233fc86e472c1c71a8c6',1,'num::interpolant::integral() const'],['../namespacenum.html#a03a3a99cfa02da2a2bbd88f3c7eaaba0',1,'num::integral(std::function&lt; R(A)&gt; f, A1 aa, A2 bb, double t=1.0E-06, unsigned n=16) -&gt; decltype(std::forward&lt; std::function&lt; R(A)&gt;&gt;(f)(A()) *A())'],['../namespacenum.html#aab34b06bd38fe715c4f7133469ff827c',1,'num::integral(R(*f)(A), A1 a, A2 b, double t=1.0E-06, unsigned n=16) -&gt; decltype(std::forward&lt; R(*)(A)&gt;(f)(A()) *A())']]],
   ['integral_2ehpp',['integral.hpp',['../integral_8hpp.html',1,'']]],
+  ['integral_5frk',['integral_rk',['../namespacenum.html#a6f7a691f26bbeb52040773444218a549',1,'num']]],
   ['integral_5fstats',['integral_stats',['../classnum_1_1integral__stats.html#a04750b03f649fa13a05597f5e49a6e04',1,'num::integral_stats']]],
   ['integral_5fstats',['integral_stats',['../classnum_1_1integral__stats.html',1,'num']]],
   ['integral_5fstats_2ehpp',['integral_stats.hpp',['../integral__stats_8hpp.html',1,'']]],

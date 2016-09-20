@@ -38,13 +38,12 @@ speed.
 An adaptive-quadrature, trapezoid-rule, global integration function,
 num::integral allows the definite integral of any continuous function of one
 variable to be computed to a specified tolerance.
+- The template function num::integral is designed to be able to interoperate
+  with units.
+- If dimensioned quantities be not used, then one need include only
+  [integral.hpp](\ref integral.hpp) and need not link against `libnumeric.so`.
 
-The global num::integral is designed to be able to interoperate with units.
-
-However, if dimensioned quantities be not used, then one need only include
-[integral.hpp](\ref integral.hpp) and need not link against `libnumeric.so`.
-
-[Details of integration.](\ref integrals)
+[Details on integration.](\ref integrals)
 
 ## Functional Relations
 

@@ -1,6 +1,8 @@
 
 # Integration {#integrals}
 
+
+
 ```cpp
 #include <iostream>
 #include <integral.hpp>

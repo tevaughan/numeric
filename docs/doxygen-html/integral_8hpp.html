@@ -72,6 +72,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">integral.hpp File Reference</div>  </div>
@@ -105,8 +106,27 @@ Namespaces</h2></td></tr>
 <tr class="memdesc:namespacenum"><td class="mdescLeft">&#160;</td><td class="mdescRight">Namespace for C++-11 library enabling numerical computation. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a14b2da5a337bee3b60e5adc1b871b3ac"><td class="memTemplParams" colspan="2">template&lt;typename Y , typename X &gt; </td></tr>
+<tr class="memitem:a14b2da5a337bee3b60e5adc1b871b3ac"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a14b2da5a337bee3b60e5adc1b871b3ac">num::DER</a> = decltype(Y()/X())</td></tr>
+<tr class="memdesc:a14b2da5a337bee3b60e5adc1b871b3ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of derivative of a function, whose return type is <em>Y</em>, and argument type <em>X</em>.  <a href="namespacenum.html#a14b2da5a337bee3b60e5adc1b871b3ac">More...</a><br /></td></tr>
+<tr class="separator:a14b2da5a337bee3b60e5adc1b871b3ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ae4a2c28fa2868ee642acb618f17cbbcb"><td class="memTemplParams" colspan="2">template&lt;typename X , typename Y &gt; </td></tr>
+<tr class="memitem:ae4a2c28fa2868ee642acb618f17cbbcb"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#ae4a2c28fa2868ee642acb618f17cbbcb">num::rkck</a> (Y const &amp;y, DER&lt; Y, X &gt; const &amp;dydx, X const &amp;x, X const &amp;h, Y &amp;yout, Y &amp;yerr, std::function&lt; DER&lt; Y, X &gt;(X)&gt; deriv)</td></tr>
+<tr class="memdesc:ae4a2c28fa2868ee642acb618f17cbbcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given the value for variable <em>y</em> and the value for its derivative <em>dydx</em>, use the fifth-order Cash-Karp Runge-Kutta method to advance the solution for <em>y</em> over an interval <em>h</em>, and return the incremented variable as <em>yout</em>.  <a href="namespacenum.html#ae4a2c28fa2868ee642acb618f17cbbcb">More...</a><br /></td></tr>
+<tr class="separator:ae4a2c28fa2868ee642acb618f17cbbcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75f50a7ad70fcbfc471f7126e69920a5"><td class="memTemplParams" colspan="2">template&lt;typename X , typename Y &gt; </td></tr>
+<tr class="memitem:a75f50a7ad70fcbfc471f7126e69920a5"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a75f50a7ad70fcbfc471f7126e69920a5">num::rkqs</a> (Y &amp;y, DER&lt; Y, X &gt; const &amp;dydx, X &amp;x, X const &amp;htry, double eps, Y const &amp;yscal, X &amp;hdid, X &amp;hnext, std::function&lt; DER&lt; Y, X &gt;(X)&gt; deriv)</td></tr>
+<tr class="memdesc:a75f50a7ad70fcbfc471f7126e69920a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fifth-order Runge-Kutta step with monitoring of local truncation error to ensure accurcy and adjust stepsize.  <a href="namespacenum.html#a75f50a7ad70fcbfc471f7126e69920a5">More...</a><br /></td></tr>
+<tr class="separator:a75f50a7ad70fcbfc471f7126e69920a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f7a691f26bbeb52040773444218a549"><td class="memTemplParams" colspan="2">template&lt;typename R , typename A , typename A1 , typename A2 &gt; </td></tr>
+<tr class="memitem:a6f7a691f26bbeb52040773444218a549"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a6f7a691f26bbeb52040773444218a549">num::integral_rk</a> (std::function&lt; R(A)&gt; f, A1 x1, A2 x2, A h1, double t=1.0E-06) -&gt; decltype(std::forward&lt; std::function&lt; R(A)&gt;&gt;(f)(A()) *A())</td></tr>
+<tr class="memdesc:a6f7a691f26bbeb52040773444218a549"><td class="mdescLeft">&#160;</td><td class="mdescRight">Numerically integrate a function, and return the result.  <a href="namespacenum.html#a6f7a691f26bbeb52040773444218a549">More...</a><br /></td></tr>
+<tr class="separator:a6f7a691f26bbeb52040773444218a549"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03a3a99cfa02da2a2bbd88f3c7eaaba0"><td class="memTemplParams" colspan="2">template&lt;typename R , typename A , typename A1 , typename A2 &gt; </td></tr>
 <tr class="memitem:a03a3a99cfa02da2a2bbd88f3c7eaaba0"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a03a3a99cfa02da2a2bbd88f3c7eaaba0">num::integral</a> (std::function&lt; R(A)&gt; f, A1 aa, A2 bb, double t=1.0E-06, unsigned n=16) -&gt; decltype(std::forward&lt; std::function&lt; R(A)&gt;&gt;(f)(A()) *A())</td></tr>
 <tr class="memdesc:a03a3a99cfa02da2a2bbd88f3c7eaaba0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Numerically integrate a function, and return the result.  <a href="namespacenum.html#a03a3a99cfa02da2a2bbd88f3c7eaaba0">More...</a><br /></td></tr>
