@@ -123,10 +123,10 @@ namespace num
                h = tenth;
             }
          }
-         X xnew = x + h;
+         X const xnew = x + h;
          if (xnew == x) {
             std::cerr << "rkqs: WARNING: stepsize underflow" << std::endl;
-            h = std::numeric_limits<double>::epsilon() * 10.0 * x;
+            h = std::numeric_limits<double>::epsilon() * 100.0 * x;
             break;
          }
       }
@@ -179,7 +179,7 @@ namespace num
                interpolant<A, PRD<R, A>> *ii = nullptr)
    {
       double constexpr eps = std::numeric_limits<double>::epsilon();
-      double constexpr min_tol = 1000.0 * eps;
+      double constexpr min_tol = 100.0 * eps;
       double tol = t;
       if (tol <= 0.0) {
          throw "tolerance not positive";

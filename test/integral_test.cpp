@@ -85,7 +85,7 @@ TEST_CASE("Verify limit of tolerance.", "[integral]")
    double const m = integral_rk(s, 0, M_PI, tol);
    // Verify that integral of sin(2*x) from 0 to pi is 0.
    REQUIRE(j == Approx(0.0).epsilon(10000 * tol));
-   REQUIRE(m == Approx(0.0).epsilon(100000 * tol));
+   REQUIRE(m == Approx(0.0).epsilon(10000 * tol));
 }
 
 TEST_CASE("Trigger coverage of code requiring at least two samples.",
