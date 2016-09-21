@@ -92,8 +92,10 @@ TEST_CASE("Trigger coverage of code requiring at least two samples.",
           "[integral]")
 {
    volume const i = integral(square, 1 * cm, 2 * cm, 1.0E-06, 0);
+   volume const j = integral_rk(square, 1 * cm, 2 * cm, 1.0E-06, 0);
    // Verify that integral of x^2 from 1 cm  to  2 cm  is  7/3 cm^3.
    REQUIRE(i / pow<3>(cm) == Approx(7.0 / 3.0));
+   REQUIRE(j / pow<3>(cm) == Approx(7.0 / 3.0));
 }
 
 // This is a bit silly because interpolant has its own, optimized
@@ -105,18 +107,28 @@ TEST_CASE("Verify integration of interpolant.", "[integral]")
    interpolantd i(list);
    function<double(double)> f(i);
    REQUIRE(integral(f, -0.50, -0.10) == Approx(0.2));
+   REQUIRE(integral_rk(f, -0.50, -0.10) == Approx(0.2));
    REQUIRE(integral(f, -0.25, +0.25) ==
+           Approx(0.25 * 0.5 + 0.25 * 0.5 * (0.5 + 0.75)));
+   REQUIRE(integral_rk(f, -0.25, +0.25) ==
            Approx(0.25 * 0.5 + 0.25 * 0.5 * (0.5 + 0.75)));
    REQUIRE(integral(f, +0.25, +1.25) ==
            Approx(0.5 * 0.25 * (0.75 + 1.0) - 0.25));
+   REQUIRE(integral_rk(f, +0.25, +1.25) ==
+           Approx(0.5 * 0.25 * (0.75 + 1.0) - 0.25));
    REQUIRE(integral(f, +0.55, +0.95) == Approx(0.0));
+   REQUIRE(integral_rk(f, +0.55, +0.95) == Approx(0.0));
    REQUIRE(integral(f, +0.75, +1.25) == Approx(-0.375));
+   REQUIRE(integral_rk(f, +0.75, +1.25) == Approx(-0.375));
    REQUIRE(integral(f, +1.25, +1.50) == Approx(-0.25));
+   REQUIRE(integral_rk(f, +1.25, +1.50) == Approx(-0.25));
    REQUIRE(integral(f, +1.50, +1.25) == Approx(+0.25));
+   REQUIRE(integral_rk(f, +1.50, +1.25) == Approx(+0.25));
 }
 
 TEST_CASE("Verify throw on illegal tolerance.", "[integral]")
 {
    REQUIRE_THROWS(integral(square, 1 * cm, 2 * cm, -1.0E-06));
+   REQUIRE_THROWS(integral_rk(square, 1 * cm, 2 * cm, -1.0E-06));
 }
 

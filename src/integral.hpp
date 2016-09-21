@@ -190,7 +190,10 @@ namespace num
       A const hmin(0.0);
       A x = x1;
       A h;
-      A const h1 = (A(x2) - A(x1)) / n;
+      if (n < 2) {
+         n = 2;
+      }
+      A const h1 = (A(x2) - A(x1)) / (n - 1);
       if (x2 - x1 > A(0.0)) {
          h = +fabs(h1);
       } else {

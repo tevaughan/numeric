@@ -1,0 +1,10 @@
+
+unset key
+
+set term pngcairo size 800,600
+set title "Evaluation of Gaussian,\nArea Accurate to One Part in Ten Thousand,\nRunge-Kutta Quadrature"
+set output "interp_2.png"
+set yrange [-0.05:0.45]
+
+plot "interp_2.dat"
+

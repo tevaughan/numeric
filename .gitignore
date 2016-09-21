@@ -6,6 +6,7 @@ libtool
 Makefile
 numeric-*-coverage*
 tags
+TAGS
 
 *.pyc
 

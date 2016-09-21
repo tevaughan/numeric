@@ -94,7 +94,7 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 noinst_PROGRAMS = units_1$(EXEEXT) units_2$(EXEEXT) \
-	integral_1$(EXEEXT) interp_1$(EXEEXT)
+	integral_1$(EXEEXT) interp_1$(EXEEXT) interp_2$(EXEEXT)
 subdir = docs/examples
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/aux/m4/libtool.m4 \
@@ -126,6 +126,10 @@ am_interp_1_OBJECTS = interp_1.$(OBJEXT)
 interp_1_OBJECTS = $(am_interp_1_OBJECTS)
 interp_1_LDADD = $(LDADD)
 interp_1_DEPENDENCIES = ../../src/libnumeric.la
+am_interp_2_OBJECTS = interp_2.$(OBJEXT)
+interp_2_OBJECTS = $(am_interp_2_OBJECTS)
+interp_2_LDADD = $(LDADD)
+interp_2_DEPENDENCIES = ../../src/libnumeric.la
 am_units_1_OBJECTS = units_1.$(OBJEXT)
 units_1_OBJECTS = $(am_units_1_OBJECTS)
 units_1_LDADD = $(LDADD)
@@ -168,10 +172,10 @@ AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-SOURCES = $(integral_1_SOURCES) $(interp_1_SOURCES) $(units_1_SOURCES) \
-	$(units_2_SOURCES)
+SOURCES = $(integral_1_SOURCES) $(interp_1_SOURCES) \
+	$(interp_2_SOURCES) $(units_1_SOURCES) $(units_2_SOURCES)
 DIST_SOURCES = $(integral_1_SOURCES) $(interp_1_SOURCES) \
-	$(units_1_SOURCES) $(units_2_SOURCES)
+	$(interp_2_SOURCES) $(units_1_SOURCES) $(units_2_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -331,12 +335,13 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-EXTRA_DIST = interp_1.gpi
+EXTRA_DIST = interp_1.gpi interp_2.gpi
 LDADD = ../../src/libnumeric.la
 units_1_SOURCES = units_1.cpp
 units_2_SOURCES = units_2.cpp
 integral_1_SOURCES = integral_1.cpp
 interp_1_SOURCES = interp_1.cpp
+interp_2_SOURCES = interp_2.cpp
 all: all-am
 
 .SUFFIXES:
@@ -388,6 +393,10 @@ interp_1$(EXEEXT): $(interp_1_OBJECTS) $(interp_1_DEPENDENCIES) $(EXTRA_interp_1
 	@rm -f interp_1$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(interp_1_OBJECTS) $(interp_1_LDADD) $(LIBS)
 
+interp_2$(EXEEXT): $(interp_2_OBJECTS) $(interp_2_DEPENDENCIES) $(EXTRA_interp_2_DEPENDENCIES) 
+	@rm -f interp_2$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(interp_2_OBJECTS) $(interp_2_LDADD) $(LIBS)
+
 units_1$(EXEEXT): $(units_1_OBJECTS) $(units_1_DEPENDENCIES) $(EXTRA_units_1_DEPENDENCIES) 
 	@rm -f units_1$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(units_1_OBJECTS) $(units_1_LDADD) $(LIBS)
@@ -404,6 +413,7 @@ distclean-compile:
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/integral_1.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/interp_1.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/interp_2.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/units_1.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/units_2.Po@am__quote@
 
@@ -640,13 +650,13 @@ uninstall-am:
 .PRECIOUS: Makefile
 
 
-dox : interp_1.png
+dox : $(EXTRA_DIST:.gpi=.png)
 
-interp_1.png : interp_1.dat interp_1.gpi
-	gnuplot interp_1.gpi
+interp_%.png : interp_%.gpi interp_%.dat
+	gnuplot $<
 
-interp_1.dat : interp_1
-	./interp_1 > $@
+interp_%.dat : interp_%
+	./$< > $@
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
