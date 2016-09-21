@@ -44,6 +44,9 @@ namespace num
    template <typename A, typename R>
    class interpolant;
 
+   template <typename A, typename R>
+   class ilist;
+
    /// Model of a dimensioned value.
    /// \tparam TI  Exponent of time
    /// \tparam D   Exponent of distance.
@@ -97,7 +100,8 @@ namespace num
       template <typename X, typename Y>
       friend void rkqs(Y &y, decltype(Y() / X()) const &dydx, X &x,
                        X const &htry, double eps, Y const &yscal, X &hdid,
-                       X &hnext, func<RAT<Y, X>, X> deriv);
+                       X &hnext, func<RAT<Y, X>, X> deriv,
+                       ilist<X, decltype(Y() / X())> *fi_list);
 
       /// Add dimensioned values.
       dimval operator+(dimval dv) const { return dimval(v_ + dv.v_); }

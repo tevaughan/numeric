@@ -36,14 +36,30 @@ The "numeric" project is a C++-11 library. It provides:
   minimum number of points necessary to produce that accuracy.  Notice that
   points are dense where the curvature is large.
 
-![Interpolant of Gaussian for Tolerance=1.0E-03 on Value of Integral](docs/examples/interp_1.png)
+![Interpolant of Gaussian for Tolerance=1.0E-04 on Value of Integral](docs/examples/interp_1.png)
 
 ## Documentation
 
-***[Documentation on the Github-Pages site for numeric.](https://tevaughan.github.io/numeric/doxygen-html)***
+***[See Github-Pages site.](https://tevaughan.github.io/numeric/doxygen-html)***
 
 ## To do:
 
+ - Document use of Runge-Kutta optimized for quadrature.
+ - Introduce dense\_table for fixed-increment interpolants.
+ - Introduce sparse\_table for variable-increment interpolants.
+ - Allow for simple lookup (no interpolation) and for forms of interpolation
+   beyond linear.
+ - Implement spline interpolation on samples produced by Runge-Kutta.
+   - Over each Runge-Kutta step, the area is known.
+   - The function has been evaluated at N points across the step (at least at
+     the endpoints of the step).
+   - Fit polynomial with degree N to N points.
+   - Polynomial has N+1 degrees of freedom.
+   - N degrees of freedom are solved by the N points.
+   - The last degree of freedom is solved by the known area over the interval.
+ - Implement Runge-Kutta for general, single-y case (generalization of case
+   optimized for quadrature).
+ - Implement Runge-Kutta for general, multiple-y case.
  - Implement interpolant::invert() to return inverse function.
    - This will produce an error if the function be not invertible.
    - invert() will be useful if one want a quick, approximate inverse of a

@@ -24,6 +24,12 @@
 
 namespace num
 {
+   template <typename X, typename Y>
+   class interpolant;
+
+   template <typename X, typename Y>
+   class ilist;
+
    /// Given the value for variable \a y and the value for its derivative \a
    /// dydx, use the fifth-order Cash-Karp Runge-Kutta method to advance the
    /// solution for \a y over an interval \a h, and return the incremented
@@ -46,8 +52,9 @@ namespace num
              X const &h,            ///< Length of interval.
              Y &yout,               ///< Accumulated value at end of interval.
              Y &yerr,               ///< Estimate of local truncation error.
-             std::function<RAT<Y, X>(X)> deriv ///< Function for derivative.
-             )
+             std::function<RAT<Y, X>(X)> deriv, ///< Function for derivative.
+             /// If non-null, output approximant for function \a dydx.
+             ilist<X, RAT<Y, X>> *fi_list)
    {
       double constexpr a3 = 0.3, a4 = 0.6, a5 = 1.0, a6 = 0.875;
       double constexpr c1 = 37.0 / 378.0, c3 = 250.0 / 621.0;
@@ -59,10 +66,20 @@ namespace num
       double constexpr dc6 = c6 - 0.25;
       // 1st step is given as dydx on input.
       // 2nd step not needed because deriv() does not need y as input.
-      RAT<Y, X> const ak3 = deriv(x + a3 * h); // 3rd step.
-      RAT<Y, X> const ak4 = deriv(x + a4 * h); // 4th step.
-      RAT<Y, X> const ak5 = deriv(x + a5 * h); // 5th step.
-      RAT<Y, X> const ak6 = deriv(x + a6 * h); // 6th step.
+      X const x3 = x + a3 * h;
+      X const x4 = x + a4 * h;
+      X const x5 = x + a5 * h;
+      X const x6 = x + a6 * h;
+      RAT<Y, X> const ak3 = deriv(x3); // 3rd step.
+      RAT<Y, X> const ak4 = deriv(x4); // 4th step.
+      RAT<Y, X> const ak5 = deriv(x5); // 5th step.
+      RAT<Y, X> const ak6 = deriv(x6); // 6th step.
+      if (fi_list) {
+         fi_list->push_back({x3, ak3});
+         fi_list->push_back({x4, ak4});
+         fi_list->push_back({x5, ak5});
+         fi_list->push_back({x6, ak6});
+      }
       // Accumulate increments with proper weights.
       yout = y + h * (c1 * dydx + c3 * ak3 + c4 * ak4 + c6 * ak6);
       // Estimate error as difference between fourth- and fifth-order methods.
@@ -90,8 +107,9 @@ namespace num
              Y const &yscal,        ///< Scaling used to monitor accuracy.
              X &hdid,               ///< Stepsize that was accomplished.
              X &hnext,              ///< Estimated next stepsize.
-             std::function<RAT<Y, X>(X)> deriv ///< Function for derivative.
-             )
+             std::function<RAT<Y, X>(X)> deriv, ///< Function for derivative.
+             /// If non-null, output approximant for function \a dydx.
+             ilist<X, RAT<Y, X>> *fi_list = nullptr)
    {
       double constexpr SAFETY = 0.9, PGROW = -0.2, PSHRNK = -0.25;
       double constexpr ERRCON = pow(5.0 / SAFETY, 1.0 / PGROW);
@@ -100,7 +118,7 @@ namespace num
       Y ytemp;
       X h = htry; // Set stepsize to the initial trial value.
       while (true) {
-         rkck(y, dydx, x, h, ytemp, yerr, deriv); // Take a step.
+         rkck(y, dydx, x, h, ytemp, yerr, deriv, fi_list); // Take a step.
          err = fabs(yerr / yscal / eps);
          if (err <= 1.0) {
             break;
@@ -139,12 +157,6 @@ namespace num
       x += (hdid = h);
       y = ytemp;
    }
-
-   template <typename X, typename Y>
-   class interpolant;
-
-   template <typename X, typename Y>
-   class ilist;
 
    /// Numerically integrate a function, and return the result.  Use
    /// fifth-order Runge-Kutta with adaptive stepsize for quadrature.  The
@@ -225,7 +237,11 @@ namespace num
             h = x2 - x; // Decrease stepsize to avoid overshoot.
          }
          A hdid, hnext;
-         rkqs(y, dydx, x, h, tol, yscal, hdid, hnext, f);
+         if (fi) {
+            rkqs(y, dydx, x, h, tol, yscal, hdid, hnext, f, &fi_list);
+         } else {
+            rkqs(y, dydx, x, h, tol, yscal, hdid, hnext, f);
+         }
          if (hdid == h) {
             ++nok;
          } else {
@@ -236,6 +252,7 @@ namespace num
                *fi = interpolant<A, R>(fi_list);
             }
             if (ii) {
+               ii_list.push_back({x, y});
                *ii = interpolant<A, Y>(ii_list);
             }
             return y; // We are done; exit normally.
