@@ -332,14 +332,14 @@ Functions</h2></td></tr>
 <tr class="memitem:a292a4f2e1879682457ab39ba639ede52"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a292a4f2e1879682457ab39ba639ede52">rkqs</a> (Y &amp;y, <a class="el" href="namespacenum.html#ae69120d6af6e31afc9813728024ac5c4">RAT</a>&lt; Y, X &gt; const &amp;dydx, X &amp;x, X const &amp;htry, double eps, Y const &amp;yscal, X &amp;hdid, X &amp;hnext, std::function&lt; <a class="el" href="namespacenum.html#ae69120d6af6e31afc9813728024ac5c4">RAT</a>&lt; Y, X &gt;(X)&gt; deriv)</td></tr>
 <tr class="memdesc:a292a4f2e1879682457ab39ba639ede52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fifth-order Runge-Kutta step with monitoring of local truncation error to ensure accurcy and adjust stepsize.  <a href="#a292a4f2e1879682457ab39ba639ede52">More...</a><br /></td></tr>
 <tr class="separator:a292a4f2e1879682457ab39ba639ede52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3502c42c4c638a02bc5c9a15e0ef9669"><td class="memTemplParams" colspan="2">template&lt;typename R , typename A , typename A1 , typename A2 &gt; </td></tr>
-<tr class="memitem:a3502c42c4c638a02bc5c9a15e0ef9669"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacenum.html#a71e072d3e2edf7e0c7bc4f824ee2c216">PRD</a>&lt; R, A &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a3502c42c4c638a02bc5c9a15e0ef9669">integral_rk</a> (std::function&lt; R(A)&gt; f, A1 x1, A2 x2, A h1, double t=1.0E-06, interpolant&lt; A, R &gt; *fi=nullptr, interpolant&lt; A, PRD&lt; R, A &gt;&gt; *ii=nullptr)</td></tr>
-<tr class="memdesc:a3502c42c4c638a02bc5c9a15e0ef9669"><td class="mdescLeft">&#160;</td><td class="mdescRight">Numerically integrate a function, and return the result.  <a href="#a3502c42c4c638a02bc5c9a15e0ef9669">More...</a><br /></td></tr>
-<tr class="separator:a3502c42c4c638a02bc5c9a15e0ef9669"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae7913ae469645b2da0d01cb3b4c5aff"><td class="memTemplParams" colspan="2">template&lt;typename R , typename A , typename A1 , typename A2 &gt; </td></tr>
-<tr class="memitem:aae7913ae469645b2da0d01cb3b4c5aff"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacenum.html#a71e072d3e2edf7e0c7bc4f824ee2c216">PRD</a>&lt; R, A &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#aae7913ae469645b2da0d01cb3b4c5aff">integral_rk</a> (R(*f)(A), A1 x1, A2 x2, A h1, double t=1.0E-06, interpolant&lt; A, R &gt; *fi=nullptr, interpolant&lt; A, PRD&lt; R, A &gt;&gt; *ii=nullptr)</td></tr>
-<tr class="memdesc:aae7913ae469645b2da0d01cb3b4c5aff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integrate an ordinary C function by way of its function pointer.  <a href="#aae7913ae469645b2da0d01cb3b4c5aff">More...</a><br /></td></tr>
-<tr class="separator:aae7913ae469645b2da0d01cb3b4c5aff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6af6ec9ecd92ce25bbd77d2a239d4d57"><td class="memTemplParams" colspan="2">template&lt;typename R , typename A , typename A1 , typename A2 &gt; </td></tr>
+<tr class="memitem:a6af6ec9ecd92ce25bbd77d2a239d4d57"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacenum.html#a71e072d3e2edf7e0c7bc4f824ee2c216">PRD</a>&lt; R, A &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a6af6ec9ecd92ce25bbd77d2a239d4d57">integral_rk</a> (std::function&lt; R(A)&gt; f, A1 x1, A2 x2, double t=1.0E-06, int n=16, interpolant&lt; A, R &gt; *fi=nullptr, interpolant&lt; A, PRD&lt; R, A &gt;&gt; *ii=nullptr)</td></tr>
+<tr class="memdesc:a6af6ec9ecd92ce25bbd77d2a239d4d57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Numerically integrate a function, and return the result.  <a href="#a6af6ec9ecd92ce25bbd77d2a239d4d57">More...</a><br /></td></tr>
+<tr class="separator:a6af6ec9ecd92ce25bbd77d2a239d4d57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d1915360509e55c97ae5581bd179a6b"><td class="memTemplParams" colspan="2">template&lt;typename R , typename A , typename A1 , typename A2 &gt; </td></tr>
+<tr class="memitem:a0d1915360509e55c97ae5581bd179a6b"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacenum.html#a71e072d3e2edf7e0c7bc4f824ee2c216">PRD</a>&lt; R, A &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a0d1915360509e55c97ae5581bd179a6b">integral_rk</a> (R(*f)(A), A1 x1, A2 x2, double t=1.0E-06, int n=16, interpolant&lt; A, R &gt; *fi=nullptr, interpolant&lt; A, PRD&lt; R, A &gt;&gt; *ii=nullptr)</td></tr>
+<tr class="memdesc:a0d1915360509e55c97ae5581bd179a6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integrate an ordinary C function by way of its function pointer.  <a href="#a0d1915360509e55c97ae5581bd179a6b">More...</a><br /></td></tr>
+<tr class="separator:a0d1915360509e55c97ae5581bd179a6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25fb944b0428e15f5a842447b90ed77a"><td class="memTemplParams" colspan="2">template&lt;typename R , typename A , typename A1 , typename A2 &gt; </td></tr>
 <tr class="memitem:a25fb944b0428e15f5a842447b90ed77a"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacenum.html#a71e072d3e2edf7e0c7bc4f824ee2c216">PRD</a>&lt; R, A &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a25fb944b0428e15f5a842447b90ed77a">integral</a> (std::function&lt; R(A)&gt; f, A1 aa, A2 bb, double t=1.0E-06, unsigned n=16)</td></tr>
 <tr class="memdesc:a25fb944b0428e15f5a842447b90ed77a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Numerically integrate a function, and return the result.  <a href="#a25fb944b0428e15f5a842447b90ed77a">More...</a><br /></td></tr>
@@ -613,7 +613,7 @@ template&lt;typename R , typename A , typename A1 , typename A2 &gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00290">290</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
+<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00310">310</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
 
 </div>
 </div>
@@ -686,12 +686,12 @@ template&lt;typename R , typename A , typename A1 , typename A2 &gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00382">382</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
+<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00402">402</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a3502c42c4c638a02bc5c9a15e0ef9669"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3502c42c4c638a02bc5c9a15e0ef9669">&sect;&nbsp;</a></span>integral_rk() <span class="overload">[1/2]</span></h2>
+<a id="a6af6ec9ecd92ce25bbd77d2a239d4d57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6af6ec9ecd92ce25bbd77d2a239d4d57">&sect;&nbsp;</a></span>integral_rk() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -719,14 +719,14 @@ template&lt;typename R , typename A , typename A1 , typename A2 &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">A&#160;</td>
-          <td class="paramname"><em>h1</em>, </td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>t</em> = <code>1.0E-06</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>t</em> = <code>1.0E-06</code>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em> = <code>16</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -750,7 +750,8 @@ template&lt;typename R , typename A , typename A1 , typename A2 &gt; </div>
 
 <p>Numerically integrate a function, and return the result. </p>
 <p>Use fifth-order Runge-Kutta with adaptive stepsize for quadrature. The initial guess for the step size is used at the lower limit of integration.</p>
-<p><a class="el" href="namespacenum.html#a3502c42c4c638a02bc5c9a15e0ef9669" title="Numerically integrate a function, and return the result. ">integral_rk()</a> optionally returns by reference an approximant for the function integrated and an approximant for the indefinite integral, zeroed at the lower limit of integration.</p>
+<p><a class="el" href="namespacenum.html#a6af6ec9ecd92ce25bbd77d2a239d4d57" title="Numerically integrate a function, and return the result. ">integral_rk()</a> optionally returns by reference an approximant for the function integrated and an approximant for the indefinite integral, zeroed at the lower limit of integration.</p>
+<p>The optional parameter <em>n</em> indicates that the initial step should be 1/n of the interval of integration.</p>
 <p>This function is based on <code>odeint()</code> on Page 721 of Numerical Recipes in C, Second Edition.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -767,20 +768,20 @@ template&lt;typename R , typename A , typename A1 , typename A2 &gt; </div>
     <tr><td class="paramname">f</td><td>Function to be integrated. </td></tr>
     <tr><td class="paramname">x1</td><td>Lower limit of integration. </td></tr>
     <tr><td class="paramname">x2</td><td>Upper limit of integration. </td></tr>
-    <tr><td class="paramname">h1</td><td>Initial guess for step size. </td></tr>
     <tr><td class="paramname">t</td><td>Error tolerance. </td></tr>
+    <tr><td class="paramname">n</td><td>Inverse of initial step size. </td></tr>
     <tr><td class="paramname">fi</td><td>If non-null, output approximant for function <em>f</em>. </td></tr>
     <tr><td class="paramname">ii</td><td>If non-null, output approximant for indef. integral. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00167">167</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
+<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00171">171</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
 
 </div>
 </div>
-<a id="aae7913ae469645b2da0d01cb3b4c5aff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aae7913ae469645b2da0d01cb3b4c5aff">&sect;&nbsp;</a></span>integral_rk() <span class="overload">[2/2]</span></h2>
+<a id="a0d1915360509e55c97ae5581bd179a6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d1915360509e55c97ae5581bd179a6b">&sect;&nbsp;</a></span>integral_rk() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -808,14 +809,14 @@ template&lt;typename R , typename A , typename A1 , typename A2 &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">A&#160;</td>
-          <td class="paramname"><em>h1</em>, </td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>t</em> = <code>1.0E-06</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>t</em> = <code>1.0E-06</code>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em> = <code>16</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -839,6 +840,7 @@ template&lt;typename R , typename A , typename A1 , typename A2 &gt; </div>
 
 <p>Integrate an ordinary C function by way of its function pointer. </p>
 <p>Transform the passed-in function pointer into an instance of function&lt;&gt;, and call integrate_rk(function&lt;&gt;,...).</p>
+<p>The optional parameter <em>n</em> indicates that the initial step should be 1/n of the interval of integration.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">R</td><td>Type of instance returned by function. </td></tr>
@@ -854,15 +856,15 @@ template&lt;typename R , typename A , typename A1 , typename A2 &gt; </div>
     <tr><td class="paramname">f</td><td>Function to be integrated. </td></tr>
     <tr><td class="paramname">x1</td><td>Lower limit of integration. </td></tr>
     <tr><td class="paramname">x2</td><td>Upper limit of integration. </td></tr>
-    <tr><td class="paramname">h1</td><td>Initial guess for step size. </td></tr>
     <tr><td class="paramname">t</td><td>Error tolerance. </td></tr>
+    <tr><td class="paramname">n</td><td>Inverse size of initial step. </td></tr>
     <tr><td class="paramname">fi</td><td>If non-null, output approximant for function <em>f</em>. </td></tr>
     <tr><td class="paramname">ii</td><td>If non-null, output approximant for indef. integral. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00245">245</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
+<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00265">265</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
 
 </div>
 </div>

@@ -123,9 +123,10 @@ namespace num
                h = tenth;
             }
          }
-         X const xnew = x + h;
+         X xnew = x + h;
          if (xnew == x) {
             std::cerr << "rkqs: WARNING: stepsize underflow" << std::endl;
+            h = std::numeric_limits<double>::epsilon() * 10.0 * x;
             break;
          }
       }
@@ -154,6 +155,9 @@ namespace num
    /// function integrated and an approximant for the indefinite integral,
    /// zeroed at the lower limit of integration.
    ///
+   /// The optional parameter \a n indicates that the initial step should be
+   /// 1/n of the interval of integration.
+   ///
    /// This function is based on `odeint()` on Page 721 of Numerical Recipes in
    /// C, Second Edition.
    ///
@@ -167,17 +171,26 @@ namespace num
    integral_rk(std::function<R(A)> f, ///< Function to be integrated.
                A1 x1,                 ///< Lower limit of integration.
                A2 x2,                 ///< Upper limit of integration.
-               A h1,                  ///< Initial guess for step size.
                double t = 1.0E-06,    ///< Error tolerance.
+               int n = 16,            ///< Inverse of initial step size.
                /// If non-null, output approximant for function \a f.
                interpolant<A, R> *fi = nullptr,
                /// If non-null, output approximant for indef. integral.
                interpolant<A, PRD<R, A>> *ii = nullptr)
    {
+      double constexpr eps = std::numeric_limits<double>::epsilon();
+      double constexpr min_tol = 1000.0 * eps;
+      double tol = t;
+      if (tol <= 0.0) {
+         throw "tolerance not positive";
+      } else if (tol < min_tol) {
+         tol = min_tol;
+      }
       using Y = PRD<R, A>;
       A const hmin(0.0);
       A x = x1;
       A h;
+      A const h1 = (A(x2) - A(x1)) / n;
       if (x2 - x1 > A(0.0)) {
          h = +fabs(h1);
       } else {
@@ -185,10 +198,14 @@ namespace num
       }
       int nok = 0, nbad = 0;
       Y y(0.0);
-      int constexpr MAXSTP = 10000;
       ilist<A, R> fi_list;
       ilist<A, Y> ii_list;
+#if 0
+      int constexpr MAXSTP = 10000000;
       for (int nstp = 0; nstp < MAXSTP; ++nstp) {
+#else
+      while (true) {
+#endif
          R const dydx = f(x);
          static Y const TINY(1.0E-300);
          // General-purpose scaling used to monitor accuracy.
@@ -205,7 +222,7 @@ namespace num
             h = x2 - x; // Decrease stepsize to avoid overshoot.
          }
          A hdid, hnext;
-         rkqs(y, dydx, x, h, t, yscal, hdid, hnext, f);
+         rkqs(y, dydx, x, h, tol, yscal, hdid, hnext, f);
          if (hdid == h) {
             ++nok;
          } else {
@@ -235,6 +252,9 @@ namespace num
    /// Transform the passed-in function pointer into an instance of function<>,
    /// and call integrate_rk(function<>,...).
    ///
+   /// The optional parameter \a n indicates that the initial step should be
+   /// 1/n of the interval of integration.
+   ///
    /// \tparam R   Type of instance returned by function.
    /// \tparam A   Type of argument to function.
    /// \tparam A1  Type of lower limit of integration; A1 must convert to A.
@@ -245,14 +265,14 @@ namespace num
    integral_rk(R (*f)(A),          ///< Function to be integrated.
                A1 x1,              ///< Lower limit of integration.
                A2 x2,              ///< Upper limit of integration.
-               A h1,               ///< Initial guess for step size.
                double t = 1.0E-06, ///< Error tolerance.
+               int n = 16,         ///< Inverse size of initial step.
                /// If non-null, output approximant for function \a f.
                interpolant<A, R> *fi = nullptr,
                /// If non-null, output approximant for indef. integral.
                interpolant<A, PRD<R, A>> *ii = nullptr)
    {
-      return integral_rk(std::function<R(A)>(f), x1, x2, h1, t, fi, ii);
+      return integral_rk(std::function<R(A)>(f), x1, x2, t, n, fi, ii);
    }
 
    /// Numerically integrate a function, and return the result.

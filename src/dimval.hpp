@@ -89,7 +89,7 @@ namespace num
 
       /// Allow integral_rk() to construct from known MKS quantity.
       template <typename R, typename A, typename A1, typename A2>
-      friend PRD<R, A> integral_rk(func<R, A> f, A1 x1, A2 x2, A h1, double t,
+      friend PRD<R, A> integral_rk(func<R, A> f, A1 x1, A2 x2, double t, int n,
                                    interpolant<A, R> *fi,
                                    interpolant<A, PRD<R, A>> *ii);
 

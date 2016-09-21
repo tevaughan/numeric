@@ -20,10 +20,11 @@ TEST_CASE("Verify integration of lambda.", "[integral]")
    function<double(double)> linear = [](double x) { return x; };
    // Verify that integral of x of 0 to 1 is 1/2.
    REQUIRE(integral(linear, 0, 1) == Approx(0.5));
+   REQUIRE(integral_rk(linear, 0, 1) == Approx(0.5));
    function<double(double)> f = [](double x) { return 1.0 / (1.0 + x * x); };
    double const max = sqrt(1.0 / numeric_limits<double>::min());
    REQUIRE(integral(f, -max, +max) == Approx(M_PI));
-   REQUIRE(integral_rk(f, -max, +max, 1.0) == Approx(M_PI));
+   REQUIRE(integral_rk(f, -max, +max) == Approx(M_PI));
 }
 
 area square(length x) { return x * x; }
@@ -31,7 +32,7 @@ area square(length x) { return x * x; }
 TEST_CASE("Verify integration of (dimval) global function.", "[integral]")
 {
    volume const i = integral(square, 0 * cm, 1 * cm);
-   volume const j = integral_rk(square, 0 * cm, 1 * cm, 0.1 * cm);
+   volume const j = integral_rk(square, 0 * cm, 1 * cm);
    ostringstream oss;
    oss << i;
    // Verify that integral of x^2 from  0 cm  to  1 cm  is  1/3 cm^3.
@@ -51,12 +52,16 @@ TEST_CASE("Verify integration of member function (via lambda).", "[integral]")
    my_sin f;
    function<double(double)> s = [&f](double x) { return f.sin(x); };
    double const i = integral(s, 0, M_PI, 1.0E-09);
+   double const k = integral_rk(s, 0, M_PI, 1.0E-09);
    // Verify that integral of sin(x) from 0 to pi is 2.
    REQUIRE(i == Approx(2.0));
+   REQUIRE(k == Approx(2.0));
    f.freq = 2.0;
    double const j = integral(s, 0, M_PI);
+   double const m = integral_rk(s, 0, M_PI);
    // Verify that integral of sin(2*x) from 0 to pi is 0.
    REQUIRE(j == Approx(0.0));
+   REQUIRE(m == Approx(0.0));
 }
 
 double catch_epsilon(double tol)
@@ -71,12 +76,16 @@ TEST_CASE("Verify limit of tolerance.", "[integral]")
    function<double(double)> s = [&f](double x) { return f.sin(x); };
    double constexpr tol = 1.0E-17;
    double const i = integral(s, 0, M_PI, tol);
+   double const k = integral_rk(s, 0, M_PI, tol);
    // Verify that integral of sin(x) from 0 to pi is 2.
-   REQUIRE(i == Approx(2.0));
+   REQUIRE(i == Approx(2.0).epsilon(10000 * tol));
+   REQUIRE(k == Approx(2.0).epsilon(10000 * tol));
    f.freq = 2.0;
    double const j = integral(s, 0, M_PI, tol);
+   double const m = integral_rk(s, 0, M_PI, tol);
    // Verify that integral of sin(2*x) from 0 to pi is 0.
-   REQUIRE(j == Approx(0.0));
+   REQUIRE(j == Approx(0.0).epsilon(10000 * tol));
+   REQUIRE(m == Approx(0.0).epsilon(100000 * tol));
 }
 
 TEST_CASE("Trigger coverage of code requiring at least two samples.",
