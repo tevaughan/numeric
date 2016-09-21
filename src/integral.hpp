@@ -18,19 +18,12 @@
 #include <limits>     // for numeric_limits
 #include <utility>    // for foward()
 
-#include "integral_stats.hpp" // for integral_stats
-#include "interval.hpp"       // for interval and subinterval_stack
+#include <integral_stats.hpp> // for integral_stats
+#include <interval.hpp>       // for interval and subinterval_stack
+#include <template.hpp>       // for RAT and PRD
 
 namespace num
 {
-   /// Type of derivative of a function, whose return type is \a Y, and
-   /// argument type \a X.
-   ///
-   /// \tparam Y  Function's return type.
-   /// \tparam X  Function's argument type.
-   template <typename Y, typename X>
-   using DER = decltype(Y() / X());
-
    /// Given the value for variable \a y and the value for its derivative \a
    /// dydx, use the fifth-order Cash-Karp Runge-Kutta method to advance the
    /// solution for \a y over an interval \a h, and return the incremented
@@ -48,12 +41,12 @@ namespace num
    /// \tparam Y  Type of variable that is accumulated during integration.
    template <typename X, typename Y>
    void rkck(Y const &y,            ///< Initial value of accumulated variable.
-             DER<Y, X> const &dydx, ///< Derivative at beginning of interval.
+             RAT<Y, X> const &dydx, ///< Derivative at beginning of interval.
              X const &x,            ///< Initial value of independent variable.
              X const &h,            ///< Length of interval.
              Y &yout,               ///< Accumulated value at end of interval.
              Y &yerr,               ///< Estimate of local truncation error.
-             std::function<DER<Y, X>(X)> deriv ///< Function for derivative.
+             std::function<RAT<Y, X>(X)> deriv ///< Function for derivative.
              )
    {
       double constexpr a3 = 0.3, a4 = 0.6, a5 = 1.0, a6 = 0.875;
@@ -66,10 +59,10 @@ namespace num
       double constexpr dc6 = c6 - 0.25;
       // 1st step is given as dydx on input.
       // 2nd step not needed because deriv() does not need y as input.
-      DER<Y, X> const ak3 = deriv(x + a3 * h); // 3rd step.
-      DER<Y, X> const ak4 = deriv(x + a4 * h); // 4th step.
-      DER<Y, X> const ak5 = deriv(x + a5 * h); // 5th step.
-      DER<Y, X> const ak6 = deriv(x + a6 * h); // 6th step.
+      RAT<Y, X> const ak3 = deriv(x + a3 * h); // 3rd step.
+      RAT<Y, X> const ak4 = deriv(x + a4 * h); // 4th step.
+      RAT<Y, X> const ak5 = deriv(x + a5 * h); // 5th step.
+      RAT<Y, X> const ak6 = deriv(x + a6 * h); // 6th step.
       // Accumulate increments with proper weights.
       yout = y + h * (c1 * dydx + c3 * ak3 + c4 * ak4 + c6 * ak6);
       // Estimate error as difference between fourth- and fifth-order methods.
@@ -90,14 +83,14 @@ namespace num
    /// Recipes in C, Second Edition.
    template <typename X, typename Y>
    void rkqs(Y &y,                  ///< Accumulated variable.
-             DER<Y, X> const &dydx, ///< Derivative at beginning of interval.
+             RAT<Y, X> const &dydx, ///< Derivative at beginning of interval.
              X &x,                  ///< Independent variable.
              X const &htry,         ///< Stepsize to be attempted.
              double eps,            ///< Required accuracy.
              Y const &yscal,        ///< Scaling used to monitor accuracy.
              X &hdid,               ///< Stepsize that was accomplished.
              X &hnext,              ///< Estimated next stepsize.
-             std::function<DER<Y, X>(X)> deriv ///< Function for derivative.
+             std::function<RAT<Y, X>(X)> deriv ///< Function for derivative.
              )
    {
       double constexpr SAFETY = 0.9, PGROW = -0.2, PSHRNK = -0.25;
@@ -146,10 +139,20 @@ namespace num
       y = ytemp;
    }
 
+   template <typename X, typename Y>
+   class interpolant;
+
+   template <typename X, typename Y>
+   class ilist;
+
    /// Numerically integrate a function, and return the result.  Use
    /// fifth-order Runge-Kutta with adaptive stepsize for quadrature.  The
    /// initial guess for the step size is used at the lower limit of
    /// integration.
+   ///
+   /// integral_rk() optionally returns by reference an approximant for the
+   /// function integrated and an approximant for the indefinite integral,
+   /// zeroed at the lower limit of integration.
    ///
    /// This function is based on `odeint()` on Page 721 of Numerical Recipes in
    /// C, Second Edition.
@@ -160,16 +163,18 @@ namespace num
    /// \tparam A2  Type of upper limit of integration; A2 must convert to A.
    /// \return     Numeric integral of function.
    template <typename R, typename A, typename A1, typename A2>
-   auto integral_rk(std::function<R(A)> f, ///< Function to be integrated.
-                    A1 x1,                 ///< Lower limit of integration.
-                    A2 x2,                 ///< Upper limit of integration.
-                    A h1,                  ///< Initial guess for step size.
-                    double t = 1.0E-06     ///< Error tolerance.
-                    )
-         // Meyers, Scott. Effective Modern C++ (first ed., 2015), page 28.
-         -> decltype(std::forward<std::function<R(A)>>(f)(A()) * A())
+   PRD<R, A>
+   integral_rk(std::function<R(A)> f, ///< Function to be integrated.
+               A1 x1,                 ///< Lower limit of integration.
+               A2 x2,                 ///< Upper limit of integration.
+               A h1,                  ///< Initial guess for step size.
+               double t = 1.0E-06,    ///< Error tolerance.
+               /// If non-null, output approximant for function \a f.
+               interpolant<A, R> *fi = nullptr,
+               /// If non-null, output approximant for indef. integral.
+               interpolant<A, PRD<R, A>> *ii = nullptr)
    {
-      using Y = decltype(std::forward<std::function<R(A)>>(f)(A()) * A());
+      using Y = PRD<R, A>;
       A const hmin(0.0);
       A x = x1;
       A h;
@@ -181,13 +186,21 @@ namespace num
       int nok = 0, nbad = 0;
       Y y(0.0);
       int constexpr MAXSTP = 10000;
+      ilist<A, R> fi_list;
+      ilist<A, Y> ii_list;
       for (int nstp = 0; nstp < MAXSTP; ++nstp) {
          R const dydx = f(x);
          static Y const TINY(1.0E-300);
          // General-purpose scaling used to monitor accuracy.
          Y const yscal = fabs(y) + fabs(dydx * h) + TINY;
+         if (fi) {
+            fi_list.push_back({x, dydx});
+         }
+         if (ii) {
+            ii_list.push_back({x, y});
+         }
          A const xh = x + h;
-         using X2 = decltype(A() * A());
+         using X2 = PRD<A, A>;
          if ((xh - x2) * (xh - x1) > X2(0.0)) {
             h = x2 - x; // Decrease stepsize to avoid overshoot.
          }
@@ -199,6 +212,12 @@ namespace num
             ++nbad;
          }
          if ((x - x2) * (x2 - x1) >= X2(0.0)) {
+            if (fi) {
+               *fi = interpolant<A, R>(fi_list);
+            }
+            if (ii) {
+               *ii = interpolant<A, Y>(ii_list);
+            }
             return y; // We are done; exit normally.
          }
          if (fabs(hnext) <= hmin) {
@@ -222,16 +241,18 @@ namespace num
    /// \tparam A2  Type of upper limit of integration; A2 must convert to A.
    /// \return     Numeric integral of function.
    template <typename R, typename A, typename A1, typename A2>
-   auto integral_rk(R (*f)(A),         ///< Function to be integrated.
-                    A1 x1,             ///< Lower limit of integration.
-                    A2 x2,             ///< Upper limit of integration.
-                    A h1,              ///< Initial guess for step size.
-                    double t = 1.0E-06 ///< Error tolerance.
-                    )
-         // See Page 28 of Effective Modern C++ by Scott Meyers.
-         -> decltype(std::forward<R (*)(A)>(f)(A()) * A())
+   PRD<R, A>
+   integral_rk(R (*f)(A),          ///< Function to be integrated.
+               A1 x1,              ///< Lower limit of integration.
+               A2 x2,              ///< Upper limit of integration.
+               A h1,               ///< Initial guess for step size.
+               double t = 1.0E-06, ///< Error tolerance.
+               /// If non-null, output approximant for function \a f.
+               interpolant<A, R> *fi = nullptr,
+               /// If non-null, output approximant for indef. integral.
+               interpolant<A, PRD<R, A>> *ii = nullptr)
    {
-      return integral_rk(std::function<R(A)>(f), x1, x2, h1, t);
+      return integral_rk(std::function<R(A)>(f), x1, x2, h1, t, fi, ii);
    }
 
    /// Numerically integrate a function, and return the result.
@@ -265,14 +286,13 @@ namespace num
    /// \tparam A2  Type of upper limit of integration; A2 must convert to A.
    /// \return     Numeric integral of function.
    template <typename R, typename A, typename A1, typename A2>
-   auto integral(std::function<R(A)> f, ///< Function to be integrated.
-                 A1 aa,                 ///< Lower limit of integration.
-                 A2 bb,                 ///< Upper limit of integration.
-                 double t = 1.0E-06,    ///< Error tolerance.
-                 unsigned n = 16 ///< Initial number of evenly spaced samples.
-                 )
-         // Meyers, Scott. Effective Modern C++ (first ed., 2015), page 28.
-         -> decltype(std::forward<std::function<R(A)>>(f)(A()) * A())
+   PRD<R, A>
+   integral(std::function<R(A)> f, ///< Function to be integrated.
+            A1 aa,                 ///< Lower limit of integration.
+            A2 bb,                 ///< Upper limit of integration.
+            double t = 1.0E-06,    ///< Error tolerance.
+            unsigned n = 16 ///< Initial number of evenly spaced samples.
+            )
    {
       double constexpr eps = std::numeric_limits<double>::epsilon();
       double constexpr min_tol = 1000.0 * eps;
@@ -290,7 +310,7 @@ namespace num
          sign = -1.0;
       }
       subinterval_stack<A, R> s(n, a, b, f);
-      using I = decltype(std::forward<std::function<R(A)>>(f)(A()) * A());
+      using I = PRD<R, A>;
       integral_stats<I> stats;
       while (s.size()) {
          using interval = interval<A, R>;
@@ -358,14 +378,13 @@ namespace num
    /// \tparam A2  Type of upper limit of integration; A2 must convert to A.
    /// \return     Numeric integral of function.
    template <typename R, typename A, typename A1, typename A2>
-   auto integral(R (*f)(A),          ///< Function to be integrated.
-                 A1 a,               ///< Lower limit of integration.
-                 A2 b,               ///< Upper limit of integration.
-                 double t = 1.0E-06, ///< Error tolerance.
-                 unsigned n = 16 ///< Initial number of evenly spaced samples.
-                 )
-         // See Page 28 of Effective Modern C++ by Scott Meyers.
-         -> decltype(std::forward<R (*)(A)>(f)(A()) * A())
+   PRD<R, A>
+   integral(R (*f)(A),          ///< Function to be integrated.
+            A1 a,               ///< Lower limit of integration.
+            A2 b,               ///< Upper limit of integration.
+            double t = 1.0E-06, ///< Error tolerance.
+            unsigned n = 16     ///< Initial number of evenly spaced samples.
+            )
    {
       return integral(std::function<R(A)>(f), a, b, t, n);
    }

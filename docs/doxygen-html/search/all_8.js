@@ -1,15 +1,15 @@
 var searchData=
 [
   ['i',['I',['../structnum_1_1subinterval__stack.html#a1c6b0632b18dff39e54cf4d146418f40',1,'num::subinterval_stack']]],
-  ['ilist',['ilist',['../structnum_1_1ilist.html',1,'num']]],
+  ['ilist',['ilist',['../classnum_1_1ilist.html',1,'num']]],
   ['ilistd',['ilistd',['../namespacenum.html#a2b90d965d199cebc0002bca80ee2b149',1,'num']]],
   ['in',['in',['../units_8hpp.html#aaedb457a079234338eaf96eb3591872d',1,'num::u']]],
   ['inches',['inches',['../structnum_1_1inches.html',1,'num']]],
   ['inches',['inches',['../structnum_1_1inches.html#a3473a0434140c20896adcdda18331651',1,'num::inches::inches(double v)'],['../structnum_1_1inches.html#a05328fd248e15765a44432b64ca903db',1,'num::inches::inches(inches const &amp;dv)=default']]],
   ['introduction',['Introduction',['../index.html',1,'']]],
-  ['integral',['integral',['../classnum_1_1dimval.html#a430c972f99588db6f3783f06e756f3c3',1,'num::dimval::integral()'],['../classnum_1_1interpolant.html#af9763298777611dda79ceac53df3b0b8',1,'num::interpolant::integral(I x1, I x2) const'],['../classnum_1_1interpolant.html#a8087628a2eaa233fc86e472c1c71a8c6',1,'num::interpolant::integral() const'],['../namespacenum.html#a03a3a99cfa02da2a2bbd88f3c7eaaba0',1,'num::integral(std::function&lt; R(A)&gt; f, A1 aa, A2 bb, double t=1.0E-06, unsigned n=16) -&gt; decltype(std::forward&lt; std::function&lt; R(A)&gt;&gt;(f)(A()) *A())'],['../namespacenum.html#aab34b06bd38fe715c4f7133469ff827c',1,'num::integral(R(*f)(A), A1 a, A2 b, double t=1.0E-06, unsigned n=16) -&gt; decltype(std::forward&lt; R(*)(A)&gt;(f)(A()) *A())']]],
+  ['integral',['integral',['../classnum_1_1dimval.html#a578b4b202edccbb260e7aa2d2c912f4b',1,'num::dimval::integral()'],['../classnum_1_1interpolant.html#af9763298777611dda79ceac53df3b0b8',1,'num::interpolant::integral(I x1, I x2) const'],['../classnum_1_1interpolant.html#a8087628a2eaa233fc86e472c1c71a8c6',1,'num::interpolant::integral() const'],['../namespacenum.html#a25fb944b0428e15f5a842447b90ed77a',1,'num::integral(std::function&lt; R(A)&gt; f, A1 aa, A2 bb, double t=1.0E-06, unsigned n=16)'],['../namespacenum.html#ae5d9f666c77573e755118cca28786bbe',1,'num::integral(R(*f)(A), A1 a, A2 b, double t=1.0E-06, unsigned n=16)']]],
   ['integral_2ehpp',['integral.hpp',['../integral_8hpp.html',1,'']]],
-  ['integral_5frk',['integral_rk',['../classnum_1_1dimval.html#ae46d41b0393d2e25250c783afe7b6cd7',1,'num::dimval::integral_rk()'],['../namespacenum.html#a6f7a691f26bbeb52040773444218a549',1,'num::integral_rk(std::function&lt; R(A)&gt; f, A1 x1, A2 x2, A h1, double t=1.0E-06) -&gt; decltype(std::forward&lt; std::function&lt; R(A)&gt;&gt;(f)(A()) *A())'],['../namespacenum.html#a4ad82a5523fea4fd71e8a96628bbf062',1,'num::integral_rk(R(*f)(A), A1 x1, A2 x2, A h1, double t=1.0E-06) -&gt; decltype(std::forward&lt; R(*)(A)&gt;(f)(A()) *A())']]],
+  ['integral_5frk',['integral_rk',['../classnum_1_1dimval.html#ab5ff767efda8e23533209716e829ab42',1,'num::dimval::integral_rk()'],['../namespacenum.html#a3502c42c4c638a02bc5c9a15e0ef9669',1,'num::integral_rk(std::function&lt; R(A)&gt; f, A1 x1, A2 x2, A h1, double t=1.0E-06, interpolant&lt; A, R &gt; *fi=nullptr, interpolant&lt; A, PRD&lt; R, A &gt;&gt; *ii=nullptr)'],['../namespacenum.html#aae7913ae469645b2da0d01cb3b4c5aff',1,'num::integral_rk(R(*f)(A), A1 x1, A2 x2, A h1, double t=1.0E-06, interpolant&lt; A, R &gt; *fi=nullptr, interpolant&lt; A, PRD&lt; R, A &gt;&gt; *ii=nullptr)']]],
   ['integral_5fstats',['integral_stats',['../classnum_1_1integral__stats.html#a04750b03f649fa13a05597f5e49a6e04',1,'num::integral_stats']]],
   ['integral_5fstats',['integral_stats',['../classnum_1_1integral__stats.html',1,'num']]],
   ['integral_5fstats_2ehpp',['integral_stats.hpp',['../integral__stats_8hpp.html',1,'']]],

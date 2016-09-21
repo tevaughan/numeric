@@ -80,7 +80,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Stack used by <a class="el" href="namespacenum.html#a03a3a99cfa02da2a2bbd88f3c7eaaba0" title="Numerically integrate a function, and return the result. ">integral()</a> and by class interpolant.  
+<p>Stack used by <a class="el" href="namespacenum.html#a25fb944b0428e15f5a842447b90ed77a" title="Numerically integrate a function, and return the result. ">integral()</a> and by class interpolant.  
  <a href="structnum_1_1subinterval__stack.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="interval_8hpp_source.html">interval.hpp</a>&gt;</code></p>
@@ -126,8 +126,8 @@ static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <div class="textblock"><h3>template&lt;typename A, typename R&gt;<br />
 struct num::subinterval_stack&lt; A, R &gt;</h3>
 
-<p>Stack used by <a class="el" href="namespacenum.html#a03a3a99cfa02da2a2bbd88f3c7eaaba0" title="Numerically integrate a function, and return the result. ">integral()</a> and by class interpolant. </p>
-<p>On construction, an instance of interval_stack contains a partition of an interval into subintervals of equal length. As <a class="el" href="namespacenum.html#a03a3a99cfa02da2a2bbd88f3c7eaaba0" title="Numerically integrate a function, and return the result. ">integral()</a> or one of interpolant's constructors executes, however, each of these subintervals is adaptively subdivided as necessary to achieve the desired accuracy.</p>
+<p>Stack used by <a class="el" href="namespacenum.html#a25fb944b0428e15f5a842447b90ed77a" title="Numerically integrate a function, and return the result. ">integral()</a> and by class interpolant. </p>
+<p>On construction, an instance of interval_stack contains a partition of an interval into subintervals of equal length. As <a class="el" href="namespacenum.html#a25fb944b0428e15f5a842447b90ed77a" title="Numerically integrate a function, and return the result. ">integral()</a> or one of interpolant's constructors executes, however, each of these subintervals is adaptively subdivided as necessary to achieve the desired accuracy.</p>
 <p>The instance of interval_stack is constructed so that the largest function values are at the top of the stack (the back of the vector). This allows the adaptive-quadrature integrator, which starts at the top of the stack, to minimize the time spent in subdividing. If, on construction, the top of the stack had an interval corresponding to a region where the function had smaller absolute values, then the integrator would spend time subidividing for a relative precision that would be thrown away when larger function absolute values are encountered farther down the stack.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
