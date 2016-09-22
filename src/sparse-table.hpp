@@ -1,60 +1,53 @@
 
-/// \file   dense-table.hpp
-/// \brief  Definition of num::dense-table.
+/// \file   sparse-table.hpp
+/// \brief  Definition of num::sparse-table.
 
-#ifndef NUMERIC_DENSE_TABLE_HPP
-#define NUMERIC_DENSE_TABLE_HPP
+#ifndef NUMERIC_SPARSE_TABLE_HPP
+#define NUMERIC_SPARSE_TABLE_HPP
 
 #include <vector> // for vector
 
 namespace num
 {
    /// A [piecewise function](https://en.wikipedia.org/wiki/Piecewise) that, in
-   /// constant time, looks up the appropriate sub-function.
+   /// logarithmic time, looks up the appropriate sub-function.
    ///
    /// The argument \f$ a \f$ to the function is of type \a A.
    ///
-   /// For any \f$ a \f$, what is found in constant time are the corresponding
-   /// sub-function and its sub-domain.  The corresponding sub-function, stored
-   /// in a table, is \f$ f_i \f$ of type \a F, and the center of the
-   /// corresponding subdomain is \f$ a_i \f$, where \f$ i \in \{0, 1, \ldots,
-   /// n-1\} \f$.  The sub-argument \f$ a - a_i \f$ is passed to \f$ f_i \f$,
-   /// and the value returned by \f$ f_i \f$ is returned from the lookup.
+   /// For any \f$ a \f$, what is found in logarithmic time are the
+   /// corresponding sub-function and its sub-domain.  The corresponding
+   /// sub-function, stored in a table, is \f$ f_i \f$ of type \a F, and the
+   /// center of the corresponding subdomain is \f$ a_i \f$, where \f$ i \in
+   /// \{0, 1, \ldots, n-1\} \f$.  The sub-argument \f$ a - a_i \f$ is passed
+   /// to \f$ f_i \f$, and the value returned by \f$ f_i \f$ is returned from
+   /// the lookup.
    ///
    /// In the simplest, fastest table, each \f$ f_i \f$ ignores its argument
    /// and returns a constant value.  However, the infrastructure provided by
-   /// dense_table allows for constant-time lookup of any kind of sub-function
-   /// (for example, a cubic interpolant).
+   /// sparse_table allows for logarithmic-time lookup of any kind of
+   /// sub-function (for example, a cubic interpolant).
    ///
-   /// To enable constant-time lookup, an instance of dense_table stores
+   /// To enable logarithmic-time lookup, an instance of sparse_table stores a
+   /// table of \f$ n \f$ triplets \f$ (a_0, {\Delta a}_0, f_0), (a_1, {\Delta
+   /// a}_1, f_1), \ldots, (a_{n-1}, {\Delta a}_{n-1}, f_{n-1}) \f$, sorted so
+   /// that \f$ a_0 < a_1 < \cdots < a_{n-1} \f$.
    ///
-   /// - the argument-space location \f$ a_0 \f$ of the table's first record,
-   ///
-   /// - the fixed argument-space difference \f$ \Delta a \f$ between each
-   ///   record and the next, and
-   ///
-   /// - a list of the \f$ n \f$ sub-functions \f$ f_0, f_1, \ldots, f_{n-1}
-   ///   \f$, each of which (together with the computed \f$ a_i = a_0 + i \;
-   ///   \Delta a \f$) makes up a record in the table.
-   ///
-   /// Thus a regular grid is established across the value of the argument.
-   ///
-   /// The lookup occurs by way of operator()(). When \f$ a > a_0 \f$ and \f$ a
-   /// < a_{n-1} \f$, the offset \f$ i \f$ is found so that
+   /// The lookup occurs by way of operator()().  When \f$ a > a_0 \f$ and \f$
+   /// a < a_{n-1} \f$, record \f$ i \f$ is found so that
    /// \f[
-   ///    -\frac{\Delta a}{2} < a - a_i \leq +\frac{\Delta a}{2}.
+   ///    -\frac{{\Delta a}_i}{2} < a - a_i \leq +\frac{{\Delta a}_i}{2}.
    /// \f]
    /// What operator()() returns is \f$ f_i(a - a_i) \f$.
    ///
-   /// See sparse_table for a type that usually can approximate a given
-   /// function so precisely as dense_table but with fewer records with the
-   /// same sub-function type \a F. The cost is logarithmic-time lookup for
-   /// sparse_table.
+   /// See dense_table for a type that usually can approximate a given function
+   /// so precisely as sparse_table but with faster lookup. The cost is that
+   /// dense_table requires more storage for the same precision with the same
+   /// sub-function type \a F.
    ///
    /// \tparam A  Type of function's argument.
    /// \tparam F  Type of each sub-function \f$ f_i \f$ in the table.
    template <typename A, typename F>
-   class dense_table
+   class sparse_table
    {
       using I = decltype(1.0 / A());
       A a_frst_; ///< First tabulated argument.
@@ -64,7 +57,7 @@ namespace num
 
    public:
       /// Initialize members from a list of arguments.
-      dense_table(A const &first, ///< First tabulated argument \f$ a_0 \f$.
+      sparse_table(A const &first, ///< First tabulated argument \f$ a_0 \f$.
                   A const &delta, ///< Common difference \f$ \Delta a \f$.
                   /// Sub-function objects \f$ f_0, \ldots, f_{n-1} \f$.
                   std::vector<F> vf)
@@ -119,5 +112,5 @@ namespace num
    };
 }
 
-#endif // ndef NUMERIC_DENSE_TABLE_HPP
+#endif // ndef NUMERIC_SPARSE_TABLE_HPP
 

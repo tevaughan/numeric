@@ -378,11 +378,13 @@ BUILT_SOURCES = dimensions.hpp units.cpp units.hpp
 CLEANFILES = $(BUILT_SOURCES)
 EXTRA_DIST = *.pl *.txt *.md
 pkginclude_HEADERS = \
+ dense-table.hpp\
  dimval.hpp\
  integral.hpp\
- integral_stats.hpp\
+ integral-stats.hpp\
  interpolant.hpp\
- interval.hpp
+ interval.hpp\
+ sparse-table.hpp
 
 nodist_pkginclude_HEADERS = dimensions.hpp units.hpp
 lib_LTLIBRARIES = libnumeric.la

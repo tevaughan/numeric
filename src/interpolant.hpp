@@ -22,7 +22,7 @@
 #include <utility>   // for pair
 #include <vector>    // for vector
 
-#include "integral_stats.hpp" // for integral_stats
+#include "integral-stats.hpp" // for integral_stats
 #include "interval.hpp"       // for interval and subinterval_stack
 
 namespace num
