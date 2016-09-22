@@ -21,7 +21,7 @@ namespace num
    /// \f$ of the function's argument, an instance of dense_table stores a
    /// function object \f$ f_i \f$ of type \a F.
    ///
-   /// When the lookup occurs, by way of dense_table::operator(A const&), let
+   /// When the lookup occurs, by way of dense_table::operator()(A const&), let
    /// the value of the passed-in argument be \f$ a \f$.  When \f$ a \f$ is
    /// neither before the first table entry nor after the last, the index \f$ i
    /// \f$ is chosen so that \f[ -\frac{\Delta a}{2} < a - a_i \leq

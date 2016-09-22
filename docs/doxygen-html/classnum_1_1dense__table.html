@@ -115,7 +115,7 @@ class num::dense_table&lt; A, F &gt;</h3>
 <p>Simple, constant-time-lookup model of a function of a continuous variable. </p>
 <p>To enable constant-time lookup, <a class="el" href="classnum_1_1dense__table.html" title="Simple, constant-time-lookup model of a function of a continuous variable. ">dense_table</a> contains a regular grid across the value of the function's argument. So each pair of subsequent table entries is separated by the same distance \( \Delta a \) in the space of the function's argument.</p>
 <p>At the \( i^{\text{th}} \) entry, corresponding to the value \( a_i \) of the function's argument, an instance of <a class="el" href="classnum_1_1dense__table.html" title="Simple, constant-time-lookup model of a function of a continuous variable. ">dense_table</a> stores a function object \( f_i \) of type <em>F</em>.</p>
-<p>When the lookup occurs, by way of dense_table::operator(A const&amp;), let the value of the passed-in argument be \( a \). When \( a \) is neither before the first table entry nor after the last, the index \( i \) is chosen so that </p><p class="formulaDsp">
+<p>When the lookup occurs, by way of dense_table::operator()(A const&amp;), let the value of the passed-in argument be \( a \). When \( a \) is neither before the first table entry nor after the last, the index \( i \) is chosen so that </p><p class="formulaDsp">
 \[ -\frac{\Delta a}{2} &lt; a - a_i \leq +\frac{\Delta a}{2}. \]
 </p>
 <p> What is returned by dense_table::operator() is the value \( f_i(a - a_i) \).</p>
