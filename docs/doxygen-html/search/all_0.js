@@ -1,9 +1,8 @@
 var searchData=
 [
   ['a',['a',['../structnum_1_1interval.html#a2715899356d26803993f2ec334cdf3b7',1,'num::interval::a()'],['../units_8hpp.html#a107107797dab4acd1925517fb00b5889',1,'num::u::A()']]],
-  ['a0',['a0',['../classnum_1_1dense__table.html#aa30270a8d01697dcc4c630c72a93e2b3',1,'num::dense_table']]],
-  ['a_5fmax',['a_max',['../classnum_1_1dense__table.html#ab278f6593cd3d208f46a0da8b769f9ad',1,'num::dense_table']]],
-  ['a_5fmin',['a_min',['../classnum_1_1dense__table.html#a3219c84fca47958fff50d4e1a9522d27',1,'num::dense_table']]],
+  ['a_5ffrst',['a_frst',['../classnum_1_1dense__table.html#a583272b11a1d9cb620819f99db89eb40',1,'num::dense_table']]],
+  ['a_5flast',['a_last',['../classnum_1_1dense__table.html#acf78409d57891796bc4dfd28749fa0f0',1,'num::dense_table']]],
   ['acceleration',['acceleration',['../namespacenum.html#a0d21dd40cc6526ddaeb4754943ab4eaf',1,'num']]],
   ['add',['add',['../classnum_1_1integral__stats.html#ab5269fe83ac2eb00339fc5426bcf769e',1,'num::integral_stats']]],
   ['amperes',['amperes',['../structnum_1_1amperes.html',1,'num']]],

@@ -316,12 +316,17 @@ namespace num
          init(x1, x2, n);
       }
 
+      /// Value of definite integral.
       Y const& def_int() const { return y; }
+
+      /// Tolerance used for computing definite integral.
       double tolerance() const { return tol; }
+
       interpolant<X, DYDX> const& interp_func() const { return fi; }
       interpolant<X, Y> const& interp_indef_int() const { return ii; }
    };
 
+   /// Short alias for Runge-Kutta solver for ordinary double-precision values.
    using rk_quadd = rk_quad<double, double>;
 
    /// Numerically integrate a function, and return the result.

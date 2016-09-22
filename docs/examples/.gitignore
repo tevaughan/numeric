@@ -1,6 +1,7 @@
 .deps
-integral_?
-interp_?
 .libs
 Makefile
+dense_table_?
+integral_?
+interp_?
 units_?

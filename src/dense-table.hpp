@@ -12,66 +12,78 @@ namespace num
    /// Simple, constant-time-lookup model of a function of a continuous
    /// variable.
    ///
-   /// dense_table stores a function's value at each point on a regular grid
+   /// To enable constant-time lookup, dense_table contains a regular grid
    /// across the value of the function's argument.  So each pair of subsequent
-   /// table entries is separated by the same distance \f$\Delta a\f$ in the
+   /// table entries is separated by the same distance \f$ \Delta a \f$ in the
    /// space of the function's argument.
+   ///
+   /// At the \f$ i^{\text{th}} \f$ entry, corresponding to the value \f$ a_i
+   /// \f$ of the function's argument, an instance of dense_table stores a
+   /// function object \f$ f_i \f$ of type \a F.
+   ///
+   /// When the lookup occurs, by way of dense_table::operator(A const&), let
+   /// the value of the passed-in argument be \f$ a \f$.  When \f$ a \f$ is
+   /// neither before the first table entry nor after the last, the index \f$ i
+   /// \f$ is chosen so that \f[ -\frac{\Delta a}{2} < a - a_i \leq
+   /// +\frac{\Delta a}{2}. \f] What is returned by dense_table::operator() is
+   /// the value \f$ f_i(a - a_i) \f$.
    ///
    /// For log-time-lookup, see sparse_table.
    ///
    /// \tparam A  Type of function's argument.
-   /// \tparam R  Type of function's return value.
-   template<typename A, typename R>
+   ///
+   /// \tparam F  Type of each function \f$ f_i \f$, of which an instance of
+   ///            dense_table is a piece-wise construction.
+   template<typename A, typename F>
    class dense_table
    {
       using I = decltype(1.0 / A());
-      A a0_;    ///< First tabulated argument.
-      A a_min_; ///< Minimum argument for tabulated value.
-      A a_max_; ///< Maximum argument for tabulated value.
-      A da_;    ///< Difference between subsequent tabulated args.
-      I ida_;   ///< Inverse of difference between subsequent tabulated args.
-      std::vector<R> r_; ///< Tabulated return values.
+      A a_frst_; ///< First tabulated argument.
+      A da_;     ///< Difference between subsequent tabulated args.
+      I ida_;    ///< Inverse of difference between subsequent tabulated args.
+      std::vector<F> f_; ///< Tabulated return values.
 
    public:
       /// Initialize table from the first tabulated argument, the difference
-      /// between subsequent arguments, and the list of tabulated return
-      /// values.
+      /// between subsequent arguments, and the list of tabulated function
+      /// objects.
       dense_table(A const &a,       ///< First tabulated argument.
                   A const &d,       ///< Difference between subsequent args.
-                  std::vector<R> vr ///< Tabulated return values.
+                  std::vector<F> vf ///< Tabulated function objects.
                   )
-            : a0_(a)
-            , a_min_(a - 0.5 * d)
-            , a_max_(a + (vr.size() - 0.5) * d)
+            : a_frst_(a)
             , da_(d)
             , ida_(1.0 / da_)
-            , r_(vr)
+            , f_(vf)
       {
       }
 
       /// First tabulated argument.
-      A const& a0() const { return a0_; }
+      A const& a_frst() const { return a_frst_; }
 
-      /// Minimum argument associated with a tabulated value.
-      A const& a_min() const { return a_min_; }
-
-      /// Maximum argument associated with a tabulated value.
-      A const& a_max() const { return a_max_; }
+      /// Last tabulated argument.
+      A a_last() const { return a_frst_ + (f_.size() - 1) * da_; }
 
       /// Difference between subsequent tabulated arguments.
       A const& da() const { return da_; }
 
       /// Tabulated values of function.
-      std::vector<R> const& r() const { return r_; }
+      std::vector<F> const& f() const { return f_; }
 
-      /// Tabulated value associated with supplied argument; zero if supplied
-      /// argument be associated with no tabulated value.
-      R const& operator()(A const& a /**< Desired argument. */) const
+      /// Value returned by tabulated function object associated with supplied
+      /// argument.
+      auto operator()(A const& a /**< Desired argument. */) const -> decltype(F()(a))
       {
-         if (a < a_min_ || a > a_max_) {
-            return R(0);
+         if (a < a_frst_) {
+            return f_[0](a - a_frst_);
          }
-         return r_[int((a - a0_) * ida_ + 0.5)];
+         A const last = a_last();
+         if (a > last) {
+            return (*f_.rbegin())(a - last);
+         }
+         int const i((a - a_frst_) * ida_ + 0.5);
+         A const ai = a_frst_ + i * da_;
+         return f_[i](a - ai);
       }
    };
 }

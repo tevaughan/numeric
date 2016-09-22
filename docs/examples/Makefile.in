@@ -93,8 +93,9 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-noinst_PROGRAMS = units_1$(EXEEXT) units_2$(EXEEXT) \
-	integral_1$(EXEEXT) interp_1$(EXEEXT) interp_2$(EXEEXT)
+noinst_PROGRAMS = dense_table_1$(EXEEXT) integral_1$(EXEEXT) \
+	interp_1$(EXEEXT) interp_2$(EXEEXT) units_1$(EXEEXT) \
+	units_2$(EXEEXT)
 subdir = docs/examples
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/aux/m4/libtool.m4 \
@@ -114,14 +115,18 @@ CONFIG_HEADER = $(top_builddir)/src/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 PROGRAMS = $(noinst_PROGRAMS)
-am_integral_1_OBJECTS = integral_1.$(OBJEXT)
-integral_1_OBJECTS = $(am_integral_1_OBJECTS)
-integral_1_LDADD = $(LDADD)
-integral_1_DEPENDENCIES = ../../src/libnumeric.la
+am_dense_table_1_OBJECTS = dense_table_1.$(OBJEXT)
+dense_table_1_OBJECTS = $(am_dense_table_1_OBJECTS)
+dense_table_1_LDADD = $(LDADD)
+dense_table_1_DEPENDENCIES = ../../src/libnumeric.la
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+am_integral_1_OBJECTS = integral_1.$(OBJEXT)
+integral_1_OBJECTS = $(am_integral_1_OBJECTS)
+integral_1_LDADD = $(LDADD)
+integral_1_DEPENDENCIES = ../../src/libnumeric.la
 am_interp_1_OBJECTS = interp_1.$(OBJEXT)
 interp_1_OBJECTS = $(am_interp_1_OBJECTS)
 interp_1_LDADD = $(LDADD)
@@ -172,10 +177,12 @@ AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-SOURCES = $(integral_1_SOURCES) $(interp_1_SOURCES) \
-	$(interp_2_SOURCES) $(units_1_SOURCES) $(units_2_SOURCES)
-DIST_SOURCES = $(integral_1_SOURCES) $(interp_1_SOURCES) \
-	$(interp_2_SOURCES) $(units_1_SOURCES) $(units_2_SOURCES)
+SOURCES = $(dense_table_1_SOURCES) $(integral_1_SOURCES) \
+	$(interp_1_SOURCES) $(interp_2_SOURCES) $(units_1_SOURCES) \
+	$(units_2_SOURCES)
+DIST_SOURCES = $(dense_table_1_SOURCES) $(integral_1_SOURCES) \
+	$(interp_1_SOURCES) $(interp_2_SOURCES) $(units_1_SOURCES) \
+	$(units_2_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -337,11 +344,12 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 EXTRA_DIST = interp_1.gpi interp_2.gpi
 LDADD = ../../src/libnumeric.la
-units_1_SOURCES = units_1.cpp
-units_2_SOURCES = units_2.cpp
+dense_table_1_SOURCES = dense_table_1.cpp
 integral_1_SOURCES = integral_1.cpp
 interp_1_SOURCES = interp_1.cpp
 interp_2_SOURCES = interp_2.cpp
+units_1_SOURCES = units_1.cpp
+units_2_SOURCES = units_2.cpp
 all: all-am
 
 .SUFFIXES:
@@ -385,6 +393,10 @@ clean-noinstPROGRAMS:
 	echo " rm -f" $$list; \
 	rm -f $$list
 
+dense_table_1$(EXEEXT): $(dense_table_1_OBJECTS) $(dense_table_1_DEPENDENCIES) $(EXTRA_dense_table_1_DEPENDENCIES) 
+	@rm -f dense_table_1$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(dense_table_1_OBJECTS) $(dense_table_1_LDADD) $(LIBS)
+
 integral_1$(EXEEXT): $(integral_1_OBJECTS) $(integral_1_DEPENDENCIES) $(EXTRA_integral_1_DEPENDENCIES) 
 	@rm -f integral_1$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(integral_1_OBJECTS) $(integral_1_LDADD) $(LIBS)
@@ -411,6 +423,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dense_table_1.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/integral_1.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/interp_1.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/interp_2.Po@am__quote@
@@ -652,10 +665,16 @@ uninstall-am:
 
 dox : $(EXTRA_DIST:.gpi=.png)
 
-interp_%.png : interp_%.gpi interp_%.dat
+interp_1.png : interp_1.gpi interp_1.dat
 	gnuplot $<
 
-interp_%.dat : interp_%
+interp_2.png : interp_2.gpi interp_2.dat
+	gnuplot $<
+
+interp_1.dat : interp_1
+	./$< > $@
+
+interp_2.dat : interp_2
 	./$< > $@
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.

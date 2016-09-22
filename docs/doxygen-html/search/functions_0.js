@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['a0',['a0',['../classnum_1_1dense__table.html#aa30270a8d01697dcc4c630c72a93e2b3',1,'num::dense_table']]],
-  ['a_5fmax',['a_max',['../classnum_1_1dense__table.html#ab278f6593cd3d208f46a0da8b769f9ad',1,'num::dense_table']]],
-  ['a_5fmin',['a_min',['../classnum_1_1dense__table.html#a3219c84fca47958fff50d4e1a9522d27',1,'num::dense_table']]],
+  ['a_5ffrst',['a_frst',['../classnum_1_1dense__table.html#a583272b11a1d9cb620819f99db89eb40',1,'num::dense_table']]],
+  ['a_5flast',['a_last',['../classnum_1_1dense__table.html#acf78409d57891796bc4dfd28749fa0f0',1,'num::dense_table']]],
   ['add',['add',['../classnum_1_1integral__stats.html#ab5269fe83ac2eb00339fc5426bcf769e',1,'num::integral_stats']]],
   ['amperes',['amperes',['../structnum_1_1amperes.html#a8966e37b8aca5e79410eca27aea13c17',1,'num::amperes::amperes(double v)'],['../structnum_1_1amperes.html#afdcc9cd44647d5fa245e5c4019c8d021',1,'num::amperes::amperes(amperes const &amp;dv)=default']]],
   ['arcmins',['arcmins',['../namespacenum.html#a803a1dba91043a4b4125002cda9d9edb',1,'num']]],
