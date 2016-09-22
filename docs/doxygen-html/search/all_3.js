@@ -9,7 +9,7 @@ var searchData=
   ['degs',['degs',['../namespacenum.html#ab4d61e21b91a58e39e323d4ab9fa6d71',1,'num']]],
   ['dense_2dtable_2ehpp',['dense-table.hpp',['../dense-table_8hpp.html',1,'']]],
   ['dense_5ftable',['dense_table',['../classnum_1_1dense__table.html',1,'num']]],
-  ['dense_5ftable',['dense_table',['../classnum_1_1dense__table.html#a77237f7321f05a65cf59a319be611ff2',1,'num::dense_table']]],
+  ['dense_5ftable',['dense_table',['../classnum_1_1dense__table.html#ae27e8ea2389907b2550d9c864e8ec106',1,'num::dense_table']]],
   ['density',['density',['../namespacenum.html#a309bf56325be8cd4371f056b2b20109f',1,'num']]],
   ['dimensions_2ehpp',['dimensions.hpp',['../dimensions_8hpp.html',1,'']]],
   ['dimval',['dimval',['../classnum_1_1dimval.html#abde02f71a9b84e0990a02fb4dba8c70a',1,'num::dimval::dimval()'],['../classnum_1_1dimval.html#a8057ceee0b6370a0468cf50721442fc9',1,'num::dimval::dimval(double vv)'],['../classnum_1_1dimval.html#a32c5333933d94d9b6c9125b4aa9a5841',1,'num::dimval::dimval()']]],
