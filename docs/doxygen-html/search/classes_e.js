@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['watts',['watts',['../structnum_1_1watts.html',1,'num']]],
-  ['weeks',['weeks',['../structnum_1_1weeks.html',1,'num']]]
+  ['seconds',['seconds',['../structnum_1_1seconds.html',1,'num']]],
+  ['subinterval_5fstack',['subinterval_stack',['../structnum_1_1subinterval__stack.html',1,'num']]]
 ];

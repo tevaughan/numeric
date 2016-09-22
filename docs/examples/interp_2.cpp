@@ -20,9 +20,8 @@ double g(double x)
 /// Main function for interp_1.cpp.
 int main()
 {
-   interpolantd i;
-   integral_rk(g, -5.0, 5.0, 1.0E-04, 2, &i);
-   cout << i.points();
+   rk_quadd const i(g, -5.0, 5.0, 1.0E-04, 2, true);
+   cout << i.interp_func().points();
    return 0;
 }
 

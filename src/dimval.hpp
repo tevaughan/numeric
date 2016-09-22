@@ -47,6 +47,9 @@ namespace num
    template <typename A, typename R>
    class ilist;
 
+   template <typename X, typename Y>
+   class rk_quad;
+
    /// Model of a dimensioned value.
    /// \tparam TI  Exponent of time
    /// \tparam D   Exponent of distance.
@@ -85,23 +88,14 @@ namespace num
       template <typename A, typename R>
       friend class interpolant;
 
+      /// Allow rk_quad to construct from known MKS quantity.
+      template <typename X, typename Y>
+      friend class rk_quad;
+
       /// Allow integral() to construct from known MKS quantity.
       template <typename R, typename A, typename A1, typename A2>
       friend PRD<R, A> integral(func<R, A> f, A1 a, A2 b, double t,
                                 unsigned n);
-
-      /// Allow integral_rk() to construct from known MKS quantity.
-      template <typename R, typename A, typename A1, typename A2>
-      friend PRD<R, A> integral_rk(func<R, A> f, A1 x1, A2 x2, double t, int n,
-                                   interpolant<A, R> *fi,
-                                   interpolant<A, PRD<R, A>> *ii);
-
-      /// Allow rkqs() to construct from known MKS quantity.
-      template <typename X, typename Y>
-      friend void rkqs(Y &y, decltype(Y() / X()) const &dydx, X &x,
-                       X const &htry, double eps, Y const &yscal, X &hdid,
-                       X &hnext, func<RAT<Y, X>, X> deriv,
-                       ilist<X, decltype(Y() / X())> *fi_list);
 
       /// Add dimensioned values.
       dimval operator+(dimval dv) const { return dimval(v_ + dv.v_); }

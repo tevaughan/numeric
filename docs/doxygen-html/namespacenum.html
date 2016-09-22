@@ -213,6 +213,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnum_1_1pounds__m.html">pounds_m</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Machine-generated structure providing public constructor, which takes a double-precision number of <a class="el" href="structnum_1_1pounds__m.html" title="Machine-generated structure providing public constructor, which takes a double-precision number of po...">pounds_m</a>.  <a href="structnum_1_1pounds__m.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html">rk_quad</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runge-Kutta solver optimized for quadrature.  <a href="classnum_1_1rk__quad.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnum_1_1seconds.html">seconds</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Machine-generated structure providing public constructor, which takes a double-precision number of seconds.  <a href="structnum_1_1seconds.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -307,6 +310,9 @@ using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nam
 <tr class="memitem:a71e072d3e2edf7e0c7bc4f824ee2c216"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a71e072d3e2edf7e0c7bc4f824ee2c216">PRD</a> = decltype(X() *Y())</td></tr>
 <tr class="memdesc:a71e072d3e2edf7e0c7bc4f824ee2c216"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of product of two things.  <a href="#a71e072d3e2edf7e0c7bc4f824ee2c216">More...</a><br /></td></tr>
 <tr class="separator:a71e072d3e2edf7e0c7bc4f824ee2c216"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a122cf5cf0f6faea00b188f08574beb26"><td class="memItemLeft" align="right" valign="top"><a id="a122cf5cf0f6faea00b188f08574beb26"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>rk_quadd</b> = <a class="el" href="classnum_1_1rk__quad.html">rk_quad</a>&lt; double, double &gt;</td></tr>
+<tr class="separator:a122cf5cf0f6faea00b188f08574beb26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2168d41aa428e5eee9875db4d3d109bb"><td class="memItemLeft" align="right" valign="top"><a id="a2168d41aa428e5eee9875db4d3d109bb"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a2168d41aa428e5eee9875db4d3d109bb">interpolantd</a> = <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; double, double &gt;</td></tr>
 <tr class="memdesc:a2168d41aa428e5eee9875db4d3d109bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for interpolant and maps from double to double. <br /></td></tr>
@@ -324,22 +330,6 @@ Functions</h2></td></tr>
 <tr class="separator:a803a1dba91043a4b4125002cda9d9edb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4cdcf74be1a552f44695ec0280fae8f9"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a4cdcf74be1a552f44695ec0280fae8f9">arcsecs</a> (double n)</td></tr>
 <tr class="separator:a4cdcf74be1a552f44695ec0280fae8f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc4855326442af40e40dcce6e3206d21"><td class="memTemplParams" colspan="2">template&lt;typename X , typename Y &gt; </td></tr>
-<tr class="memitem:abc4855326442af40e40dcce6e3206d21"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#abc4855326442af40e40dcce6e3206d21">rkck</a> (Y const &amp;y, <a class="el" href="namespacenum.html#ae69120d6af6e31afc9813728024ac5c4">RAT</a>&lt; Y, X &gt; const &amp;dydx, X const &amp;x, X const &amp;h, Y &amp;yout, Y &amp;yerr, std::function&lt; <a class="el" href="namespacenum.html#ae69120d6af6e31afc9813728024ac5c4">RAT</a>&lt; Y, X &gt;(X)&gt; deriv, <a class="el" href="classnum_1_1ilist.html">ilist</a>&lt; X, <a class="el" href="namespacenum.html#ae69120d6af6e31afc9813728024ac5c4">RAT</a>&lt; Y, X &gt;&gt; *fi_list)</td></tr>
-<tr class="memdesc:abc4855326442af40e40dcce6e3206d21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given the value for variable <em>y</em> and the value for its derivative <em>dydx</em>, use the fifth-order Cash-Karp Runge-Kutta method to advance the solution for <em>y</em> over an interval <em>h</em>, and return the incremented variable as <em>yout</em>.  <a href="#abc4855326442af40e40dcce6e3206d21">More...</a><br /></td></tr>
-<tr class="separator:abc4855326442af40e40dcce6e3206d21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec08fa1a674878b98c637a7189759a3a"><td class="memTemplParams" colspan="2">template&lt;typename X , typename Y &gt; </td></tr>
-<tr class="memitem:aec08fa1a674878b98c637a7189759a3a"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#aec08fa1a674878b98c637a7189759a3a">rkqs</a> (Y &amp;y, <a class="el" href="namespacenum.html#ae69120d6af6e31afc9813728024ac5c4">RAT</a>&lt; Y, X &gt; const &amp;dydx, X &amp;x, X const &amp;htry, double eps, Y const &amp;yscal, X &amp;hdid, X &amp;hnext, std::function&lt; <a class="el" href="namespacenum.html#ae69120d6af6e31afc9813728024ac5c4">RAT</a>&lt; Y, X &gt;(X)&gt; deriv, <a class="el" href="classnum_1_1ilist.html">ilist</a>&lt; X, <a class="el" href="namespacenum.html#ae69120d6af6e31afc9813728024ac5c4">RAT</a>&lt; Y, X &gt;&gt; *fi_list=nullptr)</td></tr>
-<tr class="memdesc:aec08fa1a674878b98c637a7189759a3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fifth-order Runge-Kutta step with monitoring of local truncation error to ensure accurcy and adjust stepsize.  <a href="#aec08fa1a674878b98c637a7189759a3a">More...</a><br /></td></tr>
-<tr class="separator:aec08fa1a674878b98c637a7189759a3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6af6ec9ecd92ce25bbd77d2a239d4d57"><td class="memTemplParams" colspan="2">template&lt;typename R , typename A , typename A1 , typename A2 &gt; </td></tr>
-<tr class="memitem:a6af6ec9ecd92ce25bbd77d2a239d4d57"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacenum.html#a71e072d3e2edf7e0c7bc4f824ee2c216">PRD</a>&lt; R, A &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a6af6ec9ecd92ce25bbd77d2a239d4d57">integral_rk</a> (std::function&lt; R(A)&gt; f, A1 x1, A2 x2, double t=1.0E-06, int n=16, interpolant&lt; A, R &gt; *fi=nullptr, interpolant&lt; A, PRD&lt; R, A &gt;&gt; *ii=nullptr)</td></tr>
-<tr class="memdesc:a6af6ec9ecd92ce25bbd77d2a239d4d57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Numerically integrate a function, and return the result.  <a href="#a6af6ec9ecd92ce25bbd77d2a239d4d57">More...</a><br /></td></tr>
-<tr class="separator:a6af6ec9ecd92ce25bbd77d2a239d4d57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d1915360509e55c97ae5581bd179a6b"><td class="memTemplParams" colspan="2">template&lt;typename R , typename A , typename A1 , typename A2 &gt; </td></tr>
-<tr class="memitem:a0d1915360509e55c97ae5581bd179a6b"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacenum.html#a71e072d3e2edf7e0c7bc4f824ee2c216">PRD</a>&lt; R, A &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a0d1915360509e55c97ae5581bd179a6b">integral_rk</a> (R(*f)(A), A1 x1, A2 x2, double t=1.0E-06, int n=16, interpolant&lt; A, R &gt; *fi=nullptr, interpolant&lt; A, PRD&lt; R, A &gt;&gt; *ii=nullptr)</td></tr>
-<tr class="memdesc:a0d1915360509e55c97ae5581bd179a6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integrate an ordinary C function by way of its function pointer.  <a href="#a0d1915360509e55c97ae5581bd179a6b">More...</a><br /></td></tr>
-<tr class="separator:a0d1915360509e55c97ae5581bd179a6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25fb944b0428e15f5a842447b90ed77a"><td class="memTemplParams" colspan="2">template&lt;typename R , typename A , typename A1 , typename A2 &gt; </td></tr>
 <tr class="memitem:a25fb944b0428e15f5a842447b90ed77a"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacenum.html#a71e072d3e2edf7e0c7bc4f824ee2c216">PRD</a>&lt; R, A &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a25fb944b0428e15f5a842447b90ed77a">integral</a> (std::function&lt; R(A)&gt; f, A1 aa, A2 bb, double t=1.0E-06, unsigned n=16)</td></tr>
 <tr class="memdesc:a25fb944b0428e15f5a842447b90ed77a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Numerically integrate a function, and return the result.  <a href="#a25fb944b0428e15f5a842447b90ed77a">More...</a><br /></td></tr>
@@ -613,7 +603,7 @@ template&lt;typename R , typename A , typename A1 , typename A2 &gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00330">330</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
+<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00359">359</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
 
 </div>
 </div>
@@ -686,185 +676,7 @@ template&lt;typename R , typename A , typename A1 , typename A2 &gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00422">422</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a6af6ec9ecd92ce25bbd77d2a239d4d57"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6af6ec9ecd92ce25bbd77d2a239d4d57">&sect;&nbsp;</a></span>integral_rk() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename R , typename A , typename A1 , typename A2 &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacenum.html#a71e072d3e2edf7e0c7bc4f824ee2c216">PRD</a>&lt;R, A&gt; num::integral_rk </td>
-          <td>(</td>
-          <td class="paramtype">std::function&lt; R(A)&gt;&#160;</td>
-          <td class="paramname"><em>f</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">A1&#160;</td>
-          <td class="paramname"><em>x1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">A2&#160;</td>
-          <td class="paramname"><em>x2</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>t</em> = <code>1.0E-06</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>n</em> = <code>16</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; A, R &gt; *&#160;</td>
-          <td class="paramname"><em>fi</em> = <code>nullptr</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; A, <a class="el" href="namespacenum.html#a71e072d3e2edf7e0c7bc4f824ee2c216">PRD</a>&lt; R, A &gt;&gt; *&#160;</td>
-          <td class="paramname"><em>ii</em> = <code>nullptr</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Numerically integrate a function, and return the result. </p>
-<p>Use fifth-order Runge-Kutta with adaptive stepsize for quadrature. The initial guess for the step size is used at the lower limit of integration.</p>
-<p><a class="el" href="namespacenum.html#a6af6ec9ecd92ce25bbd77d2a239d4d57" title="Numerically integrate a function, and return the result. ">integral_rk()</a> optionally returns by reference an approximant for the function integrated and an approximant for the indefinite integral, zeroed at the lower limit of integration.</p>
-<p>The optional parameter <em>n</em> indicates that the initial step should be 1/n of the interval of integration.</p>
-<p>This function is based on <code>odeint()</code> on Page 721 of Numerical Recipes in C, Second Edition.</p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">R</td><td>Type of instance returned by function. </td></tr>
-    <tr><td class="paramname">A</td><td>Type of argument to function. </td></tr>
-    <tr><td class="paramname">A1</td><td>Type of lower limit of integration; A1 must convert to A. </td></tr>
-    <tr><td class="paramname">A2</td><td>Type of upper limit of integration; A2 must convert to A. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Numeric integral of function. </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">f</td><td>Function to be integrated. </td></tr>
-    <tr><td class="paramname">x1</td><td>Lower limit of integration. </td></tr>
-    <tr><td class="paramname">x2</td><td>Upper limit of integration. </td></tr>
-    <tr><td class="paramname">t</td><td>Error tolerance. </td></tr>
-    <tr><td class="paramname">n</td><td>Inverse of initial step size. </td></tr>
-    <tr><td class="paramname">fi</td><td>If non-null, output approximant for function <em>f</em>. </td></tr>
-    <tr><td class="paramname">ii</td><td>If non-null, output approximant for indef. integral. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00183">183</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a0d1915360509e55c97ae5581bd179a6b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0d1915360509e55c97ae5581bd179a6b">&sect;&nbsp;</a></span>integral_rk() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename R , typename A , typename A1 , typename A2 &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacenum.html#a71e072d3e2edf7e0c7bc4f824ee2c216">PRD</a>&lt;R, A&gt; num::integral_rk </td>
-          <td>(</td>
-          <td class="paramtype">R(*)(A)&#160;</td>
-          <td class="paramname"><em>f</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">A1&#160;</td>
-          <td class="paramname"><em>x1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">A2&#160;</td>
-          <td class="paramname"><em>x2</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>t</em> = <code>1.0E-06</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>n</em> = <code>16</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; A, R &gt; *&#160;</td>
-          <td class="paramname"><em>fi</em> = <code>nullptr</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; A, <a class="el" href="namespacenum.html#a71e072d3e2edf7e0c7bc4f824ee2c216">PRD</a>&lt; R, A &gt;&gt; *&#160;</td>
-          <td class="paramname"><em>ii</em> = <code>nullptr</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Integrate an ordinary C function by way of its function pointer. </p>
-<p>Transform the passed-in function pointer into an instance of function&lt;&gt;, and call integrate_rk(function&lt;&gt;,...).</p>
-<p>The optional parameter <em>n</em> indicates that the initial step should be 1/n of the interval of integration.</p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">R</td><td>Type of instance returned by function. </td></tr>
-    <tr><td class="paramname">A</td><td>Type of argument to function. </td></tr>
-    <tr><td class="paramname">A1</td><td>Type of lower limit of integration; A1 must convert to A. </td></tr>
-    <tr><td class="paramname">A2</td><td>Type of upper limit of integration; A2 must convert to A. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Numeric integral of function. </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">f</td><td>Function to be integrated. </td></tr>
-    <tr><td class="paramname">x1</td><td>Lower limit of integration. </td></tr>
-    <tr><td class="paramname">x2</td><td>Upper limit of integration. </td></tr>
-    <tr><td class="paramname">t</td><td>Error tolerance. </td></tr>
-    <tr><td class="paramname">n</td><td>Inverse size of initial step. </td></tr>
-    <tr><td class="paramname">fi</td><td>If non-null, output approximant for function <em>f</em>. </td></tr>
-    <tr><td class="paramname">ii</td><td>If non-null, output approximant for indef. integral. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00285">285</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
+<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00451">451</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
 
 </div>
 </div>
@@ -947,197 +759,6 @@ template&lt;typename I , typename D &gt; </div>
 </dl>
 
 <p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00066">66</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
-
-</div>
-</div>
-<a id="abc4855326442af40e40dcce6e3206d21"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abc4855326442af40e40dcce6e3206d21">&sect;&nbsp;</a></span>rkck()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename X , typename Y &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void num::rkck </td>
-          <td>(</td>
-          <td class="paramtype">Y const &amp;&#160;</td>
-          <td class="paramname"><em>y</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="namespacenum.html#ae69120d6af6e31afc9813728024ac5c4">RAT</a>&lt; Y, X &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>dydx</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">X const &amp;&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">X const &amp;&#160;</td>
-          <td class="paramname"><em>h</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Y &amp;&#160;</td>
-          <td class="paramname"><em>yout</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Y &amp;&#160;</td>
-          <td class="paramname"><em>yerr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::function&lt; <a class="el" href="namespacenum.html#ae69120d6af6e31afc9813728024ac5c4">RAT</a>&lt; Y, X &gt;(X)&gt;&#160;</td>
-          <td class="paramname"><em>deriv</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classnum_1_1ilist.html">ilist</a>&lt; X, <a class="el" href="namespacenum.html#ae69120d6af6e31afc9813728024ac5c4">RAT</a>&lt; Y, X &gt;&gt; *&#160;</td>
-          <td class="paramname"><em>fi_list</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Given the value for variable <em>y</em> and the value for its derivative <em>dydx</em>, use the fifth-order Cash-Karp Runge-Kutta method to advance the solution for <em>y</em> over an interval <em>h</em>, and return the incremented variable as <em>yout</em>. </p>
-<p>Also, return, by way of the embedded fourth-order method, an estimate <em>yerr</em> of the local truncation error in <em>yout</em>. The supplied function <em>deriv</em> returns the derivative (just like dydx) at any value of the independent variable.</p>
-<p>This function is based on a simplified version of <code><a class="el" href="namespacenum.html#abc4855326442af40e40dcce6e3206d21" title="Given the value for variable y and the value for its derivative dydx, use the fifth-order Cash-Karp R...">rkck()</a></code> found on Page 719 in Numerical Recipes in C, Second Edition. The simplification is due mainly to the fact that the present function is used for quadrature, and so <em>deriv</em> does not require <em>y</em> as input.</p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">X</td><td>Type of independent variable. </td></tr>
-    <tr><td class="paramname">Y</td><td>Type of variable that is accumulated during integration. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">y</td><td>Initial value of accumulated variable. </td></tr>
-    <tr><td class="paramname">dydx</td><td>Derivative at beginning of interval. </td></tr>
-    <tr><td class="paramname">x</td><td>Initial value of independent variable. </td></tr>
-    <tr><td class="paramname">h</td><td>Length of interval. </td></tr>
-    <tr><td class="paramname">yout</td><td>Accumulated value at end of interval. </td></tr>
-    <tr><td class="paramname">yerr</td><td>Estimate of local truncation error. </td></tr>
-    <tr><td class="paramname">deriv</td><td>Function for derivative. </td></tr>
-    <tr><td class="paramname">fi_list</td><td>If non-null, output approximant for function <em>dydx</em>. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00049">49</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
-
-</div>
-</div>
-<a id="aec08fa1a674878b98c637a7189759a3a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aec08fa1a674878b98c637a7189759a3a">&sect;&nbsp;</a></span>rkqs()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename X , typename Y &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void num::rkqs </td>
-          <td>(</td>
-          <td class="paramtype">Y &amp;&#160;</td>
-          <td class="paramname"><em>y</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="namespacenum.html#ae69120d6af6e31afc9813728024ac5c4">RAT</a>&lt; Y, X &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>dydx</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">X &amp;&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">X const &amp;&#160;</td>
-          <td class="paramname"><em>htry</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>eps</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Y const &amp;&#160;</td>
-          <td class="paramname"><em>yscal</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">X &amp;&#160;</td>
-          <td class="paramname"><em>hdid</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">X &amp;&#160;</td>
-          <td class="paramname"><em>hnext</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::function&lt; <a class="el" href="namespacenum.html#ae69120d6af6e31afc9813728024ac5c4">RAT</a>&lt; Y, X &gt;(X)&gt;&#160;</td>
-          <td class="paramname"><em>deriv</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classnum_1_1ilist.html">ilist</a>&lt; X, <a class="el" href="namespacenum.html#ae69120d6af6e31afc9813728024ac5c4">RAT</a>&lt; Y, X &gt;&gt; *&#160;</td>
-          <td class="paramname"><em>fi_list</em> = <code>nullptr</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Fifth-order Runge-Kutta step with monitoring of local truncation error to ensure accurcy and adjust stepsize. </p>
-<p>Input are the accumulated variable <em>y</em> and its derivative <em>dydx</em> at the starting value of the independent variable <em>x</em>. Also input are the stepsize <em>htry</em> to be attempted and the required accuracy <em>eps</em>. On output, <em>y</em> and <em>x</em> are replaced by their new values, <em>hdid</em> is the stepsize that was actually accomplished, and <em>hnext</em> is the estimated next stepsize. The supplied function <em>deriv</em> returns the derivative (just like dydx) at any value of the independent variable.</p>
-<p>This function is based on <code><a class="el" href="namespacenum.html#aec08fa1a674878b98c637a7189759a3a" title="Fifth-order Runge-Kutta step with monitoring of local truncation error to ensure accurcy and adjust s...">rkqs()</a></code> found on Page 719 in Numerical Recipes in C, Second Edition. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">y</td><td>Accumulated variable. </td></tr>
-    <tr><td class="paramname">dydx</td><td>Derivative at beginning of interval. </td></tr>
-    <tr><td class="paramname">x</td><td>Independent variable. </td></tr>
-    <tr><td class="paramname">htry</td><td>Stepsize to be attempted. </td></tr>
-    <tr><td class="paramname">eps</td><td>Required accuracy. </td></tr>
-    <tr><td class="paramname">yscal</td><td>Scaling used to monitor accuracy. </td></tr>
-    <tr><td class="paramname">hdid</td><td>Stepsize that was accomplished. </td></tr>
-    <tr><td class="paramname">hnext</td><td>Estimated next stepsize. </td></tr>
-    <tr><td class="paramname">deriv</td><td>Function for derivative. </td></tr>
-    <tr><td class="paramname">fi_list</td><td>If non-null, output approximant for function <em>dydx</em>. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00102">102</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
 
 </div>
 </div>
