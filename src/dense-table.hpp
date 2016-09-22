@@ -9,34 +9,37 @@
 
 namespace num
 {
-   /// Implementing lookup in constant time, a model of a function of a
-   /// continuous variable.
+   /// A [piecewise function](https://en.wikipedia.org/wiki/Piecewise) that, in
+   /// constant time, looks up the appropriate sub-function.
    ///
-   /// The argument \f$ a \f$ to the modeled function is of type \a A.
+   /// The argument \f$ a \f$ to the function is of type \a A.
    ///
-   /// What is found in constant time is a tabulated function \f$ f_i \f$ of
-   /// type \a F, where \f$ i \in \{0, 1, \ldots, n-1\} \f$.  A value derived
-   /// from \f$ a \f$ is passed to the tabulated function \f$ f_i \f$, and the
-   /// value returned by \f$ f_i \f$ is what is ultimately returned from the
-   /// lookup.  In order for dense_table to return a value in constant time, an
-   /// instance of type \a F must itself return a value in constant time.
+   /// For any \f$ a \f$, what is found in constant time are the corresponding
+   /// sub-function and its sub-domain.  The corresponding sub-function, stored
+   /// in a table, is \f$ f_i \f$ of type \a F, and the center of the
+   /// corresponding subdomain is \f$ a_i \f$, where \f$ i \in \{0, 1, \ldots,
+   /// n-1\} \f$.  The sub-argument \f$ a - a_i \f$ is passed to \f$ f_i \f$,
+   /// and the value returned by \f$ f_i \f$ is returned from the lookup.  In
+   /// order for dense_table to return a value in constant time, every \f$ f_i
+   /// \f$ must return a value in constant time.
    ///
    /// In the simplest, fastest table, each \f$ f_i \f$ ignores its argument
    /// and returns a constant value.  However, the infrastructure provided by
-   /// dense_table allows for constant-time lookup of any kind of interpolant,
-   /// depending of the nature of \a F.
+   /// dense_table allows for constant-time lookup of any kind of sub-function
+   /// (for example, a cubic interpolant).
    ///
    /// To enable constant-time lookup, an instance of dense_table stores
-   /// - the first record's location \f$ a_0 \f$ in the space of the modeled
-   ///   function's argument,
-   /// - the fixed difference \f$ \Delta a \f$ between each record and the next
-   ///   in argument space, and
-   /// - a list of \f$ n \f$ functions \f$ \{ f_0, f_1, \ldots, f_{n-1} \} \f$,
-   ///   each of which (together with the computed \f$ a_i = a_0 + i \; \Delta
-   ///   a \f$) makes up a record in the table.
    ///
-   /// Thus a regular grid is established across the value of the modeled
-   /// function's argument.
+   /// - the argument-space location \f$ a_0 \f$ of the table's first record,
+   ///
+   /// - the fixed argument-space difference \f$ \Delta a \f$ between each
+   ///   record and the next, and
+   ///
+   /// - a list of \f$ n \f$ functions \f$ f_0, f_1, \ldots, f_{n-1} \f$, each
+   ///   of which (together with the computed \f$ a_i = a_0 + i \; \Delta a
+   ///   \f$) makes up a record in the table.
+   ///
+   /// Thus a regular grid is established across the value of the argument.
    ///
    /// The lookup occurs by way of operator()(). When \f$ a > a_0 \f$ and \f$ a
    /// < a_{n-1} \f$, the offset \f$ i \f$ is found so that
@@ -50,21 +53,21 @@ namespace num
    /// logarithmic-time lookup for sparse_table.
    ///
    /// \tparam A  Type of function's argument.
-   /// \tparam F  Type of each function \f$ f_i \f$ in the table.
+   /// \tparam F  Type of each sub-function \f$ f_i \f$ in the table.
    template <typename A, typename F>
    class dense_table
    {
       using I = decltype(1.0 / A());
       A a_frst_; ///< First tabulated argument.
-      A da_;     ///< Difference between subsequent tabulated args.
+      A da_;     ///< Common difference between subsequent tabulated arguments.
       I ida_;    ///< Inverse of difference between subsequent tabulated args.
-      std::vector<F> f_; ///< Tabulated return values.
+      std::vector<F> f_; ///< Table of sub-functions.
 
    public:
       /// Initialize members from a list of arguments.
       dense_table(A const &first, ///< First tabulated argument \f$ a_0 \f$.
                   A const &delta, ///< Common difference \f$ \Delta a \f$.
-                  /// Function objects \f$ f_0, \ldots, f_{n-1} \f$.
+                  /// Sub-function objects \f$ f_0, \ldots, f_{n-1} \f$.
                   std::vector<F> vf)
             : a_frst_(first), da_(delta), ida_(1.0 / da_), f_(vf)
       {
@@ -80,11 +83,11 @@ namespace num
       /// arguments.
       A const &da() const { return da_; }
 
-      /// Tabulated functions \f$ \{f_0, f_1, \ldots, f_{n-1}\} \f$.
+      /// List of sub-functions \f$ \{f_0, f_1, \ldots, f_{n-1}\} \f$.
       std::vector<F> const &f() const { return f_; }
 
       /// For \f$ f_i \f$ and \f$ a_i \f$ associated with an argument \f$ a \f$
-      /// to the modeled function, calculate \f$ f_i(a - a_i) \f$.
+      /// to the function, calculate \f$ f_i(a - a_i) \f$.
       ///
       /// - If \f$ a < a_0 \f$, then choose \f$ i = 0 \f$.
       ///
@@ -94,7 +97,7 @@ namespace num
       ///   \frac{a - a_0}{\Delta a} + 0.5 \f$.
       ///
       /// \return \f$ f_i(a - a_i) \f$.
-      auto operator()(A const &a /**< Argument to modeled function. */) const
+      auto operator()(A const &a /**< Argument to function. */) const
             -> decltype(F()(a))
       {
          int i;

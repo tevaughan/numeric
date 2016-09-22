@@ -78,7 +78,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Implementing lookup in constant time, a model of a function of a continuous variable.  
+<p>A <a href="https://en.wikipedia.org/wiki/Piecewise">piecewise function</a> that, in constant time, looks up the appropriate sub-function.  
  <a href="classnum_1_1dense__table.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="dense-table_8hpp_source.html">dense-table.hpp</a>&gt;</code></p>
@@ -101,40 +101,41 @@ A&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnu
 <tr class="separator:a9139b3ad7fec1fd27a4121dba3236e69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38a51cc7ab4e93e952db4e4484dd5bc4"><td class="memItemLeft" align="right" valign="top"><a id="a38a51cc7ab4e93e952db4e4484dd5bc4"></a>
 std::vector&lt; F &gt; const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dense__table.html#a38a51cc7ab4e93e952db4e4484dd5bc4">f</a> () const</td></tr>
-<tr class="memdesc:a38a51cc7ab4e93e952db4e4484dd5bc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tabulated functions \( \{f_0, f_1, \ldots, f_{n-1}\} \). <br /></td></tr>
+<tr class="memdesc:a38a51cc7ab4e93e952db4e4484dd5bc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of sub-functions \( \{f_0, f_1, \ldots, f_{n-1}\} \). <br /></td></tr>
 <tr class="separator:a38a51cc7ab4e93e952db4e4484dd5bc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e1948f9660a1df9a3375b4e9595acea"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dense__table.html#a8e1948f9660a1df9a3375b4e9595acea">operator()</a> (A const &amp;a) const -&gt; decltype(F()(a))</td></tr>
-<tr class="memdesc:a8e1948f9660a1df9a3375b4e9595acea"><td class="mdescLeft">&#160;</td><td class="mdescRight">For \( f_i \) and \( a_i \) associated with an argument \( a \) to the modeled function, calculate \( f_i(a - a_i) \).  <a href="#a8e1948f9660a1df9a3375b4e9595acea">More...</a><br /></td></tr>
+<tr class="memdesc:a8e1948f9660a1df9a3375b4e9595acea"><td class="mdescLeft">&#160;</td><td class="mdescRight">For \( f_i \) and \( a_i \) associated with an argument \( a \) to the function, calculate \( f_i(a - a_i) \).  <a href="#a8e1948f9660a1df9a3375b4e9595acea">More...</a><br /></td></tr>
 <tr class="separator:a8e1948f9660a1df9a3375b4e9595acea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename A, typename F&gt;<br />
 class num::dense_table&lt; A, F &gt;</h3>
 
-<p>Implementing lookup in constant time, a model of a function of a continuous variable. </p>
-<p>The argument \( a \) to the modeled function is of type <em>A</em>.</p>
-<p>What is found in constant time is a tabulated function \( f_i \) of type <em>F</em>, where \( i \in \{0, 1, \ldots, n-1\} \). A value derived from \( a \) is passed to the tabulated function \( f_i \), and the value returned by \( f_i \) is what is ultimately returned from the lookup. In order for <a class="el" href="classnum_1_1dense__table.html" title="Implementing lookup in constant time, a model of a function of a continuous variable. ">dense_table</a> to return a value in constant time, an instance of type <em>F</em> must itself return a value in constant time.</p>
-<p>In the simplest, fastest table, each \( f_i \) ignores its argument and returns a constant value. However, the infrastructure provided by <a class="el" href="classnum_1_1dense__table.html" title="Implementing lookup in constant time, a model of a function of a continuous variable. ">dense_table</a> allows for constant-time lookup of any kind of interpolant, depending of the nature of <em>F</em>.</p>
-<p>To enable constant-time lookup, an instance of <a class="el" href="classnum_1_1dense__table.html" title="Implementing lookup in constant time, a model of a function of a continuous variable. ">dense_table</a> stores</p><ul>
-<li>the first record's location \( a_0 \) in the space of the modeled function's argument,</li>
-<li>the fixed difference \( \Delta a \) between each record and the next in argument space, and</li>
-<li>a list of \( n \) functions \( \{ f_0, f_1, \ldots, f_{n-1} \} \), each of which (together with the computed \( a_i = a_0 + i \; \Delta a \)) makes up a record in the table.</li>
+<p>A <a href="https://en.wikipedia.org/wiki/Piecewise">piecewise function</a> that, in constant time, looks up the appropriate sub-function. </p>
+<p>The argument \( a \) to the function is of type <em>A</em>.</p>
+<p>For any \( a \), what is found in constant time are the corresponding sub-function and its sub-domain. The corresponding sub-function, stored in a table, is \( f_i \) of type <em>F</em>, and the center of the corresponding subdomain is \( a_i \), where \( i \in \{0, 1, \ldots, n-1\} \). The sub-argument \( a - a_i \) is passed to \( f_i \), and the value returned by \( f_i \) is returned from the lookup. In order for <a class="el" href="classnum_1_1dense__table.html" title="A piecewise function that, in constant time, looks up the appropriate sub-function. ">dense_table</a> to return a value in constant time, every \( f_i \) must return a value in constant time.</p>
+<p>In the simplest, fastest table, each \( f_i \) ignores its argument and returns a constant value. However, the infrastructure provided by <a class="el" href="classnum_1_1dense__table.html" title="A piecewise function that, in constant time, looks up the appropriate sub-function. ">dense_table</a> allows for constant-time lookup of any kind of sub-function (for example, a cubic interpolant).</p>
+<p>To enable constant-time lookup, an instance of <a class="el" href="classnum_1_1dense__table.html" title="A piecewise function that, in constant time, looks up the appropriate sub-function. ">dense_table</a> stores</p>
+<ul>
+<li>the argument-space location \( a_0 \) of the table's first record,</li>
+<li>the fixed argument-space difference \( \Delta a \) between each record and the next, and</li>
+<li>a list of \( n \) functions \( f_0, f_1, \ldots, f_{n-1} \), each of which (together with the computed \( a_i = a_0 + i \; \Delta a \)) makes up a record in the table.</li>
 </ul>
-<p>Thus a regular grid is established across the value of the modeled function's argument.</p>
-<p>The lookup occurs by way of <a class="el" href="classnum_1_1dense__table.html#a8e1948f9660a1df9a3375b4e9595acea" title="For  and  associated with an argument  to the modeled function, calculate . ">operator()()</a>. When \( a &gt; a_0 \) and \( a &lt; a_{n-1} \), the offset \( i \) is found so that </p><p class="formulaDsp">
+<p>Thus a regular grid is established across the value of the argument.</p>
+<p>The lookup occurs by way of <a class="el" href="classnum_1_1dense__table.html#a8e1948f9660a1df9a3375b4e9595acea" title="For  and  associated with an argument  to the function, calculate . ">operator()()</a>. When \( a &gt; a_0 \) and \( a &lt; a_{n-1} \), the offset \( i \) is found so that </p><p class="formulaDsp">
 \[ -\frac{\Delta a}{2} &lt; a - a_i \leq +\frac{\Delta a}{2}. \]
 </p>
-<p> What <a class="el" href="classnum_1_1dense__table.html#a8e1948f9660a1df9a3375b4e9595acea" title="For  and  associated with an argument  to the modeled function, calculate . ">operator()()</a> returns is \( f_i(a - a_i) \).</p>
-<p>See sparse_table for a type that usually can approximate a given function so precisely as <a class="el" href="classnum_1_1dense__table.html" title="Implementing lookup in constant time, a model of a function of a continuous variable. ">dense_table</a> but with fewer records. The cost is logarithmic-time lookup for sparse_table.</p>
+<p> What <a class="el" href="classnum_1_1dense__table.html#a8e1948f9660a1df9a3375b4e9595acea" title="For  and  associated with an argument  to the function, calculate . ">operator()()</a> returns is \( f_i(a - a_i) \).</p>
+<p>See sparse_table for a type that usually can approximate a given function so precisely as <a class="el" href="classnum_1_1dense__table.html" title="A piecewise function that, in constant time, looks up the appropriate sub-function. ">dense_table</a> but with fewer records. The cost is logarithmic-time lookup for sparse_table.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">A</td><td>Type of function's argument. </td></tr>
-    <tr><td class="paramname">F</td><td>Type of each function \( f_i \) in the table. </td></tr>
+    <tr><td class="paramname">F</td><td>Type of each sub-function \( f_i \) in the table. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="dense-table_8hpp_source.html#l00055">55</a> of file <a class="el" href="dense-table_8hpp_source.html">dense-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dense-table_8hpp_source.html#l00058">58</a> of file <a class="el" href="dense-table_8hpp_source.html">dense-table.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae27e8ea2389907b2550d9c864e8ec106"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae27e8ea2389907b2550d9c864e8ec106">&sect;&nbsp;</a></span>dense_table()</h2>
@@ -183,12 +184,12 @@ template&lt;typename A , typename F &gt; </div>
   <table class="params">
     <tr><td class="paramname">first</td><td>First tabulated argument \( a_0 \). </td></tr>
     <tr><td class="paramname">delta</td><td>Common difference \( \Delta a \). </td></tr>
-    <tr><td class="paramname">vf</td><td>Function objects \( f_0, \ldots, f_{n-1} \). </td></tr>
+    <tr><td class="paramname">vf</td><td>Sub-function objects \( f_0, \ldots, f_{n-1} \). </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="dense-table_8hpp_source.html#l00065">65</a> of file <a class="el" href="dense-table_8hpp_source.html">dense-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dense-table_8hpp_source.html#l00068">68</a> of file <a class="el" href="dense-table_8hpp_source.html">dense-table.hpp</a>.</p>
 
 </div>
 </div>
@@ -220,7 +221,7 @@ template&lt;typename A , typename F &gt; </div>
 
 <p>Common difference \( \Delta a \) between subsequent tabulated arguments. </p>
 
-<p>Definition at line <a class="el" href="dense-table_8hpp_source.html#l00081">81</a> of file <a class="el" href="dense-table_8hpp_source.html">dense-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dense-table_8hpp_source.html#l00084">84</a> of file <a class="el" href="dense-table_8hpp_source.html">dense-table.hpp</a>.</p>
 
 </div>
 </div>
@@ -251,7 +252,7 @@ template&lt;typename A , typename F &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>For \( f_i \) and \( a_i \) associated with an argument \( a \) to the modeled function, calculate \( f_i(a - a_i) \). </p>
+<p>For \( f_i \) and \( a_i \) associated with an argument \( a \) to the function, calculate \( f_i(a - a_i) \). </p>
 <ul>
 <li>If \( a &lt; a_0 \), then choose \( i = 0 \).</li>
 <li>If \( a &gt; a_{n-1} \), then choose \( i = n - 1 \).</li>
@@ -260,12 +261,12 @@ template&lt;typename A , typename F &gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>\( f_i(a - a_i) \). </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">a</td><td>Argument to modeled function. </td></tr>
+    <tr><td class="paramname">a</td><td>Argument to function. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="dense-table_8hpp_source.html#l00097">97</a> of file <a class="el" href="dense-table_8hpp_source.html">dense-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dense-table_8hpp_source.html#l00100">100</a> of file <a class="el" href="dense-table_8hpp_source.html">dense-table.hpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
