@@ -322,7 +322,10 @@ namespace num
       /// Tolerance used for computing definite integral.
       double tolerance() const { return tol; }
 
+      /// Interpolant representing the function that was integrated.
       interpolant<X, DYDX> const& interp_func() const { return fi; }
+      
+      /// Interpolant representing indefinite integral.
       interpolant<X, Y> const& interp_indef_int() const { return ii; }
    };
 

@@ -78,7 +78,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Simple, constant-time-lookup model of a function of a continuous variable.  
+<p>Constant-time-lookup model of a function of a continuous variable <em>a</em> of type <em>A</em>.  
  <a href="classnum_1_1dense__table.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="dense-table_8hpp_source.html">dense-table.hpp</a>&gt;</code></p>
@@ -90,45 +90,50 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a77237f7321f05a65cf59a319be611ff2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a583272b11a1d9cb620819f99db89eb40"><td class="memItemLeft" align="right" valign="top"><a id="a583272b11a1d9cb620819f99db89eb40"></a>
 A const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dense__table.html#a583272b11a1d9cb620819f99db89eb40">a_frst</a> () const</td></tr>
-<tr class="memdesc:a583272b11a1d9cb620819f99db89eb40"><td class="mdescLeft">&#160;</td><td class="mdescRight">First tabulated argument. <br /></td></tr>
+<tr class="memdesc:a583272b11a1d9cb620819f99db89eb40"><td class="mdescLeft">&#160;</td><td class="mdescRight">First tabulated argument \( a_0 \). <br /></td></tr>
 <tr class="separator:a583272b11a1d9cb620819f99db89eb40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf78409d57891796bc4dfd28749fa0f0"><td class="memItemLeft" align="right" valign="top"><a id="acf78409d57891796bc4dfd28749fa0f0"></a>
 A&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dense__table.html#acf78409d57891796bc4dfd28749fa0f0">a_last</a> () const</td></tr>
-<tr class="memdesc:acf78409d57891796bc4dfd28749fa0f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Last tabulated argument. <br /></td></tr>
+<tr class="memdesc:acf78409d57891796bc4dfd28749fa0f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Last tabulated argument \( a_{n-1} \). <br /></td></tr>
 <tr class="separator:acf78409d57891796bc4dfd28749fa0f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9139b3ad7fec1fd27a4121dba3236e69"><td class="memItemLeft" align="right" valign="top"><a id="a9139b3ad7fec1fd27a4121dba3236e69"></a>
 A const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dense__table.html#a9139b3ad7fec1fd27a4121dba3236e69">da</a> () const</td></tr>
-<tr class="memdesc:a9139b3ad7fec1fd27a4121dba3236e69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Difference between subsequent tabulated arguments. <br /></td></tr>
+<tr class="memdesc:a9139b3ad7fec1fd27a4121dba3236e69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Difference \( \Delta a \) between subsequent tabulated arguments. <br /></td></tr>
 <tr class="separator:a9139b3ad7fec1fd27a4121dba3236e69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38a51cc7ab4e93e952db4e4484dd5bc4"><td class="memItemLeft" align="right" valign="top"><a id="a38a51cc7ab4e93e952db4e4484dd5bc4"></a>
 std::vector&lt; F &gt; const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dense__table.html#a38a51cc7ab4e93e952db4e4484dd5bc4">f</a> () const</td></tr>
-<tr class="memdesc:a38a51cc7ab4e93e952db4e4484dd5bc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tabulated values of function. <br /></td></tr>
+<tr class="memdesc:a38a51cc7ab4e93e952db4e4484dd5bc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tabulated functions \( \{f_0, f_1, \ldots, f_{n-1}\} \). <br /></td></tr>
 <tr class="separator:a38a51cc7ab4e93e952db4e4484dd5bc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e1948f9660a1df9a3375b4e9595acea"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dense__table.html#a8e1948f9660a1df9a3375b4e9595acea">operator()</a> (A const &amp;a) const -&gt; decltype(F()(a))</td></tr>
-<tr class="memdesc:a8e1948f9660a1df9a3375b4e9595acea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Value returned by tabulated function object associated with supplied argument.  <a href="#a8e1948f9660a1df9a3375b4e9595acea">More...</a><br /></td></tr>
+<tr class="memdesc:a8e1948f9660a1df9a3375b4e9595acea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate \( f_i(a - a_i) \) for tabulated function \( f_i \) associated with argument \( a \).  <a href="#a8e1948f9660a1df9a3375b4e9595acea">More...</a><br /></td></tr>
 <tr class="separator:a8e1948f9660a1df9a3375b4e9595acea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename A, typename F&gt;<br />
 class num::dense_table&lt; A, F &gt;</h3>
 
-<p>Simple, constant-time-lookup model of a function of a continuous variable. </p>
-<p>To enable constant-time lookup, <a class="el" href="classnum_1_1dense__table.html" title="Simple, constant-time-lookup model of a function of a continuous variable. ">dense_table</a> contains a regular grid across the value of the function's argument. So each pair of subsequent table entries is separated by the same distance \( \Delta a \) in the space of the function's argument.</p>
-<p>At the \( i^{\text{th}} \) entry, corresponding to the value \( a_i \) of the function's argument, an instance of <a class="el" href="classnum_1_1dense__table.html" title="Simple, constant-time-lookup model of a function of a continuous variable. ">dense_table</a> stores a function object \( f_i \) of type <em>F</em>.</p>
-<p>When the lookup occurs, by way of dense_table::operator()(A const&amp;), let the value of the passed-in argument be \( a \). When \( a \) is neither before the first table entry nor after the last, the index \( i \) is chosen so that </p><p class="formulaDsp">
+<p>Constant-time-lookup model of a function of a continuous variable <em>a</em> of type <em>A</em>. </p>
+<p>What is found in constant time is a tabulated function \( f_i \) of type <em>F</em>, where \( i \in \{0, 1, \ldots, n-1\} \). The tabulated function \( f_i \) is passed a transformed value of <em>a</em>, and the value returned by \( f_i \) is what is ultimately returned from the lookup. In the simplest, fastest table, each \( f_i \) ignores its argument and returns a constant value. However, the infrastructure provided by <a class="el" href="classnum_1_1dense__table.html" title="Constant-time-lookup model of a function of a continuous variable a of type A. ">dense_table</a> allows for constant-time lookup of any kind of interpolant, depending of the nature of <em>F</em>.</p>
+<p>To enable constant-time lookup, an instance of <a class="el" href="classnum_1_1dense__table.html" title="Constant-time-lookup model of a function of a continuous variable a of type A. ">dense_table</a> stores</p><ul>
+<li>the first record's location \( a_0 \) in the space of the modeled function's argument,</li>
+<li>the fixed difference \( \Delta a \) between each record and the next in argument space, and</li>
+<li>a list of \( n \) functions \( \{ f_0, f_1, \ldots, f_{n-1} \} \), each of which, together with the argument value that can be computed as \( a_i = a_0 + i \; \Delta a \), defines a logical record in the table.</li>
+</ul>
+<p>Thus a regular grid is established across the value of the modeled function's argument.</p>
+<p>The lookup occurs by way of <a class="el" href="classnum_1_1dense__table.html#a8e1948f9660a1df9a3375b4e9595acea" title="Calculate  for tabulated function  associated with argument . ">operator()()</a>. When neither \( a &lt; a_0 \) nor \( a &gt; a_{n-1} \), the offset \( i \) is found so that </p><p class="formulaDsp">
 \[ -\frac{\Delta a}{2} &lt; a - a_i \leq +\frac{\Delta a}{2}. \]
 </p>
-<p> What is returned by dense_table::operator() is the value \( f_i(a - a_i) \).</p>
-<p>For log-time-lookup, see sparse_table.</p>
+<p> What <a class="el" href="classnum_1_1dense__table.html#a8e1948f9660a1df9a3375b4e9595acea" title="Calculate  for tabulated function  associated with argument . ">operator()()</a> returns is \( f_i(a - a_i) \).</p>
+<p>See sparse_table for a type that usually can approximate a given function so precisely as <a class="el" href="classnum_1_1dense__table.html" title="Constant-time-lookup model of a function of a continuous variable a of type A. ">dense_table</a> but with fewer records. The cost is logarithmic-time lookup for sparse_table.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">A</td><td>Type of function's argument.</td></tr>
-    <tr><td class="paramname">F</td><td>Type of each function \( f_i \), of which an instance of <a class="el" href="classnum_1_1dense__table.html" title="Simple, constant-time-lookup model of a function of a continuous variable. ">dense_table</a> is a piece-wise construction. </td></tr>
+    <tr><td class="paramname">A</td><td>Type of function's argument. </td></tr>
+    <tr><td class="paramname">F</td><td>Type of each function \( f_i \) in the table. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="dense-table_8hpp_source.html#l00038">38</a> of file <a class="el" href="dense-table_8hpp_source.html">dense-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dense-table_8hpp_source.html#l00051">51</a> of file <a class="el" href="dense-table_8hpp_source.html">dense-table.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a77237f7321f05a65cf59a319be611ff2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a77237f7321f05a65cf59a319be611ff2">&sect;&nbsp;</a></span>dense_table()</h2>
@@ -182,7 +187,7 @@ template&lt;typename A , typename F &gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="dense-table_8hpp_source.html#l00050">50</a> of file <a class="el" href="dense-table_8hpp_source.html">dense-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dense-table_8hpp_source.html#l00063">63</a> of file <a class="el" href="dense-table_8hpp_source.html">dense-table.hpp</a>.</p>
 
 </div>
 </div>
@@ -214,7 +219,11 @@ template&lt;typename A , typename F &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Value returned by tabulated function object associated with supplied argument. </p>
+<p>Calculate \( f_i(a - a_i) \) for tabulated function \( f_i \) associated with argument \( a \). </p>
+<p>If \( a &lt; a_0 \), then choose \( i = 0 \). If \( a &gt; a_{n-1} \), then choose \( i = n - 1 \). Otherwise, choose \( i \) to be the integer nearest to </p><p class="formulaDsp">
+\[ \frac{a - a_0}{\Delta a} + 0.5. \]
+</p>
+<dl class="section return"><dt>Returns</dt><dd>\( f_i(a - a_i) \). </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">a</td><td>Desired argument. </td></tr>
@@ -222,13 +231,13 @@ template&lt;typename A , typename F &gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="dense-table_8hpp_source.html#l00075">75</a> of file <a class="el" href="dense-table_8hpp_source.html">dense-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dense-table_8hpp_source.html#l00094">94</a> of file <a class="el" href="dense-table_8hpp_source.html">dense-table.hpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classnum_1_1dense__table_a8e1948f9660a1df9a3375b4e9595acea_cgraph.png" border="0" usemap="#classnum_1_1dense__table_a8e1948f9660a1df9a3375b4e9595acea_cgraph" alt=""/></div>
 <map name="classnum_1_1dense__table_a8e1948f9660a1df9a3375b4e9595acea_cgraph" id="classnum_1_1dense__table_a8e1948f9660a1df9a3375b4e9595acea_cgraph">
-<area shape="rect" id="node2" href="classnum_1_1dense__table.html#acf78409d57891796bc4dfd28749fa0f0" title="Last tabulated argument. " alt="" coords="241,5,409,32"/>
+<area shape="rect" id="node2" href="classnum_1_1dense__table.html#acf78409d57891796bc4dfd28749fa0f0" title="Last tabulated argument . " alt="" coords="241,5,409,32"/>
 </map>
 </div>
 
