@@ -11,7 +11,7 @@ ACLOCAL_AMFLAGS = -I aux/m4
 EXTRA_DIST = .clang-format
 
 dox :
-	@(cd docs; make dox)
+	@(cd src; make; cd ../docs; make dox)
 
 clean-local :
 	@rm -frv numeric-*-coverage*

@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['da',['da',['../classnum_1_1dense__table.html#a9139b3ad7fec1fd27a4121dba3236e69',1,'num::dense_table::da()'],['../classnum_1_1sparse__table.html#a91901a098727b9f90afeac4eb1bfada0',1,'num::sparse_table::da()']]],
+  ['da',['da',['../structnum_1_1sparse__table_1_1rec.html#ae7e62d7ff17dd05f488a812a29c55518',1,'num::sparse_table::rec::da()'],['../classnum_1_1dense__table.html#a9139b3ad7fec1fd27a4121dba3236e69',1,'num::dense_table::da()']]],
+  ['dat',['dat',['../classnum_1_1sparse__table.html#a067602cef248d47a39e2e63582f11543',1,'num::sparse_table']]],
+  ['data',['data',['../classnum_1_1sparse__table.html#ac6e8c585b22867f04be559a4c0de84ad',1,'num::sparse_table']]],
   ['day',['day',['../units_8hpp.html#aa8e7b59d272a8a6120fa519d3e641ea5',1,'num::u']]],
   ['days',['days',['../structnum_1_1days.html',1,'num']]],
   ['days',['days',['../structnum_1_1days.html#a79469f122c75cd5491284fb339d21245',1,'num::days::days(double v)'],['../structnum_1_1days.html#a6853d474797d6095053f1ce20bece1d9',1,'num::days::days(days const &amp;dv)=default']]],
@@ -12,8 +14,8 @@ var searchData=
   ['dense_5ftable',['dense_table',['../classnum_1_1dense__table.html#ae27e8ea2389907b2550d9c864e8ec106',1,'num::dense_table']]],
   ['density',['density',['../namespacenum.html#a309bf56325be8cd4371f056b2b20109f',1,'num']]],
   ['dimensions_2ehpp',['dimensions.hpp',['../dimensions_8hpp.html',1,'']]],
-  ['dimval',['dimval',['../classnum_1_1dimval.html#abde02f71a9b84e0990a02fb4dba8c70a',1,'num::dimval::dimval()'],['../classnum_1_1dimval.html#a8057ceee0b6370a0468cf50721442fc9',1,'num::dimval::dimval(double vv)'],['../classnum_1_1dimval.html#a32c5333933d94d9b6c9125b4aa9a5841',1,'num::dimval::dimval()']]],
   ['dimval',['dimval',['../classnum_1_1dimval.html',1,'num']]],
+  ['dimval',['dimval',['../classnum_1_1dimval.html#abde02f71a9b84e0990a02fb4dba8c70a',1,'num::dimval::dimval()'],['../classnum_1_1dimval.html#a8057ceee0b6370a0468cf50721442fc9',1,'num::dimval::dimval(double vv)'],['../classnum_1_1dimval.html#a32c5333933d94d9b6c9125b4aa9a5841',1,'num::dimval::dimval()']]],
   ['dimval_2ehpp',['dimval.hpp',['../dimval_8hpp.html',1,'']]],
   ['dimval_5fpower',['dimval_power',['../classnum_1_1dimval.html#a647059d6a2dbff168126a0518c57621a',1,'num::dimval']]],
   ['dimval_5froot',['dimval_root',['../classnum_1_1dimval.html#a3601e60743a074563ce91910f487fa61',1,'num::dimval']]],

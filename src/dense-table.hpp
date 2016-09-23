@@ -10,46 +10,50 @@
 namespace num
 {
    /// A [piecewise function](https://en.wikipedia.org/wiki/Piecewise) that, in
-   /// constant time, looks up the appropriate sub-function.
+   /// constant time, looks up the sub-function appropriate to the argument.
    ///
-   /// The argument \f$ a \f$ to the function is of type \a A.
+   /// For any argument \f$ a \f$, the corresponding sub-function and its
+   /// sub-domain are found in constant time.  The sub-domains are contiguous
+   /// and of common length \f$ \Delta a \f$.  If \f$ a \f$ be less than the
+   /// least element of the first subdomain or greater than the greatest
+   /// element of the last subdomain, then there is no corresponding
+   /// sub-function, and zero is returned.
    ///
-   /// For any \f$ a \f$, what is found in constant time are the corresponding
-   /// sub-function and its sub-domain.  The corresponding sub-function, stored
-   /// in a table, is \f$ f_i \f$ of type \a F, and the center of the
-   /// corresponding subdomain is \f$ a_i \f$, where \f$ i \in \{0, 1, \ldots,
-   /// n-1\} \f$.  The sub-argument \f$ a - a_i \f$ is passed to \f$ f_i \f$,
-   /// and the value returned by \f$ f_i \f$ is returned from the lookup.
+   /// Stored in a table of \f$ n \f$ records, the sub-function corresponding
+   /// to \f$ a \f$ is \f$ f_i \f$, and the center of the corresponding
+   /// subdomain is \f$ a_i \f$, where \f$ i \in \{0, 1, \ldots, n-1\} \f$.
+   /// The sub-argument \f$ a - a_i \f$ is passed to \f$ f_i \f$, and the value
+   /// returned by \f$ f_i \f$ is returned from the lookup.
    ///
    /// In the simplest, fastest table, each \f$ f_i \f$ ignores its argument
    /// and returns a constant value.  However, the infrastructure provided by
    /// dense_table allows for constant-time lookup of any kind of sub-function
    /// (for example, a cubic interpolant).
    ///
-   /// To enable constant-time lookup, an instance of dense_table stores
+   /// To implement constant-time lookup, an instance of dense_table stores
    ///
-   /// - the argument-space location \f$ a_0 \f$ of the table's first record,
+   /// - \f$ a_0 \f$, the center of the first sub-domain,
    ///
-   /// - the fixed argument-space difference \f$ \Delta a \f$ between each
-   ///   record and the next, and
+   /// - the common difference \f$ \Delta a = a_{i+1} - a_i \f$ (for \f$ i \in
+   ///   \{0, 1, \ldots, n-2\} \f$) between any center of a sub-domain and the
+   ///   next center, and
    ///
-   /// - a list of the \f$ n \f$ sub-functions \f$ f_0, f_1, \ldots, f_{n-1}
-   ///   \f$, each of which (together with the computed \f$ a_i = a_0 + i \;
-   ///   \Delta a \f$) makes up a record in the table.
+   /// - a list of the \f$ n \f$ sub-functions \f$ f_0 \f$, \f$ f_1 \f$,
+   ///   \f$ \ldots \f$, \f$ f_{n-1} \f$.
    ///
    /// Thus a regular grid is established across the value of the argument.
    ///
-   /// The lookup occurs by way of operator()(). When \f$ a > a_0 \f$ and \f$ a
-   /// < a_{n-1} \f$, the offset \f$ i \f$ is found so that
-   /// \f[
-   ///    -\frac{\Delta a}{2} < a - a_i \leq +\frac{\Delta a}{2}.
-   /// \f]
-   /// What operator()() returns is \f$ f_i(a - a_i) \f$.
+   /// The lookup occurs by way of operator()(). When \f$ a > a_0 -
+   /// \frac{\Delta a}{2} \f$, and \f$ a < a_{n-1} + \frac{\Delta a}{2} \f$,
+   /// the offset \f$ i \f$ is found as the integer truncation of \f$ \frac{a -
+   /// a_0}{\Delta a} + 0.5 \f$.
    ///
-   /// See sparse_table for a type that usually can approximate a given
-   /// function so precisely as dense_table but with fewer records with the
-   /// same sub-function type \a F. The cost is logarithmic-time lookup for
-   /// sparse_table.
+   /// operator()() returns \f$ f_i(a - a_i) \f$.
+   ///
+   /// See sparse_table for a piecewise function that can approximate a
+   /// function so precisely as dense_table but with fewer sub-functions of the
+   /// same type \a F.  The cost of a smaller table in sparse_table is
+   /// logarithmic-time lookup.
    ///
    /// \tparam A  Type of function's argument.
    /// \tparam F  Type of each sub-function \f$ f_i \f$ in the table.
@@ -57,63 +61,59 @@ namespace num
    class dense_table
    {
       using I = decltype(1.0 / A());
-      A a_frst_; ///< First tabulated argument.
-      A da_;     ///< Common difference between subsequent tabulated arguments.
-      I ida_;    ///< Inverse of difference between subsequent tabulated args.
+      A a_frst_;         ///< Center \f$ a_0 \f$ of first sub-domain.
+      A da_;             ///< Common difference between subsequent centers.
+      I ida_;            ///< Inverse of common difference.
       std::vector<F> f_; ///< Table of sub-functions.
 
    public:
       /// Initialize members from a list of arguments.
-      dense_table(A const &first, ///< First tabulated argument \f$ a_0 \f$.
-                  A const &delta, ///< Common difference \f$ \Delta a \f$.
-                  /// Sub-function objects \f$ f_0, \ldots, f_{n-1} \f$.
-                  std::vector<F> vf)
-            : a_frst_(first), da_(delta), ida_(1.0 / da_), f_(vf)
+      dense_table(
+            /// Center \f$ a_0 \f$ of first sub-domain.
+            A const &first,
+            /// Common difference \f$ \Delta a \f$.
+            A const &delta,
+            /// Sub-function objects.  The first sub-function in \a vf is
+            /// interpreted as \f$ f_0 \f$, the second as \f$ f_1 \f$, etc.
+            std::vector<F> vf)
+         : a_frst_(first), da_(delta), ida_(1.0 / da_), f_(vf)
       {
+         if (vf.size() < 1) {
+            throw "dense_table must have at least one record.";
+         }
+         if (delta <= A(0)) {
+            throw "Length of sub-domain must be positive.";
+         }
       }
 
-      /// First tabulated argument \f$ a_0 \f$.
+      /// Center \f$ a_0 \f$ of first sub-domain.
       A const &a_frst() const { return a_frst_; }
 
-      /// Last tabulated argument \f$ a_{n-1} \f$.
+      /// Center \f$ a_{n-1} \f$ of last sub-domain.
       A a_last() const { return a_frst_ + (f_.size() - 1) * da_; }
 
-      /// Common difference \f$ \Delta a \f$ between subsequent tabulated
-      /// arguments.
+      /// Common difference \f$ \Delta a \f$ between subsequent centers.
       A const &da() const { return da_; }
 
       /// List of sub-functions \f$ \{f_0, f_1, \ldots, f_{n-1}\} \f$.
       std::vector<F> const &f() const { return f_; }
 
-      /// For \f$ f_i \f$ and \f$ a_i \f$ associated with an argument \f$ a \f$
-      /// to the function, calculate \f$ f_i(a - a_i) \f$.
-      ///
-      /// - If \f$ a < a_0 \f$, then choose \f$ i = 0 \f$.
-      ///
-      /// - If \f$ a > a_{n-1} \f$, then choose \f$ i = n - 1 \f$.
-      ///
-      /// - Otherwise, choose \f$ i \f$ to be the integer nearest to \f$
-      ///   \frac{a - a_0}{\Delta a} + 0.5 \f$.
+      /// Type of value returned by every sub-function.
+      using R = decltype(F()(A()));
+
+      /// Find the offset \f$ i \f$ of the sub-domain containing the argument
+      /// \f$ a \f$, and return \f$ f_i(a - a_i) \f$.  If \f$ a < a_0 -
+      /// \frac{\Delta a}{2} \f$, or \f$ a > a_{n-1} + \frac{\Delta a}{2} \f$,
+      /// then return 0.
       ///
       /// \return \f$ f_i(a - a_i) \f$.
-      auto operator()(A const &a /**< Argument to function. */) const
-            -> decltype(F()(a))
+      R operator()(A const &a /**< Argument to function. */) const
       {
-         int i;
-         A ai;
-         if (a < a_frst_) {
-            i = 0;
-            ai = a_frst_;
-         } else {
-            A const last = a_last();
-            if (a > last) {
-               i = f_.size() - 1;
-               ai = last;
-            } else {
-               i = int((a - a_frst_) * ida_ + 0.5);
-               ai = a_frst_ + i * da_;
-            }
+         if (a < a_frst() - 0.5 * da_ || a > a_last() + 0.5 * da_) {
+            return R(0);
          }
+         int const i = (a - a_frst()) * ida_ + 0.5;
+         A const ai = a_frst() + i * da_;
          return f_[i](a - ai);
       }
    };

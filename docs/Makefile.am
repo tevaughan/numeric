@@ -12,3 +12,6 @@ dox :
 	(cd examples; make dox)
 	doxygen
 
+clean-local :
+	@rm -frv doxygen-html/*
+

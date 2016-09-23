@@ -4,7 +4,7 @@
 // This software is distributable under the terms of the GNU LGPL, Version 3 or
 // later.
 
-/// \file   integral_stats.hpp
+/// \file   integral-stats.hpp
 ///
 /// \brief  Source for num::integral_stats, which is used by num::integral()
 ///         and by num::interpolant.

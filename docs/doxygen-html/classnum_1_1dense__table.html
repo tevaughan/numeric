@@ -71,6 +71,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classnum_1_1dense__table-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -78,11 +79,18 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>A <a href="https://en.wikipedia.org/wiki/Piecewise">piecewise function</a> that, in constant time, looks up the appropriate sub-function.  
+<p>A <a href="https://en.wikipedia.org/wiki/Piecewise">piecewise function</a> that, in constant time, looks up the sub-function appropriate to the argument.  
  <a href="classnum_1_1dense__table.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="dense-table_8hpp_source.html">dense-table.hpp</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a099ca93d2dd641755c2d412d85e85e87"><td class="memItemLeft" align="right" valign="top"><a id="a099ca93d2dd641755c2d412d85e85e87"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dense__table.html#a099ca93d2dd641755c2d412d85e85e87">R</a> = decltype(F()(A()))</td></tr>
+<tr class="memdesc:a099ca93d2dd641755c2d412d85e85e87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of value returned by every sub-function. <br /></td></tr>
+<tr class="separator:a099ca93d2dd641755c2d412d85e85e87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae27e8ea2389907b2550d9c864e8ec106"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dense__table.html#ae27e8ea2389907b2550d9c864e8ec106">dense_table</a> (A const &amp;first, A const &amp;delta, std::vector&lt; F &gt; vf)</td></tr>
@@ -90,43 +98,42 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ae27e8ea2389907b2550d9c864e8ec106"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a583272b11a1d9cb620819f99db89eb40"><td class="memItemLeft" align="right" valign="top"><a id="a583272b11a1d9cb620819f99db89eb40"></a>
 A const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dense__table.html#a583272b11a1d9cb620819f99db89eb40">a_frst</a> () const</td></tr>
-<tr class="memdesc:a583272b11a1d9cb620819f99db89eb40"><td class="mdescLeft">&#160;</td><td class="mdescRight">First tabulated argument \( a_0 \). <br /></td></tr>
+<tr class="memdesc:a583272b11a1d9cb620819f99db89eb40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Center \( a_0 \) of first sub-domain. <br /></td></tr>
 <tr class="separator:a583272b11a1d9cb620819f99db89eb40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf78409d57891796bc4dfd28749fa0f0"><td class="memItemLeft" align="right" valign="top"><a id="acf78409d57891796bc4dfd28749fa0f0"></a>
 A&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dense__table.html#acf78409d57891796bc4dfd28749fa0f0">a_last</a> () const</td></tr>
-<tr class="memdesc:acf78409d57891796bc4dfd28749fa0f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Last tabulated argument \( a_{n-1} \). <br /></td></tr>
+<tr class="memdesc:acf78409d57891796bc4dfd28749fa0f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Center \( a_{n-1} \) of last sub-domain. <br /></td></tr>
 <tr class="separator:acf78409d57891796bc4dfd28749fa0f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9139b3ad7fec1fd27a4121dba3236e69"><td class="memItemLeft" align="right" valign="top">A const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dense__table.html#a9139b3ad7fec1fd27a4121dba3236e69">da</a> () const</td></tr>
-<tr class="memdesc:a9139b3ad7fec1fd27a4121dba3236e69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Common difference \( \Delta a \) between subsequent tabulated arguments.  <a href="#a9139b3ad7fec1fd27a4121dba3236e69">More...</a><br /></td></tr>
+<tr class="memitem:a9139b3ad7fec1fd27a4121dba3236e69"><td class="memItemLeft" align="right" valign="top"><a id="a9139b3ad7fec1fd27a4121dba3236e69"></a>
+A const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dense__table.html#a9139b3ad7fec1fd27a4121dba3236e69">da</a> () const</td></tr>
+<tr class="memdesc:a9139b3ad7fec1fd27a4121dba3236e69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Common difference \( \Delta a \) between subsequent centers. <br /></td></tr>
 <tr class="separator:a9139b3ad7fec1fd27a4121dba3236e69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38a51cc7ab4e93e952db4e4484dd5bc4"><td class="memItemLeft" align="right" valign="top"><a id="a38a51cc7ab4e93e952db4e4484dd5bc4"></a>
 std::vector&lt; F &gt; const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dense__table.html#a38a51cc7ab4e93e952db4e4484dd5bc4">f</a> () const</td></tr>
 <tr class="memdesc:a38a51cc7ab4e93e952db4e4484dd5bc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of sub-functions \( \{f_0, f_1, \ldots, f_{n-1}\} \). <br /></td></tr>
 <tr class="separator:a38a51cc7ab4e93e952db4e4484dd5bc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e1948f9660a1df9a3375b4e9595acea"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dense__table.html#a8e1948f9660a1df9a3375b4e9595acea">operator()</a> (A const &amp;a) const -&gt; decltype(F()(a))</td></tr>
-<tr class="memdesc:a8e1948f9660a1df9a3375b4e9595acea"><td class="mdescLeft">&#160;</td><td class="mdescRight">For \( f_i \) and \( a_i \) associated with an argument \( a \) to the function, calculate \( f_i(a - a_i) \).  <a href="#a8e1948f9660a1df9a3375b4e9595acea">More...</a><br /></td></tr>
-<tr class="separator:a8e1948f9660a1df9a3375b4e9595acea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4af84e73721e1289839ef97a3a7f244"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dense__table.html#a099ca93d2dd641755c2d412d85e85e87">R</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dense__table.html#ad4af84e73721e1289839ef97a3a7f244">operator()</a> (A const &amp;a) const</td></tr>
+<tr class="memdesc:ad4af84e73721e1289839ef97a3a7f244"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the offset \( i \) of the sub-domain containing the argument \( a \), and return \( f_i(a - a_i) \).  <a href="#ad4af84e73721e1289839ef97a3a7f244">More...</a><br /></td></tr>
+<tr class="separator:ad4af84e73721e1289839ef97a3a7f244"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename A, typename F&gt;<br />
 class num::dense_table&lt; A, F &gt;</h3>
 
-<p>A <a href="https://en.wikipedia.org/wiki/Piecewise">piecewise function</a> that, in constant time, looks up the appropriate sub-function. </p>
-<p>The argument \( a \) to the function is of type <em>A</em>.</p>
-<p>For any \( a \), what is found in constant time are the corresponding sub-function and its sub-domain. The corresponding sub-function, stored in a table, is \( f_i \) of type <em>F</em>, and the center of the corresponding subdomain is \( a_i \), where \( i \in \{0, 1, \ldots, n-1\} \). The sub-argument \( a - a_i \) is passed to \( f_i \), and the value returned by \( f_i \) is returned from the lookup.</p>
-<p>In the simplest, fastest table, each \( f_i \) ignores its argument and returns a constant value. However, the infrastructure provided by <a class="el" href="classnum_1_1dense__table.html" title="A piecewise function that, in constant time, looks up the appropriate sub-function. ">dense_table</a> allows for constant-time lookup of any kind of sub-function (for example, a cubic interpolant).</p>
-<p>To enable constant-time lookup, an instance of <a class="el" href="classnum_1_1dense__table.html" title="A piecewise function that, in constant time, looks up the appropriate sub-function. ">dense_table</a> stores</p>
+<p>A <a href="https://en.wikipedia.org/wiki/Piecewise">piecewise function</a> that, in constant time, looks up the sub-function appropriate to the argument. </p>
+<p>For any argument \( a \), the corresponding sub-function and its sub-domain are found in constant time. The sub-domains are contiguous and of common length \( \Delta a \). If \( a \) be less than the least element of the first subdomain or greater than the greatest element of the last subdomain, then there is no corresponding sub-function, and zero is returned.</p>
+<p>Stored in a table of \( n \) records, the sub-function corresponding to \( a \) is \( f_i \), and the center of the corresponding subdomain is \( a_i \), where \( i \in \{0, 1, \ldots, n-1\} \). The sub-argument \( a - a_i \) is passed to \( f_i \), and the value returned by \( f_i \) is returned from the lookup.</p>
+<p>In the simplest, fastest table, each \( f_i \) ignores its argument and returns a constant value. However, the infrastructure provided by <a class="el" href="classnum_1_1dense__table.html" title="A piecewise function that, in constant time, looks up the sub-function appropriate to the argument...">dense_table</a> allows for constant-time lookup of any kind of sub-function (for example, a cubic interpolant).</p>
+<p>To implement constant-time lookup, an instance of <a class="el" href="classnum_1_1dense__table.html" title="A piecewise function that, in constant time, looks up the sub-function appropriate to the argument...">dense_table</a> stores</p>
 <ul>
-<li>the argument-space location \( a_0 \) of the table's first record,</li>
-<li>the fixed argument-space difference \( \Delta a \) between each record and the next, and</li>
-<li>a list of the \( n \) sub-functions \( f_0, f_1, \ldots, f_{n-1} \), each of which (together with the computed \( a_i = a_0 + i \; \Delta a \)) makes up a record in the table.</li>
+<li>\( a_0 \), the center of the first sub-domain,</li>
+<li>the common difference \( \Delta a = a_{i+1} - a_i \) (for \( i \in \{0, 1, \ldots, n-2\} \)) between any center of a sub-domain and the next center, and</li>
+<li>a list of the \( n \) sub-functions \( f_0 \), \( f_1 \), \( \ldots \), \( f_{n-1} \).</li>
 </ul>
 <p>Thus a regular grid is established across the value of the argument.</p>
-<p>The lookup occurs by way of <a class="el" href="classnum_1_1dense__table.html#a8e1948f9660a1df9a3375b4e9595acea" title="For  and  associated with an argument  to the function, calculate . ">operator()()</a>. When \( a &gt; a_0 \) and \( a &lt; a_{n-1} \), the offset \( i \) is found so that </p><p class="formulaDsp">
-\[ -\frac{\Delta a}{2} &lt; a - a_i \leq +\frac{\Delta a}{2}. \]
-</p>
-<p> What <a class="el" href="classnum_1_1dense__table.html#a8e1948f9660a1df9a3375b4e9595acea" title="For  and  associated with an argument  to the function, calculate . ">operator()()</a> returns is \( f_i(a - a_i) \).</p>
-<p>See <a class="el" href="classnum_1_1sparse__table.html" title="A piecewise function that, in logarithmic time, looks up the appropriate sub-function. ">sparse_table</a> for a type that usually can approximate a given function so precisely as <a class="el" href="classnum_1_1dense__table.html" title="A piecewise function that, in constant time, looks up the appropriate sub-function. ">dense_table</a> but with fewer records with the same sub-function type <em>F</em>. The cost is logarithmic-time lookup for <a class="el" href="classnum_1_1sparse__table.html" title="A piecewise function that, in logarithmic time, looks up the appropriate sub-function. ">sparse_table</a>.</p>
+<p>The lookup occurs by way of <a class="el" href="classnum_1_1dense__table.html#ad4af84e73721e1289839ef97a3a7f244" title="Find the offset  of the sub-domain containing the argument , and return . ">operator()()</a>. When \( a &gt; a_0 - \frac{\Delta a}{2} \), and \( a &lt; a_{n-1} + \frac{\Delta a}{2} \), the offset \( i \) is found as the integer truncation of \( \frac{a - a_0}{\Delta a} + 0.5 \).</p>
+<p><a class="el" href="classnum_1_1dense__table.html#ad4af84e73721e1289839ef97a3a7f244" title="Find the offset  of the sub-domain containing the argument , and return . ">operator()()</a> returns \( f_i(a - a_i) \).</p>
+<p>See <a class="el" href="classnum_1_1sparse__table.html" title="A piecewise function that, in logarithmic time, looks up the sub-function appropriate to the argument...">sparse_table</a> for a piecewise function that can approximate a function so precisely as <a class="el" href="classnum_1_1dense__table.html" title="A piecewise function that, in constant time, looks up the sub-function appropriate to the argument...">dense_table</a> but with fewer sub-functions of the same type <em>F</em>. The cost of a smaller table in <a class="el" href="classnum_1_1sparse__table.html" title="A piecewise function that, in logarithmic time, looks up the sub-function appropriate to the argument...">sparse_table</a> is logarithmic-time lookup.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">A</td><td>Type of function's argument. </td></tr>
@@ -135,7 +142,7 @@ class num::dense_table&lt; A, F &gt;</h3>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="dense-table_8hpp_source.html#l00057">57</a> of file <a class="el" href="dense-table_8hpp_source.html">dense-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dense-table_8hpp_source.html#l00061">61</a> of file <a class="el" href="dense-table_8hpp_source.html">dense-table.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae27e8ea2389907b2550d9c864e8ec106"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae27e8ea2389907b2550d9c864e8ec106">&sect;&nbsp;</a></span>dense_table()</h2>
@@ -182,20 +189,20 @@ template&lt;typename A , typename F &gt; </div>
 <p>Initialize members from a list of arguments. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">first</td><td>First tabulated argument \( a_0 \). </td></tr>
+    <tr><td class="paramname">first</td><td>Center \( a_0 \) of first sub-domain. </td></tr>
     <tr><td class="paramname">delta</td><td>Common difference \( \Delta a \). </td></tr>
-    <tr><td class="paramname">vf</td><td>Sub-function objects \( f_0, \ldots, f_{n-1} \). </td></tr>
+    <tr><td class="paramname">vf</td><td>Sub-function objects. The first sub-function in <em>vf</em> is interpreted as \( f_0 \), the second as \( f_1 \), etc. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="dense-table_8hpp_source.html#l00067">67</a> of file <a class="el" href="dense-table_8hpp_source.html">dense-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dense-table_8hpp_source.html#l00071">71</a> of file <a class="el" href="dense-table_8hpp_source.html">dense-table.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a9139b3ad7fec1fd27a4121dba3236e69"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9139b3ad7fec1fd27a4121dba3236e69">&sect;&nbsp;</a></span>da()</h2>
+<a id="ad4af84e73721e1289839ef97a3a7f244"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4af84e73721e1289839ef97a3a7f244">&sect;&nbsp;</a></span>operator()()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -206,9 +213,10 @@ template&lt;typename A , typename F &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">A const&amp; <a class="el" href="classnum_1_1dense__table.html">num::dense_table</a>&lt; A, F &gt;::da </td>
+          <td class="memname"><a class="el" href="classnum_1_1dense__table.html#a099ca93d2dd641755c2d412d85e85e87">R</a> <a class="el" href="classnum_1_1dense__table.html">num::dense_table</a>&lt; A, F &gt;::operator() </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">A const &amp;&#160;</td>
+          <td class="paramname"><em>a</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -219,45 +227,8 @@ template&lt;typename A , typename F &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Common difference \( \Delta a \) between subsequent tabulated arguments. </p>
-
-<p>Definition at line <a class="el" href="dense-table_8hpp_source.html#l00083">83</a> of file <a class="el" href="dense-table_8hpp_source.html">dense-table.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a8e1948f9660a1df9a3375b4e9595acea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e1948f9660a1df9a3375b4e9595acea">&sect;&nbsp;</a></span>operator()()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename A , typename F &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto <a class="el" href="classnum_1_1dense__table.html">num::dense_table</a>&lt; A, F &gt;::operator() </td>
-          <td>(</td>
-          <td class="paramtype">A const &amp;&#160;</td>
-          <td class="paramname"><em>a</em></td><td>)</td>
-          <td> const -&gt; decltype(F()(a))
-      </td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>For \( f_i \) and \( a_i \) associated with an argument \( a \) to the function, calculate \( f_i(a - a_i) \). </p>
-<ul>
-<li>If \( a &lt; a_0 \), then choose \( i = 0 \).</li>
-<li>If \( a &gt; a_{n-1} \), then choose \( i = n - 1 \).</li>
-<li>Otherwise, choose \( i \) to be the integer nearest to \( \frac{a - a_0}{\Delta a} + 0.5 \).</li>
-</ul>
+<p>Find the offset \( i \) of the sub-domain containing the argument \( a \), and return \( f_i(a - a_i) \). </p>
+<p>If \( a &lt; a_0 - \frac{\Delta a}{2} \), or \( a &gt; a_{n-1} + \frac{\Delta a}{2} \), then return 0.</p>
 <dl class="section return"><dt>Returns</dt><dd>\( f_i(a - a_i) \). </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -266,13 +237,14 @@ template&lt;typename A , typename F &gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="dense-table_8hpp_source.html#l00099">99</a> of file <a class="el" href="dense-table_8hpp_source.html">dense-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dense-table_8hpp_source.html#l00110">110</a> of file <a class="el" href="dense-table_8hpp_source.html">dense-table.hpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classnum_1_1dense__table_a8e1948f9660a1df9a3375b4e9595acea_cgraph.png" border="0" usemap="#classnum_1_1dense__table_a8e1948f9660a1df9a3375b4e9595acea_cgraph" alt=""/></div>
-<map name="classnum_1_1dense__table_a8e1948f9660a1df9a3375b4e9595acea_cgraph" id="classnum_1_1dense__table_a8e1948f9660a1df9a3375b4e9595acea_cgraph">
-<area shape="rect" id="node2" href="classnum_1_1dense__table.html#acf78409d57891796bc4dfd28749fa0f0" title="Last tabulated argument . " alt="" coords="241,5,409,32"/>
+<div class="center"><img src="classnum_1_1dense__table_ad4af84e73721e1289839ef97a3a7f244_cgraph.png" border="0" usemap="#classnum_1_1dense__table_ad4af84e73721e1289839ef97a3a7f244_cgraph" alt=""/></div>
+<map name="classnum_1_1dense__table_ad4af84e73721e1289839ef97a3a7f244_cgraph" id="classnum_1_1dense__table_ad4af84e73721e1289839ef97a3a7f244_cgraph">
+<area shape="rect" id="node2" href="classnum_1_1dense__table.html#a583272b11a1d9cb620819f99db89eb40" title="Center &#160;of first sub&#45;domain. " alt="" coords="242,5,409,32"/>
+<area shape="rect" id="node3" href="classnum_1_1dense__table.html#acf78409d57891796bc4dfd28749fa0f0" title="Center &#160;of last sub&#45;domain. " alt="" coords="241,56,409,83"/>
 </map>
 </div>
 

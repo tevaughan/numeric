@@ -71,6 +71,8 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classnum_1_1sparse__table-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -78,61 +80,64 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>A <a href="https://en.wikipedia.org/wiki/Piecewise">piecewise function</a> that, in logarithmic time, looks up the appropriate sub-function.  
+<p>A <a href="https://en.wikipedia.org/wiki/Piecewise">piecewise function</a> that, in logarithmic time, looks up the sub-function appropriate to the argument.  
  <a href="classnum_1_1sparse__table.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnum_1_1sparse__table_1_1rec.html">rec</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of record in table.  <a href="structnum_1_1sparse__table_1_1rec.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:ac6e8c585b22867f04be559a4c0de84ad"><td class="memItemLeft" align="right" valign="top"><a id="ac6e8c585b22867f04be559a4c0de84ad"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#ac6e8c585b22867f04be559a4c0de84ad">data</a> = std::vector&lt; <a class="el" href="structnum_1_1sparse__table_1_1rec.html">rec</a> &gt;</td></tr>
+<tr class="memdesc:ac6e8c585b22867f04be559a4c0de84ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of data structure for table. <br /></td></tr>
+<tr class="separator:ac6e8c585b22867f04be559a4c0de84ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c911adcda29e4a4fdc485ba8cb02b18"><td class="memItemLeft" align="right" valign="top"><a id="a8c911adcda29e4a4fdc485ba8cb02b18"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a8c911adcda29e4a4fdc485ba8cb02b18">R</a> = decltype(F()(A()))</td></tr>
+<tr class="memdesc:a8c911adcda29e4a4fdc485ba8cb02b18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of value returned by every sub-function. <br /></td></tr>
+<tr class="separator:a8c911adcda29e4a4fdc485ba8cb02b18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a54d3ae09b957e5ea5e8d99d2ad9ad9be"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a54d3ae09b957e5ea5e8d99d2ad9ad9be">sparse_table</a> (A const &amp;first, A const &amp;delta, std::vector&lt; F &gt; vf)</td></tr>
-<tr class="memdesc:a54d3ae09b957e5ea5e8d99d2ad9ad9be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize members from a list of arguments.  <a href="#a54d3ae09b957e5ea5e8d99d2ad9ad9be">More...</a><br /></td></tr>
-<tr class="separator:a54d3ae09b957e5ea5e8d99d2ad9ad9be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62820ecb2199a2105e7f5e3ca014990a"><td class="memItemLeft" align="right" valign="top"><a id="a62820ecb2199a2105e7f5e3ca014990a"></a>
-A const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a62820ecb2199a2105e7f5e3ca014990a">a_frst</a> () const</td></tr>
-<tr class="memdesc:a62820ecb2199a2105e7f5e3ca014990a"><td class="mdescLeft">&#160;</td><td class="mdescRight">First tabulated argument \( a_0 \). <br /></td></tr>
-<tr class="separator:a62820ecb2199a2105e7f5e3ca014990a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a90224c94fb8a61dfcf37a36da6ed70"><td class="memItemLeft" align="right" valign="top"><a id="a0a90224c94fb8a61dfcf37a36da6ed70"></a>
-A&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a0a90224c94fb8a61dfcf37a36da6ed70">a_last</a> () const</td></tr>
-<tr class="memdesc:a0a90224c94fb8a61dfcf37a36da6ed70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Last tabulated argument \( a_{n-1} \). <br /></td></tr>
-<tr class="separator:a0a90224c94fb8a61dfcf37a36da6ed70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91901a098727b9f90afeac4eb1bfada0"><td class="memItemLeft" align="right" valign="top">A const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a91901a098727b9f90afeac4eb1bfada0">da</a> () const</td></tr>
-<tr class="memdesc:a91901a098727b9f90afeac4eb1bfada0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Common difference \( \Delta a \) between subsequent tabulated arguments.  <a href="#a91901a098727b9f90afeac4eb1bfada0">More...</a><br /></td></tr>
-<tr class="separator:a91901a098727b9f90afeac4eb1bfada0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abdac231ddcbc738a1a37b9c2997463fc"><td class="memItemLeft" align="right" valign="top"><a id="abdac231ddcbc738a1a37b9c2997463fc"></a>
-std::vector&lt; F &gt; const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#abdac231ddcbc738a1a37b9c2997463fc">f</a> () const</td></tr>
-<tr class="memdesc:abdac231ddcbc738a1a37b9c2997463fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of sub-functions \( \{f_0, f_1, \ldots, f_{n-1}\} \). <br /></td></tr>
-<tr class="separator:abdac231ddcbc738a1a37b9c2997463fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:accdf4c964d08e6b735a12e8608198881"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#accdf4c964d08e6b735a12e8608198881">operator()</a> (A const &amp;a) const -&gt; decltype(F()(a))</td></tr>
-<tr class="memdesc:accdf4c964d08e6b735a12e8608198881"><td class="mdescLeft">&#160;</td><td class="mdescRight">For \( f_i \) and \( a_i \) associated with an argument \( a \) to the function, calculate \( f_i(a - a_i) \).  <a href="#accdf4c964d08e6b735a12e8608198881">More...</a><br /></td></tr>
-<tr class="separator:accdf4c964d08e6b735a12e8608198881"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf9122e95b40139d639f56d40b149aaf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#adf9122e95b40139d639f56d40b149aaf">sparse_table</a> (A const &amp;first, std::vector&lt; std::pair&lt; A, F &gt;&gt; vf)</td></tr>
+<tr class="memdesc:adf9122e95b40139d639f56d40b149aaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize table of sub-domain centers, sub-domain lengths, and sub-functions.  <a href="#adf9122e95b40139d639f56d40b149aaf">More...</a><br /></td></tr>
+<tr class="separator:adf9122e95b40139d639f56d40b149aaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a067602cef248d47a39e2e63582f11543"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html#ac6e8c585b22867f04be559a4c0de84ad">data</a> const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a067602cef248d47a39e2e63582f11543">dat</a> () const</td></tr>
+<tr class="memdesc:a067602cef248d47a39e2e63582f11543"><td class="mdescLeft">&#160;</td><td class="mdescRight">Table of sub-domain centers, sub-domain lengths, and sub-functions: \( (a_0, \Delta a_0, f_0) \), \( (a_1, \Delta a_1, f_1) \), \( \ldots \), \( (a_{n-1}, \Delta a_{n-1}, f_{n-1}) \).  <a href="#a067602cef248d47a39e2e63582f11543">More...</a><br /></td></tr>
+<tr class="separator:a067602cef248d47a39e2e63582f11543"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f0aff00ba59b9251875995a454ebb99"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html#a8c911adcda29e4a4fdc485ba8cb02b18">R</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a1f0aff00ba59b9251875995a454ebb99">operator()</a> (A const &amp;a) const</td></tr>
+<tr class="memdesc:a1f0aff00ba59b9251875995a454ebb99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find \( a_i \) whose sub-domain contains \( a \), and return \( f_i(a - a_i) \).  <a href="#a1f0aff00ba59b9251875995a454ebb99">More...</a><br /></td></tr>
+<tr class="separator:a1f0aff00ba59b9251875995a454ebb99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename A, typename F&gt;<br />
 class num::sparse_table&lt; A, F &gt;</h3>
 
-<p>A <a href="https://en.wikipedia.org/wiki/Piecewise">piecewise function</a> that, in logarithmic time, looks up the appropriate sub-function. </p>
-<p>The argument \( a \) to the function is of type <em>A</em>.</p>
-<p>For any \( a \), what is found in logarithmic time are the corresponding sub-function and its sub-domain. The corresponding sub-function, stored in a table, is \( f_i \) of type <em>F</em>, and the center of the corresponding subdomain is \( a_i \), where \( i \in \{0, 1, \ldots, n-1\} \). The sub-argument \( a - a_i \) is passed to \( f_i \), and the value returned by \( f_i \) is returned from the lookup.</p>
-<p>In the simplest, fastest table, each \( f_i \) ignores its argument and returns a constant value. However, the infrastructure provided by <a class="el" href="classnum_1_1sparse__table.html" title="A piecewise function that, in logarithmic time, looks up the appropriate sub-function. ">sparse_table</a> allows for logarithmic-time lookup of any kind of sub-function (for example, a cubic interpolant).</p>
-<p>To enable logarithmic-time lookup, an instance of <a class="el" href="classnum_1_1sparse__table.html" title="A piecewise function that, in logarithmic time, looks up the appropriate sub-function. ">sparse_table</a> stores a table of \( n \) triplets \( (a_0, {\Delta a}_0, f_0), (a_1, {\Delta a}_1, f_1), \ldots, (a_{n-1}, {\Delta a}_{n-1}, f_{n-1}) \), sorted so that \( a_0 &lt; a_1 &lt; \cdots &lt; a_{n-1} \).</p>
-<p>The lookup occurs by way of <a class="el" href="classnum_1_1sparse__table.html#accdf4c964d08e6b735a12e8608198881" title="For  and  associated with an argument  to the function, calculate . ">operator()()</a>. When \( a &gt; a_0 \) and \( a &lt; a_{n-1} \), record \( i \) is found so that </p><p class="formulaDsp">
-\[ -\frac{{\Delta a}_i}{2} &lt; a - a_i \leq +\frac{{\Delta a}_i}{2}. \]
-</p>
-<p> What <a class="el" href="classnum_1_1sparse__table.html#accdf4c964d08e6b735a12e8608198881" title="For  and  associated with an argument  to the function, calculate . ">operator()()</a> returns is \( f_i(a - a_i) \).</p>
-<p>See <a class="el" href="classnum_1_1dense__table.html" title="A piecewise function that, in constant time, looks up the appropriate sub-function. ">dense_table</a> for a type that usually can approximate a given function so precisely as <a class="el" href="classnum_1_1sparse__table.html" title="A piecewise function that, in logarithmic time, looks up the appropriate sub-function. ">sparse_table</a> but with faster lookup. The cost is that <a class="el" href="classnum_1_1dense__table.html" title="A piecewise function that, in constant time, looks up the appropriate sub-function. ">dense_table</a> requires more storage for the same precision with the same sub-function type <em>F</em>.</p>
+<p>A <a href="https://en.wikipedia.org/wiki/Piecewise">piecewise function</a> that, in logarithmic time, looks up the sub-function appropriate to the argument. </p>
+<p>For any argument \( a \), the corresponding sub-function and its sub-domain are found in logarithmic time. The sub-domains are contiguous and of variable length. If \( a \) be less than the least element of the first subdomain or greater than the greatest element of the last subdomain, then there is no corresponding sub-function, and zero is returned.</p>
+<p>Stored in a table of \( n \) records, the sub-function corresponding to \( a \) is \( f_i \), and the center of the corresponding subdomain is \( a_i \), where \( i \in \{0, 1, \ldots, n-1\} \). The sub-argument \( a - a_i \) is passed to \( f_i \), and the value returned by \( f_i \) is returned from the lookup.</p>
+<p>In the simplest, fastest table, each \( f_i \) ignores its argument and returns a constant value. However, the infrastructure provided by <a class="el" href="classnum_1_1sparse__table.html" title="A piecewise function that, in logarithmic time, looks up the sub-function appropriate to the argument...">sparse_table</a> allows for logarithmic-time lookup of any kind of sub-function (for example, a cubic interpolant).</p>
+<p>To implement logarithmic-time lookup, an instance of <a class="el" href="classnum_1_1sparse__table.html" title="A piecewise function that, in logarithmic time, looks up the sub-function appropriate to the argument...">sparse_table</a> stores \( n \) triplets \( (a_0, \Delta a_0, f_0) \), \( (a_1, \Delta a_1, f_1) \), \( \ldots \), \( (a_{n-1}, \Delta a_{n-1}, f_{n-1}) \), sorted so that \( a_0 &lt; a_1 &lt; \cdots &lt; a_{n-1} \), where \( \Delta a_i \) is the length of the sub-domain whose center is \( a_i \).</p>
+<p>The lookup occurs by way of <a class="el" href="classnum_1_1sparse__table.html#a1f0aff00ba59b9251875995a454ebb99" title="Find  whose sub-domain contains , and return . ">operator()()</a>. When \( a &gt; a_0 - \frac{\Delta a_0}{2} \), and \( a &lt; a_{n-1} + \frac{\Delta a_{n-1}}{2} \), record \( i \) is found so that \( |a - a_i| \leq \frac{{\Delta a}_i}{2} \).</p>
+<p><a class="el" href="classnum_1_1sparse__table.html#a1f0aff00ba59b9251875995a454ebb99" title="Find  whose sub-domain contains , and return . ">operator()()</a> returns \( f_i(a - a_i) \).</p>
+<p>See <a class="el" href="classnum_1_1dense__table.html" title="A piecewise function that, in constant time, looks up the sub-function appropriate to the argument...">dense_table</a> for a type that usually can approximate a given function so precisely as <a class="el" href="classnum_1_1sparse__table.html" title="A piecewise function that, in logarithmic time, looks up the sub-function appropriate to the argument...">sparse_table</a> but with faster lookup. The cost is that <a class="el" href="classnum_1_1dense__table.html" title="A piecewise function that, in constant time, looks up the sub-function appropriate to the argument...">dense_table</a> requires more storage for the same precision with the same sub-function type <em>F</em>.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">A</td><td>Type of function's argument. </td></tr>
-    <tr><td class="paramname">F</td><td>Type of each sub-function \( f_i \) in the table. </td></tr>
+    <tr><td class="paramname">A</td><td>Type of sub-function's argument. </td></tr>
+    <tr><td class="paramname">F</td><td>Type of sub-function. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00050">50</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00055">55</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a54d3ae09b957e5ea5e8d99d2ad9ad9be"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a54d3ae09b957e5ea5e8d99d2ad9ad9be">&sect;&nbsp;</a></span>sparse_table()</h2>
+<a id="adf9122e95b40139d639f56d40b149aaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf9122e95b40139d639f56d40b149aaf">&sect;&nbsp;</a></span>sparse_table()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -151,13 +156,7 @@ template&lt;typename A , typename F &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">A const &amp;&#160;</td>
-          <td class="paramname"><em>delta</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::vector&lt; F &gt;&#160;</td>
+          <td class="paramtype">std::vector&lt; std::pair&lt; A, F &gt;&gt;&#160;</td>
           <td class="paramname"><em>vf</em>&#160;</td>
         </tr>
         <tr>
@@ -173,23 +172,22 @@ template&lt;typename A , typename F &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Initialize members from a list of arguments. </p>
+<p>Initialize table of sub-domain centers, sub-domain lengths, and sub-functions. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">first</td><td>First tabulated argument \( a_0 \). </td></tr>
-    <tr><td class="paramname">delta</td><td>Common difference \( \Delta a \). </td></tr>
-    <tr><td class="paramname">vf</td><td>Sub-function objects \( f_0, \ldots, f_{n-1} \). </td></tr>
+    <tr><td class="paramname">first</td><td>Center \( a_0 \) of first subdomain. </td></tr>
+    <tr><td class="paramname">vf</td><td>List of pairs, each containing the length of a sub-domain and a sub-function for that sub-domain. The first pair in <em>vf</em> is interpreted as \( (\Delta a_0, f_0) \), the second as \( (\Delta a_1, f_1) \), etc. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00060">60</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00076">76</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a91901a098727b9f90afeac4eb1bfada0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a91901a098727b9f90afeac4eb1bfada0">&sect;&nbsp;</a></span>da()</h2>
+<a id="a067602cef248d47a39e2e63582f11543"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a067602cef248d47a39e2e63582f11543">&sect;&nbsp;</a></span>dat()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -200,7 +198,7 @@ template&lt;typename A , typename F &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">A const&amp; <a class="el" href="classnum_1_1sparse__table.html">num::sparse_table</a>&lt; A, F &gt;::da </td>
+          <td class="memname"><a class="el" href="classnum_1_1sparse__table.html#ac6e8c585b22867f04be559a4c0de84ad">data</a> const&amp; <a class="el" href="classnum_1_1sparse__table.html">num::sparse_table</a>&lt; A, F &gt;::dat </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -213,14 +211,14 @@ template&lt;typename A , typename F &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Common difference \( \Delta a \) between subsequent tabulated arguments. </p>
+<p>Table of sub-domain centers, sub-domain lengths, and sub-functions: \( (a_0, \Delta a_0, f_0) \), \( (a_1, \Delta a_1, f_1) \), \( \ldots \), \( (a_{n-1}, \Delta a_{n-1}, f_{n-1}) \). </p>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00076">76</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00108">108</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 
 </div>
 </div>
-<a id="accdf4c964d08e6b735a12e8608198881"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#accdf4c964d08e6b735a12e8608198881">&sect;&nbsp;</a></span>operator()()</h2>
+<a id="a1f0aff00ba59b9251875995a454ebb99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f0aff00ba59b9251875995a454ebb99">&sect;&nbsp;</a></span>operator()()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -231,12 +229,11 @@ template&lt;typename A , typename F &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto <a class="el" href="classnum_1_1sparse__table.html">num::sparse_table</a>&lt; A, F &gt;::operator() </td>
+          <td class="memname"><a class="el" href="classnum_1_1sparse__table.html#a8c911adcda29e4a4fdc485ba8cb02b18">R</a> <a class="el" href="classnum_1_1sparse__table.html">num::sparse_table</a>&lt; A, F &gt;::operator() </td>
           <td>(</td>
           <td class="paramtype">A const &amp;&#160;</td>
           <td class="paramname"><em>a</em></td><td>)</td>
-          <td> const -&gt; decltype(F()(a))
-      </td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -246,12 +243,8 @@ template&lt;typename A , typename F &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>For \( f_i \) and \( a_i \) associated with an argument \( a \) to the function, calculate \( f_i(a - a_i) \). </p>
-<ul>
-<li>If \( a &lt; a_0 \), then choose \( i = 0 \).</li>
-<li>If \( a &gt; a_{n-1} \), then choose \( i = n - 1 \).</li>
-<li>Otherwise, choose \( i \) to be the integer nearest to \( \frac{a - a_0}{\Delta a} + 0.5 \).</li>
-</ul>
+<p>Find \( a_i \) whose sub-domain contains \( a \), and return \( f_i(a - a_i) \). </p>
+<p>If \( a &lt; a_0 - \frac{\Delta a_0}{2} \), or \( a &gt; a_{n-1} + \frac{\Delta a_{n-1}}{2} \), then return 0.</p>
 <dl class="section return"><dt>Returns</dt><dd>\( f_i(a - a_i) \). </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -260,15 +253,7 @@ template&lt;typename A , typename F &gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00092">92</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classnum_1_1sparse__table_accdf4c964d08e6b735a12e8608198881_cgraph.png" border="0" usemap="#classnum_1_1sparse__table_accdf4c964d08e6b735a12e8608198881_cgraph" alt=""/></div>
-<map name="classnum_1_1sparse__table_accdf4c964d08e6b735a12e8608198881_cgraph" id="classnum_1_1sparse__table_accdf4c964d08e6b735a12e8608198881_cgraph">
-<area shape="rect" id="node2" href="classnum_1_1sparse__table.html#a0a90224c94fb8a61dfcf37a36da6ed70" title="Last tabulated argument . " alt="" coords="191,5,328,47"/>
-</map>
-</div>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00118">118</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 
 </div>
 </div>

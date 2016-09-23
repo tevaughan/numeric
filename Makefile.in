@@ -828,7 +828,7 @@ uninstall-am:
 @CODE_COVERAGE_RULES@
 
 dox :
-	@(cd docs; make dox)
+	@(cd src; make; cd ../docs; make dox)
 
 clean-local :
 	@rm -frv numeric-*-coverage*
