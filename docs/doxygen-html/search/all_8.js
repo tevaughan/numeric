@@ -13,8 +13,8 @@ var searchData=
   ['integral',['integral',['../classnum_1_1dimval.html#a578b4b202edccbb260e7aa2d2c912f4b',1,'num::dimval::integral()'],['../classnum_1_1interpolant.html#af9763298777611dda79ceac53df3b0b8',1,'num::interpolant::integral(I x1, I x2) const'],['../classnum_1_1interpolant.html#a8087628a2eaa233fc86e472c1c71a8c6',1,'num::interpolant::integral() const'],['../structnum_1_1rfunc.html#a2f73934f3d3779f86d3ca802a77ede1c',1,'num::rfunc::integral()'],['../classnum_1_1rpoly_3_01A_00_01T_00_010_01_4.html#ad0a273095ebb0c5a3ed35c407b6bbbf4',1,'num::rpoly&lt; A, T, 0 &gt;::integral()'],['../namespacenum.html#a25fb944b0428e15f5a842447b90ed77a',1,'num::integral(std::function&lt; R(A)&gt; f, A1 aa, A2 bb, double t=1.0E-06, unsigned n=16)'],['../namespacenum.html#ae5d9f666c77573e755118cca28786bbe',1,'num::integral(R(*f)(A), A1 a, A2 b, double t=1.0E-06, unsigned n=16)']]],
   ['integral_2dstats_2ehpp',['integral-stats.hpp',['../integral-stats_8hpp.html',1,'']]],
   ['integral_2ehpp',['integral.hpp',['../integral_8hpp.html',1,'']]],
-  ['integral_5fstats',['integral_stats',['../classnum_1_1dimval.html#af3b0f66cb30615e3e05560bf5620a5e3',1,'num::dimval::integral_stats()'],['../classnum_1_1integral__stats.html#a04750b03f649fa13a05597f5e49a6e04',1,'num::integral_stats::integral_stats()']]],
   ['integral_5fstats',['integral_stats',['../classnum_1_1integral__stats.html',1,'num']]],
+  ['integral_5fstats',['integral_stats',['../classnum_1_1dimval.html#af3b0f66cb30615e3e05560bf5620a5e3',1,'num::dimval::integral_stats()'],['../classnum_1_1integral__stats.html#a04750b03f649fa13a05597f5e49a6e04',1,'num::integral_stats::integral_stats()']]],
   ['integration',['Integration',['../integrals.html',1,'']]],
   ['interp_5ffunc',['interp_func',['../classnum_1_1rk__quad.html#ae67cf18f7fe23e088ac05127b5e10919',1,'num::rk_quad']]],
   ['interp_5findef_5fint',['interp_indef_int',['../classnum_1_1rk__quad.html#a5d71e4f44c65e5b0126a64c8cda6152d',1,'num::rk_quad']]],
@@ -26,6 +26,7 @@ var searchData=
   ['interpolantd',['interpolantd',['../namespacenum.html#a2168d41aa428e5eee9875db4d3d109bb',1,'num']]],
   ['interval',['interval',['../structnum_1_1interval.html',1,'num']]],
   ['interval_2ehpp',['interval.hpp',['../interval_8hpp.html',1,'']]],
+  ['inv',['inv',['../classnum_1_1dimval.html#a1a16672cd69f87d2da8369e117505414',1,'num::dimval']]],
   ['ipoint',['ipoint',['../structnum_1_1ipoint.html',1,'num']]],
   ['ipoint_3c_20x_2c_20dydx_20_3e',['ipoint&lt; X, DYDX &gt;',['../structnum_1_1ipoint.html',1,'num']]],
   ['ipoint_3c_20x_2c_20y_20_3e',['ipoint&lt; X, Y &gt;',['../structnum_1_1ipoint.html',1,'num']]]

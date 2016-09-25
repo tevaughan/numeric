@@ -1,5 +1,5 @@
 <map id="units.hpp" name="units.hpp">
 <area shape="rect" id="node2" href="$dimensions_8hpp.html" title="Automatically generated source for generic&#45;dimension types. " alt="" coords="171,80,285,107"/>
-<area shape="rect" id="node3" href="$dimval_8hpp.html" title="Source code for num::dimval and for conversions dealing with angle. " alt="" coords="185,155,271,181"/>
+<area shape="rect" id="node3" href="$dimval_8hpp.html" title="Source code for conversions dealing with angle, for num::dimval, and for num::dyndim. " alt="" coords="185,155,271,181"/>
 <area shape="rect" id="node8" href="$template_8hpp.html" title="Template&#45;related utilities. " alt="" coords="366,229,463,256"/>
 </map>

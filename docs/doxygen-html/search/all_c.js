@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['m',['m',['../units_8hpp.html#ad013e86cf38d6ef91337dab244f2cf00',1,'num::u']]],
+  ['m',['M',['../classnum_1_1dim__exps.html#ab576d06447dee2cdaac69122864b95f2',1,'num::dim_exps::M()'],['../classnum_1_1dim__exps.html#ad299a1a50667af6ab734f5ed9fb0558a',1,'num::dim_exps::M() const'],['../units_8hpp.html#ad013e86cf38d6ef91337dab244f2cf00',1,'num::u::m()']]],
   ['mass',['mass',['../namespacenum.html#afc368b006a9e1ce6c67ca7aa2e27c8f1',1,'num']]],
   ['megahertz',['megahertz',['../structnum_1_1megahertz.html',1,'num']]],
   ['megahertz',['megahertz',['../structnum_1_1megahertz.html#aa5f4e3dfa40f7514fb8c5cb27d857362',1,'num::megahertz::megahertz(double v)'],['../structnum_1_1megahertz.html#a9fa1f23e42237b28ad9b964486539624',1,'num::megahertz::megahertz(megahertz const &amp;dv)=default']]],
@@ -9,8 +9,8 @@ var searchData=
   ['mg',['mg',['../units_8hpp.html#a4de9247123e0027943f6c4e32b228dcd',1,'num::u']]],
   ['mhz',['MHz',['../units_8hpp.html#ad7caa7a4f71c3bb8a96638a529d59eb9',1,'num::u']]],
   ['mi',['mi',['../units_8hpp.html#abcf6ab5afcd94178ed3e95a07b31531f',1,'num::u']]],
-  ['micrograms',['micrograms',['../structnum_1_1micrograms.html',1,'num']]],
   ['micrograms',['micrograms',['../structnum_1_1micrograms.html#a3283ab7be4073bdbdb70374669ec244d',1,'num::micrograms::micrograms(double v)'],['../structnum_1_1micrograms.html#a1bd43edd4fb9a562452628bf89d335d1',1,'num::micrograms::micrograms(micrograms const &amp;dv)=default']]],
+  ['micrograms',['micrograms',['../structnum_1_1micrograms.html',1,'num']]],
   ['microkelvins',['microkelvins',['../structnum_1_1microkelvins.html',1,'num']]],
   ['microkelvins',['microkelvins',['../structnum_1_1microkelvins.html#a5fd4f6a1dbec47938cca962a8e535fd6',1,'num::microkelvins::microkelvins(double v)'],['../structnum_1_1microkelvins.html#ab963d01de5675408ae5ee5823920ba12',1,'num::microkelvins::microkelvins(microkelvins const &amp;dv)=default']]],
   ['micrometers',['micrometers',['../structnum_1_1micrometers.html#ab17945ebe3f977f3f4ed33bcb1d9dcf6',1,'num::micrometers::micrometers(double v)'],['../structnum_1_1micrometers.html#a8f49765ddfff083f7cda8928a0c86ea8',1,'num::micrometers::micrometers(micrometers const &amp;dv)=default']]],
@@ -28,8 +28,8 @@ var searchData=
   ['milliseconds',['milliseconds',['../structnum_1_1milliseconds.html',1,'num']]],
   ['milliseconds',['milliseconds',['../structnum_1_1milliseconds.html#a304a69aca85393b817639a5ecb0463ee',1,'num::milliseconds::milliseconds(double v)'],['../structnum_1_1milliseconds.html#a79cc8c6a3be04359c6fbbe637e8aa593',1,'num::milliseconds::milliseconds(milliseconds const &amp;dv)=default']]],
   ['min',['min',['../units_8hpp.html#a7be2eee10f8b44dc9beb8a242601bc24',1,'num::u']]],
-  ['minutes',['minutes',['../structnum_1_1minutes.html',1,'num']]],
   ['minutes',['minutes',['../structnum_1_1minutes.html#a0d0d8830479dfe9d799913693d2d329d',1,'num::minutes::minutes(double v)'],['../structnum_1_1minutes.html#a672abb59b1329a146ea88c63b2132a49',1,'num::minutes::minutes(minutes const &amp;dv)=default']]],
+  ['minutes',['minutes',['../structnum_1_1minutes.html',1,'num']]],
   ['mk',['mK',['../units_8hpp.html#a49dc3ca6f72eb7a35de691fed1e2676d',1,'num::u']]],
   ['mm',['mm',['../units_8hpp.html#ad17690cd9e69b5c9fbc7d6976d9c10bc',1,'num::u']]],
   ['momentum',['momentum',['../namespacenum.html#acc739c0aac24c8f6fae6435b0b56d9e1',1,'num']]],

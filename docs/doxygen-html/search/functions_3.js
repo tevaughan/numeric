@@ -1,13 +1,11 @@
 var searchData=
 [
-  ['d',['d',['../classnum_1_1dimval__base.html#a5d9f93da5e47cae94734fe3665324d83',1,'num::dimval_base::d()'],['../classnum_1_1dimval__base.html#a2948010964a43d9de406560307a08c51',1,'num::dimval_base::d() const'],['../structnum_1_1rfunc.html#ab2431dad0f850feaecdcbbaff45b53a3',1,'num::rfunc::d()']]],
-  ['da',['da',['../classnum_1_1dense__table.html#a9139b3ad7fec1fd27a4121dba3236e69',1,'num::dense_table']]],
-  ['dat',['dat',['../classnum_1_1sparse__table.html#a067602cef248d47a39e2e63582f11543',1,'num::sparse_table']]],
-  ['days',['days',['../structnum_1_1days.html#a79469f122c75cd5491284fb339d21245',1,'num::days::days(double v)'],['../structnum_1_1days.html#a6853d474797d6095053f1ce20bece1d9',1,'num::days::days(days const &amp;dv)=default']]],
-  ['def_5fint',['def_int',['../classnum_1_1rk__quad.html#a2202b8a5252d6eb0b3a25f46ad4ba9f1',1,'num::rk_quad']]],
-  ['degs',['degs',['../namespacenum.html#ab4d61e21b91a58e39e323d4ab9fa6d71',1,'num']]],
-  ['dense_5ftable',['dense_table',['../classnum_1_1dense__table.html#ae27e8ea2389907b2550d9c864e8ec106',1,'num::dense_table']]],
-  ['derivative',['derivative',['../structnum_1_1rfunc.html#a604d7039639c9d658677148411fe4010',1,'num::rfunc::derivative()'],['../classnum_1_1rpoly_3_01A_00_01T_00_010_01_4.html#a571a01743c249be59b068c7670aab045',1,'num::rpoly&lt; A, T, 0 &gt;::derivative()']]],
-  ['dimval_5fbase',['dimval_base',['../classnum_1_1dimval__base.html#a053c1a8f9a6a7ea593072151318f3653',1,'num::dimval_base::dimval_base(double vv)'],['../classnum_1_1dimval__base.html#a4b89ced092f76fd367e11bc7de99f061',1,'num::dimval_base::dimval_base()']]],
-  ['dynes',['dynes',['../structnum_1_1dynes.html#af72f14ada39dffdfe9e001a4077c364f',1,'num::dynes::dynes(double v)'],['../structnum_1_1dynes.html#a5f635c0251692a635a591e77b20e067e',1,'num::dynes::dynes(dynes const &amp;dv)=default']]]
+  ['ec',['eC',['../classnum_1_1dyndim.html#a5db2ea456456b87e622c67a94be7e42b',1,'num::dyndim']]],
+  ['ed',['eD',['../classnum_1_1dyndim.html#a497b59d8768b2598fd12a2337034f208',1,'num::dyndim']]],
+  ['electron_5fvolts',['electron_volts',['../structnum_1_1electron__volts.html#afcf1ea3d41dc4628ed6bc1835d6c3951',1,'num::electron_volts::electron_volts(double v)'],['../structnum_1_1electron__volts.html#a3e2c975715160e9661fe408ba7f805bb',1,'num::electron_volts::electron_volts(electron_volts const &amp;dv)=default']]],
+  ['em',['eM',['../classnum_1_1dyndim.html#a184bce8f64f4af1f4552a9a661e93222',1,'num::dyndim']]],
+  ['ergs',['ergs',['../structnum_1_1ergs.html#aeaa4f15b3a46d070b5df112d2a0c858b',1,'num::ergs::ergs(double v)'],['../structnum_1_1ergs.html#afcc283be7085422a689a3973ad5c0109',1,'num::ergs::ergs(ergs const &amp;dv)=default']]],
+  ['ete',['eTE',['../classnum_1_1dyndim.html#a09a23da374226393f9f05df6dd95be07',1,'num::dyndim']]],
+  ['eti',['eTI',['../classnum_1_1dyndim.html#a5e8470597258f8e43db2fc98513d7e3c',1,'num::dyndim']]],
+  ['exps',['exps',['../classnum_1_1dimval__base.html#a5929aab345b2e7822d409b44a49cd6e4',1,'num::dimval_base::exps()'],['../classnum_1_1dimval.html#a9452af1bf3d74b47fc3c81d8927a4f99',1,'num::dimval::exps()']]]
 ];

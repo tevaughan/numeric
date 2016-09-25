@@ -1,15 +1,18 @@
 var searchData=
 [
-  ['s',['s',['../units_8hpp.html#ab137b17f15cca1e4148fece0e5fdb2a7',1,'num::u']]],
-  ['same_5fdim',['same_dim',['../classnum_1_1dimval.html#afa8a58ffc867dd8d878ee84984c592d8',1,'num::dimval']]],
-  ['seconds',['seconds',['../structnum_1_1seconds.html',1,'num']]],
-  ['seconds',['seconds',['../structnum_1_1seconds.html#af9f33346eac4a6f251ff71819c1c3c83',1,'num::seconds::seconds(double v)'],['../structnum_1_1seconds.html#abea4b439e4e89b434646d8c24d9d940e',1,'num::seconds::seconds(seconds const &amp;dv)=default']]],
-  ['sparse_2dtable_2ehpp',['sparse-table.hpp',['../sparse-table_8hpp.html',1,'']]],
-  ['sparse_5ftable',['sparse_table',['../classnum_1_1sparse__table.html',1,'num']]],
-  ['sparse_5ftable',['sparse_table',['../classnum_1_1sparse__table.html#adf9122e95b40139d639f56d40b149aaf',1,'num::sparse_table']]],
-  ['speed',['speed',['../namespacenum.html#a66a2fb70968143158383f1d16ef1429f',1,'num']]],
-  ['sqrt',['sqrt',['../classnum_1_1dimval.html#a0d2a8f3b0fa8a903cb2b68e508c7fec1',1,'num::dimval::sqrt()'],['../classnum_1_1dimval.html#aed3e53e82f327271a7798919244e1ad7',1,'num::dimval::sqrt() const']]],
-  ['stdev',['stdev',['../classnum_1_1integral__stats.html#aa1f0b47566379663f0b11d0c3b51c1bc',1,'num::integral_stats']]],
-  ['subinterval_5fstack',['subinterval_stack',['../structnum_1_1subinterval__stack.html#a30b25556d42ebc2994faf01693c11c3e',1,'num::subinterval_stack']]],
-  ['subinterval_5fstack',['subinterval_stack',['../structnum_1_1subinterval__stack.html',1,'num']]]
+  ['r',['R',['../classnum_1_1dense__table.html#a099ca93d2dd641755c2d412d85e85e87',1,'num::dense_table::R()'],['../classnum_1_1sparse__table.html#a8c911adcda29e4a4fdc485ba8cb02b18',1,'num::sparse_table::R()']]],
+  ['rat',['RAT',['../namespacenum.html#ae69120d6af6e31afc9813728024ac5c4',1,'num']]],
+  ['rec',['rec',['../structnum_1_1sparse__table_1_1rec.html',1,'num::sparse_table']]],
+  ['rfunc',['rfunc',['../structnum_1_1rfunc.html',1,'num']]],
+  ['rfunc_2ehpp',['rfunc.hpp',['../rfunc_8hpp.html',1,'']]],
+  ['rfunc_3c_20a_2c_20rpoly_3c_20a_2c_20t_2c_200_20_3e_20_3e',['rfunc&lt; A, rpoly&lt; A, T, 0 &gt; &gt;',['../structnum_1_1rfunc.html',1,'num']]],
+  ['rfunc_3c_20a_2c_20rpoly_3c_20a_2c_20t_2c_20d_20_3e_20_3e',['rfunc&lt; A, rpoly&lt; A, T, D &gt; &gt;',['../structnum_1_1rfunc.html',1,'num']]],
+  ['rk_5fquad',['rk_quad',['../classnum_1_1rk__quad.html',1,'num']]],
+  ['rk_5fquad',['rk_quad',['../classnum_1_1dimval.html#a2c6a9fedad596adb3da30d6e5277178c',1,'num::dimval::rk_quad()'],['../classnum_1_1rk__quad.html#aef7932e97f89db6b02f8459afef0a429',1,'num::rk_quad::rk_quad(std::function&lt; DYDX(X)&gt; f, X1 x1, X2 x2, double t=1.0E-06, int n=16, bool s_dydx=false, bool s_y=false)'],['../classnum_1_1rk__quad.html#ac9aecf3f8d6bd56cbcf0efd4f7ae9130',1,'num::rk_quad::rk_quad(DYDX(*f)(X), X1 x1, X2 x2, double t=1.0E-06, int n=16, bool s_dydx=false, bool s_y=false)']]],
+  ['rk_5fquadd',['rk_quadd',['../namespacenum.html#a122cf5cf0f6faea00b188f08574beb26',1,'num']]],
+  ['root',['root',['../classnum_1_1dimval.html#aba6c406d93dcf4c55d731e2eb1899c7d',1,'num::dimval::root() const'],['../classnum_1_1dimval.html#a3669029bdf8e653c12228a2e67b2b6bc',1,'num::dimval::root()']]],
+  ['rpoly',['rpoly',['../classnum_1_1rpoly.html',1,'num']]],
+  ['rpoly',['rpoly',['../classnum_1_1rpoly_3_01A_00_01T_00_010_01_4.html#a71a597511aa83ee1f955062f608ba767',1,'num::rpoly&lt; A, T, 0 &gt;']]],
+  ['rpoly_2ehpp',['rpoly.hpp',['../rpoly_8hpp.html',1,'']]],
+  ['rpoly_3c_20a_2c_20t_2c_200_20_3e',['rpoly&lt; A, T, 0 &gt;',['../classnum_1_1rpoly_3_01A_00_01T_00_010_01_4.html',1,'num']]]
 ];

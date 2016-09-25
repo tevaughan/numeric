@@ -8,5 +8,6 @@ var searchData=
   ['pounds_5fm',['pounds_m',['../structnum_1_1pounds__m.html#af1a6773127d62a3e4df90e0f992cd857',1,'num::pounds_m::pounds_m(double v)'],['../structnum_1_1pounds__m.html#a74899af229bb178d9cd4450d7b9710e7',1,'num::pounds_m::pounds_m(pounds_m const &amp;dv)=default']]],
   ['pow',['pow',['../classnum_1_1dimval.html#a7d7f14ea1f6789abd8ef6e0b8ad19e3d',1,'num::dimval::pow() const'],['../classnum_1_1dimval.html#aa162317483fea3fb00cfbdfa96279519',1,'num::dimval::pow()'],['../namespacenum.html#a6f6456e0ae63a88c3c8726bb480de131',1,'num::pow()']]],
   ['power',['power',['../namespacenum.html#aed7a1f1917a38f1231acfc67002743cc',1,'num']]],
-  ['prd',['PRD',['../namespacenum.html#a71e072d3e2edf7e0c7bc4f824ee2c216',1,'num']]]
+  ['prd',['PRD',['../namespacenum.html#a71e072d3e2edf7e0c7bc4f824ee2c216',1,'num']]],
+  ['prod',['prod',['../classnum_1_1dimval.html#a37604dcd909c433ed3e4bfa5143d84e9',1,'num::dimval']]]
 ];
