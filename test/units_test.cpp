@@ -18,36 +18,55 @@ TEST_CASE("Verify basic operation of units.", "[units]")
    length const len1 = meters(3.0);
    length const len2 = 6.0 * m;
    dyndim const len3 = len1;
+   dyndim const len4 = 6.0 * m;
    REQUIRE(len1 == 3.0 * m);
    REQUIRE(len2 == meters(6.0));
    REQUIRE(len1 / len2 == Approx(0.5));
    REQUIRE(len3 == len1);
+   REQUIRE(len4 == meters(6.0));
 }
 
 TEST_CASE("Verify string conversion.", "[units]")
 {
    newtons const f1(2.0);
    force const f2 = 3.0 * N;
-   ostringstream oss1, oss2;
+   dyndim const f3 = newtons(2.0);
+   dyndim const f4 = 3.0 * N;
+   ostringstream oss1, oss2, ossf3, ossf4;
    oss1 << f1;
    oss2 << f2;
+   ossf3 << f3;
+   ossf4 << f4;
    REQUIRE(oss1.str() == "[2 N]");
    REQUIRE(oss2.str() == "[3 kg m s^-2]");
+   REQUIRE(ossf3.str() == "[2 kg m s^-2]");
+   REQUIRE(ossf4.str() == "[3 kg m s^-2]");
 
    microkelvins const t1(2.5);
    temperature const t2 = 2.5 * muK;
-   ostringstream oss3, oss4;
+   dyndim const t3 = microkelvins(2.5);
+   dyndim const t4 = 2.5 * muK;
+   ostringstream oss3, oss4, osst3, osst4;
    oss3 << t1;
    oss4 << t2;
+   osst3 << t3;
+   osst4 << t4;
    REQUIRE(oss3.str() == "[2.5 muK]");
    REQUIRE(oss4.str() == "[2.5e-06 K]");
+   REQUIRE(osst3.str() == "[2.5e-06 K]");
+   REQUIRE(osst4.str() == "[2.5e-06 K]");
 
-   dimval<1,1,1,1,1> const foo = s * m * kg * C * K;
-   ostringstream oss5, oss6;
+   dimval<1, 1, 1, 1, 1> const foo = s * m * kg * C * K;
+   dyndim const bar = s * m * kg * C * K;
+   ostringstream oss5, oss6, oss7, oss8;
    oss5 << foo;
    oss6 << foo.pow<-1>();
+   oss7 << bar;
+   oss8 << bar.pow(-1);
    REQUIRE(oss5.str() == "[1 kg m s C K]");
    REQUIRE(oss6.str() == "[1 kg^-1 m^-1 s^-1 C^-1 K^-1]");
+   REQUIRE(oss7.str() == "[1 kg m s C K]");
+   REQUIRE(oss8.str() == "[1 kg^-1 m^-1 s^-1 C^-1 K^-1]");
 }
 
 TEST_CASE("Verify default construction of zero value.", "[units]")
