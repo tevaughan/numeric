@@ -7,7 +7,7 @@ var searchData=
   ['sparse_5ftable',['sparse_table',['../classnum_1_1sparse__table.html',1,'num']]],
   ['sparse_5ftable',['sparse_table',['../classnum_1_1sparse__table.html#adf9122e95b40139d639f56d40b149aaf',1,'num::sparse_table']]],
   ['speed',['speed',['../namespacenum.html#a66a2fb70968143158383f1d16ef1429f',1,'num']]],
-  ['sqrt',['sqrt',['../classnum_1_1dimval.html#a0d2a8f3b0fa8a903cb2b68e508c7fec1',1,'num::dimval::sqrt()'],['../classnum_1_1dimval.html#aed3e53e82f327271a7798919244e1ad7',1,'num::dimval::sqrt() const']]],
+  ['sqrt',['sqrt',['../classnum_1_1dimval.html#a0d2a8f3b0fa8a903cb2b68e508c7fec1',1,'num::dimval::sqrt()'],['../classnum_1_1dimval.html#aed3e53e82f327271a7798919244e1ad7',1,'num::dimval::sqrt() const'],['../classnum_1_1dyndim.html#afa98eff024ddd06fecdf55658b424c4d',1,'num::dyndim::sqrt()'],['../classnum_1_1dyndim.html#ac52e27a89b0f584c9f389d31237f6116',1,'num::dyndim::sqrt() const']]],
   ['stdev',['stdev',['../classnum_1_1integral__stats.html#aa1f0b47566379663f0b11d0c3b51c1bc',1,'num::integral_stats']]],
   ['subinterval_5fstack',['subinterval_stack',['../structnum_1_1subinterval__stack.html#a30b25556d42ebc2994faf01693c11c3e',1,'num::subinterval_stack']]],
   ['subinterval_5fstack',['subinterval_stack',['../structnum_1_1subinterval__stack.html',1,'num']]]

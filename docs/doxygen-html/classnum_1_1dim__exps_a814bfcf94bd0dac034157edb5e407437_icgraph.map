@@ -1,4 +1,10 @@
 <map id="num::dim_exps::dim_exps" name="num::dim_exps::dim_exps">
 <area shape="rect" id="node2" href="$classnum_1_1dim__exps.html#a00e9056931e4795ac37ec228fc86018a" title="Add exponents for multiplication of two dimensioned quantities. " alt="" coords="228,5,403,32"/>
 <area shape="rect" id="node3" href="$classnum_1_1dim__exps.html#a3951da39ce8512049cd4cdbfdf25d064" title="Subtract exponents for division of two dimensioned quantities. " alt="" coords="230,56,401,83"/>
+<area shape="rect" id="node4" href="$classnum_1_1dim__exps.html#adc219966ef91a5b5716f07dbef4573b8" title="Multiply exponents by integer as for integer power of dimensioned value. " alt="" coords="230,107,401,133"/>
+<area shape="rect" id="node6" href="$classnum_1_1dim__exps.html#a705593e833a8b4e5515dc09c1a490950" title="Divide exponents by integer as for integer root of dimensioned value. " alt="" coords="230,157,401,184"/>
+<area shape="rect" id="node9" href="$classnum_1_1dim__exps.html#a309a088c9fbc2911103446253788d594" title="Return negative exponents as for reciprocal of dimensioned value. " alt="" coords="245,208,385,235"/>
+<area shape="rect" id="node5" href="$classnum_1_1dyndim.html#ac0d7dfb93b1035f960c18f6e43e68128" title="Integer power. " alt="" coords="451,107,580,133"/>
+<area shape="rect" id="node7" href="$classnum_1_1dyndim.html#a6c8b83996c0a111f2550e49542bd27b2" title="Integer root. " alt="" coords="452,157,579,184"/>
+<area shape="rect" id="node8" href="$classnum_1_1dyndim.html#ac52e27a89b0f584c9f389d31237f6116" title="Square root. " alt="" coords="628,157,755,184"/>
 </map>

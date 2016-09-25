@@ -1,6 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
 <area shape="rect" id="node1" href="$classnum_1_1dimval__base.html" title="num::dimval_base\&lt; dimval\l\&lt; TI, D, M, C, TE \&gt; \&gt;" alt="" coords="5,1011,184,1053"/>
-<area shape="rect" id="node2" href="$classnum_1_1dimval.html" title="Model of a dimensioned value. " alt="" coords="232,1011,371,1053"/>
+<area shape="rect" id="node2" href="$classnum_1_1dimval.html" title="Model of a statically dimensioned value. " alt="" coords="232,1011,371,1053"/>
 <area shape="rect" id="node3" href="$structnum_1_1amperes.html" title="Machine&#45;generated structure providing public constructor, which takes a double&#45;precision number of am..." alt="" coords="434,5,539,32"/>
 <area shape="rect" id="node4" href="$structnum_1_1centimeters.html" title="Machine&#45;generated structure providing public constructor, which takes a double&#45;precision number of ce..." alt="" coords="425,56,548,83"/>
 <area shape="rect" id="node5" href="$structnum_1_1coulombs.html" title="Machine&#45;generated structure providing public constructor, which takes a double&#45;precision number of co..." alt="" coords="431,107,542,133"/>

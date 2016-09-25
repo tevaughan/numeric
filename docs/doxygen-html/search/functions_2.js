@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['d',['D',['../classnum_1_1dim__exps.html#a00b7877909fb47a91f9e462b38a010eb',1,'num::dim_exps::D()'],['../classnum_1_1dim__exps.html#a0cad21b7823f54ec67396fb3ee8b1ce4',1,'num::dim_exps::D() const'],['../classnum_1_1dimval__base.html#a5d9f93da5e47cae94734fe3665324d83',1,'num::dimval_base::d()'],['../classnum_1_1dimval__base.html#a2948010964a43d9de406560307a08c51',1,'num::dimval_base::d() const'],['../structnum_1_1rfunc.html#ab2431dad0f850feaecdcbbaff45b53a3',1,'num::rfunc::d()']]],
+  ['d',['d',['../classnum_1_1dimval__base.html#a5d9f93da5e47cae94734fe3665324d83',1,'num::dimval_base::d()'],['../classnum_1_1dimval__base.html#a2948010964a43d9de406560307a08c51',1,'num::dimval_base::d() const'],['../structnum_1_1rfunc.html#ab2431dad0f850feaecdcbbaff45b53a3',1,'num::rfunc::d()'],['../classnum_1_1dim__exps.html#a00b7877909fb47a91f9e462b38a010eb',1,'num::dim_exps::D()'],['../classnum_1_1dim__exps.html#a0cad21b7823f54ec67396fb3ee8b1ce4',1,'num::dim_exps::D() const']]],
   ['da',['da',['../classnum_1_1dense__table.html#a9139b3ad7fec1fd27a4121dba3236e69',1,'num::dense_table']]],
   ['dat',['dat',['../classnum_1_1sparse__table.html#a067602cef248d47a39e2e63582f11543',1,'num::sparse_table']]],
   ['days',['days',['../structnum_1_1days.html#a79469f122c75cd5491284fb339d21245',1,'num::days::days(double v)'],['../structnum_1_1days.html#a6853d474797d6095053f1ce20bece1d9',1,'num::days::days(days const &amp;dv)=default']]],

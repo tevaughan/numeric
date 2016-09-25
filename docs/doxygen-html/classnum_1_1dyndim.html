@@ -72,11 +72,17 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="classnum_1_1dyndim-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">num::dyndim Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Model of a dynamically dimensioned value.  
+ <a href="classnum_1_1dyndim.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for num::dyndim:</div>
 <div class="dyncontent">
@@ -96,43 +102,102 @@ Collaboration diagram for num::dyndim:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a044b5de29bf632f2a1989d560575e5da"><td class="memTemplParams" colspan="2"><a id="a044b5de29bf632f2a1989d560575e5da"></a>
-template&lt;typename DER &gt; </td></tr>
-<tr class="memitem:a044b5de29bf632f2a1989d560575e5da"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><b>dyndim</b> (<a class="el" href="classnum_1_1dimval__base.html">dimval_base</a>&lt; DER &gt; const &amp;dvb)</td></tr>
-<tr class="separator:a044b5de29bf632f2a1989d560575e5da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e8470597258f8e43db2fc98513d7e3c"><td class="memItemLeft" align="right" valign="top"><a id="a5e8470597258f8e43db2fc98513d7e3c"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a5e8470597258f8e43db2fc98513d7e3c">eTI</a> () const</td></tr>
-<tr class="memdesc:a5e8470597258f8e43db2fc98513d7e3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exponent of time. <br /></td></tr>
-<tr class="separator:a5e8470597258f8e43db2fc98513d7e3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a497b59d8768b2598fd12a2337034f208"><td class="memItemLeft" align="right" valign="top"><a id="a497b59d8768b2598fd12a2337034f208"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a497b59d8768b2598fd12a2337034f208">eD</a> () const</td></tr>
-<tr class="memdesc:a497b59d8768b2598fd12a2337034f208"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exponent of distance. <br /></td></tr>
-<tr class="separator:a497b59d8768b2598fd12a2337034f208"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a184bce8f64f4af1f4552a9a661e93222"><td class="memItemLeft" align="right" valign="top"><a id="a184bce8f64f4af1f4552a9a661e93222"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a184bce8f64f4af1f4552a9a661e93222">eM</a> () const</td></tr>
-<tr class="memdesc:a184bce8f64f4af1f4552a9a661e93222"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exponent of mass. <br /></td></tr>
-<tr class="separator:a184bce8f64f4af1f4552a9a661e93222"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5db2ea456456b87e622c67a94be7e42b"><td class="memItemLeft" align="right" valign="top"><a id="a5db2ea456456b87e622c67a94be7e42b"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a5db2ea456456b87e622c67a94be7e42b">eC</a> () const</td></tr>
-<tr class="memdesc:a5db2ea456456b87e622c67a94be7e42b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exponent of charge. <br /></td></tr>
-<tr class="separator:a5db2ea456456b87e622c67a94be7e42b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09a23da374226393f9f05df6dd95be07"><td class="memItemLeft" align="right" valign="top"><a id="a09a23da374226393f9f05df6dd95be07"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a09a23da374226393f9f05df6dd95be07">eTE</a> () const</td></tr>
-<tr class="memdesc:a09a23da374226393f9f05df6dd95be07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exponent of temperature. <br /></td></tr>
-<tr class="separator:a09a23da374226393f9f05df6dd95be07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acacfa6e93f0bc609935cd688d2b40ecc"><td class="memItemLeft" align="right" valign="top"><a id="acacfa6e93f0bc609935cd688d2b40ecc"></a>
-<a class="el" href="classnum_1_1dim__exps.html">dim_exps</a>&#160;</td><td class="memItemRight" valign="bottom"><b>exps</b> () const</td></tr>
+<a class="el" href="classnum_1_1dim__exps.html">dim_exps</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#acacfa6e93f0bc609935cd688d2b40ecc">exps</a> () const</td></tr>
+<tr class="memdesc:acacfa6e93f0bc609935cd688d2b40ecc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dimensional exponents. <br /></td></tr>
 <tr class="separator:acacfa6e93f0bc609935cd688d2b40ecc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e35d09feada64c9016d7db27dfa96c7"><td class="memItemLeft" align="right" valign="top"><a id="a9e35d09feada64c9016d7db27dfa96c7"></a>
+<a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a9e35d09feada64c9016d7db27dfa96c7">operator*</a> (double s) const</td></tr>
+<tr class="memdesc:a9e35d09feada64c9016d7db27dfa96c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplication by number on right side. <br /></td></tr>
+<tr class="separator:a9e35d09feada64c9016d7db27dfa96c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85c676954254dc996f968e340ad99350"><td class="memTemplParams" colspan="2"><a id="a85c676954254dc996f968e340ad99350"></a>
 template&lt;typename DER &gt; </td></tr>
-<tr class="memitem:a85c676954254dc996f968e340ad99350"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator*</b> (<a class="el" href="classnum_1_1dimval__base.html">dimval_base</a>&lt; DER &gt; const &amp;dvb) const</td></tr>
+<tr class="memitem:a85c676954254dc996f968e340ad99350"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a85c676954254dc996f968e340ad99350">operator*</a> (<a class="el" href="classnum_1_1dimval__base.html">dimval_base</a>&lt; DER &gt; const &amp;dvb) const</td></tr>
+<tr class="memdesc:a85c676954254dc996f968e340ad99350"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply dimensioned values. <br /></td></tr>
 <tr class="separator:a85c676954254dc996f968e340ad99350"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac45bd01a6c6c637b4e32ecfb2d74dee8"><td class="memItemLeft" align="right" valign="top"><a id="ac45bd01a6c6c637b4e32ecfb2d74dee8"></a>
+<a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#ac45bd01a6c6c637b4e32ecfb2d74dee8">operator/</a> (double s) const</td></tr>
+<tr class="memdesc:ac45bd01a6c6c637b4e32ecfb2d74dee8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Division by number. <br /></td></tr>
+<tr class="separator:ac45bd01a6c6c637b4e32ecfb2d74dee8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a892429d5de725cd981898622ec535772"><td class="memTemplParams" colspan="2"><a id="a892429d5de725cd981898622ec535772"></a>
 template&lt;typename DER &gt; </td></tr>
-<tr class="memitem:a892429d5de725cd981898622ec535772"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator/</b> (<a class="el" href="classnum_1_1dimval__base.html">dimval_base</a>&lt; DER &gt; const &amp;dvb) const</td></tr>
+<tr class="memitem:a892429d5de725cd981898622ec535772"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a892429d5de725cd981898622ec535772">operator/</a> (<a class="el" href="classnum_1_1dimval__base.html">dimval_base</a>&lt; DER &gt; const &amp;dvb) const</td></tr>
+<tr class="memdesc:a892429d5de725cd981898622ec535772"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divide dimensioned values. <br /></td></tr>
 <tr class="separator:a892429d5de725cd981898622ec535772"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0e68d6e1b2bfee7faca215d1f158498"><td class="memItemLeft" align="right" valign="top"><a id="ac0e68d6e1b2bfee7faca215d1f158498"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>operator double</b> () const</td></tr>
+<tr class="memitem:a9bfbd603449cdc380b4a0574a5409957"><td class="memTemplParams" colspan="2"><a id="a9bfbd603449cdc380b4a0574a5409957"></a>
+template&lt;typename DER &gt; </td></tr>
+<tr class="memitem:a9bfbd603449cdc380b4a0574a5409957"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a9bfbd603449cdc380b4a0574a5409957">operator+</a> (<a class="el" href="classnum_1_1dimval__base.html">dimval_base</a>&lt; DER &gt; const &amp;dv) const</td></tr>
+<tr class="memdesc:a9bfbd603449cdc380b4a0574a5409957"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add dimensioned values. <br /></td></tr>
+<tr class="separator:a9bfbd603449cdc380b4a0574a5409957"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41f55aeac362808ad417dfd1a5e4b5e7"><td class="memTemplParams" colspan="2"><a id="a41f55aeac362808ad417dfd1a5e4b5e7"></a>
+template&lt;typename DER &gt; </td></tr>
+<tr class="memitem:a41f55aeac362808ad417dfd1a5e4b5e7"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a41f55aeac362808ad417dfd1a5e4b5e7">operator-</a> (<a class="el" href="classnum_1_1dimval__base.html">dimval_base</a>&lt; DER &gt; const &amp;dv) const</td></tr>
+<tr class="memdesc:a41f55aeac362808ad417dfd1a5e4b5e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subtract dimensioned values. <br /></td></tr>
+<tr class="separator:a41f55aeac362808ad417dfd1a5e4b5e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a4cb008e89e8a71769af54cbefde246"><td class="memTemplParams" colspan="2"><a id="a7a4cb008e89e8a71769af54cbefde246"></a>
+template&lt;typename DER &gt; </td></tr>
+<tr class="memitem:a7a4cb008e89e8a71769af54cbefde246"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dyndim.html">dyndim</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a7a4cb008e89e8a71769af54cbefde246">operator+=</a> (<a class="el" href="classnum_1_1dimval__base.html">dimval_base</a>&lt; DER &gt; const &amp;dv)</td></tr>
+<tr class="memdesc:a7a4cb008e89e8a71769af54cbefde246"><td class="mdescLeft">&#160;</td><td class="mdescRight">Additive assignment. <br /></td></tr>
+<tr class="separator:a7a4cb008e89e8a71769af54cbefde246"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa752eb3a973b8109b2821d6995089790"><td class="memTemplParams" colspan="2"><a id="aa752eb3a973b8109b2821d6995089790"></a>
+template&lt;typename DER &gt; </td></tr>
+<tr class="memitem:aa752eb3a973b8109b2821d6995089790"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dyndim.html">dyndim</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#aa752eb3a973b8109b2821d6995089790">operator-=</a> (<a class="el" href="classnum_1_1dimval__base.html">dimval_base</a>&lt; DER &gt; const &amp;dv)</td></tr>
+<tr class="memdesc:aa752eb3a973b8109b2821d6995089790"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subtractive assignment. <br /></td></tr>
+<tr class="separator:aa752eb3a973b8109b2821d6995089790"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6e3ce8c5675b5db27b3de686948544f"><td class="memTemplParams" colspan="2"><a id="ac6e3ce8c5675b5db27b3de686948544f"></a>
+template&lt;typename DER &gt; </td></tr>
+<tr class="memitem:ac6e3ce8c5675b5db27b3de686948544f"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#ac6e3ce8c5675b5db27b3de686948544f">operator&lt;</a> (<a class="el" href="classnum_1_1dimval__base.html">dimval_base</a>&lt; DER &gt; const &amp;dv) const</td></tr>
+<tr class="memdesc:ac6e3ce8c5675b5db27b3de686948544f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Less-than comparison. <br /></td></tr>
+<tr class="separator:ac6e3ce8c5675b5db27b3de686948544f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4e3362545da31a1e4867c822764b9f9"><td class="memTemplParams" colspan="2"><a id="ae4e3362545da31a1e4867c822764b9f9"></a>
+template&lt;typename DER &gt; </td></tr>
+<tr class="memitem:ae4e3362545da31a1e4867c822764b9f9"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#ae4e3362545da31a1e4867c822764b9f9">operator&gt;</a> (<a class="el" href="classnum_1_1dimval__base.html">dimval_base</a>&lt; DER &gt; const &amp;dv) const</td></tr>
+<tr class="memdesc:ae4e3362545da31a1e4867c822764b9f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Greater-than comparison. <br /></td></tr>
+<tr class="separator:ae4e3362545da31a1e4867c822764b9f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a0ecf13d21991687ee68be0eaec6cf5"><td class="memTemplParams" colspan="2"><a id="a5a0ecf13d21991687ee68be0eaec6cf5"></a>
+template&lt;typename DER &gt; </td></tr>
+<tr class="memitem:a5a0ecf13d21991687ee68be0eaec6cf5"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a5a0ecf13d21991687ee68be0eaec6cf5">operator&lt;=</a> (<a class="el" href="classnum_1_1dimval__base.html">dimval_base</a>&lt; DER &gt; const &amp;dv) const</td></tr>
+<tr class="memdesc:a5a0ecf13d21991687ee68be0eaec6cf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Less-than-or-equal-to comparison. <br /></td></tr>
+<tr class="separator:a5a0ecf13d21991687ee68be0eaec6cf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d58c05bb145814b064d9760feffc421"><td class="memTemplParams" colspan="2"><a id="a1d58c05bb145814b064d9760feffc421"></a>
+template&lt;typename DER &gt; </td></tr>
+<tr class="memitem:a1d58c05bb145814b064d9760feffc421"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a1d58c05bb145814b064d9760feffc421">operator&gt;=</a> (<a class="el" href="classnum_1_1dimval__base.html">dimval_base</a>&lt; DER &gt; const &amp;dv) const</td></tr>
+<tr class="memdesc:a1d58c05bb145814b064d9760feffc421"><td class="mdescLeft">&#160;</td><td class="mdescRight">Greater-than-or-equal-to comparison. <br /></td></tr>
+<tr class="separator:a1d58c05bb145814b064d9760feffc421"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26aa427fc66d2f98da5f46d81342a405"><td class="memTemplParams" colspan="2"><a id="a26aa427fc66d2f98da5f46d81342a405"></a>
+template&lt;typename DER &gt; </td></tr>
+<tr class="memitem:a26aa427fc66d2f98da5f46d81342a405"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a26aa427fc66d2f98da5f46d81342a405">operator==</a> (<a class="el" href="classnum_1_1dimval__base.html">dimval_base</a>&lt; DER &gt; const &amp;dv) const</td></tr>
+<tr class="memdesc:a26aa427fc66d2f98da5f46d81342a405"><td class="mdescLeft">&#160;</td><td class="mdescRight">Equality comparison. <br /></td></tr>
+<tr class="separator:a26aa427fc66d2f98da5f46d81342a405"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae12115377b5a066740941ef0848ada16"><td class="memTemplParams" colspan="2"><a id="ae12115377b5a066740941ef0848ada16"></a>
+template&lt;typename DER &gt; </td></tr>
+<tr class="memitem:ae12115377b5a066740941ef0848ada16"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#ae12115377b5a066740941ef0848ada16">operator!=</a> (<a class="el" href="classnum_1_1dimval__base.html">dimval_base</a>&lt; DER &gt; const &amp;dv) const</td></tr>
+<tr class="memdesc:ae12115377b5a066740941ef0848ada16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inequality comparison. <br /></td></tr>
+<tr class="separator:ae12115377b5a066740941ef0848ada16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0d7dfb93b1035f960c18f6e43e68128"><td class="memTemplParams" colspan="2"><a id="ac0d7dfb93b1035f960c18f6e43e68128"></a>
+template&lt;int P&gt; </td></tr>
+<tr class="memitem:ac0d7dfb93b1035f960c18f6e43e68128"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#ac0d7dfb93b1035f960c18f6e43e68128">pow</a> () const</td></tr>
+<tr class="memdesc:ac0d7dfb93b1035f960c18f6e43e68128"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integer power. <br /></td></tr>
+<tr class="separator:ac0d7dfb93b1035f960c18f6e43e68128"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17b274c1e4d899aada5fd581ce848f68"><td class="memItemLeft" align="right" valign="top"><a id="a17b274c1e4d899aada5fd581ce848f68"></a>
+<a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a17b274c1e4d899aada5fd581ce848f68">pow</a> (int p) const</td></tr>
+<tr class="memdesc:a17b274c1e4d899aada5fd581ce848f68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integer power. <br /></td></tr>
+<tr class="separator:a17b274c1e4d899aada5fd581ce848f68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c8b83996c0a111f2550e49542bd27b2"><td class="memTemplParams" colspan="2"><a id="a6c8b83996c0a111f2550e49542bd27b2"></a>
+template&lt;int R&gt; </td></tr>
+<tr class="memitem:a6c8b83996c0a111f2550e49542bd27b2"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a6c8b83996c0a111f2550e49542bd27b2">root</a> () const</td></tr>
+<tr class="memdesc:a6c8b83996c0a111f2550e49542bd27b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integer root. <br /></td></tr>
+<tr class="separator:a6c8b83996c0a111f2550e49542bd27b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19ed5a21ec49e263bef7c153e643113e"><td class="memItemLeft" align="right" valign="top"><a id="a19ed5a21ec49e263bef7c153e643113e"></a>
+<a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a19ed5a21ec49e263bef7c153e643113e">root</a> (int r) const</td></tr>
+<tr class="memdesc:a19ed5a21ec49e263bef7c153e643113e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integer root. <br /></td></tr>
+<tr class="separator:a19ed5a21ec49e263bef7c153e643113e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac52e27a89b0f584c9f389d31237f6116"><td class="memItemLeft" align="right" valign="top"><a id="ac52e27a89b0f584c9f389d31237f6116"></a>
+<a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#ac52e27a89b0f584c9f389d31237f6116">sqrt</a> () const</td></tr>
+<tr class="memdesc:ac52e27a89b0f584c9f389d31237f6116"><td class="mdescLeft">&#160;</td><td class="mdescRight">Square root. <br /></td></tr>
+<tr class="separator:ac52e27a89b0f584c9f389d31237f6116"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0e68d6e1b2bfee7faca215d1f158498"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#ac0e68d6e1b2bfee7faca215d1f158498">operator double</a> () const</td></tr>
+<tr class="memdesc:ac0e68d6e1b2bfee7faca215d1f158498"><td class="mdescLeft">&#160;</td><td class="mdescRight">Automatically convert to double, but throw exception if not dimensionless.  <a href="#ac0e68d6e1b2bfee7faca215d1f158498">More...</a><br /></td></tr>
 <tr class="separator:ac0e68d6e1b2bfee7faca215d1f158498"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classnum_1_1dimval__base"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classnum_1_1dimval__base')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classnum_1_1dimval__base.html">num::dimval_base&lt; dyndim &gt;</a></td></tr>
 <tr class="memitem:a4b89ced092f76fd367e11bc7de99f061 inherit pub_methods_classnum_1_1dimval__base"><td class="memItemLeft" align="right" valign="top"><a id="a4b89ced092f76fd367e11bc7de99f061"></a>
@@ -151,6 +216,57 @@ template&lt;typename DER &gt; </td></tr>
 <a class="el" href="classnum_1_1dyndim.html">dyndim</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval__base.html#a477487be382125275f3c1e06b187a354">operator/=</a> (double s)</td></tr>
 <tr class="memdesc:a477487be382125275f3c1e06b187a354 inherit pub_methods_classnum_1_1dimval__base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divisive assignment against double. <br /></td></tr>
 <tr class="separator:a477487be382125275f3c1e06b187a354 inherit pub_methods_classnum_1_1dimval__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a4a8c3e23c57617f9f3ce1bfecc61dcf8"><td class="memTemplParams" colspan="2"><a id="a4a8c3e23c57617f9f3ce1bfecc61dcf8"></a>
+template&lt;char TI, char D, char M, char C, char TE&gt; </td></tr>
+<tr class="memitem:a4a8c3e23c57617f9f3ce1bfecc61dcf8"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, D, M, C, TE &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator+=</b> (<a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, D, M, C, TE &gt; &amp;, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> const &amp;dd)</td></tr>
+<tr class="separator:a4a8c3e23c57617f9f3ce1bfecc61dcf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ec914b2a2b97c020d6d72edb58e50e4"><td class="memTemplParams" colspan="2"><a id="a8ec914b2a2b97c020d6d72edb58e50e4"></a>
+template&lt;char TI, char D, char M, char C, char TE&gt; </td></tr>
+<tr class="memitem:a8ec914b2a2b97c020d6d72edb58e50e4"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, D, M, C, TE &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator-=</b> (<a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, D, M, C, TE &gt; &amp;, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> const &amp;dd)</td></tr>
+<tr class="separator:a8ec914b2a2b97c020d6d72edb58e50e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36a2c2c6ae117e84b5b8b7058d3ea8a4"><td class="memItemLeft" align="right" valign="top"><a id="a36a2c2c6ae117e84b5b8b7058d3ea8a4"></a>
+<a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a36a2c2c6ae117e84b5b8b7058d3ea8a4">operator-</a> (<a class="el" href="classnum_1_1dyndim.html">dyndim</a> const &amp;dv)</td></tr>
+<tr class="memdesc:a36a2c2c6ae117e84b5b8b7058d3ea8a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unary negation. <br /></td></tr>
+<tr class="separator:a36a2c2c6ae117e84b5b8b7058d3ea8a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0150ae153e95138558905727a1812227"><td class="memItemLeft" align="right" valign="top"><a id="a0150ae153e95138558905727a1812227"></a>
+<a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a0150ae153e95138558905727a1812227">operator*</a> (double s, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> dv)</td></tr>
+<tr class="memdesc:a0150ae153e95138558905727a1812227"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplication of dimval by number on left side. <br /></td></tr>
+<tr class="separator:a0150ae153e95138558905727a1812227"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9354be7fce86ab40ad3e94f67bd0d7e"><td class="memItemLeft" align="right" valign="top"><a id="ac9354be7fce86ab40ad3e94f67bd0d7e"></a>
+<a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#ac9354be7fce86ab40ad3e94f67bd0d7e">operator/</a> (double s, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> const &amp;dv)</td></tr>
+<tr class="memdesc:ac9354be7fce86ab40ad3e94f67bd0d7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divide number by dimensioned value. <br /></td></tr>
+<tr class="separator:ac9354be7fce86ab40ad3e94f67bd0d7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a363749ff0306777096ceb376d186d467"><td class="memTemplParams" colspan="2"><a id="a363749ff0306777096ceb376d186d467"></a>
+template&lt;int P&gt; </td></tr>
+<tr class="memitem:a363749ff0306777096ceb376d186d467"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a363749ff0306777096ceb376d186d467">pow</a> (<a class="el" href="classnum_1_1dyndim.html">dyndim</a> const &amp;dv)</td></tr>
+<tr class="memdesc:a363749ff0306777096ceb376d186d467"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integer power. <br /></td></tr>
+<tr class="separator:a363749ff0306777096ceb376d186d467"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62d32ddc80d0f7d08e9bf278bf8e7e28"><td class="memTemplParams" colspan="2"><a id="a62d32ddc80d0f7d08e9bf278bf8e7e28"></a>
+template&lt;typename DER &gt; </td></tr>
+<tr class="memitem:a62d32ddc80d0f7d08e9bf278bf8e7e28"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a62d32ddc80d0f7d08e9bf278bf8e7e28">pow</a> (<a class="el" href="classnum_1_1dimval__base.html">dimval_base</a>&lt; DER &gt; const &amp;dv, int p)</td></tr>
+<tr class="memdesc:a62d32ddc80d0f7d08e9bf278bf8e7e28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integer power. <br /></td></tr>
+<tr class="separator:a62d32ddc80d0f7d08e9bf278bf8e7e28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3fea0e487be43a548fe911ebc92d6e7"><td class="memTemplParams" colspan="2"><a id="aa3fea0e487be43a548fe911ebc92d6e7"></a>
+template&lt;int R&gt; </td></tr>
+<tr class="memitem:aa3fea0e487be43a548fe911ebc92d6e7"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#aa3fea0e487be43a548fe911ebc92d6e7">root</a> (<a class="el" href="classnum_1_1dyndim.html">dyndim</a> const &amp;dv)</td></tr>
+<tr class="memdesc:aa3fea0e487be43a548fe911ebc92d6e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integer root. <br /></td></tr>
+<tr class="separator:aa3fea0e487be43a548fe911ebc92d6e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8702da326e3a1ebfe45204543fba4ae"><td class="memTemplParams" colspan="2"><a id="ab8702da326e3a1ebfe45204543fba4ae"></a>
+template&lt;typename DER &gt; </td></tr>
+<tr class="memitem:ab8702da326e3a1ebfe45204543fba4ae"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#ab8702da326e3a1ebfe45204543fba4ae">root</a> (<a class="el" href="classnum_1_1dimval__base.html">dimval_base</a>&lt; DER &gt; const &amp;dv, int r)</td></tr>
+<tr class="memdesc:ab8702da326e3a1ebfe45204543fba4ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integer root. <br /></td></tr>
+<tr class="separator:ab8702da326e3a1ebfe45204543fba4ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa98eff024ddd06fecdf55658b424c4d"><td class="memItemLeft" align="right" valign="top"><a id="afa98eff024ddd06fecdf55658b424c4d"></a>
+<a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#afa98eff024ddd06fecdf55658b424c4d">sqrt</a> (<a class="el" href="classnum_1_1dyndim.html">dyndim</a> const &amp;dv)</td></tr>
+<tr class="memdesc:afa98eff024ddd06fecdf55658b424c4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Square root. <br /></td></tr>
+<tr class="separator:afa98eff024ddd06fecdf55658b424c4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a742fe13bb3b7be9812bf52e8acc57061"><td class="memItemLeft" align="right" valign="top"><a id="a742fe13bb3b7be9812bf52e8acc57061"></a>
+<a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a742fe13bb3b7be9812bf52e8acc57061">fabs</a> (<a class="el" href="classnum_1_1dyndim.html">dyndim</a> const &amp;dv)</td></tr>
+<tr class="memdesc:a742fe13bb3b7be9812bf52e8acc57061"><td class="mdescLeft">&#160;</td><td class="mdescRight">Absolute value. <br /></td></tr>
+<tr class="separator:a742fe13bb3b7be9812bf52e8acc57061"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -173,9 +289,49 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 <tr class="separator:a42569edc76a4dbea7c544bb20b260319 inherit pro_attribs_classnum_1_1dimval__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00419">419</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+<div class="textblock"><p>Model of a dynamically dimensioned value. </p>
+<p>For a statically dimensioned value, see dimval. </p>
+
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00476">476</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac0e68d6e1b2bfee7faca215d1f158498"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0e68d6e1b2bfee7faca215d1f158498">&sect;&nbsp;</a></span>operator double()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">num::dyndim::operator double </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Automatically convert to double, but throw exception if not dimensionless. </p>
+
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00713">713</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classnum_1_1dyndim_ac0e68d6e1b2bfee7faca215d1f158498_cgraph.png" border="0" usemap="#classnum_1_1dyndim_ac0e68d6e1b2bfee7faca215d1f158498_cgraph" alt=""/></div>
+<map name="classnum_1_1dyndim_ac0e68d6e1b2bfee7faca215d1f158498_cgraph" id="classnum_1_1dyndim_ac0e68d6e1b2bfee7faca215d1f158498_cgraph">
+<area shape="rect" id="node2" href="classnum_1_1dim__exps.html#a015f68a74e95933f673c80ff9a3f4c38" title="Reference to immutable number representing all exponents. " alt="" coords="205,13,332,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="dimval_8hpp_source.html">dimval.hpp</a></li>
 </ul>
 </div><!-- contents -->

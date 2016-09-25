@@ -52,7 +52,7 @@ namespace num
    template <typename X, typename Y>
    class rk_quad;
 
-   /// Dimensional exponents used by dyndim.
+   /// Dimensional exponents.
    class dim_exps
    {
       union {
@@ -124,6 +124,37 @@ namespace num
                          C() - ode.C(), TE() - ode.TE());
       }
 
+      /// Multiply exponents by integer as for integer power of dimensioned
+      /// value.
+      dim_exps operator*(int p /**< Integer power. */) const
+      {
+         return dim_exps(TI() * p, D() * p, M() * p, C() * p, TE() * p);
+      }
+
+      /// Divide exponents by integer as for integer root of dimensioned value.
+      dim_exps operator/(int r /**< Integer root. */) const
+      {
+         if (r <= 0) {
+            throw "zero or negative root";
+         }
+         if (D() / r * r != D()) {
+            throw "illegal root along distance";
+         }
+         if (M() / r * r != M()) {
+            throw "illegal root along mass";
+         }
+         if (C() / r * r != C()) {
+            throw "illegal root along charge";
+         }
+         if (TI() / r * r != TI()) {
+            throw "illegal root along time";
+         }
+         if (TE() / r * r != TE()) {
+            throw "illegal root along temperature";
+         }
+         return dim_exps(TI() / r, D() / r, M() / r, C() / r, TE() / r);
+      }
+
       /// Return true only if every exponent be same as correspondent in other
       /// set.
       bool operator==(dim_exps ode /**< Other exponents. */) const
@@ -137,6 +168,9 @@ namespace num
       {
          return n_ != ode.n_;
       }
+
+      /// Return negative exponents as for reciprocal of dimensioned value.
+      dim_exps neg() const { return dim_exps(-TI(), -D(), -M(), -C(), -TE()); }
    };
 
    /// Base class for dimval and dyndim.
@@ -218,7 +252,22 @@ namespace num
       }
    };
 
-   /// Model of a dimensioned value.
+   template <char TI, char D, char M, char C, char TE>
+   class dimval;
+
+   class dyndim;
+
+   template <char TI, char D, char M, char C, char TE>
+   dimval<TI, D, M, C, TE> &operator+=(dimval<TI, D, M, C, TE> &dv,
+                                       dyndim const &dd);
+
+   template <char TI, char D, char M, char C, char TE>
+   dimval<TI, D, M, C, TE> &operator-=(dimval<TI, D, M, C, TE> &dv,
+                                       dyndim const &dd);
+
+   /// Model of a statically dimensioned value.  For a dynamically dimensioned
+   /// value, see dyndim.
+   ///
    /// \tparam TI  Exponent of time
    /// \tparam D   Exponent of distance.
    /// \tparam M   Exponent of mass
@@ -227,18 +276,6 @@ namespace num
    template <char TI, char D, char M, char C, char TE>
    class dimval : public dimval_base<dimval<TI, D, M, C, TE>>
    {
-      /// Dimensional exponents in a form useful for interaction with dyndim.
-      static dim_exps const exps_;
-
-   protected:
-      using PT = dimval_base<dimval>;
-      using PT::PT;
-      using PT::v_;
-
-   public:
-      /// Dimensional exponents.
-      static dim_exps exps() { return exps_; }
-
       /// Make every kind of dimval be a friend to every other.
       template <char OTI, char OD, char OM, char OC, char OTE>
       friend class dimval;
@@ -264,6 +301,24 @@ namespace num
       template <typename R, typename A, typename A1, typename A2>
       friend PRD<R, A> integral(func<R, A> f, A1 a, A2 b, double t,
                                 unsigned n);
+
+      /// Additive assignment.
+      friend dimval &operator+=<TI, D, M, C, TE>(dimval &dv, dyndim const &dd);
+
+      /// Subtractive assignment.
+      friend dimval &operator-=<TI, D, M, C, TE>(dimval &dv, dyndim const &dd);
+
+      /// Dimensional exponents in a form useful for interaction with dyndim.
+      static dim_exps const exps_;
+
+   protected:
+      using PT = dimval_base<dimval>; ///< Type of parent.
+      using PT::PT;                   ///< Inherit parent's constructor.
+      using PT::v_;                   ///< Inherit protected, numeric value.
+
+   public:
+      /// Dimensional exponents.
+      static dim_exps exps() { return exps_; }
 
       /// Unary negation.
       friend dimval operator-(dimval dv) { return -dv.v_; }
@@ -359,56 +414,56 @@ namespace num
 
       /// Type of integer power of present instance.
       /// \tparam E  Integer exponent indicating power.
-      template <int E>
-      using dimval_power = dimval<TI * E, D * E, M * E, C * E, TE * E>;
+      template <int P>
+      using dimval_power = dimval<TI * P, D * P, M * P, C * P, TE * P>;
 
-      /// \return Integer power.
-      template <int E>
-      dimval_power<E> pow() const
+      /// Integer power.
+      template <int P>
+      dimval_power<P> pow() const
       {
-         return dimval_power<E>(std::pow(v_, E));
+         return dimval_power<P>(std::pow(v_, P));
       }
 
-      /// \return Integer power.
-      template <int E>
-      friend dimval_power<E> pow(dimval const &dv)
+      /// Integer power.
+      template <int P>
+      friend dimval_power<P> pow(dimval const &dv)
       {
-         return dv.pow<E>();
+         return dv.pow<P>();
       }
 
       /// Type of integer root of present instance.
       /// \tparam E  Integer indicating degree of root.
-      template <int E>
-      using dimval_root = dimval<TI / E, D / E, M / E, C / E, TE / E>;
+      template <int R>
+      using dimval_root = dimval<TI / R, D / R, M / R, C / R, TE / R>;
 
-      /// \return Integer root.
-      template <int E>
-      dimval_root<E> root() const
+      /// Integer root.
+      template <int R>
+      dimval_root<R> root() const
       {
-         static_assert(E > 0, "zero or negative root");
-         static_assert(D / E * E == D, "illegal root along distance");
-         static_assert(M / E * E == M, "illegal root along mass");
-         static_assert(C / E * E == C, "illegal root along charge");
-         static_assert(TI / E * E == TI, "illegal root along time");
-         static_assert(TE / E * E == TE, "illegal root along temperature");
-         double constexpr e = 1.0 / E;
-         return dimval_root<E>(std::pow(v_, e));
+         static_assert(R > 0, "zero or negative root");
+         static_assert(D / R * R == D, "illegal root along distance");
+         static_assert(M / R * R == M, "illegal root along mass");
+         static_assert(C / R * R == C, "illegal root along charge");
+         static_assert(TI / R * R == TI, "illegal root along time");
+         static_assert(TE / R * R == TE, "illegal root along temperature");
+         double constexpr p = 1.0 / R;
+         return dimval_root<R>(std::pow(v_, p));
       }
 
-      /// \return Integer root.
-      template <int E>
-      friend dimval_root<E> root(dimval const &dv)
+      /// Integer root.
+      template <int R>
+      friend dimval_root<R> root(dimval const &dv)
       {
-         return dv.root<E>();
+         return dv.root<R>();
       }
 
-      /// \return Square root.
+      /// Square root.
       friend dimval_root<2> sqrt(dimval dv) { return dv.root<2>(); }
 
-      /// \return Square root.
+      /// Square root.
       dimval_root<2> sqrt() const { return root<2>(); }
 
-      /// \return Absolute value.
+      /// Absolute value.
       friend dimval fabs(dimval dv) { return dimval(fabs(dv.v_)); }
    };
 
@@ -416,40 +471,245 @@ namespace num
    template <char TI, char D, char M, char C, char TE>
    dim_exps const dimval<TI, D, M, C, TE>::exps_(TI, D, M, C, TE);
 
+   /// Model of a dynamically dimensioned value.  For a statically dimensioned
+   /// value, see dimval.
    class dyndim : public dimval_base<dyndim>
    {
-      using PT = dimval_base<dyndim>;
-      dim_exps exps_;
+      template <char TI, char D, char M, char C, char TE>
+      friend dimval<TI, D, M, C, TE> &operator+=(dimval<TI, D, M, C, TE> &,
+                                                 dyndim const &dd);
 
-      dyndim(double v, dim_exps e) : PT(v), exps_(e) {}
+      template <char TI, char D, char M, char C, char TE>
+      friend dimval<TI, D, M, C, TE> &operator-=(dimval<TI, D, M, C, TE> &,
+                                                 dyndim const &dd);
 
-   public:
-      template <typename DER>
-      dyndim(dimval_base<DER> const &dvb)
-         : PT(dvb), exps_(dvb.exps_num_)
+      using PT = dimval_base<dyndim>; ///< Type of parent.
+      dim_exps exps_;                 ///< Storage for dimensional exponents.
+
+      /// Initialize numeric value and dimensional exponents.
+      dyndim(double v,  ///< Numeric value corresponding to MKS units.
+             dim_exps e ///< Dimensional exponents.
+             )
+         : PT(v), exps_(e)
       {
       }
 
-      int eTI() const { return exps_.TI(); } ///< Exponent of time.
-      int eD() const { return exps_.D(); }   ///< Exponent of distance.
-      int eM() const { return exps_.M(); }   ///< Exponent of mass.
-      int eC() const { return exps_.C(); }   ///< Exponent of charge.
-      int eTE() const { return exps_.TE(); } ///< Exponent of temperature.
+      /// Initialize from either dimval or another dyndim.
+      template <typename DER>
+      dyndim(dimval_base<DER> const &dvb)
+         : PT(dvb), exps_(dvb.exps())
+      {
+      }
 
-      dim_exps exps() const { return exps_; }
+   public:
+      dim_exps exps() const { return exps_; } ///< Dimensional exponents.
 
+      /// Unary negation.
+      friend dyndim operator-(dyndim const &dv)
+      {
+         return dyndim(-dv.v_, dv.exps_);
+      }
+
+      /// Multiplication by number on right side.
+      dyndim operator*(double s) const { return dyndim(v_ * s, exps_); }
+
+      /// Multiplication of dimval by number on left side.
+      friend dyndim operator*(double s, dyndim dv)
+      {
+         return dyndim(s * dv.v_, dv.exps_);
+      }
+
+      /// Multiply dimensioned values.
       template <typename DER>
       dyndim operator*(dimval_base<DER> const &dvb) const
       {
-         return dyndim(v_ * dvb.v_, exps_ + dvb.exps_);
+         return dyndim(v_ * dvb.v_, exps_ + dvb.exps());
       }
 
+      /// Division by number.
+      dyndim operator/(double s) const { return dyndim(v_ / s, exps_); }
+
+      /// Divide dimensioned values.
       template <typename DER>
       dyndim operator/(dimval_base<DER> const &dvb) const
       {
-         return dyndim(v_ / dvb.v_, exps_ - dvb.exps_);
+         return dyndim(v_ / dvb.v_, exps_ - dvb.exps());
       }
 
+      /// Divide number by dimensioned value.
+      friend dyndim operator/(double s, dyndim const &dv)
+      {
+         return dyndim(s / dv.v_, dv.exps_.neg());
+      }
+
+      /// Add dimensioned values.
+      template <typename DER>
+      dyndim operator+(dimval_base<DER> const &dv) const
+      {
+         if (exps_ != dv.exps()) {
+            throw "Addition requires same dimension.";
+         }
+         return dyndim(v_ + dv.v_, exps_);
+      }
+
+      /// Subtract dimensioned values.
+      template <typename DER>
+      dyndim operator-(dimval_base<DER> const &dv) const
+      {
+         if (exps_ != dv.exps()) {
+            throw "Subtraction requires same dimension.";
+         }
+         return dyndim(v_ - dv.v_, exps_);
+      }
+
+      /// Additive assignment.
+      template <typename DER>
+      dyndim &operator+=(dimval_base<DER> const &dv)
+      {
+         if (exps_ != dv.exps()) {
+            throw "Addition requires same dimension.";
+         }
+         v_ += dv.v_;
+         return *this;
+      }
+
+      /// Subtractive assignment.
+      template <typename DER>
+      dyndim &operator-=(dimval_base<DER> const &dv)
+      {
+         if (exps_ != dv.exps()) {
+            throw "Subtraction requires same dimension.";
+         }
+         v_ -= dv.v_;
+         return *this;
+      }
+
+      /// Less-than comparison.
+      template <typename DER>
+      bool operator<(dimval_base<DER> const &dv) const
+      {
+         if (exps_ != dv.exps()) {
+            throw "Comparison requires same dimension.";
+         }
+         return v_ < dv.v_;
+      }
+
+      /// Greater-than comparison.
+      template <typename DER>
+      bool operator>(dimval_base<DER> const &dv) const
+      {
+         if (exps_ != dv.exps()) {
+            throw "Comparison requires same dimension.";
+         }
+         return v_ > dv.v_;
+      }
+
+      /// Less-than-or-equal-to comparison.
+      template <typename DER>
+      bool operator<=(dimval_base<DER> const &dv) const
+      {
+         if (exps_ != dv.exps()) {
+            throw "Comparison requires same dimension.";
+         }
+         return v_ <= dv.v_;
+      }
+
+      /// Greater-than-or-equal-to comparison.
+      template <typename DER>
+      bool operator>=(dimval_base<DER> const &dv) const
+      {
+         if (exps_ != dv.exps()) {
+            throw "Comparison requires same dimension.";
+         }
+         return v_ >= dv.v_;
+      }
+
+      /// Equality comparison.
+      template <typename DER>
+      bool operator==(dimval_base<DER> const &dv) const
+      {
+         if (exps_ != dv.exps()) {
+            throw "Comparison requires same dimension.";
+         }
+         return v_ == dv.v_;
+      }
+
+      /// Inequality comparison.
+      template <typename DER>
+      bool operator!=(dimval_base<DER> const &dv) const
+      {
+         if (exps_ != dv.exps()) {
+            throw "Comparison requires same dimension.";
+         }
+         return v_ != dv.v_;
+      }
+
+      /// Integer power.
+      template <int P>
+      dyndim pow() const
+      {
+         return dyndim(std::pow(v_, P), exps_ * P);
+      }
+
+      /// Integer power.
+      dyndim pow(int p) const { return dyndim(std::pow(v_, p), exps_ * p); }
+
+      /// Integer power.
+      template <int P>
+      friend dyndim pow(dyndim const &dv)
+      {
+         return dv.pow<P>();
+      }
+
+      /// Integer power.
+      template <typename DER>
+      friend dyndim pow(dimval_base<DER> const &dv, int p)
+      {
+         return dyndim(std::pow(dv.v_, p), dv.exps_ * p);
+      }
+
+      /// Integer root.
+      template <int R>
+      dyndim root() const
+      {
+         double constexpr p = 1.0 / R;
+         return dyndim(std::pow(v_, p), exps_ / R);
+      }
+
+      /// Integer root.
+      dyndim root(int r) const
+      {
+         return dyndim(std::pow(v_, 1.0 / r), exps_ / r);
+      }
+
+      /// Integer root.
+      template <int R>
+      friend dyndim root(dyndim const &dv)
+      {
+         return dv.root<R>();
+      }
+
+      /// Integer root.
+      template <typename DER>
+      friend dyndim root(dimval_base<DER> const &dv, int r)
+      {
+         return dyndim(std::pow(dv.v_, 1.0 / r), dv.exps_ / r);
+      }
+
+      /// Square root.
+      friend dyndim sqrt(dyndim const &dv) { return dv.root<2>(); }
+
+      /// Square root.
+      dyndim sqrt() const { return root<2>(); }
+
+      /// Absolute value.
+      friend dyndim fabs(dyndim const &dv)
+      {
+         return dyndim(fabs(dv.v_), dv.exps_);
+      }
+
+      /// Automatically convert to double, but throw exception if not
+      /// dimensionless.
       operator double() const
       {
          if (exps_.n() != 0) {
@@ -458,6 +718,24 @@ namespace num
          return v_;
       }
    };
+
+   // Additive assignment.
+   template <char TI, char D, char M, char C, char TE>
+   dimval<TI, D, M, C, TE> &operator+=(dimval<TI, D, M, C, TE> &dv,
+                                       dyndim const &dd)
+   {
+      dv.v_ += dd.v_;
+      return dv;
+   }
+
+   // Subtractive assignment.
+   template <char TI, char D, char M, char C, char TE>
+   dimval<TI, D, M, C, TE> &operator-=(dimval<TI, D, M, C, TE> &dv,
+                                       dyndim const &dd)
+   {
+      dv.v_ -= dd.v_;
+      return dv;
+   }
 }
 
 #endif // ndef NUMERIC_DIMVAL_HPP
