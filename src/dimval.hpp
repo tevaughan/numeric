@@ -180,6 +180,13 @@ namespace num
    template <typename DER>
    class dimval_base
    {
+      /// Needed to allow dyndim to access v_ in various dimvals.
+      friend class dyndim;
+
+      /// Needed to allow copying from one kind of dimval to another.
+      template <typename ODER>
+      friend class dimval_base;
+
    protected:
       double v_; ///< Value in MKS.
 
@@ -187,6 +194,12 @@ namespace num
       dimval_base(double vv /**< Numeric coefficient of MKS unit. */) : v_(vv)
       {
       }
+
+      /// Copy from another base object. This needs to be done carefully in
+      /// case the descendant has extra stuff of its own to copy. So copy
+      /// constructor is protected.
+      template <typename ODER>
+      dimval_base(dimval_base<ODER> const &dvb) : v_(dvb.v_) {}
 
       /// Return reference to present instance as instance of DER.
       DER &d() { return *static_cast<DER *>(this); }
@@ -276,7 +289,7 @@ namespace num
    template <char TI, char D, char M, char C, char TE>
    class dimval : public dimval_base<dimval<TI, D, M, C, TE>>
    {
-      /// Make every kind of dimval be a friend to every other.
+      /// Every kind of dimval must be a friend of every other.
       template <char OTI, char OD, char OM, char OC, char OTE>
       friend class dimval;
 
@@ -484,6 +497,7 @@ namespace num
                                                  dyndim const &dd);
 
       using PT = dimval_base<dyndim>; ///< Type of parent.
+      using PT::PT;                   ///< Inherit constructor.
       dim_exps exps_;                 ///< Storage for dimensional exponents.
 
       /// Initialize numeric value and dimensional exponents.
@@ -494,6 +508,7 @@ namespace num
       {
       }
 
+   public:
       /// Initialize from either dimval or another dyndim.
       template <typename DER>
       dyndim(dimval_base<DER> const &dvb)
@@ -501,7 +516,6 @@ namespace num
       {
       }
 
-   public:
       dim_exps exps() const { return exps_; } ///< Dimensional exponents.
 
       /// Unary negation.

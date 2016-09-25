@@ -23,13 +23,14 @@ var searchData=
   ['dimval',['dimval',['../classnum_1_1dimval.html#abde02f71a9b84e0990a02fb4dba8c70a',1,'num::dimval']]],
   ['dimval_2ehpp',['dimval.hpp',['../dimval_8hpp.html',1,'']]],
   ['dimval_5fbase',['dimval_base',['../classnum_1_1dimval__base.html',1,'num']]],
-  ['dimval_5fbase',['dimval_base',['../classnum_1_1dimval__base.html#a053c1a8f9a6a7ea593072151318f3653',1,'num::dimval_base::dimval_base(double vv)'],['../classnum_1_1dimval__base.html#a4b89ced092f76fd367e11bc7de99f061',1,'num::dimval_base::dimval_base()']]],
+  ['dimval_5fbase',['dimval_base',['../classnum_1_1dimval__base.html#af731163c11ce97ac12c50896ae9d5832',1,'num::dimval_base::dimval_base()'],['../classnum_1_1dimval__base.html#a053c1a8f9a6a7ea593072151318f3653',1,'num::dimval_base::dimval_base(double vv)'],['../classnum_1_1dimval__base.html#a92b22d0eb6b53fdce4cc71ba6d520f76',1,'num::dimval_base::dimval_base(dimval_base&lt; ODER &gt; const &amp;dvb)'],['../classnum_1_1dimval__base.html#a4b89ced092f76fd367e11bc7de99f061',1,'num::dimval_base::dimval_base()']]],
   ['dimval_5fbase_3c_20dimval_3c_20ti_2c_20d_2c_20m_2c_20c_2c_20te_20_3e_20_3e',['dimval_base&lt; dimval&lt; TI, D, M, C, TE &gt; &gt;',['../classnum_1_1dimval__base.html',1,'num']]],
   ['dimval_5fbase_3c_20dyndim_20_3e',['dimval_base&lt; dyndim &gt;',['../classnum_1_1dimval__base.html',1,'num']]],
   ['dimval_5fpower',['dimval_power',['../classnum_1_1dimval.html#aa3f49cebe1a6526331807e1f35cb765d',1,'num::dimval']]],
   ['dimval_5froot',['dimval_root',['../classnum_1_1dimval.html#a07a143ca7b6cf5c47592ebf8fe9a7277',1,'num::dimval']]],
   ['dyn',['dyn',['../units_8hpp.html#a26af50d6f46e58a095f8bbd81372e4e7',1,'num::u']]],
+  ['dyndim',['dyndim',['../classnum_1_1dimval__base.html#a19425b210cb0862d8423dd0c852b6917',1,'num::dimval_base::dyndim()'],['../classnum_1_1dyndim.html#a044b5de29bf632f2a1989d560575e5da',1,'num::dyndim::dyndim()']]],
   ['dyndim',['dyndim',['../classnum_1_1dyndim.html',1,'num']]],
-  ['dynes',['dynes',['../structnum_1_1dynes.html#af72f14ada39dffdfe9e001a4077c364f',1,'num::dynes::dynes(double v)'],['../structnum_1_1dynes.html#a5f635c0251692a635a591e77b20e067e',1,'num::dynes::dynes(dynes const &amp;dv)=default']]],
-  ['dynes',['dynes',['../structnum_1_1dynes.html',1,'num']]]
+  ['dynes',['dynes',['../structnum_1_1dynes.html',1,'num']]],
+  ['dynes',['dynes',['../structnum_1_1dynes.html#af72f14ada39dffdfe9e001a4077c364f',1,'num::dynes::dynes(double v)'],['../structnum_1_1dynes.html#a5f635c0251692a635a591e77b20e067e',1,'num::dynes::dynes(dynes const &amp;dv)=default']]]
 ];

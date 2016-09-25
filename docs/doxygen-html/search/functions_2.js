@@ -9,6 +9,7 @@ var searchData=
   ['dense_5ftable',['dense_table',['../classnum_1_1dense__table.html#ae27e8ea2389907b2550d9c864e8ec106',1,'num::dense_table']]],
   ['derivative',['derivative',['../structnum_1_1rfunc.html#a604d7039639c9d658677148411fe4010',1,'num::rfunc::derivative()'],['../classnum_1_1rpoly_3_01A_00_01T_00_010_01_4.html#a571a01743c249be59b068c7670aab045',1,'num::rpoly&lt; A, T, 0 &gt;::derivative()']]],
   ['dim_5fexps',['dim_exps',['../classnum_1_1dim__exps.html#a814bfcf94bd0dac034157edb5e407437',1,'num::dim_exps']]],
-  ['dimval_5fbase',['dimval_base',['../classnum_1_1dimval__base.html#a053c1a8f9a6a7ea593072151318f3653',1,'num::dimval_base::dimval_base(double vv)'],['../classnum_1_1dimval__base.html#a4b89ced092f76fd367e11bc7de99f061',1,'num::dimval_base::dimval_base()']]],
+  ['dimval_5fbase',['dimval_base',['../classnum_1_1dimval__base.html#a053c1a8f9a6a7ea593072151318f3653',1,'num::dimval_base::dimval_base(double vv)'],['../classnum_1_1dimval__base.html#a92b22d0eb6b53fdce4cc71ba6d520f76',1,'num::dimval_base::dimval_base(dimval_base&lt; ODER &gt; const &amp;dvb)'],['../classnum_1_1dimval__base.html#a4b89ced092f76fd367e11bc7de99f061',1,'num::dimval_base::dimval_base()']]],
+  ['dyndim',['dyndim',['../classnum_1_1dyndim.html#a044b5de29bf632f2a1989d560575e5da',1,'num::dyndim']]],
   ['dynes',['dynes',['../structnum_1_1dynes.html#af72f14ada39dffdfe9e001a4077c364f',1,'num::dynes::dynes(double v)'],['../structnum_1_1dynes.html#a5f635c0251692a635a591e77b20e067e',1,'num::dynes::dynes(dynes const &amp;dv)=default']]]
 ];

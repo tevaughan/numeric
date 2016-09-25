@@ -17,9 +17,11 @@ TEST_CASE("Verify basic operation of units.", "[units]")
 {
    length const len1 = meters(3.0);
    length const len2 = 6.0 * m;
+   dyndim const len3 = len1;
    REQUIRE(len1 == 3.0 * m);
    REQUIRE(len2 == meters(6.0));
    REQUIRE(len1 / len2 == Approx(0.5));
+   REQUIRE(len3 == len1);
 }
 
 TEST_CASE("Verify string conversion.", "[units]")

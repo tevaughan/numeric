@@ -102,6 +102,11 @@ Collaboration diagram for num::dyndim:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a044b5de29bf632f2a1989d560575e5da"><td class="memTemplParams" colspan="2"><a id="a044b5de29bf632f2a1989d560575e5da"></a>
+template&lt;typename DER &gt; </td></tr>
+<tr class="memitem:a044b5de29bf632f2a1989d560575e5da"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a044b5de29bf632f2a1989d560575e5da">dyndim</a> (<a class="el" href="classnum_1_1dimval__base.html">dimval_base</a>&lt; DER &gt; const &amp;dvb)</td></tr>
+<tr class="memdesc:a044b5de29bf632f2a1989d560575e5da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize from either dimval or another dyndim. <br /></td></tr>
+<tr class="separator:a044b5de29bf632f2a1989d560575e5da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acacfa6e93f0bc609935cd688d2b40ecc"><td class="memItemLeft" align="right" valign="top"><a id="acacfa6e93f0bc609935cd688d2b40ecc"></a>
 <a class="el" href="classnum_1_1dim__exps.html">dim_exps</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#acacfa6e93f0bc609935cd688d2b40ecc">exps</a> () const</td></tr>
 <tr class="memdesc:acacfa6e93f0bc609935cd688d2b40ecc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dimensional exponents. <br /></td></tr>
@@ -274,6 +279,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a053c1a8f9a6a7ea593072151318f3653 inherit pro_methods_classnum_1_1dimval__base"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval__base.html#a053c1a8f9a6a7ea593072151318f3653">dimval_base</a> (double vv)</td></tr>
 <tr class="memdesc:a053c1a8f9a6a7ea593072151318f3653 inherit pro_methods_classnum_1_1dimval__base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct from double that is known to contain value in MKS.  <a href="classnum_1_1dimval__base.html#a053c1a8f9a6a7ea593072151318f3653">More...</a><br /></td></tr>
 <tr class="separator:a053c1a8f9a6a7ea593072151318f3653 inherit pro_methods_classnum_1_1dimval__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92b22d0eb6b53fdce4cc71ba6d520f76 inherit pro_methods_classnum_1_1dimval__base"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval__base.html#a92b22d0eb6b53fdce4cc71ba6d520f76">dimval_base</a> (<a class="el" href="classnum_1_1dimval__base.html">dimval_base</a>&lt; ODER &gt; const &amp;dvb)</td></tr>
+<tr class="memdesc:a92b22d0eb6b53fdce4cc71ba6d520f76 inherit pro_methods_classnum_1_1dimval__base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy from another base object.  <a href="classnum_1_1dimval__base.html#a92b22d0eb6b53fdce4cc71ba6d520f76">More...</a><br /></td></tr>
+<tr class="separator:a92b22d0eb6b53fdce4cc71ba6d520f76 inherit pro_methods_classnum_1_1dimval__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d9f93da5e47cae94734fe3665324d83 inherit pro_methods_classnum_1_1dimval__base"><td class="memItemLeft" align="right" valign="top"><a id="a5d9f93da5e47cae94734fe3665324d83"></a>
 <a class="el" href="classnum_1_1dyndim.html">dyndim</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval__base.html#a5d9f93da5e47cae94734fe3665324d83">d</a> ()</td></tr>
 <tr class="memdesc:a5d9f93da5e47cae94734fe3665324d83 inherit pro_methods_classnum_1_1dimval__base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return reference to present instance as instance of DER. <br /></td></tr>
@@ -292,7 +300,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 <div class="textblock"><p>Model of a dynamically dimensioned value. </p>
 <p>For a statically dimensioned value, see dimval. </p>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00476">476</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00489">489</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ac0e68d6e1b2bfee7faca215d1f158498"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac0e68d6e1b2bfee7faca215d1f158498">&sect;&nbsp;</a></span>operator double()</h2>
@@ -319,7 +327,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 
 <p>Automatically convert to double, but throw exception if not dimensionless. </p>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00713">713</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00727">727</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
