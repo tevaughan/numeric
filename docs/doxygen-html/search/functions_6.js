@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['hertz',['hertz',['../structnum_1_1hertz.html#a48446ca5904829027d0e9450f00d5ae1',1,'num::hertz::hertz(double v)'],['../structnum_1_1hertz.html#afe448746a9bef053933682f84bea0ac8',1,'num::hertz::hertz(hertz const &amp;dv)=default']]],
-  ['hours',['hours',['../structnum_1_1hours.html#a4d84be70252e06f8e7085ae85f218507',1,'num::hours::hours(double v)'],['../structnum_1_1hours.html#a05f4c88885a490d57b9deb59f741d581',1,'num::hours::hours(hours const &amp;dv)=default']]]
+  ['gees',['gees',['../structnum_1_1gees.html#a0b82f9f84a67490b871f8b29d1c75a2a',1,'num::gees::gees(double v)'],['../structnum_1_1gees.html#a7c6fbdcc5b1873597aa5d465d742658d',1,'num::gees::gees(gees const &amp;dv)=default']]],
+  ['gigahertz',['gigahertz',['../structnum_1_1gigahertz.html#ac76411cab38322da9d32ab28cb8069ba',1,'num::gigahertz::gigahertz(double v)'],['../structnum_1_1gigahertz.html#a6945b223df28a7786025f8592e1d850e',1,'num::gigahertz::gigahertz(gigahertz const &amp;dv)=default']]],
+  ['grams',['grams',['../structnum_1_1grams.html#a0d162bbc8782944850f86f22763af5a9',1,'num::grams::grams(double v)'],['../structnum_1_1grams.html#a434d97c34c0a0a8d395ca85f58c387a4',1,'num::grams::grams(grams const &amp;dv)=default']]]
 ];

@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['rk_5fquad',['rk_quad',['../classnum_1_1rk__quad.html#aef7932e97f89db6b02f8459afef0a429',1,'num::rk_quad::rk_quad(std::function&lt; DYDX(X)&gt; f, X1 x1, X2 x2, double t=1.0E-06, int n=16, bool s_dydx=false, bool s_y=false)'],['../classnum_1_1rk__quad.html#ac9aecf3f8d6bd56cbcf0efd4f7ae9130',1,'num::rk_quad::rk_quad(DYDX(*f)(X), X1 x1, X2 x2, double t=1.0E-06, int n=16, bool s_dydx=false, bool s_y=false)']]],
-  ['root',['root',['../classnum_1_1dimval.html#aba6c406d93dcf4c55d731e2eb1899c7d',1,'num::dimval']]]
+  ['points',['points',['../classnum_1_1interpolant.html#afa0160fbb2170686b820cb54a1885c3b',1,'num::interpolant']]],
+  ['pounds_5ff',['pounds_f',['../structnum_1_1pounds__f.html#afe81091287a5e49f480947188de2bd1b',1,'num::pounds_f::pounds_f(double v)'],['../structnum_1_1pounds__f.html#a0083b01fed06d25ccb1a535b0f0aa70e',1,'num::pounds_f::pounds_f(pounds_f const &amp;dv)=default']]],
+  ['pounds_5fm',['pounds_m',['../structnum_1_1pounds__m.html#af1a6773127d62a3e4df90e0f992cd857',1,'num::pounds_m::pounds_m(double v)'],['../structnum_1_1pounds__m.html#a74899af229bb178d9cd4450d7b9710e7',1,'num::pounds_m::pounds_m(pounds_m const &amp;dv)=default']]],
+  ['pow',['pow',['../classnum_1_1dimval.html#a7d7f14ea1f6789abd8ef6e0b8ad19e3d',1,'num::dimval::pow()'],['../namespacenum.html#a6f6456e0ae63a88c3c8726bb480de131',1,'num::pow()']]]
 ];

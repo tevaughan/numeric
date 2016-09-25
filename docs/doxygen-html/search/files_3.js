@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['template_2ehpp',['template.hpp',['../template_8hpp.html',1,'']]]
+  ['sparse_2dtable_2ehpp',['sparse-table.hpp',['../sparse-table_8hpp.html',1,'']]]
 ];

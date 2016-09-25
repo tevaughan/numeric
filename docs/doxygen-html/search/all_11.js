@@ -1,6 +1,7 @@
 var searchData=
 [
   ['s',['s',['../units_8hpp.html#ab137b17f15cca1e4148fece0e5fdb2a7',1,'num::u']]],
+  ['same_5fdim',['same_dim',['../classnum_1_1dimval.html#afa8a58ffc867dd8d878ee84984c592d8',1,'num::dimval']]],
   ['seconds',['seconds',['../structnum_1_1seconds.html',1,'num']]],
   ['seconds',['seconds',['../structnum_1_1seconds.html#af9f33346eac4a6f251ff71819c1c3c83',1,'num::seconds::seconds(double v)'],['../structnum_1_1seconds.html#abea4b439e4e89b434646d8c24d9d940e',1,'num::seconds::seconds(seconds const &amp;dv)=default']]],
   ['sparse_2dtable_2ehpp',['sparse-table.hpp',['../sparse-table_8hpp.html',1,'']]],

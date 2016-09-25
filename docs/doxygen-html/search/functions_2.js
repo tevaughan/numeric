@@ -1,11 +1,6 @@
 var searchData=
 [
-  ['da',['da',['../classnum_1_1dense__table.html#a9139b3ad7fec1fd27a4121dba3236e69',1,'num::dense_table']]],
-  ['dat',['dat',['../classnum_1_1sparse__table.html#a067602cef248d47a39e2e63582f11543',1,'num::sparse_table']]],
-  ['days',['days',['../structnum_1_1days.html#a79469f122c75cd5491284fb339d21245',1,'num::days::days(double v)'],['../structnum_1_1days.html#a6853d474797d6095053f1ce20bece1d9',1,'num::days::days(days const &amp;dv)=default']]],
-  ['def_5fint',['def_int',['../classnum_1_1rk__quad.html#a2202b8a5252d6eb0b3a25f46ad4ba9f1',1,'num::rk_quad']]],
-  ['degs',['degs',['../namespacenum.html#ab4d61e21b91a58e39e323d4ab9fa6d71',1,'num']]],
-  ['dense_5ftable',['dense_table',['../classnum_1_1dense__table.html#ae27e8ea2389907b2550d9c864e8ec106',1,'num::dense_table']]],
-  ['dimval',['dimval',['../classnum_1_1dimval.html#a8057ceee0b6370a0468cf50721442fc9',1,'num::dimval::dimval(double vv)'],['../classnum_1_1dimval.html#a32c5333933d94d9b6c9125b4aa9a5841',1,'num::dimval::dimval()']]],
-  ['dynes',['dynes',['../structnum_1_1dynes.html#af72f14ada39dffdfe9e001a4077c364f',1,'num::dynes::dynes(double v)'],['../structnum_1_1dynes.html#a5f635c0251692a635a591e77b20e067e',1,'num::dynes::dynes(dynes const &amp;dv)=default']]]
+  ['centimeters',['centimeters',['../structnum_1_1centimeters.html#ad273efea0b4510169a7969bbbd9f2ff6',1,'num::centimeters::centimeters(double v)'],['../structnum_1_1centimeters.html#a551bc9050f2b2b47bcea40d3e5704211',1,'num::centimeters::centimeters(centimeters const &amp;dv)=default']]],
+  ['compare',['compare',['../structnum_1_1subinterval__stack.html#a2fc2586bdaf3b7af855349669ed1330a',1,'num::subinterval_stack']]],
+  ['coulombs',['coulombs',['../structnum_1_1coulombs.html#aba1d6e7efd12e9dda50ed78212e08099',1,'num::coulombs::coulombs(double v)'],['../structnum_1_1coulombs.html#ae967fc0a94b18bdca8ba041146e7c105',1,'num::coulombs::coulombs(coulombs const &amp;dv)=default']]]
 ];

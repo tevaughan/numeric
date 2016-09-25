@@ -27,7 +27,7 @@
 
 namespace num
 {
-   template <int TI, int D, int M, int C, int TE>
+   template <char TI, char D, char M, char C, char TE>
    class dimval;
 
    /// Point used as one of the constraints of a linear interpolant.
@@ -517,7 +517,7 @@ namespace num
 
       /// Modify every y-value by scalar multiplication.
       /// \return  Reference to present instance.
-      interpolant& operator*=(double s /**< Scale factor. */)
+      interpolant &operator*=(double s /**< Scale factor. */)
       {
          for (unsigned i = 0; i < d_.size(); ++i) {
             d_[i].second *= s;
@@ -527,7 +527,7 @@ namespace num
 
       /// Modify every y-value by scalar division.
       /// \return  Reference to present instance.
-      interpolant& operator/=(double s /**< Inverse scale factor. */)
+      interpolant &operator/=(double s /**< Inverse scale factor. */)
       {
          for (unsigned i = 0; i < d_.size(); ++i) {
             d_[i].second /= s;
@@ -568,7 +568,7 @@ namespace num
       ///
       /// \param  s  Scale factor for y-values.
       /// \return    Scaled interpolant.
-      template <int TI, int ID, int M, int C, int TE>
+      template <char TI, char ID, char M, char C, char TE>
       auto operator*(dimval<TI, ID, M, C, TE> s) const
             -> interpolant<I, decltype(D() * s)>
       {
@@ -587,7 +587,7 @@ namespace num
       /// \param  s  Scale factor for y-values.
       /// \param  i  Interpolant to scale.
       /// \return    Scaled interpolant.
-      template <int TI, int ID, int M, int C, int TE>
+      template <char TI, char ID, char M, char C, char TE>
       friend auto operator*(dimval<TI, ID, M, C, TE> s, interpolant const &i)
             -> interpolant<I, decltype(D() * s)>
       {
