@@ -199,7 +199,10 @@ namespace num
       /// case the descendant has extra stuff of its own to copy. So copy
       /// constructor is protected.
       template <typename ODER>
-      dimval_base(dimval_base<ODER> const &dvb) : v_(dvb.v_) {}
+      dimval_base(dimval_base<ODER> const &dvb)
+         : v_(dvb.v_)
+      {
+      }
 
       /// Return reference to present instance as instance of DER.
       DER &d() { return *static_cast<DER *>(this); }
@@ -278,6 +281,32 @@ namespace num
    dimval<TI, D, M, C, TE> &operator-=(dimval<TI, D, M, C, TE> &dv,
                                        dyndim const &dd);
 
+   template <char TI, char D, char M, char C, char TE>
+   bool operator==(dimval<TI, D, M, C, TE> dv, dyndim const &dd);
+
+   template <char TI, char D, char M, char C, char TE>
+   bool operator!=(dimval<TI, D, M, C, TE> dv, dyndim const &dd);
+
+   template <char TI, char D, char M, char C, char TE>
+   bool operator<(dimval<TI, D, M, C, TE> dv, dyndim const &dd);
+
+   template <char TI, char D, char M, char C, char TE>
+   bool operator<=(dimval<TI, D, M, C, TE> dv, dyndim const &dd);
+
+   template <char TI, char D, char M, char C, char TE>
+   bool operator>(dimval<TI, D, M, C, TE> dv, dyndim const &dd);
+
+   template <char TI, char D, char M, char C, char TE>
+   bool operator>=(dimval<TI, D, M, C, TE> dv, dyndim const &dd);
+
+   /// Multiply dimval and dyndim.
+   template <char TI, char D, char M, char C, char TE>
+   dyndim operator*(dimval<TI, D, M, C, TE> dv, dyndim const &dd);
+
+   /// Divide dimval by dyndim.
+   template <char TI, char D, char M, char C, char TE>
+   dyndim operator/(dimval<TI, D, M, C, TE> dv, dyndim const &dd);
+
    /// Model of a statically dimensioned value.  For a dynamically dimensioned
    /// value, see dyndim.
    ///
@@ -315,11 +344,26 @@ namespace num
       friend PRD<R, A> integral(func<R, A> f, A1 a, A2 b, double t,
                                 unsigned n);
 
-      /// Additive assignment.
       friend dimval &operator+=<TI, D, M, C, TE>(dimval &dv, dyndim const &dd);
 
-      /// Subtractive assignment.
       friend dimval &operator-=<TI, D, M, C, TE>(dimval &dv, dyndim const &dd);
+
+      friend bool operator==<TI, D, M, C, TE>(dimval dv, dyndim const &dd);
+
+      friend bool operator!=<TI, D, M, C, TE>(dimval dv, dyndim const &dd);
+
+      friend bool operator< //
+            <TI, D, M, C, TE>(dimval dv, dyndim const &dd);
+
+      friend bool operator<=<TI, D, M, C, TE>(dimval dv, dyndim const &dd);
+
+      friend bool operator><TI, D, M, C, TE>(dimval dv, dyndim const &dd);
+
+      friend bool operator>=<TI, D, M, C, TE>(dimval dv, dyndim const &dd);
+
+      friend dyndim operator*<TI, D, M, C, TE>(dimval dv, dyndim const &dd);
+
+      friend dyndim operator/<TI, D, M, C, TE>(dimval dv, dyndim const &dd);
 
       /// Dimensional exponents in a form useful for interaction with dyndim.
       static dim_exps const exps_;
@@ -496,6 +540,24 @@ namespace num
       friend dimval<TI, D, M, C, TE> &operator-=(dimval<TI, D, M, C, TE> &,
                                                  dyndim const &dd);
 
+      template <char TI, char D, char M, char C, char TE>
+      friend bool operator==(dimval<TI, D, M, C, TE> dv, dyndim const &dd);
+
+      template <char TI, char D, char M, char C, char TE>
+      friend bool operator!=(dimval<TI, D, M, C, TE> dv, dyndim const &dd);
+
+      template <char TI, char D, char M, char C, char TE>
+      friend bool operator<(dimval<TI, D, M, C, TE> dv, dyndim const &dd);
+
+      template <char TI, char D, char M, char C, char TE>
+      friend bool operator<=(dimval<TI, D, M, C, TE> dv, dyndim const &dd);
+
+      template <char TI, char D, char M, char C, char TE>
+      friend bool operator>(dimval<TI, D, M, C, TE> dv, dyndim const &dd);
+
+      template <char TI, char D, char M, char C, char TE>
+      friend bool operator>=(dimval<TI, D, M, C, TE> dv, dyndim const &dd);
+
       using PT = dimval_base<dyndim>; ///< Type of parent.
       using PT::PT;                   ///< Inherit constructor.
       dim_exps exps_;                 ///< Storage for dimensional exponents.
@@ -540,6 +602,13 @@ namespace num
          return dyndim(v_ * dvb.v_, exps_ + dvb.exps());
       }
 
+      /// Multiply dimval and dyndim.
+      template <char TI, char D, char M, char C, char TE>
+      friend dyndim operator*(dimval<TI, D, M, C, TE> dv, dyndim const &dd)
+      {
+         return dyndim(dv.v_ * dd.v_, dv.exps_ + dd.exps_);
+      }
+
       /// Division by number.
       dyndim operator/(double s) const { return dyndim(v_ / s, exps_); }
 
@@ -554,6 +623,13 @@ namespace num
       friend dyndim operator/(double s, dyndim const &dv)
       {
          return dyndim(s / dv.v_, dv.exps_.neg());
+      }
+
+      /// Divide dimval by dyndim.
+      template <char TI, char D, char M, char C, char TE>
+      friend dyndim operator/(dimval<TI, D, M, C, TE> dv, dyndim const &dd)
+      {
+         return dyndim(dv.v_ / dd.v_, dv.exps_ - dd.exps_);
       }
 
       /// Add dimensioned values.
@@ -722,33 +798,98 @@ namespace num
          return dyndim(fabs(dv.v_), dv.exps_);
       }
 
-      /// Automatically convert to double, but throw exception if not
-      /// dimensionless.
-      operator double() const
+      /// Convert to double, but throw exception if not dimensionless.
+      double number() const
       {
          if (exps_.n() != 0) {
-            throw "dyndim converts to double only if dimensionless";
+            throw "dyndim converts to number only if dimensionless.";
          }
          return v_;
       }
    };
 
-   // Additive assignment.
+   /// Additive assignment of dyndim to dimval.
    template <char TI, char D, char M, char C, char TE>
    dimval<TI, D, M, C, TE> &operator+=(dimval<TI, D, M, C, TE> &dv,
                                        dyndim const &dd)
    {
+      if (dv.exps_ != dd.exps_) {
+         throw "Dimensions must be same for addition.";
+      }
       dv.v_ += dd.v_;
       return dv;
    }
 
-   // Subtractive assignment.
+   /// Subtractive assignment of dyndim from dimval.
    template <char TI, char D, char M, char C, char TE>
    dimval<TI, D, M, C, TE> &operator-=(dimval<TI, D, M, C, TE> &dv,
                                        dyndim const &dd)
    {
+      if (dv.exps_ != dd.exps_) {
+         throw "Dimensions must be same for subtraction.";
+      }
       dv.v_ -= dd.v_;
       return dv;
+   }
+
+   /// Return true only if dimval be equal to dyndim.
+   template <char TI, char D, char M, char C, char TE>
+   bool operator==(dimval<TI, D, M, C, TE> dv, dyndim const &dd)
+   {
+      if (dv.exps_ != dd.exps_) {
+         throw "Dimensions must be same for comparison.";
+      }
+      return dv.v_ == dd.v_;
+   }
+
+   /// Return true only if dimval be unequal to dyndim.
+   template <char TI, char D, char M, char C, char TE>
+   bool operator!=(dimval<TI, D, M, C, TE> dv, dyndim const &dd)
+   {
+      if (dv.exps_ != dd.exps_) {
+         throw "Dimensions must be same for comparison.";
+      }
+      return dv.v_ != dd.v_;
+   }
+
+   /// Return true only if dimval be less than dyndim.
+   template <char TI, char D, char M, char C, char TE>
+   bool operator<(dimval<TI, D, M, C, TE> dv, dyndim const &dd)
+   {
+      if (dv.exps_ != dd.exps_) {
+         throw "Dimensions must be same for comparison.";
+      }
+      return dv.v_ < dd.v_;
+   }
+
+   /// Return true only if dimval be less than or equal to dyndim.
+   template <char TI, char D, char M, char C, char TE>
+   bool operator<=(dimval<TI, D, M, C, TE> dv, dyndim const &dd)
+   {
+      if (dv.exps_ != dd.exps_) {
+         throw "Dimensions must be same for comparison.";
+      }
+      return dv.v_ <= dd.v_;
+   }
+
+   /// Return true only if dimval be greater than dyndim.
+   template <char TI, char D, char M, char C, char TE>
+   bool operator>(dimval<TI, D, M, C, TE> dv, dyndim const &dd)
+   {
+      if (dv.exps_ != dd.exps_) {
+         throw "Dimensions must be same for comparison.";
+      }
+      return dv.v_ > dd.v_;
+   }
+
+   /// Return true only if dimval be greater than or equal to dyndim.
+   template <char TI, char D, char M, char C, char TE>
+   bool operator>=(dimval<TI, D, M, C, TE> dv, dyndim const &dd)
+   {
+      if (dv.exps_ != dd.exps_) {
+         throw "Dimensions must be same for comparison.";
+      }
+      return dv.v_ >= dd.v_;
    }
 }
 

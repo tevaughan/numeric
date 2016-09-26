@@ -14,5 +14,6 @@ var searchData=
   ['ng',['ng',['../units_8hpp.html#aeee65afe50c41173993fba7e335e137d',1,'num::u']]],
   ['nm',['nm',['../units_8hpp.html#a454bd380076606597ace0c7e0d726801',1,'num::u']]],
   ['ns',['ns',['../units_8hpp.html#a27a966b74f5b0852e8beef71ec3efc32',1,'num::u']]],
-  ['num',['num',['../namespacenum.html',1,'']]]
+  ['num',['num',['../namespacenum.html',1,'']]],
+  ['number',['number',['../classnum_1_1dyndim.html#a92c0b20ff23bda77898d952fc002a365',1,'num::dyndim']]]
 ];

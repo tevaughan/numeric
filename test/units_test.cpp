@@ -78,28 +78,48 @@ TEST_CASE("Verify addition.", "[units]") { REQUIRE(m + km == 1001 * m); }
 
 TEST_CASE("Verify subtraction.", "[units]")
 {
-   REQUIRE(10 * K - 1 * K == 9 * K);
+   REQUIRE(10 * K - 1 * K == 9 * K); // dimval - dimval
+   dyndim const x = 10 * K;
+   dyndim const y = 1 * K;
+   REQUIRE(x - y == 9 * K);      // dyndim - dyndim
+   REQUIRE(10 * K - x == 0 * K); // dimval - dyndim
+   REQUIRE(y - 1 * K == 0 * K);  // dyndim - dimval
 }
 
 TEST_CASE("Verify additive assignment.", "[units]")
 {
    speed v1 = 2 * m / s;
    speed const v2 = 3 * m / s;
-   REQUIRE((v1 += v2) == 5 * m / s);
+   REQUIRE((v1 += v2) == 5 * m / s); // dimval += dimval
+   dyndim v3 = v1;
+   dyndim const v4 = v2;
+   REQUIRE((v1 += v4) == 8 * m / s);  // dimval += dyndim
+   REQUIRE((v3 += v2) == 8 * m / s);  // dyndim += dimval
+   REQUIRE((v3 += v4) == 11 * m / s); // dyndim += dyndim
 }
 
 TEST_CASE("Verify subtractive assignment.", "[units]")
 {
    charge q1 = 3 * C;
    charge const q2 = 1 * C;
-   REQUIRE((q1 -= q2) == 2 * C);
+   REQUIRE((q1 -= q2) == 2 * C); // dimval -= dimval
+   dyndim q3 = q1;
+   dyndim const q4 = q2;
+   REQUIRE((q1 -= q4) == 1 * C); // dimval -= dyndim
+   REQUIRE((q3 -= q2) == 1 * C); // dyndim -= dimval
+   REQUIRE((q3 -= q4) == 0 * C); // dyndim -= dyndim
 }
 
 TEST_CASE("Verify multiplication of dimvals.", "[units]")
 {
-   force const f = 10 * N;
-   length const x = 10 * m;
-   REQUIRE(f * x == 100 * J);
+   force const f1 = 10 * N;
+   dyndim const f2 = 10 * N;
+   length const x1 = 10 * m;
+   dyndim const x2 = 10 * m;
+   REQUIRE(f1 * x1 == 100 * J);
+   REQUIRE(f1 * x2 == 100 * J);
+   REQUIRE(f2 * x1 == 100 * J);
+   REQUIRE(f2 * x2 == 100 * J);
 }
 
 TEST_CASE("Verify multiplication of dimval by number on right.", "[units]")

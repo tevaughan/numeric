@@ -201,9 +201,10 @@ template&lt;int R&gt; </td></tr>
 <a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#ac52e27a89b0f584c9f389d31237f6116">sqrt</a> () const</td></tr>
 <tr class="memdesc:ac52e27a89b0f584c9f389d31237f6116"><td class="mdescLeft">&#160;</td><td class="mdescRight">Square root. <br /></td></tr>
 <tr class="separator:ac52e27a89b0f584c9f389d31237f6116"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0e68d6e1b2bfee7faca215d1f158498"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#ac0e68d6e1b2bfee7faca215d1f158498">operator double</a> () const</td></tr>
-<tr class="memdesc:ac0e68d6e1b2bfee7faca215d1f158498"><td class="mdescLeft">&#160;</td><td class="mdescRight">Automatically convert to double, but throw exception if not dimensionless.  <a href="#ac0e68d6e1b2bfee7faca215d1f158498">More...</a><br /></td></tr>
-<tr class="separator:ac0e68d6e1b2bfee7faca215d1f158498"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92c0b20ff23bda77898d952fc002a365"><td class="memItemLeft" align="right" valign="top"><a id="a92c0b20ff23bda77898d952fc002a365"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a92c0b20ff23bda77898d952fc002a365">number</a> () const</td></tr>
+<tr class="memdesc:a92c0b20ff23bda77898d952fc002a365"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert to double, but throw exception if not dimensionless. <br /></td></tr>
+<tr class="separator:a92c0b20ff23bda77898d952fc002a365"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classnum_1_1dimval__base"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classnum_1_1dimval__base')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classnum_1_1dimval__base.html">num::dimval_base&lt; dyndim &gt;</a></td></tr>
 <tr class="memitem:a4b89ced092f76fd367e11bc7de99f061 inherit pub_methods_classnum_1_1dimval__base"><td class="memItemLeft" align="right" valign="top"><a id="a4b89ced092f76fd367e11bc7de99f061"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval__base.html#a4b89ced092f76fd367e11bc7de99f061">dimval_base</a> ()</td></tr>
@@ -226,12 +227,44 @@ template&lt;int R&gt; </td></tr>
 Friends</h2></td></tr>
 <tr class="memitem:a4a8c3e23c57617f9f3ce1bfecc61dcf8"><td class="memTemplParams" colspan="2"><a id="a4a8c3e23c57617f9f3ce1bfecc61dcf8"></a>
 template&lt;char TI, char D, char M, char C, char TE&gt; </td></tr>
-<tr class="memitem:a4a8c3e23c57617f9f3ce1bfecc61dcf8"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, D, M, C, TE &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator+=</b> (<a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, D, M, C, TE &gt; &amp;, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> const &amp;dd)</td></tr>
+<tr class="memitem:a4a8c3e23c57617f9f3ce1bfecc61dcf8"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, D, M, C, TE &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a4a8c3e23c57617f9f3ce1bfecc61dcf8">operator+=</a> (<a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, D, M, C, TE &gt; &amp;, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> const &amp;dd)</td></tr>
+<tr class="memdesc:a4a8c3e23c57617f9f3ce1bfecc61dcf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Additive assignment of dyndim to dimval. <br /></td></tr>
 <tr class="separator:a4a8c3e23c57617f9f3ce1bfecc61dcf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ec914b2a2b97c020d6d72edb58e50e4"><td class="memTemplParams" colspan="2"><a id="a8ec914b2a2b97c020d6d72edb58e50e4"></a>
 template&lt;char TI, char D, char M, char C, char TE&gt; </td></tr>
-<tr class="memitem:a8ec914b2a2b97c020d6d72edb58e50e4"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, D, M, C, TE &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator-=</b> (<a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, D, M, C, TE &gt; &amp;, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> const &amp;dd)</td></tr>
+<tr class="memitem:a8ec914b2a2b97c020d6d72edb58e50e4"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, D, M, C, TE &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a8ec914b2a2b97c020d6d72edb58e50e4">operator-=</a> (<a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, D, M, C, TE &gt; &amp;, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> const &amp;dd)</td></tr>
+<tr class="memdesc:a8ec914b2a2b97c020d6d72edb58e50e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subtractive assignment of dyndim from dimval. <br /></td></tr>
 <tr class="separator:a8ec914b2a2b97c020d6d72edb58e50e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48e52f186cd929b1995e81e72b9decb0"><td class="memTemplParams" colspan="2"><a id="a48e52f186cd929b1995e81e72b9decb0"></a>
+template&lt;char TI, char D, char M, char C, char TE&gt; </td></tr>
+<tr class="memitem:a48e52f186cd929b1995e81e72b9decb0"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a48e52f186cd929b1995e81e72b9decb0">operator==</a> (<a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, D, M, C, TE &gt; dv, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> const &amp;dd)</td></tr>
+<tr class="memdesc:a48e52f186cd929b1995e81e72b9decb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true only if dimval be equal to dyndim. <br /></td></tr>
+<tr class="separator:a48e52f186cd929b1995e81e72b9decb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e2ec630d0fa02f2b5763eaa19ffdaa0"><td class="memTemplParams" colspan="2"><a id="a0e2ec630d0fa02f2b5763eaa19ffdaa0"></a>
+template&lt;char TI, char D, char M, char C, char TE&gt; </td></tr>
+<tr class="memitem:a0e2ec630d0fa02f2b5763eaa19ffdaa0"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a0e2ec630d0fa02f2b5763eaa19ffdaa0">operator!=</a> (<a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, D, M, C, TE &gt; dv, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> const &amp;dd)</td></tr>
+<tr class="memdesc:a0e2ec630d0fa02f2b5763eaa19ffdaa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true only if dimval be unequal to dyndim. <br /></td></tr>
+<tr class="separator:a0e2ec630d0fa02f2b5763eaa19ffdaa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1f73e74c5c6c1740df0a0093ad3f646"><td class="memTemplParams" colspan="2"><a id="ac1f73e74c5c6c1740df0a0093ad3f646"></a>
+template&lt;char TI, char D, char M, char C, char TE&gt; </td></tr>
+<tr class="memitem:ac1f73e74c5c6c1740df0a0093ad3f646"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#ac1f73e74c5c6c1740df0a0093ad3f646">operator&lt;</a> (<a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, D, M, C, TE &gt; dv, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> const &amp;dd)</td></tr>
+<tr class="memdesc:ac1f73e74c5c6c1740df0a0093ad3f646"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true only if dimval be less than dyndim. <br /></td></tr>
+<tr class="separator:ac1f73e74c5c6c1740df0a0093ad3f646"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d8dadf68db9b7ccc8aef18a13eb5ba1"><td class="memTemplParams" colspan="2"><a id="a4d8dadf68db9b7ccc8aef18a13eb5ba1"></a>
+template&lt;char TI, char D, char M, char C, char TE&gt; </td></tr>
+<tr class="memitem:a4d8dadf68db9b7ccc8aef18a13eb5ba1"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a4d8dadf68db9b7ccc8aef18a13eb5ba1">operator&lt;=</a> (<a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, D, M, C, TE &gt; dv, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> const &amp;dd)</td></tr>
+<tr class="memdesc:a4d8dadf68db9b7ccc8aef18a13eb5ba1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true only if dimval be less than or equal to dyndim. <br /></td></tr>
+<tr class="separator:a4d8dadf68db9b7ccc8aef18a13eb5ba1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addb26397f3edc07d40f00f22663fa47d"><td class="memTemplParams" colspan="2"><a id="addb26397f3edc07d40f00f22663fa47d"></a>
+template&lt;char TI, char D, char M, char C, char TE&gt; </td></tr>
+<tr class="memitem:addb26397f3edc07d40f00f22663fa47d"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#addb26397f3edc07d40f00f22663fa47d">operator&gt;</a> (<a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, D, M, C, TE &gt; dv, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> const &amp;dd)</td></tr>
+<tr class="memdesc:addb26397f3edc07d40f00f22663fa47d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true only if dimval be greater than dyndim. <br /></td></tr>
+<tr class="separator:addb26397f3edc07d40f00f22663fa47d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a685e779e4c554e9188bfa88a6356aa38"><td class="memTemplParams" colspan="2"><a id="a685e779e4c554e9188bfa88a6356aa38"></a>
+template&lt;char TI, char D, char M, char C, char TE&gt; </td></tr>
+<tr class="memitem:a685e779e4c554e9188bfa88a6356aa38"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a685e779e4c554e9188bfa88a6356aa38">operator&gt;=</a> (<a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, D, M, C, TE &gt; dv, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> const &amp;dd)</td></tr>
+<tr class="memdesc:a685e779e4c554e9188bfa88a6356aa38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true only if dimval be greater than or equal to dyndim. <br /></td></tr>
+<tr class="separator:a685e779e4c554e9188bfa88a6356aa38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36a2c2c6ae117e84b5b8b7058d3ea8a4"><td class="memItemLeft" align="right" valign="top"><a id="a36a2c2c6ae117e84b5b8b7058d3ea8a4"></a>
 <a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a36a2c2c6ae117e84b5b8b7058d3ea8a4">operator-</a> (<a class="el" href="classnum_1_1dyndim.html">dyndim</a> const &amp;dv)</td></tr>
 <tr class="memdesc:a36a2c2c6ae117e84b5b8b7058d3ea8a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unary negation. <br /></td></tr>
@@ -240,10 +273,20 @@ template&lt;char TI, char D, char M, char C, char TE&gt; </td></tr>
 <a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a0150ae153e95138558905727a1812227">operator*</a> (double s, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> dv)</td></tr>
 <tr class="memdesc:a0150ae153e95138558905727a1812227"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplication of dimval by number on left side. <br /></td></tr>
 <tr class="separator:a0150ae153e95138558905727a1812227"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe53ad49d5ebd13e2b94882dc55fce77"><td class="memTemplParams" colspan="2"><a id="abe53ad49d5ebd13e2b94882dc55fce77"></a>
+template&lt;char TI, char D, char M, char C, char TE&gt; </td></tr>
+<tr class="memitem:abe53ad49d5ebd13e2b94882dc55fce77"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#abe53ad49d5ebd13e2b94882dc55fce77">operator*</a> (<a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, D, M, C, TE &gt; dv, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> const &amp;dd)</td></tr>
+<tr class="memdesc:abe53ad49d5ebd13e2b94882dc55fce77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply dimval and dyndim. <br /></td></tr>
+<tr class="separator:abe53ad49d5ebd13e2b94882dc55fce77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac9354be7fce86ab40ad3e94f67bd0d7e"><td class="memItemLeft" align="right" valign="top"><a id="ac9354be7fce86ab40ad3e94f67bd0d7e"></a>
 <a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#ac9354be7fce86ab40ad3e94f67bd0d7e">operator/</a> (double s, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> const &amp;dv)</td></tr>
 <tr class="memdesc:ac9354be7fce86ab40ad3e94f67bd0d7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divide number by dimensioned value. <br /></td></tr>
 <tr class="separator:ac9354be7fce86ab40ad3e94f67bd0d7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1b0dfca307486e13e515a445e3e08ab"><td class="memTemplParams" colspan="2"><a id="ad1b0dfca307486e13e515a445e3e08ab"></a>
+template&lt;char TI, char D, char M, char C, char TE&gt; </td></tr>
+<tr class="memitem:ad1b0dfca307486e13e515a445e3e08ab"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#ad1b0dfca307486e13e515a445e3e08ab">operator/</a> (<a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; TI, D, M, C, TE &gt; dv, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> const &amp;dd)</td></tr>
+<tr class="memdesc:ad1b0dfca307486e13e515a445e3e08ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divide dimval by dyndim. <br /></td></tr>
+<tr class="separator:ad1b0dfca307486e13e515a445e3e08ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a363749ff0306777096ceb376d186d467"><td class="memTemplParams" colspan="2"><a id="a363749ff0306777096ceb376d186d467"></a>
 template&lt;int P&gt; </td></tr>
 <tr class="memitem:a363749ff0306777096ceb376d186d467"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a363749ff0306777096ceb376d186d467">pow</a> (<a class="el" href="classnum_1_1dyndim.html">dyndim</a> const &amp;dv)</td></tr>
@@ -300,46 +343,8 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 <div class="textblock"><p>Model of a dynamically dimensioned value. </p>
 <p>For a statically dimensioned value, see dimval. </p>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00489">489</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="ac0e68d6e1b2bfee7faca215d1f158498"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0e68d6e1b2bfee7faca215d1f158498">&sect;&nbsp;</a></span>operator double()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">num::dyndim::operator double </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Automatically convert to double, but throw exception if not dimensionless. </p>
-
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00727">727</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classnum_1_1dyndim_ac0e68d6e1b2bfee7faca215d1f158498_cgraph.png" border="0" usemap="#classnum_1_1dyndim_ac0e68d6e1b2bfee7faca215d1f158498_cgraph" alt=""/></div>
-<map name="classnum_1_1dyndim_ac0e68d6e1b2bfee7faca215d1f158498_cgraph" id="classnum_1_1dyndim_ac0e68d6e1b2bfee7faca215d1f158498_cgraph">
-<area shape="rect" id="node2" href="classnum_1_1dim__exps.html#a015f68a74e95933f673c80ff9a3f4c38" title="Reference to immutable number representing all exponents. " alt="" coords="205,13,332,39"/>
-</map>
-</div>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00533">533</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="dimval_8hpp_source.html">dimval.hpp</a></li>
 </ul>
 </div><!-- contents -->
