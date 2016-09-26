@@ -82,7 +82,8 @@ $(function() {
 
 <p>Source code for conversions dealing with angle, for <a class="el" href="classnum_1_1dim__exps.html" title="Dimensional exponents. ">num::dim_exps</a>, for num::dimval_base, for <a class="el" href="classnum_1_1statdim.html" title="Model of a statically dimensioned value. ">num::statdim</a>, and for <a class="el" href="classnum_1_1dyndim.html" title="Model of a dynamically dimensioned value. ">num::dyndim</a>.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;cmath&gt;</code><br />
+<div class="textblock"><code>#include &lt;cassert&gt;</code><br />
+<code>#include &lt;cmath&gt;</code><br />
 <code>#include &lt;functional&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;utility&gt;</code><br />
@@ -92,7 +93,7 @@ Include dependency graph for dimval.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="dimval_8hpp__incl.png" border="0" usemap="#dimval_8hpp" alt=""/></div>
 <map name="dimval_8hpp" id="dimval_8hpp">
-<area shape="rect" id="node6" href="template_8hpp.html" title="Template&#45;related utilities. " alt="" coords="366,80,463,107"/>
+<area shape="rect" id="node7" href="template_8hpp.html" title="Template&#45;related utilities. " alt="" coords="456,80,553,107"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -125,6 +126,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html">num::dimval&lt; DER &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class for statdim and dyndim.  <a href="classnum_1_1dimval.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html">num::dimval&lt; DER &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class for statdim and dyndim.  <a href="classnum_1_1dimval.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1statdim.html">num::statdim&lt; TI, D, M, C, TE &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Model of a statically dimensioned value.  <a href="classnum_1_1statdim.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -149,6 +153,11 @@ Functions</h2></td></tr>
 <tr class="separator:a803a1dba91043a4b4125002cda9d9edb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4cdcf74be1a552f44695ec0280fae8f9"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a4cdcf74be1a552f44695ec0280fae8f9">num::arcsecs</a> (double n)</td></tr>
 <tr class="separator:a4cdcf74be1a552f44695ec0280fae8f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81004f6a9d79699e7bba20473a9bbbc1"><td class="memTemplParams" colspan="2"><a id="a81004f6a9d79699e7bba20473a9bbbc1"></a>
+template&lt;typename DER &gt; </td></tr>
+<tr class="memitem:a81004f6a9d79699e7bba20473a9bbbc1"><td class="memTemplItemLeft" align="right" valign="top">dyndim&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a81004f6a9d79699e7bba20473a9bbbc1">num::pow</a> (dimval&lt; DER &gt; const &amp;dv, int p)</td></tr>
+<tr class="memdesc:a81004f6a9d79699e7bba20473a9bbbc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integer power. <br /></td></tr>
+<tr class="separator:a81004f6a9d79699e7bba20473a9bbbc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e3cabc6112e1a10754f3b1d3a7ce728"><td class="memTemplParams" colspan="2"><a id="a7e3cabc6112e1a10754f3b1d3a7ce728"></a>
 template&lt;char TI, char D, char M, char C, char TE&gt; </td></tr>
 <tr class="memitem:a7e3cabc6112e1a10754f3b1d3a7ce728"><td class="memTemplItemLeft" align="right" valign="top">dyndim&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a7e3cabc6112e1a10754f3b1d3a7ce728">num::operator*</a> (statdim&lt; TI, D, M, C, TE &gt; dv, dyndim const &amp;dd)</td></tr>
@@ -167,6 +176,11 @@ template&lt;int R, char TI, char D, char M, char C, char TE&gt; </td></tr>
 template&lt;int R&gt; </td></tr>
 <tr class="memitem:a63d87487b7b484b75f5261586bc0025b"><td class="memTemplItemLeft" align="right" valign="top">dyndim&#160;</td><td class="memTemplItemRight" valign="bottom"><b>num::root</b> (dyndim const &amp;dv)</td></tr>
 <tr class="separator:a63d87487b7b484b75f5261586bc0025b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69785f06430375d6caf5fb41c0fbac45"><td class="memTemplParams" colspan="2"><a id="a69785f06430375d6caf5fb41c0fbac45"></a>
+template&lt;typename DER &gt; </td></tr>
+<tr class="memitem:a69785f06430375d6caf5fb41c0fbac45"><td class="memTemplItemLeft" align="right" valign="top">dyndim&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a69785f06430375d6caf5fb41c0fbac45">num::root</a> (dimval&lt; DER &gt; const &amp;dv, int r)</td></tr>
+<tr class="memdesc:a69785f06430375d6caf5fb41c0fbac45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integer root. <br /></td></tr>
+<tr class="separator:a69785f06430375d6caf5fb41c0fbac45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>

@@ -388,7 +388,7 @@ namespace num
       }
       subinterval_stack<A, R> s(n, a, b, f);
       using I = PRD<R, A>;
-      integral_stats<I> stats;
+      integral_stats<I> stats(0.0 * aa * f(aa));
       while (s.size()) {
          using interval = interval<A, R>;
          interval const r = *s.rbegin();
@@ -429,9 +429,8 @@ namespace num
       }
       I const farea = fabs(stats.area());
       I const sigma = stats.stdev(); // statistical error
-      I const nres = I(1.0) + farea; // normalized result
-      I const derr = nres * t;       // desired error
-      I const rerr = nres * eps;     // round-off error
+      I const derr = farea * t;      // desired error
+      I const rerr = farea * eps;    // round-off error
       I eerr; // greater of statistical and round-off error
       if (sigma < rerr) {
          eerr = rerr;
@@ -439,7 +438,7 @@ namespace num
          eerr = sigma;
       }
       if (eerr > derr) {
-         std::cerr << "integral: WARNING: Estimated error " << eerr / nres
+         std::cerr << "integral: WARNING: Estimated error " << eerr / farea
                    << " is greater than tolerance " << t << "." << std::endl;
       }
       return sign * stats.area();

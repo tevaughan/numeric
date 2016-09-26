@@ -12,6 +12,7 @@
 #ifndef NUMERIC_DIMVAL_HPP
 #define NUMERIC_DIMVAL_HPP
 
+#include <cassert>    // for assert()
 #include <cmath>      // for M_PI
 #include <functional> // for function
 #include <iostream>   // for ostream
@@ -63,6 +64,9 @@ namespace num
       };
 
    public:
+      /// By default, set all exponents to zero.
+      dim_exps() : n_(0) {}
+
       /// Initialize exponent for each dimension.
       dim_exps(char ti, ///< Exponent of time.
                char d,  ///< Exponent of distance.
@@ -175,6 +179,14 @@ namespace num
       dim_exps neg() const { return dim_exps(-TI(), -D(), -M(), -C(), -TE()); }
    };
 
+   class dyndim;
+
+   template <typename DER>
+   class dimval;
+
+   template <typename DER>
+   dyndim pow(dimval<DER> const &dv, int p);
+
    /// Base class for statdim and dyndim.
    ///
    /// \tparam DER  Type of descendant, either statdim or dyndim.  This is the
@@ -266,12 +278,18 @@ namespace num
          }
          return os << "]";
       }
+
+      /// Integer power.
+      template <typename ODER>
+      friend dyndim pow(dimval<ODER> const &dv, int p);
+
+      /// Integer root.
+      template <typename ODER>
+      friend dyndim root(dimval<ODER> const &dv, int r);
    };
 
    template <char TI, char D, char M, char C, char TE>
    class statdim;
-
-   class dyndim;
 
    /// Multiply statdim and dyndim.
    template <char TI, char D, char M, char C, char TE>
@@ -511,8 +529,31 @@ namespace num
       template <char TI, char D, char M, char C, char TE>
       friend class statdim;
 
+      /// Allow integral_stats to construct from known MKS quantity.
+      template <typename I>
+      friend class integral_stats;
+
+      /// Type of std::function that can be integrated.  A single-argument
+      /// function is required.
+      template <typename R, typename A>
+      using func = std::function<R(A)>;
+
+      /// Allow integral() to construct from known MKS quantity.
+      template <typename R, typename A, typename A1, typename A2>
+      friend PRD<R, A> integral(func<R, A> f, A1 a, A2 b, double t,
+                                unsigned n);
+
+      /// Integer power.
+      template <typename DER>
+      friend dyndim pow(dimval<DER> const &dv, int p);
+
+      /// Integer root.
+      template <typename DER>
+      friend dyndim root(dimval<DER> const &dv, int r);
+
       using PT = dimval<dyndim>; ///< Type of parent.
       using PT::PT;              ///< Inherit constructor.
+      using PT::v_;              ///< Inherit field.
       dim_exps exps_;            ///< Storage for dimensional exponents.
 
       /// Initialize numeric value and dimensional exponents.
@@ -524,6 +565,9 @@ namespace num
       }
 
    public:
+      /// By default, construct a dimensionless quantity of magnitude zero.
+      dyndim() = default;
+
       /// Initialize from either statdim or another dyndim.
       template <typename DER>
       dyndim(dimval<DER> const &dvb)
@@ -590,6 +634,7 @@ namespace num
       dyndim operator+(dimval<DER> const &dv) const
       {
          if (exps_ != dv.exps()) {
+            assert(0);
             throw "Addition requires same dimension.";
          }
          return dyndim(v_ + dv.v_, exps_);
@@ -610,6 +655,7 @@ namespace num
       dyndim &operator+=(dimval<DER> const &dv)
       {
          if (exps_ != dv.exps()) {
+            assert(0);
             throw "Addition requires same dimension.";
          }
          v_ += dv.v_;
@@ -621,6 +667,7 @@ namespace num
       dyndim &operator-=(dimval<DER> const &dv)
       {
          if (exps_ != dv.exps()) {
+            assert(0);
             throw "Subtraction requires same dimension.";
          }
          v_ -= dv.v_;
@@ -632,6 +679,7 @@ namespace num
       bool operator<(dimval<DER> const &dv) const
       {
          if (exps_ != dv.exps()) {
+            assert(0);
             throw "Comparison requires same dimension.";
          }
          return v_ < dv.v_;
@@ -642,6 +690,7 @@ namespace num
       bool operator>(dimval<DER> const &dv) const
       {
          if (exps_ != dv.exps()) {
+            assert(0);
             throw "Comparison requires same dimension.";
          }
          return v_ > dv.v_;
@@ -652,6 +701,7 @@ namespace num
       bool operator<=(dimval<DER> const &dv) const
       {
          if (exps_ != dv.exps()) {
+            assert(0);
             throw "Comparison requires same dimension.";
          }
          return v_ <= dv.v_;
@@ -662,6 +712,7 @@ namespace num
       bool operator>=(dimval<DER> const &dv) const
       {
          if (exps_ != dv.exps()) {
+            assert(0);
             throw "Comparison requires same dimension.";
          }
          return v_ >= dv.v_;
@@ -672,6 +723,7 @@ namespace num
       bool operator==(dimval<DER> const &dv) const
       {
          if (exps_ != dv.exps()) {
+            assert(0);
             throw "Comparison requires same dimension.";
          }
          return v_ == dv.v_;
@@ -682,6 +734,7 @@ namespace num
       bool operator!=(dimval<DER> const &dv) const
       {
          if (exps_ != dv.exps()) {
+            assert(0);
             throw "Comparison requires same dimension.";
          }
          return v_ != dv.v_;
@@ -702,13 +755,6 @@ namespace num
       friend dyndim pow(dyndim const &dv)
       {
          return dv.pow<P>();
-      }
-
-      /// Integer power.
-      template <typename DER>
-      friend dyndim pow(dimval<DER> const &dv, int p)
-      {
-         return dyndim(std::pow(dv.v_, p), dv.exps() * p);
       }
 
       /// Integer root.
@@ -732,13 +778,6 @@ namespace num
          return dv.root<R>();
       }
 
-      /// Integer root.
-      template <typename DER>
-      friend dyndim root(dimval<DER> const &dv, int r)
-      {
-         return dyndim(std::pow(dv.v_, 1.0 / r), dv.exps() / r);
-      }
-
       /// Square root.
       friend dyndim sqrt(dyndim const &dv) { return dv.root<2>(); }
 
@@ -760,6 +799,20 @@ namespace num
          return v_;
       }
    };
+
+   /// Integer power.
+   template <typename DER>
+   dyndim pow(dimval<DER> const &dv, int p)
+   {
+      return dyndim(std::pow(dv.v_, p), dv.exps() * p);
+   }
+
+   /// Integer root.
+   template <typename DER>
+   dyndim root(dimval<DER> const &dv, int r)
+   {
+      return dyndim(std::pow(dv.v_, 1.0 / r), dv.exps() / r);
+   }
 
    template <char TI, char D, char M, char C, char TE>
    statdim<TI,D,M,C,TE>::statdim(dyndim const& dd)

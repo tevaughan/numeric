@@ -27,7 +27,7 @@ namespace num
 
    public:
       /// Construct null statistical summary.
-      integral_stats() : num_(0), area_(0), sqdv_(0) {}
+      integral_stats(I zero) : num_(0), area_(zero), sqdv_(zero * zero) {}
 
       /// Add a trapezoidal area and an estimated error in area.
       /// \param a  Trapezoidal area.

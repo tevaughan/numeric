@@ -260,7 +260,7 @@ namespace num
          }
          subinterval_stack<I, D> s(n, a, b, f);
          init_from_stack(s); // Add initial n points to d_.
-         integral_stats<A> stats;
+         integral_stats<A> stats(0.0 * aa);
          while (s.size()) {
             using interval = interval<I, D>;
             interval const r = *s.rbegin();
