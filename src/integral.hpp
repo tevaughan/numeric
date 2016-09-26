@@ -268,14 +268,14 @@ namespace num
               bool s_dydx = false,
               /// If true, store approximant to indefinite integral of \a f.
               bool s_y = false)
-            : deriv(f)
-            , x(x1)
-            , y(0.0)
-            , tol(t)
-            , store_dydx(s_dydx)
-            , store_y(s_y)
-            , nok(0)
-            , nbad(0)
+         : deriv(f)
+         , x(x1)
+         , y(0.0)
+         , tol(t)
+         , store_dydx(s_dydx)
+         , store_y(s_y)
+         , nok(0)
+         , nbad(0)
       {
          init(x1, x2, n);
       }
@@ -304,29 +304,29 @@ namespace num
               bool s_dydx = false,
               /// If true, store approximant to indefinite integral.
               bool s_y = false)
-            : deriv(f)
-            , x(x1)
-            , y(0.0)
-            , tol(t)
-            , store_dydx(s_dydx)
-            , store_y(s_y)
-            , nok(0)
-            , nbad(0)
+         : deriv(f)
+         , x(x1)
+         , y(0.0)
+         , tol(t)
+         , store_dydx(s_dydx)
+         , store_y(s_y)
+         , nok(0)
+         , nbad(0)
       {
          init(x1, x2, n);
       }
 
       /// Value of definite integral.
-      Y const& def_int() const { return y; }
+      Y const &def_int() const { return y; }
 
       /// Tolerance used for computing definite integral.
       double tolerance() const { return tol; }
 
       /// Interpolant representing the function that was integrated.
-      interpolant<X, DYDX> const& interp_func() const { return fi; }
-      
+      interpolant<X, DYDX> const &interp_func() const { return fi; }
+
       /// Interpolant representing indefinite integral.
-      interpolant<X, Y> const& interp_indef_int() const { return ii; }
+      interpolant<X, Y> const &interp_indef_int() const { return ii; }
    };
 
    /// Short alias for Runge-Kutta solver for ordinary double-precision values.

@@ -8,7 +8,8 @@ using namespace std;
 class F
 {
    double v_;
-   public:
+
+public:
    F(double vv = 0.0) : v_(vv) {}
    double operator()(double) const { return v_; }
 };

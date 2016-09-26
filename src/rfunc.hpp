@@ -32,13 +32,13 @@ namespace num
       using INTEG = decltype(D().integral());
 
       /// Return pointer to descendant instance.
-      D const& d() const { return static_cast<D const*>(this); }
+      D const &d() const { return static_cast<D const *>(this); }
 
       /// Return function representing derivative.
       DERIV derivative() const { return d()->derivative(); }
 
       /// Return function representing integral from specified lower bound.
-      INTEG integral(A const& lb) const { return d()->integral(lb); }
+      INTEG integral(A const &lb) const { return d()->integral(lb); }
    };
 }
 

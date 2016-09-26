@@ -201,6 +201,16 @@ namespace num
       template <typename ODER>
       friend class dimval;
 
+      /// Dynamic integer power of any dimval must be a friend because it needs
+      /// to construct a dyndim.
+      template <typename ODER>
+      friend dyndim pow(dimval<ODER> const &dv, int p);
+
+      /// Dynamic integer root of any dimval must be a friend because it needs
+      /// to construct a dyndim.
+      template <typename ODER>
+      friend dyndim root(dimval<ODER> const &dv, int r);
+
    protected:
       double v_; ///< Value in MKS.
 
@@ -278,30 +288,22 @@ namespace num
          }
          return os << "]";
       }
-
-      /// Integer power.
-      template <typename ODER>
-      friend dyndim pow(dimval<ODER> const &dv, int p);
-
-      /// Integer root.
-      template <typename ODER>
-      friend dyndim root(dimval<ODER> const &dv, int r);
    };
 
    template <char TI, char D, char M, char C, char TE>
    class statdim;
 
-   /// Multiply statdim and dyndim.
    template <char TI, char D, char M, char C, char TE>
-   dyndim operator*(statdim<TI, D, M, C, TE> dv, dyndim const &dd);
+   dyndim operator*(statdim<TI, D, M, C, TE> sd, dyndim const &dd);
 
-   /// Divide statdim by dyndim.
    template <char TI, char D, char M, char C, char TE>
-   dyndim operator/(statdim<TI, D, M, C, TE> dv, dyndim const &dd);
+   dyndim operator*(dyndim const &dd, statdim<TI, D, M, C, TE> sd);
 
-   // Forward declaration seems necessary when definition lie inside class.
-   template <int R, char TI, char D, char M, char C, char TE>
-   statdim<TI,D,M,C,TE> root(statdim<TI,D,M,C,TE> dv);
+   template <char TI, char D, char M, char C, char TE>
+   dyndim operator/(statdim<TI, D, M, C, TE> sd, dyndim const &dd);
+
+   template <char TI, char D, char M, char C, char TE>
+   dyndim operator/(dyndim const &dd, statdim<TI, D, M, C, TE> sd);
 
    /// Model of a statically dimensioned value.  For a dynamically dimensioned
    /// value, see dyndim.
@@ -340,9 +342,21 @@ namespace num
       friend PRD<R, A> integral(func<R, A> f, A1 a, A2 b, double t,
                                 unsigned n);
 
-      friend dyndim operator*<TI, D, M, C, TE>(statdim dv, dyndim const &dd);
+      template <char OTI, char OD, char OM, char OC, char OTE>
+      friend dyndim operator*(statdim<OTI, OD, OM, OC, OTE> sd,
+                              dyndim const &dd);
 
-      friend dyndim operator/<TI, D, M, C, TE>(statdim dv, dyndim const &dd);
+      template <char OTI, char OD, char OM, char OC, char OTE>
+      friend dyndim operator*(dyndim const &dd,
+                              statdim<OTI, OD, OM, OC, OTE> sd);
+
+      template <char OTI, char OD, char OM, char OC, char OTE>
+      friend dyndim operator/(statdim<OTI, OD, OM, OC, OTE> sd,
+                              dyndim const &dd);
+
+      template <char OTI, char OD, char OM, char OC, char OTE>
+      friend dyndim operator/(dyndim const &dd,
+                              statdim<OTI, OD, OM, OC, OTE> sd);
 
       /// Dimensional exponents in a form useful for interaction with dyndim.
       static dim_exps const exps_;
@@ -359,10 +373,10 @@ namespace num
 
       /// Construct statdim by copying value in dyndim if it have right
       /// dimension; otherwise throw error.
-      statdim(dyndim const& dd);
+      statdim(dyndim const &dd);
 
       /// Use default copy construction for statdim of same dimension.
-      statdim(statdim const& sd) = default;
+      statdim(statdim const &sd) = default;
 
       /// Dimensional exponents.
       static dim_exps exps() { return exps_; }
@@ -485,6 +499,13 @@ namespace num
 
       /// Integer root.
       template <int R>
+      friend statdim_root<R> root(statdim sd)
+      {
+         return sd.root<R>();
+      }
+
+      /// Integer root.
+      template <int R>
       statdim_root<R> root() const
       {
          static_assert(R > 0, "zero or negative root");
@@ -495,13 +516,6 @@ namespace num
          static_assert(TE / R * R == TE, "illegal root along temperature");
          double constexpr p = 1.0 / R;
          return statdim_root<R>(std::pow(v_, p));
-      }
-
-      /// Integer root.
-      template <int R>
-      friend statdim_root<R> root(statdim dv)
-      {
-         return dv.root<R>();
       }
 
       /// Square root.
@@ -518,7 +532,7 @@ namespace num
    template <char TI, char D, char M, char C, char TE>
    dim_exps const statdim<TI, D, M, C, TE>::exps_(TI, D, M, C, TE);
 
-   // Forward declaration seems necessary when definition lie inside class.
+   /// Integer root of dyndim.
    template <int R>
    dyndim root(dyndim const &dv);
 
@@ -533,6 +547,10 @@ namespace num
       template <typename I>
       friend class integral_stats;
 
+      /// Allow interpolant to cast to double.
+      template <typename X, typename Y>
+      friend class interpolant;
+
       /// Type of std::function that can be integrated.  A single-argument
       /// function is required.
       template <typename R, typename A>
@@ -542,6 +560,18 @@ namespace num
       template <typename R, typename A, typename A1, typename A2>
       friend PRD<R, A> integral(func<R, A> f, A1 a, A2 b, double t,
                                 unsigned n);
+
+      template <char TI, char D, char M, char C, char TE>
+      friend dyndim operator*(statdim<TI, D, M, C, TE> sd, dyndim const &dd);
+
+      template <char TI, char D, char M, char C, char TE>
+      friend dyndim operator*(dyndim const &dd, statdim<TI, D, M, C, TE> sd);
+
+      template <char TI, char D, char M, char C, char TE>
+      friend dyndim operator/(statdim<TI, D, M, C, TE> sd, dyndim const &dd);
+
+      template <char TI, char D, char M, char C, char TE>
+      friend dyndim operator/(dyndim const &dd, statdim<TI, D, M, C, TE> sd);
 
       /// Integer power.
       template <typename DER>
@@ -586,47 +616,31 @@ namespace num
       /// Multiplication by number on right side.
       dyndim operator*(double s) const { return dyndim(v_ * s, exps_); }
 
-      /// Multiplication of dyndim by number on left side.
-      friend dyndim operator*(double s, dyndim dv)
+      /// Multiply dyndim by dyndim.
+      dyndim operator*(dyndim const &dd) const
       {
-         return dyndim(s * dv.v_, dv.exps_);
-      }
-
-      /// Multiply dimensioned values.
-      template <typename DER>
-      dyndim operator*(dimval<DER> const &dvb) const
-      {
-         return dyndim(v_ * dvb.v_, exps_ + dvb.exps());
-      }
-
-      /// Multiply statdim and dyndim.
-      template <char TI, char D, char M, char C, char TE>
-      friend dyndim operator*(statdim<TI, D, M, C, TE> dv, dyndim const &dd)
-      {
-         return dyndim(dv.v_ * dd.v_, dv.exps_ + dd.exps_);
+         return dyndim(v_ * dd.v_, exps_ + dd.exps_);
       }
 
       /// Division by number.
       dyndim operator/(double s) const { return dyndim(v_ / s, exps_); }
 
-      /// Divide dimensioned values.
-      template <typename DER>
-      dyndim operator/(dimval<DER> const &dvb) const
+      /// Division by number.
+      dyndim operator/(int s) const { return dyndim(v_ / s, exps_); }
+
+      /// Division by number.
+      dyndim operator/(unsigned s) const { return dyndim(v_ / s, exps_); }
+
+      /// Divide dyndim by dyndim.
+      dyndim operator/(dyndim const &dd) const
       {
-         return dyndim(v_ / dvb.v_, exps_ - dvb.exps());
+         return dyndim(v_ / dd.v_, exps_ - dd.exps_);
       }
 
       /// Divide number by dimensioned value.
       friend dyndim operator/(double s, dyndim const &dv)
       {
          return dyndim(s / dv.v_, dv.exps_.neg());
-      }
-
-      /// Divide statdim by dyndim.
-      template <char TI, char D, char M, char C, char TE>
-      friend dyndim operator/(statdim<TI, D, M, C, TE> dv, dyndim const &dd)
-      {
-         return dyndim(dv.v_ / dd.v_, dv.exps_ - dd.exps_);
       }
 
       /// Add dimensioned values.
@@ -800,6 +814,9 @@ namespace num
       }
    };
 
+   /// Multiplication of dyndim by number on left side.
+   inline dyndim operator*(double s, dyndim dv) { return dv * s; }
+
    /// Integer power.
    template <typename DER>
    dyndim pow(dimval<DER> const &dv, int p)
@@ -814,13 +831,42 @@ namespace num
       return dyndim(std::pow(dv.v_, 1.0 / r), dv.exps() / r);
    }
 
+   // Implementation of conversion from dyndim to statdim.
    template <char TI, char D, char M, char C, char TE>
-   statdim<TI,D,M,C,TE>::statdim(dyndim const& dd)
+   statdim<TI, D, M, C, TE>::statdim(dyndim const &dd)
    {
       if (exps_ != dd.exps()) {
          throw "Illegal dimension on construction of statdim.";
       }
       v_ = dd.v_;
+   }
+
+   /// Multiply a statdim by a dyndim.
+   template <char TI, char D, char M, char C, char TE>
+   dyndim operator*(statdim<TI, D, M, C, TE> sd, dyndim const &dd)
+   {
+      return dyndim(sd.v_ * dd.v_, sd.exps_ + dd.exps_);
+   }
+
+   /// Multiply a dyndim by a statdim.
+   template <char TI, char D, char M, char C, char TE>
+   dyndim operator*(dyndim const &dd, statdim<TI, D, M, C, TE> sd)
+   {
+      return dyndim(dd.v_ * sd.v_, dd.exps_ + sd.exps_);
+   }
+
+   /// Divide a statdim by a dyndim.
+   template <char TI, char D, char M, char C, char TE>
+   dyndim operator/(statdim<TI, D, M, C, TE> sd, dyndim const &dd)
+   {
+      return dyndim(sd.v_ / dd.v_, sd.exps_ - dd.exps_);
+   }
+
+   /// Divide a dyndim by a statdim.
+   template <char TI, char D, char M, char C, char TE>
+   dyndim operator/(dyndim const &dd, statdim<TI, D, M, C, TE> sd)
+   {
+      return dyndim(dd.v_ / sd.v_, dd.exps_ - sd.exps_);
    }
 }
 

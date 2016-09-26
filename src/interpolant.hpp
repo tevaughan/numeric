@@ -260,7 +260,7 @@ namespace num
          }
          subinterval_stack<I, D> s(n, a, b, f);
          init_from_stack(s); // Add initial n points to d_.
-         integral_stats<A> stats(0.0 * aa);
+         integral_stats<A> stats(0.0 * aa * f(aa));
          while (s.size()) {
             using interval = interval<I, D>;
             interval const r = *s.rbegin();
@@ -299,9 +299,8 @@ namespace num
          }
          A const farea = fabs(stats.area());
          A const sigma = stats.stdev(); // statistical error
-         A const nres = A(1.0) + farea; // normalized result
-         A const derr = nres * t;       // desired error
-         A const rerr = nres * eps;     // round-off error
+         A const derr = farea * t;      // desired error
+         A const rerr = farea * eps;    // round-off error
          A eerr; // greater of statistical and round-off error
          if (sigma < rerr) {
             eerr = rerr;
@@ -309,7 +308,7 @@ namespace num
             eerr = sigma;
          }
          if (eerr > derr) {
-            std::cerr << "integral: WARNING: Estimated error " << eerr / nres
+            std::cerr << "integral: WARNING: Estimated error " << eerr / farea
                       << " is greater than tolerance " << t << "."
                       << std::endl;
          }
@@ -322,9 +321,12 @@ namespace num
       /// \param d  Data stored in ilist.
       interpolant(list d = list()) : d_(std::move(d))
       {
-         if (d_.size() < 2) {
-            integral_ = A(0.0);
+         if (d_.size() == 0) {
+            integral_ = 0.0 * A();
             return;
+         }
+         if (d_.size() == 1) {
+            integral_ = 0.0 * d[0].first * d[0].second;
          }
          sort();
          integral_ = integral(d_.begin()->first, d_.rbegin()->first);
@@ -353,7 +355,7 @@ namespace num
             d_.push_back(get_point(line, x_unit, y_unit));
          }
          if (d_.size() < 2) {
-            integral_ = A(0.0);
+            integral_ = 0.0 * x_unit * y_unit;
             return;
          }
          sort();
@@ -448,7 +450,7 @@ namespace num
             sign = -1.0;
          }
          using R = decltype(I() * D());
-         R sum(0);
+         R sum(0.0 * x1 * d_[0].second);
          point const x1p{x1, D()}; // Dummy y-coord for search.
          auto i = upper_bound(d_.begin(), d_.end(), x1p, cmpr_pts);
          if (i == d_.end()) {

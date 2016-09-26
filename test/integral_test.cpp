@@ -30,14 +30,16 @@ TEST_CASE("Verify integration of lambda.", "[integral]")
 area square1(length x) { return x * x; }
 area square2(dyndim x) { return x * x; }
 dyndim square3(length x) { return x * x; }
-dyndim square4(dyndim const& x) { return x * x; }
+dyndim square4(dyndim const &x) { return x * x; }
 
 TEST_CASE("Verify integration of (dimval) global function.", "[integral]")
 {
    volume const i1 = integral(square1, 0 * cm, 1 * cm);
    volume const i2 = integral(square2, 0 * cm, 1 * cm);
-   volume const j1 = rk_quad<length, volume>(square1, 0 * cm, 1 * cm).def_int();
-   volume const j2 = rk_quad<length, volume>(square2, 0 * cm, 1 * cm).def_int();
+   volume const j1 =
+         rk_quad<length, volume>(square1, 0 * cm, 1 * cm).def_int();
+   volume const j2 =
+         rk_quad<length, volume>(square2, 0 * cm, 1 * cm).def_int();
    ostringstream oss1, oss2;
    oss1 << i1;
    oss2 << i2;
@@ -101,8 +103,8 @@ TEST_CASE("Trigger coverage of code requiring at least two samples.",
           "[integral]")
 {
    volume const i = integral(square1, 1 * cm, 2 * cm, 1.0E-06, 0);
-   volume const j =
-         rk_quad<length, volume>(square1, 1 * cm, 2 * cm, 1.0E-06, 0).def_int();
+   volume const j = rk_quad<length, volume>(square1, 1 * cm, 2 * cm, 1.0E-06,
+                                            0).def_int();
    // Verify that integral of x^2 from 1 cm  to  2 cm  is  7/3 cm^3.
    REQUIRE(i / pow<3>(cm) == Approx(7.0 / 3.0));
    REQUIRE(j / pow<3>(cm) == Approx(7.0 / 3.0));
@@ -139,7 +141,7 @@ TEST_CASE("Verify integration of interpolant.", "[integral]")
 TEST_CASE("Verify throw on illegal tolerance.", "[integral]")
 {
    REQUIRE_THROWS(integral(square1, 1 * cm, 2 * cm, -1.0E-06));
-   REQUIRE_THROWS((
-         rk_quad<length, volume>(square1, 1 * cm, 2 * cm, -1.0E-06).def_int()));
+   REQUIRE_THROWS((rk_quad<length, volume>(square1, 1 * cm, 2 * cm, -1.0E-06)
+                         .def_int()));
 }
 

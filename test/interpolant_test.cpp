@@ -108,6 +108,8 @@ TEST_CASE("Verify file input.", "[interpolant]")
 TEST_CASE("Verify file input and interoperation with units.", "[interpolant]")
 {
    interpolant<length, num::time> i("interpolant_test.txt", nm, s);
+   interpolant<dyndim, dyndim> j("interpolant_test.txt", nm, s);
+
    REQUIRE(i(-1 * nm) == 0.0 * s);
    REQUIRE(i(299 * nm) == 0.0 * s);
    REQUIRE(i(300 * nm) == 0.0 * s);
@@ -119,16 +121,37 @@ TEST_CASE("Verify file input and interoperation with units.", "[interpolant]")
    REQUIRE(i(950 * nm) / s == Approx(40.0));
    REQUIRE(i(1000 * nm) == 0.0 * s);
    REQUIRE(i(1100 * nm) == 0.0 * s);
+
+   REQUIRE(j(-1 * nm) == 0.0 * s);
+   REQUIRE(j(299 * nm) == 0.0 * s);
+   REQUIRE(j(300 * nm) == 0.0 * s);
+   REQUIRE((j(350 * nm) / s).number() == Approx(40.0));
+   REQUIRE(j(400 * nm) == 80.0 * s);
+   REQUIRE(j(450 * nm) == 80.0 * s);
+   REQUIRE(j(500 * nm) == 80.0 * s);
+   REQUIRE(j(900 * nm) == 80.0 * s);
+   REQUIRE((j(950 * nm) / s).number() == Approx(40.0));
+   REQUIRE(j(1000 * nm) == 0.0 * s);
+   REQUIRE(j(1100 * nm) == 0.0 * s);
 }
 
 TEST_CASE("Verify interoperation with units.", "[interpolant]")
 {
-   ilist<length, double> list = {{300 * nm, 0.0},
-                                 {400 * nm, 15.0},
-                                 {500 * nm, 80.0},
-                                 {900 * nm, 80.0},
-                                 {1000 * nm, 0.0}};
-   interpolant<length, double> i(list);
+   ilist<length, double> list1 = {{300 * nm, 0.0},
+                                  {400 * nm, 15.0},
+                                  {500 * nm, 80.0},
+                                  {900 * nm, 80.0},
+                                  {1000 * nm, 0.0}};
+
+   ilist<dyndim, dyndim> list2 = {{300 * nm, 0.0 * s},
+                                  {400 * nm, 15.0 * s},
+                                  {500 * nm, 80.0 * s},
+                                  {900 * nm, 80.0 * s},
+                                  {1000 * nm, 0.0 * s}};
+
+   interpolant<length, double> i(list1);
+   interpolant<dyndim, dyndim> j(list2);
+
    REQUIRE(i(-1 * nm) == 0.0);
    REQUIRE(i(299 * nm) == 0.0);
    REQUIRE(i(300 * nm) == 0.0);
@@ -141,107 +164,225 @@ TEST_CASE("Verify interoperation with units.", "[interpolant]")
    REQUIRE(i(950 * nm) == Approx(40.0));
    REQUIRE(i(1000 * nm) == 0.0);
    REQUIRE(i(1100 * nm) == 0.0);
+
+   REQUIRE(j(-1 * nm) == 0.0 * s);
+   REQUIRE(j(299 * nm) == 0.0 * s);
+   REQUIRE(j(300 * nm) == 0.0 * s);
+   REQUIRE((j(350 * nm) / s).number() == Approx(7.5));
+   REQUIRE(j(400 * nm) == 15.0 * s);
+   REQUIRE((j(450 * nm) / s).number() == Approx(0.5 * (15.0 + 80.0)));
+   REQUIRE(j(500 * nm) == 80.0 * s);
+   REQUIRE(j(600 * nm) == 80.0 * s);
+   REQUIRE(j(900 * nm) == 80.0 * s);
+   REQUIRE((j(950 * nm) / s).number() == Approx(40.0));
+   REQUIRE(j(1000 * nm) == 0.0 * s);
+   REQUIRE(j(1100 * nm) == 0.0 * s);
 }
 
 TEST_CASE("Verify scalar multiplication of interpolant on right.",
           "[interpolant]")
 {
-   interpolant<length, num::time> i("interpolant_test.txt", nm, s);
-   interpolant<length, length> j = i * (2 * m / s);
-   REQUIRE(j(-1 * nm) == 0.0 * m);
-   REQUIRE(j(299 * nm) == 0.0 * m);
-   REQUIRE(j(300 * nm) == 0.0 * m);
-   REQUIRE(j(350 * nm) / m == Approx(80.0));
-   REQUIRE(j(400 * nm) == 160.0 * m);
-   REQUIRE(j(450 * nm) == 160.0 * m);
-   REQUIRE(j(500 * nm) == 160.0 * m);
-   REQUIRE(j(900 * nm) == 160.0 * m);
-   REQUIRE(j(950 * nm) / m == Approx(80.0));
-   REQUIRE(j(1000 * nm) == 0.0 * m);
-   REQUIRE(j(1100 * nm) == 0.0 * m);
-   interpolant<length, num::time> k = i * 2.0;
-   REQUIRE(k(-1 * nm) == 0.0 * s);
-   REQUIRE(k(299 * nm) == 0.0 * s);
-   REQUIRE(k(300 * nm) == 0.0 * s);
-   REQUIRE(k(350 * nm) / s == Approx(80.0));
-   REQUIRE(k(400 * nm) == 160.0 * s);
-   REQUIRE(k(450 * nm) == 160.0 * s);
-   REQUIRE(k(500 * nm) == 160.0 * s);
-   REQUIRE(k(900 * nm) == 160.0 * s);
-   REQUIRE(k(950 * nm) / s == Approx(80.0));
-   REQUIRE(k(1000 * nm) == 0.0 * s);
-   REQUIRE(k(1100 * nm) == 0.0 * s);
-   i *= 2.0;
-   REQUIRE(i(-1 * nm) == 0.0 * s);
-   REQUIRE(i(299 * nm) == 0.0 * s);
-   REQUIRE(i(300 * nm) == 0.0 * s);
-   REQUIRE(i(350 * nm) / s == Approx(80.0));
-   REQUIRE(i(400 * nm) == 160.0 * s);
-   REQUIRE(i(450 * nm) == 160.0 * s);
-   REQUIRE(i(500 * nm) == 160.0 * s);
-   REQUIRE(i(900 * nm) == 160.0 * s);
-   REQUIRE(i(950 * nm) / s == Approx(80.0));
-   REQUIRE(i(1000 * nm) == 0.0 * s);
-   REQUIRE(i(1100 * nm) == 0.0 * s);
+   interpolant<length, num::time> i1("interpolant_test.txt", nm, s);
+   interpolant<dyndim, dyndim> i2("interpolant_test.txt", nm, s);
+   interpolant<length, length> j1 = i1 * (2 * m / s);
+   interpolant<dyndim, dyndim> j2 = i2 * (2 * m / s);
+
+   REQUIRE(j1(-1 * nm) == 0.0 * m);
+   REQUIRE(j1(299 * nm) == 0.0 * m);
+   REQUIRE(j1(300 * nm) == 0.0 * m);
+   REQUIRE(j1(350 * nm) / m == Approx(80.0));
+   REQUIRE(j1(400 * nm) == 160.0 * m);
+   REQUIRE(j1(450 * nm) == 160.0 * m);
+   REQUIRE(j1(500 * nm) == 160.0 * m);
+   REQUIRE(j1(900 * nm) == 160.0 * m);
+   REQUIRE(j1(950 * nm) / m == Approx(80.0));
+   REQUIRE(j1(1000 * nm) == 0.0 * m);
+   REQUIRE(j1(1100 * nm) == 0.0 * m);
+
+   REQUIRE(j2(-1 * nm) == 0.0 * m);
+   REQUIRE(j2(299 * nm) == 0.0 * m);
+   REQUIRE(j2(300 * nm) == 0.0 * m);
+   REQUIRE((j2(350 * nm) / m).number() == Approx(80.0));
+   REQUIRE(j2(400 * nm) == 160.0 * m);
+   REQUIRE(j2(450 * nm) == 160.0 * m);
+   REQUIRE(j2(500 * nm) == 160.0 * m);
+   REQUIRE(j2(900 * nm) == 160.0 * m);
+   REQUIRE((j2(950 * nm) / m).number() == Approx(80.0));
+   REQUIRE(j2(1000 * nm) == 0.0 * m);
+   REQUIRE(j2(1100 * nm) == 0.0 * m);
+
+   interpolant<length, num::time> k1 = i1 * 2.0;
+   interpolant<dyndim, dyndim> k2 = i2 * 2.0;
+
+   REQUIRE(k1(-1 * nm) == 0.0 * s);
+   REQUIRE(k1(299 * nm) == 0.0 * s);
+   REQUIRE(k1(300 * nm) == 0.0 * s);
+   REQUIRE(k1(350 * nm) / s == Approx(80.0));
+   REQUIRE(k1(400 * nm) == 160.0 * s);
+   REQUIRE(k1(450 * nm) == 160.0 * s);
+   REQUIRE(k1(500 * nm) == 160.0 * s);
+   REQUIRE(k1(900 * nm) == 160.0 * s);
+   REQUIRE(k1(950 * nm) / s == Approx(80.0));
+   REQUIRE(k1(1000 * nm) == 0.0 * s);
+   REQUIRE(k1(1100 * nm) == 0.0 * s);
+
+   REQUIRE(k2(-1 * nm) == 0.0 * s);
+   REQUIRE(k2(299 * nm) == 0.0 * s);
+   REQUIRE(k2(300 * nm) == 0.0 * s);
+   REQUIRE((k2(350 * nm) / s).number() == Approx(80.0));
+   REQUIRE(k2(400 * nm) == 160.0 * s);
+   REQUIRE(k2(450 * nm) == 160.0 * s);
+   REQUIRE(k2(500 * nm) == 160.0 * s);
+   REQUIRE(k2(900 * nm) == 160.0 * s);
+   REQUIRE((k2(950 * nm) / s).number() == Approx(80.0));
+   REQUIRE(k2(1000 * nm) == 0.0 * s);
+   REQUIRE(k2(1100 * nm) == 0.0 * s);
+
+   i1 *= 2.0;
+   i2 *= 2.0;
+
+   REQUIRE(i1(-1 * nm) == 0.0 * s);
+   REQUIRE(i1(299 * nm) == 0.0 * s);
+   REQUIRE(i1(300 * nm) == 0.0 * s);
+   REQUIRE(i1(350 * nm) / s == Approx(80.0));
+   REQUIRE(i1(400 * nm) == 160.0 * s);
+   REQUIRE(i1(450 * nm) == 160.0 * s);
+   REQUIRE(i1(500 * nm) == 160.0 * s);
+   REQUIRE(i1(900 * nm) == 160.0 * s);
+   REQUIRE(i1(950 * nm) / s == Approx(80.0));
+   REQUIRE(i1(1000 * nm) == 0.0 * s);
+   REQUIRE(i1(1100 * nm) == 0.0 * s);
+
+   REQUIRE(i2(-1 * nm) == 0.0 * s);
+   REQUIRE(i2(299 * nm) == 0.0 * s);
+   REQUIRE(i2(300 * nm) == 0.0 * s);
+   REQUIRE((i2(350 * nm) / s).number() == Approx(80.0));
+   REQUIRE(i2(400 * nm) == 160.0 * s);
+   REQUIRE(i2(450 * nm) == 160.0 * s);
+   REQUIRE(i2(500 * nm) == 160.0 * s);
+   REQUIRE(i2(900 * nm) == 160.0 * s);
+   REQUIRE((i2(950 * nm) / s).number() == Approx(80.0));
+   REQUIRE(i2(1000 * nm) == 0.0 * s);
+   REQUIRE(i2(1100 * nm) == 0.0 * s);
 }
 
 TEST_CASE("Verify scalar multiplication of interpolant on left.",
           "[interpolant]")
 {
-   interpolant<length, num::time> i("interpolant_test.txt", nm, s);
-   interpolant<length, length> j = (2 * m / s) * i;
-   REQUIRE(j(-1 * nm) == 0.0 * m);
-   REQUIRE(j(299 * nm) == 0.0 * m);
-   REQUIRE(j(300 * nm) == 0.0 * m);
-   REQUIRE(j(350 * nm) / m == Approx(80.0));
-   REQUIRE(j(400 * nm) == 160.0 * m);
-   REQUIRE(j(450 * nm) == 160.0 * m);
-   REQUIRE(j(500 * nm) == 160.0 * m);
-   REQUIRE(j(900 * nm) == 160.0 * m);
-   REQUIRE(j(950 * nm) / m == Approx(80.0));
-   REQUIRE(j(1000 * nm) == 0.0 * m);
-   REQUIRE(j(1100 * nm) == 0.0 * m);
-   interpolant<length, num::time> k = 2.0 * i;
-   REQUIRE(k(-1 * nm) == 0.0 * s);
-   REQUIRE(k(299 * nm) == 0.0 * s);
-   REQUIRE(k(300 * nm) == 0.0 * s);
-   REQUIRE(k(350 * nm) / s == Approx(80.0));
-   REQUIRE(k(400 * nm) == 160.0 * s);
-   REQUIRE(k(450 * nm) == 160.0 * s);
-   REQUIRE(k(500 * nm) == 160.0 * s);
-   REQUIRE(k(900 * nm) == 160.0 * s);
-   REQUIRE(k(950 * nm) / s == Approx(80.0));
-   REQUIRE(k(1000 * nm) == 0.0 * s);
-   REQUIRE(k(1100 * nm) == 0.0 * s);
+   interpolant<length, num::time> i1("interpolant_test.txt", nm, s);
+   interpolant<dyndim, dyndim> i2("interpolant_test.txt", nm, s);
+   interpolant<length, length> j1 = (2 * m / s) * i1;
+   interpolant<dyndim, dyndim> j2 = (2 * m / s) * i2;
+
+   REQUIRE(j1(-1 * nm) == 0.0 * m);
+   REQUIRE(j1(299 * nm) == 0.0 * m);
+   REQUIRE(j1(300 * nm) == 0.0 * m);
+   REQUIRE(j1(350 * nm) / m == Approx(80.0));
+   REQUIRE(j1(400 * nm) == 160.0 * m);
+   REQUIRE(j1(450 * nm) == 160.0 * m);
+   REQUIRE(j1(500 * nm) == 160.0 * m);
+   REQUIRE(j1(900 * nm) == 160.0 * m);
+   REQUIRE(j1(950 * nm) / m == Approx(80.0));
+   REQUIRE(j1(1000 * nm) == 0.0 * m);
+   REQUIRE(j1(1100 * nm) == 0.0 * m);
+
+   REQUIRE(j2(-1 * nm) == 0.0 * m);
+   REQUIRE(j2(299 * nm) == 0.0 * m);
+   REQUIRE(j2(300 * nm) == 0.0 * m);
+   REQUIRE((j2(350 * nm) / m).number() == Approx(80.0));
+   REQUIRE(j2(400 * nm) == 160.0 * m);
+   REQUIRE(j2(450 * nm) == 160.0 * m);
+   REQUIRE(j2(500 * nm) == 160.0 * m);
+   REQUIRE(j2(900 * nm) == 160.0 * m);
+   REQUIRE((j2(950 * nm) / m).number() == Approx(80.0));
+   REQUIRE(j2(1000 * nm) == 0.0 * m);
+   REQUIRE(j2(1100 * nm) == 0.0 * m);
+
+   interpolant<length, num::time> k1 = 2.0 * i1;
+   interpolant<dyndim, dyndim> k2 = 2.0 * i2;
+
+   REQUIRE(k1(-1 * nm) == 0.0 * s);
+   REQUIRE(k1(299 * nm) == 0.0 * s);
+   REQUIRE(k1(300 * nm) == 0.0 * s);
+   REQUIRE(k1(350 * nm) / s == Approx(80.0));
+   REQUIRE(k1(400 * nm) == 160.0 * s);
+   REQUIRE(k1(450 * nm) == 160.0 * s);
+   REQUIRE(k1(500 * nm) == 160.0 * s);
+   REQUIRE(k1(900 * nm) == 160.0 * s);
+   REQUIRE(k1(950 * nm) / s == Approx(80.0));
+   REQUIRE(k1(1000 * nm) == 0.0 * s);
+   REQUIRE(k1(1100 * nm) == 0.0 * s);
+
+   REQUIRE(k2(-1 * nm) == 0.0 * s);
+   REQUIRE(k2(299 * nm) == 0.0 * s);
+   REQUIRE(k2(300 * nm) == 0.0 * s);
+   REQUIRE((k2(350 * nm) / s).number() == Approx(80.0));
+   REQUIRE(k2(400 * nm) == 160.0 * s);
+   REQUIRE(k2(450 * nm) == 160.0 * s);
+   REQUIRE(k2(500 * nm) == 160.0 * s);
+   REQUIRE(k2(900 * nm) == 160.0 * s);
+   REQUIRE((k2(950 * nm) / s).number() == Approx(80.0));
+   REQUIRE(k2(1000 * nm) == 0.0 * s);
+   REQUIRE(k2(1100 * nm) == 0.0 * s);
 }
 
 TEST_CASE("Verify scalar division of interpolant.", "[interpolant]")
 {
-   interpolant<length, num::time> i("interpolant_test.txt", nm, s);
-   interpolant<length, double> j = i / (2 * s);
-   REQUIRE(j(-1 * nm) == 0.0);
-   REQUIRE(j(299 * nm) == 0.0);
-   REQUIRE(j(300 * nm) == 0.0);
-   REQUIRE(j(350 * nm) == Approx(20.0));
-   REQUIRE(j(400 * nm) == 40.0);
-   REQUIRE(j(450 * nm) == 40.0);
-   REQUIRE(j(500 * nm) == 40.0);
-   REQUIRE(j(900 * nm) == 40.0);
-   REQUIRE(j(950 * nm) == Approx(20.0));
-   REQUIRE(j(1000 * nm) == 0.0);
-   REQUIRE(j(1100 * nm) == 0.0);
-   i /= 2.0;
-   REQUIRE(i(-1 * nm) == 0.0 * s);
-   REQUIRE(i(299 * nm) == 0.0 * s);
-   REQUIRE(i(300 * nm) == 0.0 * s);
-   REQUIRE(i(350 * nm) / s == Approx(20.0));
-   REQUIRE(i(400 * nm) == 40.0 * s);
-   REQUIRE(i(450 * nm) == 40.0 * s);
-   REQUIRE(i(500 * nm) == 40.0 * s);
-   REQUIRE(i(900 * nm) == 40.0 * s);
-   REQUIRE(i(950 * nm) / s == Approx(20.0));
-   REQUIRE(i(1000 * nm) == 0.0 * s);
-   REQUIRE(i(1100 * nm) == 0.0 * s);
+   interpolant<length, num::time> i1("interpolant_test.txt", nm, s);
+   interpolant<dyndim, dyndim> i2("interpolant_test.txt", nm, s);
+   interpolant<length, double> j1 = i1 / (2 * s);
+   interpolant<dyndim, dyndim> j2 = i2 / (2 * s);
+
+   REQUIRE(j1(-1 * nm) == 0.0);
+   REQUIRE(j1(299 * nm) == 0.0);
+   REQUIRE(j1(300 * nm) == 0.0);
+   REQUIRE(j1(350 * nm) == Approx(20.0));
+   REQUIRE(j1(400 * nm) == 40.0);
+   REQUIRE(j1(450 * nm) == 40.0);
+   REQUIRE(j1(500 * nm) == 40.0);
+   REQUIRE(j1(900 * nm) == 40.0);
+   REQUIRE(j1(950 * nm) == Approx(20.0));
+   REQUIRE(j1(1000 * nm) == 0.0);
+   REQUIRE(j1(1100 * nm) == 0.0);
+
+   REQUIRE((j2(-1 * nm)).number() == 0.0);
+   REQUIRE((j2(299 * nm)).number() == 0.0);
+   REQUIRE((j2(300 * nm)).number() == 0.0);
+   REQUIRE((j2(350 * nm)).number() == Approx(20.0));
+   REQUIRE((j2(400 * nm)).number() == 40.0);
+   REQUIRE((j2(450 * nm)).number() == 40.0);
+   REQUIRE((j2(500 * nm)).number() == 40.0);
+   REQUIRE((j2(900 * nm)).number() == 40.0);
+   REQUIRE((j2(950 * nm)).number() == Approx(20.0));
+   REQUIRE((j2(1000 * nm)).number() == 0.0);
+   REQUIRE((j2(1100 * nm)).number() == 0.0);
+
+   i1 /= 2.0;
+   i2 /= 2.0;
+
+   REQUIRE(i1(-1 * nm) == 0.0 * s);
+   REQUIRE(i1(299 * nm) == 0.0 * s);
+   REQUIRE(i1(300 * nm) == 0.0 * s);
+   REQUIRE(i1(350 * nm) / s == Approx(20.0));
+   REQUIRE(i1(400 * nm) == 40.0 * s);
+   REQUIRE(i1(450 * nm) == 40.0 * s);
+   REQUIRE(i1(500 * nm) == 40.0 * s);
+   REQUIRE(i1(900 * nm) == 40.0 * s);
+   REQUIRE(i1(950 * nm) / s == Approx(20.0));
+   REQUIRE(i1(1000 * nm) == 0.0 * s);
+   REQUIRE(i1(1100 * nm) == 0.0 * s);
+
+   REQUIRE(i2(-1 * nm) == 0.0 * s);
+   REQUIRE(i2(299 * nm) == 0.0 * s);
+   REQUIRE(i2(300 * nm) == 0.0 * s);
+   REQUIRE((i2(350 * nm) / s).number() == Approx(20.0));
+   REQUIRE(i2(400 * nm) == 40.0 * s);
+   REQUIRE(i2(450 * nm) == 40.0 * s);
+   REQUIRE(i2(500 * nm) == 40.0 * s);
+   REQUIRE(i2(900 * nm) == 40.0 * s);
+   REQUIRE((i2(950 * nm) / s).number() == Approx(20.0));
+   REQUIRE(i2(1000 * nm) == 0.0 * s);
+   REQUIRE(i2(1100 * nm) == 0.0 * s);
 }
 
 TEST_CASE(
@@ -249,9 +390,12 @@ TEST_CASE(
       "empty",
       "[interpolant]")
 {
-   interpolant<length, num::time> i("interpolant_test.txt", nm, s);
-   interpolant<length, double> j;
-   REQUIRE_THROWS((i * j)(0 * cm));
+   interpolant<length, num::time> i1("interpolant_test.txt", nm, s);
+   interpolant<dyndim, dyndim> i2("interpolant_test.txt", nm, s);
+   interpolant<length, double> j1;
+   interpolant<dyndim, dyndim> j2;
+   REQUIRE_THROWS((i1 * j1)(0 * cm));
+   REQUIRE_THROWS((i2 * j2)(0 * cm));
 }
 
 double my_erf(double x) { return erf(x); }
@@ -261,14 +405,27 @@ TEST_CASE("Verify that interpolant of function produces right integral.",
 {
    function<area(length)> square = [](length x) { return x * x; };
    volume const i = integral(square, 0 * cm, 1 * cm);
-   interpolant<length, area> const j(square, 0 * cm, 1 * cm, 1.0E-17);
-   REQUIRE(j.integral() / i == Approx(1.0));
-   REQUIRE(j.integral(0 * cm, 1 * cm) / i == Approx(1.0));
 
-   interpolant<length, area> const k(square, 1 * cm, 0 * cm);
-   REQUIRE(k.integral(0 * cm, 1 * cm) / i == Approx(1.0));
+   interpolant<length, area> const j1(square, 0 * cm, 1 * cm, 1.0E-17);
+   interpolant<dyndim, dyndim> const j2(square, 0 * cm, 1 * cm, 1.0E-17);
+
+   REQUIRE(j1.integral() / i == Approx(1.0));
+   REQUIRE(j1.integral(0 * cm, 1 * cm) / i == Approx(1.0));
+
+   REQUIRE((j2.integral() / i).number() == Approx(1.0));
+   REQUIRE((j2.integral(0 * cm, 1 * cm) / i).number() == Approx(1.0));
+
+   interpolant<length, area> const k1(square, 1 * cm, 0 * cm);
+   interpolant<dyndim, dyndim> const k2(square, 1 * cm, 0 * cm);
+
+   REQUIRE(k1.integral(0 * cm, 1 * cm) / i == Approx(1.0));
+   REQUIRE((k2.integral(0 * cm, 1 * cm) / i).number() == Approx(1.0));
+
    REQUIRE_THROWS(
          (interpolant<length, area>(square, 0 * cm, 1 * cm, -1.0E-06)));
+
+   REQUIRE_THROWS(
+         (interpolant<dyndim, dyndim>(square, 0 * cm, 1 * cm, -1.0E-06)));
 
    double tol = 1.0E-04;
    interpolantd const e(erf, -1.0, 2.0, tol);
