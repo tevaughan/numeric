@@ -273,32 +273,6 @@ namespace num
 
    class dyndim;
 
-   template <char TI, char D, char M, char C, char TE>
-   statdim<TI, D, M, C, TE> &operator+=(statdim<TI, D, M, C, TE> &dv,
-                                        dyndim const &dd);
-
-   template <char TI, char D, char M, char C, char TE>
-   statdim<TI, D, M, C, TE> &operator-=(statdim<TI, D, M, C, TE> &dv,
-                                        dyndim const &dd);
-
-   template <char TI, char D, char M, char C, char TE>
-   bool operator==(statdim<TI, D, M, C, TE> dv, dyndim const &dd);
-
-   template <char TI, char D, char M, char C, char TE>
-   bool operator!=(statdim<TI, D, M, C, TE> dv, dyndim const &dd);
-
-   template <char TI, char D, char M, char C, char TE>
-   bool operator<(statdim<TI, D, M, C, TE> dv, dyndim const &dd);
-
-   template <char TI, char D, char M, char C, char TE>
-   bool operator<=(statdim<TI, D, M, C, TE> dv, dyndim const &dd);
-
-   template <char TI, char D, char M, char C, char TE>
-   bool operator>(statdim<TI, D, M, C, TE> dv, dyndim const &dd);
-
-   template <char TI, char D, char M, char C, char TE>
-   bool operator>=(statdim<TI, D, M, C, TE> dv, dyndim const &dd);
-
    /// Multiply statdim and dyndim.
    template <char TI, char D, char M, char C, char TE>
    dyndim operator*(statdim<TI, D, M, C, TE> dv, dyndim const &dd);
@@ -343,25 +317,6 @@ namespace num
       template <typename R, typename A, typename A1, typename A2>
       friend PRD<R, A> integral(func<R, A> f, A1 a, A2 b, double t,
                                 unsigned n);
-
-      friend statdim &operator+=
-            <TI, D, M, C, TE>(statdim &dv, dyndim const &dd);
-
-      friend statdim &operator-=
-            <TI, D, M, C, TE>(statdim &dv, dyndim const &dd);
-
-      friend bool operator==<TI, D, M, C, TE>(statdim dv, dyndim const &dd);
-
-      friend bool operator!=<TI, D, M, C, TE>(statdim dv, dyndim const &dd);
-
-      friend bool operator< //
-            <TI, D, M, C, TE>(statdim dv, dyndim const &dd);
-
-      friend bool operator<=<TI, D, M, C, TE>(statdim dv, dyndim const &dd);
-
-      friend bool operator><TI, D, M, C, TE>(statdim dv, dyndim const &dd);
-
-      friend bool operator>=<TI, D, M, C, TE>(statdim dv, dyndim const &dd);
 
       friend dyndim operator*<TI, D, M, C, TE>(statdim dv, dyndim const &dd);
 
@@ -547,32 +502,6 @@ namespace num
    {
       template <char TI, char D, char M, char C, char TE>
       friend class statdim;
-
-      template <char TI, char D, char M, char C, char TE>
-      friend statdim<TI, D, M, C, TE> &operator+=(statdim<TI, D, M, C, TE> &,
-                                                  dyndim const &dd);
-
-      template <char TI, char D, char M, char C, char TE>
-      friend statdim<TI, D, M, C, TE> &operator-=(statdim<TI, D, M, C, TE> &,
-                                                  dyndim const &dd);
-
-      template <char TI, char D, char M, char C, char TE>
-      friend bool operator==(statdim<TI, D, M, C, TE> dv, dyndim const &dd);
-
-      template <char TI, char D, char M, char C, char TE>
-      friend bool operator!=(statdim<TI, D, M, C, TE> dv, dyndim const &dd);
-
-      template <char TI, char D, char M, char C, char TE>
-      friend bool operator<(statdim<TI, D, M, C, TE> dv, dyndim const &dd);
-
-      template <char TI, char D, char M, char C, char TE>
-      friend bool operator<=(statdim<TI, D, M, C, TE> dv, dyndim const &dd);
-
-      template <char TI, char D, char M, char C, char TE>
-      friend bool operator>(statdim<TI, D, M, C, TE> dv, dyndim const &dd);
-
-      template <char TI, char D, char M, char C, char TE>
-      friend bool operator>=(statdim<TI, D, M, C, TE> dv, dyndim const &dd);
 
       using PT = dimval<dyndim>; ///< Type of parent.
       using PT::PT;              ///< Inherit constructor.
@@ -823,90 +752,6 @@ namespace num
          return v_;
       }
    };
-
-   /// Additive assignment of dyndim to statdim.
-   template <char TI, char D, char M, char C, char TE>
-   statdim<TI, D, M, C, TE> &operator+=(statdim<TI, D, M, C, TE> &dv,
-                                        dyndim const &dd)
-   {
-      if (dv.exps_ != dd.exps_) {
-         throw "Dimensions must be same for addition.";
-      }
-      dv.v_ += dd.v_;
-      return dv;
-   }
-
-   /// Subtractive assignment of dyndim from statdim.
-   template <char TI, char D, char M, char C, char TE>
-   statdim<TI, D, M, C, TE> &operator-=(statdim<TI, D, M, C, TE> &dv,
-                                        dyndim const &dd)
-   {
-      if (dv.exps_ != dd.exps_) {
-         throw "Dimensions must be same for subtraction.";
-      }
-      dv.v_ -= dd.v_;
-      return dv;
-   }
-
-   /// Return true only if statdim be equal to dyndim.
-   template <char TI, char D, char M, char C, char TE>
-   bool operator==(statdim<TI, D, M, C, TE> dv, dyndim const &dd)
-   {
-      if (dv.exps_ != dd.exps_) {
-         throw "Dimensions must be same for comparison.";
-      }
-      return dv.v_ == dd.v_;
-   }
-
-   /// Return true only if statdim be unequal to dyndim.
-   template <char TI, char D, char M, char C, char TE>
-   bool operator!=(statdim<TI, D, M, C, TE> dv, dyndim const &dd)
-   {
-      if (dv.exps_ != dd.exps_) {
-         throw "Dimensions must be same for comparison.";
-      }
-      return dv.v_ != dd.v_;
-   }
-
-   /// Return true only if statdim be less than dyndim.
-   template <char TI, char D, char M, char C, char TE>
-   bool operator<(statdim<TI, D, M, C, TE> dv, dyndim const &dd)
-   {
-      if (dv.exps_ != dd.exps_) {
-         throw "Dimensions must be same for comparison.";
-      }
-      return dv.v_ < dd.v_;
-   }
-
-   /// Return true only if statdim be less than or equal to dyndim.
-   template <char TI, char D, char M, char C, char TE>
-   bool operator<=(statdim<TI, D, M, C, TE> dv, dyndim const &dd)
-   {
-      if (dv.exps_ != dd.exps_) {
-         throw "Dimensions must be same for comparison.";
-      }
-      return dv.v_ <= dd.v_;
-   }
-
-   /// Return true only if statdim be greater than dyndim.
-   template <char TI, char D, char M, char C, char TE>
-   bool operator>(statdim<TI, D, M, C, TE> dv, dyndim const &dd)
-   {
-      if (dv.exps_ != dd.exps_) {
-         throw "Dimensions must be same for comparison.";
-      }
-      return dv.v_ > dd.v_;
-   }
-
-   /// Return true only if statdim be greater than or equal to dyndim.
-   template <char TI, char D, char M, char C, char TE>
-   bool operator>=(statdim<TI, D, M, C, TE> dv, dyndim const &dd)
-   {
-      if (dv.exps_ != dd.exps_) {
-         throw "Dimensions must be same for comparison.";
-      }
-      return dv.v_ >= dd.v_;
-   }
 
    template <char TI, char D, char M, char C, char TE>
    statdim<TI,D,M,C,TE>::statdim(dyndim const& dd)
