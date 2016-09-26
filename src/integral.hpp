@@ -28,7 +28,7 @@ namespace num
    class interpolant;
 
    template <typename X, typename Y>
-   class ilist;
+   struct ilist;
 
    /// Runge-Kutta solver optimized for quadrature.  rk_quad is intended to be
    /// a descendant of a class implementing a more general Runge-Kutta solver.
@@ -126,8 +126,8 @@ namespace num
                 X &hnext        ///< Estimated next stepsize.
                 )
       {
-         double constexpr SAFETY = 0.9, PGROW = -0.2, PSHRNK = -0.25;
-         double constexpr ERRCON = pow(5.0 / SAFETY, 1.0 / PGROW);
+         static double constexpr SAFETY = 0.9, PGROW = -0.2, PSHRNK = -0.25;
+         static double const ERRCON = pow(5.0 / SAFETY, 1.0 / PGROW);
          double err;
          Y yerr;
          Y ytemp;

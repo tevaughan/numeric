@@ -1,9 +1,9 @@
 var searchData=
 [
   ['i',['I',['../structnum_1_1subinterval__stack.html#a1c6b0632b18dff39e54cf4d146418f40',1,'num::subinterval_stack']]],
-  ['ilist',['ilist',['../classnum_1_1ilist.html',1,'num']]],
-  ['ilist_3c_20x_2c_20dydx_20_3e',['ilist&lt; X, DYDX &gt;',['../classnum_1_1ilist.html',1,'num']]],
-  ['ilist_3c_20x_2c_20y_20_3e',['ilist&lt; X, Y &gt;',['../classnum_1_1ilist.html',1,'num']]],
+  ['ilist',['ilist',['../structnum_1_1ilist.html',1,'num']]],
+  ['ilist_3c_20x_2c_20dydx_20_3e',['ilist&lt; X, DYDX &gt;',['../structnum_1_1ilist.html',1,'num']]],
+  ['ilist_3c_20x_2c_20y_20_3e',['ilist&lt; X, Y &gt;',['../structnum_1_1ilist.html',1,'num']]],
   ['ilistd',['ilistd',['../namespacenum.html#a2b90d965d199cebc0002bca80ee2b149',1,'num']]],
   ['in',['in',['../units_8hpp.html#aaedb457a079234338eaf96eb3591872d',1,'num::u']]],
   ['inches',['inches',['../structnum_1_1inches.html',1,'num']]],

@@ -1,6 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classnum_1_1ilist.html" title="STL class. " alt="" coords="5,56,160,83"/>
-<area shape="rect" id="node2" href="$classnum_1_1ilist.html" title="num::ilist\&lt; X, Y \&gt;" alt="" coords="224,5,349,32"/>
-<area shape="rect" id="node3" href="$classnum_1_1ilist.html" title="List of points used to constrain a linear interpolant. " alt="" coords="226,56,347,83"/>
+<area shape="rect" id="node1" href="$structnum_1_1ilist.html" title="STL class. " alt="" coords="5,56,160,83"/>
+<area shape="rect" id="node2" href="$structnum_1_1ilist.html" title="num::ilist\&lt; X, Y \&gt;" alt="" coords="224,5,349,32"/>
+<area shape="rect" id="node3" href="$structnum_1_1ilist.html" title="List of points used to constrain a linear interpolant. " alt="" coords="226,56,347,83"/>
 <area shape="rect" id="node4" href="$structnum_1_1subinterval__stack.html" title="Stack used by integral() and by class interpolant. " alt="" coords="208,107,365,149"/>
 </map>

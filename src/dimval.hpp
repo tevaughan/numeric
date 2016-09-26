@@ -47,7 +47,7 @@ namespace num
 
    // Forward declaration needed to allow a class to declare ilist as a friend.
    template <typename A, typename R>
-   class ilist;
+   struct ilist;
 
    // Forward declaration needed to allow a class to declare rk_quad as a
    // friend.
@@ -376,6 +376,17 @@ namespace num
       using PT::v_;               ///< Inherit protected, numeric value.
 
    public:
+      /// By default, construct a zero-valued quantity (by way of parent's
+      /// default constructor).
+      statdim() = default;
+
+      /// Construct statdim by copying value in dyndim if it have right
+      /// dimension; otherwise throw error.
+      statdim(dyndim const& dd);
+
+      /// Use default copy construction for statdim of same dimension.
+      statdim(statdim const& sd) = default;
+
       /// Dimensional exponents.
       static dim_exps exps() { return exps_; }
 
@@ -534,6 +545,9 @@ namespace num
    /// value, see statdim.
    class dyndim : public dimval<dyndim>
    {
+      template <char TI, char D, char M, char C, char TE>
+      friend class statdim;
+
       template <char TI, char D, char M, char C, char TE>
       friend statdim<TI, D, M, C, TE> &operator+=(statdim<TI, D, M, C, TE> &,
                                                   dyndim const &dd);
@@ -892,6 +906,15 @@ namespace num
          throw "Dimensions must be same for comparison.";
       }
       return dv.v_ >= dd.v_;
+   }
+
+   template <char TI, char D, char M, char C, char TE>
+   statdim<TI,D,M,C,TE>::statdim(dyndim const& dd)
+   {
+      if (exps_ != dd.exps()) {
+         throw "Illegal dimension on construction of statdim.";
+      }
+      v_ = dd.v_;
    }
 }
 
