@@ -281,6 +281,10 @@ namespace num
    template <char TI, char D, char M, char C, char TE>
    dyndim operator/(statdim<TI, D, M, C, TE> dv, dyndim const &dd);
 
+   // Forward declaration seems necessary when definition lie inside class.
+   template <int R, char TI, char D, char M, char C, char TE>
+   statdim<TI,D,M,C,TE> root(statdim<TI,D,M,C,TE> dv);
+
    /// Model of a statically dimensioned value.  For a dynamically dimensioned
    /// value, see dyndim.
    ///
@@ -496,6 +500,10 @@ namespace num
    template <char TI, char D, char M, char C, char TE>
    dim_exps const statdim<TI, D, M, C, TE>::exps_(TI, D, M, C, TE);
 
+   // Forward declaration seems necessary when definition lie inside class.
+   template <int R>
+   dyndim root(dyndim const &dv);
+
    /// Model of a dynamically dimensioned value.  For a statically dimensioned
    /// value, see statdim.
    class dyndim : public dimval<dyndim>
@@ -700,7 +708,7 @@ namespace num
       template <typename DER>
       friend dyndim pow(dimval<DER> const &dv, int p)
       {
-         return dyndim(std::pow(dv.v_, p), dv.exps_ * p);
+         return dyndim(std::pow(dv.v_, p), dv.exps() * p);
       }
 
       /// Integer root.
@@ -728,7 +736,7 @@ namespace num
       template <typename DER>
       friend dyndim root(dimval<DER> const &dv, int r)
       {
-         return dyndim(std::pow(dv.v_, 1.0 / r), dv.exps_ / r);
+         return dyndim(std::pow(dv.v_, 1.0 / r), dv.exps() / r);
       }
 
       /// Square root.
