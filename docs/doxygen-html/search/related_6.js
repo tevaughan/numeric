@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['sqrt',['sqrt',['../classnum_1_1dimval.html#a0d2a8f3b0fa8a903cb2b68e508c7fec1',1,'num::dimval::sqrt()'],['../classnum_1_1dyndim.html#afa98eff024ddd06fecdf55658b424c4d',1,'num::dyndim::sqrt()']]]
+  ['sqrt',['sqrt',['../classnum_1_1statdim.html#aad7fc4a37c85fd6f82aacd018030b1b2',1,'num::statdim::sqrt()'],['../classnum_1_1dyndim.html#afa98eff024ddd06fecdf55658b424c4d',1,'num::dyndim::sqrt()']]],
+  ['statdim',['statdim',['../classnum_1_1statdim.html#aeea3f817c8236ff7593bfffe2898b640',1,'num::statdim']]]
 ];

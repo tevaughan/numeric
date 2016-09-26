@@ -28,7 +28,7 @@
 namespace num
 {
    template <char TI, char D, char M, char C, char TE>
-   class dimval;
+   class statdim;
 
    /// Point used as one of the constraints of a linear interpolant.
    /// \tparam I  Type of independent variable (x value).
@@ -563,13 +563,13 @@ namespace num
          return i * s;
       }
 
-      /// Multiply every y-value of interpolant by a dimval scale factor on the
-      /// right, and return the resultant interpolant.
+      /// Multiply every y-value of interpolant by a statdim scale factor on
+      /// the right, and return the resultant interpolant.
       ///
       /// \param  s  Scale factor for y-values.
       /// \return    Scaled interpolant.
       template <char TI, char ID, char M, char C, char TE>
-      auto operator*(dimval<TI, ID, M, C, TE> s) const
+      auto operator*(statdim<TI, ID, M, C, TE> s) const
             -> interpolant<I, decltype(D() * s)>
       {
          using ND = decltype(D() * s);
@@ -580,15 +580,15 @@ namespace num
          return nl;
       }
 
-      /// Multiply every y-value of interpolant by a dimval scale factor on the
-      /// left, and return the resultant interpolant.  Assume that
+      /// Multiply every y-value of interpolant by a statdim scale factor on
+      /// the left, and return the resultant interpolant.  Assume that
       /// multiplication of y-values is commutative.
       ///
       /// \param  s  Scale factor for y-values.
       /// \param  i  Interpolant to scale.
       /// \return    Scaled interpolant.
       template <char TI, char ID, char M, char C, char TE>
-      friend auto operator*(dimval<TI, ID, M, C, TE> s, interpolant const &i)
+      friend auto operator*(statdim<TI, ID, M, C, TE> s, interpolant const &i)
             -> interpolant<I, decltype(D() * s)>
       {
          return i * s;

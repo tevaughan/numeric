@@ -40,7 +40,7 @@ while(<$iput>) {
    my($nam, $tim, $len, $mas, $chg, $tmp) = split;
    # Write C++ alias definition into header file.
    print $oput "/// Alias for generic dimensioned quantity.\n";
-   print $oput "using $nam = dimval<$tim, $len, $mas, $chg, $tmp>;\n";
+   print $oput "using $nam = statdim<$tim, $len, $mas, $chg, $tmp>;\n";
 }
 
 # Write last few lines of C++ header file.

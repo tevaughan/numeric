@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['force',['force',['../namespacenum.html#a721b3d98a092cc94764625df64ec19e5',1,'num']]],
-  ['frequency',['frequency',['../namespacenum.html#a8cdd5786896e34341106ee7a08c3a92b',1,'num']]]
+  ['force',['force',['../namespacenum.html#a7dbda23b167ddfbc9a9b45de7fe29044',1,'num']]],
+  ['frequency',['frequency',['../namespacenum.html#a9f12f233a3def0d12dbe2e2d7f7e70ad',1,'num']]]
 ];

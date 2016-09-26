@@ -1,7 +1,7 @@
 var searchData=
 [
   ['m',['M',['../classnum_1_1dim__exps.html#ab576d06447dee2cdaac69122864b95f2',1,'num::dim_exps::M()'],['../classnum_1_1dim__exps.html#ad299a1a50667af6ab734f5ed9fb0558a',1,'num::dim_exps::M() const'],['../units_8hpp.html#ad013e86cf38d6ef91337dab244f2cf00',1,'num::u::m()']]],
-  ['mass',['mass',['../namespacenum.html#afc368b006a9e1ce6c67ca7aa2e27c8f1',1,'num']]],
+  ['mass',['mass',['../namespacenum.html#a298e428f888da278b5709c42dde0775e',1,'num']]],
   ['megahertz',['megahertz',['../structnum_1_1megahertz.html',1,'num']]],
   ['megahertz',['megahertz',['../structnum_1_1megahertz.html#aa5f4e3dfa40f7514fb8c5cb27d857362',1,'num::megahertz::megahertz(double v)'],['../structnum_1_1megahertz.html#a9fa1f23e42237b28ad9b964486539624',1,'num::megahertz::megahertz(megahertz const &amp;dv)=default']]],
   ['meters',['meters',['../structnum_1_1meters.html',1,'num']]],
@@ -32,7 +32,7 @@ var searchData=
   ['minutes',['minutes',['../structnum_1_1minutes.html',1,'num']]],
   ['mk',['mK',['../units_8hpp.html#a49dc3ca6f72eb7a35de691fed1e2676d',1,'num::u']]],
   ['mm',['mm',['../units_8hpp.html#ad17690cd9e69b5c9fbc7d6976d9c10bc',1,'num::u']]],
-  ['momentum',['momentum',['../namespacenum.html#acc739c0aac24c8f6fae6435b0b56d9e1',1,'num']]],
+  ['momentum',['momentum',['../namespacenum.html#a205a862d9da65b42202f8e44666d1fb6',1,'num']]],
   ['ms',['ms',['../units_8hpp.html#a550d4c2e7e6bc37ebdb9caeece878dfc',1,'num::u']]],
   ['mug',['mug',['../units_8hpp.html#a8ef4ef5b5c062aded302ecc908d31f8d',1,'num::u']]],
   ['muk',['muK',['../units_8hpp.html#a69d4e25b3e14c9b495636f41137eb3ce',1,'num::u']]],

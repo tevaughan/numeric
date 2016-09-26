@@ -1,4 +1,4 @@
 <map id="num::megahertz" name="num::megahertz">
-<area shape="rect" id="node2" href="$classnum_1_1dimval.html" title="Model of a statically dimensioned value. " alt="" coords="55,95,134,121"/>
-<area shape="rect" id="node3" href="$classnum_1_1dimval__base.html" title="num::dimval_base\&lt; dimval\l\&lt; TI, D, M, C, TE \&gt; \&gt;" alt="" coords="5,5,184,47"/>
+<area shape="rect" id="node2" href="$classnum_1_1statdim.html" title="Model of a statically dimensioned value. " alt="" coords="41,95,120,121"/>
+<area shape="rect" id="node3" href="$classnum_1_1dimval.html" title="num::dimval\&lt; statdim\l\&lt; TI, D, M, C, TE \&gt; \&gt;" alt="" coords="5,5,156,47"/>
 </map>

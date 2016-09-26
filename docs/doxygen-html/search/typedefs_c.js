@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['speed',['speed',['../namespacenum.html#a66a2fb70968143158383f1d16ef1429f',1,'num']]]
+  ['speed',['speed',['../namespacenum.html#adef937ed677c51eb1e4c9dc789e6a94e',1,'num']]],
+  ['statdim_5fpower',['statdim_power',['../classnum_1_1statdim.html#adbde3cafbcadc2dc0616d55356883392',1,'num::statdim']]],
+  ['statdim_5froot',['statdim_root',['../classnum_1_1statdim.html#abc9749dcaddbfda6cfc1e1ed65cd9401',1,'num::statdim']]]
 ];

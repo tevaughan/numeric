@@ -6,8 +6,7 @@
 
 // FIXME: This should probably be cpoly, for continuous-variable polynomial.
 // However, the complexity of template expressions is such that to do
-// polynomials with units seems to require an implementation via dynamic
-// dimval, which isn't done yet.
+// polynomials with units seems to require an implementation via dyndim.
 
 /// \file   rpoly.hpp
 /// \brief  Definition of num::rpoly.
@@ -23,7 +22,7 @@
 
 namespace num
 {
-   /// Extend dimval-style pow() to regular double.
+   /// Extend statdim-style pow() to regular double.
    template <int P>
    double pow(double x)
    {

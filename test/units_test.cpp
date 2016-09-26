@@ -56,7 +56,7 @@ TEST_CASE("Verify string conversion.", "[units]")
    REQUIRE(osst3.str() == "[2.5e-06 K]");
    REQUIRE(osst4.str() == "[2.5e-06 K]");
 
-   dimval<1, 1, 1, 1, 1> const foo = s * m * kg * C * K;
+   statdim<1, 1, 1, 1, 1> const foo = s * m * kg * C * K;
    dyndim const bar = s * m * kg * C * K;
    ostringstream oss5, oss6, oss7, oss8;
    oss5 << foo;
@@ -78,23 +78,23 @@ TEST_CASE("Verify addition.", "[units]") { REQUIRE(m + km == 1001 * m); }
 
 TEST_CASE("Verify subtraction.", "[units]")
 {
-   REQUIRE(10 * K - 1 * K == 9 * K); // dimval - dimval
+   REQUIRE(10 * K - 1 * K == 9 * K); // statdim - statdim
    dyndim const x = 10 * K;
    dyndim const y = 1 * K;
    REQUIRE(x - y == 9 * K);      // dyndim - dyndim
-   REQUIRE(10 * K - x == 0 * K); // dimval - dyndim
-   REQUIRE(y - 1 * K == 0 * K);  // dyndim - dimval
+   REQUIRE(10 * K - x == 0 * K); // statdim - dyndim
+   REQUIRE(y - 1 * K == 0 * K);  // dyndim - statdim
 }
 
 TEST_CASE("Verify additive assignment.", "[units]")
 {
    speed v1 = 2 * m / s;
    speed const v2 = 3 * m / s;
-   REQUIRE((v1 += v2) == 5 * m / s); // dimval += dimval
+   REQUIRE((v1 += v2) == 5 * m / s); // statdim += statdim
    dyndim v3 = v1;
    dyndim const v4 = v2;
-   REQUIRE((v1 += v4) == 8 * m / s);  // dimval += dyndim
-   REQUIRE((v3 += v2) == 8 * m / s);  // dyndim += dimval
+   REQUIRE((v1 += v4) == 8 * m / s);  // statdim += dyndim
+   REQUIRE((v3 += v2) == 8 * m / s);  // dyndim += statdim
    REQUIRE((v3 += v4) == 11 * m / s); // dyndim += dyndim
 }
 
@@ -102,11 +102,11 @@ TEST_CASE("Verify subtractive assignment.", "[units]")
 {
    charge q1 = 3 * C;
    charge const q2 = 1 * C;
-   REQUIRE((q1 -= q2) == 2 * C); // dimval -= dimval
+   REQUIRE((q1 -= q2) == 2 * C); // statdim -= statdim
    dyndim q3 = q1;
    dyndim const q4 = q2;
-   REQUIRE((q1 -= q4) == 1 * C); // dimval -= dyndim
-   REQUIRE((q3 -= q2) == 1 * C); // dyndim -= dimval
+   REQUIRE((q1 -= q4) == 1 * C); // statdim -= dyndim
+   REQUIRE((q3 -= q2) == 1 * C); // dyndim -= statdim
    REQUIRE((q3 -= q4) == 0 * C); // dyndim -= dyndim
 }
 

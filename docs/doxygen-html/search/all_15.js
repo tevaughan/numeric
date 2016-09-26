@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['v_5f',['v_',['../classnum_1_1dimval__base.html#a42569edc76a4dbea7c544bb20b260319',1,'num::dimval_base']]],
-  ['volume',['volume',['../namespacenum.html#a4a8db50cfcfb53fb077899c1e6889419',1,'num']]]
+  ['v_5f',['v_',['../classnum_1_1dimval.html#a7ea8207582ed97e842393c2afba0eafd',1,'num::dimval']]],
+  ['volume',['volume',['../namespacenum.html#adfc846f24fdba243b23fe3f127338121',1,'num']]]
 ];

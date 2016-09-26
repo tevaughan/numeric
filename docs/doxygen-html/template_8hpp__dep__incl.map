@@ -1,5 +1,5 @@
 <map id="template.hpp" name="template.hpp">
-<area shape="rect" id="node2" href="$dimval_8hpp.html" title="Source code for conversions dealing with angle, for num::dimval, and for num::dyndim. " alt="" coords="19,80,105,107"/>
+<area shape="rect" id="node2" href="$dimval_8hpp.html" title="Source code for conversions dealing with angle, for num::dim_exps, for num::dimval_base, for num::statdim, and for num::dyndim. " alt="" coords="19,80,105,107"/>
 <area shape="rect" id="node6" href="$integral_8hpp.html" title="Source for num::integral(), which numerically integrates via adaptive quadrature and the trapezoidal ..." alt="" coords="129,80,219,107"/>
 <area shape="rect" id="node3" href="$dimensions_8hpp.html" title="Automatically generated source for generic&#45;dimension types. " alt="" coords="5,155,119,181"/>
 <area shape="rect" id="node4" href="$units_8hpp.html" title="Automatically generated header file for units. " alt="" coords="25,229,99,256"/>
