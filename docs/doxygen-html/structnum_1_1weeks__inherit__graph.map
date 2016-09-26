@@ -1,4 +1,5 @@
 <map id="num::weeks" name="num::weeks">
-<area shape="rect" id="node2" href="$classnum_1_1statdim.html" title="Model of a statically dimensioned value. " alt="" coords="57,95,104,121"/>
-<area shape="rect" id="node3" href="$classnum_1_1dimval.html" title="num::dimval\&lt; statdim\l\&lt; TI, D, M, C, TE \&gt; \&gt;" alt="" coords="5,5,156,47"/>
+<area shape="rect" id="node2" href="$classnum_1_1statdim.html" title="Model of a statically dimensioned value. " alt="" coords="57,200,104,227"/>
+<area shape="rect" id="node3" href="$classnum_1_1dimval.html" title="num::dimval\&lt; statdim\l\&lt; TI, D, M, C, TE \&gt; \&gt;" alt="" coords="5,109,156,151"/>
+<area shape="rect" id="node4" href="$classnum_1_1dimval.html" title="Base class for statdim and dyndim. " alt="" coords="7,5,154,32"/>
 </map>
