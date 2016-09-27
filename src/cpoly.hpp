@@ -20,15 +20,16 @@ namespace num
 {
    /// Model of a polynomial of a continuous variable.
    ///
-   /// This class is not fully compatible with statdim.  The type \a C of each
-   /// term may be a statdim, in which case type \a V must be dyndim.
-   /// Similarly, if type \a C be dyndim, then type \a V must be dyndim.
+   /// The general template class cpoly is not fully compatible with \ref
+   /// statdim.  The type \a C of each term may be a \ref statdim, in which
+   /// case type \a V must be \ref dyndim.  Similarly, if type \a C be \ref
+   /// dyndim, then type \a V must be \ref dyndim.
    ///
-   /// However, the specialization for the zeroth-degree polynomial (the
-   /// constant) is fully compatible with statdim.
+   /// However, the specialization \ref cpoly<0,V,C> for the zeroth-degree
+   /// polynomial (the constant) is fully compatible with statdim.
    ///
-   /// Class cpoly inherits from cfunc because cpoly is a model of a continuous
-   /// function.
+   /// Class cpoly inherits from \ref cfunc because cpoly is a model of a
+   /// continuous function.
    ///
    /// \tparam D  Degree of polynomial.
    /// \tparam V  Type of variable. By default, primitive type double.
@@ -115,8 +116,8 @@ namespace num
       }
    };
 
-   /// Specialization of cpoly for degree zero, which has a single coefficient,
-   /// the constant term.
+   /// Degree-zero specialization of \ref cpoly.  %cpoly<0,V,C> has but a
+   /// single coefficient, the constant term.
    template <typename V, typename C>
    class cpoly<0, V, C> : public cfunc<V, C, cpoly<0, V, C>>
    {
