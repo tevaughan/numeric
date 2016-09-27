@@ -7,7 +7,7 @@ var searchData=
   ['def_5fint',['def_int',['../classnum_1_1rk__quad.html#a2202b8a5252d6eb0b3a25f46ad4ba9f1',1,'num::rk_quad']]],
   ['degs',['degs',['../namespacenum.html#ab4d61e21b91a58e39e323d4ab9fa6d71',1,'num']]],
   ['dense_5ftable',['dense_table',['../classnum_1_1dense__table.html#ae27e8ea2389907b2550d9c864e8ec106',1,'num::dense_table']]],
-  ['derivative',['derivative',['../structnum_1_1cfunc.html#a93165461a40b6f54da8d51c7daf90354',1,'num::cfunc::derivative()'],['../classnum_1_1cpoly.html#acdc251606e29a33daf15e98b79cfce8e',1,'num::cpoly::derivative()']]],
+  ['derivative',['derivative',['../classnum_1_1cpoly.html#acdc251606e29a33daf15e98b79cfce8e',1,'num::cpoly']]],
   ['dim_5fexps',['dim_exps',['../classnum_1_1dim__exps.html#a876f01a892e469ffa5bedeaa154dfd9a',1,'num::dim_exps::dim_exps()'],['../classnum_1_1dim__exps.html#a814bfcf94bd0dac034157edb5e407437',1,'num::dim_exps::dim_exps(char ti, char d, char m, char c, char te)']]],
   ['dimval',['dimval',['../classnum_1_1dimval.html#acd1ccff45bd2ff74c150313426e3e245',1,'num::dimval::dimval(double vv)'],['../classnum_1_1dimval.html#affe898c6683ec6c8e43678e211912152',1,'num::dimval::dimval(dimval&lt; ODER &gt; const &amp;dvb)'],['../classnum_1_1dimval.html#ab35df90f08423bd81609ee48587f7f67',1,'num::dimval::dimval()']]],
   ['dyndim',['dyndim',['../classnum_1_1dyndim.html#a0471901cfaa4a087bcc7f79e2ee51351',1,'num::dyndim::dyndim()=default'],['../classnum_1_1dyndim.html#a5218165aa7e747c54416d9434a84055f',1,'num::dyndim::dyndim(dimval&lt; DER &gt; const &amp;dvb)']]],

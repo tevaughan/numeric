@@ -25,23 +25,11 @@ namespace num
    /// \tparam D  Type of descendant.
    template <typename A, typename R, typename D>
    struct cfunc {
-      /// Type of derivative.
-      using DERIV = decltype(D().derivative());
-
-      /// Type of indefinite integral.
-      using INTEG = decltype(D().integral());
-
       /// Return pointer to descendant instance.
       D const &d() const { return static_cast<D const *>(this); }
 
       /// Evaluate function.
       R operator()(A const& a) const { return d()(a); }
-
-      /// Return function representing derivative.
-      DERIV derivative() const { return d()->derivative(); }
-
-      /// Return function representing integral from specified lower bound.
-      INTEG integral(A const &lb) const { return d()->integral(lb); }
    };
 }
 

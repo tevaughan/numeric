@@ -112,9 +112,9 @@ mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = $(top_builddir)/src/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
-am_tests_OBJECTS = tests-integral_test.$(OBJEXT) \
-	tests-interpolant_test.$(OBJEXT) tests-tests.$(OBJEXT) \
-	tests-units_test.$(OBJEXT)
+am_tests_OBJECTS = tests-cpoly_test.$(OBJEXT) \
+	tests-integral_test.$(OBJEXT) tests-interpolant_test.$(OBJEXT) \
+	tests-tests.$(OBJEXT) tests-units_test.$(OBJEXT)
 tests_OBJECTS = $(am_tests_OBJECTS)
 am__DEPENDENCIES_1 =
 tests_DEPENDENCIES = ../src/libnumeric.la $(am__DEPENDENCIES_1)
@@ -531,6 +531,7 @@ EXTRA_DIST = \
  interpolant_test.txt
 
 tests_SOURCES = \
+ cpoly_test.cpp\
  integral_test.cpp\
  interpolant_test.cpp\
  tests.cpp\
@@ -593,6 +594,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tests-cpoly_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tests-integral_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tests-interpolant_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tests-tests.Po@am__quote@
@@ -618,6 +620,20 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LTCXXCOMPILE) -c -o $@ $<
+
+tests-cpoly_test.o: cpoly_test.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tests_CPPFLAGS) $(CPPFLAGS) $(tests_CXXFLAGS) $(CXXFLAGS) -MT tests-cpoly_test.o -MD -MP -MF $(DEPDIR)/tests-cpoly_test.Tpo -c -o tests-cpoly_test.o `test -f 'cpoly_test.cpp' || echo '$(srcdir)/'`cpoly_test.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/tests-cpoly_test.Tpo $(DEPDIR)/tests-cpoly_test.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='cpoly_test.cpp' object='tests-cpoly_test.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tests_CPPFLAGS) $(CPPFLAGS) $(tests_CXXFLAGS) $(CXXFLAGS) -c -o tests-cpoly_test.o `test -f 'cpoly_test.cpp' || echo '$(srcdir)/'`cpoly_test.cpp
+
+tests-cpoly_test.obj: cpoly_test.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tests_CPPFLAGS) $(CPPFLAGS) $(tests_CXXFLAGS) $(CXXFLAGS) -MT tests-cpoly_test.obj -MD -MP -MF $(DEPDIR)/tests-cpoly_test.Tpo -c -o tests-cpoly_test.obj `if test -f 'cpoly_test.cpp'; then $(CYGPATH_W) 'cpoly_test.cpp'; else $(CYGPATH_W) '$(srcdir)/cpoly_test.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/tests-cpoly_test.Tpo $(DEPDIR)/tests-cpoly_test.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='cpoly_test.cpp' object='tests-cpoly_test.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tests_CPPFLAGS) $(CPPFLAGS) $(tests_CXXFLAGS) $(CXXFLAGS) -c -o tests-cpoly_test.obj `if test -f 'cpoly_test.cpp'; then $(CYGPATH_W) 'cpoly_test.cpp'; else $(CYGPATH_W) '$(srcdir)/cpoly_test.cpp'; fi`
 
 tests-integral_test.o: integral_test.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tests_CPPFLAGS) $(CPPFLAGS) $(tests_CXXFLAGS) $(CXXFLAGS) -MT tests-integral_test.o -MD -MP -MF $(DEPDIR)/tests-integral_test.Tpo -c -o tests-integral_test.o `test -f 'integral_test.cpp' || echo '$(srcdir)/'`integral_test.cpp
