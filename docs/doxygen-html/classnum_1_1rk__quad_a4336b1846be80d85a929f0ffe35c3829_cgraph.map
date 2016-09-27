@@ -1,4 +1,0 @@
-<map id="num::rk_quad::init" name="num::rk_quad::init">
-<area shape="rect" id="node2" href="$classnum_1_1rk__quad.html#af40ac608d746ad23f63d23b84faaf09b" title="Fifth&#45;order Runge&#45;Kutta step with monitoring of local truncation error to ensure accurcy and adjust s..." alt="" coords="180,5,315,32"/>
-<area shape="rect" id="node3" href="$classnum_1_1rk__quad.html#a7ec0dd431f24113f6105d4d03d7b5415" title="Given the value for variable y and the value for its derivative dydx, use the fifth&#45;order Cash&#45;Karp R..." alt="" coords="363,5,497,32"/>
-</map>

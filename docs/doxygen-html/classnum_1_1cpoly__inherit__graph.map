@@ -1,4 +1,4 @@
-<map id="num::cpoly&lt; D, V, C &gt;" name="num::cpoly&lt; D, V, C &gt;">
-<area shape="rect" id="node2" href="$structnum_1_1cfunc.html" title="num::cfunc\&lt; V, C, cpoly\l\&lt; D, V, C \&gt; \&gt;" alt="" coords="5,109,171,151"/>
-<area shape="rect" id="node3" href="$structnum_1_1cfunc.html" title="Base class for model of a function of a continuous variable. " alt="" coords="10,5,166,32"/>
+<map id="cpoly&lt; D, V, C &gt;" name="cpoly&lt; D, V, C &gt;">
+<area shape="rect" id="node2" href="$structnum_1_1cfunc.html" title="cfunc\&lt; V, C, cpoly\l\&lt; D, V, C \&gt; \&gt;" alt="" coords="5,109,137,151"/>
+<area shape="rect" id="node3" href="$structnum_1_1cfunc.html" title="Base class for model of a function of a continuous variable. " alt="" coords="10,5,133,32"/>
 </map>

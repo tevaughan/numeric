@@ -1,4 +1,0 @@
-<map id="num::rk_quad::rkqs" name="num::rk_quad::rkqs">
-<area shape="rect" id="node2" href="$classnum_1_1rk__quad.html#a4336b1846be80d85a929f0ffe35c3829" title="This function is based on odeint() on Page 721 of Numerical Recipes in C, Second Edition. " alt="" coords="188,5,315,32"/>
-<area shape="rect" id="node3" href="$classnum_1_1rk__quad.html#aef7932e97f89db6b02f8459afef0a429" title="Numerically integrate a function, and store the result in rk_quad::y. " alt="" coords="363,5,517,32"/>
-</map>

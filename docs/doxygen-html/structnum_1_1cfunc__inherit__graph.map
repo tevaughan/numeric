@@ -1,6 +1,6 @@
-<map id="num::cfunc&lt; A, R, D &gt;" name="num::cfunc&lt; A, R, D &gt;">
-<area shape="rect" id="node2" href="$structnum_1_1cfunc.html" title="num::cfunc\&lt; V, C, cpoly\l\&lt; D, V, C \&gt; \&gt;" alt="" coords="5,109,171,151"/>
-<area shape="rect" id="node4" href="$structnum_1_1cfunc.html" title="num::cfunc\&lt; V, C, cpoly\l\&lt; 0, V, C \&gt; \&gt;" alt="" coords="195,109,360,151"/>
-<area shape="rect" id="node3" href="$classnum_1_1cpoly.html" title="Model of a polynomial of a continuous variable. " alt="" coords="11,200,165,227"/>
-<area shape="rect" id="node5" href="$classnum_1_1cpoly_3_010_00_01V_00_01C_01_4.html" title="Degree&#45;zero specialization of cpoly. " alt="" coords="201,200,353,227"/>
+<map id="cfunc&lt; A, R, D &gt;" name="cfunc&lt; A, R, D &gt;">
+<area shape="rect" id="node2" href="$structnum_1_1cfunc.html" title="cfunc\&lt; V, C, cpoly\l\&lt; D, V, C \&gt; \&gt;" alt="" coords="5,109,137,151"/>
+<area shape="rect" id="node4" href="$structnum_1_1cfunc.html" title="cfunc\&lt; V, C, cpoly\l\&lt; 0, V, C \&gt; \&gt;" alt="" coords="161,109,293,151"/>
+<area shape="rect" id="node3" href="$classnum_1_1cpoly.html" title="Model of a polynomial of a continuous variable. " alt="" coords="10,200,133,227"/>
+<area shape="rect" id="node5" href="$classnum_1_1cpoly_3_010_00_01V_00_01C_01_4.html" title="Degree&#45;zero specialization of cpoly. " alt="" coords="168,200,287,227"/>
 </map>

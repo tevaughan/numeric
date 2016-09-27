@@ -1,13 +1,13 @@
 var searchData=
 [
-  ['g',['g',['../namespacenum_1_1u.html#a8492c15a7e6fc638032dfc5d3d140614',1,'num::u']]],
+  ['g',['g',['../namespacenum_1_1u.html#aa1d6bafedb3cb178197e2a93d29637b5',1,'num::u']]],
   ['gees',['gees',['../structnum_1_1u_1_1gees.html',1,'num::u']]],
-  ['gees',['gees',['../structnum_1_1u_1_1gees.html#a52a98246baa049f79d28127f93fa5ff4',1,'num::u::gees::gees(double v)'],['../structnum_1_1u_1_1gees.html#ad269a281448934306843abf1a217d57a',1,'num::u::gees::gees(gees const &amp;dv)=default']]],
-  ['get_5fpoint',['get_point',['../classnum_1_1interpolant.html#a2ddb68c592ee37a19d637d9f763174be',1,'num::interpolant']]],
-  ['ghz',['GHz',['../namespacenum_1_1u.html#a80a963b49741d863ffe87c4e604f27a4',1,'num::u']]],
+  ['gees',['gees',['../structnum_1_1u_1_1gees.html#a49a7e61903bb234a527c119f5f2c62b6',1,'num::u::gees::gees(double v)'],['../structnum_1_1u_1_1gees.html#a7d47f7a76b0504815474c3cfa4943131',1,'num::u::gees::gees(gees const &amp;dv)=default']]],
+  ['get_5fpoint',['get_point',['../classnum_1_1interpolant.html#a7b3de080282db807253c0442dc45a2ab',1,'num::interpolant']]],
+  ['ghz',['GHz',['../namespacenum_1_1u.html#a707534f4a6b262de8bda380e40570a24',1,'num::u']]],
   ['gigahertz',['gigahertz',['../structnum_1_1u_1_1gigahertz.html',1,'num::u']]],
-  ['gigahertz',['gigahertz',['../structnum_1_1u_1_1gigahertz.html#ab0f4f6bb8e9dbd74677696a27c9a0f66',1,'num::u::gigahertz::gigahertz(double v)'],['../structnum_1_1u_1_1gigahertz.html#a1beef5cb7ec6a3bbc19afe734ddc3e72',1,'num::u::gigahertz::gigahertz(gigahertz const &amp;dv)=default']]],
-  ['gn',['gn',['../namespacenum_1_1u.html#a335c4eae528dcb3113476fad868bf490',1,'num::u']]],
+  ['gigahertz',['gigahertz',['../structnum_1_1u_1_1gigahertz.html#a3dec64271f77d1b4ba4c930c4836e98f',1,'num::u::gigahertz::gigahertz(double v)'],['../structnum_1_1u_1_1gigahertz.html#add797b16952743bb8b12627ea4d84636',1,'num::u::gigahertz::gigahertz(gigahertz const &amp;dv)=default']]],
+  ['gn',['gn',['../namespacenum_1_1u.html#a009586dfa8e5ceffe09bdb27402a2bac',1,'num::u']]],
   ['grams',['grams',['../structnum_1_1u_1_1grams.html',1,'num::u']]],
-  ['grams',['grams',['../structnum_1_1u_1_1grams.html#a8fd7a217975356db327665ee1b7c5782',1,'num::u::grams::grams(double v)'],['../structnum_1_1u_1_1grams.html#a4d04420dbf9c06b2b8d5bdbda60b2c74',1,'num::u::grams::grams(grams const &amp;dv)=default']]]
+  ['grams',['grams',['../structnum_1_1u_1_1grams.html#a21036c43d2792f59838d16b3f3d9ccbf',1,'num::u::grams::grams(double v)'],['../structnum_1_1u_1_1grams.html#afec3c3c060a514d7b9b98f11340bd7eb',1,'num::u::grams::grams(grams const &amp;dv)=default']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['j',['J',['../namespacenum_1_1u.html#a8116af67e40c35993a423910f39b088b',1,'num::u']]]
+  ['j',['J',['../namespacenum_1_1u.html#a2cb3bde5e52fd44329759d5ec392633a',1,'num::u']]]
 ];

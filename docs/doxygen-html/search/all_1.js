@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['b',['b',['../structnum_1_1interval.html#abe507dab6ec450d1995edfe65cc91306',1,'num::interval']]]
+  ['b',['b',['../structnum_1_1interval.html#af3d0289461a5c197582f3178bb8b9541',1,'num::interval']]]
 ];

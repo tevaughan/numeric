@@ -1,7 +1,7 @@
-<map id="num::u::hours" name="num::u::hours">
-<area shape="rect" id="node2" href="$classnum_1_1statdim.html" title="Model of a statically dimensioned value. " alt="" coords="200,303,246,329"/>
-<area shape="rect" id="node3" href="$classnum_1_1dimval.html" title="num::dimval\&lt; statdim\l\&lt; TI, D, M, C, TE \&gt; \&gt;" alt="" coords="32,199,182,240"/>
-<area shape="rect" id="node4" href="$classdouble.html" title="double" alt="" coords="8,5,68,32"/>
-<area shape="rect" id="node5" href="$classnum_1_1dimval.html" title="Base class for statdim and dyndim. " alt="" coords="40,95,187,121"/>
-<area shape="rect" id="node6" href="$classnum_1_1dim__exps.html" title="Dimensional exponents. " alt="" coords="248,206,358,233"/>
+<map id="hours" name="hours">
+<area shape="rect" id="node2" href="$classnum_1_1statdim.html" title="Model of a statically dimensioned value. " alt="" coords="181,303,228,329"/>
+<area shape="rect" id="node3" href="$classnum_1_1dimval.html" title="dimval\&lt; statdim\&lt; TI,\l D, M, C, TE \&gt; \&gt;" alt="" coords="17,199,160,240"/>
+<area shape="rect" id="node4" href="$classdouble.html" title="double" alt="" coords="5,5,65,32"/>
+<area shape="rect" id="node5" href="$classnum_1_1dimval.html" title="Base class for statdim and dyndim. " alt="" coords="43,95,156,121"/>
+<area shape="rect" id="node6" href="$classnum_1_1dim__exps.html" title="Dimensional exponents. " alt="" coords="245,206,324,233"/>
 </map>

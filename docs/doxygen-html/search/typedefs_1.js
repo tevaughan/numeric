@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['charge',['charge',['../namespacenum.html#a0936840a212801ea2ca7a1cb5ddfde9b',1,'num']]],
-  ['current',['current',['../namespacenum.html#a519a811d84ab01cda11b0a10ba849681',1,'num']]]
+  ['charge',['charge',['../namespacenum.html#aa58f9cbba972b004ad19daebead96234',1,'num']]],
+  ['current',['current',['../namespacenum.html#a9289d56c13af85be0ffda211cbbf20e0',1,'num']]]
 ];

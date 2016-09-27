@@ -1,5 +1,5 @@
-<map id="num::cpoly&lt; D, V, C &gt;" name="num::cpoly&lt; D, V, C &gt;">
-<area shape="rect" id="node2" href="$structnum_1_1cfunc.html" title="num::cfunc\&lt; V, C, cpoly\l\&lt; D, V, C \&gt; \&gt;" alt="" coords="5,199,171,240"/>
-<area shape="rect" id="node3" href="$structnum_1_1cfunc.html" title="Base class for model of a function of a continuous variable. " alt="" coords="10,95,166,121"/>
-<area shape="rect" id="node6" title="STL class. " alt="" coords="295,95,404,121"/>
+<map id="cpoly&lt; D, V, C &gt;" name="cpoly&lt; D, V, C &gt;">
+<area shape="rect" id="node2" href="$structnum_1_1cfunc.html" title="cfunc\&lt; V, C, cpoly\l\&lt; D, V, C \&gt; \&gt;" alt="" coords="9,199,141,240"/>
+<area shape="rect" id="node3" href="$structnum_1_1cfunc.html" title="Base class for model of a function of a continuous variable. " alt="" coords="5,95,128,121"/>
+<area shape="rect" id="node6" title="STL class. " alt="" coords="269,95,352,121"/>
 </map>

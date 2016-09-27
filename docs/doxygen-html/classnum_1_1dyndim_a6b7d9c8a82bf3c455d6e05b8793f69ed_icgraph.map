@@ -1,8 +1,0 @@
-<map id="num::dyndim::dyndim" name="num::dyndim::dyndim">
-<area shape="rect" id="node2" href="$classnum_1_1dyndim.html#a9e35d09feada64c9016d7db27dfa96c7" title="Multiplication by number on right side. " alt="" coords="200,5,357,32"/>
-<area shape="rect" id="node4" href="$classnum_1_1dyndim.html#ac45bd01a6c6c637b4e32ecfb2d74dee8" title="Division by number. " alt="" coords="201,56,357,83"/>
-<area shape="rect" id="node5" href="$classnum_1_1dyndim.html#ac0d7dfb93b1035f960c18f6e43e68128" title="Integer power. " alt="" coords="214,107,343,133"/>
-<area shape="rect" id="node6" href="$classnum_1_1dyndim.html#a6c8b83996c0a111f2550e49542bd27b2" title="Integer root. " alt="" coords="215,157,342,184"/>
-<area shape="rect" id="node3" href="$namespacenum.html#a28fc98b9c781cc378e729328a66a5bbd" title="Multiplication of dyndim by number on left side. " alt="" coords="415,5,522,32"/>
-<area shape="rect" id="node7" href="$classnum_1_1dyndim.html#ac52e27a89b0f584c9f389d31237f6116" title="Square root. " alt="" coords="405,157,532,184"/>
-</map>

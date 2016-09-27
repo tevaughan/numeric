@@ -1,6 +1,6 @@
-<map id="num::dyndim" name="num::dyndim">
-<area shape="rect" id="node2" href="$classnum_1_1dimval.html" title="num::dimval\&lt; dyndim \&gt;" alt="" coords="36,184,194,211"/>
-<area shape="rect" id="node3" href="$classdouble.html" title="double" alt="" coords="9,5,69,32"/>
-<area shape="rect" id="node4" href="$classnum_1_1dimval.html" title="Base class for statdim and dyndim. " alt="" coords="42,95,188,121"/>
-<area shape="rect" id="node5" href="$classnum_1_1dim__exps.html" title="Dimensional exponents. " alt="" coords="245,184,356,211"/>
+<map id="dyndim" name="dyndim">
+<area shape="rect" id="node2" href="$classnum_1_1dimval.html" title="dimval\&lt; dyndim \&gt;" alt="" coords="36,184,163,211"/>
+<area shape="rect" id="node3" href="$classdouble.html" title="double" alt="" coords="5,5,65,32"/>
+<area shape="rect" id="node4" href="$classnum_1_1dimval.html" title="Base class for statdim and dyndim. " alt="" coords="43,95,156,121"/>
+<area shape="rect" id="node5" href="$classnum_1_1dim__exps.html" title="Dimensional exponents. " alt="" coords="221,184,300,211"/>
 </map>
