@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['s',['s',['../units_8hpp.html#ab137b17f15cca1e4148fece0e5fdb2a7',1,'num::u']]],
-  ['seconds',['seconds',['../structnum_1_1seconds.html',1,'num']]],
-  ['seconds',['seconds',['../structnum_1_1seconds.html#af9f33346eac4a6f251ff71819c1c3c83',1,'num::seconds::seconds(double v)'],['../structnum_1_1seconds.html#abea4b439e4e89b434646d8c24d9d940e',1,'num::seconds::seconds(seconds const &amp;dv)=default']]],
+  ['s',['s',['../namespacenum_1_1u.html#ab137b17f15cca1e4148fece0e5fdb2a7',1,'num::u']]],
+  ['seconds',['seconds',['../structnum_1_1u_1_1seconds.html',1,'num::u']]],
+  ['seconds',['seconds',['../structnum_1_1u_1_1seconds.html#abd775e4ec50eaa88cebf6391d1df462e',1,'num::u::seconds::seconds(double v)'],['../structnum_1_1u_1_1seconds.html#adbb90fd046e95ada62a3b49fa5518793',1,'num::u::seconds::seconds(seconds const &amp;dv)=default']]],
   ['sparse_2dtable_2ehpp',['sparse-table.hpp',['../sparse-table_8hpp.html',1,'']]],
   ['sparse_5ftable',['sparse_table',['../classnum_1_1sparse__table.html',1,'num']]],
   ['sparse_5ftable',['sparse_table',['../classnum_1_1sparse__table.html#adf9122e95b40139d639f56d40b149aaf',1,'num::sparse_table']]],

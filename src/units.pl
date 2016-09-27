@@ -20,6 +20,9 @@ print OUT_H <<'EOF1';
 #include "dimensions.hpp"
 
 namespace num {
+/// Namespace for physical units.
+namespace u {
+}
 EOF1
 
 print OUT_C << 'EOF2';
@@ -31,7 +34,7 @@ print OUT_C << 'EOF2';
 
 #include "units.hpp"
 
-using namespace num;
+using namespace num::u;
 
 EOF2
 
@@ -41,6 +44,7 @@ while(<INPUT>) {
    my($pnm, $snm, $dim, $cnv) = split;
    print OUT_H <<"EOF3";
 
+namespace u {
 /// Machine-generated structure providing public constructor, which takes a
 /// double-precision number of $pnm.
 struct $pnm : public $dim {
@@ -59,7 +63,6 @@ struct $pnm : public $dim {
    }
 };
 
-namespace u {
 /// Declaration of symbol $snm representing a unit of $dim.
 extern $pnm const $snm;
 }
