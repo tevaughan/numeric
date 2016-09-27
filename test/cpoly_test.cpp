@@ -94,3 +94,24 @@ TEST_CASE("Verify integral of polynomial.", "[cpoly]")
    REQUIRE(cp3.c()[2] == +0.5 * m / s / s);
 }
 
+TEST_CASE("Verify derivative down to constant and integral back to linear.",
+          "[cpoly]")
+{
+   array<dyndim, 3> a1;
+   a1[0] = 1 * m;
+   a1[1] = 1 * m / s;
+   a1[2] = 0.5 * m / s / s;
+   cpoly<2, dyndim, length> cp1(a1); // quadratic
+   auto cp2 = cp1.derivative();      // linear
+   auto cp3 = cp2.derivative();      // constant
+   REQUIRE(acceleration(cp3) == 1 * m / s / s);
+   REQUIRE(cp3(1 * s) == 1 * m / s / s);
+   REQUIRE(cp3(2 * s) == 1 * m / s / s);
+   // Change constant.
+   cp3 = 2 * m / s / s;
+   auto cp4 = cp3.integral(0.5 * s);
+   REQUIRE(cp4.c().size() == 2);
+   REQUIRE(cp4.c()[0] == -1 * m / s);
+   REQUIRE(cp4.c()[1] == +2 * m / s / s);
+}
+

@@ -161,6 +161,7 @@ class num::cpoly&lt; D, V, C &gt;</h3>
 
 <p>Model of a polynomial of a continuous variable. </p>
 <p>This class is not fully compatible with statdim. The type <em>C</em> of each term may be a statdim, in which case type <em>V</em> must be dyndim. Similarly, if type <em>C</em> be dyndim, then type <em>V</em> must be dyndim.</p>
+<p>However, the specialization for the zeroth-degree polynomial (the constant) is fully compatible with statdim.</p>
 <p>Class cpoly inherits from cfunc because cpoly is a model of a continuous function.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -171,7 +172,7 @@ class num::cpoly&lt; D, V, C &gt;</h3>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00034">34</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00037">37</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a0f2607b7a3117d4f6bb523d4ec17e311"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0f2607b7a3117d4f6bb523d4ec17e311">&sect;&nbsp;</a></span>integral()</h2>
@@ -207,7 +208,7 @@ template&lt;unsigned D, typename V  = double, typename C  = double&gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00098">98</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00101">101</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
 
 </div>
 </div>
@@ -245,7 +246,7 @@ template&lt;unsigned D, typename V  = double, typename C  = double&gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00076">76</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00079">79</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
 
 </div>
 </div>
