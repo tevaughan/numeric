@@ -28,8 +28,8 @@ namespace num
    /// function.
    ///
    /// \tparam D  Degree of polynomial.
-   /// \tparam V  Type of variable.
-   /// \tparam C  Type of each term.
+   /// \tparam V  Type of variable. By default, primitive type double.
+   /// \tparam C  Type of each term. By default, primitive type double.
    template <unsigned D, typename V=double, typename C=double>
    class cpoly : public cfunc<V, C, cpoly<D, V, C>>
    {
@@ -73,13 +73,13 @@ namespace num
       using INTEG = cpoly<D + 1, V, decltype(C() * V())>;
 
       /// Evaluate polynomial.
-      C operator()(V const& v) const
+      C operator()(V const& v /**< Independent variable. */) const
       {
          C val = c_[0];
-         V vp = v;
+         V vp = v; // Initialize pth power of independent variable.
          for (unsigned i = 1; i < c_.size(); ++i) {
             val += c_[i] * vp;
-            vp = v * vp;
+            vp *= v;
          }
          return val;
       }
@@ -95,12 +95,18 @@ namespace num
       }
 
       /// Return function representing integral from specified lower bound.
-      INTEG integral(V const &lb) const
+      INTEG integral(V const &lb /**< Lower bound of integration. */) const
       {
          INTEG i;
-         i.c()[0] = lb;
+         // Initialize constant with zero in right units (in case type C be
+         // dimval).
+         i.c()[0] = 0.0 * (*this)(lb) * lb;
+         V lbn = lb; // Initialize nth power of lower bound.
          for (unsigned j = 0; j < c_.size(); ++j) {
-            i.c()[j + 1] = c_[j] / (j + 1);
+            V const cn = c_[j] / (j + 1);
+            i.c()[j + 1] = cn;
+            i.c()[0] -= cn * lbn;
+            lbn *= lb;
          }
          return i;
       }

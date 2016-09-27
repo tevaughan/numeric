@@ -130,6 +130,30 @@ namespace num
                          C() - ode.C(), TE() - ode.TE());
       }
 
+      /// Additive assignment of exponents for multiplicative assignment of
+      /// dimensioned quantity.
+      dim_exps &operator+=(dim_exps ode /**< Other exponents. */)
+      {
+         TI() += ode.TI();
+         D() += ode.D();
+         M() += ode.M();
+         C() += ode.C();
+         TE() += ode.TE();
+         return *this;
+      }
+
+      /// Subtractive assignment of exponents for divisive assignment of
+      /// dimensioned quantity.
+      dim_exps &operator-=(dim_exps ode /**< Other exponents. */)
+      {
+         TI() -= ode.TI();
+         D() -= ode.D();
+         M() -= ode.M();
+         C() -= ode.C();
+         TE() -= ode.TE();
+         return *this;
+      }
+
       /// Multiply exponents by integer as for integer power of dimensioned
       /// value.
       dim_exps operator*(int p /**< Integer power. */) const
@@ -595,6 +619,9 @@ namespace num
       }
 
    public:
+      using PT::operator*=; ///< Inherit parent's multiplicative assignment.
+      using PT::operator/=; ///< Inherit parent's divisive assignment.
+
       /// By default, construct a dimensionless quantity of magnitude zero.
       dyndim() = default;
 
@@ -620,6 +647,24 @@ namespace num
       dyndim operator*(dyndim const &dd) const
       {
          return dyndim(v_ * dd.v_, exps_ + dd.exps_);
+      }
+
+      /// Multiplicative assignment by dyndim.
+      template <typename DER>
+      dyndim& operator*=(dimval<DER> const& dv)
+      {
+         v_ *= dv.v_;
+         exps_ += dv.exps();
+         return *this;
+      }
+
+      /// Divisive assignment by dyndim.
+      template <typename DER>
+      dyndim& operator/=(dimval<DER> const& dv)
+      {
+         v_ /= dv.v_;
+         exps_ -= dv.exps();
+         return *this;
       }
 
       /// Division by number.

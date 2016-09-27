@@ -104,9 +104,8 @@ Collaboration diagram for num::dyndim:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0471901cfaa4a087bcc7f79e2ee51351"><td class="memItemLeft" align="right" valign="top"><a id="a0471901cfaa4a087bcc7f79e2ee51351"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a0471901cfaa4a087bcc7f79e2ee51351">dyndim</a> ()=default</td></tr>
-<tr class="memdesc:a0471901cfaa4a087bcc7f79e2ee51351"><td class="mdescLeft">&#160;</td><td class="mdescRight">By default, construct a dimensionless quantity of magnitude zero. <br /></td></tr>
+<tr class="memitem:a0471901cfaa4a087bcc7f79e2ee51351"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a0471901cfaa4a087bcc7f79e2ee51351">dyndim</a> ()=default</td></tr>
+<tr class="memdesc:a0471901cfaa4a087bcc7f79e2ee51351"><td class="mdescLeft">&#160;</td><td class="mdescRight">&lt; Inherit parent's divisive assignment.  <a href="#a0471901cfaa4a087bcc7f79e2ee51351">More...</a><br /></td></tr>
 <tr class="separator:a0471901cfaa4a087bcc7f79e2ee51351"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5218165aa7e747c54416d9434a84055f"><td class="memTemplParams" colspan="2"><a id="a5218165aa7e747c54416d9434a84055f"></a>
 template&lt;typename DER &gt; </td></tr>
@@ -125,6 +124,16 @@ template&lt;typename DER &gt; </td></tr>
 <a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a4f5608d96a4d0cc2cbe670156ff6104b">operator*</a> (<a class="el" href="classnum_1_1dyndim.html">dyndim</a> const &amp;dd) const</td></tr>
 <tr class="memdesc:a4f5608d96a4d0cc2cbe670156ff6104b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply dyndim by dyndim. <br /></td></tr>
 <tr class="separator:a4f5608d96a4d0cc2cbe670156ff6104b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36d8029704693848b156f10b20e06ec5"><td class="memTemplParams" colspan="2"><a id="a36d8029704693848b156f10b20e06ec5"></a>
+template&lt;typename DER &gt; </td></tr>
+<tr class="memitem:a36d8029704693848b156f10b20e06ec5"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dyndim.html">dyndim</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a36d8029704693848b156f10b20e06ec5">operator*=</a> (<a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; DER &gt; const &amp;dv)</td></tr>
+<tr class="memdesc:a36d8029704693848b156f10b20e06ec5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplicative assignment by dyndim. <br /></td></tr>
+<tr class="separator:a36d8029704693848b156f10b20e06ec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedd87e4a6843df0bcc8472ecef4348cf"><td class="memTemplParams" colspan="2"><a id="aedd87e4a6843df0bcc8472ecef4348cf"></a>
+template&lt;typename DER &gt; </td></tr>
+<tr class="memitem:aedd87e4a6843df0bcc8472ecef4348cf"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dyndim.html">dyndim</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#aedd87e4a6843df0bcc8472ecef4348cf">operator/=</a> (<a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; DER &gt; const &amp;dv)</td></tr>
+<tr class="memdesc:aedd87e4a6843df0bcc8472ecef4348cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divisive assignment by dyndim. <br /></td></tr>
+<tr class="separator:aedd87e4a6843df0bcc8472ecef4348cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac45bd01a6c6c637b4e32ecfb2d74dee8"><td class="memItemLeft" align="right" valign="top"><a id="ac45bd01a6c6c637b4e32ecfb2d74dee8"></a>
 <a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#ac45bd01a6c6c637b4e32ecfb2d74dee8">operator/</a> (double s) const</td></tr>
 <tr class="memdesc:ac45bd01a6c6c637b4e32ecfb2d74dee8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Division by number. <br /></td></tr>
@@ -340,8 +349,37 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 <div class="textblock"><p>Model of a dynamically dimensioned value. </p>
 <p>For a statically dimensioned value, see statdim. </p>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00541">541</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00565">565</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a0471901cfaa4a087bcc7f79e2ee51351"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0471901cfaa4a087bcc7f79e2ee51351">&sect;&nbsp;</a></span>dyndim()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">num::dyndim::dyndim </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>&lt; Inherit parent's divisive assignment. </p>
+<p>By default, construct a dimensionless quantity of magnitude zero. </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="dimval_8hpp_source.html">dimval.hpp</a></li>
 </ul>
 </div><!-- contents -->

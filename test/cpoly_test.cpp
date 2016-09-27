@@ -54,7 +54,7 @@ TEST_CASE("Verify construction from array.", "[cpoly]")
    REQUIRE(cp1.c()[2] == v1[2]);
 }
 
-TEST_CASE("Verify evaltuation of polynomial.", "[cpoly]")
+TEST_CASE("Verify evaluation of polynomial.", "[cpoly]")
 {
    array<dyndim, 3> a1;
    a1[0] = 1 * m;
@@ -64,5 +64,33 @@ TEST_CASE("Verify evaltuation of polynomial.", "[cpoly]")
    REQUIRE(cp1(0 * s) == 1.0 * m);
    REQUIRE(cp1(1 * s) == 2.5 * m);
    REQUIRE(cp1(2 * s) == 5.0 * m);
+}
+
+TEST_CASE("Verify derivative of polynomial.", "[cpoly]")
+{
+   array<dyndim, 3> a1;
+   a1[0] = 1 * m;
+   a1[1] = 1 * m / s;
+   a1[2] = 0.5 * m / s / s;
+   cpoly<2, dyndim, length> cp1(a1);
+   auto cp2 = cp1.derivative();
+   REQUIRE(cp2.c().size() == 2);
+   REQUIRE(cp2.c()[0] == 1.0 * m / s);
+   REQUIRE(cp2.c()[1] == 1.0 * m / s / s);
+}
+
+TEST_CASE("Verify integral of polynomial.", "[cpoly]")
+{
+   array<dyndim, 3> a1;
+   a1[0] = 1 * m;
+   a1[1] = 1 * m / s;
+   a1[2] = 0.5 * m / s / s;
+   cpoly<2, dyndim, length> cp1(a1);
+   auto cp2 = cp1.derivative();
+   auto cp3 = cp2.integral(1 * s); // Start integrating at 1 sec.
+   REQUIRE(cp3.c().size() == 3);
+   REQUIRE(cp3.c()[0] == -1.5 * m);
+   REQUIRE(cp3.c()[1] == +1.0 * m / s);
+   REQUIRE(cp3.c()[2] == +0.5 * m / s / s);
 }
 

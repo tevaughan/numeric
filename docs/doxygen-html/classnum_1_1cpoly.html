@@ -135,17 +135,15 @@ std::array&lt; V, N &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom
 std::array&lt; V, N &gt; const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly.html#ad6f0f5e41f4798a2f62e6f4ed500015d">c</a> () const</td></tr>
 <tr class="memdesc:ad6f0f5e41f4798a2f62e6f4ed500015d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return reference to immutable coefficients. <br /></td></tr>
 <tr class="separator:ad6f0f5e41f4798a2f62e6f4ed500015d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca6213b1d07b74a505ab3a21747773e1"><td class="memItemLeft" align="right" valign="top"><a id="aca6213b1d07b74a505ab3a21747773e1"></a>
-C&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly.html#aca6213b1d07b74a505ab3a21747773e1">operator()</a> (V const &amp;v) const</td></tr>
-<tr class="memdesc:aca6213b1d07b74a505ab3a21747773e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate polynomial. <br /></td></tr>
+<tr class="memitem:aca6213b1d07b74a505ab3a21747773e1"><td class="memItemLeft" align="right" valign="top">C&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly.html#aca6213b1d07b74a505ab3a21747773e1">operator()</a> (V const &amp;v) const</td></tr>
+<tr class="memdesc:aca6213b1d07b74a505ab3a21747773e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate polynomial.  <a href="#aca6213b1d07b74a505ab3a21747773e1">More...</a><br /></td></tr>
 <tr class="separator:aca6213b1d07b74a505ab3a21747773e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acdc251606e29a33daf15e98b79cfce8e"><td class="memItemLeft" align="right" valign="top"><a id="acdc251606e29a33daf15e98b79cfce8e"></a>
 <a class="el" href="classnum_1_1cpoly.html#a7f95498f1d2ed7a5eb04d041da9edc47">DERIV</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly.html#acdc251606e29a33daf15e98b79cfce8e">derivative</a> () const</td></tr>
 <tr class="memdesc:acdc251606e29a33daf15e98b79cfce8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return function representing derivative. <br /></td></tr>
 <tr class="separator:acdc251606e29a33daf15e98b79cfce8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f2607b7a3117d4f6bb523d4ec17e311"><td class="memItemLeft" align="right" valign="top"><a id="a0f2607b7a3117d4f6bb523d4ec17e311"></a>
-<a class="el" href="classnum_1_1cpoly.html#afb4342f20b98ab8000264632618a8323">INTEG</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly.html#a0f2607b7a3117d4f6bb523d4ec17e311">integral</a> (V const &amp;lb) const</td></tr>
-<tr class="memdesc:a0f2607b7a3117d4f6bb523d4ec17e311"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return function representing integral from specified lower bound. <br /></td></tr>
+<tr class="memitem:a0f2607b7a3117d4f6bb523d4ec17e311"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1cpoly.html#afb4342f20b98ab8000264632618a8323">INTEG</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly.html#a0f2607b7a3117d4f6bb523d4ec17e311">integral</a> (V const &amp;lb) const</td></tr>
+<tr class="memdesc:a0f2607b7a3117d4f6bb523d4ec17e311"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return function representing integral from specified lower bound.  <a href="#a0f2607b7a3117d4f6bb523d4ec17e311">More...</a><br /></td></tr>
 <tr class="separator:a0f2607b7a3117d4f6bb523d4ec17e311"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_structnum_1_1cfunc"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_structnum_1_1cfunc')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="structnum_1_1cfunc.html">num::cfunc&lt; V, C, cpoly&lt; D, V, C &gt; &gt;</a></td></tr>
 <tr class="memitem:a298da98ce743c2f4fd83b1bc030d6432 inherit pub_methods_structnum_1_1cfunc"><td class="memItemLeft" align="right" valign="top"><a id="a298da98ce743c2f4fd83b1bc030d6432"></a>
@@ -167,14 +165,91 @@ class num::cpoly&lt; D, V, C &gt;</h3>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">D</td><td>Degree of polynomial. </td></tr>
-    <tr><td class="paramname">V</td><td>Type of variable. </td></tr>
-    <tr><td class="paramname">C</td><td>Type of each term. </td></tr>
+    <tr><td class="paramname">V</td><td>Type of variable. By default, primitive type double. </td></tr>
+    <tr><td class="paramname">C</td><td>Type of each term. By default, primitive type double. </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00034">34</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a0f2607b7a3117d4f6bb523d4ec17e311"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f2607b7a3117d4f6bb523d4ec17e311">&sect;&nbsp;</a></span>integral()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned D, typename V  = double, typename C  = double&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classnum_1_1cpoly.html#afb4342f20b98ab8000264632618a8323">INTEG</a> <a class="el" href="classnum_1_1cpoly.html">num::cpoly</a>&lt; D, V, C &gt;::integral </td>
+          <td>(</td>
+          <td class="paramtype">V const &amp;&#160;</td>
+          <td class="paramname"><em>lb</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return function representing integral from specified lower bound. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lb</td><td>Lower bound of integration. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00098">98</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aca6213b1d07b74a505ab3a21747773e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca6213b1d07b74a505ab3a21747773e1">&sect;&nbsp;</a></span>operator()()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned D, typename V  = double, typename C  = double&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">C <a class="el" href="classnum_1_1cpoly.html">num::cpoly</a>&lt; D, V, C &gt;::operator() </td>
+          <td>(</td>
+          <td class="paramtype">V const &amp;&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Evaluate polynomial. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>Independent variable. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00076">76</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a></li>
 </ul>
 </div><!-- contents -->
