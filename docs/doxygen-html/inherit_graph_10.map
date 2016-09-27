@@ -1,3 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classnum_1_1integral__stats.html" title="Summary of statistics on trapezoids in integral. " alt="" coords="5,5,133,32"/>
+<area shape="rect" id="node1" href="$structnum_1_1ilist.html" title="STL class. " alt="" coords="5,56,127,83"/>
+<area shape="rect" id="node2" href="$structnum_1_1ilist.html" title="ilist\&lt; X, Y \&gt;" alt="" coords="195,5,287,32"/>
+<area shape="rect" id="node3" href="$structnum_1_1ilist.html" title="List of points used to constrain a linear interpolant. " alt="" coords="197,56,285,83"/>
+<area shape="rect" id="node4" href="$structnum_1_1subinterval__stack.html" title="Stack used by integral() and by class interpolant. " alt="" coords="175,107,307,149"/>
 </map>

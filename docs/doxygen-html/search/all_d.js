@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['n',['N',['../classnum_1_1cpoly.html#a99fb83031ce9923c84392b4e92f956b5a2c63acbe79d9f41ba6bb7766e9c37702',1,'num::cpoly::N()'],['../classnum_1_1cpoly_3_010_00_01V_00_01C_01_4.html#abc6126af1d45847bc59afa0aa3216b04a2c63acbe79d9f41ba6bb7766e9c37702',1,'num::cpoly&lt; 0, V, C &gt;::N()'],['../classnum_1_1dim__exps.html#aa8fdf4b50b80775386324cb37e06f3e2',1,'num::dim_exps::n()'],['../namespacenum_1_1u.html#adb96972202030dd3498c3d7e8c87d7ab',1,'num::u::N()']]],
-  ['n_5f',['n_',['../classnum_1_1dim__exps.html#a28cfad870453befccc3c5a96c8e5c106',1,'num::dim_exps']]],
+  ['n',['n',['../unionnum_1_1dim__exps_1_1s.html#a27700a99892b7d9ae8741a462791ef78',1,'num::dim_exps::s::n()'],['../classnum_1_1dim__exps.html#aa8fdf4b50b80775386324cb37e06f3e2',1,'num::dim_exps::n()'],['../classnum_1_1cpoly.html#a06fc87d81c62e9abb8790b6e5713c55ba2c63acbe79d9f41ba6bb7766e9c37702',1,'num::cpoly::N()'],['../classnum_1_1cpoly_3_010_00_01V_00_01C_01_4.html#adf764cbdea00d65edcd07bb9953ad2b7a2c63acbe79d9f41ba6bb7766e9c37702',1,'num::cpoly&lt; 0, V, C &gt;::N()'],['../namespacenum_1_1u.html#adb96972202030dd3498c3d7e8c87d7ab',1,'num::u::N()']]],
   ['nanograms',['nanograms',['../structnum_1_1u_1_1nanograms.html#aaa7bd68e02bc54ae0675ddf97ac250bc',1,'num::u::nanograms::nanograms(double v)'],['../structnum_1_1u_1_1nanograms.html#ac7ace7f94f07a690f309f35537a3f398',1,'num::u::nanograms::nanograms(nanograms const &amp;dv)=default']]],
   ['nanograms',['nanograms',['../structnum_1_1u_1_1nanograms.html',1,'num::u']]],
   ['nanometers',['nanometers',['../structnum_1_1u_1_1nanometers.html',1,'num::u']]],

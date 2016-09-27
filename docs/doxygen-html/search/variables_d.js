@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['n',['N',['../namespacenum_1_1u.html#adb96972202030dd3498c3d7e8c87d7ab',1,'num::u']]],
-  ['n_5f',['n_',['../classnum_1_1dim__exps.html#a28cfad870453befccc3c5a96c8e5c106',1,'num::dim_exps']]],
+  ['n',['n',['../unionnum_1_1dim__exps_1_1s.html#a27700a99892b7d9ae8741a462791ef78',1,'num::dim_exps::s::n()'],['../namespacenum_1_1u.html#adb96972202030dd3498c3d7e8c87d7ab',1,'num::u::N()']]],
   ['nbad',['nbad',['../classnum_1_1rk__quad.html#af13ccb49fa9118e46fb0e4b35475a26b',1,'num::rk_quad']]],
   ['ng',['ng',['../namespacenum_1_1u.html#a0a423b890e98d4d7114f8a7605f89feb',1,'num::u']]],
   ['nm',['nm',['../namespacenum_1_1u.html#a4f715334792d94ae85336ce22dfda0cc',1,'num::u']]],

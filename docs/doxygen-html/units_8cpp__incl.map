@@ -2,5 +2,6 @@
 <area shape="rect" id="node2" href="$units_8hpp.html" title="Automatically generated header file for units. " alt="" coords="230,80,305,107"/>
 <area shape="rect" id="node3" href="$dimensions_8hpp.html" title="Automatically generated source for generic&#45;dimension types. " alt="" coords="211,155,324,181"/>
 <area shape="rect" id="node4" href="$dimval_8hpp.html" title="Source code for conversions dealing with angle, for num::dim_exps, for num::dimval_base, for num::statdim, and for num::dyndim. " alt="" coords="225,229,310,256"/>
-<area shape="rect" id="node10" href="$template_8hpp.html" title="Template&#45;related utilities. " alt="" coords="456,304,553,331"/>
+<area shape="rect" id="node9" href="$dim-exps_8hpp.html" title="Definition of class num::dim_exps. " alt="" coords="379,304,479,331"/>
+<area shape="rect" id="node11" href="$template_8hpp.html" title="Template&#45;related utilities. " alt="" coords="503,304,600,331"/>
 </map>

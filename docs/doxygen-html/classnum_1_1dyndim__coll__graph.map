@@ -1,6 +1,7 @@
 <map id="dyndim" name="dyndim">
-<area shape="rect" id="node2" href="$classnum_1_1dimval.html" title="dimval\&lt; dyndim \&gt;" alt="" coords="36,184,163,211"/>
+<area shape="rect" id="node2" href="$classnum_1_1dimval.html" title="dimval\&lt; dyndim \&gt;" alt="" coords="9,184,136,211"/>
 <area shape="rect" id="node3" href="$classdouble.html" title="double" alt="" coords="5,5,65,32"/>
 <area shape="rect" id="node4" href="$classnum_1_1dimval.html" title="Base class for statdim and dyndim. " alt="" coords="43,95,156,121"/>
-<area shape="rect" id="node5" href="$classnum_1_1dim__exps.html" title="Dimensional exponents. " alt="" coords="221,184,300,211"/>
+<area shape="rect" id="node5" href="$classnum_1_1dim__exps.html" title="Dimensional exponents. " alt="" coords="160,184,239,211"/>
+<area shape="rect" id="node6" href="$unionnum_1_1dim__exps_1_1s.html" title="Type of storage for exponents. " alt="" coords="180,95,219,121"/>
 </map>

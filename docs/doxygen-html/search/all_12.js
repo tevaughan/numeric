@@ -1,6 +1,8 @@
 var searchData=
 [
+  ['s',['s',['../unionnum_1_1dim__exps_1_1s.html',1,'num::dim_exps']]],
   ['s',['S',['../classnum_1_1integral__stats.html#a1e31a79e8ca3081a4843c2c7912ccf7c',1,'num::integral_stats::S()'],['../namespacenum_1_1u.html#a7d1cdb24d894ff61e1029eba2034a173',1,'num::u::s()']]],
+  ['s_5f',['s_',['../classnum_1_1dim__exps.html#af794b5d4027aa21e33288c4b4a30c515',1,'num::dim_exps']]],
   ['seconds',['seconds',['../structnum_1_1u_1_1seconds.html',1,'num::u']]],
   ['seconds',['seconds',['../structnum_1_1u_1_1seconds.html#a5c969fd2f072acc0fa0ac3b61832eca2',1,'num::u::seconds::seconds(double v)'],['../structnum_1_1u_1_1seconds.html#a4b1d5f99cf4f01f7901d7fb29f6a626a',1,'num::u::seconds::seconds(seconds const &amp;dv)=default']]],
   ['sort',['sort',['../classnum_1_1interpolant.html#a47fdc9eea42b6975cdc835bb2e08810e',1,'num::interpolant']]],

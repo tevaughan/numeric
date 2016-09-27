@@ -4,10 +4,5 @@
 <area shape="rect" id="node4" href="$classnum_1_1dim__exps.html#a01265fa0463b377466f1dac7a2dd5296" title="Reference to immutable exponent of electric charge. " alt="" coords="147,107,185,133"/>
 <area shape="rect" id="node5" href="$classnum_1_1dim__exps.html#a76a8f5e35537d4fc1b87b6709753b9cf" title="Reference to immutable exponent of time. " alt="" coords="147,157,185,184"/>
 <area shape="rect" id="node6" href="$classnum_1_1dim__exps.html#aa68b257c5fada5cc7e9124f56bd8a6ca" title="Reference to immutable exponent of temperature. " alt="" coords="147,208,185,235"/>
-<area shape="rect" id="node7" href="$classnum_1_1dim__exps.html#a48db6fda2164a5eb16d3b187d4f143eb" title="Initialize exponent for each dimension. " alt="" coords="127,259,205,285"/>
-<area shape="rect" id="node8" href="$classnum_1_1dim__exps.html#a44346dc8f6ec385f8898a5757f4d962c" title="Reference to mutable exponent of time. " alt="" coords="253,157,292,184"/>
-<area shape="rect" id="node9" href="$classnum_1_1dim__exps.html#a4eb319ae4630e49a01919343fde67f17" title="Reference to mutable exponent of distance. " alt="" coords="253,208,292,235"/>
-<area shape="rect" id="node10" href="$classnum_1_1dim__exps.html#a1f7fd4e1ba40c71ccb3162d713e63522" title="Reference to mutable exponent of mass. " alt="" coords="253,259,292,285"/>
-<area shape="rect" id="node11" href="$classnum_1_1dim__exps.html#a13b2e7ea9335e2b25d6686ccfec5f3f3" title="Reference to mutable exponent of electric charge. " alt="" coords="253,309,292,336"/>
-<area shape="rect" id="node12" href="$classnum_1_1dim__exps.html#af558c4adc6556d290f1c72f9c0358314" title="Reference to mutable exponent of temperature. " alt="" coords="253,360,292,387"/>
+<area shape="rect" id="node7" href="$classnum_1_1dim__exps.html#a8db47d3292369c8d4606f53d1d15c110" title="Initialize exponent for each dimension. " alt="" coords="127,259,205,285"/>
 </map>

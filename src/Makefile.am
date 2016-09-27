@@ -36,6 +36,7 @@ pkginclude_HEADERS =\
  cfunc.hpp\
  cpoly.hpp\
  dense-table.hpp\
+ dim-exps.hpp\
  dimval.hpp\
  integral.hpp\
  integral-stats.hpp\

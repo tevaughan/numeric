@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['e_5f',['e_',['../classnum_1_1dim__exps.html#a5ddd946fc2596fd002390d33be1f3573',1,'num::dim_exps']]],
+  ['e',['e',['../unionnum_1_1dim__exps_1_1s.html#accbdea59ebbf8dbe0af7cbaa653ec19c',1,'num::dim_exps::s']]],
   ['electron_5fvolts',['electron_volts',['../structnum_1_1u_1_1electron__volts.html#a850713f21043a7e37ad66aed9cb9048f',1,'num::u::electron_volts::electron_volts(double v)'],['../structnum_1_1u_1_1electron__volts.html#a2620ab9a18de48223f0c729d4c8dd7b2',1,'num::u::electron_volts::electron_volts(electron_volts const &amp;dv)=default']]],
   ['electron_5fvolts',['electron_volts',['../structnum_1_1u_1_1electron__volts.html',1,'num::u']]],
   ['energy',['energy',['../namespacenum.html#a505e60eb31e4d6fd5420d0e9a3be5677',1,'num']]],
