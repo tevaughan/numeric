@@ -74,6 +74,8 @@ $(function() {
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classnum_1_1sparse__table-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">num::sparse_table&lt; A, F &gt; Class Template Reference</div>  </div>
@@ -84,6 +86,15 @@ $(function() {
  <a href="classnum_1_1sparse__table.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for num::sparse_table&lt; A, F &gt;:</div>
+<div class="dyncontent">
+<div class="center"><img src="classnum_1_1sparse__table__coll__graph.png" border="0" usemap="#num_1_1sparse__table_3_01A_00_01F_01_4_coll__map" alt="Collaboration graph"/></div>
+<map name="num_1_1sparse__table_3_01A_00_01F_01_4_coll__map" id="num_1_1sparse__table_3_01A_00_01F_01_4_coll__map">
+<area shape="rect" id="node3" href="structnum_1_1sparse__table_1_1rec.html" title="Type of record in table. " alt="" coords="5,109,143,151"/>
+<area shape="rect" id="node6" title="STL class. " alt="" coords="167,117,283,143"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -113,6 +124,20 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1f0aff00ba59b9251875995a454ebb99"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html#a8c911adcda29e4a4fdc485ba8cb02b18">R</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a1f0aff00ba59b9251875995a454ebb99">operator()</a> (A const &amp;a) const</td></tr>
 <tr class="memdesc:a1f0aff00ba59b9251875995a454ebb99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find \( a_i \) whose sub-domain contains \( a \), and return \( f_i(a - a_i) \).  <a href="#a1f0aff00ba59b9251875995a454ebb99">More...</a><br /></td></tr>
 <tr class="separator:a1f0aff00ba59b9251875995a454ebb99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:a83a4b581b807e9221e2056b79126c1c1"><td class="memItemLeft" align="right" valign="top"><a id="a83a4b581b807e9221e2056b79126c1c1"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a83a4b581b807e9221e2056b79126c1c1">comp</a> (A const &amp;a, <a class="el" href="structnum_1_1sparse__table_1_1rec.html">rec</a> const &amp;r)</td></tr>
+<tr class="memdesc:a83a4b581b807e9221e2056b79126c1c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare argument with record so that right record can be found. <br /></td></tr>
+<tr class="separator:a83a4b581b807e9221e2056b79126c1c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:aef9554bd7424cbe4d0ffc738a086785e"><td class="memItemLeft" align="right" valign="top"><a id="aef9554bd7424cbe4d0ffc738a086785e"></a>
+<a class="el" href="classnum_1_1sparse__table.html#ac6e8c585b22867f04be559a4c0de84ad">data</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#aef9554bd7424cbe4d0ffc738a086785e">dat_</a></td></tr>
+<tr class="memdesc:aef9554bd7424cbe4d0ffc738a086785e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tabular data. <br /></td></tr>
+<tr class="separator:aef9554bd7424cbe4d0ffc738a086785e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename A, typename F&gt;<br />
@@ -254,6 +279,14 @@ template&lt;typename A , typename F &gt; </div>
 </dl>
 
 <p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00123">123</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classnum_1_1sparse__table_a1f0aff00ba59b9251875995a454ebb99_cgraph.png" border="0" usemap="#classnum_1_1sparse__table_a1f0aff00ba59b9251875995a454ebb99_cgraph" alt=""/></div>
+<map name="classnum_1_1sparse__table_a1f0aff00ba59b9251875995a454ebb99_cgraph" id="classnum_1_1sparse__table_a1f0aff00ba59b9251875995a454ebb99_cgraph">
+<area shape="rect" id="node2" href="classnum_1_1sparse__table.html#a83a4b581b807e9221e2056b79126c1c1" title="Compare argument with record so that right record can be found. " alt="" coords="191,13,360,39"/>
+</map>
+</div>
 
 </div>
 </div>

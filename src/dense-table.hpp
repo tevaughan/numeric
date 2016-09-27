@@ -65,7 +65,9 @@ namespace num
    template <typename A, typename F>
    class dense_table
    {
+      /// Type of reciprocal of common difference.
       using I = decltype(1.0 / A());
+
       A a_frst_;         ///< Center \f$ a_0 \f$ of first sub-domain.
       A da_;             ///< Common difference between subsequent centers.
       I ida_;            ///< Inverse of common difference.
@@ -100,7 +102,7 @@ namespace num
       /// Common difference \f$ \Delta a \f$ between subsequent centers.
       A const &da() const { return da_; }
 
-      /// List of sub-functions \f$ \{f_0, f_1, \ldots, f_{n-1}\} \f$.
+      /// List of sub-functions \f$ f_0, f_1, \ldots, f_{n-1} \f$.
       std::vector<F> const &f() const { return f_; }
 
       /// Type of value returned by every sub-function.

@@ -43,27 +43,61 @@ namespace num
       // These constant expressions ought to be moved to the base class.  There
       // are more such constants used by the general solver.  The ones listed
       // here are the ones used by the version optimized for quadrature.
-      static double constexpr a3 = 0.3, a4 = 0.6, a5 = 1.0, a6 = 0.875;
-      static double constexpr c1 = 37.0 / 378.0, c3 = 250.0 / 621.0;
-      static double constexpr c4 = 125.0 / 594.0, c6 = 512.0 / 1771.0;
+
+      /// Fraction of step size to Substep 3.
+      static double constexpr a3 = 0.3;
+
+      /// Fraction of step size to Substep 4.
+      static double constexpr a4 = 0.6;
+
+      /// Fraction of step size to Substep 5.
+      static double constexpr a5 = 1.0;
+
+      /// Fraction of step size to Substep 6.
+      static double constexpr a6 = 0.875;
+
+      /// Weight for derivative at Substep 1.
+      static double constexpr c1 = 37.0 / 378.0;
+
+      /// Weight for derivative at Substep 3.
+      static double constexpr c3 = 250.0 / 621.0;
+
+      /// Weight for derivative at Substep 4.
+      static double constexpr c4 = 125.0 / 594.0;
+
+      /// Weight for derivative at Substep 6.
+      static double constexpr c6 = 512.0 / 1771.0;
+
+      /// Error coefficient at Substep 1.
       static double constexpr dc1 = c1 - 2825.0 / 27648.0;
+
+      /// Error coefficient at Substep 3.
       static double constexpr dc3 = c3 - 18575.0 / 48384.0;
+
+      /// Error coefficient at Substep 4.
       static double constexpr dc4 = c4 - 13525.0 / 55296.0;
+
+      /// Error coefficient at Substep 5.
       static double constexpr dc5 = -277.0 / 14336.0;
+
+      /// Error coefficient at Substep 6.
       static double constexpr dc6 = c6 - 0.25;
 
+      /// Function to be integrated.  This is called \a deriv because
+      /// Runge-Kutta integrates a derivative.
       std::function<DYDX(X)> deriv;
-      X x;
-      Y y;
-      DYDX dydx;
-      double tol;
-      bool store_dydx;
-      bool store_y;
-      ilist<X, DYDX> fi_list;
-      interpolant<X, DYDX> fi;
-      interpolant<X, Y> ii;
-      int nok;
-      int nbad;
+
+      X x;             ///< Independent variable.
+      Y y;             ///< Variable accumulated during integration.
+      DYDX dydx;       ///< Value of \a deriv at beginning of interval.
+      double tol;      ///< Error tolerance.
+      bool store_dydx; ///< True if values from \a deriv should be stored.
+      bool store_y;    ///< True if values of \a y should be stored.
+      ilist<X, DYDX> fi_list;  ///< Storage for values from \a deriv.
+      interpolant<X, DYDX> fi; ///< Interpolant for integrand.
+      interpolant<X, Y> ii;    ///< Interpolant for integral.
+      int nok;                 ///< Number of propagations with planned h.
+      int nbad;                ///< Number of propagations with unplanned h.
 
       /// Given the value for variable \a y and the value for its derivative \a
       /// dydx, use the fifth-order Cash-Karp Runge-Kutta method to advance the

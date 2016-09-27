@@ -5,5 +5,6 @@ var searchData=
   ['template_2ehpp',['template.hpp',['../template_8hpp.html',1,'']]],
   ['ti',['TI',['../classnum_1_1dim__exps.html#a386bc0889779575f4d14e6bd3c9e8188',1,'num::dim_exps::TI()'],['../classnum_1_1dim__exps.html#aacad7a636d8b8c810c30447ac754c670',1,'num::dim_exps::TI() const']]],
   ['time',['time',['../namespacenum.html#abf46a44a7cc0e2237575145fd2b1b3ac',1,'num']]],
+  ['tol',['tol',['../classnum_1_1rk__quad.html#a81cd85ccdae55d05629163b50b57aa18',1,'num::rk_quad']]],
   ['tolerance',['tolerance',['../classnum_1_1rk__quad.html#a9b46d079242c6aee7ab4a1c6a20b106e',1,'num::rk_quad']]]
 ];

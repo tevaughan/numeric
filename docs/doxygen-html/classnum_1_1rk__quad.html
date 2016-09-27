@@ -72,6 +72,10 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-types">Private Types</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="classnum_1_1rk__quad-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">num::rk_quad&lt; X, Y &gt; Class Template Reference</div>  </div>
@@ -82,33 +86,174 @@ $(function() {
  <a href="classnum_1_1rk__quad.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="integral_8hpp_source.html">integral.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for num::rk_quad&lt; X, Y &gt;:</div>
+<div class="dyncontent">
+<div class="center"><img src="classnum_1_1rk__quad__coll__graph.png" border="0" usemap="#num_1_1rk__quad_3_01X_00_01Y_01_4_coll__map" alt="Collaboration graph"/></div>
+<map name="num_1_1rk__quad_3_01X_00_01Y_01_4_coll__map" id="num_1_1rk__quad_3_01X_00_01Y_01_4_coll__map">
+<area shape="rect" id="node2" href="classdouble.html" title="double" alt="" coords="1050,148,1110,175"/>
+<area shape="rect" id="node13" href="classnum_1_1interpolant.html" title="num::interpolant\&lt; X,\l DYDX \&gt;" alt="" coords="1010,465,1150,506"/>
+<area shape="rect" id="node17" href="classnum_1_1interpolant.html" title="num::interpolant\&lt; X, Y \&gt;" alt="" coords="997,531,1163,557"/>
+<area shape="rect" id="node8" href="structnum_1_1ilist.html" title="num::ilist\&lt; X, DYDX \&gt;" alt="" coords="707,547,862,573"/>
+<area shape="rect" id="node9" title="STL class. " alt="" coords="300,523,427,565"/>
+<area shape="rect" id="node12" title="STL class. " alt="" coords="149,583,276,625"/>
+<area shape="rect" id="node19" title="STL class. " alt="" coords="300,643,427,685"/>
+<area shape="rect" id="node11" href="structnum_1_1ilist.html" title="List of points used to constrain a linear interpolant. " alt="" coords="451,591,572,617"/>
+<area shape="rect" id="node18" href="structnum_1_1ilist.html" title="num::ilist\&lt; X, Y \&gt;" alt="" coords="722,617,847,644"/>
+<area shape="rect" id="node14" href="classnum_1_1interpolant.html" title="Linear interpolant. " alt="" coords="704,464,865,491"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aef7932e97f89db6b02f8459afef0a429"><td class="memTemplParams" colspan="2">template&lt;typename X1 , typename X2 &gt; </td></tr>
-<tr class="memitem:aef7932e97f89db6b02f8459afef0a429"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#aef7932e97f89db6b02f8459afef0a429">rk_quad</a> (std::function&lt; DYDX(X)&gt; f, X1 x1, X2 x2, double t=1.0E-06, int n=16, bool s_dydx=false, bool s_y=false)</td></tr>
-<tr class="memdesc:aef7932e97f89db6b02f8459afef0a429"><td class="mdescLeft">&#160;</td><td class="mdescRight">Numerically integrate a function, and store the result in rk_quad::y.  <a href="#aef7932e97f89db6b02f8459afef0a429">More...</a><br /></td></tr>
+<tr class="memitem:aef7932e97f89db6b02f8459afef0a429"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#aef7932e97f89db6b02f8459afef0a429">rk_quad</a> (std::function&lt; <a class="el" href="classnum_1_1rk__quad.html#af10cb18312b26abc7a343c0dcb299d09">DYDX</a>(X)&gt; f, X1 x1, X2 x2, <a class="el" href="classdouble.html">double</a> t=1.0E-06, int n=16, bool s_dydx=false, bool s_y=false)</td></tr>
+<tr class="memdesc:aef7932e97f89db6b02f8459afef0a429"><td class="mdescLeft">&#160;</td><td class="mdescRight">Numerically integrate a function, and store the result in <a class="el" href="classnum_1_1rk__quad.html#a3c2128f8365eaa2e93789d0facf60c33" title="Variable accumulated during integration. ">rk_quad::y</a>.  <a href="#aef7932e97f89db6b02f8459afef0a429">More...</a><br /></td></tr>
 <tr class="separator:aef7932e97f89db6b02f8459afef0a429"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac9aecf3f8d6bd56cbcf0efd4f7ae9130"><td class="memTemplParams" colspan="2">template&lt;typename X1 , typename X2 &gt; </td></tr>
-<tr class="memitem:ac9aecf3f8d6bd56cbcf0efd4f7ae9130"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#ac9aecf3f8d6bd56cbcf0efd4f7ae9130">rk_quad</a> (DYDX(*f)(X), X1 x1, X2 x2, double t=1.0E-06, int n=16, bool s_dydx=false, bool s_y=false)</td></tr>
-<tr class="memdesc:ac9aecf3f8d6bd56cbcf0efd4f7ae9130"><td class="mdescLeft">&#160;</td><td class="mdescRight">Numerically integrate a function, and store the result in rk_quad::y.  <a href="#ac9aecf3f8d6bd56cbcf0efd4f7ae9130">More...</a><br /></td></tr>
+<tr class="memitem:ac9aecf3f8d6bd56cbcf0efd4f7ae9130"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#ac9aecf3f8d6bd56cbcf0efd4f7ae9130">rk_quad</a> (<a class="el" href="classnum_1_1rk__quad.html#af10cb18312b26abc7a343c0dcb299d09">DYDX</a>(*f)(X), X1 x1, X2 x2, <a class="el" href="classdouble.html">double</a> t=1.0E-06, int n=16, bool s_dydx=false, bool s_y=false)</td></tr>
+<tr class="memdesc:ac9aecf3f8d6bd56cbcf0efd4f7ae9130"><td class="mdescLeft">&#160;</td><td class="mdescRight">Numerically integrate a function, and store the result in <a class="el" href="classnum_1_1rk__quad.html#a3c2128f8365eaa2e93789d0facf60c33" title="Variable accumulated during integration. ">rk_quad::y</a>.  <a href="#ac9aecf3f8d6bd56cbcf0efd4f7ae9130">More...</a><br /></td></tr>
 <tr class="separator:ac9aecf3f8d6bd56cbcf0efd4f7ae9130"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2202b8a5252d6eb0b3a25f46ad4ba9f1"><td class="memItemLeft" align="right" valign="top"><a id="a2202b8a5252d6eb0b3a25f46ad4ba9f1"></a>
 Y const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#a2202b8a5252d6eb0b3a25f46ad4ba9f1">def_int</a> () const</td></tr>
 <tr class="memdesc:a2202b8a5252d6eb0b3a25f46ad4ba9f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Value of definite integral. <br /></td></tr>
 <tr class="separator:a2202b8a5252d6eb0b3a25f46ad4ba9f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b46d079242c6aee7ab4a1c6a20b106e"><td class="memItemLeft" align="right" valign="top"><a id="a9b46d079242c6aee7ab4a1c6a20b106e"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#a9b46d079242c6aee7ab4a1c6a20b106e">tolerance</a> () const</td></tr>
+<a class="el" href="classdouble.html">double</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#a9b46d079242c6aee7ab4a1c6a20b106e">tolerance</a> () const</td></tr>
 <tr class="memdesc:a9b46d079242c6aee7ab4a1c6a20b106e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tolerance used for computing definite integral. <br /></td></tr>
 <tr class="separator:a9b46d079242c6aee7ab4a1c6a20b106e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae67cf18f7fe23e088ac05127b5e10919"><td class="memItemLeft" align="right" valign="top"><a id="ae67cf18f7fe23e088ac05127b5e10919"></a>
-<a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; X, DYDX &gt; const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#ae67cf18f7fe23e088ac05127b5e10919">interp_func</a> () const</td></tr>
+<a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; X, <a class="el" href="classnum_1_1rk__quad.html#af10cb18312b26abc7a343c0dcb299d09">DYDX</a> &gt; const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#ae67cf18f7fe23e088ac05127b5e10919">interp_func</a> () const</td></tr>
 <tr class="memdesc:ae67cf18f7fe23e088ac05127b5e10919"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interpolant representing the function that was integrated. <br /></td></tr>
 <tr class="separator:ae67cf18f7fe23e088ac05127b5e10919"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d71e4f44c65e5b0126a64c8cda6152d"><td class="memItemLeft" align="right" valign="top"><a id="a5d71e4f44c65e5b0126a64c8cda6152d"></a>
 <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; X, Y &gt; const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#a5d71e4f44c65e5b0126a64c8cda6152d">interp_indef_int</a> () const</td></tr>
 <tr class="memdesc:a5d71e4f44c65e5b0126a64c8cda6152d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interpolant representing indefinite integral. <br /></td></tr>
 <tr class="separator:a5d71e4f44c65e5b0126a64c8cda6152d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:af10cb18312b26abc7a343c0dcb299d09"><td class="memItemLeft" align="right" valign="top"><a id="af10cb18312b26abc7a343c0dcb299d09"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#af10cb18312b26abc7a343c0dcb299d09">DYDX</a> = <a class="el" href="namespacenum.html#ae69120d6af6e31afc9813728024ac5c4">RAT</a>&lt; Y, X &gt;</td></tr>
+<tr class="memdesc:af10cb18312b26abc7a343c0dcb299d09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the integrand. <br /></td></tr>
+<tr class="separator:af10cb18312b26abc7a343c0dcb299d09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a7ec0dd431f24113f6105d4d03d7b5415"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#a7ec0dd431f24113f6105d4d03d7b5415">rkck</a> (X const &amp;h, Y &amp;yout, Y &amp;yerr)</td></tr>
+<tr class="memdesc:a7ec0dd431f24113f6105d4d03d7b5415"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given the value for variable <em>y</em> and the value for its derivative <em>dydx</em>, use the fifth-order Cash-Karp Runge-Kutta method to advance the solution for <em>y</em> over an interval <em>h</em>, and return the incremented variable as <em>yout</em>.  <a href="#a7ec0dd431f24113f6105d4d03d7b5415">More...</a><br /></td></tr>
+<tr class="separator:a7ec0dd431f24113f6105d4d03d7b5415"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af40ac608d746ad23f63d23b84faaf09b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#af40ac608d746ad23f63d23b84faaf09b">rkqs</a> (X const &amp;htry, Y const &amp;yscal, X &amp;hdid, X &amp;hnext)</td></tr>
+<tr class="memdesc:af40ac608d746ad23f63d23b84faaf09b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fifth-order Runge-Kutta step with monitoring of local truncation error to ensure accurcy and adjust stepsize.  <a href="#af40ac608d746ad23f63d23b84faaf09b">More...</a><br /></td></tr>
+<tr class="separator:af40ac608d746ad23f63d23b84faaf09b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4336b1846be80d85a929f0ffe35c3829"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#a4336b1846be80d85a929f0ffe35c3829">init</a> (X x1, X x2, int n)</td></tr>
+<tr class="memdesc:a4336b1846be80d85a929f0ffe35c3829"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is based on <code>odeint()</code> on Page 721 of Numerical Recipes in C, Second Edition.  <a href="#a4336b1846be80d85a929f0ffe35c3829">More...</a><br /></td></tr>
+<tr class="separator:a4336b1846be80d85a929f0ffe35c3829"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a655a80a0628cfee575640cf02b685d5c"><td class="memItemLeft" align="right" valign="top">std::function&lt; <a class="el" href="classnum_1_1rk__quad.html#af10cb18312b26abc7a343c0dcb299d09">DYDX</a>(X)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#a655a80a0628cfee575640cf02b685d5c">deriv</a></td></tr>
+<tr class="memdesc:a655a80a0628cfee575640cf02b685d5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to be integrated.  <a href="#a655a80a0628cfee575640cf02b685d5c">More...</a><br /></td></tr>
+<tr class="separator:a655a80a0628cfee575640cf02b685d5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa59da8e7d4c87f04e760f6afbb088d89"><td class="memItemLeft" align="right" valign="top"><a id="aa59da8e7d4c87f04e760f6afbb088d89"></a>
+X&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#aa59da8e7d4c87f04e760f6afbb088d89">x</a></td></tr>
+<tr class="memdesc:aa59da8e7d4c87f04e760f6afbb088d89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Independent variable. <br /></td></tr>
+<tr class="separator:aa59da8e7d4c87f04e760f6afbb088d89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c2128f8365eaa2e93789d0facf60c33"><td class="memItemLeft" align="right" valign="top"><a id="a3c2128f8365eaa2e93789d0facf60c33"></a>
+Y&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#a3c2128f8365eaa2e93789d0facf60c33">y</a></td></tr>
+<tr class="memdesc:a3c2128f8365eaa2e93789d0facf60c33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variable accumulated during integration. <br /></td></tr>
+<tr class="separator:a3c2128f8365eaa2e93789d0facf60c33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0c72109b36dcd5a579820be23665259"><td class="memItemLeft" align="right" valign="top"><a id="aa0c72109b36dcd5a579820be23665259"></a>
+<a class="el" href="classnum_1_1rk__quad.html#af10cb18312b26abc7a343c0dcb299d09">DYDX</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#aa0c72109b36dcd5a579820be23665259">dydx</a></td></tr>
+<tr class="memdesc:aa0c72109b36dcd5a579820be23665259"><td class="mdescLeft">&#160;</td><td class="mdescRight">Value of <em>deriv</em> at beginning of interval. <br /></td></tr>
+<tr class="separator:aa0c72109b36dcd5a579820be23665259"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81cd85ccdae55d05629163b50b57aa18"><td class="memItemLeft" align="right" valign="top"><a id="a81cd85ccdae55d05629163b50b57aa18"></a>
+<a class="el" href="classdouble.html">double</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#a81cd85ccdae55d05629163b50b57aa18">tol</a></td></tr>
+<tr class="memdesc:a81cd85ccdae55d05629163b50b57aa18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error tolerance. <br /></td></tr>
+<tr class="separator:a81cd85ccdae55d05629163b50b57aa18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ec070e71eb3de6e7fe787eac7ce6dff"><td class="memItemLeft" align="right" valign="top"><a id="a9ec070e71eb3de6e7fe787eac7ce6dff"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#a9ec070e71eb3de6e7fe787eac7ce6dff">store_dydx</a></td></tr>
+<tr class="memdesc:a9ec070e71eb3de6e7fe787eac7ce6dff"><td class="mdescLeft">&#160;</td><td class="mdescRight">True if values from <em>deriv</em> should be stored. <br /></td></tr>
+<tr class="separator:a9ec070e71eb3de6e7fe787eac7ce6dff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a513e6434f421e57f9bc296a7ccef5220"><td class="memItemLeft" align="right" valign="top"><a id="a513e6434f421e57f9bc296a7ccef5220"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#a513e6434f421e57f9bc296a7ccef5220">store_y</a></td></tr>
+<tr class="memdesc:a513e6434f421e57f9bc296a7ccef5220"><td class="mdescLeft">&#160;</td><td class="mdescRight">True if values of <em>y</em> should be stored. <br /></td></tr>
+<tr class="separator:a513e6434f421e57f9bc296a7ccef5220"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56b8970ab91d40194e5362db1c8bf0f7"><td class="memItemLeft" align="right" valign="top"><a id="a56b8970ab91d40194e5362db1c8bf0f7"></a>
+<a class="el" href="structnum_1_1ilist.html">ilist</a>&lt; X, <a class="el" href="classnum_1_1rk__quad.html#af10cb18312b26abc7a343c0dcb299d09">DYDX</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#a56b8970ab91d40194e5362db1c8bf0f7">fi_list</a></td></tr>
+<tr class="memdesc:a56b8970ab91d40194e5362db1c8bf0f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Storage for values from <em>deriv</em>. <br /></td></tr>
+<tr class="separator:a56b8970ab91d40194e5362db1c8bf0f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a681afe6669701d047fdebab0d6bfc301"><td class="memItemLeft" align="right" valign="top"><a id="a681afe6669701d047fdebab0d6bfc301"></a>
+<a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; X, <a class="el" href="classnum_1_1rk__quad.html#af10cb18312b26abc7a343c0dcb299d09">DYDX</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#a681afe6669701d047fdebab0d6bfc301">fi</a></td></tr>
+<tr class="memdesc:a681afe6669701d047fdebab0d6bfc301"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interpolant for integrand. <br /></td></tr>
+<tr class="separator:a681afe6669701d047fdebab0d6bfc301"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb1ace9ab81a1c2163894b3ba6ac8a90"><td class="memItemLeft" align="right" valign="top"><a id="adb1ace9ab81a1c2163894b3ba6ac8a90"></a>
+<a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; X, Y &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#adb1ace9ab81a1c2163894b3ba6ac8a90">ii</a></td></tr>
+<tr class="memdesc:adb1ace9ab81a1c2163894b3ba6ac8a90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interpolant for integral. <br /></td></tr>
+<tr class="separator:adb1ace9ab81a1c2163894b3ba6ac8a90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a426b54d1a6fa544d48cf246e4c12aa9e"><td class="memItemLeft" align="right" valign="top"><a id="a426b54d1a6fa544d48cf246e4c12aa9e"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#a426b54d1a6fa544d48cf246e4c12aa9e">nok</a></td></tr>
+<tr class="memdesc:a426b54d1a6fa544d48cf246e4c12aa9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of propagations with planned h. <br /></td></tr>
+<tr class="separator:a426b54d1a6fa544d48cf246e4c12aa9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30c9a44c6dba95b688a7fe36c378c2d5"><td class="memItemLeft" align="right" valign="top"><a id="a30c9a44c6dba95b688a7fe36c378c2d5"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#a30c9a44c6dba95b688a7fe36c378c2d5">nbad</a></td></tr>
+<tr class="memdesc:a30c9a44c6dba95b688a7fe36c378c2d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of propagations with unplanned h. <br /></td></tr>
+<tr class="separator:a30c9a44c6dba95b688a7fe36c378c2d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:a29b3e54b3dd1577e30a2036fefea0a4c"><td class="memItemLeft" align="right" valign="top"><a id="a29b3e54b3dd1577e30a2036fefea0a4c"></a>
+static <a class="el" href="classdouble.html">double</a> constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#a29b3e54b3dd1577e30a2036fefea0a4c">a3</a> = 0.3</td></tr>
+<tr class="memdesc:a29b3e54b3dd1577e30a2036fefea0a4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fraction of step size to Substep 3. <br /></td></tr>
+<tr class="separator:a29b3e54b3dd1577e30a2036fefea0a4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17591f4818a167f174dd1673c8242cbb"><td class="memItemLeft" align="right" valign="top"><a id="a17591f4818a167f174dd1673c8242cbb"></a>
+static <a class="el" href="classdouble.html">double</a> constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#a17591f4818a167f174dd1673c8242cbb">a4</a> = 0.6</td></tr>
+<tr class="memdesc:a17591f4818a167f174dd1673c8242cbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fraction of step size to Substep 4. <br /></td></tr>
+<tr class="separator:a17591f4818a167f174dd1673c8242cbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a51171043db225ba81f3042b0a47b92"><td class="memItemLeft" align="right" valign="top"><a id="a5a51171043db225ba81f3042b0a47b92"></a>
+static <a class="el" href="classdouble.html">double</a> constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#a5a51171043db225ba81f3042b0a47b92">a5</a> = 1.0</td></tr>
+<tr class="memdesc:a5a51171043db225ba81f3042b0a47b92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fraction of step size to Substep 5. <br /></td></tr>
+<tr class="separator:a5a51171043db225ba81f3042b0a47b92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2c0b64056fee164d73277ac31fe63bf"><td class="memItemLeft" align="right" valign="top"><a id="af2c0b64056fee164d73277ac31fe63bf"></a>
+static <a class="el" href="classdouble.html">double</a> constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#af2c0b64056fee164d73277ac31fe63bf">a6</a> = 0.875</td></tr>
+<tr class="memdesc:af2c0b64056fee164d73277ac31fe63bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fraction of step size to Substep 6. <br /></td></tr>
+<tr class="separator:af2c0b64056fee164d73277ac31fe63bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4c40978fe6e8405ae8ead82fe618c92"><td class="memItemLeft" align="right" valign="top"><a id="ac4c40978fe6e8405ae8ead82fe618c92"></a>
+static <a class="el" href="classdouble.html">double</a> constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#ac4c40978fe6e8405ae8ead82fe618c92">c1</a> = 37.0 / 378.0</td></tr>
+<tr class="memdesc:ac4c40978fe6e8405ae8ead82fe618c92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weight for derivative at Substep 1. <br /></td></tr>
+<tr class="separator:ac4c40978fe6e8405ae8ead82fe618c92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a873badb3790926798d2566c2e0052c4d"><td class="memItemLeft" align="right" valign="top"><a id="a873badb3790926798d2566c2e0052c4d"></a>
+static <a class="el" href="classdouble.html">double</a> constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#a873badb3790926798d2566c2e0052c4d">c3</a> = 250.0 / 621.0</td></tr>
+<tr class="memdesc:a873badb3790926798d2566c2e0052c4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weight for derivative at Substep 3. <br /></td></tr>
+<tr class="separator:a873badb3790926798d2566c2e0052c4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adab5644a287eef93a9c579bfe056f049"><td class="memItemLeft" align="right" valign="top"><a id="adab5644a287eef93a9c579bfe056f049"></a>
+static <a class="el" href="classdouble.html">double</a> constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#adab5644a287eef93a9c579bfe056f049">c4</a> = 125.0 / 594.0</td></tr>
+<tr class="memdesc:adab5644a287eef93a9c579bfe056f049"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weight for derivative at Substep 4. <br /></td></tr>
+<tr class="separator:adab5644a287eef93a9c579bfe056f049"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a079656ebcc6fe0f7c40add9a91350039"><td class="memItemLeft" align="right" valign="top"><a id="a079656ebcc6fe0f7c40add9a91350039"></a>
+static <a class="el" href="classdouble.html">double</a> constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#a079656ebcc6fe0f7c40add9a91350039">c6</a> = 512.0 / 1771.0</td></tr>
+<tr class="memdesc:a079656ebcc6fe0f7c40add9a91350039"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weight for derivative at Substep 6. <br /></td></tr>
+<tr class="separator:a079656ebcc6fe0f7c40add9a91350039"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2003408dcd5bb874263afa66f544328"><td class="memItemLeft" align="right" valign="top"><a id="ab2003408dcd5bb874263afa66f544328"></a>
+static <a class="el" href="classdouble.html">double</a> constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#ab2003408dcd5bb874263afa66f544328">dc1</a> = <a class="el" href="classnum_1_1rk__quad.html#ac4c40978fe6e8405ae8ead82fe618c92">c1</a> - 2825.0 / 27648.0</td></tr>
+<tr class="memdesc:ab2003408dcd5bb874263afa66f544328"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error coefficient at Substep 1. <br /></td></tr>
+<tr class="separator:ab2003408dcd5bb874263afa66f544328"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e8efacda472f02217aba4b1b84b5744"><td class="memItemLeft" align="right" valign="top"><a id="a5e8efacda472f02217aba4b1b84b5744"></a>
+static <a class="el" href="classdouble.html">double</a> constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#a5e8efacda472f02217aba4b1b84b5744">dc3</a> = <a class="el" href="classnum_1_1rk__quad.html#a873badb3790926798d2566c2e0052c4d">c3</a> - 18575.0 / 48384.0</td></tr>
+<tr class="memdesc:a5e8efacda472f02217aba4b1b84b5744"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error coefficient at Substep 3. <br /></td></tr>
+<tr class="separator:a5e8efacda472f02217aba4b1b84b5744"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16ecb7e4df05289fab0fc143e1bc074a"><td class="memItemLeft" align="right" valign="top"><a id="a16ecb7e4df05289fab0fc143e1bc074a"></a>
+static <a class="el" href="classdouble.html">double</a> constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#a16ecb7e4df05289fab0fc143e1bc074a">dc4</a> = <a class="el" href="classnum_1_1rk__quad.html#adab5644a287eef93a9c579bfe056f049">c4</a> - 13525.0 / 55296.0</td></tr>
+<tr class="memdesc:a16ecb7e4df05289fab0fc143e1bc074a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error coefficient at Substep 4. <br /></td></tr>
+<tr class="separator:a16ecb7e4df05289fab0fc143e1bc074a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae89d4ab1a45c2fd58fe940088c7dc005"><td class="memItemLeft" align="right" valign="top"><a id="ae89d4ab1a45c2fd58fe940088c7dc005"></a>
+static <a class="el" href="classdouble.html">double</a> constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#ae89d4ab1a45c2fd58fe940088c7dc005">dc5</a> = -277.0 / 14336.0</td></tr>
+<tr class="memdesc:ae89d4ab1a45c2fd58fe940088c7dc005"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error coefficient at Substep 5. <br /></td></tr>
+<tr class="separator:ae89d4ab1a45c2fd58fe940088c7dc005"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a387e48e4cf7eb6a38b0d13ec0a1a5f82"><td class="memItemLeft" align="right" valign="top"><a id="a387e48e4cf7eb6a38b0d13ec0a1a5f82"></a>
+static <a class="el" href="classdouble.html">double</a> constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#a387e48e4cf7eb6a38b0d13ec0a1a5f82">dc6</a> = <a class="el" href="classnum_1_1rk__quad.html#a079656ebcc6fe0f7c40add9a91350039">c6</a> - 0.25</td></tr>
+<tr class="memdesc:a387e48e4cf7eb6a38b0d13ec0a1a5f82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error coefficient at Substep 6. <br /></td></tr>
+<tr class="separator:a387e48e4cf7eb6a38b0d13ec0a1a5f82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename X, typename Y&gt;<br />
@@ -142,7 +287,7 @@ template&lt;typename X1 , typename X2 &gt; </div>
         <tr>
           <td class="memname"><a class="el" href="classnum_1_1rk__quad.html">num::rk_quad</a>&lt; X, Y &gt;::<a class="el" href="classnum_1_1rk__quad.html">rk_quad</a> </td>
           <td>(</td>
-          <td class="paramtype">std::function&lt; DYDX(X)&gt;&#160;</td>
+          <td class="paramtype">std::function&lt; <a class="el" href="classnum_1_1rk__quad.html#af10cb18312b26abc7a343c0dcb299d09">DYDX</a>(X)&gt;&#160;</td>
           <td class="paramname"><em>f</em>, </td>
         </tr>
         <tr>
@@ -160,7 +305,7 @@ template&lt;typename X1 , typename X2 &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double&#160;</td>
+          <td class="paramtype"><a class="el" href="classdouble.html">double</a>&#160;</td>
           <td class="paramname"><em>t</em> = <code>1.0E-06</code>, </td>
         </tr>
         <tr>
@@ -194,7 +339,7 @@ template&lt;typename X1 , typename X2 &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Numerically integrate a function, and store the result in rk_quad::y. </p>
+<p>Numerically integrate a function, and store the result in <a class="el" href="classnum_1_1rk__quad.html#a3c2128f8365eaa2e93789d0facf60c33" title="Variable accumulated during integration. ">rk_quad::y</a>. </p>
 <p>Use fifth-order Runge-Kutta with adaptive stepsize for quadrature. The initial guess for the step size is used at the lower limit of integration.</p>
 <p>Optionally store an approximant to the function integrated and an approximant to the indefinite integral, zeroed at the lower limit of integration.</p>
 <p>The optional parameter <em>n</em> indicates that the initial step should be 1/n of the interval of integration.</p>
@@ -218,7 +363,17 @@ template&lt;typename X1 , typename X2 &gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00262">262</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
+<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00296">296</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classnum_1_1rk__quad_aef7932e97f89db6b02f8459afef0a429_cgraph.png" border="0" usemap="#classnum_1_1rk__quad_aef7932e97f89db6b02f8459afef0a429_cgraph" alt=""/></div>
+<map name="classnum_1_1rk__quad_aef7932e97f89db6b02f8459afef0a429_cgraph" id="classnum_1_1rk__quad_aef7932e97f89db6b02f8459afef0a429_cgraph">
+<area shape="rect" id="node2" href="classnum_1_1rk__quad.html#a4336b1846be80d85a929f0ffe35c3829" title="This function is based on odeint() on Page 721 of Numerical Recipes in C, Second Edition. " alt="" coords="208,5,335,32"/>
+<area shape="rect" id="node3" href="classnum_1_1rk__quad.html#af40ac608d746ad23f63d23b84faaf09b" title="Fifth&#45;order Runge&#45;Kutta step with monitoring of local truncation error to ensure accurcy and adjust s..." alt="" coords="383,5,517,32"/>
+<area shape="rect" id="node4" href="classnum_1_1rk__quad.html#a7ec0dd431f24113f6105d4d03d7b5415" title="Given the value for variable y and the value for its derivative dydx, use the fifth&#45;order Cash&#45;Karp R..." alt="" coords="565,5,700,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -238,7 +393,7 @@ template&lt;typename X1 , typename X2 &gt; </div>
         <tr>
           <td class="memname"><a class="el" href="classnum_1_1rk__quad.html">num::rk_quad</a>&lt; X, Y &gt;::<a class="el" href="classnum_1_1rk__quad.html">rk_quad</a> </td>
           <td>(</td>
-          <td class="paramtype">DYDX(*)(X)&#160;</td>
+          <td class="paramtype"><a class="el" href="classnum_1_1rk__quad.html#af10cb18312b26abc7a343c0dcb299d09">DYDX</a>(*)(X)&#160;</td>
           <td class="paramname"><em>f</em>, </td>
         </tr>
         <tr>
@@ -256,7 +411,7 @@ template&lt;typename X1 , typename X2 &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double&#160;</td>
+          <td class="paramtype"><a class="el" href="classdouble.html">double</a>&#160;</td>
           <td class="paramname"><em>t</em> = <code>1.0E-06</code>, </td>
         </tr>
         <tr>
@@ -290,7 +445,7 @@ template&lt;typename X1 , typename X2 &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Numerically integrate a function, and store the result in rk_quad::y. </p>
+<p>Numerically integrate a function, and store the result in <a class="el" href="classnum_1_1rk__quad.html#a3c2128f8365eaa2e93789d0facf60c33" title="Variable accumulated during integration. ">rk_quad::y</a>. </p>
 <p>Use fifth-order Runge-Kutta with adaptive stepsize for quadrature. The initial guess for the step size is used at the lower limit of integration.</p>
 <p>Optionally store an approximant to the function integrated and an approximant to the indefinite integral, zeroed at the lower limit of integration.</p>
 <p>The optional parameter <em>n</em> indicates that the initial step should be 1/n of the interval of integration.</p>
@@ -314,7 +469,271 @@ template&lt;typename X1 , typename X2 &gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00298">298</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
+<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00332">332</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classnum_1_1rk__quad_ac9aecf3f8d6bd56cbcf0efd4f7ae9130_cgraph.png" border="0" usemap="#classnum_1_1rk__quad_ac9aecf3f8d6bd56cbcf0efd4f7ae9130_cgraph" alt=""/></div>
+<map name="classnum_1_1rk__quad_ac9aecf3f8d6bd56cbcf0efd4f7ae9130_cgraph" id="classnum_1_1rk__quad_ac9aecf3f8d6bd56cbcf0efd4f7ae9130_cgraph">
+<area shape="rect" id="node2" href="classnum_1_1rk__quad.html#a4336b1846be80d85a929f0ffe35c3829" title="This function is based on odeint() on Page 721 of Numerical Recipes in C, Second Edition. " alt="" coords="208,5,335,32"/>
+<area shape="rect" id="node3" href="classnum_1_1rk__quad.html#af40ac608d746ad23f63d23b84faaf09b" title="Fifth&#45;order Runge&#45;Kutta step with monitoring of local truncation error to ensure accurcy and adjust s..." alt="" coords="383,5,517,32"/>
+<area shape="rect" id="node4" href="classnum_1_1rk__quad.html#a7ec0dd431f24113f6105d4d03d7b5415" title="Given the value for variable y and the value for its derivative dydx, use the fifth&#45;order Cash&#45;Karp R..." alt="" coords="565,5,700,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a4336b1846be80d85a929f0ffe35c3829"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4336b1846be80d85a929f0ffe35c3829">&sect;&nbsp;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename X , typename Y &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classnum_1_1rk__quad.html">num::rk_quad</a>&lt; X, Y &gt;::init </td>
+          <td>(</td>
+          <td class="paramtype">X&#160;</td>
+          <td class="paramname"><em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">X&#160;</td>
+          <td class="paramname"><em>x2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This function is based on <code>odeint()</code> on Page 721 of Numerical Recipes in C, Second Edition. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x1</td><td>Lower limit of integration. </td></tr>
+    <tr><td class="paramname">x2</td><td>Upper limit of integration. </td></tr>
+    <tr><td class="paramname">n</td><td>Inverse of initial step size. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00213">213</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classnum_1_1rk__quad_a4336b1846be80d85a929f0ffe35c3829_cgraph.png" border="0" usemap="#classnum_1_1rk__quad_a4336b1846be80d85a929f0ffe35c3829_cgraph" alt=""/></div>
+<map name="classnum_1_1rk__quad_a4336b1846be80d85a929f0ffe35c3829_cgraph" id="classnum_1_1rk__quad_a4336b1846be80d85a929f0ffe35c3829_cgraph">
+<area shape="rect" id="node2" href="classnum_1_1rk__quad.html#af40ac608d746ad23f63d23b84faaf09b" title="Fifth&#45;order Runge&#45;Kutta step with monitoring of local truncation error to ensure accurcy and adjust s..." alt="" coords="180,5,315,32"/>
+<area shape="rect" id="node3" href="classnum_1_1rk__quad.html#a7ec0dd431f24113f6105d4d03d7b5415" title="Given the value for variable y and the value for its derivative dydx, use the fifth&#45;order Cash&#45;Karp R..." alt="" coords="363,5,497,32"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classnum_1_1rk__quad_a4336b1846be80d85a929f0ffe35c3829_icgraph.png" border="0" usemap="#classnum_1_1rk__quad_a4336b1846be80d85a929f0ffe35c3829_icgraph" alt=""/></div>
+<map name="classnum_1_1rk__quad_a4336b1846be80d85a929f0ffe35c3829_icgraph" id="classnum_1_1rk__quad_a4336b1846be80d85a929f0ffe35c3829_icgraph">
+<area shape="rect" id="node2" href="classnum_1_1rk__quad.html#aef7932e97f89db6b02f8459afef0a429" title="Numerically integrate a function, and store the result in rk_quad::y. " alt="" coords="180,5,335,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7ec0dd431f24113f6105d4d03d7b5415"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ec0dd431f24113f6105d4d03d7b5415">&sect;&nbsp;</a></span>rkck()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename X , typename Y &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classnum_1_1rk__quad.html">num::rk_quad</a>&lt; X, Y &gt;::rkck </td>
+          <td>(</td>
+          <td class="paramtype">X const &amp;&#160;</td>
+          <td class="paramname"><em>h</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Y &amp;&#160;</td>
+          <td class="paramname"><em>yout</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Y &amp;&#160;</td>
+          <td class="paramname"><em>yerr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Given the value for variable <em>y</em> and the value for its derivative <em>dydx</em>, use the fifth-order Cash-Karp Runge-Kutta method to advance the solution for <em>y</em> over an interval <em>h</em>, and return the incremented variable as <em>yout</em>. </p>
+<p>Also, return, by way of the embedded fourth-order method, an estimate <em>yerr</em> of the local truncation error in <em>yout</em>. The supplied function <em>deriv</em> returns the derivative (just like dydx) at any value of the independent variable.</p>
+<p>This function is based on a simplified version of <code><a class="el" href="classnum_1_1rk__quad.html#a7ec0dd431f24113f6105d4d03d7b5415" title="Given the value for variable y and the value for its derivative dydx, use the fifth-order Cash-Karp R...">rkck()</a></code> found on Page 719 in Numerical Recipes in C, Second Edition. The simplification is due mainly to the fact that the present function is used for quadrature, and so <em>deriv</em> does not require <em>y</em> as input. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">h</td><td>Length of interval. </td></tr>
+    <tr><td class="paramname">yout</td><td>Accumulated value at end of interval. </td></tr>
+    <tr><td class="paramname">yerr</td><td>Estimate of local truncation error. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00115">115</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classnum_1_1rk__quad_a7ec0dd431f24113f6105d4d03d7b5415_icgraph.png" border="0" usemap="#classnum_1_1rk__quad_a7ec0dd431f24113f6105d4d03d7b5415_icgraph" alt=""/></div>
+<map name="classnum_1_1rk__quad_a7ec0dd431f24113f6105d4d03d7b5415_icgraph" id="classnum_1_1rk__quad_a7ec0dd431f24113f6105d4d03d7b5415_icgraph">
+<area shape="rect" id="node2" href="classnum_1_1rk__quad.html#af40ac608d746ad23f63d23b84faaf09b" title="Fifth&#45;order Runge&#45;Kutta step with monitoring of local truncation error to ensure accurcy and adjust s..." alt="" coords="188,5,323,32"/>
+<area shape="rect" id="node3" href="classnum_1_1rk__quad.html#a4336b1846be80d85a929f0ffe35c3829" title="This function is based on odeint() on Page 721 of Numerical Recipes in C, Second Edition. " alt="" coords="371,5,497,32"/>
+<area shape="rect" id="node4" href="classnum_1_1rk__quad.html#aef7932e97f89db6b02f8459afef0a429" title="Numerically integrate a function, and store the result in rk_quad::y. " alt="" coords="545,5,700,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af40ac608d746ad23f63d23b84faaf09b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af40ac608d746ad23f63d23b84faaf09b">&sect;&nbsp;</a></span>rkqs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename X , typename Y &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classnum_1_1rk__quad.html">num::rk_quad</a>&lt; X, Y &gt;::rkqs </td>
+          <td>(</td>
+          <td class="paramtype">X const &amp;&#160;</td>
+          <td class="paramname"><em>htry</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Y const &amp;&#160;</td>
+          <td class="paramname"><em>yscal</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">X &amp;&#160;</td>
+          <td class="paramname"><em>hdid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">X &amp;&#160;</td>
+          <td class="paramname"><em>hnext</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Fifth-order Runge-Kutta step with monitoring of local truncation error to ensure accurcy and adjust stepsize. </p>
+<p>Input are the accumulated variable <em>y</em> and its derivative <em>dydx</em> at the starting value of the independent variable <em>x</em>. Also input are the stepsize <em>htry</em> to be attempted and the required accuracy <em>tol</em>. On output, <em>y</em> and <em>x</em> are replaced by their new values, <em>hdid</em> is the stepsize that was actually accomplished, and <em>hnext</em> is the estimated next stepsize. The supplied function <em>deriv</em> returns the derivative (just like dydx) at any value of the independent variable.</p>
+<p>This function is based on <code><a class="el" href="classnum_1_1rk__quad.html#af40ac608d746ad23f63d23b84faaf09b" title="Fifth-order Runge-Kutta step with monitoring of local truncation error to ensure accurcy and adjust s...">rkqs()</a></code> found on Page 719 in Numerical Recipes in C, Second Edition. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">htry</td><td>Stepsize to be attempted. </td></tr>
+    <tr><td class="paramname">yscal</td><td>Scaling used to monitor accuracy. </td></tr>
+    <tr><td class="paramname">hdid</td><td>Stepsize that was accomplished. </td></tr>
+    <tr><td class="paramname">hnext</td><td>Estimated next stepsize. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00157">157</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classnum_1_1rk__quad_af40ac608d746ad23f63d23b84faaf09b_cgraph.png" border="0" usemap="#classnum_1_1rk__quad_af40ac608d746ad23f63d23b84faaf09b_cgraph" alt=""/></div>
+<map name="classnum_1_1rk__quad_af40ac608d746ad23f63d23b84faaf09b_cgraph" id="classnum_1_1rk__quad_af40ac608d746ad23f63d23b84faaf09b_cgraph">
+<area shape="rect" id="node2" href="classnum_1_1rk__quad.html#a7ec0dd431f24113f6105d4d03d7b5415" title="Given the value for variable y and the value for its derivative dydx, use the fifth&#45;order Cash&#45;Karp R..." alt="" coords="188,5,323,32"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classnum_1_1rk__quad_af40ac608d746ad23f63d23b84faaf09b_icgraph.png" border="0" usemap="#classnum_1_1rk__quad_af40ac608d746ad23f63d23b84faaf09b_icgraph" alt=""/></div>
+<map name="classnum_1_1rk__quad_af40ac608d746ad23f63d23b84faaf09b_icgraph" id="classnum_1_1rk__quad_af40ac608d746ad23f63d23b84faaf09b_icgraph">
+<area shape="rect" id="node2" href="classnum_1_1rk__quad.html#a4336b1846be80d85a929f0ffe35c3829" title="This function is based on odeint() on Page 721 of Numerical Recipes in C, Second Edition. " alt="" coords="188,5,315,32"/>
+<area shape="rect" id="node3" href="classnum_1_1rk__quad.html#aef7932e97f89db6b02f8459afef0a429" title="Numerically integrate a function, and store the result in rk_quad::y. " alt="" coords="363,5,517,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a655a80a0628cfee575640cf02b685d5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a655a80a0628cfee575640cf02b685d5c">&sect;&nbsp;</a></span>deriv</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename X , typename Y &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::function&lt;<a class="el" href="classnum_1_1rk__quad.html#af10cb18312b26abc7a343c0dcb299d09">DYDX</a>(X)&gt; <a class="el" href="classnum_1_1rk__quad.html">num::rk_quad</a>&lt; X, Y &gt;::deriv</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Function to be integrated. </p>
+<p>This is called <em>deriv</em> because Runge-Kutta integrates a derivative. </p>
+
+<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00088">88</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
 
 </div>
 </div>

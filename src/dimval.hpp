@@ -58,6 +58,7 @@ namespace num
    /// Dimensional exponents.
    class dim_exps
    {
+      /// Storage for exponents.
       union {
          uint64_t n_; ///< Dimensional exponents as single number.
          char e_[8];  ///< Dimensional exponents.
@@ -366,18 +367,24 @@ namespace num
       friend PRD<R, A> integral(func<R, A> f, A1 a, A2 b, double t,
                                 unsigned n);
 
+      /// Global multiplication operator against dyndim needs access to v_ and
+      /// eps_.
       template <char OTI, char OD, char OM, char OC, char OTE>
       friend dyndim operator*(statdim<OTI, OD, OM, OC, OTE> sd,
                               dyndim const &dd);
 
+      /// Global multiplication operator against dyndim needs access to v_ and
+      /// eps_.
       template <char OTI, char OD, char OM, char OC, char OTE>
       friend dyndim operator*(dyndim const &dd,
                               statdim<OTI, OD, OM, OC, OTE> sd);
 
+      /// Global division operator against dyndim needs access to v_ and eps_.
       template <char OTI, char OD, char OM, char OC, char OTE>
       friend dyndim operator/(statdim<OTI, OD, OM, OC, OTE> sd,
                               dyndim const &dd);
 
+      /// Global division operator against dyndim needs access to v_ and eps_.
       template <char OTI, char OD, char OM, char OC, char OTE>
       friend dyndim operator/(dyndim const &dd,
                               statdim<OTI, OD, OM, OC, OTE> sd);
@@ -585,15 +592,23 @@ namespace num
       friend PRD<R, A> integral(func<R, A> f, A1 a, A2 b, double t,
                                 unsigned n);
 
+      /// Global multiplication operator against statdim needs access to v_ and
+      /// exps_.
       template <char TI, char D, char M, char C, char TE>
       friend dyndim operator*(statdim<TI, D, M, C, TE> sd, dyndim const &dd);
 
+      /// Global multiplication operator against statdim needs access to v_ and
+      /// exps_.
       template <char TI, char D, char M, char C, char TE>
       friend dyndim operator*(dyndim const &dd, statdim<TI, D, M, C, TE> sd);
 
+      /// Global division operator against statdim needs access to v_ and
+      /// exps_.
       template <char TI, char D, char M, char C, char TE>
       friend dyndim operator/(statdim<TI, D, M, C, TE> sd, dyndim const &dd);
 
+      /// Global division operator against statdim needs access to v_ and
+      /// exps_.
       template <char TI, char D, char M, char C, char TE>
       friend dyndim operator/(dyndim const &dd, statdim<TI, D, M, C, TE> sd);
 

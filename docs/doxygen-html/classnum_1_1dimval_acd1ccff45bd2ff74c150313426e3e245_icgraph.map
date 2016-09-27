@@ -1,0 +1,9 @@
+<map id="num::dimval::dimval" name="num::dimval::dimval">
+<area shape="rect" id="node2" href="$classnum_1_1dyndim.html#a6b7d9c8a82bf3c455d6e05b8793f69ed" title="Initialize numeric value and dimensional exponents. " alt="" coords="192,81,339,108"/>
+<area shape="rect" id="node3" href="$classnum_1_1dyndim.html#a9e35d09feada64c9016d7db27dfa96c7" title="Multiplication by number on right side. " alt="" coords="387,5,544,32"/>
+<area shape="rect" id="node5" href="$classnum_1_1dyndim.html#ac45bd01a6c6c637b4e32ecfb2d74dee8" title="Division by number. " alt="" coords="387,56,543,83"/>
+<area shape="rect" id="node6" href="$classnum_1_1dyndim.html#ac0d7dfb93b1035f960c18f6e43e68128" title="Integer power. " alt="" coords="401,107,530,133"/>
+<area shape="rect" id="node7" href="$classnum_1_1dyndim.html#a6c8b83996c0a111f2550e49542bd27b2" title="Integer root. " alt="" coords="402,157,529,184"/>
+<area shape="rect" id="node4" href="$namespacenum.html#a28fc98b9c781cc378e729328a66a5bbd" title="Multiplication of dyndim by number on left side. " alt="" coords="602,5,709,32"/>
+<area shape="rect" id="node8" href="$classnum_1_1dyndim.html#ac52e27a89b0f584c9f389d31237f6116" title="Square root. " alt="" coords="592,157,719,184"/>
+</map>

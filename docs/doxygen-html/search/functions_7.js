@@ -1,6 +1,9 @@
 var searchData=
 [
+  ['ifstr',['ifstr',['../classnum_1_1interpolant.html#aa381948fabacc87d589ecdd7e6084926',1,'num::interpolant']]],
   ['inches',['inches',['../structnum_1_1u_1_1inches.html#aa8c19cb29ce901ccf59556b9e727f324',1,'num::u::inches::inches(double v)'],['../structnum_1_1u_1_1inches.html#acdbeb2d45f4b4e836725949648376a64',1,'num::u::inches::inches(inches const &amp;dv)=default']]],
+  ['init',['init',['../classnum_1_1rk__quad.html#a4336b1846be80d85a929f0ffe35c3829',1,'num::rk_quad::init()'],['../classnum_1_1interpolant.html#a4aaccc617efb585b44ff02ae3ed34252',1,'num::interpolant::init()']]],
+  ['init_5ffrom_5fstack',['init_from_stack',['../classnum_1_1interpolant.html#a67c09e8fe2b27c6f29e5bbacb7b416be',1,'num::interpolant']]],
   ['integral',['integral',['../classnum_1_1cpoly.html#a0f2607b7a3117d4f6bb523d4ec17e311',1,'num::cpoly::integral()'],['../classnum_1_1cpoly_3_010_00_01V_00_01C_01_4.html#a4da30e8c6ca24f5b2ad38cdc033f6488',1,'num::cpoly&lt; 0, V, C &gt;::integral()'],['../classnum_1_1interpolant.html#af9763298777611dda79ceac53df3b0b8',1,'num::interpolant::integral(I x1, I x2) const'],['../classnum_1_1interpolant.html#a8087628a2eaa233fc86e472c1c71a8c6',1,'num::interpolant::integral() const'],['../namespacenum.html#a25fb944b0428e15f5a842447b90ed77a',1,'num::integral(std::function&lt; R(A)&gt; f, A1 aa, A2 bb, double t=1.0E-06, unsigned n=16)'],['../namespacenum.html#ae5d9f666c77573e755118cca28786bbe',1,'num::integral(R(*f)(A), A1 a, A2 b, double t=1.0E-06, unsigned n=16)']]],
   ['integral_5fstats',['integral_stats',['../classnum_1_1integral__stats.html#a3e71e34a3da99d1720c6d0f956e6a856',1,'num::integral_stats']]],
   ['interp_5ffunc',['interp_func',['../classnum_1_1rk__quad.html#ae67cf18f7fe23e088ac05127b5e10919',1,'num::rk_quad']]],

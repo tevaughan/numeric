@@ -72,6 +72,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-types">Private Types</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classnum_1_1integral__stats-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">num::integral_stats&lt; I &gt; Class Template Reference</div>  </div>
@@ -82,6 +84,13 @@ $(function() {
  <a href="classnum_1_1integral__stats.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="integral-stats_8hpp_source.html">integral-stats.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for num::integral_stats&lt; I &gt;:</div>
+<div class="dyncontent">
+<div class="center"><img src="classnum_1_1integral__stats__coll__graph.png" border="0" usemap="#num_1_1integral__stats_3_01I_01_4_coll__map" alt="Collaboration graph"/></div>
+<map name="num_1_1integral__stats_3_01I_01_4_coll__map" id="num_1_1integral__stats_3_01I_01_4_coll__map">
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -100,6 +109,28 @@ I const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 I&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1integral__stats.html#aa1f0b47566379663f0b11d0c3b51c1bc">stdev</a> () const</td></tr>
 <tr class="memdesc:aa1f0b47566379663f0b11d0c3b51c1bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Standard deviation of estimated total area in trapezoids. <br /></td></tr>
 <tr class="separator:aa1f0b47566379663f0b11d0c3b51c1bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:a7466ebc5db772d77783144bd55046f1c"><td class="memItemLeft" align="right" valign="top"><a id="a7466ebc5db772d77783144bd55046f1c"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1integral__stats.html#a7466ebc5db772d77783144bd55046f1c">S</a> = decltype(I() *I())</td></tr>
+<tr class="memdesc:a7466ebc5db772d77783144bd55046f1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of square deviation in area under trapezoid. <br /></td></tr>
+<tr class="separator:a7466ebc5db772d77783144bd55046f1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a9e852ff6c7f2d8e923c9b956be0238a6"><td class="memItemLeft" align="right" valign="top"><a id="a9e852ff6c7f2d8e923c9b956be0238a6"></a>
+unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1integral__stats.html#a9e852ff6c7f2d8e923c9b956be0238a6">num_</a></td></tr>
+<tr class="memdesc:a9e852ff6c7f2d8e923c9b956be0238a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of trapezoids. <br /></td></tr>
+<tr class="separator:a9e852ff6c7f2d8e923c9b956be0238a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a388e4b8e71ffd55afa8b33b36306033f"><td class="memItemLeft" align="right" valign="top"><a id="a388e4b8e71ffd55afa8b33b36306033f"></a>
+I&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1integral__stats.html#a388e4b8e71ffd55afa8b33b36306033f">area_</a></td></tr>
+<tr class="memdesc:a388e4b8e71ffd55afa8b33b36306033f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total area of trapezoids. <br /></td></tr>
+<tr class="separator:a388e4b8e71ffd55afa8b33b36306033f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e2c72624d812fda4f66533fab53e88a"><td class="memItemLeft" align="right" valign="top"><a id="a3e2c72624d812fda4f66533fab53e88a"></a>
+<a class="el" href="classnum_1_1integral__stats.html#a7466ebc5db772d77783144bd55046f1c">S</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1integral__stats.html#a3e2c72624d812fda4f66533fab53e88a">sqdv_</a></td></tr>
+<tr class="memdesc:a3e2c72624d812fda4f66533fab53e88a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sum of estimated square deviations in area. <br /></td></tr>
+<tr class="separator:a3e2c72624d812fda4f66533fab53e88a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename I&gt;<br />
@@ -160,7 +191,7 @@ template&lt;typename I &gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="integral-stats_8hpp_source.html#l00035">35</a> of file <a class="el" href="integral-stats_8hpp_source.html">integral-stats.hpp</a>.</p>
+<p>Definition at line <a class="el" href="integral-stats_8hpp_source.html#l00036">36</a> of file <a class="el" href="integral-stats_8hpp_source.html">integral-stats.hpp</a>.</p>
 
 </div>
 </div>

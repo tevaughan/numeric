@@ -19,6 +19,7 @@ namespace num
    template <typename I>
    class integral_stats
    {
+      /// Type of square deviation in area under trapezoid.
       using S = decltype(I() * I());
 
       unsigned num_; ///< Number of trapezoids.

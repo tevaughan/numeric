@@ -198,7 +198,7 @@ namespace num
          return pl;
       }
 
-      // Initialize control points from copy of initial subinterval_stack.
+      /// Initialize control points from copy of initial subinterval_stack.
       void init_from_stack(subinterval_stack<I, D> s)
       {
          using interval = interval<I, D>;

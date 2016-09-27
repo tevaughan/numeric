@@ -73,6 +73,8 @@ $(function() {
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-types">Private Types</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classnum_1_1cpoly-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">num::cpoly&lt; D, V, C &gt; Class Template Reference</div>  </div>
@@ -97,8 +99,9 @@ Collaboration diagram for num::cpoly&lt; D, V, C &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="classnum_1_1cpoly__coll__graph.png" border="0" usemap="#num_1_1cpoly_3_01D_00_01V_00_01C_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="num_1_1cpoly_3_01D_00_01V_00_01C_01_4_coll__map" id="num_1_1cpoly_3_01D_00_01V_00_01C_01_4_coll__map">
-<area shape="rect" id="node2" href="structnum_1_1cfunc.html" title="num::cfunc\&lt; V, C, cpoly\l\&lt; D, V, C \&gt; \&gt;" alt="" coords="5,109,171,151"/>
-<area shape="rect" id="node3" href="structnum_1_1cfunc.html" title="Base class for model of a function of a continuous variable. " alt="" coords="10,5,166,32"/>
+<area shape="rect" id="node2" href="structnum_1_1cfunc.html" title="num::cfunc\&lt; V, C, cpoly\l\&lt; D, V, C \&gt; \&gt;" alt="" coords="5,199,171,240"/>
+<area shape="rect" id="node3" href="structnum_1_1cfunc.html" title="Base class for model of a function of a continuous variable. " alt="" coords="10,95,166,121"/>
+<area shape="rect" id="node6" title="STL class. " alt="" coords="295,95,404,121"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -120,7 +123,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a3da3bbede8f159a0ab5e3ccb88f250b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">By default, initialize coefficients to zero. <br /></td></tr>
 <tr class="separator:a3da3bbede8f159a0ab5e3ccb88f250b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98d2b3cf6593c5cdad1264b64693616b"><td class="memItemLeft" align="right" valign="top"><a id="a98d2b3cf6593c5cdad1264b64693616b"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly.html#a98d2b3cf6593c5cdad1264b64693616b">cpoly</a> (std::array&lt; V, N &gt; const &amp;cc)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly.html#a98d2b3cf6593c5cdad1264b64693616b">cpoly</a> (std::array&lt; V, <a class="el" href="classnum_1_1cpoly.html#a67fbefdcf5cd1d89e2a181edb0767fd8a03dce56908ff15cb24a6e5266b298a33">N</a> &gt; const &amp;cc)</td></tr>
 <tr class="memdesc:a98d2b3cf6593c5cdad1264b64693616b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy coefficients from an array. <br /></td></tr>
 <tr class="separator:a98d2b3cf6593c5cdad1264b64693616b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af502a8755dbd86ac54efda3faa920c9a"><td class="memItemLeft" align="right" valign="top"><a id="af502a8755dbd86ac54efda3faa920c9a"></a>
@@ -128,11 +131,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:af502a8755dbd86ac54efda3faa920c9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy coefficients from a vector. <br /></td></tr>
 <tr class="separator:af502a8755dbd86ac54efda3faa920c9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77aa9a711afef5ad9d57145988db07d4"><td class="memItemLeft" align="right" valign="top"><a id="a77aa9a711afef5ad9d57145988db07d4"></a>
-std::array&lt; V, N &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly.html#a77aa9a711afef5ad9d57145988db07d4">c</a> ()</td></tr>
+std::array&lt; V, <a class="el" href="classnum_1_1cpoly.html#a67fbefdcf5cd1d89e2a181edb0767fd8a03dce56908ff15cb24a6e5266b298a33">N</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly.html#a77aa9a711afef5ad9d57145988db07d4">c</a> ()</td></tr>
 <tr class="memdesc:a77aa9a711afef5ad9d57145988db07d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return reference to mutable coefficients. <br /></td></tr>
 <tr class="separator:a77aa9a711afef5ad9d57145988db07d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6f0f5e41f4798a2f62e6f4ed500015d"><td class="memItemLeft" align="right" valign="top"><a id="ad6f0f5e41f4798a2f62e6f4ed500015d"></a>
-std::array&lt; V, N &gt; const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly.html#ad6f0f5e41f4798a2f62e6f4ed500015d">c</a> () const</td></tr>
+std::array&lt; V, <a class="el" href="classnum_1_1cpoly.html#a67fbefdcf5cd1d89e2a181edb0767fd8a03dce56908ff15cb24a6e5266b298a33">N</a> &gt; const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly.html#ad6f0f5e41f4798a2f62e6f4ed500015d">c</a> () const</td></tr>
 <tr class="memdesc:ad6f0f5e41f4798a2f62e6f4ed500015d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return reference to immutable coefficients. <br /></td></tr>
 <tr class="separator:ad6f0f5e41f4798a2f62e6f4ed500015d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca6213b1d07b74a505ab3a21747773e1"><td class="memItemLeft" align="right" valign="top">C&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly.html#aca6213b1d07b74a505ab3a21747773e1">operator()</a> (V const &amp;v) const</td></tr>
@@ -154,6 +157,18 @@ std::array&lt; V, N &gt; const  &amp;&#160;</td><td class="memItemRight" valign=
 C&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnum_1_1cfunc.html#a8f98ead08091c22d18c7b7cc568731b9">operator()</a> (V const &amp;a) const</td></tr>
 <tr class="memdesc:a8f98ead08091c22d18c7b7cc568731b9 inherit pub_methods_structnum_1_1cfunc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate function. <br /></td></tr>
 <tr class="separator:a8f98ead08091c22d18c7b7cc568731b9 inherit pub_methods_structnum_1_1cfunc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:a67fbefdcf5cd1d89e2a181edb0767fd8"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="classnum_1_1cpoly.html#a67fbefdcf5cd1d89e2a181edb0767fd8a03dce56908ff15cb24a6e5266b298a33">N</a> = D + 1
+ }</td></tr>
+<tr class="separator:a67fbefdcf5cd1d89e2a181edb0767fd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a1fcde234d33b0cfa4dbecccb2549ec36"><td class="memItemLeft" align="right" valign="top">std::array&lt; V, <a class="el" href="classnum_1_1cpoly.html#a67fbefdcf5cd1d89e2a181edb0767fd8a03dce56908ff15cb24a6e5266b298a33">N</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly.html#a1fcde234d33b0cfa4dbecccb2549ec36">c_</a></td></tr>
+<tr class="memdesc:a1fcde234d33b0cfa4dbecccb2549ec36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coefficients of polynomial.  <a href="#a1fcde234d33b0cfa4dbecccb2549ec36">More...</a><br /></td></tr>
+<tr class="separator:a1fcde234d33b0cfa4dbecccb2549ec36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;unsigned D, typename V = double, typename C = double&gt;<br />
@@ -173,7 +188,38 @@ class num::cpoly&lt; D, V, C &gt;</h3>
 </dl>
 
 <p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00038">38</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="a67fbefdcf5cd1d89e2a181edb0767fd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67fbefdcf5cd1d89e2a181edb0767fd8">&sect;&nbsp;</a></span>anonymous enum</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned D, typename V  = double, typename C  = double&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a67fbefdcf5cd1d89e2a181edb0767fd8a03dce56908ff15cb24a6e5266b298a33"></a>N&#160;</td><td class="fielddoc"><p>Number of coefficients. </p>
+</td></tr>
+</table>
+
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00040">40</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a0f2607b7a3117d4f6bb523d4ec17e311"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0f2607b7a3117d4f6bb523d4ec17e311">&sect;&nbsp;</a></span>integral()</h2>
 
@@ -247,6 +293,36 @@ template&lt;unsigned D, typename V  = double, typename C  = double&gt; </div>
 </dl>
 
 <p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00080">80</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a1fcde234d33b0cfa4dbecccb2549ec36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fcde234d33b0cfa4dbecccb2549ec36">&sect;&nbsp;</a></span>c_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned D, typename V  = double, typename C  = double&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt;V, <a class="el" href="classnum_1_1cpoly.html#a67fbefdcf5cd1d89e2a181edb0767fd8a03dce56908ff15cb24a6e5266b298a33">N</a>&gt; <a class="el" href="classnum_1_1cpoly.html">num::cpoly</a>&lt; D, V, C &gt;::c_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Coefficients of polynomial. </p>
+<p>Each of these is of the same type as the variable. So if the variable be of type dyndim, then so will each coefficient be. </p>
+
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00047">47</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
 
 </div>
 </div>

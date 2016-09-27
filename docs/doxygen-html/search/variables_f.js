@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['v_5f',['v_',['../classnum_1_1dimval.html#a7ea8207582ed97e842393c2afba0eafd',1,'num::dimval']]]
+  ['tol',['tol',['../classnum_1_1rk__quad.html#a81cd85ccdae55d05629163b50b57aa18',1,'num::rk_quad']]]
 ];

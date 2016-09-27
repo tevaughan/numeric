@@ -73,6 +73,8 @@ $(function() {
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-types">Private Types</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classnum_1_1cpoly_3_010_00_01V_00_01C_01_4-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">num::cpoly&lt; 0, V, C &gt; Class Template Reference</div>  </div>
@@ -97,8 +99,9 @@ Collaboration diagram for num::cpoly&lt; 0, V, C &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="classnum_1_1cpoly_3_010_00_01V_00_01C_01_4__coll__graph.png" border="0" usemap="#num_1_1cpoly_3_010_00_01V_00_01C_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="num_1_1cpoly_3_010_00_01V_00_01C_01_4_coll__map" id="num_1_1cpoly_3_010_00_01V_00_01C_01_4_coll__map">
-<area shape="rect" id="node2" href="structnum_1_1cfunc.html" title="num::cfunc\&lt; V, C, cpoly\l\&lt; 0, V, C \&gt; \&gt;" alt="" coords="5,109,171,151"/>
-<area shape="rect" id="node3" href="structnum_1_1cfunc.html" title="Base class for model of a function of a continuous variable. " alt="" coords="10,5,166,32"/>
+<area shape="rect" id="node2" href="structnum_1_1cfunc.html" title="num::cfunc\&lt; V, C, cpoly\l\&lt; 0, V, C \&gt; \&gt;" alt="" coords="5,199,171,240"/>
+<area shape="rect" id="node3" href="structnum_1_1cfunc.html" title="Base class for model of a function of a continuous variable. " alt="" coords="10,95,166,121"/>
+<area shape="rect" id="node6" title="STL class. " alt="" coords="295,95,404,121"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -116,7 +119,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a3d97f2101d6f2d719f14926cce82e9af"><td class="mdescLeft">&#160;</td><td class="mdescRight">By default, initialize coefficient to zero. <br /></td></tr>
 <tr class="separator:a3d97f2101d6f2d719f14926cce82e9af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a688af1da327a372f787f3f7dc9c2e714"><td class="memItemLeft" align="right" valign="top"><a id="a688af1da327a372f787f3f7dc9c2e714"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly_3_010_00_01V_00_01C_01_4.html#a688af1da327a372f787f3f7dc9c2e714">cpoly</a> (std::array&lt; C, N &gt; const &amp;cc)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly_3_010_00_01V_00_01C_01_4.html#a688af1da327a372f787f3f7dc9c2e714">cpoly</a> (std::array&lt; C, <a class="el" href="classnum_1_1cpoly_3_010_00_01V_00_01C_01_4.html#a2fd4450315f0aaedc85166d21464bfa1aa4b87bbcfa5af0e0f6271e6a297258e7">N</a> &gt; const &amp;cc)</td></tr>
 <tr class="memdesc:a688af1da327a372f787f3f7dc9c2e714"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy coefficient from an array. <br /></td></tr>
 <tr class="separator:a688af1da327a372f787f3f7dc9c2e714"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3af7a87c0dbd13fc7bc6ba0dc29fc611"><td class="memItemLeft" align="right" valign="top"><a id="a3af7a87c0dbd13fc7bc6ba0dc29fc611"></a>
@@ -128,11 +131,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:af6028b25e20c7ce9e8143847789b3413"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy coefficient from instance of its type. <br /></td></tr>
 <tr class="separator:af6028b25e20c7ce9e8143847789b3413"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe05a1a7d466c84bb02f55533e5623bf"><td class="memItemLeft" align="right" valign="top"><a id="abe05a1a7d466c84bb02f55533e5623bf"></a>
-std::array&lt; C, N &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly_3_010_00_01V_00_01C_01_4.html#abe05a1a7d466c84bb02f55533e5623bf">c</a> ()</td></tr>
+std::array&lt; C, <a class="el" href="classnum_1_1cpoly_3_010_00_01V_00_01C_01_4.html#a2fd4450315f0aaedc85166d21464bfa1aa4b87bbcfa5af0e0f6271e6a297258e7">N</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly_3_010_00_01V_00_01C_01_4.html#abe05a1a7d466c84bb02f55533e5623bf">c</a> ()</td></tr>
 <tr class="memdesc:abe05a1a7d466c84bb02f55533e5623bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return reference to mutable coefficient. <br /></td></tr>
 <tr class="separator:abe05a1a7d466c84bb02f55533e5623bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad540459e37c1057dac60ce28e8a45215"><td class="memItemLeft" align="right" valign="top"><a id="ad540459e37c1057dac60ce28e8a45215"></a>
-std::array&lt; C, N &gt; const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly_3_010_00_01V_00_01C_01_4.html#ad540459e37c1057dac60ce28e8a45215">c</a> () const</td></tr>
+std::array&lt; C, <a class="el" href="classnum_1_1cpoly_3_010_00_01V_00_01C_01_4.html#a2fd4450315f0aaedc85166d21464bfa1aa4b87bbcfa5af0e0f6271e6a297258e7">N</a> &gt; const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly_3_010_00_01V_00_01C_01_4.html#ad540459e37c1057dac60ce28e8a45215">c</a> () const</td></tr>
 <tr class="memdesc:ad540459e37c1057dac60ce28e8a45215"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return reference to mutable coefficient. <br /></td></tr>
 <tr class="separator:ad540459e37c1057dac60ce28e8a45215"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a006d0c7b4f3af4baa43404955234ebcf"><td class="memItemLeft" align="right" valign="top"><a id="a006d0c7b4f3af4baa43404955234ebcf"></a>
@@ -167,6 +170,19 @@ std::array&lt; C, N &gt; const  &amp;&#160;</td><td class="memItemRight" valign=
 C&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnum_1_1cfunc.html#a8f98ead08091c22d18c7b7cc568731b9">operator()</a> (V const &amp;a) const</td></tr>
 <tr class="memdesc:a8f98ead08091c22d18c7b7cc568731b9 inherit pub_methods_structnum_1_1cfunc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate function. <br /></td></tr>
 <tr class="separator:a8f98ead08091c22d18c7b7cc568731b9 inherit pub_methods_structnum_1_1cfunc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:a2fd4450315f0aaedc85166d21464bfa1"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="classnum_1_1cpoly_3_010_00_01V_00_01C_01_4.html#a2fd4450315f0aaedc85166d21464bfa1aa4b87bbcfa5af0e0f6271e6a297258e7">N</a> = 0 + 1
+ }</td></tr>
+<tr class="separator:a2fd4450315f0aaedc85166d21464bfa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a9685dcc75cc05a1748d96ab9c33dbbb3"><td class="memItemLeft" align="right" valign="top"><a id="a9685dcc75cc05a1748d96ab9c33dbbb3"></a>
+std::array&lt; C, <a class="el" href="classnum_1_1cpoly_3_010_00_01V_00_01C_01_4.html#a2fd4450315f0aaedc85166d21464bfa1aa4b87bbcfa5af0e0f6271e6a297258e7">N</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly_3_010_00_01V_00_01C_01_4.html#a9685dcc75cc05a1748d96ab9c33dbbb3">c_</a></td></tr>
+<tr class="memdesc:a9685dcc75cc05a1748d96ab9c33dbbb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coefficient of unity. <br /></td></tr>
+<tr class="separator:a9685dcc75cc05a1748d96ab9c33dbbb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename V, typename C&gt;<br />
@@ -176,7 +192,38 @@ class num::cpoly&lt; 0, V, C &gt;</h3>
 <p>cpoly&lt;0,V,C&gt; has but a single coefficient, the constant term. </p>
 
 <p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00122">122</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="a2fd4450315f0aaedc85166d21464bfa1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fd4450315f0aaedc85166d21464bfa1">&sect;&nbsp;</a></span>anonymous enum</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename V , typename C &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a2fd4450315f0aaedc85166d21464bfa1aa4b87bbcfa5af0e0f6271e6a297258e7"></a>N&#160;</td><td class="fielddoc"><p>Number of coefficients. </p>
+</td></tr>
+</table>
+
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00124">124</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a1b16e062ece8209a4149deff2bc41287"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1b16e062ece8209a4149deff2bc41287">&sect;&nbsp;</a></span>operator()()</h2>
 

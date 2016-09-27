@@ -73,6 +73,8 @@ $(function() {
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-types">Private Types</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classnum_1_1dense__table-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">num::dense_table&lt; A, F &gt; Class Template Reference</div>  </div>
@@ -83,6 +85,14 @@ $(function() {
  <a href="classnum_1_1dense__table.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="dense-table_8hpp_source.html">dense-table.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for num::dense_table&lt; A, F &gt;:</div>
+<div class="dyncontent">
+<div class="center"><img src="classnum_1_1dense__table__coll__graph.png" border="0" usemap="#num_1_1dense__table_3_01A_00_01F_01_4_coll__map" alt="Collaboration graph"/></div>
+<map name="num_1_1dense__table_3_01A_00_01F_01_4_coll__map" id="num_1_1dense__table_3_01A_00_01F_01_4_coll__map">
+<area shape="rect" id="node6" title="STL class. " alt="" coords="264,95,380,121"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
@@ -110,11 +120,37 @@ A const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 <tr class="separator:a9139b3ad7fec1fd27a4121dba3236e69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38a51cc7ab4e93e952db4e4484dd5bc4"><td class="memItemLeft" align="right" valign="top"><a id="a38a51cc7ab4e93e952db4e4484dd5bc4"></a>
 std::vector&lt; F &gt; const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dense__table.html#a38a51cc7ab4e93e952db4e4484dd5bc4">f</a> () const</td></tr>
-<tr class="memdesc:a38a51cc7ab4e93e952db4e4484dd5bc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of sub-functions \( \{f_0, f_1, \ldots, f_{n-1}\} \). <br /></td></tr>
+<tr class="memdesc:a38a51cc7ab4e93e952db4e4484dd5bc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of sub-functions \( f_0, f_1, \ldots, f_{n-1} \). <br /></td></tr>
 <tr class="separator:a38a51cc7ab4e93e952db4e4484dd5bc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4af84e73721e1289839ef97a3a7f244"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dense__table.html#a099ca93d2dd641755c2d412d85e85e87">R</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dense__table.html#ad4af84e73721e1289839ef97a3a7f244">operator()</a> (A const &amp;a) const</td></tr>
 <tr class="memdesc:ad4af84e73721e1289839ef97a3a7f244"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the offset \( i \) of the sub-domain containing the argument \( a \), and return \( f_i(a - a_i) \).  <a href="#ad4af84e73721e1289839ef97a3a7f244">More...</a><br /></td></tr>
 <tr class="separator:ad4af84e73721e1289839ef97a3a7f244"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:af51bd13e513ee1564ed158545d2be577"><td class="memItemLeft" align="right" valign="top"><a id="af51bd13e513ee1564ed158545d2be577"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dense__table.html#af51bd13e513ee1564ed158545d2be577">I</a> = decltype(1.0/A())</td></tr>
+<tr class="memdesc:af51bd13e513ee1564ed158545d2be577"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of reciprocal of common difference. <br /></td></tr>
+<tr class="separator:af51bd13e513ee1564ed158545d2be577"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a7191035ca4e0fd16ac2c8ee672688c92"><td class="memItemLeft" align="right" valign="top"><a id="a7191035ca4e0fd16ac2c8ee672688c92"></a>
+A&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dense__table.html#a7191035ca4e0fd16ac2c8ee672688c92">a_frst_</a></td></tr>
+<tr class="memdesc:a7191035ca4e0fd16ac2c8ee672688c92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Center \( a_0 \) of first sub-domain. <br /></td></tr>
+<tr class="separator:a7191035ca4e0fd16ac2c8ee672688c92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af69757469360cbccc01f660acc7aa7ec"><td class="memItemLeft" align="right" valign="top"><a id="af69757469360cbccc01f660acc7aa7ec"></a>
+A&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dense__table.html#af69757469360cbccc01f660acc7aa7ec">da_</a></td></tr>
+<tr class="memdesc:af69757469360cbccc01f660acc7aa7ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Common difference between subsequent centers. <br /></td></tr>
+<tr class="separator:af69757469360cbccc01f660acc7aa7ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af12a235a7c47f900b06e6b9946d71462"><td class="memItemLeft" align="right" valign="top"><a id="af12a235a7c47f900b06e6b9946d71462"></a>
+<a class="el" href="classnum_1_1dense__table.html#af51bd13e513ee1564ed158545d2be577">I</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dense__table.html#af12a235a7c47f900b06e6b9946d71462">ida_</a></td></tr>
+<tr class="memdesc:af12a235a7c47f900b06e6b9946d71462"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inverse of common difference. <br /></td></tr>
+<tr class="separator:af12a235a7c47f900b06e6b9946d71462"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab530f1ab03ee194e21a7ec68b2d7ece7"><td class="memItemLeft" align="right" valign="top"><a id="ab530f1ab03ee194e21a7ec68b2d7ece7"></a>
+std::vector&lt; F &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dense__table.html#ab530f1ab03ee194e21a7ec68b2d7ece7">f_</a></td></tr>
+<tr class="memdesc:ab530f1ab03ee194e21a7ec68b2d7ece7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Table of sub-functions. <br /></td></tr>
+<tr class="separator:ab530f1ab03ee194e21a7ec68b2d7ece7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename A, typename F&gt;<br />
@@ -196,7 +232,7 @@ template&lt;typename A , typename F &gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="dense-table_8hpp_source.html#l00076">76</a> of file <a class="el" href="dense-table_8hpp_source.html">dense-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dense-table_8hpp_source.html#l00078">78</a> of file <a class="el" href="dense-table_8hpp_source.html">dense-table.hpp</a>.</p>
 
 </div>
 </div>
@@ -237,7 +273,7 @@ template&lt;typename A , typename F &gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="dense-table_8hpp_source.html#l00115">115</a> of file <a class="el" href="dense-table_8hpp_source.html">dense-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dense-table_8hpp_source.html#l00117">117</a> of file <a class="el" href="dense-table_8hpp_source.html">dense-table.hpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
