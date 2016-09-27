@@ -33,6 +33,8 @@ CLEANFILES = $(BUILT_SOURCES)
 EXTRA_DIST = *.pl *.txt *.md
 
 pkginclude_HEADERS =\
+ cfunc.hpp\
+ cpoly.hpp\
  dense-table.hpp\
  dimval.hpp\
  integral.hpp\

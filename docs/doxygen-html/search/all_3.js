@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['d',['d',['../classnum_1_1dimval.html#a6bfa7203bcaa806728cea7e0df85b661',1,'num::dimval::d()'],['../classnum_1_1dimval.html#a0cb90aa4f41f9e71d08c933b567b4121',1,'num::dimval::d() const'],['../structnum_1_1rfunc.html#ab2431dad0f850feaecdcbbaff45b53a3',1,'num::rfunc::d()'],['../classnum_1_1dim__exps.html#a00b7877909fb47a91f9e462b38a010eb',1,'num::dim_exps::D()'],['../classnum_1_1dim__exps.html#a0cad21b7823f54ec67396fb3ee8b1ce4',1,'num::dim_exps::D() const']]],
+  ['d',['d',['../classnum_1_1dimval.html#a6bfa7203bcaa806728cea7e0df85b661',1,'num::dimval::d()'],['../classnum_1_1dimval.html#a0cb90aa4f41f9e71d08c933b567b4121',1,'num::dimval::d() const'],['../structnum_1_1cfunc.html#a298da98ce743c2f4fd83b1bc030d6432',1,'num::cfunc::d()'],['../classnum_1_1dim__exps.html#a00b7877909fb47a91f9e462b38a010eb',1,'num::dim_exps::D()'],['../classnum_1_1dim__exps.html#a0cad21b7823f54ec67396fb3ee8b1ce4',1,'num::dim_exps::D() const']]],
   ['da',['da',['../structnum_1_1sparse__table_1_1rec.html#ae7e62d7ff17dd05f488a812a29c55518',1,'num::sparse_table::rec::da()'],['../classnum_1_1dense__table.html#a9139b3ad7fec1fd27a4121dba3236e69',1,'num::dense_table::da()']]],
   ['dat',['dat',['../classnum_1_1sparse__table.html#a067602cef248d47a39e2e63582f11543',1,'num::sparse_table']]],
   ['data',['data',['../classnum_1_1sparse__table.html#ac6e8c585b22867f04be559a4c0de84ad',1,'num::sparse_table']]],
@@ -14,8 +14,8 @@ var searchData=
   ['dense_5ftable',['dense_table',['../classnum_1_1dense__table.html',1,'num']]],
   ['dense_5ftable',['dense_table',['../classnum_1_1dense__table.html#ae27e8ea2389907b2550d9c864e8ec106',1,'num::dense_table']]],
   ['density',['density',['../namespacenum.html#a9415a27e10304bb459e6b8d26bb82c0e',1,'num']]],
-  ['deriv',['DERIV',['../structnum_1_1rfunc.html#abd4a4280981c8fc78edf767aaf3f570e',1,'num::rfunc']]],
-  ['derivative',['derivative',['../structnum_1_1rfunc.html#a604d7039639c9d658677148411fe4010',1,'num::rfunc::derivative()'],['../classnum_1_1rpoly_3_01A_00_01T_00_010_01_4.html#a571a01743c249be59b068c7670aab045',1,'num::rpoly&lt; A, T, 0 &gt;::derivative()']]],
+  ['deriv',['DERIV',['../structnum_1_1cfunc.html#aa467092697b4f7ed1c1c899e23a3e181',1,'num::cfunc::DERIV()'],['../classnum_1_1cpoly.html#a7f95498f1d2ed7a5eb04d041da9edc47',1,'num::cpoly::DERIV()']]],
+  ['derivative',['derivative',['../structnum_1_1cfunc.html#a93165461a40b6f54da8d51c7daf90354',1,'num::cfunc::derivative()'],['../classnum_1_1cpoly.html#acdc251606e29a33daf15e98b79cfce8e',1,'num::cpoly::derivative()']]],
   ['dim_5fexps',['dim_exps',['../classnum_1_1dim__exps.html#a876f01a892e469ffa5bedeaa154dfd9a',1,'num::dim_exps::dim_exps()'],['../classnum_1_1dim__exps.html#a814bfcf94bd0dac034157edb5e407437',1,'num::dim_exps::dim_exps(char ti, char d, char m, char c, char te)']]],
   ['dim_5fexps',['dim_exps',['../classnum_1_1dim__exps.html',1,'num']]],
   ['dimensions_2ehpp',['dimensions.hpp',['../dimensions_8hpp.html',1,'']]],
