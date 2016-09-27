@@ -81,6 +81,7 @@ namespace num
             val += c_[i] * vp;
             vp = v * vp;
          }
+         return val;
       }
 
       /// Return function representing derivative.
