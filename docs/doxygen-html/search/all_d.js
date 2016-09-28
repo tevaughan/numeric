@@ -1,8 +1,8 @@
 var searchData=
 [
   ['n',['n',['../unionnum_1_1dim__exps_1_1s.html#a27700a99892b7d9ae8741a462791ef78',1,'num::dim_exps::s::n()'],['../classnum_1_1dim__exps.html#aa8fdf4b50b80775386324cb37e06f3e2',1,'num::dim_exps::n()'],['../classnum_1_1cpoly.html#a06fc87d81c62e9abb8790b6e5713c55ba2c63acbe79d9f41ba6bb7766e9c37702',1,'num::cpoly::N()'],['../classnum_1_1cpoly_3_010_00_01V_00_01C_01_4.html#adf764cbdea00d65edcd07bb9953ad2b7a2c63acbe79d9f41ba6bb7766e9c37702',1,'num::cpoly&lt; 0, V, C &gt;::N()'],['../namespacenum_1_1u.html#adb96972202030dd3498c3d7e8c87d7ab',1,'num::u::N()']]],
-  ['nanograms',['nanograms',['../structnum_1_1u_1_1nanograms.html#aaa7bd68e02bc54ae0675ddf97ac250bc',1,'num::u::nanograms::nanograms(double v)'],['../structnum_1_1u_1_1nanograms.html#ac7ace7f94f07a690f309f35537a3f398',1,'num::u::nanograms::nanograms(nanograms const &amp;dv)=default']]],
   ['nanograms',['nanograms',['../structnum_1_1u_1_1nanograms.html',1,'num::u']]],
+  ['nanograms',['nanograms',['../structnum_1_1u_1_1nanograms.html#aaa7bd68e02bc54ae0675ddf97ac250bc',1,'num::u::nanograms::nanograms(double v)'],['../structnum_1_1u_1_1nanograms.html#ac7ace7f94f07a690f309f35537a3f398',1,'num::u::nanograms::nanograms(nanograms const &amp;dv)=default']]],
   ['nanometers',['nanometers',['../structnum_1_1u_1_1nanometers.html',1,'num::u']]],
   ['nanometers',['nanometers',['../structnum_1_1u_1_1nanometers.html#ab8ef205eca89becccd07c76eccbbb02e',1,'num::u::nanometers::nanometers(double v)'],['../structnum_1_1u_1_1nanometers.html#ae41ecc43e8de964aad715c7e4ad6e1d5',1,'num::u::nanometers::nanometers(nanometers const &amp;dv)=default']]],
   ['nanoseconds',['nanoseconds',['../structnum_1_1u_1_1nanoseconds.html#a255a7d840094f02db1f861e3df86af6e',1,'num::u::nanoseconds::nanoseconds(double v)'],['../structnum_1_1u_1_1nanoseconds.html#a2c19a497cb0f2db3ceae788bde0c30fc',1,'num::u::nanoseconds::nanoseconds(nanoseconds const &amp;dv)=default']]],
@@ -18,5 +18,6 @@ var searchData=
   ['num',['num',['../namespacenum.html',1,'']]],
   ['num_5f',['num_',['../classnum_1_1integral__stats.html#a79235a3aa28e7f53fcd772475fa5e76c',1,'num::integral_stats']]],
   ['number',['number',['../classnum_1_1dyndim.html#ad8343d56b9d276cd86fef93952adc1e0',1,'num::dyndim']]],
-  ['u',['u',['../namespacenum_1_1u.html',1,'num']]]
+  ['u',['u',['../namespacenum_1_1u.html',1,'num']]],
+  ['util',['util',['../namespacenum_1_1util.html',1,'num']]]
 ];

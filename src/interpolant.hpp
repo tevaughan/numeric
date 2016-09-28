@@ -22,11 +22,185 @@
 #include <utility>   // for pair
 #include <vector>    // for vector
 
-#include "integral-stats.hpp" // for integral_stats
-#include "interval.hpp"       // for interval and subinterval_stack
+#include <integral-stats.hpp> // for integral_stats
+#include <interval.hpp>       // for interval and subinterval_stack
+#include <sparse-table.hpp>   // for sparse_table
+#include <cpoly.hpp>          // for cpoly
 
 namespace num
 {
+   /// Namespace for utility functions used by numeric.
+   namespace util
+   {
+      /// Extract point from space-delimited ASCII line.
+      /// \tparam X  Type of first column, representing X coordinate.
+      /// \tparam Y  Type of second column, representing Y coordinate.
+      template <typename X, typename Y>
+      std::pair<X, Y>
+      get_point(/** Line of non-blank ASCII text. */ std::string line,
+                /** Unit to multiply against first column. */ X xu,
+                /** Unit to multiply against secnd column. */ Y yu)
+      {
+         std::istringstream iss(line);
+         double x, y;
+         if (!(iss >> x)) {
+            throw "error reading x";
+         }
+         if (!(iss >> y)) {
+            throw "error reading y";
+         }
+         return std::pair<X, Y>(x * xu, y * yu);
+      }
+
+      /// Extract a set of points from a space-delimited ASCII file.  Each line
+      /// of the file must consist either
+      ///
+      /// - of only white space, optionally followed by the '#' character and a
+      ///   subsequent comment or
+      ///
+      /// - of white space followed by at least two space-delimited
+      ///   floating-point numbers (after which everything else on the line is
+      ///   ignored).
+      ///
+      /// \tparam X  Type of first column, representing X coordinate.
+      /// \tparam Y  Type of second column, representing Y coordinate.
+      template <typename X, typename Y>
+      std::vector<std::pair<X, Y>>
+      get_points(/** Name of ASCII file. */ std::string file,
+                 /** Unit to multiply against first column. */ X xu,
+                 /** Unit to multiply against secnd column. */ Y yu)
+      {
+         using namespace std;
+         ifstream is(file);
+         if (!is) {
+            throw "Failed to open '" + file + "'.";
+         }
+         string line;
+         vector<pair<X, Y>> points;
+         while (getline(is, line)) {
+            size_t const p = line.find_first_not_of(" \f\n\r\t");
+            if (p == string::npos || line[p] == '#') {
+               continue;
+            }
+            points.push_back(get_point(line, xu, yu));
+         }
+         auto comp = [](pair<X, Y> const &a, pair<X, Y> const &b) {
+            return a.first < b.first;
+         };
+         sort(points.begin(), points.end(), comp);
+         return points;
+      }
+
+      /// Return the list of midpoints, each between a subsequent pair of
+      /// points in a sorted list.
+      ///
+      /// \tparam V  Type of vector of points.
+      /// \return    Midpoints sorted by x coordinate.
+      template <typename V>
+      V midpoints(/** Points sorted by x coordinate. */ V const &v)
+      {
+         if (v.size() < 2) {
+            return V();
+         }
+         V rv(v.size() - 1); // Return value.
+         for (unsigned j = 1; j < v.size(); ++j) {
+            unsigned const i = j - 1;
+            auto const &xi = v[i].first, &yi = v[i].second;
+            auto const &xj = v[j].first, &yj = v[j].second;
+            rv[i] = {0.5 * (xi + xj), 0.5 * (yi + yj)};
+         }
+         return rv;
+      }
+   }
+
+   /// Construct a (\ref sparse_table) piecewise-constant interpolant from the
+   /// first two space-delimited columns in an ASCII file.  Each line of the
+   /// file must consist either
+   ///
+   /// - of only white space, optionally followed by the '#' character and a
+   ///   subsequent comment or
+   ///
+   /// - of white space followed by at least two space-delimited floating-point
+   ///   numbers (after which everything else on the line is ignored).
+   ///
+   /// \tparam X  Type of first column, representing the x coordinate.
+   /// \tparam Y  Type of second column, representing the Y coordinate.
+   template <typename X = double, typename Y = double>
+   sparse_table<X, cpoly<0, X, Y>>
+   make_const_interp(/** Name of ASCII file. */ std::string file,
+                     /** Unit multiplying first col. */ X const &xu = 1,
+                     /** Unit multiplying secnd col. */ Y const &yu = 1)
+   {
+      using namespace std;
+      using V = vector<pair<X, Y>>;
+      using C = cpoly<0, X, Y>;
+      V const cp = util::get_points(file, xu, yu); // control points
+      if (cp.size() < 1) {
+         throw "Must have at least one control point.";
+      }
+      // For linear interpolation, each subdomain is just the x region between
+      // subsequent control points.  For constant interpolation, however, each
+      // subdomain is the x region between subsequent *midpoints* between
+      // control points, each between a pair of control points.  However, in
+      // general only each of the first and last points lies in the center of
+      // its subdomain.
+      V const cpmid = util::midpoints(cp); // control midpoints
+      X const a0 = cp[0].first;
+      vector<pair<X, C>> vf(cp.size());
+      vf[0].first = 2.0 * (cpmid[0].first - cp[0].first);
+      vf[0].second = cp[0].second;
+      for (unsigned i = 1; i < cpmid.size(); ++i) {
+         vf[i].first = cpmid[i].first - cpmid[i - 1].first;
+         vf[i].second = cp[i].second;
+      }
+      unsigned const i = cpmid.size();
+      vf[i].first = 2.0 * (cp[i].first - cpmid[i - 1].first);
+      vf[i].second = cp[i].second;
+      return sparse_table<X, C>(a0, move(vf));
+   }
+
+   /// Construct a (\ref sparse_table) piecewise-linear interpolant from the
+   /// first two space-delimited columns in an ASCII file.  Each line of the
+   /// file must consist either
+   ///
+   /// - of only white space, optionally followed by the '#' character and a
+   ///   subsequent comment or
+   ///
+   /// - of white space followed by at least two space-delimited floating-point
+   ///   numbers (after which everything else on the line is ignored).
+   ///
+   /// \tparam X  Type of first column, representing the x coordinate.
+   /// \tparam Y  Type of second column, representing the Y coordinate.
+   template <typename X = double, typename Y = double>
+   sparse_table<X, cpoly<1, X, Y>>
+   make_linear_interp(/** Name of ASCII file. */ std::string file,
+                      /** Unit multiplying first col. */ X const &xu = 1,
+                      /** Unit multiplying secnd col. */ Y const &yu = 1)
+   {
+      using namespace std;
+      using V = vector<pair<X, Y>>;
+      using C = cpoly<1, X, Y>;
+      V const cp = util::get_points(file, xu, yu); // control points
+      if (cp.size() < 2) {
+         throw "Must have at least two control points.";
+      }
+      // For linear interpolation, each subdomain is just the x region between
+      // subsequent control points.
+      X const a0 = 0.5 * (cp[0].first + cp[1].first);
+      unsigned const ndeltas = cp.size() - 1;
+      vector<pair<X, C>> vf(ndeltas);
+      for (unsigned i = 0; i < ndeltas; ++i) {
+         unsigned const j = i + 1;
+         X const delta = cp[j].first - cp[i].first;
+         X const c0 = 0.5 * (cp[i].second + cp[j].second);
+         X const c1 = (cp[j].second - cp[i].second) / delta;
+         vf[i].first = delta;
+         vf[i].second.c()[0] = c0;
+         vf[i].second.c()[1] = c1;
+      }
+      return sparse_table<X, C>(a0, move(vf));
+   }
+
    template <char TI, char D, char M, char C, char TE>
    class statdim;
 

@@ -1,6 +1,6 @@
 <map id="units.hpp" name="units.hpp">
 <area shape="rect" id="node2" href="$dimensions_8hpp.html" title="Automatically generated source for generic&#45;dimension types. " alt="" coords="211,80,324,107"/>
-<area shape="rect" id="node3" href="$dimval_8hpp.html" title="Source code for conversions dealing with angle, for num::dim_exps, for num::dimval_base, for num::statdim, and for num::dyndim. " alt="" coords="225,155,310,181"/>
+<area shape="rect" id="node3" href="$dimval_8hpp.html" title="Definition of conversions dealing with angle, num::dimval_base, num::statdim, and num::dyndim..." alt="" coords="225,155,310,181"/>
 <area shape="rect" id="node8" href="$dim-exps_8hpp.html" title="Definition of class num::dim_exps. " alt="" coords="379,229,479,256"/>
 <area shape="rect" id="node10" href="$template_8hpp.html" title="Template&#45;related utilities. " alt="" coords="503,229,600,256"/>
 </map>

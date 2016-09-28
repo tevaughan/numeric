@@ -80,7 +80,7 @@ namespace num
       /// sub-functions.
       sparse_table(
             /// Center \f$ a_0 \f$ of first subdomain.
-            A const &first,
+            A const &a0,
             /// List of pairs, each containing the length of a sub-domain and a
             /// sub-function for that sub-domain.  The first pair in \a vf is
             /// interpreted as \f$ (\Delta a_0, f_0) \f$, the second as \f$
@@ -94,16 +94,16 @@ namespace num
          if (vf[0].first <= A(0)) {
             throw "Length of sub-domain must be positive.";
          }
-         dat_[0].a = first;
+         dat_[0].a = a0;
          dat_[0].da = vf[0].first;
          dat_[0].f = vf[0].second;
          for (unsigned i = 1; i < vf.size(); ++i) {
             if (vf[i].first <= A(0)) {
                throw "Length of sub-domain must be positive.";
             }
-            dat_[i].a = dat_[i - 1].a + 0.5 * (dat_[i - 1].da + dat_[i].da);
             dat_[i].da = vf[i].first;
             dat_[i].f = vf[i].second;
+            dat_[i].a = dat_[i - 1].a + 0.5 * (dat_[i - 1].da + dat_[i].da);
          }
       }
 
@@ -129,7 +129,9 @@ namespace num
          // In log time, find pointer to first record after argument a.
          auto p = std::upper_bound(dat_.begin(), dat_.end(), a, comp);
          if (p == dat_.end()) {
-            p = dat_.rbegin(); // Argument a is after last center.
+            // Argument a is after last center.
+            auto q = dat_.rbegin();
+            return q->f(a - q->a);
          } else if (p->a - a > 0.5 * p->da) {
             --p; // Argument a is too far from subsequent center.
          }

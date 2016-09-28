@@ -115,9 +115,9 @@ using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cla
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a352673abcbd9ba2dd9cf48952b0df417"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a352673abcbd9ba2dd9cf48952b0df417">sparse_table</a> (A const &amp;first, std::vector&lt; std::pair&lt; A, F &gt;&gt; vf)</td></tr>
-<tr class="memdesc:a352673abcbd9ba2dd9cf48952b0df417"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize table of sub-domain centers, sub-domain lengths, and sub-functions.  <a href="#a352673abcbd9ba2dd9cf48952b0df417">More...</a><br /></td></tr>
-<tr class="separator:a352673abcbd9ba2dd9cf48952b0df417"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbc3a161c9c515158cb0391f686c8f91"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#adbc3a161c9c515158cb0391f686c8f91">sparse_table</a> (A const &amp;a0, std::vector&lt; std::pair&lt; A, F &gt;&gt; vf)</td></tr>
+<tr class="memdesc:adbc3a161c9c515158cb0391f686c8f91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize table of sub-domain centers, sub-domain lengths, and sub-functions.  <a href="#adbc3a161c9c515158cb0391f686c8f91">More...</a><br /></td></tr>
+<tr class="separator:adbc3a161c9c515158cb0391f686c8f91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3500c19d38b53745fb626818a57d229b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html#a7d9c3006d824f8372cadae43a871c74b">data</a> const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a3500c19d38b53745fb626818a57d229b">dat</a> () const</td></tr>
 <tr class="memdesc:a3500c19d38b53745fb626818a57d229b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Table of sub-domain centers, sub-domain lengths, and sub-functions: \( (a_0, \Delta a_0, f_0) \), \( (a_1, \Delta a_1, f_1) \), \( \ldots \), \( (a_{n-1}, \Delta a_{n-1}, f_{n-1}) \).  <a href="#a3500c19d38b53745fb626818a57d229b">More...</a><br /></td></tr>
 <tr class="separator:a3500c19d38b53745fb626818a57d229b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -161,8 +161,8 @@ class num::sparse_table&lt; A, F &gt;</h3>
 
 <p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00060">60</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a352673abcbd9ba2dd9cf48952b0df417"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a352673abcbd9ba2dd9cf48952b0df417">&sect;&nbsp;</a></span>sparse_table()</h2>
+<a id="adbc3a161c9c515158cb0391f686c8f91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbc3a161c9c515158cb0391f686c8f91">&sect;&nbsp;</a></span>sparse_table()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -174,7 +174,7 @@ class num::sparse_table&lt; A, F &gt;</h3>
           <td class="memname"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a> </td>
           <td>(</td>
           <td class="paramtype">A const &amp;&#160;</td>
-          <td class="paramname"><em>first</em>, </td>
+          <td class="paramname"><em>a0</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -198,7 +198,7 @@ class num::sparse_table&lt; A, F &gt;</h3>
 <p>Initialize table of sub-domain centers, sub-domain lengths, and sub-functions. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">first</td><td>Center \( a_0 \) of first subdomain. </td></tr>
+    <tr><td class="paramname">a0</td><td>Center \( a_0 \) of first subdomain. </td></tr>
     <tr><td class="paramname">vf</td><td>List of pairs, each containing the length of a sub-domain and a sub-function for that sub-domain. The first pair in <em>vf</em> is interpreted as \( (\Delta a_0, f_0) \), the second as \( (\Delta a_1, f_1) \), etc. </td></tr>
   </table>
   </dd>

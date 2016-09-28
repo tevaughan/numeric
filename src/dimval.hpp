@@ -6,8 +6,8 @@
 
 /// \file   dimval.hpp
 ///
-/// \brief  Source code for conversions dealing with angle, for num::dim_exps,
-///         for num::dimval_base, for num::statdim, and for num::dyndim.
+/// \brief  Definition of conversions dealing with angle, num::dimval_base,
+///         num::statdim, and num::dyndim.
 
 #ifndef NUMERIC_DIMVAL_HPP
 #define NUMERIC_DIMVAL_HPP

@@ -88,6 +88,9 @@ TEST_CASE("Verify file input.", "[interpolant]")
    REQUIRE_THROWS(interpolantd j("nonexistent-file"));
    REQUIRE_THROWS(interpolantd k("interpolant_test-badinput.txt"));
    REQUIRE_THROWS(interpolantd m("interpolant_test-badinput2.txt"));
+   REQUIRE_THROWS(make_linear_interp("nonexistent-file"));
+   REQUIRE_THROWS(make_linear_interp("interpolant_test-badinput.txt"));
+   REQUIRE_THROWS(make_linear_interp("interpolant_test-badinput2.txt"));
    interpolantd i("interpolant_test.txt");
    REQUIRE(i(-1) == 0.0);
    REQUIRE(i(299) == 0.0);
@@ -100,6 +103,18 @@ TEST_CASE("Verify file input.", "[interpolant]")
    REQUIRE(i(950) == Approx(40.0));
    REQUIRE(i(1000) == 0.0);
    REQUIRE(i(1100) == 0.0);
+   auto j = make_linear_interp("interpolant_test.txt");
+   REQUIRE(j(-1) == 0.0);
+   REQUIRE(j(299) == 0.0);
+   REQUIRE(j(300) == 0.0);
+   REQUIRE(j(350) == Approx(40.0));
+   REQUIRE(j(400) == 80.0);
+   REQUIRE(j(450) == 80.0);
+   REQUIRE(j(500) == 80.0);
+   REQUIRE(j(900) == 80.0);
+   REQUIRE(j(950) == Approx(40.0));
+   REQUIRE(j(1000) == 0.0);
+   REQUIRE(j(1100) == 0.0);
    interpolantd n("interpolant_test-shortinput.txt");
    cout << "n.points().size()=" << n.points().size() << endl;
    REQUIRE(n.integral() == 0.0);

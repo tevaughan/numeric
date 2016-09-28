@@ -7,7 +7,7 @@ var searchData=
   ['seconds',['seconds',['../structnum_1_1u_1_1seconds.html#a5c969fd2f072acc0fa0ac3b61832eca2',1,'num::u::seconds::seconds(double v)'],['../structnum_1_1u_1_1seconds.html#a4b1d5f99cf4f01f7901d7fb29f6a626a',1,'num::u::seconds::seconds(seconds const &amp;dv)=default']]],
   ['sort',['sort',['../classnum_1_1interpolant.html#a47fdc9eea42b6975cdc835bb2e08810e',1,'num::interpolant']]],
   ['sparse_2dtable_2ehpp',['sparse-table.hpp',['../sparse-table_8hpp.html',1,'']]],
-  ['sparse_5ftable',['sparse_table',['../classnum_1_1sparse__table.html#a352673abcbd9ba2dd9cf48952b0df417',1,'num::sparse_table']]],
+  ['sparse_5ftable',['sparse_table',['../classnum_1_1sparse__table.html#adbc3a161c9c515158cb0391f686c8f91',1,'num::sparse_table']]],
   ['sparse_5ftable',['sparse_table',['../classnum_1_1sparse__table.html',1,'num']]],
   ['speed',['speed',['../namespacenum.html#ab7fdbb991f09bfee56e234f56e499d77',1,'num']]],
   ['sqdv_5f',['sqdv_',['../classnum_1_1integral__stats.html#a3b4ab29da3fc6a1d564d9b705f612664',1,'num::integral_stats']]],
