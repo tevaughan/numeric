@@ -11,6 +11,7 @@
 #define NUMERIC_SPARSE_TABLE_HPP
 
 #include <algorithm> // for upper_bound()
+#include <iostream>  // for cerr, endl
 #include <vector>    // for vector
 
 namespace num
@@ -91,14 +92,14 @@ namespace num
          if (vf.size() == 0) {
             throw "sparse_table must have at least one entry.";
          }
-         if (vf[0].first <= A(0)) {
+         if (vf[0].first <= 0.0 * vf[0].first) {
             throw "Length of sub-domain must be positive.";
          }
          dat_[0].a = a0;
          dat_[0].da = vf[0].first;
          dat_[0].f = vf[0].second;
          for (unsigned i = 1; i < vf.size(); ++i) {
-            if (vf[i].first <= A(0)) {
+            if (vf[i].first <= 0.0 * vf[0].first) {
                throw "Length of sub-domain must be positive.";
             }
             dat_[i].da = vf[i].first;
@@ -124,7 +125,8 @@ namespace num
       {
          if (a < dat_.begin()->a - 0.5 * dat_.begin()->da ||
              a > dat_.rbegin()->a + 0.5 * dat_.rbegin()->da) {
-            return R(0);
+            auto q = dat_.begin();
+            return 0.0 * q->f(a - q->a);
          }
          // In log time, find pointer to first record after argument a.
          auto p = std::upper_bound(dat_.begin(), dat_.end(), a, comp);
@@ -136,6 +138,18 @@ namespace num
             --p; // Argument a is too far from subsequent center.
          }
          return p->f(a - p->a);
+      }
+
+      using integral_type = decltype(A() * R());
+
+      /// Integral of piece-wise function over all pieces.
+      integral_type integral() const
+      {
+         integral_type rv = 0; // Return value.
+         for (auto i : dat_) {
+            rv += i.f.integral(-0.5 * i.da)(+0.5 * i.da);
+         }
+         return rv;
       }
    };
 }

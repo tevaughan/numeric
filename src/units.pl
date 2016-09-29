@@ -49,8 +49,8 @@ namespace u {
 /// double-precision number of $pnm.
 struct $pnm : public $dim {
    /// Construct a dimensioned quantity from a double-precision number of
-   /// $pnm.
-   $pnm(double v) : $dim(v * $cnv) {}
+   /// $pnm.  By default, construct the zero value.
+   $pnm(double v = 0.0) : $dim(v * $cnv) {}
    /// Allow default copying.
    $pnm($pnm const& dv) = default;
    /// Write representation to output stream.

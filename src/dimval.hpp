@@ -213,6 +213,14 @@ namespace num
       template <typename X, typename Y>
       friend class rk_quad;
 
+      /// Allow \ref sparse_table to call constructor.
+      template <typename A, typename F>
+      friend class sparse_table;
+
+      /// Allow \ref dense_table to call constructor.
+      template <typename A, typename F>
+      friend class dense_table;
+
       /// Allow integral() to construct from known MKS quantity.
       template <typename R, typename A, typename A1, typename A2>
       friend PRD<R, A> integral(func<R, A> f, A1 a, A2 b, double t,
@@ -433,6 +441,14 @@ namespace num
       template <typename X, typename Y>
       friend class interpolant;
 
+      /// Allow \ref sparse_table to call constructor.
+      template <typename A, typename F>
+      friend class sparse_table;
+
+      /// Allow \ref dense_table to call constructor.
+      template <typename A, typename F>
+      friend class dense_table;
+
       /// Type of std::function that can be integrated.  A single-argument
       /// function is required.
       template <typename R, typename A>
@@ -626,6 +642,7 @@ namespace num
       bool operator<=(dimval<DER> const &dv) const
       {
          if (exps_ != dv.exps()) {
+            std::cerr << "dyndim::op<=: *this=" << *this << " dv=" << dv << std::endl;
             assert(0);
             throw "Comparison requires same dimension.";
          }

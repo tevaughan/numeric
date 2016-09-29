@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['seconds',['seconds',['../structnum_1_1u_1_1seconds.html#a5c969fd2f072acc0fa0ac3b61832eca2',1,'num::u::seconds::seconds(double v)'],['../structnum_1_1u_1_1seconds.html#a4b1d5f99cf4f01f7901d7fb29f6a626a',1,'num::u::seconds::seconds(seconds const &amp;dv)=default']]],
+  ['seconds',['seconds',['../structnum_1_1u_1_1seconds.html#adf705154442e710632a9689a3911eb77',1,'num::u::seconds::seconds(double v=0.0)'],['../structnum_1_1u_1_1seconds.html#a4b1d5f99cf4f01f7901d7fb29f6a626a',1,'num::u::seconds::seconds(seconds const &amp;dv)=default']]],
   ['sort',['sort',['../classnum_1_1interpolant.html#a47fdc9eea42b6975cdc835bb2e08810e',1,'num::interpolant']]],
   ['sparse_5ftable',['sparse_table',['../classnum_1_1sparse__table.html#adbc3a161c9c515158cb0391f686c8f91',1,'num::sparse_table']]],
   ['sqrt',['sqrt',['../classnum_1_1statdim.html#a427a97be8d0d6b938160893b00cde6f7',1,'num::statdim::sqrt()'],['../classnum_1_1dyndim.html#a244b3951de64a46ae00733580426ee0f',1,'num::dyndim::sqrt()']]],

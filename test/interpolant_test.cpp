@@ -91,6 +91,7 @@ TEST_CASE("Verify file input.", "[interpolant]")
    REQUIRE_THROWS(make_linear_interp("nonexistent-file"));
    REQUIRE_THROWS(make_linear_interp("interpolant_test-badinput.txt"));
    REQUIRE_THROWS(make_linear_interp("interpolant_test-badinput2.txt"));
+
    interpolantd i("interpolant_test.txt");
    REQUIRE(i(-1) == 0.0);
    REQUIRE(i(299) == 0.0);
@@ -103,6 +104,7 @@ TEST_CASE("Verify file input.", "[interpolant]")
    REQUIRE(i(950) == Approx(40.0));
    REQUIRE(i(1000) == 0.0);
    REQUIRE(i(1100) == 0.0);
+
    auto j = make_linear_interp("interpolant_test.txt");
    REQUIRE(j(-1) == 0.0);
    REQUIRE(j(299) == 0.0);
@@ -115,6 +117,10 @@ TEST_CASE("Verify file input.", "[interpolant]")
    REQUIRE(j(950) == Approx(40.0));
    REQUIRE(j(1000) == 0.0);
    REQUIRE(j(1100) == 0.0);
+
+   REQUIRE(i.integral() == j.integral());
+   REQUIRE_THROWS(make_linear_interp("interpolant_test-shortinput.txt"));
+
    interpolantd n("interpolant_test-shortinput.txt");
    cout << "n.points().size()=" << n.points().size() << endl;
    REQUIRE(n.integral() == 0.0);
@@ -124,6 +130,7 @@ TEST_CASE("Verify file input and interoperation with units.", "[interpolant]")
 {
    interpolant<length, num::time> i("interpolant_test.txt", nm, s);
    interpolant<dyndim, dyndim> j("interpolant_test.txt", nm, s);
+   auto jj = make_linear_interp<dyndim, dyndim>("interpolant_test.txt", nm, s);
 
    REQUIRE(i(-1 * nm) == 0.0 * s);
    REQUIRE(i(299 * nm) == 0.0 * s);
@@ -148,6 +155,18 @@ TEST_CASE("Verify file input and interoperation with units.", "[interpolant]")
    REQUIRE((j(950 * nm) / s).number() == Approx(40.0));
    REQUIRE(j(1000 * nm) == 0.0 * s);
    REQUIRE(j(1100 * nm) == 0.0 * s);
+
+   REQUIRE(jj(-1 * nm) == 0.0 * s);
+   REQUIRE(jj(299 * nm) == 0.0 * s);
+   REQUIRE(jj(300 * nm) == 0.0 * s);
+   REQUIRE((jj(350 * nm) / s).number() == Approx(40.0));
+   REQUIRE(jj(400 * nm) == 80.0 * s);
+   REQUIRE(jj(450 * nm) == 80.0 * s);
+   REQUIRE(jj(500 * nm) == 80.0 * s);
+   REQUIRE(jj(900 * nm) == 80.0 * s);
+   REQUIRE((jj(950 * nm) / s).number() == Approx(40.0));
+   REQUIRE((jj(1000 * nm) / s).number() == Approx(0.0));
+   REQUIRE(jj(1100 * nm) == 0.0 * s);
 }
 
 TEST_CASE("Verify interoperation with units.", "[interpolant]")

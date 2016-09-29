@@ -1,7 +1,7 @@
 <map id="interpolant.hpp" name="interpolant.hpp">
-<area shape="rect" id="node11" href="$integral-stats_8hpp.html" title="Source for num::integral_stats, which is used by num::integral() and by num::interpolant. " alt="" coords="1102,80,1225,107"/>
-<area shape="rect" id="node12" href="$interval_8hpp.html" title="Source for class interval and class subinterval_stack, which are used by num::integral() and by num::..." alt="" coords="83,80,172,107"/>
-<area shape="rect" id="node14" href="$sparse-table_8hpp.html" title="Definition of num::sparse&#45;table. " alt="" coords="196,80,315,107"/>
-<area shape="rect" id="node15" href="$cpoly_8hpp.html" title="Definition of num::cpoly. " alt="" coords="391,80,469,107"/>
-<area shape="rect" id="node18" href="$cfunc_8hpp.html" title="Definition of num::cfunc. " alt="" coords="485,155,564,181"/>
+<area shape="rect" id="node11" href="$integral-stats_8hpp.html" title="Source for num::integral_stats, which is used by num::integral() and by num::interpolant. " alt="" coords="1028,80,1151,107"/>
+<area shape="rect" id="node12" href="$interval_8hpp.html" title="Source for class interval and class subinterval_stack, which are used by num::integral() and by num::..." alt="" coords="247,80,337,107"/>
+<area shape="rect" id="node14" href="$sparse-table_8hpp.html" title="Definition of num::sparse&#45;table. " alt="" coords="105,80,223,107"/>
+<area shape="rect" id="node15" href="$cpoly_8hpp.html" title="Definition of num::cpoly. " alt="" coords="413,80,491,107"/>
+<area shape="rect" id="node18" href="$cfunc_8hpp.html" title="Definition of num::cfunc. " alt="" coords="579,155,658,181"/>
 </map>
