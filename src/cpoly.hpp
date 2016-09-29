@@ -173,10 +173,7 @@ namespace num
 
       /// Evaluate polynomial. Ignore independent variable because present
       /// specialization models a constant function.
-      C operator()(V const &) const
-      {
-         return c_[0];
-      }
+      C operator()(V const &) const { return c_[0]; }
 
       /// Return function representing integral from specified lower bound.
       INTEG integral(V const &lb) const
