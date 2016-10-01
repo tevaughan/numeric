@@ -37,6 +37,27 @@ namespace num
       /// By default, initialize coefficients to zero.
       cpoly() { memset(c_.data(), 0, sizeof(c_)); }
 
+      /// Initialize coefficients.
+      template <typename T>
+      cpoly(std::array<T, N> const &a)
+      {
+         for (unsigned i = 0; i < N; ++i) {
+            c_[i] = a[i] * pow(V(1.0), i);
+         }
+      }
+
+      /// Initialize coefficients.
+      template <typename T>
+      cpoly(std::vector<T> const &v)
+      {
+         if (v.size() != N) {
+            throw "Wrong number of coefficients.";
+         }
+         for (unsigned i = 0; i < N; ++i) {
+            c_[i] = v[i] * pow(V(1.0), i);
+         }
+      }
+
       /// Return number of coefficients in polynomial.
       static unsigned constexpr num_coefs() { return N; }
 

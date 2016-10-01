@@ -45,7 +45,7 @@ TEST_CASE("Verify construction from array.", "[cpoly]")
    v1[1] = a1[1] = 1 * m / s;
    v1[2] = a1[2] = 0.5 * m / s / s;
    cpoly<2, dyndim, dyndim> cp1(a1);
-   cpoly<2, dyndim, dyndim> cp2(v1);
+   cpoly<2, num::time, length> cp2(v1);
    REQUIRE(cp1.coef<0>() == a1[0]);
    REQUIRE(cp1.coef<1>() == a1[1]);
    REQUIRE(cp1.coef<2>() == a1[2]);
