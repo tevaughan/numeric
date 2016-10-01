@@ -140,6 +140,7 @@ namespace num
          return p->f(a - p->a);
       }
 
+      /// Type of definite integral.
       using integral_type = decltype(A() * R());
 
       /// Integral of piece-wise function over all pieces.

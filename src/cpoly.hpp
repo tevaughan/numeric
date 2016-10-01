@@ -120,12 +120,13 @@ namespace num
          integ i;
          // Initialize constant with zero in right units.
          i.c_[0] = 0.0 * (*this)(lb)*lb;
-         double lbn = lb / V(1.0); // Initialize power of normalized lower bound.
+         double const u = lb / V(1.0);
+         double lbn = u; // Initialize power of normalized lower bound.
          for (unsigned j = 0; j < c_.size(); ++j) {
             iterm const cn = c_[j] / (j + 1) * V(1.0);
             i.c_[j + 1] = cn;
             i.c_[0] -= cn * lbn;
-            lbn *= lb;
+            lbn *= u;
          }
          return i;
       }

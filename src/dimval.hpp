@@ -182,16 +182,18 @@ namespace num
    template <char TI, char D, char M, char C, char TE>
    dyndim operator/(dyndim const &dd, statdim<TI, D, M, C, TE> sd);
 
-   /// Type of integer power of statdim.
+   /// Structure used to determine type of integer power of \ref statdim.
    /// \tparam P  Integer exponent indicating power.
    template <int P, char TI, char D, char M, char C, char TE>
    struct statdim_power {
+      /// Type of integer power of statdim.
       using type = statdim<TI * P, D * P, M * P, C * P, TE * P>;
    };
 
    /// Specialization for integer power zero of statdim.
    template <char TI, char D, char M, char C, char TE>
    struct statdim_power<0, TI, D, M, C, TE> {
+      /// Type of zeroth power of statdim.
       using type = double;
    };
 
@@ -383,6 +385,8 @@ namespace num
       /// Inequality comparison.
       bool operator!=(statdim dv) const { return v_ != dv.v_; }
 
+      /// Type of integer power of statdim.
+      /// \tparam P  Integer exponent representing power.
       template <int P>
       using power_type = typename statdim_power<P, TI, D, M, C, TE>::type;
 
