@@ -1,0 +1,7 @@
+<map id="ipow" name="ipow">
+<area shape="rect" id="node2" href="$classnum_1_1dyndim.html#ade598022f282d117752b2397c979ad89" title="Integer power. " alt="" coords="103,5,233,32"/>
+<area shape="rect" id="node3" href="$namespacenum.html#a8fd4c40887e7985c60729b71f316b853" title="Integer power of a double. This is an alias for ipow(). " alt="" coords="145,56,191,83"/>
+<area shape="rect" id="node4" href="$classnum_1_1rk__quad.html#aa60d8946dd8df2d358d32763b977073d" title="Fifth&#45;order Runge&#45;Kutta step with monitoring of local truncation error to ensure accurcy and adjust s..." alt="" coords="281,56,415,83"/>
+<area shape="rect" id="node5" href="$classnum_1_1rk__quad.html#a8ed4dbe1331bee582e94c01a1c7947f7" title="This function is based on odeint() on Page 721 of Numerical Recipes in C, Second Edition. " alt="" coords="463,56,590,83"/>
+<area shape="rect" id="node6" href="$classnum_1_1rk__quad.html#a875f58d70d26db380f0c9c41c769a371" title="Numerically integrate a function, and store the result in rk_quad::y. " alt="" coords="638,56,793,83"/>
+</map>

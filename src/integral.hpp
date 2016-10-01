@@ -20,7 +20,7 @@
 
 #include <integral-stats.hpp> // for integral_stats
 #include <interval.hpp>       // for interval and subinterval_stack
-#include <template.hpp>       // for RAT and PRD
+#include <util.hpp>           // for RAT and PRD
 
 namespace num
 {

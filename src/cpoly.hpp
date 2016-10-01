@@ -15,18 +15,11 @@
 #include <vector>  // for vector
 
 #include <cfunc.hpp>
+#include <util.hpp>
 
 namespace num
 {
    /// Model of a polynomial of a continuous variable.
-   ///
-   /// The general template class cpoly is not fully compatible with \ref
-   /// statdim.  The type \a C of each term may be a \ref statdim, in which
-   /// case type \a V must be \ref dyndim.  Similarly, if type \a C be \ref
-   /// dyndim, then type \a V must be \ref dyndim.
-   ///
-   /// However, the specialization \ref cpoly<0,V,C> for the zeroth-degree
-   /// polynomial (the constant) is fully compatible with statdim.
    ///
    /// Class cpoly inherits from \ref cfunc because cpoly is a model of a
    /// continuous function.
@@ -37,79 +30,80 @@ namespace num
    template <unsigned D, typename V = double, typename C = double>
    class cpoly : public cfunc<V, C, cpoly<D, V, C>>
    {
-      enum {
-         N = D + 1 ///< Number of coefficients.
-      };
-
-      /// Coefficients of polynomial.  Each of these is of the same type as the
-      /// variable.  So if the variable be of type dyndim, then so will each
-      /// coefficient be.
-      std::array<V, N> c_;
+      static unsigned constexpr N = D + 1; ///< Number of coefficients.
+      std::array<C, N> c_;                 ///< Normalized coefficients.
 
    public:
       /// By default, initialize coefficients to zero.
       cpoly() { memset(c_.data(), 0, sizeof(c_)); }
 
-      /// Copy coefficients from an array.
-      cpoly(std::array<V, N> const &cc) : c_(cc) {}
+      /// Return number of coefficients in polynomial.
+      static unsigned constexpr num_coefs() { return N; }
 
-      /// Copy coefficients from a vector.
-      cpoly(std::vector<V> const &cc)
+      /// Type of coefficient for term of degree \a I.
+      /// \tparam I  Degree of term.
+      template <unsigned I>
+      using ctype = decltype(C(1.0) / pow<I>(V(1.0)));
+
+      /// Fetch coefficient for term of degree \a I.
+      /// \tparam I  Degree of term.
+      template <unsigned I>
+      ctype<I> coef() const
       {
-         if (cc.size() != N) {
-            throw "Wrong number of coefficients in vector initializer.";
-         }
-         for (unsigned i = 0; i < N; ++i) {
-            c_[i] = cc[i];
-         }
+         static_assert(I <= D, "Array access must be in bounds.");
+         return c_[I] / pow<I>(V(1.0));
       }
 
-      /// Return reference to mutable coefficients.
-      std::array<V, N> &c() { return c_; }
-
-      /// Return reference to immutable coefficients.
-      std::array<V, N> const &c() const { return c_; }
-
-      /// Type of derivative.
-      using DERIV = cpoly<D - 1, V, decltype(C() / V())>;
-
-      /// Type of integral.
-      using INTEG = cpoly<D + 1, V, decltype(C() * V())>;
+      /// Set coefficient for term of degree \a I.
+      /// \tparam I  Degree of term.
+      template <unsigned I>
+      void set_coef(ctype<I> const &c)
+      {
+         static_assert(I <= D, "Array access must be in bounds.");
+         c_[I] = c * pow<I>(V(1.0));
+      }
 
       /// Evaluate polynomial.
-      C operator()(V const &v /**< Independent variable. */) const
+      C operator()(/** Value of variable in polynomial. */ V const &v) const
       {
+         double const vn = v / V(1.0); // Normalized value of variable.
+         double vp = vn;               // Initial power of normalized value.
          C val = c_[0];
-         V vp = v; // Initialize pth power of independent variable.
          for (unsigned i = 1; i < c_.size(); ++i) {
             val += c_[i] * vp;
-            vp *= v;
+            vp *= vn;
          }
          return val;
       }
 
+      using dterm = decltype(C(1.0) / V(1.0)); ///< Type of derivative's term.
+      using iterm = decltype(C(1.0) * V(1.0)); ///< Type of integral's term.
+      using deriv = cpoly<D - 1, V, dterm>;    ///< Type of derivative.
+      using integ = cpoly<D + 1, V, iterm>;    ///< Type of integral.
+      friend class cpoly<D - 1, V, dterm>;     ///< Integral needs access.
+      friend class cpoly<D + 1, V, iterm>;     ///< Derivative needs access.
+
       /// Return function representing derivative.
-      DERIV derivative() const
+      deriv derivative() const
       {
-         DERIV d;
+         deriv d;
          for (unsigned i = 1; i < c_.size(); ++i) {
-            d.c()[i - 1] = i * c_[i];
+            d.c_[i - 1] = i * c_[i] / V(1.0);
          }
          return d;
       }
 
       /// Return function representing integral from specified lower bound.
-      INTEG integral(V const &lb /**< Lower bound of integration. */) const
+      integ integral(/** Lower bound of integration. */ V const &lb) const
       {
-         INTEG i;
-         // Initialize constant with zero in right units (in case type C be
-         // dimval).
-         i.c()[0] = 0.0 * (*this)(lb)*lb;
-         V lbn = lb; // Initialize nth power of lower bound.
+         integ i;
+         // Initialize constant with zero in right units.
+         i.c_[0] = 0.0 * (*this)(lb)*lb;
+         double lbn = lb / V(1.0); // Initialize power of normalized lower bound.
          for (unsigned j = 0; j < c_.size(); ++j) {
-            V const cn = c_[j] / (j + 1);
-            i.c()[j + 1] = cn;
-            i.c()[0] -= cn * lbn;
+            iterm const cn = c_[j] / (j + 1) * V(1.0);
+            i.c_[j + 1] = cn;
+            i.c_[0] -= cn * lbn;
             lbn *= lb;
          }
          return i;
@@ -121,36 +115,36 @@ namespace num
    template <typename V, typename C>
    class cpoly<0, V, C> : public cfunc<V, C, cpoly<0, V, C>>
    {
-      enum {
-         N = 0 + 1 ///< Number of coefficients.
-      };
-
-      std::array<C, N> c_; ///< Coefficient of unity.
+      static unsigned constexpr N = 0 + 1; ///< Number of coefficients.
+      std::array<C, N> c_;                 ///< Coefficient of unity.
 
    public:
       /// By default, initialize coefficient to zero.
       cpoly() { memset(c_.data(), 0, sizeof(c_)); }
 
-      /// Copy coefficient from an array.
-      cpoly(std::array<C, N> const &cc) : c_(cc) {}
-
-      /// Copy coefficient from a vector.
-      cpoly(std::vector<V> const &cc)
-      {
-         if (cc.size() != N) {
-            throw "Wrong number of coefficients in vector initializer.";
-         }
-         c_[0] = cc[0];
-      }
-
       /// Copy coefficient from instance of its type.
       cpoly(C const &cc) { c_[0] = cc; }
 
-      /// Return reference to mutable coefficient.
-      std::array<C, N> &c() { return c_; }
+      /// Return number of coefficients in polynomial.
+      static unsigned constexpr num_coefs() { return N; }
 
-      /// Return reference to mutable coefficient.
-      std::array<C, N> const &c() const { return c_; }
+      /// Fetch coefficient for term of degree \a I.
+      /// \tparam I  Degree of term.
+      template <unsigned I>
+      C coef() const
+      {
+         static_assert(I == 0, "Array access must be in bounds.");
+         return c_[I];
+      }
+
+      /// Set coefficient for term of degree \a I.
+      /// \tparam I  Degree of term.
+      template <unsigned I>
+      void set_coef(C const &c)
+      {
+         static_assert(I == 0, "Array access must be in bounds.");
+         c_[I] = c;
+      }
 
       /// Allow assignment from instance of coefficient's type.
       cpoly &operator=(C const &cc)
@@ -168,19 +162,221 @@ namespace num
       /// Convert to reference to immutable coefficient.
       operator C const &() const { return c_[0]; }
 
-      /// Type of integral.
-      using INTEG = cpoly<1, V, decltype(C() * V())>;
-
       /// Evaluate polynomial. Ignore independent variable because present
       /// specialization models a constant function.
       C operator()(V const &) const { return c_[0]; }
 
+      using iterm = decltype(C(1.0) * V(1.0)); ///< Type of integral's term.
+      using integ = cpoly<1, V, iterm>;        ///< Type of integral.
+      friend class cpoly<1, V, iterm>;         ///< Integral needs access here.
+
       /// Return function representing integral from specified lower bound.
-      INTEG integral(V const &lb) const
+      integ integral(V const &lb) const
       {
-         INTEG i;
-         i.c()[0] = -c_[0] * lb;
-         i.c()[1] = +c_[0];
+         integ i;
+         i.c_[0] = -c_[0] * lb;
+         i.c_[1] = +c_[0] / V(1.0);
+         return i;
+      }
+   };
+}
+
+#include <dimval.hpp>
+
+namespace num
+{
+   /// Disallowed specialization of \ref cpoly.
+   template <unsigned D, typename V>
+   class cpoly<D, V, dyndim>
+   {
+      cpoly(); ///< Only constructor is unimplemented and private.
+   };
+
+   /// Disallowed specialization of \ref cpoly.
+   template <unsigned D, typename C>
+   class cpoly<D, dyndim, C>
+   {
+      cpoly(); ///< Only constructor is unimplemented and private.
+   };
+
+   /// Specialization of \ref cpoly for \a V = \ref dyndim and \a C = \ref
+   /// dyndim.
+   ///
+   /// Note carefully that, in order to use dyndim, both the variable type and
+   /// the term time must be \ref dyndim.  One must initialize the
+   /// coefficients, in order from 0 to \a D, inclusive, before using any
+   /// facility.
+   ///
+   /// \tparam D  Degree of polynomial.
+   template <unsigned D>
+   class cpoly<D, dyndim, dyndim>
+         : public cfunc<dyndim, dyndim, cpoly<D, dyndim, dyndim>>
+   {
+      static unsigned constexpr N = D + 1; ///< Number of coefficients.
+      std::array<dyndim, N> c_;            ///< Coefficients.
+
+   public:
+      /// By default, initialize coefficients to zero.
+      cpoly() { memset(c_.data(), 0, sizeof(c_)); }
+
+      /// Initialize from array of coefficients.
+      cpoly(std::array<dyndim, N> const& cc) : c_(cc) {}
+
+      /// Initialize from vector of coefficients.
+      cpoly(std::vector<dyndim> const& cc)
+      {
+         if (cc.size() != c_.size()) {
+            throw "Initializer is wrong length.";
+         }
+         for (unsigned i = 0; i < c_.size(); ++i) {
+            c_[i] = cc[i];
+         }
+      }
+
+      /// Return number of coefficients in polynomial.
+      static unsigned constexpr num_coefs() { return N; }
+
+      /// Fetch coefficient for term of degree \a I.
+      /// \tparam I  Degree of term.
+      template <unsigned I>
+      dyndim coef() const
+      {
+         static_assert(I <= D, "Array access must be in bounds.");
+         return c_[I];
+      }
+
+      /// Fetch coefficient for term of degree \a i.
+      dyndim const &coef(/** Degree of term. */ unsigned i) const
+      {
+         return c_[i];
+      }
+
+      /// Set coefficient for term of degree \a I.
+      /// \tparam I  Degree of term.
+      template <unsigned I>
+      void set_coef(dyndim const &c)
+      {
+         static_assert(I <= D, "Array access must be in bounds.");
+         c_[I] = c;
+      }
+
+      /// Set coefficient for term if degree \a i.
+      dyndim &coef(/** Degree of term. */ unsigned i) { return c_[i]; }
+
+      /// Evaluate polynomial.
+      dyndim operator()(/** Value of variable. */ dyndim const &v) const
+      {
+         dyndim vp = v; // Initial power of variable's value.
+         dyndim val = c_[0];
+         for (unsigned i = 1; i < c_.size(); ++i) {
+            val += c_[i] * vp;
+            vp *= v;
+         }
+         return val;
+      }
+
+      using deriv = cpoly<D - 1, dyndim, dyndim>; ///< Type of derivative.
+      using integ = cpoly<D + 1, dyndim, dyndim>; ///< Type of integral.
+      friend class cpoly<D - 1, dyndim, dyndim>;  ///< Integral needs access.
+      friend class cpoly<D + 1, dyndim, dyndim>;  ///< Derivative needs access.
+
+      /// Return function representing derivative.
+      deriv derivative() const
+      {
+         deriv d;
+         for (unsigned i = 1; i < c_.size(); ++i) {
+            d.c_[i - 1] = i * c_[i];
+         }
+         return d;
+      }
+
+      /// Return function representing integral from specified lower bound.
+      integ integral(/** Lower bound. */ dyndim const &lb) const
+      {
+         integ i;
+         // Initialize constant with zero in right units.
+         i.c_[0] = 0.0 * (*this)(lb)*lb;
+         dyndim lbn = lb; // Initialize power of lower bound.
+         for (unsigned j = 0; j < c_.size(); ++j) {
+            dyndim const cn = c_[j] / (j + 1);
+            i.c_[j + 1] = cn;
+            i.c_[0] -= cn * lbn;
+            lbn *= lb;
+         }
+         return i;
+      }
+   };
+
+   /// Degree-zero specialization of \ref cpoly with \a V = \ref dyndim and \a
+   /// C = \ref dyndim.  \c cpoly<0,dyndim,dyndim> has but a single
+   /// coefficient, the constant term.
+   ///
+   /// Note that if either of \a V and \a C be \ref dyndim, then the other must
+   /// be, too.
+   template <>
+   class cpoly<0, dyndim, dyndim>
+         : public cfunc<dyndim, dyndim, cpoly<0, dyndim, dyndim>>
+   {
+      static unsigned constexpr N = 0 + 1; ///< Number of coefficients.
+      std::array<dyndim, N> c_;            ///< Coefficient of unity.
+
+   public:
+      /// By default, initialize coefficient to zero.
+      cpoly() { memset(c_.data(), 0, sizeof(c_)); }
+
+      /// Copy coefficient from instance of its type.
+      cpoly(dyndim const &cc) { c_[0] = cc; }
+
+      /// Return number of coefficients in polynomial.
+      static unsigned constexpr num_coefs() { return N; }
+
+      /// Fetch coefficient for term of degree \a I.
+      /// \tparam I  Degree of term.
+      template <unsigned I>
+      dyndim coef() const
+      {
+         static_assert(I == 0, "Array access must be in bounds.");
+         return c_[I];
+      }
+
+      /// Set coefficient for term of degree \a I.
+      /// \tparam I  Degree of term.
+      template <unsigned I>
+      void set_coef(dyndim const &c)
+      {
+         static_assert(I == 0, "Array access must be in bounds.");
+         c_[I] = c;
+      }
+
+      /// Allow assignment from instance of coefficient's type.
+      cpoly &operator=(dyndim const &cc)
+      {
+         c_[0] = cc;
+         return *this;
+      }
+
+      /// Enable default assignment.
+      cpoly &operator=(cpoly const &cp) = default;
+
+      /// Convert to reference to mutable coefficient.
+      operator dyndim &() { return c_[0]; }
+
+      /// Convert to reference to immutable coefficient.
+      operator dyndim const &() const { return c_[0]; }
+
+      /// Evaluate polynomial. Ignore independent variable because present
+      /// specialization models a constant function.
+      dyndim operator()(dyndim const &) const { return c_[0]; }
+
+      using integ = cpoly<1, dyndim, dyndim>; ///< Type of integral.
+      friend class cpoly<1, dyndim, dyndim>;  ///< Integral needs access here.
+
+      /// Return function representing integral from specified lower bound.
+      integ integral(dyndim const &lb) const
+      {
+         integ i;
+         i.c_[0] = -c_[0] * lb;
+         i.c_[1] = +c_[0];
          return i;
       }
    };

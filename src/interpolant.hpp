@@ -195,8 +195,8 @@ namespace num
          X const c0 = 0.5 * (cp[i].second + cp[j].second);
          X const c1 = (cp[j].second - cp[i].second) / delta;
          vf[i].first = delta;
-         vf[i].second.c()[0] = c0;
-         vf[i].second.c()[1] = c1;
+         vf[i].second.template set_coef<0>(c0);
+         vf[i].second.template set_coef<1>(c1);
       }
       return sparse_table<X, C>(a0, move(vf));
    }

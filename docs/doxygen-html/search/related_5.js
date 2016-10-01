@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['rk_5fquad',['rk_quad',['../classnum_1_1statdim.html#a2c6a9fedad596adb3da30d6e5277178c',1,'num::statdim']]],
-  ['root',['root',['../classnum_1_1dimval.html#ad6c896a004846cb60c6b0880036cc764',1,'num::dimval::root()'],['../classnum_1_1statdim.html#a6bb7dbbf738d893073fe3ddca343cd1b',1,'num::statdim::root()'],['../classnum_1_1dyndim.html#acaaab6eb8f1eafd68785243928f7cadd',1,'num::dyndim::root()'],['../classnum_1_1dyndim.html#aa3fea0e487be43a548fe911ebc92d6e7',1,'num::dyndim::root()']]]
+  ['pow',['pow',['../classnum_1_1dimval.html#a26f91c42219662f936da9492d80405b9',1,'num::dimval::pow()'],['../classnum_1_1statdim.html#a2124d83c1a2d94452c9455bdcd6849a4',1,'num::statdim::pow()'],['../classnum_1_1dyndim.html#a3f5ea3a37a145914052b1599d4a5ddb8',1,'num::dyndim::pow()'],['../classnum_1_1dyndim.html#a363749ff0306777096ceb376d186d467',1,'num::dyndim::pow()']]]
 ];

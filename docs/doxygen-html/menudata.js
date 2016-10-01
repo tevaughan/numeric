@@ -110,8 +110,8 @@ var menudata={children:[
 {text:'x',url:'functions_vars.html#index_x'},
 {text:'y',url:'functions_vars.html#index_y'}]},
 {text:'Typedefs',url:'functions_type.html'},
-{text:'Enumerator',url:'functions_eval.html'},
 {text:'Related Functions',url:'functions_rela.html',children:[
+{text:'c',url:'functions_rela.html#index_c'},
 {text:'d',url:'functions_rela.html#index_d'},
 {text:'f',url:'functions_rela.html#index_f'},
 {text:'i',url:'functions_rela.html#index_i'},

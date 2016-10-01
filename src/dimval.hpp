@@ -18,7 +18,8 @@
 #include <iostream>   // for ostream
 
 #include <dim-exps.hpp> // for dim_exps
-#include <template.hpp> // for RAT and PRD
+#include <integral.hpp> // for integral()
+#include <util.hpp>     // for RAT and PRD
 
 namespace num
 {
@@ -181,6 +182,22 @@ namespace num
    template <char TI, char D, char M, char C, char TE>
    dyndim operator/(dyndim const &dd, statdim<TI, D, M, C, TE> sd);
 
+   /// Type of integer power of statdim.
+   /// \tparam P  Integer exponent indicating power.
+   template <int P, char TI, char D, char M, char C, char TE>
+   struct statdim_power {
+      using type = statdim<TI * P, D * P, M * P, C * P, TE * P>;
+   };
+
+   /// Specialization for integer power zero of statdim.
+   template <char TI, char D, char M, char C, char TE>
+   struct statdim_power<0, TI, D, M, C, TE> {
+      using type = double;
+   };
+
+   template <unsigned D, typename V, typename C>
+   class cpoly;
+
    /// Model of a statically dimensioned value.  For a dynamically dimensioned
    /// value, see dyndim.
    ///
@@ -220,6 +237,9 @@ namespace num
       /// Allow \ref dense_table to call constructor.
       template <typename A, typename F>
       friend class dense_table;
+
+      template <unsigned DD, typename VV, typename CC>
+      friend class cpoly;
 
       /// Allow integral() to construct from known MKS quantity.
       template <typename R, typename A, typename A1, typename A2>
@@ -363,21 +383,19 @@ namespace num
       /// Inequality comparison.
       bool operator!=(statdim dv) const { return v_ != dv.v_; }
 
-      /// Type of integer power of present instance.
-      /// \tparam E  Integer exponent indicating power.
       template <int P>
-      using statdim_power = statdim<TI * P, D * P, M * P, C * P, TE * P>;
+      using power_type = typename statdim_power<P, TI, D, M, C, TE>::type;
 
       /// Integer power.
       template <int P>
-      statdim_power<P> pow() const
+      power_type<P> pow() const
       {
-         return statdim_power<P>(std::pow(v_, P));
+         return power_type<P>(itpow<P>(v_));
       }
 
       /// Integer power.
       template <int P>
-      friend statdim_power<P> pow(statdim dv)
+      friend power_type<P> pow(statdim dv)
       {
          return dv.pow<P>();
       }
@@ -448,6 +466,9 @@ namespace num
       /// Allow \ref dense_table to call constructor.
       template <typename A, typename F>
       friend class dense_table;
+
+      template <unsigned D, typename V, typename C>
+      friend class cpoly;
 
       /// Type of std::function that can be integrated.  A single-argument
       /// function is required.
@@ -642,7 +663,8 @@ namespace num
       bool operator<=(dimval<DER> const &dv) const
       {
          if (exps_ != dv.exps()) {
-            std::cerr << "dyndim::op<=: *this=" << *this << " dv=" << dv << std::endl;
+            std::cerr << "dyndim::op<=: *this=" << *this << " dv=" << dv
+                      << std::endl;
             assert(0);
             throw "Comparison requires same dimension.";
          }
@@ -686,11 +708,11 @@ namespace num
       template <int P>
       dyndim pow() const
       {
-         return dyndim(std::pow(v_, P), exps_ * P);
+         return dyndim(itpow<P>(v_), exps_ * P);
       }
 
       /// Integer power.
-      dyndim pow(int p) const { return dyndim(std::pow(v_, p), exps_ * p); }
+      dyndim pow(int p) const { return dyndim(ipow(v_, p), exps_ * p); }
 
       /// Integer power.
       template <int P>
@@ -749,7 +771,7 @@ namespace num
    template <typename DER>
    dyndim pow(dimval<DER> const &dv, int p)
    {
-      return dyndim(std::pow(dv.v_, p), dv.exps() * p);
+      return dyndim(ipow(dv.v_, p), dv.exps() * p);
    }
 
    /// Integer root.

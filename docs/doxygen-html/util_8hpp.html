@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.12"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>numeric: template.hpp File Reference</title>
+<title>numeric: util.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -72,28 +72,31 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">template.hpp File Reference</div>  </div>
+<div class="title">util.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Template-related utilities.  
+<p>Basic utilities.  
 <a href="#details">More...</a></p>
 <div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="template_8hpp__dep__incl.png" border="0" usemap="#template_8hppdep" alt=""/></div>
-<map name="template_8hppdep" id="template_8hppdep">
-<area shape="rect" id="node2" href="dimval_8hpp.html" title="Definition of conversions dealing with angle, num::dimval_base, num::statdim, and num::dyndim..." alt="" coords="19,80,105,107"/>
-<area shape="rect" id="node6" href="integral_8hpp.html" title="Source for num::integral(), which numerically integrates via adaptive quadrature and the trapezoidal ..." alt="" coords="129,80,219,107"/>
-<area shape="rect" id="node3" href="dimensions_8hpp.html" title="Automatically generated source for generic&#45;dimension types. " alt="" coords="5,155,119,181"/>
-<area shape="rect" id="node4" href="units_8hpp.html" title="Automatically generated header file for units. " alt="" coords="25,229,99,256"/>
-<area shape="rect" id="node5" href="units_8cpp.html" title="Automatically generated implementation file for units. " alt="" coords="25,304,99,331"/>
+<div class="center"><img src="util_8hpp__dep__incl.png" border="0" usemap="#util_8hppdep" alt=""/></div>
+<map name="util_8hppdep" id="util_8hppdep">
+<area shape="rect" id="node2" href="dimval_8hpp.html" title="Definition of conversions dealing with angle, num::dimval_base, num::statdim, and num::dyndim..." alt="" coords="38,155,123,181"/>
+<area shape="rect" id="node6" href="cpoly_8hpp.html" title="Definition of num::cpoly. " alt="" coords="143,229,221,256"/>
+<area shape="rect" id="node8" href="integral_8hpp.html" title="Source for num::integral(), which numerically integrates via adaptive quadrature and the trapezoidal ..." alt="" coords="55,80,144,107"/>
+<area shape="rect" id="node3" href="dimensions_8hpp.html" title="Automatically generated source for generic&#45;dimension types. " alt="" coords="5,229,119,256"/>
+<area shape="rect" id="node4" href="units_8hpp.html" title="Automatically generated header file for units. " alt="" coords="25,304,99,331"/>
+<area shape="rect" id="node5" href="units_8cpp.html" title="Automatically generated implementation file for units. " alt="" coords="25,379,99,405"/>
+<area shape="rect" id="node7" href="interpolant_8hpp.html" title="Source code for num::interpolant, num::ipoint, num::ilist, num::interpolantd, and num::ilistd..." alt="" coords="129,304,235,331"/>
 </map>
 </div>
 </div>
-<p><a href="template_8hpp_source.html">Go to the source code of this file.</a></p>
+<p><a href="util_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -111,11 +114,28 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a0acd09937ff29e12de4cc106550751ed"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a0acd09937ff29e12de4cc106550751ed">PRD</a> = decltype(X() *Y())</td></tr>
 <tr class="memdesc:a0acd09937ff29e12de4cc106550751ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of product of two things.  <a href="namespacenum.html#a0acd09937ff29e12de4cc106550751ed">More...</a><br /></td></tr>
 <tr class="separator:a0acd09937ff29e12de4cc106550751ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a181d91e94049d3f5affb808666e2a491"><td class="memTemplParams" colspan="2">template&lt;int P&gt; </td></tr>
+<tr class="memitem:a181d91e94049d3f5affb808666e2a491"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classdouble.html">double</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a181d91e94049d3f5affb808666e2a491">itpow</a> (<a class="el" href="classdouble.html">double</a> x)</td></tr>
+<tr class="memdesc:a181d91e94049d3f5affb808666e2a491"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integer-template power of a double.  <a href="namespacenum.html#a181d91e94049d3f5affb808666e2a491">More...</a><br /></td></tr>
+<tr class="separator:a181d91e94049d3f5affb808666e2a491"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f6456e0ae63a88c3c8726bb480de131"><td class="memTemplParams" colspan="2">template&lt;int P&gt; </td></tr>
+<tr class="memitem:a6f6456e0ae63a88c3c8726bb480de131"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classdouble.html">double</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a6f6456e0ae63a88c3c8726bb480de131">pow</a> (<a class="el" href="classdouble.html">double</a> x)</td></tr>
+<tr class="memdesc:a6f6456e0ae63a88c3c8726bb480de131"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integer-template power of a double.  <a href="namespacenum.html#a6f6456e0ae63a88c3c8726bb480de131">More...</a><br /></td></tr>
+<tr class="separator:a6f6456e0ae63a88c3c8726bb480de131"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affe013befb82ebee3bcf4305fae4089a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdouble.html">double</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#affe013befb82ebee3bcf4305fae4089a">ipow</a> (<a class="el" href="classdouble.html">double</a> x, int e)</td></tr>
+<tr class="memdesc:affe013befb82ebee3bcf4305fae4089a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integer power of a double.  <a href="namespacenum.html#affe013befb82ebee3bcf4305fae4089a">More...</a><br /></td></tr>
+<tr class="separator:affe013befb82ebee3bcf4305fae4089a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fd4c40887e7985c60729b71f316b853"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdouble.html">double</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a8fd4c40887e7985c60729b71f316b853">pow</a> (<a class="el" href="classdouble.html">double</a> x, int e)</td></tr>
+<tr class="memdesc:a8fd4c40887e7985c60729b71f316b853"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integer power of a double. This is an alias for <a class="el" href="namespacenum.html#affe013befb82ebee3bcf4305fae4089a">ipow()</a>.  <a href="namespacenum.html#a8fd4c40887e7985c60729b71f316b853">More...</a><br /></td></tr>
+<tr class="separator:a8fd4c40887e7985c60729b71f316b853"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Template-related utilities. </p>
+<div class="textblock"><p>Basic utilities. </p>
 
-<p>Definition in file <a class="el" href="template_8hpp_source.html">template.hpp</a>.</p>
+<p>Definition in file <a class="el" href="util_8hpp_source.html">util.hpp</a>.</p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

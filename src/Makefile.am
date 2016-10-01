@@ -42,7 +42,8 @@ pkginclude_HEADERS =\
  integral-stats.hpp\
  interpolant.hpp\
  interval.hpp\
- sparse-table.hpp
+ sparse-table.hpp\
+ util.hpp
 
 nodist_pkginclude_HEADERS = dimensions.hpp units.hpp
 
