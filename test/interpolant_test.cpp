@@ -131,6 +131,8 @@ TEST_CASE("Verify file input and interoperation with units.", "[interpolant]")
    interpolant<length, num::time> i("interpolant_test.txt", nm, s);
    interpolant<dyndim, dyndim> j("interpolant_test.txt", nm, s);
    auto jj = make_linear_interp<dyndim, dyndim>("interpolant_test.txt", nm, s);
+   auto kk =
+         make_linear_interp<length, num::time>("interpolant_test.txt", nm, s);
 
    REQUIRE(i(-1 * nm) == 0.0 * s);
    REQUIRE(i(299 * nm) == 0.0 * s);
@@ -167,6 +169,18 @@ TEST_CASE("Verify file input and interoperation with units.", "[interpolant]")
    REQUIRE((jj(950 * nm) / s).number() == Approx(40.0));
    REQUIRE((jj(1000 * nm) / s).number() == Approx(0.0));
    REQUIRE(jj(1100 * nm) == 0.0 * s);
+
+   REQUIRE(kk(-1 * nm) == 0.0 * s);
+   REQUIRE(kk(299 * nm) == 0.0 * s);
+   REQUIRE(kk(300 * nm) == 0.0 * s);
+   REQUIRE(kk(350 * nm) / s == Approx(40.0));
+   REQUIRE(kk(400 * nm) == 80.0 * s);
+   REQUIRE(kk(450 * nm) == 80.0 * s);
+   REQUIRE(kk(500 * nm) == 80.0 * s);
+   REQUIRE(kk(900 * nm) == 80.0 * s);
+   REQUIRE(kk(950 * nm) / s == Approx(40.0));
+   REQUIRE(kk(1000 * nm) / s == Approx(0.0));
+   REQUIRE(kk(1100 * nm) == 0.0 * s);
 }
 
 TEST_CASE("Verify interoperation with units.", "[interpolant]")

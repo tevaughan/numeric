@@ -197,7 +197,7 @@ namespace num
       {
          integ i;
          i.c_[0] = -c_[0] * lb;
-         i.c_[1] = +c_[0] / V(1.0);
+         i.c_[1] = +c_[0] * V(1.0);
          return i;
       }
    };

@@ -192,8 +192,8 @@ namespace num
       for (unsigned i = 0; i < ndeltas; ++i) {
          unsigned const j = i + 1;
          X const delta = cp[j].first - cp[i].first;
-         X const c0 = 0.5 * (cp[i].second + cp[j].second);
-         X const c1 = (cp[j].second - cp[i].second) / delta;
+         Y const c0 = 0.5 * (cp[i].second + cp[j].second);
+         auto const c1 = (cp[j].second - cp[i].second) / delta;
          vf[i].first = delta;
          vf[i].second.template set_coef<0>(c0);
          vf[i].second.template set_coef<1>(c1);

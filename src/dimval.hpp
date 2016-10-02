@@ -94,15 +94,6 @@ namespace num
       /// Construct from double that is known to contain value in MKS.
       dimval(double vv /**< Numeric coefficient of MKS unit. */) : v_(vv) {}
 
-      /// Copy from another base object. This needs to be done carefully in
-      /// case the descendant has extra stuff of its own to copy. So copy
-      /// constructor is protected.
-      template <typename ODER>
-      dimval(dimval<ODER> const &dvb)
-         : v_(dvb.v_)
-      {
-      }
-
       /// Return reference to present instance as instance of DER.
       DER &d() { return *static_cast<DER *>(this); }
 
@@ -240,6 +231,7 @@ namespace num
       template <typename A, typename F>
       friend class dense_table;
 
+      /// Allow \ref cpoly to construct from double.
       template <unsigned DD, typename VV, typename CC>
       friend class cpoly;
 
@@ -247,6 +239,10 @@ namespace num
       template <typename R, typename A, typename A1, typename A2>
       friend PRD<R, A> integral(func<R, A> f, A1 a, A2 b, double t,
                                 unsigned n);
+
+      /// Allow \ref dyndim to access protected, inherited \a v_ for copy
+      /// construction.
+      friend class dyndim;
 
       /// Global multiplication operator against dyndim needs access to v_ and
       /// eps_.
@@ -532,12 +528,15 @@ namespace num
       /// By default, construct a dimensionless quantity of magnitude zero.
       dyndim() = default;
 
-      /// Initialize from either statdim or another dyndim.
-      template <typename DER>
-      dyndim(dimval<DER> const &dvb)
-         : PT(dvb), exps_(dvb.exps())
+      /// Construct from statdim.
+      template <char TI, char D, char M, char C, char TE>
+      dyndim(statdim<TI, D, M, C, TE> const &sd)
+         : PT(sd.v_), exps_(sd.exps())
       {
       }
+
+      /// Use default copy constructor.
+      dyndim(dyndim const& dd) = default;
 
       dim_exps exps() const { return exps_; } ///< Dimensional exponents.
 
