@@ -130,6 +130,17 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly_3_010_00_01dyndim_00_01dyndim_01_4.html#a978c9762f58834ab69d1631742ad24e6">cpoly</a> (<a class="el" href="classnum_1_1dyndim.html">dyndim</a> const &amp;cc)</td></tr>
 <tr class="memdesc:a978c9762f58834ab69d1631742ad24e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy coefficient from instance of its type. <br /></td></tr>
 <tr class="separator:a978c9762f58834ab69d1631742ad24e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca0f7f2dd523cabf0792f3a888bda90d"><td class="memTemplParams" colspan="2">template&lt;unsigned OD&gt; </td></tr>
+<tr class="memitem:aca0f7f2dd523cabf0792f3a888bda90d"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; OD, <a class="el" href="classnum_1_1dyndim.html">dyndim</a>, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly_3_010_00_01dyndim_00_01dyndim_01_4.html#aca0f7f2dd523cabf0792f3a888bda90d">operator*</a> (<a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; OD, <a class="el" href="classnum_1_1dyndim.html">dyndim</a>, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> &gt; const &amp;op) const</td></tr>
+<tr class="memdesc:aca0f7f2dd523cabf0792f3a888bda90d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply by other cpoly with same type of variable.  <a href="#aca0f7f2dd523cabf0792f3a888bda90d">More...</a><br /></td></tr>
+<tr class="separator:aca0f7f2dd523cabf0792f3a888bda90d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ac67494dd27a60c4e9dbc4f63aa1c91"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a6ac67494dd27a60c4e9dbc4f63aa1c91"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; 0, <a class="el" href="classnum_1_1dyndim.html">dyndim</a>, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly_3_010_00_01dyndim_00_01dyndim_01_4.html#a6ac67494dd27a60c4e9dbc4f63aa1c91">operator*</a> (T const &amp;t) const</td></tr>
+<tr class="memdesc:a6ac67494dd27a60c4e9dbc4f63aa1c91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply by scalar factor on right.  <a href="#a6ac67494dd27a60c4e9dbc4f63aa1c91">More...</a><br /></td></tr>
+<tr class="separator:a6ac67494dd27a60c4e9dbc4f63aa1c91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9236ac8a4bdbefdeec8d1bf9c93d7901"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1cpoly.html">cpoly</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly_3_010_00_01dyndim_00_01dyndim_01_4.html#a9236ac8a4bdbefdeec8d1bf9c93d7901">operator*=</a> (<a class="el" href="classdouble.html">double</a> rf)</td></tr>
+<tr class="memdesc:a9236ac8a4bdbefdeec8d1bf9c93d7901"><td class="mdescLeft">&#160;</td><td class="mdescRight">Right multiplicative assignment.  <a href="#a9236ac8a4bdbefdeec8d1bf9c93d7901">More...</a><br /></td></tr>
+<tr class="separator:a9236ac8a4bdbefdeec8d1bf9c93d7901"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef4fc93ce237975f16999872ee7e7716"><td class="memTemplParams" colspan="2">template&lt;unsigned I&gt; </td></tr>
 <tr class="memitem:aef4fc93ce237975f16999872ee7e7716"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1dyndim.html">dyndim</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly_3_010_00_01dyndim_00_01dyndim_01_4.html#aef4fc93ce237975f16999872ee7e7716">coef</a> () const</td></tr>
 <tr class="memdesc:aef4fc93ce237975f16999872ee7e7716"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetch coefficient for term of degree <em>I</em>.  <a href="#aef4fc93ce237975f16999872ee7e7716">More...</a><br /></td></tr>
@@ -207,7 +218,7 @@ class num::cpoly&lt; 0, dyndim, dyndim &gt;</h3>
 <p><code><a class="el" href="classnum_1_1cpoly_3_010_00_01dyndim_00_01dyndim_01_4.html" title="Degree-zero specialization of cpoly with V = dyndim and C = dyndim. ">cpoly&lt;0,dyndim,dyndim&gt;</a></code> has but a single coefficient, the constant term.</p>
 <p>Note that if either of <em>V</em> and <em>C</em> be <a class="el" href="classnum_1_1dyndim.html">dyndim</a>, then the other must be, too. </p>
 
-<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00339">339</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00457">457</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="aef4fc93ce237975f16999872ee7e7716"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aef4fc93ce237975f16999872ee7e7716">&sect;&nbsp;</a></span>coef()</h2>
@@ -240,7 +251,7 @@ class num::cpoly&lt; 0, dyndim, dyndim &gt;</h3>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00358">358</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00507">507</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
 
 </div>
 </div>
@@ -271,7 +282,124 @@ class num::cpoly&lt; 0, dyndim, dyndim &gt;</h3>
 <p>Evaluate polynomial. </p>
 <p>Ignore independent variable because present specialization models a constant function. </p>
 
-<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00391">391</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00540">540</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aca0f7f2dd523cabf0792f3a888bda90d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca0f7f2dd523cabf0792f3a888bda90d">&sect;&nbsp;</a></span>operator*() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt;OD, <a class="el" href="classnum_1_1dyndim.html">dyndim</a>, <a class="el" href="classnum_1_1dyndim.html">dyndim</a>&gt; operator* </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; OD, <a class="el" href="classnum_1_1dyndim.html">dyndim</a>, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>op</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Multiply by other cpoly with same type of variable. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">OD</td><td>Degree of other cpoly. </td></tr>
+    <tr><td class="paramname">OC</td><td>Type of term in other cpoly. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00475">475</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a6ac67494dd27a60c4e9dbc4f63aa1c91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ac67494dd27a60c4e9dbc4f63aa1c91">&sect;&nbsp;</a></span>operator*() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt;0, <a class="el" href="classnum_1_1dyndim.html">dyndim</a>, <a class="el" href="classnum_1_1dyndim.html">dyndim</a>&gt; operator* </td>
+          <td>(</td>
+          <td class="paramtype">T const &amp;&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Multiply by scalar factor on right. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Type of factor. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00487">487</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a9236ac8a4bdbefdeec8d1bf9c93d7901"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9236ac8a4bdbefdeec8d1bf9c93d7901">&sect;&nbsp;</a></span>operator*=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classnum_1_1cpoly.html">cpoly</a>&amp; operator*= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classdouble.html">double</a>&#160;</td>
+          <td class="paramname"><em>rf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Right multiplicative assignment. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rf</td><td>Factor. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00495">495</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classnum_1_1cpoly_3_010_00_01dyndim_00_01dyndim_01_4_a9236ac8a4bdbefdeec8d1bf9c93d7901_cgraph.png" border="0" usemap="#classnum_1_1cpoly_3_010_00_01dyndim_00_01dyndim_01_4_a9236ac8a4bdbefdeec8d1bf9c93d7901_cgraph" alt=""/></div>
+<map name="classnum_1_1cpoly_3_010_00_01dyndim_00_01dyndim_01_4_a9236ac8a4bdbefdeec8d1bf9c93d7901_cgraph" id="classnum_1_1cpoly_3_010_00_01dyndim_00_01dyndim_01_4_a9236ac8a4bdbefdeec8d1bf9c93d7901_cgraph">
+<area shape="rect" id="node2" href="classnum_1_1dimval.html#ab845c5a0ae69fbf72b7459d5fa4ccbff" title="Multiplicative assignment against double. " alt="" coords="136,5,297,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -307,7 +435,7 @@ class num::cpoly&lt; 0, dyndim, dyndim &gt;</h3>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00367">367</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00516">516</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
 
 </div>
 </div>

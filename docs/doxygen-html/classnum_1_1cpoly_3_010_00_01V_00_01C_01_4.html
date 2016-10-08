@@ -128,6 +128,17 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly_3_010_00_01V_00_01C_01_4.html#ab78e81872df5f2c79d2a2d56f7546aef">cpoly</a> (C const &amp;cc)</td></tr>
 <tr class="memdesc:ab78e81872df5f2c79d2a2d56f7546aef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy coefficient from instance of its type. <br /></td></tr>
 <tr class="separator:ab78e81872df5f2c79d2a2d56f7546aef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b150e1275524c51650cc2f7c4388ed1"><td class="memTemplParams" colspan="2">template&lt;unsigned OD, typename OC &gt; </td></tr>
+<tr class="memitem:a8b150e1275524c51650cc2f7c4388ed1"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; OD, V, decltype(C() *OC())&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly_3_010_00_01V_00_01C_01_4.html#a8b150e1275524c51650cc2f7c4388ed1">operator*</a> (<a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; OD, V, OC &gt; const &amp;op) const</td></tr>
+<tr class="memdesc:a8b150e1275524c51650cc2f7c4388ed1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply by other cpoly with same type of variable.  <a href="#a8b150e1275524c51650cc2f7c4388ed1">More...</a><br /></td></tr>
+<tr class="separator:a8b150e1275524c51650cc2f7c4388ed1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4653e9b60b2ba898b807d1978ab4e71b"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a4653e9b60b2ba898b807d1978ab4e71b"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; 0, V, decltype(C() *T())&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly_3_010_00_01V_00_01C_01_4.html#a4653e9b60b2ba898b807d1978ab4e71b">operator*</a> (T const &amp;t) const</td></tr>
+<tr class="memdesc:a4653e9b60b2ba898b807d1978ab4e71b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply by scalar factor on right.  <a href="#a4653e9b60b2ba898b807d1978ab4e71b">More...</a><br /></td></tr>
+<tr class="separator:a4653e9b60b2ba898b807d1978ab4e71b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9236ac8a4bdbefdeec8d1bf9c93d7901"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1cpoly.html">cpoly</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly_3_010_00_01V_00_01C_01_4.html#a9236ac8a4bdbefdeec8d1bf9c93d7901">operator*=</a> (<a class="el" href="classdouble.html">double</a> rf)</td></tr>
+<tr class="memdesc:a9236ac8a4bdbefdeec8d1bf9c93d7901"><td class="mdescLeft">&#160;</td><td class="mdescRight">Right multiplicative assignment.  <a href="#a9236ac8a4bdbefdeec8d1bf9c93d7901">More...</a><br /></td></tr>
+<tr class="separator:a9236ac8a4bdbefdeec8d1bf9c93d7901"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af457e19cd06c5382dc5e4d0c79720e0c"><td class="memTemplParams" colspan="2">template&lt;unsigned I&gt; </td></tr>
 <tr class="memitem:af457e19cd06c5382dc5e4d0c79720e0c"><td class="memTemplItemLeft" align="right" valign="top">C&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly_3_010_00_01V_00_01C_01_4.html#af457e19cd06c5382dc5e4d0c79720e0c">coef</a> () const</td></tr>
 <tr class="memdesc:af457e19cd06c5382dc5e4d0c79720e0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetch coefficient for term of degree <em>I</em>.  <a href="#af457e19cd06c5382dc5e4d0c79720e0c">More...</a><br /></td></tr>
@@ -204,7 +215,7 @@ class num::cpoly&lt; 0, V, C &gt;</h3>
 <p>Degree-zero specialization of <a class="el" href="classnum_1_1cpoly.html">cpoly</a>. </p>
 <p>cpoly&lt;0,V,C&gt; has but a single coefficient, the constant term. </p>
 
-<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00138">138</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00188">188</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="af457e19cd06c5382dc5e4d0c79720e0c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af457e19cd06c5382dc5e4d0c79720e0c">&sect;&nbsp;</a></span>coef()</h2>
@@ -237,7 +248,7 @@ class num::cpoly&lt; 0, V, C &gt;</h3>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00156">156</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00237">237</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
 
 </div>
 </div>
@@ -268,7 +279,116 @@ class num::cpoly&lt; 0, V, C &gt;</h3>
 <p>Evaluate polynomial. </p>
 <p>Ignore independent variable because present specialization models a constant function. </p>
 
-<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00189">189</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00270">270</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a8b150e1275524c51650cc2f7c4388ed1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b150e1275524c51650cc2f7c4388ed1">&sect;&nbsp;</a></span>operator*() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt;OD, V, decltype(C() * OC())&gt; operator* </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; OD, V, OC &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>op</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Multiply by other cpoly with same type of variable. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">OD</td><td>Degree of other cpoly. </td></tr>
+    <tr><td class="paramname">OC</td><td>Type of term in other cpoly. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00205">205</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a4653e9b60b2ba898b807d1978ab4e71b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4653e9b60b2ba898b807d1978ab4e71b">&sect;&nbsp;</a></span>operator*() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt;0, V, decltype(C() * T())&gt; operator* </td>
+          <td>(</td>
+          <td class="paramtype">T const &amp;&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Multiply by scalar factor on right. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Type of factor. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00217">217</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a9236ac8a4bdbefdeec8d1bf9c93d7901"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9236ac8a4bdbefdeec8d1bf9c93d7901">&sect;&nbsp;</a></span>operator*=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classnum_1_1cpoly.html">cpoly</a>&amp; operator*= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classdouble.html">double</a>&#160;</td>
+          <td class="paramname"><em>rf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Right multiplicative assignment. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rf</td><td>Factor. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00225">225</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
 
 </div>
 </div>
@@ -304,7 +424,7 @@ class num::cpoly&lt; 0, V, C &gt;</h3>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00165">165</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00246">246</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
 
 </div>
 </div>

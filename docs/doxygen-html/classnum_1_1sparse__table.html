@@ -74,8 +74,10 @@ $(function() {
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="classnum_1_1sparse__table-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">sparse_table&lt; A, F &gt; Class Template Reference</div>  </div>
@@ -132,6 +134,20 @@ Public Member Functions</h2></td></tr>
 <a class="el" href="classnum_1_1sparse__table.html#a09dbb59ef7a20d810f428bbcb89ccb5b">integral_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a6db329b6918e1560b1ff0816a33fa633">integral</a> () const</td></tr>
 <tr class="memdesc:a6db329b6918e1560b1ff0816a33fa633"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integral of piece-wise function over all pieces. <br /></td></tr>
 <tr class="separator:a6db329b6918e1560b1ff0816a33fa633"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3bb1fda775d0cb121cb497dd5f193e6"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aa3bb1fda775d0cb121cb497dd5f193e6"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt; A, decltype(F() *T())&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#aa3bb1fda775d0cb121cb497dd5f193e6">operator*</a> (T const &amp;t) const</td></tr>
+<tr class="memdesc:aa3bb1fda775d0cb121cb497dd5f193e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply table by factor on right.  <a href="#aa3bb1fda775d0cb121cb497dd5f193e6">More...</a><br /></td></tr>
+<tr class="separator:aa3bb1fda775d0cb121cb497dd5f193e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca45b83aecf7a5cebec54e243ca214bc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#aca45b83aecf7a5cebec54e243ca214bc">operator*=</a> (<a class="el" href="classdouble.html">double</a> rf)</td></tr>
+<tr class="memdesc:aca45b83aecf7a5cebec54e243ca214bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplicative assignment on right.  <a href="#aca45b83aecf7a5cebec54e243ca214bc">More...</a><br /></td></tr>
+<tr class="separator:aca45b83aecf7a5cebec54e243ca214bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a5d93d2a1e25860d2e0479730cf9fc427"><td class="memItemLeft" align="right" valign="top"><a id="a5d93d2a1e25860d2e0479730cf9fc427"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a5d93d2a1e25860d2e0479730cf9fc427">sparse_table</a> (<a class="el" href="classnum_1_1sparse__table.html#a7d9c3006d824f8372cadae43a871c74b">data</a> &amp;&amp;d)</td></tr>
+<tr class="memdesc:a5d93d2a1e25860d2e0479730cf9fc427"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow other type of <a class="el" href="classnum_1_1sparse__table.html" title="A piecewise function that, in logarithmic time, looks up the sub-function appropriate to the argument...">sparse_table</a> to construct from data member. <br /></td></tr>
+<tr class="separator:a5d93d2a1e25860d2e0479730cf9fc427"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
@@ -146,6 +162,13 @@ Private Attributes</h2></td></tr>
 <a class="el" href="classnum_1_1sparse__table.html#a7d9c3006d824f8372cadae43a871c74b">data</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a89e695660d7ff2e7b48e26842d0d6c9b">dat_</a></td></tr>
 <tr class="memdesc:a89e695660d7ff2e7b48e26842d0d6c9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tabular data. <br /></td></tr>
 <tr class="separator:a89e695660d7ff2e7b48e26842d0d6c9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a0b75371951d682d8ae281db146ebb4da"><td class="memTemplParams" colspan="2">template&lt;typename OA , typename OF &gt; </td></tr>
+<tr class="memitem:a0b75371951d682d8ae281db146ebb4da"><td class="memTemplItemLeft" align="right" valign="top">class&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a0b75371951d682d8ae281db146ebb4da">sparse_table</a></td></tr>
+<tr class="memdesc:a0b75371951d682d8ae281db146ebb4da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow other type of <a class="el" href="classnum_1_1sparse__table.html" title="A piecewise function that, in logarithmic time, looks up the sub-function appropriate to the argument...">sparse_table</a> to access private members.  <a href="#a0b75371951d682d8ae281db146ebb4da">More...</a><br /></td></tr>
+<tr class="separator:a0b75371951d682d8ae281db146ebb4da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename A, typename F&gt;<br />
@@ -212,7 +235,7 @@ class num::sparse_table&lt; A, F &gt;</h3>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00082">82</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00091">91</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 
 </div>
 </div>
@@ -242,7 +265,7 @@ class num::sparse_table&lt; A, F &gt;</h3>
 
 <p>Table of sub-domain centers, sub-domain lengths, and sub-functions: \( (a_0, \Delta a_0, f_0) \), \( (a_1, \Delta a_1, f_1) \), \( \ldots \), \( (a_{n-1}, \Delta a_{n-1}, f_{n-1}) \). </p>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00114">114</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00123">123</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 
 </div>
 </div>
@@ -280,7 +303,7 @@ class num::sparse_table&lt; A, F &gt;</h3>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00124">124</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00133">133</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -289,6 +312,118 @@ Here is the call graph for this function:</div>
 <area shape="rect" id="node2" href="classnum_1_1sparse__table.html#acbed21c224f1f29e940aba71756a095c" title="Compare argument with record so that right record can be found. " alt="" coords="131,5,185,32"/>
 </map>
 </div>
+
+</div>
+</div>
+<a id="aa3bb1fda775d0cb121cb497dd5f193e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3bb1fda775d0cb121cb497dd5f193e6">&sect;&nbsp;</a></span>operator*()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt;A, decltype(F() * T())&gt; operator* </td>
+          <td>(</td>
+          <td class="paramtype">T const &amp;&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Multiply table by factor on right. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Type of factor on right. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td>Factor. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00169">169</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aca45b83aecf7a5cebec54e243ca214bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca45b83aecf7a5cebec54e243ca214bc">&sect;&nbsp;</a></span>operator*=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&amp; operator*= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classdouble.html">double</a>&#160;</td>
+          <td class="paramname"><em>rf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Multiplicative assignment on right. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rf</td><td>Factor. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00183">183</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="a0b75371951d682d8ae281db146ebb4da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b75371951d682d8ae281db146ebb4da">&sect;&nbsp;</a></span>sparse_table</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="classnum_1_1sparse__table.html">sparse_table</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Allow other type of <a class="el" href="classnum_1_1sparse__table.html" title="A piecewise function that, in logarithmic time, looks up the sub-function appropriate to the argument...">sparse_table</a> to access private members. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">OA</td><td>Type of other <a class="el" href="classnum_1_1sparse__table.html" title="A piecewise function that, in logarithmic time, looks up the sub-function appropriate to the argument...">sparse_table</a>'s argument. </td></tr>
+    <tr><td class="paramname">OF</td><td>Type of other <a class="el" href="classnum_1_1sparse__table.html" title="A piecewise function that, in logarithmic time, looks up the sub-function appropriate to the argument...">sparse_table</a>'s subfunction. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00067">67</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 
 </div>
 </div>

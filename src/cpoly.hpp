@@ -30,6 +30,19 @@ namespace num
    template <unsigned D, typename V = double, typename C = double>
    class cpoly : public cfunc<V, C, cpoly<D, V, C>>
    {
+      /// Allow other type of cpoly to access private data.  This allows for
+      /// multiplication of polynomials.
+      ///
+      /// Ideally, only another cpoly with the same type of variable should be
+      /// granted friendship, but there is no way to declare a partly
+      /// specialized friend template.
+      ///
+      /// \tparam OD  Degree of other polynomial.
+      /// \tparam OV  Type of other polynomial's variable.
+      /// \tparam OC  Type of other polynomial's term.
+      template <unsigned OD, typename OV, typename OC>
+      friend class cpoly;
+
       static unsigned constexpr N = D + 1; ///< Number of coefficients.
       std::array<C, N> c_;                 ///< Normalized coefficients.
 
@@ -58,6 +71,43 @@ namespace num
          }
       }
 
+      /// Multiply by other cpoly with same type of variable.
+      /// \tparam OD  Degree of other cpoly.
+      /// \tparam OC  Type of term in other cpoly.
+      template <unsigned OD, typename OC>
+      cpoly<D + OD, V, decltype(C() * OC())>
+      operator*(cpoly<OD, V, OC> const &op) const
+      {
+         cpoly<D + OD, V, decltype(C() * OC())> r; // Return value.
+         for (unsigned i = 0; i < c_.size(); ++i) {
+            for (unsigned j = 0; j < op.c_.size(); ++j) {
+               r.c_[i + j] = c_[i] * op.c_[j];
+            }
+         }
+         return r;
+      }
+
+      /// Multiply by scalar factor on right.
+      /// \tparam T  Type of factor.
+      template <typename T>
+      cpoly<D, V, decltype(C() * T())> operator*(T const& t) const
+      {
+         cpoly<D, V, decltype(C() * T())> r; // Return value.
+         for (unsigned i = 0; i < c_.size(); ++i) {
+            r.c_[i] = c_[i] * t;
+         }
+         return r;
+      }
+
+      /// Right multiplicative assignment.
+      cpoly& operator*=(/** Factor. */ double rf)
+      {
+         for (unsigned i = 0; i < c_.size(); ++i) {
+            c_[i] *= rf;
+         }
+         return *this;
+      }
+
       /// Return number of coefficients in polynomial.
       static unsigned constexpr num_coefs() { return N; }
 
@@ -69,7 +119,7 @@ namespace num
       /// Fetch coefficient for term of degree \a I.
       /// \tparam I  Degree of term.
       template <unsigned I>
-      ctype<I> coef() const
+      ctype<I>           coef() const
       {
          static_assert(I <= D, "Array access must be in bounds.");
          return c_[I] / pow<I>(V(1.0));
@@ -87,9 +137,9 @@ namespace num
       /// Evaluate polynomial.
       C operator()(/** Value of variable in polynomial. */ V const &v) const
       {
-         double const vn = v / V(1.0); // Normalized value of variable.
-         double vp = vn;               // Initial power of normalized value.
-         C val = c_[0];
+         double const vn  = v / V(1.0); // Normalized value of variable.
+         double       vp  = vn;         // Initial power of normalized value.
+         C            val = c_[0];
          for (unsigned i = 1; i < c_.size(); ++i) {
             val += c_[i] * vp;
             vp *= vn;
@@ -119,12 +169,12 @@ namespace num
       {
          integ i;
          // Initialize constant with zero in right units.
-         i.c_[0] = 0.0 * (*this)(lb)*lb;
-         double const u = lb / V(1.0);
-         double lbn = u; // Initialize power of normalized lower bound.
+         i.c_[0]          = 0.0 * (*this)(lb)*lb;
+         double const u   = lb / V(1.0);
+         double       lbn = u; // Initialize power of normalized lower bound.
          for (unsigned j = 0; j < c_.size(); ++j) {
             iterm const cn = c_[j] / (j + 1) * V(1.0);
-            i.c_[j + 1] = cn;
+            i.c_[j + 1]    = cn;
             i.c_[0] -= cn * lbn;
             lbn *= u;
          }
@@ -147,13 +197,44 @@ namespace num
       /// Copy coefficient from instance of its type.
       cpoly(C const &cc) { c_[0] = cc; }
 
+      /// Multiply by other cpoly with same type of variable.
+      /// \tparam OD  Degree of other cpoly.
+      /// \tparam OC  Type of term in other cpoly.
+      template <unsigned OD, typename OC>
+      cpoly<OD, V, decltype(C() * OC())>
+      operator*(cpoly<OD, V, OC> const &op) const
+      {
+         cpoly<OD, V, decltype(C() * OC())> r; // Return value.
+         for (unsigned j = 0; j < op.c_.size(); ++j) {
+            r.c_[j] = c_[0] * op.c_[j];
+         }
+         return r;
+      }
+
+      /// Multiply by scalar factor on right.
+      /// \tparam T  Type of factor.
+      template <typename T>
+      cpoly<0, V, decltype(C() * T())> operator*(T const &t) const
+      {
+         cpoly<0, V, decltype(C() * T())> r; // Return value.
+         r.c_[0] = c_[0] * t;
+         return r;
+      }
+
+      /// Right multiplicative assignment.
+      cpoly &operator*=(/** Factor. */ double rf)
+      {
+         c_[0] *= rf;
+         return *this;
+      }
+
       /// Return number of coefficients in polynomial.
       static unsigned constexpr num_coefs() { return N; }
 
       /// Fetch coefficient for term of degree \a I.
       /// \tparam I  Degree of term.
       template <unsigned I>
-      C coef() const
+      C                  coef() const
       {
          static_assert(I == 0, "Array access must be in bounds.");
          return c_[I];
@@ -242,10 +323,10 @@ namespace num
       cpoly() { memset(c_.data(), 0, sizeof(c_)); }
 
       /// Initialize from array of coefficients.
-      cpoly(std::array<dyndim, N> const& cc) : c_(cc) {}
+      cpoly(std::array<dyndim, N> const &cc) : c_(cc) {}
 
       /// Initialize from vector of coefficients.
-      cpoly(std::vector<dyndim> const& cc)
+      cpoly(std::vector<dyndim> const &cc)
       {
          if (cc.size() != c_.size()) {
             throw "Initializer is wrong length.";
@@ -255,13 +336,50 @@ namespace num
          }
       }
 
+      /// Multiply by other cpoly with same type of variable.
+      /// \tparam OD  Degree of other cpoly.
+      /// \tparam OC  Type of term in other cpoly.
+      template <unsigned OD>
+      cpoly<D + OD, dyndim, dyndim>
+      operator*(cpoly<OD, dyndim, dyndim> const &op) const
+      {
+         cpoly<D + OD, dyndim, dyndim> r; // Return value.
+         for (unsigned i = 0; i < c_.size(); ++i) {
+            for (unsigned j = 0; j < op.c_.size(); ++j) {
+               r.c_[i + j] = c_[i] * op.c_[j];
+            }
+         }
+         return r;
+      }
+
+      /// Multiply by scalar factor on right.
+      /// \tparam T  Type of factor.
+      template <typename T>
+      cpoly<D, dyndim, dyndim> operator*(T const& t) const
+      {
+         cpoly<D, dyndim, dyndim> r; // Return value.
+         for (unsigned i = 0; i < c_.size(); ++i) {
+            r.c_[i] = c_[i] * t;
+         }
+         return r;
+      }
+
+      /// Right multiplicative assignment.
+      cpoly& operator*=(/** Factor. */ double rf)
+      {
+         for (unsigned i = 0; i < c_.size(); ++i) {
+            c_[i] *= rf;
+         }
+         return *this;
+      }
+
       /// Return number of coefficients in polynomial.
       static unsigned constexpr num_coefs() { return N; }
 
       /// Fetch coefficient for term of degree \a I.
       /// \tparam I  Degree of term.
       template <unsigned I>
-      dyndim coef() const
+      dyndim             coef() const
       {
          static_assert(I <= D, "Array access must be in bounds.");
          return c_[I];
@@ -288,7 +406,7 @@ namespace num
       /// Evaluate polynomial.
       dyndim operator()(/** Value of variable. */ dyndim const &v) const
       {
-         dyndim vp = v; // Initial power of variable's value.
+         dyndim vp  = v; // Initial power of variable's value.
          dyndim val = c_[0];
          for (unsigned i = 1; i < c_.size(); ++i) {
             val += c_[i] * vp;
@@ -317,11 +435,11 @@ namespace num
       {
          integ i;
          // Initialize constant with zero in right units.
-         i.c_[0] = 0.0 * (*this)(lb)*lb;
+         i.c_[0]    = 0.0 * (*this)(lb)*lb;
          dyndim lbn = lb; // Initialize power of lower bound.
          for (unsigned j = 0; j < c_.size(); ++j) {
             dyndim const cn = c_[j] / (j + 1);
-            i.c_[j + 1] = cn;
+            i.c_[j + 1]     = cn;
             i.c_[0] -= cn * lbn;
             lbn *= lb;
          }
@@ -349,13 +467,44 @@ namespace num
       /// Copy coefficient from instance of its type.
       cpoly(dyndim const &cc) { c_[0] = cc; }
 
+      /// Multiply by other cpoly with same type of variable.
+      /// \tparam OD  Degree of other cpoly.
+      /// \tparam OC  Type of term in other cpoly.
+      template <unsigned OD>
+      cpoly<OD, dyndim, dyndim>
+      operator*(cpoly<OD, dyndim, dyndim> const &op) const
+      {
+         cpoly<OD, dyndim, dyndim> r; // Return value.
+         for (unsigned j = 0; j < op.c_.size(); ++j) {
+            r.c_[j] = c_[0] * op.c_[j];
+         }
+         return r;
+      }
+
+      /// Multiply by scalar factor on right.
+      /// \tparam T  Type of factor.
+      template <typename T>
+      cpoly<0, dyndim, dyndim> operator*(T const& t) const
+      {
+         cpoly<0, dyndim, dyndim> r; // Return value.
+         r.c_[0] = c_[0] * t;
+         return r;
+      }
+
+      /// Right multiplicative assignment.
+      cpoly& operator*=(/** Factor. */ double rf)
+      {
+         c_[0] *= rf;
+         return *this;
+      }
+
       /// Return number of coefficients in polynomial.
       static unsigned constexpr num_coefs() { return N; }
 
       /// Fetch coefficient for term of degree \a I.
       /// \tparam I  Degree of term.
       template <unsigned I>
-      dyndim coef() const
+      dyndim             coef() const
       {
          static_assert(I == 0, "Array access must be in bounds.");
          return c_[I];

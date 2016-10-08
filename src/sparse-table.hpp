@@ -60,9 +60,16 @@ namespace num
    template <typename A, typename F>
    class sparse_table
    {
+      /// Allow other type of sparse_table to access private members.
+      /// \tparam OA  Type of other sparse_table's argument.
+      /// \tparam OF  Type of other sparse_table's subfunction.
+      template <typename OA, typename OF>
+      friend class sparse_table;
+
    public:
       /// Type of record in table.
-      struct rec {
+      struct rec
+      {
          A a;  ///< Center of sub-domain.
          A da; ///< Length of sub-domain.
          F f;  ///< Sub-function.
@@ -73,9 +80,11 @@ namespace num
    private:
       data dat_; ///< Tabular data.
 
+      /// Allow other type of sparse_table to construct from data member.
+      sparse_table(data&& d) : dat_(std::move(d)) {}
+
       /// Compare argument with record so that right record can be found.
       static bool comp(A const &a, rec const &r) { return a < r.a; }
-
    public:
       /// Initialize table of sub-domain centers, sub-domain lengths, and
       /// sub-functions.
@@ -95,16 +104,16 @@ namespace num
          if (vf[0].first <= 0.0 * vf[0].first) {
             throw "Length of sub-domain must be positive.";
          }
-         dat_[0].a = a0;
+         dat_[0].a  = a0;
          dat_[0].da = vf[0].first;
-         dat_[0].f = vf[0].second;
+         dat_[0].f  = vf[0].second;
          for (unsigned i = 1; i < vf.size(); ++i) {
             if (vf[i].first <= 0.0 * vf[0].first) {
                throw "Length of sub-domain must be positive.";
             }
             dat_[i].da = vf[i].first;
-            dat_[i].f = vf[i].second;
-            dat_[i].a = dat_[i - 1].a + 0.5 * (dat_[i - 1].da + dat_[i].da);
+            dat_[i].f  = vf[i].second;
+            dat_[i].a  = dat_[i - 1].a + 0.5 * (dat_[i - 1].da + dat_[i].da);
          }
       }
 
@@ -121,7 +130,7 @@ namespace num
       /// a > a_{n-1} + \frac{\Delta a_{n-1}}{2} \f$, then return 0.
       ///
       /// \return \f$ f_i(a - a_i) \f$.
-      R operator()(A const &a /**< Argument to function. */) const
+      R operator()(/** Argument to function. */ A const &a) const
       {
          if (a < dat_.begin()->a - 0.5 * dat_.begin()->da ||
              a > dat_.rbegin()->a + 0.5 * dat_.rbegin()->da) {
@@ -151,6 +160,32 @@ namespace num
             rv += i.f.integral(-0.5 * i.da)(+0.5 * i.da);
          }
          return rv;
+      }
+
+      /// Multiply table by factor on right.
+      /// \tparam T  Type of factor on right.
+      template <typename T>
+      sparse_table<A, decltype(F() * T())>
+      operator*(/** Factor. */ T const &t) const
+      {
+         using PF = decltype(F() * T());
+         // Initializer for return value.
+         typename sparse_table<A, PF>::data d(dat_.size());
+         for (unsigned i = 0; i < dat_.size(); ++i) {
+            d[i].a  = dat_[i].a;
+            d[i].da = dat_[i].da;
+            d[i].f  = dat_[i].f * t;
+         }
+         return std::move(d);
+      }
+
+      /// Multiplicative assignment on right.
+      sparse_table& operator*=(/** Factor. */ double rf)
+      {
+         for (unsigned i = 0; i < dat_.size(); ++i) {
+            dat_[i].f *= rf;
+         }
+         return *this;
       }
    };
 }
