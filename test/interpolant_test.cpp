@@ -431,8 +431,34 @@ TEST_CASE("Verify scalar multiplication on left.", "[interpolant]")
    REQUIRE(j2(1000 * nm) == 0.0 * m);
    REQUIRE(j2(1100 * nm) == 0.0 * m);
 
+   REQUIRE(j3(-1 * nm) == 0.0 * m);
+   REQUIRE(j3(299 * nm) == 0.0 * m);
+   REQUIRE(j3(300 * nm) == 0.0 * m);
+   REQUIRE(j3(350 * nm) / m == Approx(80.0));
+   REQUIRE(j3(400 * nm) == 160.0 * m);
+   REQUIRE(j3(450 * nm) == 160.0 * m);
+   REQUIRE(j3(500 * nm) == 160.0 * m);
+   REQUIRE(j3(900 * nm) == 160.0 * m);
+   REQUIRE(j3(950 * nm) / m == Approx(80.0));
+   REQUIRE(j3(1000 * nm) / m == Approx(0.0));
+   REQUIRE(j3(1100 * nm) == 0.0 * m);
+
+   REQUIRE(j4(-1 * nm) == 0.0 * m);
+   REQUIRE(j4(299 * nm) == 0.0 * m);
+   REQUIRE(j4(300 * nm) == 0.0 * m);
+   REQUIRE((j4(350 * nm) / m).number() == Approx(80.0));
+   REQUIRE(j4(400 * nm) == 160.0 * m);
+   REQUIRE(j4(450 * nm) == 160.0 * m);
+   REQUIRE(j4(500 * nm) == 160.0 * m);
+   REQUIRE(j4(900 * nm) == 160.0 * m);
+   REQUIRE((j4(950 * nm) / m).number() == Approx(80.0));
+   REQUIRE((j4(1000 * nm) / m).number() == Approx(0.0));
+   REQUIRE(j4(1100 * nm) == 0.0 * m);
+
    auto k1 = 2.0 * i1;
    auto k2 = 2.0 * i2;
+   auto k3 = 2.0 * i3;
+   auto k4 = 2.0 * i4;
 
    REQUIRE(k1(-1 * nm) == 0.0 * s);
    REQUIRE(k1(299 * nm) == 0.0 * s);
@@ -457,6 +483,30 @@ TEST_CASE("Verify scalar multiplication on left.", "[interpolant]")
    REQUIRE((k2(950 * nm) / s).number() == Approx(80.0));
    REQUIRE(k2(1000 * nm) == 0.0 * s);
    REQUIRE(k2(1100 * nm) == 0.0 * s);
+
+   REQUIRE(k3(-1 * nm) == 0.0 * s);
+   REQUIRE(k3(299 * nm) == 0.0 * s);
+   REQUIRE(k3(300 * nm) == 0.0 * s);
+   REQUIRE(k3(350 * nm) / s == Approx(80.0));
+   REQUIRE(k3(400 * nm) == 160.0 * s);
+   REQUIRE(k3(450 * nm) == 160.0 * s);
+   REQUIRE(k3(500 * nm) == 160.0 * s);
+   REQUIRE(k3(900 * nm) == 160.0 * s);
+   REQUIRE(k3(950 * nm) / s == Approx(80.0));
+   REQUIRE(k3(1000 * nm) / s == Approx(0.0));
+   REQUIRE(k3(1100 * nm) == 0.0 * s);
+
+   REQUIRE(k4(-1 * nm) == 0.0 * s);
+   REQUIRE(k4(299 * nm) == 0.0 * s);
+   REQUIRE(k4(300 * nm) == 0.0 * s);
+   REQUIRE((k4(350 * nm) / s).number() == Approx(80.0));
+   REQUIRE(k4(400 * nm) == 160.0 * s);
+   REQUIRE(k4(450 * nm) == 160.0 * s);
+   REQUIRE(k4(500 * nm) == 160.0 * s);
+   REQUIRE(k4(900 * nm) == 160.0 * s);
+   REQUIRE((k4(950 * nm) / s).number() == Approx(80.0));
+   REQUIRE((k4(1000 * nm) / s).number() == Approx(0.0));
+   REQUIRE(k4(1100 * nm) == 0.0 * s);
 }
 
 TEST_CASE("Verify scalar division of interpolant.", "[interpolant]")

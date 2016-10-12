@@ -34,3 +34,6 @@ clean-local :
 	@rm -fv *.gcda
 	@rm -fv *.gcno
 
+run-tests : tests
+	./tests
+
