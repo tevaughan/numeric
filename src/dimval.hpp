@@ -94,13 +94,13 @@ namespace num
       /// Construct from double that is known to contain value in MKS.
       dimval(double vv /**< Numeric coefficient of MKS unit. */) : v_(vv) {}
 
+   public:
       /// Return reference to present instance as instance of DER.
       DER &d() { return *static_cast<DER *>(this); }
 
       /// Return reference to present instance as instance of DER const.
       DER const &d() const { return *static_cast<DER const *>(this); }
 
-   public:
       /// Dimensional exponents.
       dim_exps exps() const { return d().exps(); }
 

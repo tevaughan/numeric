@@ -72,7 +72,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">sparse-table.hpp File Reference</div>  </div>
 </div><!--header-->
@@ -83,11 +84,18 @@ $(function() {
 <div class="textblock"><code>#include &lt;algorithm&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;<a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for sparse-table.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="sparse-table_8hpp__incl.png" border="0" usemap="#sparse-table_8hpp" alt=""/></div>
 <map name="sparse-table_8hpp" id="sparse-table_8hpp">
+<area shape="rect" id="node5" href="dimval_8hpp.html" title="Definition of conversions dealing with angle, num::dimval_base, num::statdim, and num::dyndim..." alt="" coords="599,80,685,107"/>
+<area shape="rect" id="node9" href="dim-exps_8hpp.html" title="Definition of class num::dim_exps. " alt="" coords="775,155,875,181"/>
+<area shape="rect" id="node11" href="integral_8hpp.html" title="Source for num::integral(), which numerically integrates via adaptive quadrature and the trapezoidal ..." alt="" coords="461,155,551,181"/>
+<area shape="rect" id="node16" href="util_8hpp.html" title="Basic utilities. " alt="" coords="645,229,709,256"/>
+<area shape="rect" id="node14" href="integral-stats_8hpp.html" title="Source for num::integral_stats, which is used by num::integral() and by num::interpolant. " alt="" coords="255,229,378,256"/>
+<area shape="rect" id="node15" href="interval_8hpp.html" title="Source for class interval and class subinterval_stack, which are used by num::integral() and by num::..." alt="" coords="403,229,492,256"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -115,6 +123,17 @@ Namespaces</h2></td></tr>
 <tr class="memitem:namespacenum"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html">num</a></td></tr>
 <tr class="memdesc:namespacenum"><td class="mdescLeft">&#160;</td><td class="mdescRight">Namespace for C++-11 library enabling numerical computation. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a58e6c3a20b3073008313312398b2e259"><td class="memTemplParams" colspan="2">template&lt;typename A , typename F , typename D &gt; </td></tr>
+<tr class="memitem:a58e6c3a20b3073008313312398b2e259"><td class="memTemplItemLeft" align="right" valign="top">sparse_table&lt; A, decltype(F() *D())&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a58e6c3a20b3073008313312398b2e259">operator*</a> (sparse_table&lt; A, F &gt; const &amp;tab, dimval&lt; D &gt; const &amp;fac)</td></tr>
+<tr class="memdesc:a58e6c3a20b3073008313312398b2e259"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply table by dimval on right.  <a href="namespacenum.html#a58e6c3a20b3073008313312398b2e259">More...</a><br /></td></tr>
+<tr class="separator:a58e6c3a20b3073008313312398b2e259"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48dce8b0ffe3244270d0c9f957c31c78"><td class="memTemplParams" colspan="2">template&lt;typename A , typename F , typename D &gt; </td></tr>
+<tr class="memitem:a48dce8b0ffe3244270d0c9f957c31c78"><td class="memTemplItemLeft" align="right" valign="top">sparse_table&lt; A, decltype(D() *F())&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a48dce8b0ffe3244270d0c9f957c31c78">operator*</a> (dimval&lt; D &gt; const &amp;fac, sparse_table&lt; A, F &gt; const &amp;tab)</td></tr>
+<tr class="memdesc:a48dce8b0ffe3244270d0c9f957c31c78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply table by dimval on left.  <a href="namespacenum.html#a48dce8b0ffe3244270d0c9f957c31c78">More...</a><br /></td></tr>
+<tr class="separator:a48dce8b0ffe3244270d0c9f957c31c78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Definition of num::sparse-table. </p>

@@ -1,9 +1,10 @@
 <map id="interval.hpp" name="interval.hpp">
-<area shape="rect" id="node2" href="$integral_8hpp.html" title="Source for num::integral(), which numerically integrates via adaptive quadrature and the trapezoidal ..." alt="" coords="132,80,221,107"/>
-<area shape="rect" id="node8" href="$interpolant_8hpp.html" title="Source code for num::interpolant, num::ipoint, num::ilist, num::interpolantd, and num::ilistd..." alt="" coords="167,304,274,331"/>
-<area shape="rect" id="node3" href="$dimval_8hpp.html" title="Definition of conversions dealing with angle, num::dimval_base, num::statdim, and num::dyndim..." alt="" coords="134,155,219,181"/>
+<area shape="rect" id="node2" href="$integral_8hpp.html" title="Source for num::integral(), which numerically integrates via adaptive quadrature and the trapezoidal ..." alt="" coords="207,80,296,107"/>
+<area shape="rect" id="node8" href="$interpolant_8hpp.html" title="Source code for num::interpolant, num::ipoint, num::ilist, num::interpolantd, and num::ilistd..." alt="" coords="251,304,358,331"/>
+<area shape="rect" id="node3" href="$dimval_8hpp.html" title="Definition of conversions dealing with angle, num::dimval_base, num::statdim, and num::dyndim..." alt="" coords="174,155,259,181"/>
 <area shape="rect" id="node4" href="$dimensions_8hpp.html" title="Automatically generated source for generic&#45;dimension types. " alt="" coords="5,229,119,256"/>
 <area shape="rect" id="node7" href="$cpoly_8hpp.html" title="Definition of num::cpoly. " alt="" coords="143,229,221,256"/>
+<area shape="rect" id="node9" href="$sparse-table_8hpp.html" title="Definition of num::sparse&#45;table. " alt="" coords="245,229,364,256"/>
 <area shape="rect" id="node5" href="$units_8hpp.html" title="Automatically generated header file for units. " alt="" coords="25,304,99,331"/>
 <area shape="rect" id="node6" href="$units_8cpp.html" title="Automatically generated implementation file for units. " alt="" coords="25,379,99,405"/>
 </map>

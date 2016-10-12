@@ -14,6 +14,7 @@ var searchData=
   ['ng',['ng',['../namespacenum_1_1u.html#a0a423b890e98d4d7114f8a7605f89feb',1,'num::u']]],
   ['nm',['nm',['../namespacenum_1_1u.html#a4f715334792d94ae85336ce22dfda0cc',1,'num::u']]],
   ['nok',['nok',['../classnum_1_1rk__quad.html#a44f41cadcfa7a195b9fd7b7162ff4de8',1,'num::rk_quad']]],
+  ['norm_5fcoefs',['norm_coefs',['../classnum_1_1cpoly.html#a947a28374bfdc1bf1a318f1dd3d4349a',1,'num::cpoly::norm_coefs() const'],['../classnum_1_1cpoly.html#ac23b3d1c63ea8fb6fb36575fc901c456',1,'num::cpoly::norm_coefs()']]],
   ['ns',['ns',['../namespacenum_1_1u.html#ae78b11e2501c9856676ecc47e08f7a37',1,'num::u']]],
   ['num',['num',['../namespacenum.html',1,'']]],
   ['num_5f',['num_',['../classnum_1_1integral__stats.html#a79235a3aa28e7f53fcd772475fa5e76c',1,'num::integral_stats']]],

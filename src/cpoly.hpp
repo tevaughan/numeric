@@ -52,7 +52,7 @@ namespace num
 
       /// Initialize coefficients.
       template <typename T>
-      cpoly(std::array<T, N> const &a)
+      cpoly(/** Array of coefficients. */ std::array<T, N> const &a)
       {
          for (unsigned i = 0; i < N; ++i) {
             c_[i] = a[i] * pow(V(1.0), i);
@@ -61,7 +61,7 @@ namespace num
 
       /// Initialize coefficients.
       template <typename T>
-      cpoly(std::vector<T> const &v)
+      cpoly(/** Vector of coefficients. */ std::vector<T> const &v)
       {
          if (v.size() != N) {
             throw "Wrong number of coefficients.";
@@ -71,12 +71,18 @@ namespace num
          }
       }
 
+      /// Normalized coefficients.
+      std::array<C, N> const &norm_coefs() const { return c_; }
+
+      /// Normalized coefficients.
+      std::array<C, N> &norm_coefs() { return c_; }
+
       /// Multiply by other cpoly with same type of variable.
       /// \tparam OD  Degree of other cpoly.
       /// \tparam OC  Type of term in other cpoly.
       template <unsigned OD, typename OC>
       cpoly<D + OD, V, decltype(C() * OC())>
-      operator*(cpoly<OD, V, OC> const &op) const
+      operator*(/** Other cpoly. */ cpoly<OD, V, OC> const &op) const
       {
          cpoly<D + OD, V, decltype(C() * OC())> r; // Return value.
          for (unsigned i = 0; i < c_.size(); ++i) {
@@ -87,23 +93,40 @@ namespace num
          return r;
       }
 
-      /// Multiply by scalar factor on right.
-      /// \tparam T  Type of factor.
-      template <typename T>
-      cpoly<D, V, decltype(C() * T())> operator*(T const& t) const
+      /// Multiply by scale factor on right.
+      cpoly operator*(/** Factor. */ double fac) const
       {
-         cpoly<D, V, decltype(C() * T())> r; // Return value.
+         cpoly r; // Return value.
          for (unsigned i = 0; i < c_.size(); ++i) {
-            r.c_[i] = c_[i] * t;
+            r.c_[i] = c_[i] * fac;
          }
          return r;
       }
 
-      /// Right multiplicative assignment.
-      cpoly& operator*=(/** Factor. */ double rf)
+      /// Multiply by scale factor on right.
+      friend cpoly operator*(/** Factor. */ double fac, cpoly const &ocp)
+      {
+         cpoly r; // Return value.
+         for (unsigned i = 0; i < ocp.c_.size(); ++i) {
+            r.c_[i] = fac * ocp.c_[i];
+         }
+         return r;
+      }
+
+      /// Multiplicative assignment.
+      cpoly &operator*=(/** Factor. */ double rf)
       {
          for (unsigned i = 0; i < c_.size(); ++i) {
             c_[i] *= rf;
+         }
+         return *this;
+      }
+
+      /// Divisive assignment.
+      cpoly &operator/=(/** Divisor. */ double rf)
+      {
+         for (unsigned i = 0; i < c_.size(); ++i) {
+            c_[i] /= rf;
          }
          return *this;
       }
@@ -355,7 +378,7 @@ namespace num
       /// Multiply by scalar factor on right.
       /// \tparam T  Type of factor.
       template <typename T>
-      cpoly<D, dyndim, dyndim> operator*(T const& t) const
+      cpoly<D, dyndim, dyndim> operator*(T const &t) const
       {
          cpoly<D, dyndim, dyndim> r; // Return value.
          for (unsigned i = 0; i < c_.size(); ++i) {
@@ -365,7 +388,7 @@ namespace num
       }
 
       /// Right multiplicative assignment.
-      cpoly& operator*=(/** Factor. */ double rf)
+      cpoly &operator*=(/** Factor. */ double rf)
       {
          for (unsigned i = 0; i < c_.size(); ++i) {
             c_[i] *= rf;
@@ -400,7 +423,7 @@ namespace num
          c_[I] = c;
       }
 
-      /// Set coefficient for term if degree \a i.
+      /// Set coefficient for term of degree \a i.
       dyndim &coef(/** Degree of term. */ unsigned i) { return c_[i]; }
 
       /// Evaluate polynomial.
@@ -484,7 +507,7 @@ namespace num
       /// Multiply by scalar factor on right.
       /// \tparam T  Type of factor.
       template <typename T>
-      cpoly<0, dyndim, dyndim> operator*(T const& t) const
+      cpoly<0, dyndim, dyndim> operator*(T const &t) const
       {
          cpoly<0, dyndim, dyndim> r; // Return value.
          r.c_[0] = c_[0] * t;
@@ -492,7 +515,7 @@ namespace num
       }
 
       /// Right multiplicative assignment.
-      cpoly& operator*=(/** Factor. */ double rf)
+      cpoly &operator*=(/** Factor. */ double rf)
       {
          c_[0] *= rf;
          return *this;
@@ -551,6 +574,66 @@ namespace num
          return i;
       }
    };
+
+   /// Multiply cpoly by scale factor on right.
+   /// \tparam D  Degree of polynomial.
+   /// \tparam V  Type of variable.
+   /// \tparam C  Type of term.
+   /// \tparam F  type of factor.
+   template <unsigned D, typename V, typename C, typename F>
+   cpoly<D, V, decltype(C() * F())>
+   operator*(cpoly<D, V, C> const &cp, F const &fac)
+   {
+      cpoly<D, V, decltype(C() * F())> r; // Return value.
+      for (unsigned i = 0; i < cp.norm_coefs().size(); ++i) {
+         r.norm_coefs()[i] = cp.norm_coefs()[i] * fac;
+      }
+      return r;
+   }
+
+   /// Multiply cpoly by scale factor on left.
+   /// \tparam D  Degree of polynomial.
+   /// \tparam V  Type of variable.
+   /// \tparam C  Type of term.
+   /// \tparam F  Type of factor.
+   template <unsigned D, typename V, typename C, typename F>
+   cpoly<D, V, decltype(F() * C())>
+   operator*(F const &fac, cpoly<D, V, C> const &cp)
+   {
+      cpoly<D, V, decltype(F() * C())> r; // Return value.
+      for (unsigned i = 0; i < cp.norm_coefs().size(); ++i) {
+         r.norm_coefs()[i] = fac * cp.norm_coefs()[i];
+      }
+      return r;
+   }
+
+   /// Multiply cpoly by scale factor on right.
+   /// \tparam D  Degree of polynomial.
+   /// \tparam F  Type of factor.
+   template <unsigned D, typename F>
+   cpoly<D, dyndim, dyndim>
+   operator*(cpoly<D, dyndim, dyndim> const &cp, F const &fac)
+   {
+      cpoly<D, dyndim, dyndim> r; // Return value.
+      for (unsigned i = 0; i < cp.num_coefs(); ++i) {
+         r.coef(i) = cp.coef(i) * fac;
+      }
+      return r;
+   }
+
+   /// Multiply cpoly by scale factor on left.
+   /// \tparam D  Degree of polynomial.
+   /// \tparam F  Type of factor.
+   template <unsigned D, typename F>
+   cpoly<D, dyndim, dyndim>
+   operator*(F const &fac, cpoly<D, dyndim, dyndim> const &cp)
+   {
+      cpoly<D, dyndim, dyndim> r; // Return value.
+      for (unsigned i = 0; i < cp.num_coefs(); ++i) {
+         r.coef(i) = fac * cp.coef(i);
+      }
+      return r;
+   }
 }
 
 #endif // ndef NUMERIC_CPOLY_HPP

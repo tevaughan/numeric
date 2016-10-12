@@ -80,9 +80,6 @@ namespace num
    private:
       data dat_; ///< Tabular data.
 
-      /// Allow other type of sparse_table to construct from data member.
-      sparse_table(data&& d) : dat_(std::move(d)) {}
-
       /// Compare argument with record so that right record can be found.
       static bool comp(A const &a, rec const &r) { return a < r.a; }
    public:
@@ -116,6 +113,9 @@ namespace num
             dat_[i].a  = dat_[i - 1].a + 0.5 * (dat_[i - 1].da + dat_[i].da);
          }
       }
+
+      /// Construct from data member.
+      explicit sparse_table(data &&d) : dat_(std::move(d)) {}
 
       /// Table of sub-domain centers, sub-domain lengths, and sub-functions:
       /// \f$ (a_0, \Delta a_0, f_0) \f$, \f$ (a_1, \Delta a_1, f_1) \f$, \f$
@@ -162,32 +162,90 @@ namespace num
          return rv;
       }
 
-      /// Multiply table by factor on right.
-      /// \tparam T  Type of factor on right.
-      template <typename T>
-      sparse_table<A, decltype(F() * T())>
-      operator*(/** Factor. */ T const &t) const
+      /// Multiply table by scale factor on right.
+      sparse_table operator*(/** Factor. */ double fac) const
       {
-         using PF = decltype(F() * T());
-         // Initializer for return value.
-         typename sparse_table<A, PF>::data d(dat_.size());
+         data d(dat_.size()); // Initializer for return value.
          for (unsigned i = 0; i < dat_.size(); ++i) {
             d[i].a  = dat_[i].a;
             d[i].da = dat_[i].da;
-            d[i].f  = dat_[i].f * t;
+            d[i].f  = dat_[i].f * fac;
          }
-         return std::move(d);
+         return sparse_table(std::move(d));
       }
 
-      /// Multiplicative assignment on right.
-      sparse_table& operator*=(/** Factor. */ double rf)
+      /// Multiply table by scale factor on left.
+      friend sparse_table operator*(
+            /** Factor. */ double fac, /** Table. */ sparse_table const &tab)
+      {
+         data d(tab.dat_.size()); // Initializer for return value.
+         for (unsigned i = 0; i < tab.dat_.size(); ++i) {
+            d[i].a  = tab.dat_[i].a;
+            d[i].da = tab.dat_[i].da;
+            d[i].f  = fac * tab.dat_[i].f;
+         }
+         return sparse_table(std::move(d));
+      }
+
+      /// Multiplicative assignment.
+      sparse_table &operator*=(/** Factor. */ double rf)
       {
          for (unsigned i = 0; i < dat_.size(); ++i) {
             dat_[i].f *= rf;
          }
          return *this;
       }
+
+      /// Divisive assignment.
+      sparse_table &operator/=(/** Factor. */ double rf)
+      {
+         for (unsigned i = 0; i < dat_.size(); ++i) {
+            dat_[i].f /= rf;
+         }
+         return *this;
+      }
    };
+}
+
+#include <dimval.hpp>
+
+namespace num
+{
+   /// Multiply table by dimval on right.
+   /// \tparam D  Derived type of dimval.
+   template <typename A, typename F, typename D>
+   sparse_table<A, decltype(F() * D())> operator*(
+         /** Table.  */ sparse_table<A, F> const &tab,
+         /** Factor. */ dimval<D> const &fac)
+   {
+      using PF = decltype(F() * D());
+      // Initializer for return value.
+      typename sparse_table<A, PF>::data d(tab.dat().size());
+      for (unsigned i = 0; i < d.size(); ++i) {
+         d[i].a  = tab.dat()[i].a;
+         d[i].da = tab.dat()[i].da;
+         d[i].f  = tab.dat()[i].f * fac.d();
+      }
+      return sparse_table<A, PF>(std::move(d));
+   }
+
+   /// Multiply table by dimval on left.
+   /// \tparam D  Derived type of dimval.
+   template <typename A, typename F, typename D>
+   sparse_table<A, decltype(D() * F())> operator*(
+         /** Factor. */ dimval<D> const &fac,
+         /** Table.  */ sparse_table<A, F> const &tab)
+   {
+      using PF = decltype(D() * F());
+      // Initializer for return value.
+      typename sparse_table<A, PF>::data d(tab.dat().size());
+      for (unsigned i = 0; i < d.size(); ++i) {
+         d[i].a  = tab.dat()[i].a;
+         d[i].da = tab.dat()[i].da;
+         d[i].f  = fac.d() * tab.dat()[i].f;
+      }
+      return sparse_table<A, PF>(std::move(d));
+   }
 }
 
 #endif // ndef NUMERIC_SPARSE_TABLE_HPP

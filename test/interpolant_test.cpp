@@ -395,13 +395,17 @@ TEST_CASE(
    REQUIRE(i4(1100 * nm) == 0.0 * s);
 }
 
-TEST_CASE(
-      "Verify scalar multiplication of interpolant on left.", "[interpolant]")
+TEST_CASE("Verify scalar multiplication on left.", "[interpolant]")
 {
-   interpolant<length, num::time> i1("interpolant_test.txt", nm, s);
-   interpolant<dyndim, dyndim>    i2("interpolant_test.txt", nm, s);
-   interpolant<length, length>    j1 = (2 * m / s) * i1;
-   interpolant<dyndim, dyndim>    j2 = (2 * m / s) * i2;
+   using time = num::time;
+   interpolant<length, time>   i1("interpolant_test.txt", nm, s);
+   interpolant<dyndim, dyndim> i2("interpolant_test.txt", nm, s);
+   auto i3 = make_linear_interp<length, time>("interpolant_test.txt", nm, s);
+   auto i4 = make_linear_interp<dyndim, dyndim>("interpolant_test.txt", nm, s);
+   auto j1 = (2 * m / s) * i1;
+   auto j2 = (2 * m / s) * i2;
+   auto j3 = (2 * m / s) * i3;
+   auto j4 = (2 * m / s) * i4;
 
    REQUIRE(j1(-1 * nm) == 0.0 * m);
    REQUIRE(j1(299 * nm) == 0.0 * m);
@@ -427,8 +431,8 @@ TEST_CASE(
    REQUIRE(j2(1000 * nm) == 0.0 * m);
    REQUIRE(j2(1100 * nm) == 0.0 * m);
 
-   interpolant<length, num::time> k1 = 2.0 * i1;
-   interpolant<dyndim, dyndim>    k2 = 2.0 * i2;
+   auto k1 = 2.0 * i1;
+   auto k2 = 2.0 * i2;
 
    REQUIRE(k1(-1 * nm) == 0.0 * s);
    REQUIRE(k1(299 * nm) == 0.0 * s);
