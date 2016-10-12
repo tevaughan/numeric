@@ -329,6 +329,14 @@ template&lt;typename DER &gt; </td></tr>
 <tr class="memitem:a1f41c886f336c22a9ae12869646bb41a"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; D, <a class="el" href="classnum_1_1dyndim.html">dyndim</a>, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a1f41c886f336c22a9ae12869646bb41a">operator*</a> (F const &amp;fac, <a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; D, <a class="el" href="classnum_1_1dyndim.html">dyndim</a>, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> &gt; const &amp;cp)</td></tr>
 <tr class="memdesc:a1f41c886f336c22a9ae12869646bb41a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply cpoly by scale factor on left.  <a href="#a1f41c886f336c22a9ae12869646bb41a">More...</a><br /></td></tr>
 <tr class="separator:a1f41c886f336c22a9ae12869646bb41a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa04351663de2e0b8a22e44ee1bb47490"><td class="memTemplParams" colspan="2">template&lt;unsigned D, typename V , typename C , typename F &gt; </td></tr>
+<tr class="memitem:aa04351663de2e0b8a22e44ee1bb47490"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; D, V, decltype(C()/F())&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#aa04351663de2e0b8a22e44ee1bb47490">operator/</a> (<a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; D, V, C &gt; const &amp;cp, F const &amp;fac)</td></tr>
+<tr class="memdesc:aa04351663de2e0b8a22e44ee1bb47490"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divide cpoly by scale factor.  <a href="#aa04351663de2e0b8a22e44ee1bb47490">More...</a><br /></td></tr>
+<tr class="separator:aa04351663de2e0b8a22e44ee1bb47490"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29979c970af38905d9adfb4a452d4aa8"><td class="memTemplParams" colspan="2">template&lt;unsigned D, typename F &gt; </td></tr>
+<tr class="memitem:a29979c970af38905d9adfb4a452d4aa8"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; D, <a class="el" href="classnum_1_1dyndim.html">dyndim</a>, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a29979c970af38905d9adfb4a452d4aa8">operator/</a> (<a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; D, <a class="el" href="classnum_1_1dyndim.html">dyndim</a>, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> &gt; const &amp;cp, F const &amp;fac)</td></tr>
+<tr class="memdesc:a29979c970af38905d9adfb4a452d4aa8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divide cpoly by scale factor.  <a href="#a29979c970af38905d9adfb4a452d4aa8">More...</a><br /></td></tr>
+<tr class="separator:a29979c970af38905d9adfb4a452d4aa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2709014e5395262d3992f15c6928fcc4"><td class="memTemplParams" colspan="2">template&lt;typename X  = double, typename Y  = double&gt; </td></tr>
 <tr class="memitem:a2709014e5395262d3992f15c6928fcc4"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt; X, <a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; 0, X, Y &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a2709014e5395262d3992f15c6928fcc4">make_const_interp</a> (std::string file, X const &amp;xu=1, Y const &amp;yu=1)</td></tr>
 <tr class="memdesc:a2709014e5395262d3992f15c6928fcc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a (<a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>) piecewise-constant interpolant from the first two space-delimited columns in an ASCII file.  <a href="#a2709014e5395262d3992f15c6928fcc4">More...</a><br /></td></tr>
@@ -353,6 +361,10 @@ template&lt;typename DER &gt; </td></tr>
 <tr class="memitem:a48dce8b0ffe3244270d0c9f957c31c78"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt; A, decltype(D() *F())&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a48dce8b0ffe3244270d0c9f957c31c78">operator*</a> (<a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; D &gt; const &amp;fac, <a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt; A, F &gt; const &amp;tab)</td></tr>
 <tr class="memdesc:a48dce8b0ffe3244270d0c9f957c31c78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply table by dimval on left.  <a href="#a48dce8b0ffe3244270d0c9f957c31c78">More...</a><br /></td></tr>
 <tr class="separator:a48dce8b0ffe3244270d0c9f957c31c78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c3b541da7b6225caf7f5efa2e4cacc7"><td class="memTemplParams" colspan="2">template&lt;typename A , typename F , typename D &gt; </td></tr>
+<tr class="memitem:a0c3b541da7b6225caf7f5efa2e4cacc7"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt; A, decltype(F()/D())&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a0c3b541da7b6225caf7f5efa2e4cacc7">operator/</a> (<a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt; A, F &gt; const &amp;tab, <a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; D &gt; const &amp;fac)</td></tr>
+<tr class="memdesc:a0c3b541da7b6225caf7f5efa2e4cacc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divide table by dimval.  <a href="#a0c3b541da7b6225caf7f5efa2e4cacc7">More...</a><br /></td></tr>
+<tr class="separator:a0c3b541da7b6225caf7f5efa2e4cacc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -990,6 +1002,7 @@ Here is the caller graph for this function:</div>
 <p>Multiply table by dimval on right. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
+    <tr><td class="paramname">A</td><td>Type of argument to function modeled by table.  F Type of each functional piece of table. </td></tr>
     <tr><td class="paramname">D</td><td>Derived type of dimval. </td></tr>
   </table>
   </dd>
@@ -1002,7 +1015,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00217">217</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00219">219</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 
 </div>
 </div>
@@ -1035,6 +1048,7 @@ Here is the caller graph for this function:</div>
 <p>Multiply table by dimval on left. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
+    <tr><td class="paramname">A</td><td>Type of argument to function modeled by table.  F Type of each functional piece of table. </td></tr>
     <tr><td class="paramname">D</td><td>Derived type of dimval. </td></tr>
   </table>
   </dd>
@@ -1047,7 +1061,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00235">235</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00239">239</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 
 </div>
 </div>
@@ -1088,7 +1102,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00585">585</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00608">608</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
 
 </div>
 </div>
@@ -1129,7 +1143,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00601">601</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00624">624</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
 
 </div>
 </div>
@@ -1168,7 +1182,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00615">615</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00638">638</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
 
 </div>
 </div>
@@ -1207,12 +1221,12 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00629">629</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00652">652</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
 
 </div>
 </div>
 <a id="ab51e14a5c66fd41828cb0eeaff84b778"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab51e14a5c66fd41828cb0eeaff84b778">&sect;&nbsp;</a></span>operator/() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab51e14a5c66fd41828cb0eeaff84b778">&sect;&nbsp;</a></span>operator/() <span class="overload">[1/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1245,7 +1259,7 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <a id="a337d935f37927eb6e92063ceb8c2a972"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a337d935f37927eb6e92063ceb8c2a972">&sect;&nbsp;</a></span>operator/() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a337d935f37927eb6e92063ceb8c2a972">&sect;&nbsp;</a></span>operator/() <span class="overload">[2/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1274,6 +1288,132 @@ Here is the caller graph for this function:</div>
 <p>Global division operator against statdim needs access to v_ and exps_.</p>
 
 <p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00820">820</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a0c3b541da7b6225caf7f5efa2e4cacc7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c3b541da7b6225caf7f5efa2e4cacc7">&sect;&nbsp;</a></span>operator/() <span class="overload">[3/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt;A, decltype(F() / D())&gt; num::operator/ </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt; A, F &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>tab</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; D &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>fac</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Divide table by dimval. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">A</td><td>Type of argument to function modeled by table.  F Type of each functional piece of table. </td></tr>
+    <tr><td class="paramname">D</td><td>Derived type of dimval. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tab</td><td>Table. </td></tr>
+    <tr><td class="paramname">fac</td><td>Factor. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00259">259</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aa04351663de2e0b8a22e44ee1bb47490"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa04351663de2e0b8a22e44ee1bb47490">&sect;&nbsp;</a></span>operator/() <span class="overload">[4/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt;D, V, decltype(C() / F())&gt; num::operator/ </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; D, V, C &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>cp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">F const &amp;&#160;</td>
+          <td class="paramname"><em>fac</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Divide cpoly by scale factor. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">D</td><td>Degree of polynomial. </td></tr>
+    <tr><td class="paramname">V</td><td>Type of variable. </td></tr>
+    <tr><td class="paramname">C</td><td>Type of term. </td></tr>
+    <tr><td class="paramname">F</td><td>type of factor. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00668">668</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a29979c970af38905d9adfb4a452d4aa8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29979c970af38905d9adfb4a452d4aa8">&sect;&nbsp;</a></span>operator/() <span class="overload">[5/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt;D, <a class="el" href="classnum_1_1dyndim.html">dyndim</a>, <a class="el" href="classnum_1_1dyndim.html">dyndim</a>&gt; num::operator/ </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; D, <a class="el" href="classnum_1_1dyndim.html">dyndim</a>, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>cp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">F const &amp;&#160;</td>
+          <td class="paramname"><em>fac</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Divide cpoly by scale factor. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">D</td><td>Degree of polynomial. </td></tr>
+    <tr><td class="paramname">F</td><td>Type of factor. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00682">682</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
 
 </div>
 </div>

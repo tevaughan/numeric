@@ -212,6 +212,8 @@ namespace num
 namespace num
 {
    /// Multiply table by dimval on right.
+   /// \tparam A  Type of argument to function modeled by table.
+   /// \tpara  F  Type of each functional piece of table.
    /// \tparam D  Derived type of dimval.
    template <typename A, typename F, typename D>
    sparse_table<A, decltype(F() * D())> operator*(
@@ -230,6 +232,8 @@ namespace num
    }
 
    /// Multiply table by dimval on left.
+   /// \tparam A  Type of argument to function modeled by table.
+   /// \tpara  F  Type of each functional piece of table.
    /// \tparam D  Derived type of dimval.
    template <typename A, typename F, typename D>
    sparse_table<A, decltype(D() * F())> operator*(
@@ -243,6 +247,26 @@ namespace num
          d[i].a  = tab.dat()[i].a;
          d[i].da = tab.dat()[i].da;
          d[i].f  = fac.d() * tab.dat()[i].f;
+      }
+      return sparse_table<A, PF>(std::move(d));
+   }
+
+   /// Divide table by dimval.
+   /// \tparam A  Type of argument to function modeled by table.
+   /// \tpara  F  Type of each functional piece of table.
+   /// \tparam D  Derived type of dimval.
+   template <typename A, typename F, typename D>
+   sparse_table<A, decltype(F() / D())> operator/(
+         /** Table.  */ sparse_table<A, F> const &tab,
+         /** Factor. */ dimval<D> const &fac)
+   {
+      using PF = decltype(F() / D());
+      // Initializer for return value.
+      typename sparse_table<A, PF>::data d(tab.dat().size());
+      for (unsigned i = 0; i < d.size(); ++i) {
+         d[i].a  = tab.dat()[i].a;
+         d[i].da = tab.dat()[i].da;
+         d[i].f  = tab.dat()[i].f / fac.d();
       }
       return sparse_table<A, PF>(std::move(d));
    }

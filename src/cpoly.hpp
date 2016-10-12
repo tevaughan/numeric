@@ -251,6 +251,13 @@ namespace num
          return *this;
       }
 
+      /// Divisive assignment.
+      cpoly &operator/=(/** Factor. */ double rf)
+      {
+         c_[0] /= rf;
+         return *this;
+      }
+
       /// Return number of coefficients in polynomial.
       static unsigned constexpr num_coefs() { return N; }
 
@@ -396,6 +403,15 @@ namespace num
          return *this;
       }
 
+      /// Divisive assignment.
+      cpoly &operator/=(/** Factor. */ double rf)
+      {
+         for (unsigned i = 0; i < c_.size(); ++i) {
+            c_[i] /= rf;
+         }
+         return *this;
+      }
+
       /// Return number of coefficients in polynomial.
       static unsigned constexpr num_coefs() { return N; }
 
@@ -521,6 +537,13 @@ namespace num
          return *this;
       }
 
+      /// Divisive assignment.
+      cpoly &operator/=(/** Factor. */ double rf)
+      {
+         c_[0] /= rf;
+         return *this;
+      }
+
       /// Return number of coefficients in polynomial.
       static unsigned constexpr num_coefs() { return N; }
 
@@ -631,6 +654,36 @@ namespace num
       cpoly<D, dyndim, dyndim> r; // Return value.
       for (unsigned i = 0; i < cp.num_coefs(); ++i) {
          r.coef(i) = fac * cp.coef(i);
+      }
+      return r;
+   }
+
+   /// Divide cpoly by scale factor.
+   /// \tparam D  Degree of polynomial.
+   /// \tparam V  Type of variable.
+   /// \tparam C  Type of term.
+   /// \tparam F  type of factor.
+   template <unsigned D, typename V, typename C, typename F>
+   cpoly<D, V, decltype(C() / F())>
+   operator/(cpoly<D, V, C> const &cp, F const &fac)
+   {
+      cpoly<D, V, decltype(C() / F())> r; // Return value.
+      for (unsigned i = 0; i < cp.norm_coefs().size(); ++i) {
+         r.norm_coefs()[i] = cp.norm_coefs()[i] / fac;
+      }
+      return r;
+   }
+
+   /// Divide cpoly by scale factor.
+   /// \tparam D  Degree of polynomial.
+   /// \tparam F  Type of factor.
+   template <unsigned D, typename F>
+   cpoly<D, dyndim, dyndim>
+   operator/(cpoly<D, dyndim, dyndim> const &cp, F const &fac)
+   {
+      cpoly<D, dyndim, dyndim> r; // Return value.
+      for (unsigned i = 0; i < cp.num_coefs(); ++i) {
+         r.coef(i) = cp.coef(i) / fac;
       }
       return r;
    }

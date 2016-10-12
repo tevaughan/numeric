@@ -139,6 +139,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9236ac8a4bdbefdeec8d1bf9c93d7901"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1cpoly.html">cpoly</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly_3_010_00_01V_00_01C_01_4.html#a9236ac8a4bdbefdeec8d1bf9c93d7901">operator*=</a> (<a class="el" href="classdouble.html">double</a> rf)</td></tr>
 <tr class="memdesc:a9236ac8a4bdbefdeec8d1bf9c93d7901"><td class="mdescLeft">&#160;</td><td class="mdescRight">Right multiplicative assignment.  <a href="#a9236ac8a4bdbefdeec8d1bf9c93d7901">More...</a><br /></td></tr>
 <tr class="separator:a9236ac8a4bdbefdeec8d1bf9c93d7901"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6eeacfb68626536dae84a33bbae3d98b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1cpoly.html">cpoly</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly_3_010_00_01V_00_01C_01_4.html#a6eeacfb68626536dae84a33bbae3d98b">operator/=</a> (<a class="el" href="classdouble.html">double</a> rf)</td></tr>
+<tr class="memdesc:a6eeacfb68626536dae84a33bbae3d98b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divisive assignment.  <a href="#a6eeacfb68626536dae84a33bbae3d98b">More...</a><br /></td></tr>
+<tr class="separator:a6eeacfb68626536dae84a33bbae3d98b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af457e19cd06c5382dc5e4d0c79720e0c"><td class="memTemplParams" colspan="2">template&lt;unsigned I&gt; </td></tr>
 <tr class="memitem:af457e19cd06c5382dc5e4d0c79720e0c"><td class="memTemplItemLeft" align="right" valign="top">C&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1cpoly_3_010_00_01V_00_01C_01_4.html#af457e19cd06c5382dc5e4d0c79720e0c">coef</a> () const</td></tr>
 <tr class="memdesc:af457e19cd06c5382dc5e4d0c79720e0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetch coefficient for term of degree <em>I</em>.  <a href="#af457e19cd06c5382dc5e4d0c79720e0c">More...</a><br /></td></tr>
@@ -248,7 +251,7 @@ class num::cpoly&lt; 0, V, C &gt;</h3>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00260">260</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00267">267</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
 
 </div>
 </div>
@@ -279,7 +282,7 @@ class num::cpoly&lt; 0, V, C &gt;</h3>
 <p>Evaluate polynomial. </p>
 <p>Ignore independent variable because present specialization models a constant function. </p>
 
-<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00293">293</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00300">300</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
 
 </div>
 </div>
@@ -392,6 +395,42 @@ class num::cpoly&lt; 0, V, C &gt;</h3>
 
 </div>
 </div>
+<a id="a6eeacfb68626536dae84a33bbae3d98b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6eeacfb68626536dae84a33bbae3d98b">&sect;&nbsp;</a></span>operator/=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classnum_1_1cpoly.html">cpoly</a>&amp; operator/= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classdouble.html">double</a>&#160;</td>
+          <td class="paramname"><em>rf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Divisive assignment. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rf</td><td>Factor. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00255">255</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+
+</div>
+</div>
 <a id="ae58d78d2b57740f83f814b4ef6ab10dd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae58d78d2b57740f83f814b4ef6ab10dd">&sect;&nbsp;</a></span>set_coef()</h2>
 
@@ -424,7 +463,7 @@ class num::cpoly&lt; 0, V, C &gt;</h3>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00269">269</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00276">276</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
 
 </div>
 </div>
