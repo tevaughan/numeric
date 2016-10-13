@@ -83,6 +83,9 @@ namespace num
       /// Compare argument with record so that right record can be found.
       static bool comp(A const &a, rec const &r) { return a < r.a; }
    public:
+      /// Construct null table.
+      sparse_table() {}
+
       /// Initialize table of sub-domain centers, sub-domain lengths, and
       /// sub-functions.
       sparse_table(
@@ -213,7 +216,7 @@ namespace num
 {
    /// Multiply table by dimval on right.
    /// \tparam A  Type of argument to function modeled by table.
-   /// \tpara  F  Type of each functional piece of table.
+   /// \tparam F  Type of each functional piece of table.
    /// \tparam D  Derived type of dimval.
    template <typename A, typename F, typename D>
    sparse_table<A, decltype(F() * D())> operator*(
@@ -233,7 +236,7 @@ namespace num
 
    /// Multiply table by dimval on left.
    /// \tparam A  Type of argument to function modeled by table.
-   /// \tpara  F  Type of each functional piece of table.
+   /// \tparam F  Type of each functional piece of table.
    /// \tparam D  Derived type of dimval.
    template <typename A, typename F, typename D>
    sparse_table<A, decltype(D() * F())> operator*(
@@ -253,7 +256,7 @@ namespace num
 
    /// Divide table by dimval.
    /// \tparam A  Type of argument to function modeled by table.
-   /// \tpara  F  Type of each functional piece of table.
+   /// \tparam F  Type of each functional piece of table.
    /// \tparam D  Derived type of dimval.
    template <typename A, typename F, typename D>
    sparse_table<A, decltype(F() / D())> operator/(

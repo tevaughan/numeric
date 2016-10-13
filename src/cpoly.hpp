@@ -103,8 +103,9 @@ namespace num
          return r;
       }
 
-      /// Multiply by scale factor on right.
-      friend cpoly operator*(/** Factor. */ double fac, cpoly const &ocp)
+      /// Multiply by scale factor on left.
+      friend cpoly
+      operator*(/** Factor. */ double fac, /** Polynomial. */ cpoly const &ocp)
       {
          cpoly r; // Return value.
          for (unsigned i = 0; i < ocp.c_.size(); ++i) {

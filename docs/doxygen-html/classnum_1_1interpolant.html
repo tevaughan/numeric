@@ -170,6 +170,10 @@ using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cla
 using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1interpolant.html#a6df2a268a2a2cded76a163a4a6d53251">A</a> = decltype(I() *D())</td></tr>
 <tr class="memdesc:a6df2a268a2a2cded76a163a4a6d53251"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of area under interpolant. <br /></td></tr>
 <tr class="separator:a6df2a268a2a2cded76a163a4a6d53251"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af28f26852f8b2d3d4c2556114cccb695"><td class="memTemplParams" colspan="2">template&lt;typename OD , typename F &gt; </td></tr>
+<tr class="memitem:af28f26852f8b2d3d4c2556114cccb695"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1interpolant.html#af28f26852f8b2d3d4c2556114cccb695">combined</a> = <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; I, decltype(F()(D(), OD()))&gt;</td></tr>
+<tr class="memdesc:af28f26852f8b2d3d4c2556114cccb695"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type returned from <a class="el" href="classnum_1_1interpolant.html#a5872248ab8ae11ae702029a519ebf931" title="Combine the present instance I1 with another interpolant I2 such that there is a point in the combine...">combine()</a>.  <a href="#af28f26852f8b2d3d4c2556114cccb695">More...</a><br /></td></tr>
+<tr class="separator:af28f26852f8b2d3d4c2556114cccb695"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -177,10 +181,10 @@ Private Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1interpolant.html#a47fdc9eea42b6975cdc835bb2e08810e">sort</a> ()</td></tr>
 <tr class="memdesc:a47fdc9eea42b6975cdc835bb2e08810e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sort points. <br /></td></tr>
 <tr class="separator:a47fdc9eea42b6975cdc835bb2e08810e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1b4d6274562ebf637d50e77da9fcb8a"><td class="memTemplParams" colspan="2">template&lt;typename OD &gt; </td></tr>
-<tr class="memitem:ac1b4d6274562ebf637d50e77da9fcb8a"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1interpolant.html#ac1b4d6274562ebf637d50e77da9fcb8a">combine</a> (<a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; I, OD &gt; const &amp;oint, std::function&lt; decltype(D() *OD())(D, OD)&gt; f) const -&gt; <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; I, decltype(D() *OD())&gt;</td></tr>
-<tr class="memdesc:ac1b4d6274562ebf637d50e77da9fcb8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Combine the present instance I1 with another interpolant I2 such that there is a point in the combined interpolant I3 at every unique x coordinate across I1 and I2.  <a href="#ac1b4d6274562ebf637d50e77da9fcb8a">More...</a><br /></td></tr>
-<tr class="separator:ac1b4d6274562ebf637d50e77da9fcb8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5872248ab8ae11ae702029a519ebf931"><td class="memTemplParams" colspan="2">template&lt;typename OD , typename F &gt; </td></tr>
+<tr class="memitem:a5872248ab8ae11ae702029a519ebf931"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1interpolant.html#af28f26852f8b2d3d4c2556114cccb695">combined</a>&lt; OD, F &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1interpolant.html#a5872248ab8ae11ae702029a519ebf931">combine</a> (<a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; I, OD &gt; const &amp;oint, F f) const</td></tr>
+<tr class="memdesc:a5872248ab8ae11ae702029a519ebf931"><td class="mdescLeft">&#160;</td><td class="mdescRight">Combine the present instance I1 with another interpolant I2 such that there is a point in the combined interpolant I3 at every unique x coordinate across I1 and I2.  <a href="#a5872248ab8ae11ae702029a519ebf931">More...</a><br /></td></tr>
+<tr class="separator:a5872248ab8ae11ae702029a519ebf931"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7043de88abf734a2f291b1e2eb76080"><td class="memItemLeft" align="right" valign="top"><a id="ae7043de88abf734a2f291b1e2eb76080"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1interpolant.html#ae7043de88abf734a2f291b1e2eb76080">init_from_stack</a> (<a class="el" href="structnum_1_1subinterval__stack.html">subinterval_stack</a>&lt; I, D &gt; s)</td></tr>
 <tr class="memdesc:ae7043de88abf734a2f291b1e2eb76080"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize control points from copy of initial <a class="el" href="structnum_1_1subinterval__stack.html" title="Stack used by integral() and by class interpolant. ">subinterval_stack</a>. <br /></td></tr>
@@ -217,7 +221,7 @@ Friends</h2></td></tr>
 <tr class="memitem:a1bf07d2865c0692bdb0e7abed75f5b75"><td class="memTemplParams" colspan="2"><a id="a1bf07d2865c0692bdb0e7abed75f5b75"></a>
 template&lt;typename OI , typename OD &gt; </td></tr>
 <tr class="memitem:a1bf07d2865c0692bdb0e7abed75f5b75"><td class="memTemplItemLeft" align="right" valign="top">class&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1interpolant.html#a1bf07d2865c0692bdb0e7abed75f5b75">interpolant</a></td></tr>
-<tr class="memdesc:a1bf07d2865c0692bdb0e7abed75f5b75"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classnum_1_1interpolant.html#ac1b4d6274562ebf637d50e77da9fcb8a" title="Combine the present instance I1 with another interpolant I2 such that there is a point in the combine...">combine()</a> needs to be friendly with another kind of interpolant. <br /></td></tr>
+<tr class="memdesc:a1bf07d2865c0692bdb0e7abed75f5b75"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classnum_1_1interpolant.html#a5872248ab8ae11ae702029a519ebf931" title="Combine the present instance I1 with another interpolant I2 such that there is a point in the combine...">combine()</a> needs to be friendly with another kind of interpolant. <br /></td></tr>
 <tr class="separator:a1bf07d2865c0692bdb0e7abed75f5b75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac4b1dc5841c1e14704a047e24ec4671d"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1interpolant.html#ac4b1dc5841c1e14704a047e24ec4671d">operator*</a> (<a class="el" href="classdouble.html">double</a> s, <a class="el" href="classnum_1_1interpolant.html">interpolant</a> const &amp;i) -&gt; <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; I, decltype(D() *s)&gt;</td></tr>
 <tr class="memdesc:ac4b1dc5841c1e14704a047e24ec4671d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply every y-value of interpolant by a scale factor on the left, and return the resultant interpolant.  <a href="#ac4b1dc5841c1e14704a047e24ec4671d">More...</a><br /></td></tr>
@@ -243,7 +247,41 @@ class num::interpolant&lt; I, D &gt;</h3>
 </dl>
 
 <p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00048">48</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="af28f26852f8b2d3d4c2556114cccb695"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af28f26852f8b2d3d4c2556114cccb695">&sect;&nbsp;</a></span>combined</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classnum_1_1interpolant.html#af28f26852f8b2d3d4c2556114cccb695">combined</a> =  <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt;I, decltype(F()(D(), OD()))&gt;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Type returned from <a class="el" href="classnum_1_1interpolant.html#a5872248ab8ae11ae702029a519ebf931" title="Combine the present instance I1 with another interpolant I2 such that there is a point in the combine...">combine()</a>. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">OD</td><td>Type of y coordinate in other interpolant. </td></tr>
+    <tr><td class="paramname">F</td><td>Type of combining function. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00325">325</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a62ad1a4eb68852901933de13951facc2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a62ad1a4eb68852901933de13951facc2">&sect;&nbsp;</a></span>interpolant() <span class="overload">[1/4]</span></h2>
 
@@ -276,7 +314,7 @@ class num::interpolant&lt; I, D &gt;</h3>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00496">496</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00507">507</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
@@ -330,7 +368,7 @@ class num::interpolant&lt; I, D &gt;</h3>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00519">519</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00530">530</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
@@ -406,7 +444,7 @@ class num::interpolant&lt; I, D &gt;</h3>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00556">556</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00567">567</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
@@ -482,7 +520,7 @@ class num::interpolant&lt; I, D &gt;</h3>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00579">579</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00591">591</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
@@ -524,7 +562,7 @@ class num::interpolant&lt; I, D &gt;</h3>
 <p>Compare points so that they can be sorted. </p>
 <dl class="section return"><dt>Returns</dt><dd>True only if p1 lie to the left of p2. </dd></dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00273">273</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00278">278</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -538,8 +576,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="ac1b4d6274562ebf637d50e77da9fcb8a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac1b4d6274562ebf637d50e77da9fcb8a">&sect;&nbsp;</a></span>combine()</h2>
+<a id="a5872248ab8ae11ae702029a519ebf931"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5872248ab8ae11ae702029a519ebf931">&sect;&nbsp;</a></span>combine()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -548,7 +586,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto combine </td>
+          <td class="memname"><a class="el" href="classnum_1_1interpolant.html#af28f26852f8b2d3d4c2556114cccb695">combined</a>&lt;OD, F&gt; combine </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; I, OD &gt; const &amp;&#160;</td>
           <td class="paramname"><em>oint</em>, </td>
@@ -556,14 +594,13 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::function&lt; decltype(D() *OD())(D, OD)&gt;&#160;</td>
+          <td class="paramtype">F&#160;</td>
           <td class="paramname"><em>f</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td> const -&gt; <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt;I, decltype(D() * OD())&gt;
-      </td>
+          <td></td><td> const</td>
         </tr>
       </table>
   </td>
@@ -575,10 +612,11 @@ Here is the caller graph for this function:</div>
 
 <p>Combine the present instance I1 with another interpolant I2 such that there is a point in the combined interpolant I3 at every unique x coordinate across I1 and I2. </p>
 <p>Each new y coordinate is the combination of a y coordinate, in either I1 or I2, and the corresponding interpolated y coordinate in the other. The combination is represented by a passed-in function.</p>
-<p><a class="el" href="classnum_1_1interpolant.html#ac1b4d6274562ebf637d50e77da9fcb8a" title="Combine the present instance I1 with another interpolant I2 such that there is a point in the combine...">combine()</a> is used to support multiplication and division of interpolants.</p>
+<p><a class="el" href="classnum_1_1interpolant.html#a5872248ab8ae11ae702029a519ebf931" title="Combine the present instance I1 with another interpolant I2 such that there is a point in the combine...">combine()</a> is used to support multiplication and division of interpolants.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">OD</td><td>Type of y coordinate in other interpolant. </td></tr>
+    <tr><td class="paramname">F</td><td>Type of combining function. </td></tr>
   </table>
   </dd>
 </dl>
@@ -591,7 +629,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Combined interpolant. </dd></dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00331">331</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00343">343</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
@@ -645,7 +683,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00298">298</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00303">303</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -690,7 +728,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to input stream from file. </dd></dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00284">284</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00289">289</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -774,7 +812,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00417">417</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00428">428</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
@@ -822,7 +860,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Numerical result of definite integral. </dd></dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00616">616</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00628">628</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
@@ -850,7 +888,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>Definite integral of interpolant between first and last control point. </dd></dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00656">656</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00668">668</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
@@ -887,7 +925,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Interpolated value of dependent variable. </dd></dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00590">590</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00602">602</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
@@ -932,7 +970,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Product interpolant. </dd></dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00668">668</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00680">680</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
@@ -970,7 +1008,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Scaled interpolant. </dd></dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00719">719</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00731">731</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
@@ -1008,7 +1046,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Scaled interpolant. </dd></dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00748">748</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00760">760</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
@@ -1045,7 +1083,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00696">696</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00708">708</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
@@ -1090,7 +1128,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Quotient interpolant. </dd></dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00686">686</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00698">698</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
@@ -1134,7 +1172,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Scaled interpolant. </dd></dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00780">780</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00792">792</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
@@ -1171,7 +1209,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00706">706</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00718">718</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
@@ -1199,7 +1237,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>Control points for interpolant. </dd></dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00585">585</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00597">597</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
@@ -1250,7 +1288,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Scaled interpolant. </dd></dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00736">736</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00748">748</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
@@ -1300,7 +1338,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Scaled interpolant. </dd></dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00767">767</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00779">779</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
@@ -1327,7 +1365,7 @@ Here is the caller graph for this function:</div>
 
 <p>Value of definite integral between first and last point defining interpolant. </p>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00269">269</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00274">274</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>

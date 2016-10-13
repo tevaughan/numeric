@@ -22,10 +22,10 @@
 #include <utility>   // for pair
 #include <vector>    // for vector
 
+#include <cpoly.hpp>          // for cpoly
 #include <integral-stats.hpp> // for integral_stats
 #include <interval.hpp>       // for interval and subinterval_stack
 #include <sparse-table.hpp>   // for sparse_table
-#include <cpoly.hpp>          // for cpoly
 
 namespace num
 {
@@ -36,13 +36,13 @@ namespace num
       /// \tparam X  Type of first column, representing X coordinate.
       /// \tparam Y  Type of second column, representing Y coordinate.
       template <typename X, typename Y>
-      std::pair<X, Y>
-      get_point(/** Line of non-blank ASCII text. */ std::string line,
-                /** Unit to multiply against first column. */ X xu,
-                /** Unit to multiply against secnd column. */ Y yu)
+      std::pair<X, Y> get_point(
+            /** Line of non-blank ASCII text. */ std::string line,
+            /** Unit to multiply against first column. */ X  xu,
+            /** Unit to multiply against secnd column. */ Y  yu)
       {
          std::istringstream iss(line);
-         double x, y;
+         double             x, y;
          if (!(iss >> x)) {
             throw "error reading x";
          }
@@ -65,10 +65,10 @@ namespace num
       /// \tparam X  Type of first column, representing X coordinate.
       /// \tparam Y  Type of second column, representing Y coordinate.
       template <typename X, typename Y>
-      std::vector<std::pair<X, Y>>
-      get_points(/** Name of ASCII file. */ std::string file,
-                 /** Unit to multiply against first column. */ X xu,
-                 /** Unit to multiply against secnd column. */ Y yu)
+      std::vector<std::pair<X, Y>> get_points(
+            /** Name of ASCII file.          */ std::string file,
+            /** Unit to multiply against first column. */ X xu,
+            /** Unit to multiply against secnd column. */ Y yu)
       {
          using namespace std;
          ifstream is(file);
@@ -104,9 +104,9 @@ namespace num
          }
          V rv(v.size() - 1); // Return value.
          for (unsigned j = 1; j < v.size(); ++j) {
-            unsigned const i = j - 1;
-            auto const &xi = v[i].first, &yi = v[i].second;
-            auto const &xj = v[j].first, &yj = v[j].second;
+            unsigned const i  = j - 1;
+            auto const &   xi = v[i].first, &yi = v[i].second;
+            auto const &   xj = v[j].first, &yj = v[j].second;
             rv[i] = {0.5 * (xi + xj), 0.5 * (yi + yj)};
          }
          return rv;
@@ -126,14 +126,14 @@ namespace num
    /// \tparam X  Type of first column, representing the x coordinate.
    /// \tparam Y  Type of second column, representing the Y coordinate.
    template <typename X = double, typename Y = double>
-   sparse_table<X, cpoly<0, X, Y>>
-   make_const_interp(/** Name of ASCII file. */ std::string file,
-                     /** Unit multiplying first col. */ X const &xu = 1,
-                     /** Unit multiplying secnd col. */ Y const &yu = 1)
+   sparse_table<X, cpoly<0, X, Y>> make_const_interp(
+         /** Name of ASCII file.     */ std::string  file,
+         /** Unit multiplying first col. */ X const &xu = 1,
+         /** Unit multiplying secnd col. */ Y const &yu = 1)
    {
       using namespace std;
-      using V = vector<pair<X, Y>>;
-      using C = cpoly<0, X, Y>;
+      using V    = vector<pair<X, Y>>;
+      using C    = cpoly<0, X, Y>;
       V const cp = util::get_points(file, xu, yu); // control points
       if (cp.size() < 1) {
          throw "Must have at least one control point.";
@@ -145,17 +145,17 @@ namespace num
       // general only each of the first and last points lies in the center of
       // its subdomain.
       V const cpmid = util::midpoints(cp); // control midpoints
-      X const a0 = cp[0].first;
+      X const a0    = cp[0].first;
       vector<pair<X, C>> vf(cp.size());
-      vf[0].first = 2.0 * (cpmid[0].first - cp[0].first);
+      vf[0].first  = 2.0 * (cpmid[0].first - cp[0].first);
       vf[0].second = cp[0].second;
       for (unsigned i = 1; i < cpmid.size(); ++i) {
-         vf[i].first = cpmid[i].first - cpmid[i - 1].first;
+         vf[i].first  = cpmid[i].first - cpmid[i - 1].first;
          vf[i].second = cp[i].second;
       }
       unsigned const i = cpmid.size();
-      vf[i].first = 2.0 * (cp[i].first - cpmid[i - 1].first);
-      vf[i].second = cp[i].second;
+      vf[i].first      = 2.0 * (cp[i].first - cpmid[i - 1].first);
+      vf[i].second     = cp[i].second;
       return sparse_table<X, C>(a0, move(vf));
    }
 
@@ -172,29 +172,32 @@ namespace num
    /// \tparam X  Type of first column, representing the x coordinate.
    /// \tparam Y  Type of second column, representing the Y coordinate.
    template <typename X = double, typename Y = double>
-   sparse_table<X, cpoly<1, X, Y>>
-   make_linear_interp(/** Name of ASCII file. */ std::string file,
-                      /** Unit multiplying first col. */ X const &xu = 1,
-                      /** Unit multiplying secnd col. */ Y const &yu = 1)
+   sparse_table<X, cpoly<1, X, Y>> make_linear_interp(
+         /** Name of ASCII file.     */ std::string  file = "",
+         /** Unit multiplying first col. */ X const &xu   = 1,
+         /** Unit multiplying secnd col. */ Y const &yu   = 1)
    {
       using namespace std;
       using V = vector<pair<X, Y>>;
       using C = cpoly<1, X, Y>;
+      if (file == "") {
+         return sparse_table<X, C>();
+      }
       V const cp = util::get_points(file, xu, yu); // control points
       if (cp.size() < 2) {
          throw "Must have at least two control points.";
       }
       // For linear interpolation, each subdomain is just the x region between
       // subsequent control points.
-      X const a0 = 0.5 * (cp[0].first + cp[1].first);
+      X const        a0      = 0.5 * (cp[0].first + cp[1].first);
       unsigned const ndeltas = cp.size() - 1;
       vector<pair<X, C>> vf(ndeltas);
       for (unsigned i = 0; i < ndeltas; ++i) {
-         unsigned const j = i + 1;
-         X const delta = cp[j].first - cp[i].first;
-         Y const c0 = 0.5 * (cp[i].second + cp[j].second);
-         auto const c1 = (cp[j].second - cp[i].second) / delta;
-         vf[i].first = delta;
+         unsigned const j     = i + 1;
+         X const        delta = cp[j].first - cp[i].first;
+         Y const        c0    = 0.5 * (cp[i].second + cp[j].second);
+         auto const     c1    = (cp[j].second - cp[i].second) / delta;
+         vf[i].first          = delta;
          vf[i].second.template set_coef<0>(c0);
          vf[i].second.template set_coef<1>(c1);
       }
@@ -208,7 +211,8 @@ namespace num
    /// \tparam I  Type of independent variable (x value).
    /// \tparam D  Type of dependent variable (y value).
    template <typename I, typename D>
-   struct ipoint : public std::pair<I, D> {
+   struct ipoint : public std::pair<I, D>
+   {
       using std::pair<I, D>::pair;
    };
 
@@ -229,7 +233,8 @@ namespace num
    /// \tparam I  Type of independent variable (x value).
    /// \tparam D  Type of dependent variable (y value).
    template <typename I, typename D>
-   struct ilist : public std::vector<ipoint<I, D>> {
+   struct ilist : public std::vector<ipoint<I, D>>
+   {
       using std::vector<ipoint<I, D>>::vector;
    };
 
@@ -258,9 +263,9 @@ namespace num
    template <typename I, typename D>
    class interpolant
    {
-      using point = ipoint<I, D>;    ///< Type of points defining interpolant.
-      using list = ilist<I, D>;      ///< Type of list of points.
-      using A = decltype(I() * D()); ///< Type of area under interpolant.
+      using point = ipoint<I, D>; ///< Type of points defining interpolant.
+      using list  = ilist<I, D>;  ///< Type of list of points.
+      using A     = decltype(I() * D()); ///< Type of area under interpolant.
 
       list d_; ///< x-y points between which to interpolate.
 
@@ -299,7 +304,7 @@ namespace num
       {
          using namespace std;
          istringstream iss(line);
-         double x, y;
+         double        x, y;
          if (!(iss >> x)) {
             throw "error reading independent variable";
          }
@@ -313,6 +318,12 @@ namespace num
       template <typename OI, typename OD>
       friend class interpolant;
 
+      /// Type returned from combine().
+      /// \tparam OD  Type of y coordinate in other interpolant.
+      /// \tparam F   Type of combining function.
+      template <typename OD, typename F>
+      using combined = interpolant<I, decltype(F()(D(), OD()))>;
+
       /// Combine the present instance I1 with another interpolant I2 such that
       /// there is a point in the combined interpolant I3 at every unique x
       /// coordinate across I1 and I2.  Each new y coordinate is the
@@ -324,31 +335,30 @@ namespace num
       /// interpolants.
       ///
       /// \tparam OD    Type of y coordinate in other interpolant.
+      /// \tparam F     Type of combining function.
       /// \param  oint  Reference to other interpolant.
       /// \param  f     Combining function.
       /// \return       Combined interpolant.
-      template <typename OD>
-      auto combine(interpolant<I, OD> const &oint,
-                   std::function<decltype(D() * OD())(D, OD)> f) const
-            -> interpolant<I, decltype(D() * OD())>
+      template <typename OD, typename F>
+      combined<OD, F> combine(interpolant<I, OD> const &oint, F f) const
       {
-         using PD = decltype(D() * OD());
-         ilist<I, PD> pl;
-         ilist<I, D> const &l1 = d_;
+         using CD = decltype(f(D(), OD()));
+         ilist<I, CD>        pl;
+         ilist<I, D> const & l1 = d_;
          ilist<I, OD> const &l2 = oint.d_;
          unsigned const s1 = l1.size();
          unsigned const s2 = l2.size();
-         unsigned n1 = 0;
-         unsigned n2 = 0;
-         I ind;
+         unsigned       n1 = 0;
+         unsigned       n2 = 0;
+         I              ind;
          if (s1 == 0 || s2 == 0) {
             return pl;
          }
          while (n1 < s1 || n2 < s2) {
             if (n1 < s1 && n2 < s2) {
-               I const i1 = l1[n1].first;
-               I const i2 = l2[n2].first;
-               D const d1 = l1[n1].second;
+               I const  i1 = l1[n1].first;
+               I const  i2 = l2[n2].first;
+               D const  d1 = l1[n1].second;
                OD const d2 = l2[n2].second;
                if (i1 < i2) {
                   pl.push_back({i1, f(d1, oint(i1))});
@@ -363,7 +373,7 @@ namespace num
                pl.push_back({i1, f(d1, oint(i1))});
                ++n1;
             } else {
-               I const i2 = l2[n2].first;
+               I const  i2 = l2[n2].first;
                OD const d2 = l2[n2].second;
                pl.push_back({i2, f((*this)(i2), d2)});
                ++n2;
@@ -414,20 +424,21 @@ namespace num
       /// \param  t   Fractional tolerance of approximation.
       /// \param  n   Initial number of evenly spaced samples of function.
       template <typename A1, typename A2>
-      void init(std::function<D(I)> f, A1 aa, A2 bb, double t = 1.0E-06,
-                unsigned n = 16)
+      void
+      init(std::function<D(I)> f, A1 aa, A2 bb, double t = 1.0E-06,
+           unsigned n = 16)
       {
-         double constexpr eps = std::numeric_limits<double>::epsilon();
+         double constexpr eps     = std::numeric_limits<double>::epsilon();
          double constexpr min_tol = 1000.0 * eps;
-         double tol = t;
+         double tol               = t;
          if (tol <= 0.0) {
             throw "tolerance not positive";
          } else if (tol < min_tol) {
             tol = min_tol;
          }
          double sign = 1.0;
-         I a = aa;
-         I b = bb;
+         I      a    = aa;
+         I      b    = bb;
          if (a > b) {
             std::swap(a, b);
             sign = -1.0;
@@ -436,19 +447,19 @@ namespace num
          init_from_stack(s); // Add initial n points to d_.
          integral_stats<A> stats(0.0 * aa * f(aa));
          while (s.size()) {
-            using interval = interval<I, D>;
+            using interval   = interval<I, D>;
             interval const r = *s.rbegin();
             s.pop_back();
-            I const midp = 0.5 * (r.a + r.b);    // midpoint of interval
-            D const fmid = f(midp);              // function value at midpoint
-            I const len = r.b - r.a;             // length of interval
-            D const mean = 0.5 * (r.fa + r.fb);  // mean of function values
+            I const midp  = 0.5 * (r.a + r.b);   // midpoint of interval
+            D const fmid  = f(midp);             // function value at midpoint
+            I const len   = r.b - r.a;           // length of interval
+            D const mean  = 0.5 * (r.fa + r.fb); // mean of function values
             D const rmean = 0.5 * (mean + fmid); // refined mean
-            D const u0 = fabs(rmean);
-            D const u1 = fabs(mean - rmean);
-            D const u2 = fabs(mean + rmean);
-            D const u3 = u0 * tol;
-            A const ds = rmean * len;
+            D const u0    = fabs(rmean);
+            D const u1    = fabs(mean - rmean);
+            D const u2    = fabs(mean + rmean);
+            D const u3    = u0 * tol;
+            A const ds    = rmean * len;
             if (u1 <= u3) {
                // Estimated error sufficiently small.  Stop refining estimate.
                stats.add(ds, u1 * len);
@@ -473,9 +484,9 @@ namespace num
          }
          A const farea = fabs(stats.area());
          A const sigma = stats.stdev(); // statistical error
-         A const derr = farea * t;      // desired error
-         A const rerr = farea * eps;    // round-off error
-         A eerr; // greater of statistical and round-off error
+         A const derr  = farea * t;     // desired error
+         A const rerr  = farea * eps;   // round-off error
+         A       eerr; // greater of statistical and round-off error
          if (sigma < rerr) {
             eerr = rerr;
          } else {
@@ -520,7 +531,7 @@ namespace num
       {
          using namespace std;
          unique_ptr<ifstream> is = ifstr(fname);
-         string line;
+         string               line;
          while (getline(*is, line)) {
             size_t const p = line.find_first_not_of(" \f\n\r\t");
             if (p == string::npos || line[p] == '#') {
@@ -553,8 +564,9 @@ namespace num
       /// \param  t   Fractional tolerance of approximation.
       /// \param  n   Initial number of evenly spaced samples of function.
       template <typename A1, typename A2>
-      interpolant(std::function<D(I)> f, A1 aa, A2 bb, double t = 1.0E-06,
-                  unsigned n = 16)
+      interpolant(
+            std::function<D(I)> f, A1 aa, A2 bb, double t = 1.0E-06,
+            unsigned n = 16)
       {
          init(f, aa, bb, t, n);
       }
@@ -600,12 +612,12 @@ namespace num
          }
          using namespace std;
          point const xp{x, D()}; // Dummy y-coord used for search.
-         auto const j = upper_bound(d_.begin(), d_.end(), xp, cmpr_pts);
-         auto const i = j - 1;
-         I const &xi = i->first;
-         I const &xj = j->first;
-         D const &yi = i->second;
-         D const &yj = j->second;
+         auto const  j  = upper_bound(d_.begin(), d_.end(), xp, cmpr_pts);
+         auto const  i  = j - 1;
+         I const &   xi = i->first;
+         I const &   xj = j->first;
+         D const &   yi = i->second;
+         D const &   yj = j->second;
          return yi + (yj - yi) * ((x - xi) / (xj - xi));
       }
 
@@ -624,9 +636,9 @@ namespace num
             sign = -1.0;
          }
          using R = decltype(I() * D());
-         R sum(0.0 * x1 * d_[0].second);
+         R           sum(0.0 * x1 * d_[0].second);
          point const x1p{x1, D()}; // Dummy y-coord for search.
-         auto i = upper_bound(d_.begin(), d_.end(), x1p, cmpr_pts);
+         auto        i = upper_bound(d_.begin(), d_.end(), x1p, cmpr_pts);
          if (i == d_.end()) {
             // We need only calculate one piece to the right of all points.
             return sign * (x2 - x1) * d_.rbegin()->second;
