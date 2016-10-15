@@ -341,6 +341,10 @@ template&lt;typename DER &gt; </td></tr>
 <tr class="memitem:a2709014e5395262d3992f15c6928fcc4"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt; X, <a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; 0, X, Y &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a2709014e5395262d3992f15c6928fcc4">make_const_interp</a> (std::string file, X const &amp;xu=1, Y const &amp;yu=1)</td></tr>
 <tr class="memdesc:a2709014e5395262d3992f15c6928fcc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a (<a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>) piecewise-constant interpolant from the first two space-delimited columns in an ASCII file.  <a href="#a2709014e5395262d3992f15c6928fcc4">More...</a><br /></td></tr>
 <tr class="separator:a2709014e5395262d3992f15c6928fcc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6397493710cb402d45a83db4294d47a2"><td class="memTemplParams" colspan="2">template&lt;typename X  = double, typename Y  = double&gt; </td></tr>
+<tr class="memitem:a6397493710cb402d45a83db4294d47a2"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt; X, <a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; 1, X, Y &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a6397493710cb402d45a83db4294d47a2">make_linear_interp</a> (std::vector&lt; std::pair&lt; X, Y &gt;&gt; const &amp;cp)</td></tr>
+<tr class="memdesc:a6397493710cb402d45a83db4294d47a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a (<a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>) piecewise-linear interpolant from a set of ordered pairs.  <a href="#a6397493710cb402d45a83db4294d47a2">More...</a><br /></td></tr>
+<tr class="separator:a6397493710cb402d45a83db4294d47a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7229bab00e45295764e7f9b7be7be80c"><td class="memTemplParams" colspan="2">template&lt;typename X  = double, typename Y  = double&gt; </td></tr>
 <tr class="memitem:a7229bab00e45295764e7f9b7be7be80c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt; X, <a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; 1, X, Y &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a7229bab00e45295764e7f9b7be7be80c">make_linear_interp</a> (std::string file=&quot;&quot;, X const &amp;xu=1, Y const &amp;yu=1)</td></tr>
 <tr class="memdesc:a7229bab00e45295764e7f9b7be7be80c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a (<a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>) piecewise-linear interpolant from the first two space-delimited columns in an ASCII file.  <a href="#a7229bab00e45295764e7f9b7be7be80c">More...</a><br /></td></tr>
@@ -849,8 +853,37 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a6397493710cb402d45a83db4294d47a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6397493710cb402d45a83db4294d47a2">&sect;&nbsp;</a></span>make_linear_interp() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt;X, <a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt;1, X, Y&gt; &gt; num::make_linear_interp </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::pair&lt; X, Y &gt;&gt; const &amp;&#160;</td>
+          <td class="paramname"><em>cp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construct a (<a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>) piecewise-linear interpolant from a set of ordered pairs. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">X</td><td>Type of first element of each ordered pair. </td></tr>
+    <tr><td class="paramname">Y</td><td>Type of second element of each ordered pair. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00169">169</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+
+</div>
+</div>
 <a id="a7229bab00e45295764e7f9b7be7be80c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7229bab00e45295764e7f9b7be7be80c">&sect;&nbsp;</a></span>make_linear_interp()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a7229bab00e45295764e7f9b7be7be80c">&sect;&nbsp;</a></span>make_linear_interp() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -903,7 +936,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00175">175</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00207">207</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
@@ -1455,7 +1488,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00223">223</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00238">238</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
@@ -1494,7 +1527,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00245">245</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00260">260</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>

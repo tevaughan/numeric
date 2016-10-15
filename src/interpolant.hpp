@@ -159,6 +159,38 @@ namespace num
       return sparse_table<X, C>(a0, move(vf));
    }
 
+   /// Construct a (\ref sparse_table) piecewise-linear interpolant from a set
+   /// of ordered pairs.
+   ///
+   /// \tparam X  Type of first element of each ordered pair.
+   /// \tparam Y  Type of second element of each ordered pair.
+   template <typename X = double, typename Y = double>
+   sparse_table<X, cpoly<1, X, Y>>
+   make_linear_interp(std::vector<std::pair<X, Y>> const &cp)
+   {
+      using C = cpoly<1, X, Y>;
+      if (cp.size() == 0) {
+         return sparse_table<X, C>();
+      } else if (cp.size() == 1) {
+         throw "Must have at least two control points.";
+      }
+      // For linear interpolation, each subdomain is just the x region between
+      // subsequent control points.
+      X const        a0      = 0.5 * (cp[0].first + cp[1].first);
+      unsigned const ndeltas = cp.size() - 1;
+      std::vector<std::pair<X, C>> vf(ndeltas);
+      for (unsigned i = 0; i < ndeltas; ++i) {
+         unsigned const j     = i + 1;
+         X const        delta = cp[j].first - cp[i].first;
+         Y const        c0    = 0.5 * (cp[i].second + cp[j].second);
+         auto const     c1    = (cp[j].second - cp[i].second) / delta;
+         vf[i].first          = delta;
+         vf[i].second.template set_coef<0>(c0);
+         vf[i].second.template set_coef<1>(c1);
+      }
+      return sparse_table<X, C>(a0, move(vf));
+   }
+
    /// Construct a (\ref sparse_table) piecewise-linear interpolant from the
    /// first two space-delimited columns in an ASCII file.  Each line of the
    /// file must consist either
@@ -184,24 +216,7 @@ namespace num
          return sparse_table<X, C>();
       }
       V const cp = util::get_points(file, xu, yu); // control points
-      if (cp.size() < 2) {
-         throw "Must have at least two control points.";
-      }
-      // For linear interpolation, each subdomain is just the x region between
-      // subsequent control points.
-      X const        a0      = 0.5 * (cp[0].first + cp[1].first);
-      unsigned const ndeltas = cp.size() - 1;
-      vector<pair<X, C>> vf(ndeltas);
-      for (unsigned i = 0; i < ndeltas; ++i) {
-         unsigned const j     = i + 1;
-         X const        delta = cp[j].first - cp[i].first;
-         Y const        c0    = 0.5 * (cp[i].second + cp[j].second);
-         auto const     c1    = (cp[j].second - cp[i].second) / delta;
-         vf[i].first          = delta;
-         vf[i].second.template set_coef<0>(c0);
-         vf[i].second.template set_coef<1>(c1);
-      }
-      return sparse_table<X, C>(a0, move(vf));
+      return make_linear_interp(cp);
    }
 
    template <char TI, char D, char M, char C, char TE>
