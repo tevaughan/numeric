@@ -18,6 +18,7 @@
 #include <limits>     // for numeric_limits
 #include <utility>    // for foward()
 
+#include <ilist.hpp>          // for ilist
 #include <integral-stats.hpp> // for integral_stats
 #include <interval.hpp>       // for interval and subinterval_stack
 #include <util.hpp>           // for RAT and PRD
@@ -26,9 +27,6 @@ namespace num
 {
    template <typename X, typename Y>
    class interpolant;
-
-   template <typename X, typename Y>
-   struct ilist;
 
    /// Runge-Kutta solver optimized for quadrature.  rk_quad is intended to be
    /// a descendant of a class implementing a more general Runge-Kutta solver.

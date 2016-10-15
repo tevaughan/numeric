@@ -23,6 +23,7 @@
 #include <vector>    // for vector
 
 #include <cpoly.hpp>          // for cpoly
+#include <ilist.hpp>          // for ipoint, ilist
 #include <integral-stats.hpp> // for integral_stats
 #include <interval.hpp>       // for interval and subinterval_stack
 #include <sparse-table.hpp>   // for sparse_table
@@ -36,7 +37,7 @@ namespace num
       /// \tparam X  Type of first column, representing X coordinate.
       /// \tparam Y  Type of second column, representing Y coordinate.
       template <typename X, typename Y>
-      std::pair<X, Y> get_point(
+      ipoint<X, Y> get_point(
             /** Line of non-blank ASCII text. */ std::string line,
             /** Unit to multiply against first column. */ X  xu,
             /** Unit to multiply against secnd column. */ Y  yu)
@@ -49,7 +50,7 @@ namespace num
          if (!(iss >> y)) {
             throw "error reading y";
          }
-         return std::pair<X, Y>(x * xu, y * yu);
+         return ipoint<X, Y>(x * xu, y * yu);
       }
 
       /// Extract a set of points from a space-delimited ASCII file.  Each line
@@ -65,26 +66,25 @@ namespace num
       /// \tparam X  Type of first column, representing X coordinate.
       /// \tparam Y  Type of second column, representing Y coordinate.
       template <typename X, typename Y>
-      std::vector<std::pair<X, Y>> get_points(
+      ilist<X, Y> get_points(
             /** Name of ASCII file.          */ std::string file,
             /** Unit to multiply against first column. */ X xu,
             /** Unit to multiply against secnd column. */ Y yu)
       {
-         using namespace std;
-         ifstream is(file);
+         std::ifstream is(file);
          if (!is) {
             throw "Failed to open '" + file + "'.";
          }
-         string line;
-         vector<pair<X, Y>> points;
+         std::string line;
+         ilist<X, Y> points;
          while (getline(is, line)) {
             size_t const p = line.find_first_not_of(" \f\n\r\t");
-            if (p == string::npos || line[p] == '#') {
+            if (p == std::string::npos || line[p] == '#') {
                continue;
             }
             points.push_back(get_point(line, xu, yu));
          }
-         auto comp = [](pair<X, Y> const &a, pair<X, Y> const &b) {
+         auto comp = [](ipoint<X, Y> const &a, ipoint<X, Y> const &b) {
             return a.first < b.first;
          };
          sort(points.begin(), points.end(), comp);
@@ -131,8 +131,7 @@ namespace num
          /** Unit multiplying first col. */ X const &xu = 1,
          /** Unit multiplying secnd col. */ Y const &yu = 1)
    {
-      using namespace std;
-      using V    = vector<pair<X, Y>>;
+      using V    = ilist<X, Y>;
       using C    = cpoly<0, X, Y>;
       V const cp = util::get_points(file, xu, yu); // control points
       if (cp.size() < 1) {
@@ -146,7 +145,7 @@ namespace num
       // its subdomain.
       V const cpmid = util::midpoints(cp); // control midpoints
       X const a0    = cp[0].first;
-      vector<pair<X, C>> vf(cp.size());
+      std::vector<std::pair<X, C>> vf(cp.size());
       vf[0].first  = 2.0 * (cpmid[0].first - cp[0].first);
       vf[0].second = cp[0].second;
       for (unsigned i = 1; i < cpmid.size(); ++i) {
@@ -165,8 +164,7 @@ namespace num
    /// \tparam X  Type of first element of each ordered pair.
    /// \tparam Y  Type of second element of each ordered pair.
    template <typename X = double, typename Y = double>
-   sparse_table<X, cpoly<1, X, Y>>
-   make_linear_interp(std::vector<std::pair<X, Y>> const &cp)
+   sparse_table<X, cpoly<1, X, Y>> make_linear_interp(ilist<X, Y> const &cp)
    {
       using C = cpoly<1, X, Y>;
       if (cp.size() == 0) {
@@ -210,60 +208,15 @@ namespace num
          /** Unit multiplying secnd col. */ Y const &yu   = 1)
    {
       using namespace std;
-      using V = vector<pair<X, Y>>;
       using C = cpoly<1, X, Y>;
       if (file == "") {
          return sparse_table<X, C>();
       }
-      V const cp = util::get_points(file, xu, yu); // control points
-      return make_linear_interp(cp);
+      return make_linear_interp(util::get_points(file, xu, yu));
    }
 
    template <char TI, char D, char M, char C, char TE>
    class statdim;
-
-   /// Point used as one of the constraints of a linear interpolant.
-   /// \tparam I  Type of independent variable (x value).
-   /// \tparam D  Type of dependent variable (y value).
-   template <typename I, typename D>
-   struct ipoint : public std::pair<I, D>
-   {
-      using std::pair<I, D>::pair;
-   };
-
-   /// Send point to output stream.
-   /// \tparam I  Type of independent variable (x value).
-   /// \tparam D  Type of dependent variable (y value).
-   template <typename I, typename D>
-   std::ostream &operator<<(std::ostream &os, ipoint<I, D> const &p)
-   {
-      return os << p.first << " " << p.second;
-   }
-
-   /// List of points used to constrain a linear interpolant.
-   ///
-   /// An instance of ilist can be used to initialize an instance of
-   /// interpolant.
-   ///
-   /// \tparam I  Type of independent variable (x value).
-   /// \tparam D  Type of dependent variable (y value).
-   template <typename I, typename D>
-   struct ilist : public std::vector<ipoint<I, D>>
-   {
-      using std::vector<ipoint<I, D>>::vector;
-   };
-
-   /// Send ilist to output stream.
-   /// \tparam I  Type of independent variable (x value).
-   /// \tparam D  Type of dependent variable (y value).
-   template <typename I, typename D>
-   std::ostream &operator<<(std::ostream &os, ilist<I, D> const &list)
-   {
-      for (auto const &p : list) {
-         os << p << "\n";
-      }
-      return os;
-   }
 
    /// Linear interpolant.
    ///

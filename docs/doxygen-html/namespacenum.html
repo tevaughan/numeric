@@ -124,9 +124,6 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html">dyndim</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Model of a dynamically dimensioned value.  <a href="classnum_1_1dyndim.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnum_1_1ilist.html">ilist</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of points used to constrain a linear interpolant.  <a href="structnum_1_1ilist.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1integral__stats.html">integral_stats</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Summary of statistics on trapezoids in integral.  <a href="classnum_1_1integral__stats.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,9 +132,6 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnum_1_1interval.html">interval</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of each element on the stack used by <a class="el" href="namespacenum.html#a25fb944b0428e15f5a842447b90ed77a" title="Numerically integrate a function, and return the result. ">integral()</a> and by class interpolant.  <a href="structnum_1_1interval.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnum_1_1ipoint.html">ipoint</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Point used as one of the constraints of a linear interpolant.  <a href="structnum_1_1ipoint.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html">rk_quad</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runge-Kutta solver optimized for quadrature.  <a href="classnum_1_1rk__quad.html#details">More...</a><br /></td></tr>
@@ -240,12 +234,20 @@ using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nam
 <tr class="memitem:a0acd09937ff29e12de4cc106550751ed"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a0acd09937ff29e12de4cc106550751ed">PRD</a> = decltype(X() *Y())</td></tr>
 <tr class="memdesc:a0acd09937ff29e12de4cc106550751ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of product of two things.  <a href="#a0acd09937ff29e12de4cc106550751ed">More...</a><br /></td></tr>
 <tr class="separator:a0acd09937ff29e12de4cc106550751ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecf042ab6b895357dd13471266377348"><td class="memTemplParams" colspan="2">template&lt;typename I , typename D &gt; </td></tr>
+<tr class="memitem:aecf042ab6b895357dd13471266377348"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#aecf042ab6b895357dd13471266377348">ipoint</a> = std::pair&lt; I, D &gt;</td></tr>
+<tr class="memdesc:aecf042ab6b895357dd13471266377348"><td class="mdescLeft">&#160;</td><td class="mdescRight">Point used as one of the constraints of a linear interpolant.  <a href="#aecf042ab6b895357dd13471266377348">More...</a><br /></td></tr>
+<tr class="separator:aecf042ab6b895357dd13471266377348"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf4e925e819b4813b11a93875568934f"><td class="memTemplParams" colspan="2">template&lt;typename I , typename D &gt; </td></tr>
+<tr class="memitem:adf4e925e819b4813b11a93875568934f"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#adf4e925e819b4813b11a93875568934f">ilist</a> = std::vector&lt; <a class="el" href="namespacenum.html#aecf042ab6b895357dd13471266377348">ipoint</a>&lt; I, D &gt;&gt;</td></tr>
+<tr class="memdesc:adf4e925e819b4813b11a93875568934f"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of points used to constrain a linear interpolant.  <a href="#adf4e925e819b4813b11a93875568934f">More...</a><br /></td></tr>
+<tr class="separator:adf4e925e819b4813b11a93875568934f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9147eb230dfb0f7a14fba97a2998f2d"><td class="memItemLeft" align="right" valign="top"><a id="ae9147eb230dfb0f7a14fba97a2998f2d"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#ae9147eb230dfb0f7a14fba97a2998f2d">interpolantd</a> = <a class="el" href="classnum_1_1interpolant.html">interpolant</a>&lt; <a class="el" href="classdouble.html">double</a>, <a class="el" href="classdouble.html">double</a> &gt;</td></tr>
 <tr class="memdesc:ae9147eb230dfb0f7a14fba97a2998f2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for interpolant and maps from double to double. <br /></td></tr>
 <tr class="separator:ae9147eb230dfb0f7a14fba97a2998f2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaca12da760a724444ebc4434b8485ca8"><td class="memItemLeft" align="right" valign="top"><a id="aaca12da760a724444ebc4434b8485ca8"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#aaca12da760a724444ebc4434b8485ca8">ilistd</a> = <a class="el" href="structnum_1_1ilist.html">ilist</a>&lt; <a class="el" href="classdouble.html">double</a>, <a class="el" href="classdouble.html">double</a> &gt;</td></tr>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#aaca12da760a724444ebc4434b8485ca8">ilistd</a> = <a class="el" href="namespacenum.html#adf4e925e819b4813b11a93875568934f">ilist</a>&lt; <a class="el" href="classdouble.html">double</a>, <a class="el" href="classdouble.html">double</a> &gt;</td></tr>
 <tr class="memdesc:aaca12da760a724444ebc4434b8485ca8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for initializer for interpolantd. <br /></td></tr>
 <tr class="separator:aaca12da760a724444ebc4434b8485ca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -337,26 +339,26 @@ template&lt;typename DER &gt; </td></tr>
 <tr class="memitem:a29979c970af38905d9adfb4a452d4aa8"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; D, <a class="el" href="classnum_1_1dyndim.html">dyndim</a>, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a29979c970af38905d9adfb4a452d4aa8">operator/</a> (<a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; D, <a class="el" href="classnum_1_1dyndim.html">dyndim</a>, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> &gt; const &amp;cp, F const &amp;fac)</td></tr>
 <tr class="memdesc:a29979c970af38905d9adfb4a452d4aa8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divide cpoly by scale factor.  <a href="#a29979c970af38905d9adfb4a452d4aa8">More...</a><br /></td></tr>
 <tr class="separator:a29979c970af38905d9adfb4a452d4aa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a702f02a1b8109d5fdf12d6b187e93f07"><td class="memTemplParams" colspan="2">template&lt;typename I , typename D &gt; </td></tr>
+<tr class="memitem:a702f02a1b8109d5fdf12d6b187e93f07"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a702f02a1b8109d5fdf12d6b187e93f07">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="namespacenum.html#aecf042ab6b895357dd13471266377348">ipoint</a>&lt; I, D &gt; const &amp;p)</td></tr>
+<tr class="memdesc:a702f02a1b8109d5fdf12d6b187e93f07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send point to output stream.  <a href="#a702f02a1b8109d5fdf12d6b187e93f07">More...</a><br /></td></tr>
+<tr class="separator:a702f02a1b8109d5fdf12d6b187e93f07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5eb307b1a69d6c912cdf820e0b7f7cc"><td class="memTemplParams" colspan="2">template&lt;typename I , typename D &gt; </td></tr>
+<tr class="memitem:aa5eb307b1a69d6c912cdf820e0b7f7cc"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#aa5eb307b1a69d6c912cdf820e0b7f7cc">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="namespacenum.html#adf4e925e819b4813b11a93875568934f">ilist</a>&lt; I, D &gt; const &amp;list)</td></tr>
+<tr class="memdesc:aa5eb307b1a69d6c912cdf820e0b7f7cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send ilist to output stream.  <a href="#aa5eb307b1a69d6c912cdf820e0b7f7cc">More...</a><br /></td></tr>
+<tr class="separator:aa5eb307b1a69d6c912cdf820e0b7f7cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2709014e5395262d3992f15c6928fcc4"><td class="memTemplParams" colspan="2">template&lt;typename X  = double, typename Y  = double&gt; </td></tr>
 <tr class="memitem:a2709014e5395262d3992f15c6928fcc4"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt; X, <a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; 0, X, Y &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a2709014e5395262d3992f15c6928fcc4">make_const_interp</a> (std::string file, X const &amp;xu=1, Y const &amp;yu=1)</td></tr>
 <tr class="memdesc:a2709014e5395262d3992f15c6928fcc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a (<a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>) piecewise-constant interpolant from the first two space-delimited columns in an ASCII file.  <a href="#a2709014e5395262d3992f15c6928fcc4">More...</a><br /></td></tr>
 <tr class="separator:a2709014e5395262d3992f15c6928fcc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6397493710cb402d45a83db4294d47a2"><td class="memTemplParams" colspan="2">template&lt;typename X  = double, typename Y  = double&gt; </td></tr>
-<tr class="memitem:a6397493710cb402d45a83db4294d47a2"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt; X, <a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; 1, X, Y &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a6397493710cb402d45a83db4294d47a2">make_linear_interp</a> (std::vector&lt; std::pair&lt; X, Y &gt;&gt; const &amp;cp)</td></tr>
-<tr class="memdesc:a6397493710cb402d45a83db4294d47a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a (<a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>) piecewise-linear interpolant from a set of ordered pairs.  <a href="#a6397493710cb402d45a83db4294d47a2">More...</a><br /></td></tr>
-<tr class="separator:a6397493710cb402d45a83db4294d47a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a557e463f44d69cb9ff3a7f17e04f7d13"><td class="memTemplParams" colspan="2">template&lt;typename X  = double, typename Y  = double&gt; </td></tr>
+<tr class="memitem:a557e463f44d69cb9ff3a7f17e04f7d13"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt; X, <a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; 1, X, Y &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a557e463f44d69cb9ff3a7f17e04f7d13">make_linear_interp</a> (<a class="el" href="namespacenum.html#adf4e925e819b4813b11a93875568934f">ilist</a>&lt; X, Y &gt; const &amp;cp)</td></tr>
+<tr class="memdesc:a557e463f44d69cb9ff3a7f17e04f7d13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a (<a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>) piecewise-linear interpolant from a set of ordered pairs.  <a href="#a557e463f44d69cb9ff3a7f17e04f7d13">More...</a><br /></td></tr>
+<tr class="separator:a557e463f44d69cb9ff3a7f17e04f7d13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7229bab00e45295764e7f9b7be7be80c"><td class="memTemplParams" colspan="2">template&lt;typename X  = double, typename Y  = double&gt; </td></tr>
 <tr class="memitem:a7229bab00e45295764e7f9b7be7be80c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt; X, <a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; 1, X, Y &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a7229bab00e45295764e7f9b7be7be80c">make_linear_interp</a> (std::string file=&quot;&quot;, X const &amp;xu=1, Y const &amp;yu=1)</td></tr>
 <tr class="memdesc:a7229bab00e45295764e7f9b7be7be80c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a (<a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>) piecewise-linear interpolant from the first two space-delimited columns in an ASCII file.  <a href="#a7229bab00e45295764e7f9b7be7be80c">More...</a><br /></td></tr>
 <tr class="separator:a7229bab00e45295764e7f9b7be7be80c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a702f02a1b8109d5fdf12d6b187e93f07"><td class="memTemplParams" colspan="2">template&lt;typename I , typename D &gt; </td></tr>
-<tr class="memitem:a702f02a1b8109d5fdf12d6b187e93f07"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a702f02a1b8109d5fdf12d6b187e93f07">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="structnum_1_1ipoint.html">ipoint</a>&lt; I, D &gt; const &amp;p)</td></tr>
-<tr class="memdesc:a702f02a1b8109d5fdf12d6b187e93f07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send point to output stream.  <a href="#a702f02a1b8109d5fdf12d6b187e93f07">More...</a><br /></td></tr>
-<tr class="separator:a702f02a1b8109d5fdf12d6b187e93f07"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5eb307b1a69d6c912cdf820e0b7f7cc"><td class="memTemplParams" colspan="2">template&lt;typename I , typename D &gt; </td></tr>
-<tr class="memitem:aa5eb307b1a69d6c912cdf820e0b7f7cc"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#aa5eb307b1a69d6c912cdf820e0b7f7cc">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="structnum_1_1ilist.html">ilist</a>&lt; I, D &gt; const &amp;list)</td></tr>
-<tr class="memdesc:aa5eb307b1a69d6c912cdf820e0b7f7cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send ilist to output stream.  <a href="#aa5eb307b1a69d6c912cdf820e0b7f7cc">More...</a><br /></td></tr>
-<tr class="separator:aa5eb307b1a69d6c912cdf820e0b7f7cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58e6c3a20b3073008313312398b2e259"><td class="memTemplParams" colspan="2">template&lt;typename A , typename F , typename D &gt; </td></tr>
 <tr class="memitem:a58e6c3a20b3073008313312398b2e259"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt; A, decltype(F() *D())&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a58e6c3a20b3073008313312398b2e259">operator*</a> (<a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt; A, F &gt; const &amp;tab, <a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; D &gt; const &amp;fac)</td></tr>
 <tr class="memdesc:a58e6c3a20b3073008313312398b2e259"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply table by dimval on right.  <a href="#a58e6c3a20b3073008313312398b2e259">More...</a><br /></td></tr>
@@ -393,6 +395,57 @@ Variables</h2></td></tr>
 <li>numerical integration. </li>
 </ul>
 </div><h2 class="groupheader">Typedef Documentation</h2>
+<a id="adf4e925e819b4813b11a93875568934f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf4e925e819b4813b11a93875568934f">&sect;&nbsp;</a></span>ilist</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="namespacenum.html#adf4e925e819b4813b11a93875568934f">ilist</a> =  std::vector&lt;<a class="el" href="namespacenum.html#aecf042ab6b895357dd13471266377348">ipoint</a>&lt;I, D&gt;&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>List of points used to constrain a linear interpolant. </p>
+<p>An instance of ilist can be used to initialize an instance of interpolant.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">I</td><td>Type of independent variable (x value). </td></tr>
+    <tr><td class="paramname">D</td><td>Type of dependent variable (y value). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="ilist_8hpp_source.html#l00041">41</a> of file <a class="el" href="ilist_8hpp_source.html">ilist.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aecf042ab6b895357dd13471266377348"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecf042ab6b895357dd13471266377348">&sect;&nbsp;</a></span>ipoint</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="namespacenum.html#aecf042ab6b895357dd13471266377348">ipoint</a> =  std::pair&lt;I, D&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Point used as one of the constraints of a linear interpolant. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">I</td><td>Type of independent variable (x value). </td></tr>
+    <tr><td class="paramname">D</td><td>Type of dependent variable (y value). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="ilist_8hpp_source.html#l00022">22</a> of file <a class="el" href="ilist_8hpp_source.html">ilist.hpp</a>.</p>
+
+</div>
+</div>
 <a id="a0acd09937ff29e12de4cc106550751ed"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0acd09937ff29e12de4cc106550751ed">&sect;&nbsp;</a></span>PRD</h2>
 
@@ -620,7 +673,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00401">401</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
+<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00399">399</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
 
 </div>
 </div>
@@ -691,7 +744,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00492">492</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
+<p>Definition at line <a class="el" href="integral_8hpp_source.html#l00490">490</a> of file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
 
 </div>
 </div>
@@ -853,8 +906,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a6397493710cb402d45a83db4294d47a2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6397493710cb402d45a83db4294d47a2">&sect;&nbsp;</a></span>make_linear_interp() <span class="overload">[1/2]</span></h2>
+<a id="a557e463f44d69cb9ff3a7f17e04f7d13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a557e463f44d69cb9ff3a7f17e04f7d13">&sect;&nbsp;</a></span>make_linear_interp() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -862,7 +915,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt;X, <a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt;1, X, Y&gt; &gt; num::make_linear_interp </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; std::pair&lt; X, Y &gt;&gt; const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacenum.html#adf4e925e819b4813b11a93875568934f">ilist</a>&lt; X, Y &gt; const &amp;&#160;</td>
           <td class="paramname"><em>cp</em></td><td>)</td>
           <td></td>
         </tr>
@@ -878,7 +931,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00169">169</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00167">167</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
@@ -936,7 +989,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00207">207</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00205">205</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
@@ -969,7 +1022,7 @@ Here is the caller graph for this function:</div>
 <p>Multiply a statdim by a dyndim. </p>
 <p>Global multiplication operator against statdim needs access to v_ and exps_.</p>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00799">799</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00795">795</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>
@@ -1002,7 +1055,7 @@ Here is the caller graph for this function:</div>
 <p>Multiply a dyndim by a statdim. </p>
 <p>Global multiplication operator against statdim needs access to v_ and exps_.</p>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00806">806</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00802">802</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>
@@ -1289,7 +1342,7 @@ Here is the caller graph for this function:</div>
 <p>Divide a statdim by a dyndim. </p>
 <p>Global division operator against statdim needs access to v_ and exps_.</p>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00813">813</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00809">809</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>
@@ -1322,7 +1375,7 @@ Here is the caller graph for this function:</div>
 <p>Divide a dyndim by a statdim. </p>
 <p>Global division operator against statdim needs access to v_ and exps_.</p>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00820">820</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00816">816</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>
@@ -1468,7 +1521,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structnum_1_1ipoint.html">ipoint</a>&lt; I, D &gt; const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacenum.html#aecf042ab6b895357dd13471266377348">ipoint</a>&lt; I, D &gt; const &amp;&#160;</td>
           <td class="paramname"><em>p</em>&#160;</td>
         </tr>
         <tr>
@@ -1488,7 +1541,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00238">238</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="ilist_8hpp_source.html#l00028">28</a> of file <a class="el" href="ilist_8hpp_source.html">ilist.hpp</a>.</p>
 
 </div>
 </div>
@@ -1507,7 +1560,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structnum_1_1ilist.html">ilist</a>&lt; I, D &gt; const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacenum.html#adf4e925e819b4813b11a93875568934f">ilist</a>&lt; I, D &gt; const &amp;&#160;</td>
           <td class="paramname"><em>list</em>&#160;</td>
         </tr>
         <tr>
@@ -1527,7 +1580,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00260">260</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="ilist_8hpp_source.html#l00047">47</a> of file <a class="el" href="ilist_8hpp_source.html">ilist.hpp</a>.</p>
 
 </div>
 </div>
@@ -1649,7 +1702,7 @@ Here is the caller graph for this function:</div>
 <p>Integer root of dyndim. </p>
 <p>Integer root. </p>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00743">743</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00739">739</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>

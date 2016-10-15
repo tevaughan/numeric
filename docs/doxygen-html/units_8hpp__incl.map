@@ -1,9 +1,10 @@
 <map id="units.hpp" name="units.hpp">
-<area shape="rect" id="node2" href="$dimensions_8hpp.html" title="Automatically generated source for generic&#45;dimension types. " alt="" coords="208,80,321,107"/>
-<area shape="rect" id="node3" href="$dimval_8hpp.html" title="Definition of conversions dealing with angle, num::dimval_base, num::statdim, and num::dyndim..." alt="" coords="222,155,307,181"/>
-<area shape="rect" id="node8" href="$dim-exps_8hpp.html" title="Definition of class num::dim_exps. " alt="" coords="780,229,880,256"/>
-<area shape="rect" id="node10" href="$integral_8hpp.html" title="Source for num::integral(), which numerically integrates via adaptive quadrature and the trapezoidal ..." alt="" coords="376,229,465,256"/>
-<area shape="rect" id="node17" href="$util_8hpp.html" title="Basic utilities. " alt="" coords="791,304,855,331"/>
-<area shape="rect" id="node13" href="$integral-stats_8hpp.html" title="Source for num::integral_stats, which is used by num::integral() and by num::interpolant. " alt="" coords="645,304,767,331"/>
-<area shape="rect" id="node14" href="$interval_8hpp.html" title="Source for class interval and class subinterval_stack, which are used by num::integral() and by num::..." alt="" coords="376,304,465,331"/>
+<area shape="rect" id="node2" href="$dimensions_8hpp.html" title="Automatically generated source for generic&#45;dimension types. " alt="" coords="492,80,605,107"/>
+<area shape="rect" id="node3" href="$dimval_8hpp.html" title="Definition of conversions dealing with angle, num::dimval_base, num::statdim, and num::dyndim..." alt="" coords="506,155,591,181"/>
+<area shape="rect" id="node8" href="$dim-exps_8hpp.html" title="Definition of class num::dim_exps. " alt="" coords="976,229,1076,256"/>
+<area shape="rect" id="node10" href="$integral_8hpp.html" title="Source for num::integral(), which numerically integrates via adaptive quadrature and the trapezoidal ..." alt="" coords="504,229,593,256"/>
+<area shape="rect" id="node18" href="$util_8hpp.html" title="Basic utilities. " alt="" coords="837,304,901,331"/>
+<area shape="rect" id="node13" href="$ilist_8hpp.html" title="Definition of ipoint, ilist, and output&#45;stream operator for each. " alt="" coords="618,304,685,331"/>
+<area shape="rect" id="node15" href="$integral-stats_8hpp.html" title="Source for num::integral_stats, which is used by num::integral() and by num::interpolant. " alt="" coords="357,304,479,331"/>
+<area shape="rect" id="node16" href="$interval_8hpp.html" title="Source for class interval and class subinterval_stack, which are used by num::integral() and by num::..." alt="" coords="504,304,593,331"/>
 </map>

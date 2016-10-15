@@ -47,10 +47,6 @@ namespace num
    template <typename A, typename R>
    class interpolant;
 
-   // Forward declaration needed to allow a class to declare ilist as a friend.
-   template <typename A, typename R>
-   struct ilist;
-
    // Forward declaration needed to allow a class to declare rk_quad as a
    // friend.
    template <typename X, typename Y>

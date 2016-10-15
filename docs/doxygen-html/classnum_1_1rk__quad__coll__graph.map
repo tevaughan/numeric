@@ -1,12 +1,6 @@
 <map id="rk_quad&lt; X, Y &gt;" name="rk_quad&lt; X, Y &gt;">
-<area shape="rect" id="node2" href="$classdouble.html" title="double" alt="" coords="1007,149,1067,176"/>
-<area shape="rect" id="node13" href="$classnum_1_1interpolant.html" title="interpolant\&lt; X, DYDX \&gt;" alt="" coords="956,465,1117,492"/>
-<area shape="rect" id="node16" href="$classnum_1_1interpolant.html" title="interpolant\&lt; X, Y \&gt;" alt="" coords="971,579,1103,605"/>
-<area shape="rect" id="node8" href="$structnum_1_1ilist.html" title="ilist\&lt; X, DYDX \&gt;" alt="" coords="699,339,821,365"/>
-<area shape="rect" id="node9" title="STL class. " alt="" coords="295,341,421,382"/>
-<area shape="rect" id="node12" title="STL class. " alt="" coords="149,415,271,457"/>
-<area shape="rect" id="node18" title="STL class. " alt="" coords="295,535,421,577"/>
-<area shape="rect" id="node11" href="$structnum_1_1ilist.html" title="List of points used to constrain a linear interpolant. " alt="" coords="461,423,549,449"/>
-<area shape="rect" id="node14" href="$classnum_1_1interpolant.html" title="Linear interpolant. " alt="" coords="696,428,824,455"/>
-<area shape="rect" id="node17" href="$structnum_1_1ilist.html" title="ilist\&lt; X, Y \&gt;" alt="" coords="714,565,806,592"/>
+<area shape="rect" id="node2" href="$classdouble.html" title="double" alt="" coords="536,149,596,176"/>
+<area shape="rect" id="node9" href="$classnum_1_1interpolant.html" title="interpolant\&lt; X, DYDX \&gt;" alt="" coords="485,465,647,492"/>
+<area shape="rect" id="node13" href="$classnum_1_1interpolant.html" title="interpolant\&lt; X, Y \&gt;" alt="" coords="500,579,632,605"/>
+<area shape="rect" id="node10" href="$classnum_1_1interpolant.html" title="Linear interpolant. " alt="" coords="225,405,353,432"/>
 </map>
