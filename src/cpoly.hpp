@@ -383,18 +383,6 @@ namespace num
          return r;
       }
 
-      /// Multiply by scalar factor on right.
-      /// \tparam T  Type of factor.
-      template <typename T>
-      cpoly<D, dyndim, dyndim> operator*(T const &t) const
-      {
-         cpoly<D, dyndim, dyndim> r; // Return value.
-         for (unsigned i = 0; i < c_.size(); ++i) {
-            r.c_[i] = c_[i] * t;
-         }
-         return r;
-      }
-
       /// Right multiplicative assignment.
       cpoly &operator*=(/** Factor. */ double rf)
       {
@@ -518,16 +506,6 @@ namespace num
          for (unsigned j = 0; j < op.c_.size(); ++j) {
             r.c_[j] = c_[0] * op.c_[j];
          }
-         return r;
-      }
-
-      /// Multiply by scalar factor on right.
-      /// \tparam T  Type of factor.
-      template <typename T>
-      cpoly<0, dyndim, dyndim> operator*(T const &t) const
-      {
-         cpoly<0, dyndim, dyndim> r; // Return value.
-         r.c_[0] = c_[0] * t;
          return r;
       }
 

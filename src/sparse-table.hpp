@@ -16,6 +16,24 @@
 
 namespace num
 {
+   template <typename A, typename F>
+   class sparse_table;
+
+   template <typename D>
+   class dimval;
+
+   template <typename A, typename F, typename D>
+   sparse_table<A, decltype(F() * D())>
+   operator*(sparse_table<A, F> const &tab, dimval<D> const &fac);
+
+   template <typename A, typename F, typename D>
+   sparse_table<A, decltype(D() * F())>
+   operator*(dimval<D> const &fac, sparse_table<A, F> const &tab);
+
+   template <typename A, typename F, typename D>
+   sparse_table<A, decltype(F() / D())>
+   operator/(sparse_table<A, F> const &tab, dimval<D> const &fac);
+
    /// A [piecewise function](https://en.wikipedia.org/wiki/Piecewise) that, in
    /// logarithmic time, looks up the sub-function appropriate to the argument.
    ///
@@ -66,6 +84,21 @@ namespace num
       template <typename OA, typename OF>
       friend class sparse_table;
 
+      /// Allow for external operator to use private constructor.
+      template <typename OA, typename OF, typename D>
+      friend sparse_table<OA, decltype(OF() * D())>
+      operator*(sparse_table<OA, OF> const &tab, dimval<D> const &fac);
+
+      /// Allow for external operator to use private constructor.
+      template <typename OA, typename OF, typename D>
+      friend sparse_table<OA, decltype(D() * OF())>
+      operator*(dimval<D> const &fac, sparse_table<OA, OF> const &tab);
+
+      /// Allow for external operator to use private constructor.
+      template <typename OA, typename OF, typename D>
+      friend sparse_table<OA, decltype(OF() / D())>
+      operator/(sparse_table<OA, OF> const &tab, dimval<D> const &fac);
+
    public:
       /// Type of record in table.
       struct rec
@@ -81,7 +114,15 @@ namespace num
       data dat_; ///< Tabular data.
 
       /// Compare argument with record so that right record can be found.
-      static bool comp(A const &a, rec const &r) { return a < r.a; }
+      static bool acomp(A const &a, rec const &r) { return a < r.a; }
+
+      /// Compare two records so that they can be sorted.
+      static bool rcomp(rec const &r1, rec const &r2) { return r1.a < r2.a; }
+
+      /// Construct from data member, already consistently initialized and
+      /// sorted.
+      explicit sparse_table(data &&d) : dat_(std::move(d)) {}
+
    public:
       /// Construct null table.
       sparse_table() {}
@@ -101,6 +142,7 @@ namespace num
          if (vf.size() == 0) {
             throw "sparse_table must have at least one entry.";
          }
+         std::sort(dat_.begin(), dat_.end(), rcomp);
          if (vf[0].first <= 0.0 * vf[0].first) {
             throw "Length of sub-domain must be positive.";
          }
@@ -116,9 +158,6 @@ namespace num
             dat_[i].a  = dat_[i - 1].a + 0.5 * (dat_[i - 1].da + dat_[i].da);
          }
       }
-
-      /// Construct from data member.
-      explicit sparse_table(data &&d) : dat_(std::move(d)) {}
 
       /// Table of sub-domain centers, sub-domain lengths, and sub-functions:
       /// \f$ (a_0, \Delta a_0, f_0) \f$, \f$ (a_1, \Delta a_1, f_1) \f$, \f$
@@ -141,7 +180,7 @@ namespace num
             return 0.0 * q->f(a - q->a);
          }
          // In log time, find pointer to first record after argument a.
-         auto p = std::upper_bound(dat_.begin(), dat_.end(), a, comp);
+         auto p = std::upper_bound(dat_.begin(), dat_.end(), a, acomp);
          if (p == dat_.end()) {
             // Argument a is after last center.
             auto q = dat_.rbegin();
@@ -163,6 +202,66 @@ namespace num
             rv += i.f.integral(-0.5 * i.da)(+0.5 * i.da);
          }
          return rv;
+      }
+
+      /// Integral of piece-wise function over range.
+      integral_type
+      integral(/** Beginning of range. */ A a, /** End of range. */ A b) const
+      {
+         double sign = 1.0;
+         if (a > b) {
+            sign = -1.0;
+            std::swap(a, b);
+         }
+         integral_type rv = 0; // Return value.
+         if (dat_.size() == 0) {
+            return rv; // There are no pieces over which to integrate.
+         }
+         A const beg = dat_.begin()->a - 0.5 * dat_.begin()->da;
+         A const end = dat_.rbegin()->a + 0.5 * dat_.rbegin()->da;
+         if (a > end) {
+            return rv; // Interval is entirely past the last piece.
+         }
+         if (b < beg) {
+            return rv; // Interval is entirely before the first piece.
+         }
+         if (a < beg) {
+            a = beg; // Interval is partially before the first piece.
+         }
+         if (b > end) {
+            b = end; // Interval is partially after the last piece.
+         }
+         auto pa = std::upper_bound(dat_.begin(), dat_.end(), a, acomp);
+         auto pb = std::upper_bound(dat_.begin(), dat_.end(), b, acomp);
+         if (pa == dat_.end()) {
+            // Beginning of interval is after last center.
+            auto q = dat_.rbegin();
+            return sign * q->f.integral(a - q->a)(b - q->a);
+         } else if (pa->a - a > 0.5 * pa->da) {
+            --pa; // Beginning of interval is too far from subsequent center.
+         }
+         if (pb == dat_.end() || pb->a - b > 0.5 * pb->da) {
+            // End of interval is after last center or too far from subsequent
+            // center.
+            --pb;
+         }
+         auto const pend = pb + 1;
+         for (auto i = pa; i != pend; ++i) {
+            A aa; // Beginning of integration relative to center of piece.
+            A bb; // End of integration relative to center of piece.
+            if (i == pa) {
+               aa = a - i->a;     // Beginning of interval relative to center.
+            } else {              //
+               aa = -0.5 * i->da; // Beginning of piece relative to center.
+            }
+            if (i == pb) {
+               bb = b - i->a;     // End of interval relative to center.
+            } else {              //
+               bb = +0.5 * i->da; // End of piece relative to center.
+            }
+            rv += i->f.integral(aa)(bb); // Integral over current piece.
+         }
+         return sign * rv;
       }
 
       /// Multiply table by scale factor on right.

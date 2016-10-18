@@ -43,16 +43,29 @@ TEST_CASE("Verify interpolation on vector of points.", "[interpolant]")
 TEST_CASE("Verify integral of interpolant.", "[interpolant]")
 {
    ilist<double, double> list = {{0.00, 0.50}, {0.50, 1.00}, {1.00, -1.00}};
-   interpolantd i(list);
-   REQUIRE(i.integral(-0.50, -0.10) == 0.2);
-   REQUIRE(i.integral(-0.25, +0.25) == 0.25 * 0.5 + 0.25 * 0.5 * (0.5 + 0.75));
-   REQUIRE(i.integral(+0.25, +1.25) == 0.5 * 0.25 * (0.75 + 1.0) - 0.25);
-   REQUIRE(i.integral(+0.55, +0.95) == 0.0);
-   REQUIRE(i.integral(+0.75, +1.25) == -0.375);
-   REQUIRE(i.integral(+1.25, +1.50) == -0.25);
-   REQUIRE(i.integral(+1.50, +1.25) == +0.25);
-   interpolantd j;
-   REQUIRE_THROWS(j.integral(0.0, 1.0));
+
+   interpolantd i1(list);
+   auto i2 = make_linear_interp(list);
+
+   REQUIRE(i1.integral(-0.50, -0.10) == 0.2);
+   REQUIRE(i1.integral(-0.25, +0.25) == 0.25 * 0.5 + 0.25 * 0.5 * (0.5 + 0.75));
+   REQUIRE(i1.integral(+0.25, +1.25) == 0.5 * 0.25 * (0.75 + 1.0) - 0.25);
+   REQUIRE(i1.integral(+0.55, +0.95) == 0.0);
+   REQUIRE(i1.integral(+0.75, +1.25) == -0.375);
+   REQUIRE(i1.integral(+1.25, +1.50) == -0.25);
+   REQUIRE(i1.integral(+1.50, +1.25) == +0.25);
+
+   REQUIRE(i2.integral(-0.50, -0.10) == 0.0);
+   REQUIRE(i2.integral(-0.25, +0.25) == 0.25 * 0.5 * (0.5 + 0.75));
+   REQUIRE(i2.integral(+0.25, +1.25) == 0.5 * 0.25 * (0.75 + 1.0));
+   REQUIRE(i2.integral(+0.55, +0.95) == 0.0);
+   REQUIRE(i2.integral(+0.75, +1.25) == -0.125);
+   REQUIRE(i2.integral(+1.25, +0.75) == +0.125);
+   REQUIRE(i2.integral(+1.25, +1.50) == 0.00);
+   REQUIRE(i2.integral(+1.50, +1.25) == 0.00);
+
+   interpolantd j1;
+   REQUIRE_THROWS(j1.integral(0.0, 1.0));
 }
 
 TEST_CASE("Verify product of interpolants.", "[interpolant]")

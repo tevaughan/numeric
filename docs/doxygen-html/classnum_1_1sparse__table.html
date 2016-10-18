@@ -74,6 +74,7 @@ $(function() {
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#friends">Friends</a> &#124;
@@ -127,10 +128,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:adbc3a161c9c515158cb0391f686c8f91"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#adbc3a161c9c515158cb0391f686c8f91">sparse_table</a> (A const &amp;a0, std::vector&lt; std::pair&lt; A, F &gt;&gt; vf)</td></tr>
 <tr class="memdesc:adbc3a161c9c515158cb0391f686c8f91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize table of sub-domain centers, sub-domain lengths, and sub-functions.  <a href="#adbc3a161c9c515158cb0391f686c8f91">More...</a><br /></td></tr>
 <tr class="separator:adbc3a161c9c515158cb0391f686c8f91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d93d2a1e25860d2e0479730cf9fc427"><td class="memItemLeft" align="right" valign="top"><a id="a5d93d2a1e25860d2e0479730cf9fc427"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a5d93d2a1e25860d2e0479730cf9fc427">sparse_table</a> (<a class="el" href="classnum_1_1sparse__table.html#a7d9c3006d824f8372cadae43a871c74b">data</a> &amp;&amp;d)</td></tr>
-<tr class="memdesc:a5d93d2a1e25860d2e0479730cf9fc427"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct from data member. <br /></td></tr>
-<tr class="separator:a5d93d2a1e25860d2e0479730cf9fc427"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3500c19d38b53745fb626818a57d229b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html#a7d9c3006d824f8372cadae43a871c74b">data</a> const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a3500c19d38b53745fb626818a57d229b">dat</a> () const</td></tr>
 <tr class="memdesc:a3500c19d38b53745fb626818a57d229b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Table of sub-domain centers, sub-domain lengths, and sub-functions: \( (a_0, \Delta a_0, f_0) \), \( (a_1, \Delta a_1, f_1) \), \( \ldots \), \( (a_{n-1}, \Delta a_{n-1}, f_{n-1}) \).  <a href="#a3500c19d38b53745fb626818a57d229b">More...</a><br /></td></tr>
 <tr class="separator:a3500c19d38b53745fb626818a57d229b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -141,6 +138,9 @@ Public Member Functions</h2></td></tr>
 <a class="el" href="classnum_1_1sparse__table.html#a09dbb59ef7a20d810f428bbcb89ccb5b">integral_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a6db329b6918e1560b1ff0816a33fa633">integral</a> () const</td></tr>
 <tr class="memdesc:a6db329b6918e1560b1ff0816a33fa633"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integral of piece-wise function over all pieces. <br /></td></tr>
 <tr class="separator:a6db329b6918e1560b1ff0816a33fa633"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a197b4e44d1fd836492e125358182bb97"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html#a09dbb59ef7a20d810f428bbcb89ccb5b">integral_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a197b4e44d1fd836492e125358182bb97">integral</a> (A a, A b) const</td></tr>
+<tr class="memdesc:a197b4e44d1fd836492e125358182bb97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integral of piece-wise function over range.  <a href="#a197b4e44d1fd836492e125358182bb97">More...</a><br /></td></tr>
+<tr class="separator:a197b4e44d1fd836492e125358182bb97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d0913bb8db122d6d2ebd925cad1edad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a0d0913bb8db122d6d2ebd925cad1edad">operator*</a> (<a class="el" href="classdouble.html">double</a> fac) const</td></tr>
 <tr class="memdesc:a0d0913bb8db122d6d2ebd925cad1edad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply table by scale factor on right.  <a href="#a0d0913bb8db122d6d2ebd925cad1edad">More...</a><br /></td></tr>
 <tr class="separator:a0d0913bb8db122d6d2ebd925cad1edad"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -151,12 +151,22 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ab14367da3474927095d66803e4fe6e7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divisive assignment.  <a href="#ab14367da3474927095d66803e4fe6e7e">More...</a><br /></td></tr>
 <tr class="separator:ab14367da3474927095d66803e4fe6e7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a5d93d2a1e25860d2e0479730cf9fc427"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a5d93d2a1e25860d2e0479730cf9fc427">sparse_table</a> (<a class="el" href="classnum_1_1sparse__table.html#a7d9c3006d824f8372cadae43a871c74b">data</a> &amp;&amp;d)</td></tr>
+<tr class="memdesc:a5d93d2a1e25860d2e0479730cf9fc427"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct from data member, already consistently initialized and sorted.  <a href="#a5d93d2a1e25860d2e0479730cf9fc427">More...</a><br /></td></tr>
+<tr class="separator:a5d93d2a1e25860d2e0479730cf9fc427"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
-<tr class="memitem:acbed21c224f1f29e940aba71756a095c"><td class="memItemLeft" align="right" valign="top"><a id="acbed21c224f1f29e940aba71756a095c"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#acbed21c224f1f29e940aba71756a095c">comp</a> (A const &amp;a, <a class="el" href="structnum_1_1sparse__table_1_1rec.html">rec</a> const &amp;r)</td></tr>
-<tr class="memdesc:acbed21c224f1f29e940aba71756a095c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare argument with record so that right record can be found. <br /></td></tr>
-<tr class="separator:acbed21c224f1f29e940aba71756a095c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7615d51700b1b443941ae13d1f8d4e32"><td class="memItemLeft" align="right" valign="top"><a id="a7615d51700b1b443941ae13d1f8d4e32"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a7615d51700b1b443941ae13d1f8d4e32">acomp</a> (A const &amp;a, <a class="el" href="structnum_1_1sparse__table_1_1rec.html">rec</a> const &amp;r)</td></tr>
+<tr class="memdesc:a7615d51700b1b443941ae13d1f8d4e32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare argument with record so that right record can be found. <br /></td></tr>
+<tr class="separator:a7615d51700b1b443941ae13d1f8d4e32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf23784613d8be88c06ba9568302abd0"><td class="memItemLeft" align="right" valign="top"><a id="abf23784613d8be88c06ba9568302abd0"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#abf23784613d8be88c06ba9568302abd0">rcomp</a> (<a class="el" href="structnum_1_1sparse__table_1_1rec.html">rec</a> const &amp;r1, <a class="el" href="structnum_1_1sparse__table_1_1rec.html">rec</a> const &amp;r2)</td></tr>
+<tr class="memdesc:abf23784613d8be88c06ba9568302abd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare two records so that they can be sorted. <br /></td></tr>
+<tr class="separator:abf23784613d8be88c06ba9568302abd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -171,6 +181,21 @@ Friends</h2></td></tr>
 <tr class="memitem:a0b75371951d682d8ae281db146ebb4da"><td class="memTemplItemLeft" align="right" valign="top">class&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a0b75371951d682d8ae281db146ebb4da">sparse_table</a></td></tr>
 <tr class="memdesc:a0b75371951d682d8ae281db146ebb4da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow other type of <a class="el" href="classnum_1_1sparse__table.html" title="A piecewise function that, in logarithmic time, looks up the sub-function appropriate to the argument...">sparse_table</a> to access private members.  <a href="#a0b75371951d682d8ae281db146ebb4da">More...</a><br /></td></tr>
 <tr class="separator:a0b75371951d682d8ae281db146ebb4da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e55ec5020aa25fcdb3c33f47d22b84c"><td class="memTemplParams" colspan="2"><a id="a8e55ec5020aa25fcdb3c33f47d22b84c"></a>
+template&lt;typename OA , typename OF , typename D &gt; </td></tr>
+<tr class="memitem:a8e55ec5020aa25fcdb3c33f47d22b84c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt; OA, decltype(OF() *D())&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a8e55ec5020aa25fcdb3c33f47d22b84c">operator*</a> (<a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt; OA, OF &gt; const &amp;tab, <a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; D &gt; const &amp;fac)</td></tr>
+<tr class="memdesc:a8e55ec5020aa25fcdb3c33f47d22b84c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow for external operator to use private constructor. <br /></td></tr>
+<tr class="separator:a8e55ec5020aa25fcdb3c33f47d22b84c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a732063a8fe3086633f45ed01fc8b6756"><td class="memTemplParams" colspan="2"><a id="a732063a8fe3086633f45ed01fc8b6756"></a>
+template&lt;typename OA , typename OF , typename D &gt; </td></tr>
+<tr class="memitem:a732063a8fe3086633f45ed01fc8b6756"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt; OA, decltype(D() *OF())&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a732063a8fe3086633f45ed01fc8b6756">operator*</a> (<a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; D &gt; const &amp;fac, <a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt; OA, OF &gt; const &amp;tab)</td></tr>
+<tr class="memdesc:a732063a8fe3086633f45ed01fc8b6756"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow for external operator to use private constructor. <br /></td></tr>
+<tr class="separator:a732063a8fe3086633f45ed01fc8b6756"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e86fed1c1808b7001ea5b1dd0dcc7b1"><td class="memTemplParams" colspan="2"><a id="a0e86fed1c1808b7001ea5b1dd0dcc7b1"></a>
+template&lt;typename OA , typename OF , typename D &gt; </td></tr>
+<tr class="memitem:a0e86fed1c1808b7001ea5b1dd0dcc7b1"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt; OA, decltype(OF()/D())&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a0e86fed1c1808b7001ea5b1dd0dcc7b1">operator/</a> (<a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt; OA, OF &gt; const &amp;tab, <a class="el" href="classnum_1_1dimval.html">dimval</a>&lt; D &gt; const &amp;fac)</td></tr>
+<tr class="memdesc:a0e86fed1c1808b7001ea5b1dd0dcc7b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow for external operator to use private constructor. <br /></td></tr>
+<tr class="separator:a0e86fed1c1808b7001ea5b1dd0dcc7b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43461743412e247dca184858d2282d1e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a43461743412e247dca184858d2282d1e">operator*</a> (<a class="el" href="classdouble.html">double</a> fac, <a class="el" href="classnum_1_1sparse__table.html">sparse_table</a> const &amp;tab)</td></tr>
 <tr class="memdesc:a43461743412e247dca184858d2282d1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply table by scale factor on left.  <a href="#a43461743412e247dca184858d2282d1e">More...</a><br /></td></tr>
 <tr class="separator:a43461743412e247dca184858d2282d1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -195,10 +220,40 @@ class num::sparse_table&lt; A, F &gt;</h3>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00061">61</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00020">20</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a5d93d2a1e25860d2e0479730cf9fc427"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d93d2a1e25860d2e0479730cf9fc427">&sect;&nbsp;</a></span>sparse_table() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classnum_1_1sparse__table.html#a7d9c3006d824f8372cadae43a871c74b">data</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>d</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct from data member, already consistently initialized and sorted. </p>
+
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00124">124</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+
+</div>
+</div>
 <a id="adbc3a161c9c515158cb0391f686c8f91"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adbc3a161c9c515158cb0391f686c8f91">&sect;&nbsp;</a></span>sparse_table()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#adbc3a161c9c515158cb0391f686c8f91">&sect;&nbsp;</a></span>sparse_table() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -240,7 +295,15 @@ class num::sparse_table&lt; A, F &gt;</h3>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00091">91</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00132">132</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classnum_1_1sparse__table_adbc3a161c9c515158cb0391f686c8f91_cgraph.png" border="0" usemap="#classnum_1_1sparse__table_adbc3a161c9c515158cb0391f686c8f91_cgraph" alt=""/></div>
+<map name="classnum_1_1sparse__table_adbc3a161c9c515158cb0391f686c8f91_cgraph" id="classnum_1_1sparse__table_adbc3a161c9c515158cb0391f686c8f91_cgraph">
+<area shape="rect" id="node2" href="classnum_1_1sparse__table.html#abf23784613d8be88c06ba9568302abd0" title="Compare two records so that they can be sorted. " alt="" coords="149,5,208,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -270,7 +333,62 @@ class num::sparse_table&lt; A, F &gt;</h3>
 
 <p>Table of sub-domain centers, sub-domain lengths, and sub-functions: \( (a_0, \Delta a_0, f_0) \), \( (a_1, \Delta a_1, f_1) \), \( \ldots \), \( (a_{n-1}, \Delta a_{n-1}, f_{n-1}) \). </p>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00126">126</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00165">165</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a197b4e44d1fd836492e125358182bb97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a197b4e44d1fd836492e125358182bb97">&sect;&nbsp;</a></span>integral()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classnum_1_1sparse__table.html#a09dbb59ef7a20d810f428bbcb89ccb5b">integral_type</a> integral </td>
+          <td>(</td>
+          <td class="paramtype">A&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">A&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Integral of piece-wise function over range. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>Beginning of range. </td></tr>
+    <tr><td class="paramname">b</td><td>End of range. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00209">209</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classnum_1_1sparse__table_a197b4e44d1fd836492e125358182bb97_cgraph.png" border="0" usemap="#classnum_1_1sparse__table_a197b4e44d1fd836492e125358182bb97_cgraph" alt=""/></div>
+<map name="classnum_1_1sparse__table_a197b4e44d1fd836492e125358182bb97_cgraph" id="classnum_1_1sparse__table_a197b4e44d1fd836492e125358182bb97_cgraph">
+<area shape="rect" id="node2" href="classnum_1_1sparse__table.html#a7615d51700b1b443941ae13d1f8d4e32" title="Compare argument with record so that right record can be found. " alt="" coords="117,5,179,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -308,13 +426,13 @@ class num::sparse_table&lt; A, F &gt;</h3>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00136">136</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00175">175</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classnum_1_1sparse__table_a798d4662a2d00784882571740e2f7866_cgraph.png" border="0" usemap="#classnum_1_1sparse__table_a798d4662a2d00784882571740e2f7866_cgraph" alt=""/></div>
 <map name="classnum_1_1sparse__table_a798d4662a2d00784882571740e2f7866_cgraph" id="classnum_1_1sparse__table_a798d4662a2d00784882571740e2f7866_cgraph">
-<area shape="rect" id="node2" href="classnum_1_1sparse__table.html#acbed21c224f1f29e940aba71756a095c" title="Compare argument with record so that right record can be found. " alt="" coords="131,5,185,32"/>
+<area shape="rect" id="node2" href="classnum_1_1sparse__table.html#a7615d51700b1b443941ae13d1f8d4e32" title="Compare argument with record so that right record can be found. " alt="" coords="131,5,192,32"/>
 </map>
 </div>
 
@@ -352,7 +470,7 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00169">169</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00268">268</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 
 </div>
 </div>
@@ -388,7 +506,7 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00194">194</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00293">293</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 
 </div>
 </div>
@@ -424,7 +542,7 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00203">203</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00302">302</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 
 </div>
 </div>
@@ -472,7 +590,7 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00181">181</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00280">280</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 
 </div>
 </div>
@@ -505,7 +623,7 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00067">67</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00085">85</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 
 </div>
 </div>
