@@ -315,6 +315,11 @@ template&lt;typename DER &gt; </td></tr>
 <tr class="memitem:a8fd4c40887e7985c60729b71f316b853"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdouble.html">double</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a8fd4c40887e7985c60729b71f316b853">pow</a> (<a class="el" href="classdouble.html">double</a> x, int e)</td></tr>
 <tr class="memdesc:a8fd4c40887e7985c60729b71f316b853"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integer power of a double. This is an alias for <a class="el" href="namespacenum.html#affe013befb82ebee3bcf4305fae4089a">ipow()</a>.  <a href="#a8fd4c40887e7985c60729b71f316b853">More...</a><br /></td></tr>
 <tr class="separator:a8fd4c40887e7985c60729b71f316b853"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1219cb0201b90471a48aa6f06326f1d3"><td class="memTemplParams" colspan="2"><a id="a1219cb0201b90471a48aa6f06326f1d3"></a>
+template&lt;unsigned D, typename V , typename C &gt; </td></tr>
+<tr class="memitem:a1219cb0201b90471a48aa6f06326f1d3"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a1219cb0201b90471a48aa6f06326f1d3">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; D, V, C &gt; const &amp;p)</td></tr>
+<tr class="memdesc:a1219cb0201b90471a48aa6f06326f1d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send an instance of cpoly to an output stream. <br /></td></tr>
+<tr class="separator:a1219cb0201b90471a48aa6f06326f1d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acde3f5fedfb35096983afef39e3522a5"><td class="memTemplParams" colspan="2">template&lt;unsigned D, typename V , typename C , typename F &gt; </td></tr>
 <tr class="memitem:acde3f5fedfb35096983afef39e3522a5"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; D, V, decltype(C() *F())&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#acde3f5fedfb35096983afef39e3522a5">operator*</a> (<a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; D, V, C &gt; const &amp;cp, F const &amp;fac)</td></tr>
 <tr class="memdesc:acde3f5fedfb35096983afef39e3522a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply cpoly by scale factor on right.  <a href="#acde3f5fedfb35096983afef39e3522a5">More...</a><br /></td></tr>
@@ -886,6 +891,7 @@ Here is the caller graph for this function:</div>
 <li>of only white space, optionally followed by the '#' character and a subsequent comment or</li>
 <li>of white space followed by at least two space-delimited floating-point numbers (after which everything else on the line is ignored).</li>
 </ul>
+<p>FIXME: This was written when every subfunction in <a class="el" href="classnum_1_1sparse__table.html" title="A piecewise function that, in logarithmic time, looks up the sub-function appropriate to the argument...">sparse_table</a> took as its argument the coordinate relative to the center of the subdomain. That has changed, and so the implementation here is probably now wrong.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">X</td><td>Type of first column, representing the x coordinate. </td></tr>
@@ -902,7 +908,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00129">129</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00133">133</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
@@ -931,7 +937,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00167">167</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00171">171</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
@@ -989,7 +995,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00205">205</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00213">213</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 
 </div>
 </div>
@@ -1036,7 +1042,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00321">321</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00392">392</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 
 </div>
 </div>
@@ -1083,7 +1089,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00341">341</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00412">412</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 
 </div>
 </div>
@@ -1190,7 +1196,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00587">587</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00602">602</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
 
 </div>
 </div>
@@ -1231,7 +1237,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00603">603</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00618">618</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
 
 </div>
 </div>
@@ -1270,7 +1276,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00617">617</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00632">632</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
 
 </div>
 </div>
@@ -1309,7 +1315,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00631">631</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00646">646</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
 
 </div>
 </div>
@@ -1356,7 +1362,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00361">361</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00432">432</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 
 </div>
 </div>
@@ -1463,7 +1469,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00647">647</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00662">662</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
 
 </div>
 </div>
@@ -1502,7 +1508,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00661">661</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cpoly_8hpp_source.html#l00676">676</a> of file <a class="el" href="cpoly_8hpp_source.html">cpoly.hpp</a>.</p>
 
 </div>
 </div>

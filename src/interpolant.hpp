@@ -123,6 +123,10 @@ namespace num
    /// - of white space followed by at least two space-delimited floating-point
    ///   numbers (after which everything else on the line is ignored).
    ///
+   /// FIXME: This was written when every subfunction in sparse_table took as
+   /// its argument the coordinate relative to the center of the subdomain.
+   /// That has changed, and so the implementation here is probably now wrong.
+   ///
    /// \tparam X  Type of first column, representing the x coordinate.
    /// \tparam Y  Type of second column, representing the Y coordinate.
    template <typename X = double, typename Y = double>
@@ -178,11 +182,15 @@ namespace num
       unsigned const ndeltas = cp.size() - 1;
       std::vector<std::pair<X, C>> vf(ndeltas);
       for (unsigned i = 0; i < ndeltas; ++i) {
-         unsigned const j     = i + 1;
-         X const        delta = cp[j].first - cp[i].first;
-         Y const        c0    = 0.5 * (cp[i].second + cp[j].second);
-         auto const     c1    = (cp[j].second - cp[i].second) / delta;
-         vf[i].first          = delta;
+         unsigned const j  = i + 1;
+         X const &      x1 = cp[i].first;
+         X const &      x2 = cp[j].first;
+         Y const &      y1 = cp[i].second;
+         Y const &      y2 = cp[j].second;
+         X const        dx = x2 - x1;
+         auto const     c1 = (y2 - y1) / dx;
+         Y const        c0 = y1 - c1 * x1;
+         vf[i].first       = dx;
          vf[i].second.template set_coef<0>(c0);
          vf[i].second.template set_coef<1>(c1);
       }

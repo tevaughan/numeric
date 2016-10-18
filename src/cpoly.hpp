@@ -10,9 +10,10 @@
 #ifndef NUMERIC_CPOLY_HPP
 #define NUMERIC_CPOLY_HPP
 
-#include <array>   // for array
-#include <cstring> // for memset()
-#include <vector>  // for vector
+#include <array>    // for array
+#include <cstring>  // for memset()
+#include <iostream> // for ostream, endl
+#include <vector>   // for vector
 
 #include <cfunc.hpp>
 #include <util.hpp>
@@ -84,10 +85,11 @@ namespace num
       cpoly<D + OD, V, decltype(C() * OC())>
       operator*(/** Other cpoly. */ cpoly<OD, V, OC> const &op) const
       {
-         cpoly<D + OD, V, decltype(C() * OC())> r; // Return value.
+         // Return value initially has zero-valued coefficients.
+         cpoly<D + OD, V, decltype(C() * OC())> r;
          for (unsigned i = 0; i < c_.size(); ++i) {
             for (unsigned j = 0; j < op.c_.size(); ++j) {
-               r.c_[i + j] = c_[i] * op.c_[j];
+               r.c_[i + j] += c_[i] * op.c_[j];
             }
          }
          return r;
@@ -205,6 +207,18 @@ namespace num
          return i;
       }
    };
+
+   /// Send an instance of cpoly to an output stream.
+   template <unsigned D, typename V, typename C>
+   std::ostream &operator<<(std::ostream &os, cpoly<D, V, C> const &p)
+   {
+      os << "[";
+      for (unsigned i = 0; i < p.norm_coefs().size(); ++i) {
+         os << " " << p.norm_coefs()[i];
+      }
+      os << "]";
+      return os;
+   }
 
    /// Degree-zero specialization of \ref cpoly.  %cpoly<0,V,C> has but a
    /// single coefficient, the constant term.
@@ -374,10 +388,11 @@ namespace num
       cpoly<D + OD, dyndim, dyndim>
       operator*(cpoly<OD, dyndim, dyndim> const &op) const
       {
-         cpoly<D + OD, dyndim, dyndim> r; // Return value.
+         // Return value initially has zero-valued coefficients.
+         cpoly<D + OD, dyndim, dyndim> r;
          for (unsigned i = 0; i < c_.size(); ++i) {
             for (unsigned j = 0; j < op.c_.size(); ++j) {
-               r.c_[i + j] = c_[i] * op.c_[j];
+               r.c_[i + j] += c_[i] * op.c_[j];
             }
          }
          return r;

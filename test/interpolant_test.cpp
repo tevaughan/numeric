@@ -20,7 +20,7 @@ TEST_CASE("Verify interpolation on vector of points.", "[interpolant]")
    ilist<double, double> list = {{0.00, 0.00}, {0.50, 0.25}, {1.00, 1.00}};
 
    interpolantd i(list);
-   auto j = make_linear_interp(list);
+   auto         j = make_linear_interp(list);
 
    REQUIRE(i(-1.0) == 0.0);
    REQUIRE(i(0.0) == 0.0);
@@ -45,10 +45,11 @@ TEST_CASE("Verify integral of interpolant.", "[interpolant]")
    ilist<double, double> list = {{0.00, 0.50}, {0.50, 1.00}, {1.00, -1.00}};
 
    interpolantd i1(list);
-   auto i2 = make_linear_interp(list);
+   auto         i2 = make_linear_interp(list);
 
    REQUIRE(i1.integral(-0.50, -0.10) == 0.2);
-   REQUIRE(i1.integral(-0.25, +0.25) == 0.25 * 0.5 + 0.25 * 0.5 * (0.5 + 0.75));
+   REQUIRE(
+         i1.integral(-0.25, +0.25) == 0.25 * 0.5 + 0.25 * 0.5 * (0.5 + 0.75));
    REQUIRE(i1.integral(+0.25, +1.25) == 0.5 * 0.25 * (0.75 + 1.0) - 0.25);
    REQUIRE(i1.integral(+0.55, +0.95) == 0.0);
    REQUIRE(i1.integral(+0.75, +1.25) == -0.375);
@@ -58,7 +59,7 @@ TEST_CASE("Verify integral of interpolant.", "[interpolant]")
    REQUIRE(i2.integral(-0.50, -0.10) == 0.0);
    REQUIRE(i2.integral(-0.25, +0.25) == 0.25 * 0.5 * (0.5 + 0.75));
    REQUIRE(i2.integral(+0.25, +1.25) == 0.5 * 0.25 * (0.75 + 1.0));
-   REQUIRE(i2.integral(+0.55, +0.95) == 0.0);
+   REQUIRE(i2.integral(+0.55, +0.95) == Approx(0.0));
    REQUIRE(i2.integral(+0.75, +1.25) == -0.125);
    REQUIRE(i2.integral(+1.25, +0.75) == +0.125);
    REQUIRE(i2.integral(+1.25, +1.50) == 0.00);
@@ -72,24 +73,50 @@ TEST_CASE("Verify product of interpolants.", "[interpolant]")
 {
    ilist<double, double> list1 = {{0.00, 0.00}, {0.50, 0.25}, {1.00, 1.00}};
    ilist<double, double> list2 = {{0.25, 2.00}, {0.75, 1.00}, {1.25, 0.00}};
+
    interpolantd i1(list1);
    interpolantd i2(list2);
-   interpolantd i3(i1 * i2);
-   interpolantd i4(i2 * i1);
-   REQUIRE(i3(-1.0) == 0.0);
-   REQUIRE(i3(0.0) == 0.0);
-   REQUIRE(i3(0.25) == 0.25);
-   REQUIRE(i3(0.50) == 0.25 * 1.5);
-   REQUIRE(i3(0.75) == Approx(1.25 / 2.0));
-   REQUIRE(i3(1.00) == 0.5);
-   REQUIRE(i3(2.00) == 0.0);
-   REQUIRE(i4(-1.0) == 0.0);
-   REQUIRE(i4(0.0) == 0.0);
-   REQUIRE(i4(0.25) == 0.25);
-   REQUIRE(i4(0.50) == 0.25 * 1.5);
-   REQUIRE(i4(0.75) == Approx(1.25 / 2.0));
-   REQUIRE(i4(1.00) == 0.5);
-   REQUIRE(i4(2.00) == 0.0);
+
+   auto i3 = make_linear_interp(list1);
+   auto i4 = make_linear_interp(list2);
+
+   auto j1 = i1 * i2;
+   auto j2 = i2 * i1;
+
+   auto j3 = i3 * i4;
+   auto j4 = i4 * i3;
+
+   REQUIRE(j1(-1.0) == 0.0);
+   REQUIRE(j1(0.0) == 0.0);
+   REQUIRE(j1(0.25) == 0.25);
+   REQUIRE(j1(0.50) == 0.25 * 1.5);
+   REQUIRE(j1(0.75) == Approx(1.25 / 2.0));
+   REQUIRE(j1(1.00) == 0.5);
+   REQUIRE(j1(2.00) == 0.0);
+
+   REQUIRE(j2(-1.0) == 0.0);
+   REQUIRE(j2(0.0) == 0.0);
+   REQUIRE(j2(0.25) == 0.25);
+   REQUIRE(j2(0.50) == 0.25 * 1.5);
+   REQUIRE(j2(0.75) == Approx(1.25 / 2.0));
+   REQUIRE(j2(1.00) == 0.5);
+   REQUIRE(j2(2.00) == 0.0);
+
+   REQUIRE(j3(-1.0) == 0.0);
+   REQUIRE(j3(0.0) == 0.0);
+   REQUIRE(j3(0.25) == 0.25);
+   REQUIRE(j3(0.50) == 0.25 * 1.5);
+   REQUIRE(j3(0.75) == Approx(1.25 / 2.0));
+   REQUIRE(j3(1.00) == 0.5);
+   REQUIRE(j3(2.00) == 0.0);
+
+   REQUIRE(j4(-1.0) == 0.0);
+   REQUIRE(j4(0.0) == 0.0);
+   REQUIRE(j4(0.25) == 0.25);
+   REQUIRE(j4(0.50) == 0.25 * 1.5);
+   REQUIRE(j4(0.75) == Approx(1.25 / 2.0));
+   REQUIRE(j4(1.00) == 0.5);
+   REQUIRE(j4(2.00) == 0.0);
 }
 
 TEST_CASE("Verify quotient of interpolants.", "[interpolant]")
@@ -187,7 +214,7 @@ TEST_CASE("Verify file input and interoperation with units.", "[interpolant]")
    REQUIRE(jj(299 * nm) == 0.0 * s);
    REQUIRE(jj(300 * nm) == 0.0 * s);
    REQUIRE((jj(350 * nm) / s).number() == Approx(40.0));
-   REQUIRE(jj(400 * nm) == 80.0 * s);
+   REQUIRE((jj(400 * nm) / s).number() == Approx(80.0));
    REQUIRE(jj(450 * nm) == 80.0 * s);
    REQUIRE(jj(500 * nm) == 80.0 * s);
    REQUIRE(jj(900 * nm) == 80.0 * s);
@@ -199,7 +226,7 @@ TEST_CASE("Verify file input and interoperation with units.", "[interpolant]")
    REQUIRE(kk(299 * nm) == 0.0 * s);
    REQUIRE(kk(300 * nm) == 0.0 * s);
    REQUIRE(kk(350 * nm) / s == Approx(40.0));
-   REQUIRE(kk(400 * nm) == 80.0 * s);
+   REQUIRE(kk(400 * nm) / s == Approx(80.0));
    REQUIRE(kk(450 * nm) == 80.0 * s);
    REQUIRE(kk(500 * nm) == 80.0 * s);
    REQUIRE(kk(900 * nm) == 80.0 * s);
@@ -293,7 +320,7 @@ TEST_CASE(
    REQUIRE(j3(299 * nm) == 0.0 * m);
    REQUIRE(j3(300 * nm) == 0.0 * m);
    REQUIRE(j3(350 * nm) / m == Approx(80.0));
-   REQUIRE(j3(400 * nm) == 160.0 * m);
+   REQUIRE(j3(400 * nm) / m == Approx(160.0));
    REQUIRE(j3(450 * nm) == 160.0 * m);
    REQUIRE(j3(500 * nm) == 160.0 * m);
    REQUIRE(j3(900 * nm) == 160.0 * m);
@@ -305,7 +332,7 @@ TEST_CASE(
    REQUIRE(j4(299 * nm) == 0.0 * m);
    REQUIRE(j4(300 * nm) == 0.0 * m);
    REQUIRE((j4(350 * nm) / m).number() == Approx(80.0));
-   REQUIRE(j4(400 * nm) == 160.0 * m);
+   REQUIRE((j4(400 * nm) / m).number() == Approx(160.0));
    REQUIRE(j4(450 * nm) == 160.0 * m);
    REQUIRE(j4(500 * nm) == 160.0 * m);
    REQUIRE(j4(900 * nm) == 160.0 * m);
@@ -346,7 +373,7 @@ TEST_CASE(
    REQUIRE(k3(299 * nm) == 0.0 * s);
    REQUIRE(k3(300 * nm) == 0.0 * s);
    REQUIRE(k3(350 * nm) / s == Approx(80.0));
-   REQUIRE(k3(400 * nm) == 160.0 * s);
+   REQUIRE(k3(400 * nm) / s == Approx(160.0));
    REQUIRE(k3(450 * nm) == 160.0 * s);
    REQUIRE(k3(500 * nm) == 160.0 * s);
    REQUIRE(k3(900 * nm) == 160.0 * s);
@@ -358,7 +385,7 @@ TEST_CASE(
    REQUIRE(k4(299 * nm) == 0.0 * s);
    REQUIRE(k4(300 * nm) == 0.0 * s);
    REQUIRE((k4(350 * nm) / s).number() == Approx(80.0));
-   REQUIRE(k4(400 * nm) == 160.0 * s);
+   REQUIRE((k4(400 * nm) / s).number() == Approx(160.0));
    REQUIRE(k4(450 * nm) == 160.0 * s);
    REQUIRE(k4(500 * nm) == 160.0 * s);
    REQUIRE(k4(900 * nm) == 160.0 * s);
@@ -399,7 +426,7 @@ TEST_CASE(
    REQUIRE(i3(299 * nm) == 0.0 * s);
    REQUIRE(i3(300 * nm) == 0.0 * s);
    REQUIRE(i3(350 * nm) / s == Approx(80.0));
-   REQUIRE(i3(400 * nm) == 160.0 * s);
+   REQUIRE(i3(400 * nm) / s == Approx(160.0));
    REQUIRE(i3(450 * nm) == 160.0 * s);
    REQUIRE(i3(500 * nm) == 160.0 * s);
    REQUIRE(i3(900 * nm) == 160.0 * s);
@@ -411,7 +438,7 @@ TEST_CASE(
    REQUIRE(i4(299 * nm) == 0.0 * s);
    REQUIRE(i4(300 * nm) == 0.0 * s);
    REQUIRE((i4(350 * nm) / s).number() == Approx(80.0));
-   REQUIRE(i4(400 * nm) == 160.0 * s);
+   REQUIRE((i4(400 * nm) / s).number() == Approx(160.0));
    REQUIRE(i4(450 * nm) == 160.0 * s);
    REQUIRE(i4(500 * nm) == 160.0 * s);
    REQUIRE(i4(900 * nm) == 160.0 * s);
@@ -460,7 +487,7 @@ TEST_CASE("Verify scalar multiplication on left.", "[interpolant]")
    REQUIRE(j3(299 * nm) == 0.0 * m);
    REQUIRE(j3(300 * nm) == 0.0 * m);
    REQUIRE(j3(350 * nm) / m == Approx(80.0));
-   REQUIRE(j3(400 * nm) == 160.0 * m);
+   REQUIRE(j3(400 * nm) / m == Approx(160.0));
    REQUIRE(j3(450 * nm) == 160.0 * m);
    REQUIRE(j3(500 * nm) == 160.0 * m);
    REQUIRE(j3(900 * nm) == 160.0 * m);
@@ -472,7 +499,7 @@ TEST_CASE("Verify scalar multiplication on left.", "[interpolant]")
    REQUIRE(j4(299 * nm) == 0.0 * m);
    REQUIRE(j4(300 * nm) == 0.0 * m);
    REQUIRE((j4(350 * nm) / m).number() == Approx(80.0));
-   REQUIRE(j4(400 * nm) == 160.0 * m);
+   REQUIRE((j4(400 * nm) / m).number() == Approx(160.0));
    REQUIRE(j4(450 * nm) == 160.0 * m);
    REQUIRE(j4(500 * nm) == 160.0 * m);
    REQUIRE(j4(900 * nm) == 160.0 * m);
@@ -513,7 +540,7 @@ TEST_CASE("Verify scalar multiplication on left.", "[interpolant]")
    REQUIRE(k3(299 * nm) == 0.0 * s);
    REQUIRE(k3(300 * nm) == 0.0 * s);
    REQUIRE(k3(350 * nm) / s == Approx(80.0));
-   REQUIRE(k3(400 * nm) == 160.0 * s);
+   REQUIRE(k3(400 * nm) / s == Approx(160.0));
    REQUIRE(k3(450 * nm) == 160.0 * s);
    REQUIRE(k3(500 * nm) == 160.0 * s);
    REQUIRE(k3(900 * nm) == 160.0 * s);
@@ -525,7 +552,7 @@ TEST_CASE("Verify scalar multiplication on left.", "[interpolant]")
    REQUIRE(k4(299 * nm) == 0.0 * s);
    REQUIRE(k4(300 * nm) == 0.0 * s);
    REQUIRE((k4(350 * nm) / s).number() == Approx(80.0));
-   REQUIRE(k4(400 * nm) == 160.0 * s);
+   REQUIRE((k4(400 * nm) / s).number() == Approx(160.0));
    REQUIRE(k4(450 * nm) == 160.0 * s);
    REQUIRE(k4(500 * nm) == 160.0 * s);
    REQUIRE(k4(900 * nm) == 160.0 * s);
@@ -574,7 +601,7 @@ TEST_CASE("Verify scalar division of interpolant.", "[interpolant]")
    REQUIRE(j3(299 * nm) == 0.0);
    REQUIRE(j3(300 * nm) == 0.0);
    REQUIRE(j3(350 * nm) == Approx(20.0));
-   REQUIRE(j3(400 * nm) == 40.0);
+   REQUIRE(j3(400 * nm) == Approx(40.0));
    REQUIRE(j3(450 * nm) == 40.0);
    REQUIRE(j3(500 * nm) == 40.0);
    REQUIRE(j3(900 * nm) == 40.0);
@@ -586,7 +613,7 @@ TEST_CASE("Verify scalar division of interpolant.", "[interpolant]")
    REQUIRE((j4(299 * nm)).number() == 0.0);
    REQUIRE((j4(300 * nm)).number() == 0.0);
    REQUIRE((j4(350 * nm)).number() == Approx(20.0));
-   REQUIRE((j4(400 * nm)).number() == 40.0);
+   REQUIRE((j4(400 * nm)).number() == Approx(40.0));
    REQUIRE((j4(450 * nm)).number() == 40.0);
    REQUIRE((j4(500 * nm)).number() == 40.0);
    REQUIRE((j4(900 * nm)).number() == 40.0);
@@ -627,7 +654,7 @@ TEST_CASE("Verify scalar division of interpolant.", "[interpolant]")
    REQUIRE(i3(299 * nm) == 0.0 * s);
    REQUIRE(i3(300 * nm) == 0.0 * s);
    REQUIRE(i3(350 * nm) / s == Approx(20.0));
-   REQUIRE(i3(400 * nm) == 40.0 * s);
+   REQUIRE(i3(400 * nm) / s == Approx(40.0));
    REQUIRE(i3(450 * nm) == 40.0 * s);
    REQUIRE(i3(500 * nm) == 40.0 * s);
    REQUIRE(i3(900 * nm) == 40.0 * s);
@@ -639,7 +666,7 @@ TEST_CASE("Verify scalar division of interpolant.", "[interpolant]")
    REQUIRE(i4(299 * nm) == 0.0 * s);
    REQUIRE(i4(300 * nm) == 0.0 * s);
    REQUIRE((i4(350 * nm) / s).number() == Approx(20.0));
-   REQUIRE(i4(400 * nm) == 40.0 * s);
+   REQUIRE((i4(400 * nm) / s).number() == Approx(40.0));
    REQUIRE(i4(450 * nm) == 40.0 * s);
    REQUIRE(i4(500 * nm) == 40.0 * s);
    REQUIRE(i4(900 * nm) == 40.0 * s);
