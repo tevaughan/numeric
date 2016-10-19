@@ -113,7 +113,7 @@ Collaboration diagram for dyndim:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a8ef93e3cbb0e3807e9ac67d376582f22"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a8ef93e3cbb0e3807e9ac67d376582f22">dyndim</a> ()=default</td></tr>
-<tr class="memdesc:a8ef93e3cbb0e3807e9ac67d376582f22"><td class="mdescLeft">&#160;</td><td class="mdescRight">&lt; Inherit parent's divisive assignment.  <a href="#a8ef93e3cbb0e3807e9ac67d376582f22">More...</a><br /></td></tr>
+<tr class="memdesc:a8ef93e3cbb0e3807e9ac67d376582f22"><td class="mdescLeft">&#160;</td><td class="mdescRight">&lt; Inherit conversion to expression.  <a href="#a8ef93e3cbb0e3807e9ac67d376582f22">More...</a><br /></td></tr>
 <tr class="separator:a8ef93e3cbb0e3807e9ac67d376582f22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5799f85a4590e36fabef50cfad61873"><td class="memTemplParams" colspan="2"><a id="af5799f85a4590e36fabef50cfad61873"></a>
 template&lt;char TI, char D, char M, char C, char TE&gt; </td></tr>
@@ -263,6 +263,10 @@ template&lt;int R&gt; </td></tr>
 <a class="el" href="classnum_1_1dyndim.html">dyndim</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#a9133e5570e7ea0e6be21d3f62c8a376a">operator/=</a> (<a class="el" href="classdouble.html">double</a> <a class="el" href="structnum_1_1dimval__base.html#a4687445a03f9fccfcd82462ebdc38dc2">s</a>)</td></tr>
 <tr class="memdesc:a9133e5570e7ea0e6be21d3f62c8a376a inherit pub_methods_classnum_1_1dimval"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divisive assignment against double. <br /></td></tr>
 <tr class="separator:a9133e5570e7ea0e6be21d3f62c8a376a inherit pub_methods_classnum_1_1dimval"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a821b8a6b76e824a6c1315bfdec5958de inherit pub_methods_classnum_1_1dimval"><td class="memItemLeft" align="right" valign="top"><a id="a821b8a6b76e824a6c1315bfdec5958de"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html#a821b8a6b76e824a6c1315bfdec5958de">operator GiNaC::ex</a> () const</td></tr>
+<tr class="memdesc:a821b8a6b76e824a6c1315bfdec5958de inherit pub_methods_classnum_1_1dimval"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert dimensioned value to ginac expression. <br /></td></tr>
+<tr class="separator:a821b8a6b76e824a6c1315bfdec5958de inherit pub_methods_classnum_1_1dimval"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
 Private Types</h2></td></tr>
@@ -412,7 +416,7 @@ static GiNaC::symbol&#160;</td><td class="memItemRight" valign="bottom"><a class
 <div class="textblock"><p>Model of a dynamically dimensioned value. </p>
 <p>For a statically dimensioned value, see statdim. </p>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00457">457</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00472">472</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a385f53f375a572872c2703889dcf64bf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a385f53f375a572872c2703889dcf64bf">&sect;&nbsp;</a></span>func</h2>
@@ -437,7 +441,7 @@ static GiNaC::symbol&#160;</td><td class="memItemRight" valign="bottom"><a class
 <p>Type of std::function that can be integrated. </p>
 <p>A single-argument function is required. </p>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00484">484</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00499">499</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>
@@ -485,7 +489,7 @@ static GiNaC::symbol&#160;</td><td class="memItemRight" valign="bottom"><a class
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00525">525</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00540">540</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -533,7 +537,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>&lt; Inherit parent's divisive assignment. </p>
+<p>&lt; Inherit conversion to expression. </p>
 <p>By default, construct a dimensionless quantity of magnitude zero. </p>
 
 </div>
@@ -575,7 +579,7 @@ Here is the caller graph for this function:</div>
 
 <p>Global multiplication operator against statdim needs access to v_ and exps_. </p>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00807">807</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00823">823</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>
@@ -615,7 +619,7 @@ Here is the caller graph for this function:</div>
 
 <p>Global multiplication operator against statdim needs access to v_ and exps_. </p>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00814">814</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00830">830</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>
@@ -655,7 +659,7 @@ Here is the caller graph for this function:</div>
 
 <p>Global division operator against statdim needs access to v_ and exps_. </p>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00821">821</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00837">837</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>
@@ -695,7 +699,7 @@ Here is the caller graph for this function:</div>
 
 <p>Global division operator against statdim needs access to v_ and exps_. </p>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00828">828</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00844">844</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>
@@ -723,7 +727,7 @@ Here is the caller graph for this function:</div>
 <p>&lt; Inherit field. </p>
 <p>Storage for dimensional exponents. </p>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00522">522</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00537">537</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>

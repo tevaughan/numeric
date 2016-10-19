@@ -132,6 +132,19 @@ namespace num
          return d();
       }
 
+      /// Convert dimensioned value to ginac expression.
+      operator GiNaC::ex() const
+      {
+         dim_exps const e = exps(); // exponents
+         GiNaC::ex      r = v_;     // return value
+         r *= pow(kg, e.M());
+         r *= pow(m, e.D());
+         r *= pow(s, e.TI());
+         r *= pow(C, e.C());
+         r *= pow(K, e.TE());
+         return r;
+      }
+
       /// Write dimensioned value to output stream.
       friend std::ostream &operator<<(std::ostream &os, dimval const &dvb)
       {
@@ -283,6 +296,8 @@ namespace num
       using PT::v_;               ///< Inherit protected, numeric value.
 
    public:
+      using PT::operator GiNaC::ex; ///< Inherit conversion to expression.
+
       /// By default, construct a zero-valued quantity (by way of parent's
       /// default constructor).
       statdim() = default;
@@ -530,8 +545,9 @@ namespace num
       }
 
    public:
-      using PT::operator*=; ///< Inherit parent's multiplicative assignment.
-      using PT::operator/=; ///< Inherit parent's divisive assignment.
+      using PT::operator*=;         ///< Inherit multiplicative assignment.
+      using PT::operator/=;         ///< Inherit divisive assignment.
+      using PT::operator GiNaC::ex; ///< Inherit conversion to expression.
 
       /// By default, construct a dimensionless quantity of magnitude zero.
       dyndim() = default;

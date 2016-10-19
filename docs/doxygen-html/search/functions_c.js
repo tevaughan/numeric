@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['ex',['ex',['../classnum_1_1dimval.html#a821b8a6b76e824a6c1315bfdec5958de',1,'num::dimval']]],
   ['operator_20c_20const_20_26',['operator C const &amp;',['../classnum_1_1cpoly_3_010_00_01V_00_01C_01_4.html#a1b042a5872d8960f033fab061dfbd531',1,'num::cpoly&lt; 0, V, C &gt;']]],
   ['operator_20c_26',['operator C&amp;',['../classnum_1_1cpoly_3_010_00_01V_00_01C_01_4.html#af75c04d9cf391a21545a068884624a4c',1,'num::cpoly&lt; 0, V, C &gt;']]],
   ['operator_20dyndim_20_26',['operator dyndim &amp;',['../classnum_1_1cpoly_3_010_00_01dyndim_00_01dyndim_01_4.html#a9ca13de4080574366c01b60893467739',1,'num::cpoly&lt; 0, dyndim, dyndim &gt;']]],
