@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['f',['f',['../structnum_1_1sparse__table_1_1rec.html#ae19b4006a311a298a93a5cd06a7cb0e7',1,'num::sparse_table::rec::f()'],['../classnum_1_1dense__table.html#ae478dd7e7522cfdedbb9be1226e5cf81',1,'num::dense_table::f()']]],
+  ['f',['f',['../structnum_1_1sparse__table_1_1rec.html#abb8526232dd8538bd215c6299f898aa8',1,'num::sparse_table::rec::f()'],['../classnum_1_1dense__table.html#ae478dd7e7522cfdedbb9be1226e5cf81',1,'num::dense_table::f()']]],
   ['f_5f',['f_',['../classnum_1_1dense__table.html#abe22d83ce8703cd4061d154943d6009a',1,'num::dense_table']]],
   ['fa',['fa',['../structnum_1_1interval.html#a9bbc451535aa8b012a852bec24497e02',1,'num::interval']]],
   ['fabs',['fabs',['../classnum_1_1statdim.html#a36e3cfaab8b6844ec3732e13228a3248',1,'num::statdim::fabs()'],['../classnum_1_1dyndim.html#a742fe13bb3b7be9812bf52e8acc57061',1,'num::dyndim::fabs()']]],

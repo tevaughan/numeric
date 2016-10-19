@@ -33,8 +33,6 @@ CLEANFILES = $(BUILT_SOURCES)
 EXTRA_DIST = *.pl *.txt *.md
 
 pkginclude_HEADERS =\
- cfunc.hpp\
- cpoly.hpp\
  dense-table.hpp\
  dim-exps.hpp\
  dimval.hpp\
@@ -48,7 +46,7 @@ pkginclude_HEADERS =\
 nodist_pkginclude_HEADERS = dimensions.hpp units.hpp
 
 lib_LTLIBRARIES = libnumeric.la
-nodist_libnumeric_la_SOURCES = dimval.cpp units.cpp
+nodist_libnumeric_la_SOURCES = dimval.cpp sparse-table.cpp units.cpp
 libnumeric_la_CPPFLAGS = $(CODE_COVERAGE_CPPFLAGS)
 libnumeric_la_CXXFLAGS = $(CODE_COVERAGE_CXXFLAGS)
 libnumeric_la_CFLAGS = $(CODE_COVERAGE_CFLAGS)

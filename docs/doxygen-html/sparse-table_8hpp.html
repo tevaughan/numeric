@@ -81,7 +81,8 @@ $(function() {
 
 <p>Definition of num::sparse-table.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;algorithm&gt;</code><br />
+<div class="textblock"><code>#include &lt;ginac/ginac.h&gt;</code><br />
+<code>#include &lt;algorithm&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;<a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -89,13 +90,13 @@ Include dependency graph for sparse-table.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="sparse-table_8hpp__incl.png" border="0" usemap="#sparse-table_8hpp" alt=""/></div>
 <map name="sparse-table_8hpp" id="sparse-table_8hpp">
-<area shape="rect" id="node4" href="dimval_8hpp.html" title="Definition of conversions dealing with angle, num::dimval_base, num::statdim, and num::dyndim..." alt="" coords="463,80,549,107"/>
-<area shape="rect" id="node10" href="dim-exps_8hpp.html" title="Definition of class num::dim_exps. " alt="" coords="1072,155,1172,181"/>
-<area shape="rect" id="node12" href="integral_8hpp.html" title="Source for num::integral(), which numerically integrates via adaptive quadrature and the trapezoidal ..." alt="" coords="461,155,551,181"/>
-<area shape="rect" id="node18" href="util_8hpp.html" title="Basic utilities. " alt="" coords="185,229,249,256"/>
-<area shape="rect" id="node15" href="ilist_8hpp.html" title="Definition of ipoint, ilist, and output&#45;stream operator for each. " alt="" coords="438,229,505,256"/>
-<area shape="rect" id="node16" href="integral-stats_8hpp.html" title="Source for num::integral_stats, which is used by num::integral() and by num::interpolant. " alt="" coords="734,229,857,256"/>
-<area shape="rect" id="node17" href="interval_8hpp.html" title="Source for class interval and class subinterval_stack, which are used by num::integral() and by num::..." alt="" coords="273,229,363,256"/>
+<area shape="rect" id="node5" href="dimval_8hpp.html" title="Definition of conversions dealing with angle, num::dimval_base, num::statdim, and num::dyndim..." alt="" coords="364,80,449,107"/>
+<area shape="rect" id="node10" href="dim-exps_8hpp.html" title="Definition of class num::dim_exps. " alt="" coords="269,155,369,181"/>
+<area shape="rect" id="node12" href="integral_8hpp.html" title="Source for num::integral(), which numerically integrates via adaptive quadrature and the trapezoidal ..." alt="" coords="527,155,617,181"/>
+<area shape="rect" id="node18" href="util_8hpp.html" title="Basic utilities. " alt="" coords="264,229,328,256"/>
+<area shape="rect" id="node15" href="ilist_8hpp.html" title="Definition of ipoint, ilist, and output&#45;stream operator for each. " alt="" coords="485,229,552,256"/>
+<area shape="rect" id="node16" href="integral-stats_8hpp.html" title="Source for num::integral_stats, which is used by num::integral() and by num::interpolant. " alt="" coords="731,229,853,256"/>
+<area shape="rect" id="node17" href="interval_8hpp.html" title="Source for class interval and class subinterval_stack, which are used by num::integral() and by num::..." alt="" coords="979,229,1069,256"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -103,7 +104,8 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="sparse-table_8hpp__dep__incl.png" border="0" usemap="#sparse-table_8hppdep" alt=""/></div>
 <map name="sparse-table_8hppdep" id="sparse-table_8hppdep">
-<area shape="rect" id="node2" href="interpolant_8hpp.html" title="Source code for num::interpolant, num::ipoint, num::ilist, num::interpolantd, and num::ilistd..." alt="" coords="11,80,118,107"/>
+<area shape="rect" id="node2" href="sparse-table_8cpp_source.html" title="sparse&#45;table.cpp" alt="" coords="5,80,124,107"/>
+<area shape="rect" id="node3" href="interpolant_8hpp.html" title="Source code for num::interpolant, num::ipoint, num::ilist, num::interpolantd, and num::ilistd..." alt="" coords="149,80,255,107"/>
 </map>
 </div>
 </div>
@@ -111,16 +113,19 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html">sparse_table&lt; A, F &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html">sparse_table&lt; A &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <a href="https://en.wikipedia.org/wiki/Piecewise">piecewise function</a> that, in logarithmic time, looks up the sub-function appropriate to the argument.  <a href="classnum_1_1sparse__table.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html">dimval&lt; DER &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class for statdim and dyndim.  <a href="classnum_1_1dimval.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html">sparse_table&lt; A, F &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnum_1_1sparse__table__base.html">sparse_table_base</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class for <a class="el" href="classnum_1_1sparse__table.html" title="A piecewise function that, in logarithmic time, looks up the sub-function appropriate to the argument...">sparse_table</a>.  <a href="structnum_1_1sparse__table__base.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html">sparse_table&lt; A &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <a href="https://en.wikipedia.org/wiki/Piecewise">piecewise function</a> that, in logarithmic time, looks up the sub-function appropriate to the argument.  <a href="classnum_1_1sparse__table.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnum_1_1sparse__table_1_1rec.html">sparse_table&lt; A, F &gt;::rec</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnum_1_1sparse__table_1_1rec.html">sparse_table&lt; A &gt;::rec</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of record in table.  <a href="structnum_1_1sparse__table_1_1rec.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -132,18 +137,18 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ace272068a024e36447c5e72350065cae"><td class="memTemplParams" colspan="2">template&lt;typename A , typename F , typename D &gt; </td></tr>
-<tr class="memitem:ace272068a024e36447c5e72350065cae"><td class="memTemplItemLeft" align="right" valign="top">sparse_table&lt; A, decltype(F() *D())&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#ace272068a024e36447c5e72350065cae">operator*</a> ( sparse_table&lt; A, F &gt; const &amp;tab, dimval&lt; D &gt; const &amp;fac)</td></tr>
-<tr class="memdesc:ace272068a024e36447c5e72350065cae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply table by dimval on right.  <a href="namespacenum.html#ace272068a024e36447c5e72350065cae">More...</a><br /></td></tr>
-<tr class="separator:ace272068a024e36447c5e72350065cae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a189d636b8dbdb4ab4d05bdbdfd635ee4"><td class="memTemplParams" colspan="2">template&lt;typename A , typename F , typename D &gt; </td></tr>
-<tr class="memitem:a189d636b8dbdb4ab4d05bdbdfd635ee4"><td class="memTemplItemLeft" align="right" valign="top">sparse_table&lt; A, decltype(D() *F())&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a189d636b8dbdb4ab4d05bdbdfd635ee4">operator*</a> ( dimval&lt; D &gt; const &amp;fac, sparse_table&lt; A, F &gt; const &amp;tab)</td></tr>
-<tr class="memdesc:a189d636b8dbdb4ab4d05bdbdfd635ee4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply table by dimval on left.  <a href="namespacenum.html#a189d636b8dbdb4ab4d05bdbdfd635ee4">More...</a><br /></td></tr>
-<tr class="separator:a189d636b8dbdb4ab4d05bdbdfd635ee4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b72623d4fe798bba978257184d3f06b"><td class="memTemplParams" colspan="2">template&lt;typename A , typename F , typename D &gt; </td></tr>
-<tr class="memitem:a9b72623d4fe798bba978257184d3f06b"><td class="memTemplItemLeft" align="right" valign="top">sparse_table&lt; A, decltype(F()/D())&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a9b72623d4fe798bba978257184d3f06b">operator/</a> ( sparse_table&lt; A, F &gt; const &amp;tab, dimval&lt; D &gt; const &amp;fac)</td></tr>
-<tr class="memdesc:a9b72623d4fe798bba978257184d3f06b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divide table by dimval.  <a href="namespacenum.html#a9b72623d4fe798bba978257184d3f06b">More...</a><br /></td></tr>
-<tr class="separator:a9b72623d4fe798bba978257184d3f06b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf22f537b67ce37edca6bf429b31d1f4"><td class="memTemplParams" colspan="2">template&lt;typename A , typename D &gt; </td></tr>
+<tr class="memitem:abf22f537b67ce37edca6bf429b31d1f4"><td class="memTemplItemLeft" align="right" valign="top">sparse_table&lt; A &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#abf22f537b67ce37edca6bf429b31d1f4">operator*</a> ( sparse_table&lt; A &gt; const &amp;tab, dimval&lt; D &gt; const &amp;fac)</td></tr>
+<tr class="memdesc:abf22f537b67ce37edca6bf429b31d1f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply table by dimval on right.  <a href="namespacenum.html#abf22f537b67ce37edca6bf429b31d1f4">More...</a><br /></td></tr>
+<tr class="separator:abf22f537b67ce37edca6bf429b31d1f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a774d37a62af2ef8ec556435cc178fadb"><td class="memTemplParams" colspan="2">template&lt;typename A , typename D &gt; </td></tr>
+<tr class="memitem:a774d37a62af2ef8ec556435cc178fadb"><td class="memTemplItemLeft" align="right" valign="top">sparse_table&lt; A &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a774d37a62af2ef8ec556435cc178fadb">operator*</a> ( dimval&lt; D &gt; const &amp;fac, sparse_table&lt; A &gt; const &amp;tab)</td></tr>
+<tr class="memdesc:a774d37a62af2ef8ec556435cc178fadb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply table by dimval on left.  <a href="namespacenum.html#a774d37a62af2ef8ec556435cc178fadb">More...</a><br /></td></tr>
+<tr class="separator:a774d37a62af2ef8ec556435cc178fadb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad0306fe26ed1608aff8b3262d2cfaab"><td class="memTemplParams" colspan="2">template&lt;typename A , typename D &gt; </td></tr>
+<tr class="memitem:aad0306fe26ed1608aff8b3262d2cfaab"><td class="memTemplItemLeft" align="right" valign="top">sparse_table&lt; A &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#aad0306fe26ed1608aff8b3262d2cfaab">operator/</a> ( sparse_table&lt; A &gt; const &amp;tab, dimval&lt; D &gt; const &amp;fac)</td></tr>
+<tr class="memdesc:aad0306fe26ed1608aff8b3262d2cfaab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divide table by dimval.  <a href="namespacenum.html#aad0306fe26ed1608aff8b3262d2cfaab">More...</a><br /></td></tr>
+<tr class="separator:aad0306fe26ed1608aff8b3262d2cfaab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Definition of num::sparse-table. </p>

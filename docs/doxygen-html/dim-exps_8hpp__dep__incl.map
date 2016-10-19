@@ -1,10 +1,10 @@
 <map id="dim&#45;exps.hpp" name="dim&#45;exps.hpp">
-<area shape="rect" id="node2" href="$dimval_8hpp.html" title="Definition of conversions dealing with angle, num::dimval_base, num::statdim, and num::dyndim..." alt="" coords="189,80,275,107"/>
-<area shape="rect" id="node3" href="$dimval_8cpp_source.html" title="dimval.cpp" alt="" coords="5,155,91,181"/>
-<area shape="rect" id="node4" href="$dimensions_8hpp.html" title="Automatically generated source for generic&#45;dimension types. " alt="" coords="115,155,229,181"/>
-<area shape="rect" id="node7" href="$cpoly_8hpp.html" title="Definition of num::cpoly. " alt="" coords="253,155,331,181"/>
-<area shape="rect" id="node9" href="$sparse-table_8hpp.html" title="Definition of num::sparse&#45;table. " alt="" coords="355,155,474,181"/>
-<area shape="rect" id="node5" href="$units_8hpp.html" title="Automatically generated header file for units. " alt="" coords="135,229,209,256"/>
-<area shape="rect" id="node6" href="$units_8cpp.html" title="Automatically generated implementation file for units. " alt="" coords="135,304,209,331"/>
-<area shape="rect" id="node8" href="$interpolant_8hpp.html" title="Source code for num::interpolant, num::ipoint, num::ilist, num::interpolantd, and num::ilistd..." alt="" coords="300,229,407,256"/>
+<area shape="rect" id="node2" href="$dimval_8hpp.html" title="Definition of conversions dealing with angle, num::dimval_base, num::statdim, and num::dyndim..." alt="" coords="146,80,231,107"/>
+<area shape="rect" id="node3" href="$dimval_8cpp_source.html" title="dimval.cpp" alt="" coords="19,155,105,181"/>
+<area shape="rect" id="node4" href="$sparse-table_8hpp.html" title="Definition of num::sparse&#45;table. " alt="" coords="129,155,248,181"/>
+<area shape="rect" id="node7" href="$dimensions_8hpp.html" title="Automatically generated source for generic&#45;dimension types. " alt="" coords="272,155,385,181"/>
+<area shape="rect" id="node5" href="$sparse-table_8cpp_source.html" title="sparse&#45;table.cpp" alt="" coords="5,229,124,256"/>
+<area shape="rect" id="node6" href="$interpolant_8hpp.html" title="Source code for num::interpolant, num::ipoint, num::ilist, num::interpolantd, and num::ilistd..." alt="" coords="149,229,255,256"/>
+<area shape="rect" id="node8" href="$units_8hpp.html" title="Automatically generated header file for units. " alt="" coords="291,229,366,256"/>
+<area shape="rect" id="node9" href="$units_8cpp.html" title="Automatically generated implementation file for units. " alt="" coords="291,304,366,331"/>
 </map>

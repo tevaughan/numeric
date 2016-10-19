@@ -245,7 +245,7 @@ namespace num
       friend class rk_quad;
 
       /// Allow \ref sparse_table to call constructor.
-      template <typename A, typename F>
+      template <typename A>
       friend class sparse_table;
 
       /// Allow \ref dense_table to call constructor.
@@ -483,7 +483,7 @@ namespace num
       friend class interpolant;
 
       /// Allow \ref sparse_table to call constructor.
-      template <typename A, typename F>
+      template <typename A>
       friend class sparse_table;
 
       /// Allow \ref dense_table to call constructor.

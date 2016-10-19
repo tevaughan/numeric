@@ -1,8 +1,8 @@
 var searchData=
 [
   ['m',['m',['../structnum_1_1dimval__base.html#a4fb72ae11a33186b0c1cc1cf5de8ea4c',1,'num::dimval_base::m()'],['../classnum_1_1dim__exps.html#a1f7fd4e1ba40c71ccb3162d713e63522',1,'num::dim_exps::M()'],['../classnum_1_1dim__exps.html#a67e0a144fee2f77af6a77e55f7dd9905',1,'num::dim_exps::M() const'],['../namespacenum_1_1u.html#a1614128bca233a7ca6220a04b71ea894',1,'num::u::m()']]],
-  ['make_5fconst_5finterp',['make_const_interp',['../namespacenum.html#a2709014e5395262d3992f15c6928fcc4',1,'num']]],
-  ['make_5flinear_5finterp',['make_linear_interp',['../namespacenum.html#a557e463f44d69cb9ff3a7f17e04f7d13',1,'num::make_linear_interp(ilist&lt; X, Y &gt; const &amp;cp)'],['../namespacenum.html#a7229bab00e45295764e7f9b7be7be80c',1,'num::make_linear_interp(std::string file=&quot;&quot;, X const &amp;xu=1, Y const &amp;yu=1)']]],
+  ['make_5fconst_5finterp',['make_const_interp',['../namespacenum.html#a61fedfb3066b45f72b7b79855b1b5d3f',1,'num']]],
+  ['make_5flinear_5finterp',['make_linear_interp',['../namespacenum.html#a7241688799e9a5581c105a672c3f55a7',1,'num::make_linear_interp(ilist&lt; X, Y &gt; const &amp;cp)'],['../namespacenum.html#a23201466955a009d1ace6b95b3261eb3',1,'num::make_linear_interp(std::string file=&quot;&quot;, X const &amp;xu=1, Y const &amp;yu=1)']]],
   ['mass',['mass',['../namespacenum.html#a0b9cf178eb1d0849530fb0bc38daf662',1,'num']]],
   ['megahertz',['megahertz',['../structnum_1_1u_1_1megahertz.html',1,'num::u']]],
   ['megahertz',['megahertz',['../structnum_1_1u_1_1megahertz.html#a90cbd4bea697f5dfb7efef4e62bc6599',1,'num::u::megahertz::megahertz(double v=0.0)'],['../structnum_1_1u_1_1megahertz.html#a52903c0e26e0cf4253a315ff645d987b',1,'num::u::megahertz::megahertz(megahertz const &amp;dv)=default']]],

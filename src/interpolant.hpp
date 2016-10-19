@@ -22,7 +22,6 @@
 #include <utility>   // for pair
 #include <vector>    // for vector
 
-#include <cpoly.hpp>          // for cpoly
 #include <ilist.hpp>          // for ipoint, ilist
 #include <integral-stats.hpp> // for integral_stats
 #include <interval.hpp>       // for interval and subinterval_stack
@@ -130,13 +129,12 @@ namespace num
    /// \tparam X  Type of first column, representing the x coordinate.
    /// \tparam Y  Type of second column, representing the Y coordinate.
    template <typename X = double, typename Y = double>
-   sparse_table<X, cpoly<0, X, Y>> make_const_interp(
+   sparse_table<X> make_const_interp(
          /** Name of ASCII file.     */ std::string  file,
          /** Unit multiplying first col. */ X const &xu = 1,
          /** Unit multiplying secnd col. */ Y const &yu = 1)
    {
       using V    = ilist<X, Y>;
-      using C    = cpoly<0, X, Y>;
       V const cp = util::get_points(file, xu, yu); // control points
       if (cp.size() < 1) {
          throw "Must have at least one control point.";
@@ -149,7 +147,7 @@ namespace num
       // its subdomain.
       V const cpmid = util::midpoints(cp); // control midpoints
       X const a0    = cp[0].first;
-      std::vector<std::pair<X, C>> vf(cp.size());
+      std::vector<std::pair<X, GiNaC::ex>> vf(cp.size());
       vf[0].first  = 2.0 * (cpmid[0].first - cp[0].first);
       vf[0].second = cp[0].second;
       for (unsigned i = 1; i < cpmid.size(); ++i) {
@@ -159,7 +157,7 @@ namespace num
       unsigned const i = cpmid.size();
       vf[i].first      = 2.0 * (cp[i].first - cpmid[i - 1].first);
       vf[i].second     = cp[i].second;
-      return sparse_table<X, C>(a0, move(vf));
+      return sparse_table<X>(a0, move(vf));
    }
 
    /// Construct a (\ref sparse_table) piecewise-linear interpolant from a set
@@ -168,11 +166,10 @@ namespace num
    /// \tparam X  Type of first element of each ordered pair.
    /// \tparam Y  Type of second element of each ordered pair.
    template <typename X = double, typename Y = double>
-   sparse_table<X, cpoly<1, X, Y>> make_linear_interp(ilist<X, Y> const &cp)
+   sparse_table<X> make_linear_interp(ilist<X, Y> const &cp)
    {
-      using C = cpoly<1, X, Y>;
       if (cp.size() == 0) {
-         return sparse_table<X, C>();
+         return sparse_table<X>();
       } else if (cp.size() == 1) {
          throw "Must have at least two control points.";
       }
@@ -180,7 +177,7 @@ namespace num
       // subsequent control points.
       X const        a0      = 0.5 * (cp[0].first + cp[1].first);
       unsigned const ndeltas = cp.size() - 1;
-      std::vector<std::pair<X, C>> vf(ndeltas);
+      std::vector<std::pair<X, GiNaC::ex>> vf(ndeltas);
       for (unsigned i = 0; i < ndeltas; ++i) {
          unsigned const j  = i + 1;
          X const &      x1 = cp[i].first;
@@ -191,10 +188,9 @@ namespace num
          auto const     c1 = (y2 - y1) / dx;
          Y const        c0 = y1 - c1 * x1;
          vf[i].first       = dx;
-         vf[i].second.template set_coef<0>(c0);
-         vf[i].second.template set_coef<1>(c1);
+         vf[i].second      = c0 + c1 * sparse_table<X>::x;
       }
-      return sparse_table<X, C>(a0, move(vf));
+      return sparse_table<X>(a0, move(vf));
    }
 
    /// Construct a (\ref sparse_table) piecewise-linear interpolant from the
@@ -210,15 +206,14 @@ namespace num
    /// \tparam X  Type of first column, representing the x coordinate.
    /// \tparam Y  Type of second column, representing the Y coordinate.
    template <typename X = double, typename Y = double>
-   sparse_table<X, cpoly<1, X, Y>> make_linear_interp(
+   sparse_table<X> make_linear_interp(
          /** Name of ASCII file.     */ std::string  file = "",
          /** Unit multiplying first col. */ X const &xu   = 1,
          /** Unit multiplying secnd col. */ Y const &yu   = 1)
    {
       using namespace std;
-      using C = cpoly<1, X, Y>;
       if (file == "") {
-         return sparse_table<X, C>();
+         return sparse_table<X>();
       }
       return make_linear_interp(util::get_points(file, xu, yu));
    }

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['r',['R',['../classnum_1_1dense__table.html#ab5f18fe7aea0d3eb9ebbe0f8d44f52fd',1,'num::dense_table::R()'],['../classnum_1_1sparse__table.html#ab5f18fe7aea0d3eb9ebbe0f8d44f52fd',1,'num::sparse_table::R()']]],
+  ['r',['R',['../classnum_1_1dense__table.html#ab5f18fe7aea0d3eb9ebbe0f8d44f52fd',1,'num::dense_table']]],
   ['rat',['RAT',['../namespacenum.html#a8560e808e06e226588044e6d7c7f8ab8',1,'num']]],
   ['rcomp',['rcomp',['../classnum_1_1sparse__table.html#abf23784613d8be88c06ba9568302abd0',1,'num::sparse_table']]],
   ['rec',['rec',['../structnum_1_1sparse__table_1_1rec.html',1,'num::sparse_table']]],

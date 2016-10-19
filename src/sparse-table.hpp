@@ -10,28 +10,33 @@
 #ifndef NUMERIC_SPARSE_TABLE_HPP
 #define NUMERIC_SPARSE_TABLE_HPP
 
+#include <ginac/ginac.h> // for ex
+
 #include <algorithm> // for upper_bound()
 #include <vector>    // for vector
 
 namespace num
 {
-   template <typename A, typename F>
+   template <typename A>
    class sparse_table;
 
    template <typename D>
    class dimval;
 
-   template <typename A, typename F, typename D>
-   sparse_table<A, decltype(F() * D())>
-   operator*(sparse_table<A, F> const &tab, dimval<D> const &fac);
+   template <typename A, typename D>
+   sparse_table<A> operator*(sparse_table<A> const &tab, dimval<D> const &fac);
 
-   template <typename A, typename F, typename D>
-   sparse_table<A, decltype(D() * F())>
-   operator*(dimval<D> const &fac, sparse_table<A, F> const &tab);
+   template <typename A, typename D>
+   sparse_table<A> operator*(dimval<D> const &fac, sparse_table<A> const &tab);
 
-   template <typename A, typename F, typename D>
-   sparse_table<A, decltype(F() / D())>
-   operator/(sparse_table<A, F> const &tab, dimval<D> const &fac);
+   template <typename A, typename D>
+   sparse_table<A> operator/(sparse_table<A> const &tab, dimval<D> const &fac);
+
+   /// Base class for sparse_table.
+   struct sparse_table_base
+   {
+      static GiNaC::symbol x; ///< Symbol for independent variable.
+   };
 
    /// A [piecewise function](https://en.wikipedia.org/wiki/Piecewise) that, in
    /// logarithmic time, looks up the sub-function appropriate to the argument.
@@ -77,38 +82,36 @@ namespace num
    /// sub-function type \a F.
    ///
    /// \tparam A  Type of sub-function's argument.
-   /// \tparam F  Type of sub-function.
-   template <typename A, typename F>
-   class sparse_table
+   template <typename A>
+   class sparse_table : public sparse_table_base
    {
       /// Allow other type of sparse_table to access private members.
       /// \tparam OA  Type of other sparse_table's argument.
-      /// \tparam OF  Type of other sparse_table's subfunction.
-      template <typename OA, typename OF>
+      template <typename OA>
       friend class sparse_table;
 
       /// Allow for external operator to use private constructor.
-      template <typename OA, typename OF, typename D>
-      friend sparse_table<OA, decltype(OF() * D())>
-      operator*(sparse_table<OA, OF> const &tab, dimval<D> const &fac);
+      template <typename OA, typename D>
+      friend sparse_table<OA>
+      operator*(sparse_table<OA> const &tab, dimval<D> const &fac);
 
       /// Allow for external operator to use private constructor.
-      template <typename OA, typename OF, typename D>
-      friend sparse_table<OA, decltype(D() * OF())>
-      operator*(dimval<D> const &fac, sparse_table<OA, OF> const &tab);
+      template <typename OA, typename D>
+      friend sparse_table<OA>
+      operator*(dimval<D> const &fac, sparse_table<OA> const &tab);
 
       /// Allow for external operator to use private constructor.
-      template <typename OA, typename OF, typename D>
-      friend sparse_table<OA, decltype(OF() / D())>
-      operator/(sparse_table<OA, OF> const &tab, dimval<D> const &fac);
+      template <typename OA, typename D>
+      friend sparse_table<OA>
+      operator/(sparse_table<OA> const &tab, dimval<D> const &fac);
 
    public:
       /// Type of record in table.
       struct rec
       {
-         A a;  ///< Center of sub-domain.
-         A da; ///< Length of sub-domain.
-         F f;  ///< Sub-function.
+         A         a;  ///< Center of sub-domain.
+         A         da; ///< Length of sub-domain.
+         GiNaC::ex f;  ///< Sub-function.
       };
 
       using data = std::vector<rec>; ///< Type of data structure for table.
@@ -139,7 +142,7 @@ namespace num
             /// sub-function for that sub-domain.  The first pair in \a vf is
             /// interpreted as \f$ (\Delta a_0, f_0) \f$, the second as \f$
             /// (\Delta a_1, f_1) \f$, etc.
-            std::vector<std::pair<A, F>> vf)
+            std::vector<std::pair<A, GiNaC::ex>> vf)
          : dat_(vf.size())
       {
          if (vf.size() == 0) {
@@ -169,9 +172,6 @@ namespace num
       /// \f$ (a_{n-1}, \Delta a_{n-1}, f_{n-1}) \f$.
       data const &dat() const { return dat_; }
 
-      /// Type of value returned by every sub-function.
-      using R = decltype(F()(A()));
-
       /// Find \f$a_i\f$ whose sub-domain contains \f$a\f$, and return
       /// \f$f_i(a)\f$.  If
       /// \f$a < a_0     - \frac{\Delta a_{0}}{2}\f$, or
@@ -179,38 +179,35 @@ namespace num
       /// then return 0.
       ///
       /// \return \f$ f_i(a) \f$.
-      R operator()(/** Argument to function. */ A const &a) const
+      GiNaC::ex operator()(/** Argument to function. */ A const &a) const
       {
          auto const &frst = *dat_.begin();
          auto const &last = *dat_.rbegin();
          if (a < frst.a - 0.5 * frst.da || a > last.a + 0.5 * last.da) {
-            return 0.0 * frst.f(a);
+            return 0;
          }
          // In log time, find pointer to first record after argument a.
          auto p = std::upper_bound(dat_.begin(), dat_.end(), a, acomp);
          if (p == dat_.end()) {
-            return last.f(a); // Argument a is after last center.
+            return last.f.subs(x == a); // Argument a is after last center.
          } else if (p->a - a > 0.5 * p->da) {
             --p; // Argument a is too far from subsequent center.
          }
-         return p->f(a);
+         return p->f.subs(x == a);
       }
 
-      /// Type of definite integral.
-      using integral_type = decltype(A() * R());
-
       /// Integral of piece-wise function over all pieces.
-      integral_type integral() const
+      GiNaC::ex integral() const
       {
-         integral_type rv = 0; // Return value.
+         GiNaC::ex rv = 0; // Return value.
          for (auto i : dat_) {
-            rv += i.f.integral(i.a - 0.5 * i.da)(i.a + 0.5 * i.da);
+            rv += GiNaC::integral(x, i.a - 0.5 * i.da, i.a + 0.5 * i.da, i.f);
          }
-         return rv;
+         return rv.evalf();
       }
 
       /// Integral of piece-wise function over range.
-      integral_type
+      GiNaC::ex
       integral(/** Beginning of range. */ A a, /** End of range. */ A b) const
       {
          double sign = 1.0;
@@ -218,7 +215,7 @@ namespace num
             sign = -1.0;
             std::swap(a, b);
          }
-         integral_type rv = 0; // Return value.
+         GiNaC::ex rv = 0; // Return value.
          if (dat_.size() == 0) {
             return rv; // There are no pieces over which to integrate.
          }
@@ -240,7 +237,7 @@ namespace num
          auto pb = std::upper_bound(dat_.begin(), dat_.end(), b, acomp);
          if (pa == dat_.end()) {
             // Beginning of interval is after last center.
-            return sign * dat_.rbegin()->f.integral(a)(b);
+            return (sign * GiNaC::integral(x, a, b, dat_.rbegin()->f)).evalf();
          } else if (pa->a - a > 0.5 * pa->da) {
             --pa; // Beginning of interval is too far from subsequent center.
          }
@@ -263,9 +260,10 @@ namespace num
             } else {                     //
                bb = i->a + 0.5 * i->da;  // End of piece.
             }                            //
-            rv += i->f.integral(aa)(bb); // Integral over current piece.
+            // Integral over current piece.
+            rv += GiNaC::integral(x, aa, bb, i->f);
          }
-         return sign * rv;
+         return (sign * rv).evalf();
       }
 
       /// Multiply table by scale factor on right.
@@ -312,14 +310,12 @@ namespace num
       }
 
       /// Multiply table by other table.
-      template <typename OF>
-      sparse_table<A, decltype(F() * OF())>
-      operator*(sparse_table<A, OF> const &st)
+      sparse_table
+      operator*(sparse_table const &st)
       {
-         using RF = decltype(F() * OF());
          // Initializer for return value.  The initial size might be too large
          // and is reduced if necessary at the end.
-         typename sparse_table<A, RF>::data d(dat_.size() + st.dat().size());
+         data d(dat_.size() + st.dat().size());
          unsigned i  = 0; // offset into returned array
          unsigned i1 = 0; // offset into dat_
          unsigned i2 = 0; // offset into st.dat_
@@ -375,7 +371,7 @@ namespace num
             }
          }
          d.resize(i); // Shrink down to size if necessary.
-         return sparse_table<A, RF>(std::move(d));
+         return sparse_table(std::move(d));
       }
    };
 }
@@ -386,62 +382,56 @@ namespace num
 {
    /// Multiply table by dimval on right.
    /// \tparam A  Type of argument to function modeled by table.
-   /// \tparam F  Type of each functional piece of table.
    /// \tparam D  Derived type of dimval.
-   template <typename A, typename F, typename D>
-   sparse_table<A, decltype(F() * D())> operator*(
-         /** Table.  */ sparse_table<A, F> const &tab,
+   template <typename A, typename D>
+   sparse_table<A> operator*(
+         /** Table.  */ sparse_table<A> const &tab,
          /** Factor. */ dimval<D> const &fac)
    {
-      using PF = decltype(F() * D());
       // Initializer for return value.
-      typename sparse_table<A, PF>::data d(tab.dat().size());
+      typename sparse_table<A>::data d(tab.dat().size());
       for (unsigned i = 0; i < d.size(); ++i) {
          d[i].a  = tab.dat()[i].a;
          d[i].da = tab.dat()[i].da;
          d[i].f  = tab.dat()[i].f * fac.d();
       }
-      return sparse_table<A, PF>(std::move(d));
+      return sparse_table<A>(std::move(d));
    }
 
    /// Multiply table by dimval on left.
    /// \tparam A  Type of argument to function modeled by table.
-   /// \tparam F  Type of each functional piece of table.
    /// \tparam D  Derived type of dimval.
-   template <typename A, typename F, typename D>
-   sparse_table<A, decltype(D() * F())> operator*(
+   template <typename A, typename D>
+   sparse_table<A> operator*(
          /** Factor. */ dimval<D> const &fac,
-         /** Table.  */ sparse_table<A, F> const &tab)
+         /** Table.  */ sparse_table<A> const &tab)
    {
-      using PF = decltype(D() * F());
       // Initializer for return value.
-      typename sparse_table<A, PF>::data d(tab.dat().size());
+      typename sparse_table<A>::data d(tab.dat().size());
       for (unsigned i = 0; i < d.size(); ++i) {
          d[i].a  = tab.dat()[i].a;
          d[i].da = tab.dat()[i].da;
          d[i].f  = fac.d() * tab.dat()[i].f;
       }
-      return sparse_table<A, PF>(std::move(d));
+      return sparse_table<A>(std::move(d));
    }
 
    /// Divide table by dimval.
    /// \tparam A  Type of argument to function modeled by table.
-   /// \tparam F  Type of each functional piece of table.
    /// \tparam D  Derived type of dimval.
-   template <typename A, typename F, typename D>
-   sparse_table<A, decltype(F() / D())> operator/(
-         /** Table.  */ sparse_table<A, F> const &tab,
+   template <typename A, typename D>
+   sparse_table<A> operator/(
+         /** Table.  */ sparse_table<A> const &tab,
          /** Factor. */ dimval<D> const &fac)
    {
-      using PF = decltype(F() / D());
       // Initializer for return value.
-      typename sparse_table<A, PF>::data d(tab.dat().size());
+      typename sparse_table<A>::data d(tab.dat().size());
       for (unsigned i = 0; i < d.size(); ++i) {
          d[i].a  = tab.dat()[i].a;
          d[i].da = tab.dat()[i].da;
          d[i].f  = tab.dat()[i].f / fac.d();
       }
-      return sparse_table<A, PF>(std::move(d));
+      return sparse_table<A>(std::move(d));
    }
 }
 

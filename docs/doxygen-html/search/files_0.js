@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['cfunc_2ehpp',['cfunc.hpp',['../cfunc_8hpp.html',1,'']]],
-  ['cpoly_2ehpp',['cpoly.hpp',['../cpoly_8hpp.html',1,'']]]
+  ['dense_2dtable_2ehpp',['dense-table.hpp',['../dense-table_8hpp.html',1,'']]],
+  ['dim_2dexps_2ehpp',['dim-exps.hpp',['../dim-exps_8hpp.html',1,'']]],
+  ['dimensions_2ehpp',['dimensions.hpp',['../dimensions_8hpp.html',1,'']]],
+  ['dimval_2ehpp',['dimval.hpp',['../dimval_8hpp.html',1,'']]]
 ];

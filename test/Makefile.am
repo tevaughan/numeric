@@ -16,7 +16,6 @@ TESTS = tests
 check_PROGRAMS = tests
 
 tests_SOURCES =\
- cpoly_test.cpp\
  integral_test.cpp\
  interpolant_test.cpp\
  tests.cpp\

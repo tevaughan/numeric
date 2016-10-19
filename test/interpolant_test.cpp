@@ -11,6 +11,7 @@
 #include "interpolant.hpp"
 #include "units.hpp"
 
+using namespace GiNaC;
 using namespace num;
 using namespace num::u;
 using namespace std;
@@ -32,9 +33,9 @@ TEST_CASE("Verify interpolation on vector of points.", "[interpolant]")
 
    REQUIRE(j(-1.0) == 0.0);
    REQUIRE(j(0.0) == 0.0);
-   REQUIRE(j(0.25) == Approx(0.25 / 2.0));
+   REQUIRE(ex_to<numeric>(j(0.25)).to_double() == Approx(0.25 / 2.0));
    REQUIRE(j(0.50) == 0.25);
-   REQUIRE(j(0.75) == Approx(1.25 / 2.0));
+   REQUIRE(ex_to<numeric>(j(0.75)).to_double() == Approx(1.25 / 2.0));
    REQUIRE(j(1.00) == 1.00);
    REQUIRE(j(1.01) == 0.00); // sparse_table is zero outside bounds.
    REQUIRE(j(2.00) == 0.00); // sparse_table is zero outside bounds.
@@ -59,7 +60,8 @@ TEST_CASE("Verify integral of interpolant.", "[interpolant]")
    REQUIRE(i2.integral(-0.50, -0.10) == 0.0);
    REQUIRE(i2.integral(-0.25, +0.25) == 0.25 * 0.5 * (0.5 + 0.75));
    REQUIRE(i2.integral(+0.25, +1.25) == 0.5 * 0.25 * (0.75 + 1.0));
-   REQUIRE(i2.integral(+0.55, +0.95) == Approx(0.0));
+   REQUIRE(
+         ex_to<numeric>(i2.integral(+0.55, +0.95)).to_double() == Approx(0.0));
    REQUIRE(i2.integral(+0.75, +1.25) == -0.125);
    REQUIRE(i2.integral(+1.25, +0.75) == +0.125);
    REQUIRE(i2.integral(+1.25, +1.50) == 0.00);
@@ -106,7 +108,7 @@ TEST_CASE("Verify product of interpolants.", "[interpolant]")
    REQUIRE(j3(0.0) == 0.0);
    REQUIRE(j3(0.25) == 0.25);
    REQUIRE(j3(0.50) == 0.25 * 1.5);
-   REQUIRE(j3(0.75) == Approx(1.25 / 2.0));
+   REQUIRE(ex_to<numeric>(j3(0.75)).to_double() == Approx(1.25 / 2.0));
    REQUIRE(j3(1.00) == 0.5);
    REQUIRE(j3(2.00) == 0.0);
 
@@ -114,7 +116,7 @@ TEST_CASE("Verify product of interpolants.", "[interpolant]")
    REQUIRE(j4(0.0) == 0.0);
    REQUIRE(j4(0.25) == 0.25);
    REQUIRE(j4(0.50) == 0.25 * 1.5);
-   REQUIRE(j4(0.75) == Approx(1.25 / 2.0));
+   REQUIRE(ex_to<numeric>(j4(0.75)).to_double() == Approx(1.25 / 2.0));
    REQUIRE(j4(1.00) == 0.5);
    REQUIRE(j4(2.00) == 0.0);
 }
@@ -160,17 +162,17 @@ TEST_CASE("Verify file input.", "[interpolant]")
    auto j = make_linear_interp("interpolant_test.txt");
    REQUIRE(j(-1) == 0.0);
    REQUIRE(j(299) == 0.0);
-   REQUIRE(j(300) == 0.0);
-   REQUIRE(j(350) == Approx(40.0));
+   REQUIRE(ex_to<numeric>(j(300)).to_double() == Approx(0.0));
+   REQUIRE(ex_to<numeric>(j(350)).to_double() == Approx(40.0));
    REQUIRE(j(400) == 80.0);
    REQUIRE(j(450) == 80.0);
    REQUIRE(j(500) == 80.0);
-   REQUIRE(j(900) == 80.0);
-   REQUIRE(j(950) == Approx(40.0));
-   REQUIRE(j(1000) == 0.0);
+   REQUIRE(ex_to<numeric>(j(900)).to_double() == Approx(80.0));
+   REQUIRE(ex_to<numeric>(j(950)).to_double() == Approx(40.0));
+   REQUIRE(ex_to<numeric>(j(1000)).to_double() == Approx(0.0));
    REQUIRE(j(1100) == 0.0);
 
-   REQUIRE(i.integral() == j.integral());
+   REQUIRE(i.integral() == Approx(ex_to<numeric>(j.integral()).to_double()));
    REQUIRE_THROWS(make_linear_interp("interpolant_test-shortinput.txt"));
 
    interpolantd n("interpolant_test-shortinput.txt");
@@ -212,26 +214,26 @@ TEST_CASE("Verify file input and interoperation with units.", "[interpolant]")
 
    REQUIRE(jj(-1 * nm) == 0.0 * s);
    REQUIRE(jj(299 * nm) == 0.0 * s);
-   REQUIRE(jj(300 * nm) == 0.0 * s);
-   REQUIRE((jj(350 * nm) / s).number() == Approx(40.0));
-   REQUIRE((jj(400 * nm) / s).number() == Approx(80.0));
+   REQUIRE(ex_to<numeric>(jj(300 * nm) / s).to_double() == Approx(0.0));
+   REQUIRE(ex_to<numeric>(jj(350 * nm) / s).to_double() == Approx(40.0));
+   REQUIRE(ex_to<numeric>(jj(400 * nm) / s).to_double() == Approx(80.0));
    REQUIRE(jj(450 * nm) == 80.0 * s);
    REQUIRE(jj(500 * nm) == 80.0 * s);
    REQUIRE(jj(900 * nm) == 80.0 * s);
-   REQUIRE((jj(950 * nm) / s).number() == Approx(40.0));
-   REQUIRE((jj(1000 * nm) / s).number() == Approx(0.0));
+   REQUIRE(ex_to<numeric>(jj(950 * nm) / s).to_double() == Approx(40.0));
+   REQUIRE(ex_to<numeric>(jj(1000 * nm) / s).to_double() == Approx(0.0));
    REQUIRE(jj(1100 * nm) == 0.0 * s);
 
    REQUIRE(kk(-1 * nm) == 0.0 * s);
    REQUIRE(kk(299 * nm) == 0.0 * s);
-   REQUIRE(kk(300 * nm) == 0.0 * s);
-   REQUIRE(kk(350 * nm) / s == Approx(40.0));
-   REQUIRE(kk(400 * nm) / s == Approx(80.0));
+   REQUIRE(ex_to<numeric>(kk(300 * nm) / s).to_double() == Approx(0.0));
+   REQUIRE(ex_to<numeric>(kk(350 * nm) / s).to_double() == Approx(40.0));
+   REQUIRE(ex_to<numeric>(kk(400 * nm) / s).to_double() == Approx(80.0));
    REQUIRE(kk(450 * nm) == 80.0 * s);
    REQUIRE(kk(500 * nm) == 80.0 * s);
    REQUIRE(kk(900 * nm) == 80.0 * s);
-   REQUIRE(kk(950 * nm) / s == Approx(40.0));
-   REQUIRE(kk(1000 * nm) / s == Approx(0.0));
+   REQUIRE(ex_to<numeric>(kk(950 * nm) / s).to_double() == Approx(40.0));
+   REQUIRE(ex_to<numeric>(kk(1000 * nm) / s).to_double() == Approx(0.0));
    REQUIRE(kk(1100 * nm) == 0.0 * s);
 }
 
@@ -318,26 +320,26 @@ TEST_CASE(
 
    REQUIRE(j3(-1 * nm) == 0.0 * m);
    REQUIRE(j3(299 * nm) == 0.0 * m);
-   REQUIRE(j3(300 * nm) == 0.0 * m);
-   REQUIRE(j3(350 * nm) / m == Approx(80.0));
-   REQUIRE(j3(400 * nm) / m == Approx(160.0));
+   REQUIRE(ex_to<numeric>(j3(300 * nm) / m).to_double() == Approx(0.0));
+   REQUIRE(ex_to<numeric>(j3(350 * nm) / m).to_double() == Approx(80.0));
+   REQUIRE(ex_to<numeric>(j3(400 * nm) / m).to_double() == Approx(160.0));
    REQUIRE(j3(450 * nm) == 160.0 * m);
    REQUIRE(j3(500 * nm) == 160.0 * m);
    REQUIRE(j3(900 * nm) == 160.0 * m);
-   REQUIRE(j3(950 * nm) / m == Approx(80.0));
-   REQUIRE(j3(1000 * nm) / m == Approx(0.0));
+   REQUIRE(ex_to<numeric>(j3(950 * nm) / m).to_double() == Approx(80.0));
+   REQUIRE(ex_to<numeric>(j3(1000 * nm) / m).to_double() == Approx(0.0));
    REQUIRE(j3(1100 * nm) == 0.0 * m);
 
    REQUIRE(j4(-1 * nm) == 0.0 * m);
    REQUIRE(j4(299 * nm) == 0.0 * m);
-   REQUIRE(j4(300 * nm) == 0.0 * m);
-   REQUIRE((j4(350 * nm) / m).number() == Approx(80.0));
-   REQUIRE((j4(400 * nm) / m).number() == Approx(160.0));
+   REQUIRE(ex_to<numeric>(j4(300 * nm) / m).to_double() == Approx(0.0));
+   REQUIRE(ex_to<numeric>(j4(350 * nm) / m).to_double() == Approx(80.0));
+   REQUIRE(ex_to<numeric>(j4(400 * nm) / m).to_double() == Approx(160.0));
    REQUIRE(j4(450 * nm) == 160.0 * m);
    REQUIRE(j4(500 * nm) == 160.0 * m);
    REQUIRE(j4(900 * nm) == 160.0 * m);
-   REQUIRE((j4(950 * nm) / m).number() == Approx(80.0));
-   REQUIRE((j4(1000 * nm) / m).number() == Approx(0.0));
+   REQUIRE(ex_to<numeric>(j4(950 * nm) / m).to_double() == Approx(80.0));
+   REQUIRE(ex_to<numeric>(j4(1000 * nm) / m).to_double() == Approx(0.0));
    REQUIRE(j4(1100 * nm) == 0.0 * m);
 
    auto k1 = i1 * 2.0;
@@ -371,26 +373,26 @@ TEST_CASE(
 
    REQUIRE(k3(-1 * nm) == 0.0 * s);
    REQUIRE(k3(299 * nm) == 0.0 * s);
-   REQUIRE(k3(300 * nm) == 0.0 * s);
-   REQUIRE(k3(350 * nm) / s == Approx(80.0));
-   REQUIRE(k3(400 * nm) / s == Approx(160.0));
+   REQUIRE(ex_to<numeric>(k3(300 * nm) / s).to_double() == Approx(0.0));
+   REQUIRE(ex_to<numeric>(k3(350 * nm) / s).to_double() == Approx(80.0));
+   REQUIRE(ex_to<numeric>(k3(400 * nm) / s).to_double() == Approx(160.0));
    REQUIRE(k3(450 * nm) == 160.0 * s);
    REQUIRE(k3(500 * nm) == 160.0 * s);
    REQUIRE(k3(900 * nm) == 160.0 * s);
-   REQUIRE(k3(950 * nm) / s == Approx(80.0));
-   REQUIRE(k3(1000 * nm) / s == Approx(0.0));
+   REQUIRE(ex_to<numeric>(k3(950 * nm) / s).to_double() == Approx(80.0));
+   REQUIRE(ex_to<numeric>(k3(1000 * nm) / s).to_double() == Approx(0.0));
    REQUIRE(k3(1100 * nm) == 0.0 * s);
 
    REQUIRE(k4(-1 * nm) == 0.0 * s);
    REQUIRE(k4(299 * nm) == 0.0 * s);
-   REQUIRE(k4(300 * nm) == 0.0 * s);
-   REQUIRE((k4(350 * nm) / s).number() == Approx(80.0));
-   REQUIRE((k4(400 * nm) / s).number() == Approx(160.0));
+   REQUIRE(ex_to<numeric>(k4(300 * nm) / s).to_double() == Approx(0.0));
+   REQUIRE(ex_to<numeric>(k4(350 * nm) / s).to_double() == Approx(80.0));
+   REQUIRE(ex_to<numeric>(k4(400 * nm) / s).to_double() == Approx(160.0));
    REQUIRE(k4(450 * nm) == 160.0 * s);
    REQUIRE(k4(500 * nm) == 160.0 * s);
    REQUIRE(k4(900 * nm) == 160.0 * s);
-   REQUIRE((k4(950 * nm) / s).number() == Approx(80.0));
-   REQUIRE((k4(1000 * nm) / s).number() == Approx(0.0));
+   REQUIRE(ex_to<numeric>(k4(950 * nm) / s).to_double() == Approx(80.0));
+   REQUIRE(ex_to<numeric>(k4(1000 * nm) / s).to_double() == Approx(0.0));
    REQUIRE(k4(1100 * nm) == 0.0 * s);
 
    i1 *= 2.0;
@@ -424,26 +426,26 @@ TEST_CASE(
 
    REQUIRE(i3(-1 * nm) == 0.0 * s);
    REQUIRE(i3(299 * nm) == 0.0 * s);
-   REQUIRE(i3(300 * nm) == 0.0 * s);
-   REQUIRE(i3(350 * nm) / s == Approx(80.0));
-   REQUIRE(i3(400 * nm) / s == Approx(160.0));
+   REQUIRE(ex_to<numeric>(i3(300 * nm) / s).to_double() == Approx(0.0));
+   REQUIRE(ex_to<numeric>(i3(350 * nm) / s).to_double() == Approx(80.0));
+   REQUIRE(ex_to<numeric>(i3(400 * nm) / s).to_double() == Approx(160.0));
    REQUIRE(i3(450 * nm) == 160.0 * s);
    REQUIRE(i3(500 * nm) == 160.0 * s);
    REQUIRE(i3(900 * nm) == 160.0 * s);
-   REQUIRE(i3(950 * nm) / s == Approx(80.0));
-   REQUIRE(i3(1000 * nm) / s == Approx(0.0));
+   REQUIRE(ex_to<numeric>(i3(950 * nm) / s).to_double() == Approx(80.0));
+   REQUIRE(ex_to<numeric>(i3(1000 * nm) / s).to_double() == Approx(0.0));
    REQUIRE(i3(1100 * nm) == 0.0 * s);
 
    REQUIRE(i4(-1 * nm) == 0.0 * s);
    REQUIRE(i4(299 * nm) == 0.0 * s);
-   REQUIRE(i4(300 * nm) == 0.0 * s);
-   REQUIRE((i4(350 * nm) / s).number() == Approx(80.0));
-   REQUIRE((i4(400 * nm) / s).number() == Approx(160.0));
+   REQUIRE(ex_to<numeric>(i4(300 * nm) / s).to_double() == Approx(0.0));
+   REQUIRE(ex_to<numeric>(i4(350 * nm) / s).to_double() == Approx(80.0));
+   REQUIRE(ex_to<numeric>(i4(400 * nm) / s).to_double() == Approx(160.0));
    REQUIRE(i4(450 * nm) == 160.0 * s);
    REQUIRE(i4(500 * nm) == 160.0 * s);
    REQUIRE(i4(900 * nm) == 160.0 * s);
-   REQUIRE((i4(950 * nm) / s).number() == Approx(80.0));
-   REQUIRE((i4(1000 * nm) / s).number() == Approx(0.0));
+   REQUIRE(ex_to<numeric>(i4(950 * nm) / s).to_double() == Approx(80.0));
+   REQUIRE(ex_to<numeric>(i4(1000 * nm) / s).to_double() == Approx(0.0));
    REQUIRE(i4(1100 * nm) == 0.0 * s);
 }
 
@@ -485,26 +487,26 @@ TEST_CASE("Verify scalar multiplication on left.", "[interpolant]")
 
    REQUIRE(j3(-1 * nm) == 0.0 * m);
    REQUIRE(j3(299 * nm) == 0.0 * m);
-   REQUIRE(j3(300 * nm) == 0.0 * m);
-   REQUIRE(j3(350 * nm) / m == Approx(80.0));
-   REQUIRE(j3(400 * nm) / m == Approx(160.0));
+   REQUIRE(ex_to<numeric>(j3(300 * nm) / m).to_double() == Approx(0.0));
+   REQUIRE(ex_to<numeric>(j3(350 * nm) / m).to_double() == Approx(80.0));
+   REQUIRE(ex_to<numeric>(j3(400 * nm) / m).to_double() == Approx(160.0));
    REQUIRE(j3(450 * nm) == 160.0 * m);
    REQUIRE(j3(500 * nm) == 160.0 * m);
    REQUIRE(j3(900 * nm) == 160.0 * m);
-   REQUIRE(j3(950 * nm) / m == Approx(80.0));
-   REQUIRE(j3(1000 * nm) / m == Approx(0.0));
+   REQUIRE(ex_to<numeric>(j3(950 * nm) / m).to_double() == Approx(80.0));
+   REQUIRE(ex_to<numeric>(j3(1000 * nm) / m).to_double() == Approx(0.0));
    REQUIRE(j3(1100 * nm) == 0.0 * m);
 
    REQUIRE(j4(-1 * nm) == 0.0 * m);
    REQUIRE(j4(299 * nm) == 0.0 * m);
-   REQUIRE(j4(300 * nm) == 0.0 * m);
-   REQUIRE((j4(350 * nm) / m).number() == Approx(80.0));
-   REQUIRE((j4(400 * nm) / m).number() == Approx(160.0));
+   REQUIRE(ex_to<numeric>(j4(300 * nm) / m).to_double() == Approx(0.0));
+   REQUIRE(ex_to<numeric>(j4(350 * nm) / m).to_double() == Approx(80.0));
+   REQUIRE(ex_to<numeric>(j4(400 * nm) / m).to_double() == Approx(160.0));
    REQUIRE(j4(450 * nm) == 160.0 * m);
    REQUIRE(j4(500 * nm) == 160.0 * m);
    REQUIRE(j4(900 * nm) == 160.0 * m);
-   REQUIRE((j4(950 * nm) / m).number() == Approx(80.0));
-   REQUIRE((j4(1000 * nm) / m).number() == Approx(0.0));
+   REQUIRE(ex_to<numeric>(j4(950 * nm) / m).to_double() == Approx(80.0));
+   REQUIRE(ex_to<numeric>(j4(1000 * nm) / m).to_double() == Approx(0.0));
    REQUIRE(j4(1100 * nm) == 0.0 * m);
 
    auto k1 = 2.0 * i1;
@@ -538,26 +540,26 @@ TEST_CASE("Verify scalar multiplication on left.", "[interpolant]")
 
    REQUIRE(k3(-1 * nm) == 0.0 * s);
    REQUIRE(k3(299 * nm) == 0.0 * s);
-   REQUIRE(k3(300 * nm) == 0.0 * s);
-   REQUIRE(k3(350 * nm) / s == Approx(80.0));
-   REQUIRE(k3(400 * nm) / s == Approx(160.0));
+   REQUIRE(ex_to<numeric>(k3(300 * nm) / s).to_double() == Approx(0.0));
+   REQUIRE(ex_to<numeric>(k3(350 * nm) / s).to_double() == Approx(80.0));
+   REQUIRE(ex_to<numeric>(k3(400 * nm) / s).to_double() == Approx(160.0));
    REQUIRE(k3(450 * nm) == 160.0 * s);
    REQUIRE(k3(500 * nm) == 160.0 * s);
    REQUIRE(k3(900 * nm) == 160.0 * s);
-   REQUIRE(k3(950 * nm) / s == Approx(80.0));
-   REQUIRE(k3(1000 * nm) / s == Approx(0.0));
+   REQUIRE(ex_to<numeric>(k3(950 * nm) / s).to_double() == Approx(80.0));
+   REQUIRE(ex_to<numeric>(k3(1000 * nm) / s).to_double() == Approx(0.0));
    REQUIRE(k3(1100 * nm) == 0.0 * s);
 
    REQUIRE(k4(-1 * nm) == 0.0 * s);
    REQUIRE(k4(299 * nm) == 0.0 * s);
-   REQUIRE(k4(300 * nm) == 0.0 * s);
-   REQUIRE((k4(350 * nm) / s).number() == Approx(80.0));
-   REQUIRE((k4(400 * nm) / s).number() == Approx(160.0));
+   REQUIRE(ex_to<numeric>(k4(300 * nm) / s).to_double() == Approx(0.0));
+   REQUIRE(ex_to<numeric>(k4(350 * nm) / s).to_double() == Approx(80.0));
+   REQUIRE(ex_to<numeric>(k4(400 * nm) / s).to_double() == Approx(160.0));
    REQUIRE(k4(450 * nm) == 160.0 * s);
    REQUIRE(k4(500 * nm) == 160.0 * s);
    REQUIRE(k4(900 * nm) == 160.0 * s);
-   REQUIRE((k4(950 * nm) / s).number() == Approx(80.0));
-   REQUIRE((k4(1000 * nm) / s).number() == Approx(0.0));
+   REQUIRE(ex_to<numeric>(k4(950 * nm) / s).to_double() == Approx(80.0));
+   REQUIRE(ex_to<numeric>(k4(1000 * nm) / s).to_double() == Approx(0.0));
    REQUIRE(k4(1100 * nm) == 0.0 * s);
 }
 
@@ -599,27 +601,27 @@ TEST_CASE("Verify scalar division of interpolant.", "[interpolant]")
 
    REQUIRE(j3(-1 * nm) == 0.0);
    REQUIRE(j3(299 * nm) == 0.0);
-   REQUIRE(j3(300 * nm) == 0.0);
-   REQUIRE(j3(350 * nm) == Approx(20.0));
-   REQUIRE(j3(400 * nm) == Approx(40.0));
+   REQUIRE(ex_to<numeric>(j3(300 * nm)).to_double() == Approx(0.0));
+   REQUIRE(ex_to<numeric>(j3(350 * nm)).to_double() == Approx(20.0));
+   REQUIRE(ex_to<numeric>(j3(400 * nm)).to_double() == Approx(40.0));
    REQUIRE(j3(450 * nm) == 40.0);
    REQUIRE(j3(500 * nm) == 40.0);
    REQUIRE(j3(900 * nm) == 40.0);
-   REQUIRE(j3(950 * nm) == Approx(20.0));
-   REQUIRE(j3(1000 * nm) == Approx(0.0));
+   REQUIRE(ex_to<numeric>(j3(950 * nm)).to_double() == Approx(20.0));
+   REQUIRE(ex_to<numeric>(j3(1000 * nm)).to_double() == Approx(0.0));
    REQUIRE(j3(1100 * nm) == 0.0);
 
-   REQUIRE((j4(-1 * nm)).number() == 0.0);
-   REQUIRE((j4(299 * nm)).number() == 0.0);
-   REQUIRE((j4(300 * nm)).number() == 0.0);
-   REQUIRE((j4(350 * nm)).number() == Approx(20.0));
-   REQUIRE((j4(400 * nm)).number() == Approx(40.0));
-   REQUIRE((j4(450 * nm)).number() == 40.0);
-   REQUIRE((j4(500 * nm)).number() == 40.0);
-   REQUIRE((j4(900 * nm)).number() == 40.0);
-   REQUIRE((j4(950 * nm)).number() == Approx(20.0));
-   REQUIRE((j4(1000 * nm)).number() == Approx(0.0));
-   REQUIRE((j4(1100 * nm)).number() == 0.0);
+   REQUIRE(ex_to<numeric>(j4(-1 * nm)).to_double() == 0.0);
+   REQUIRE(ex_to<numeric>(j4(299 * nm)).to_double() == 0.0);
+   REQUIRE(ex_to<numeric>(j4(300 * nm)).to_double() == Approx(0.0));
+   REQUIRE(ex_to<numeric>(j4(350 * nm)).to_double() == Approx(20.0));
+   REQUIRE(ex_to<numeric>(j4(400 * nm)).to_double() == Approx(40.0));
+   REQUIRE(ex_to<numeric>(j4(450 * nm)).to_double() == 40.0);
+   REQUIRE(ex_to<numeric>(j4(500 * nm)).to_double() == 40.0);
+   REQUIRE(ex_to<numeric>(j4(900 * nm)).to_double() == 40.0);
+   REQUIRE(ex_to<numeric>(j4(950 * nm)).to_double() == Approx(20.0));
+   REQUIRE(ex_to<numeric>(j4(1000 * nm)).to_double() == Approx(0.0));
+   REQUIRE(ex_to<numeric>(j4(1100 * nm)).to_double() == 0.0);
 
    i1 /= 2.0;
    i2 /= 2.0;
@@ -652,26 +654,26 @@ TEST_CASE("Verify scalar division of interpolant.", "[interpolant]")
 
    REQUIRE(i3(-1 * nm) == 0.0 * s);
    REQUIRE(i3(299 * nm) == 0.0 * s);
-   REQUIRE(i3(300 * nm) == 0.0 * s);
-   REQUIRE(i3(350 * nm) / s == Approx(20.0));
-   REQUIRE(i3(400 * nm) / s == Approx(40.0));
+   REQUIRE(ex_to<numeric>(i3(300 * nm) / s).to_double() == Approx(0.0));
+   REQUIRE(ex_to<numeric>(i3(350 * nm) / s).to_double() == Approx(20.0));
+   REQUIRE(ex_to<numeric>(i3(400 * nm) / s).to_double() == Approx(40.0));
    REQUIRE(i3(450 * nm) == 40.0 * s);
    REQUIRE(i3(500 * nm) == 40.0 * s);
    REQUIRE(i3(900 * nm) == 40.0 * s);
-   REQUIRE(i3(950 * nm) / s == Approx(20.0));
-   REQUIRE(i3(1000 * nm) / s == Approx(0.0));
+   REQUIRE(ex_to<numeric>(i3(950 * nm) / s).to_double() == Approx(20.0));
+   REQUIRE(ex_to<numeric>(i3(1000 * nm) / s).to_double() == Approx(0.0));
    REQUIRE(i3(1100 * nm) == 0.0 * s);
 
    REQUIRE(i4(-1 * nm) == 0.0 * s);
    REQUIRE(i4(299 * nm) == 0.0 * s);
-   REQUIRE(i4(300 * nm) == 0.0 * s);
-   REQUIRE((i4(350 * nm) / s).number() == Approx(20.0));
-   REQUIRE((i4(400 * nm) / s).number() == Approx(40.0));
+   REQUIRE(ex_to<numeric>(i4(300 * nm) / s).to_double() == Approx(0.0));
+   REQUIRE(ex_to<numeric>(i4(350 * nm) / s).to_double() == Approx(20.0));
+   REQUIRE(ex_to<numeric>(i4(400 * nm) / s).to_double() == Approx(40.0));
    REQUIRE(i4(450 * nm) == 40.0 * s);
    REQUIRE(i4(500 * nm) == 40.0 * s);
    REQUIRE(i4(900 * nm) == 40.0 * s);
-   REQUIRE((i4(950 * nm) / s).number() == Approx(20.0));
-   REQUIRE((i4(1000 * nm) / s).number() == Approx(0.0));
+   REQUIRE(ex_to<numeric>(i4(950 * nm) / s).to_double() == Approx(20.0));
+   REQUIRE(ex_to<numeric>(i4(1000 * nm) / s).to_double() == Approx(0.0));
    REQUIRE(i4(1100 * nm) == 0.0 * s);
 }
 
@@ -694,8 +696,8 @@ TEST_CASE(
       "Verify that interpolant of function produces right integral.",
       "[interpolant]")
 {
-   function<area(length)> square = [](length x) { return x * x; };
-   volume const i                = integral(square, 0 * cm, 1 * cm);
+   std::function<area(length)> square = [](length x) { return x * x; };
+   volume const i                     = num::integral(square, 0 * cm, 1 * cm);
 
    interpolant<length, area> const   j1(square, 0 * cm, 1 * cm, 1.0E-17);
    interpolant<dyndim, dyndim> const j2(square, 0 * cm, 1 * cm, 1.0E-17);
@@ -721,12 +723,14 @@ TEST_CASE(
    double             tol = 1.0E-04;
    interpolantd const e(erf, -1.0, 2.0, tol);
    REQUIRE(
-         e.integral(-1.0, 2.0) / integral(my_erf, -1.0, 2.0, tol) ==
+         e.integral(-1.0, 2.0) / num::integral(my_erf, -1.0, 2.0, tol) ==
          Approx(1.0).epsilon(tol));
 
-   tol                        = 1.0E-03;
-   function<double(double)> g = [](double x) { return exp(-0.5 * x * x); };
-   interpolantd const                     ig(g, -5.0, +5.0, tol);
+   tol                             = 1.0E-03;
+   std::function<double(double)> g = [](double x) {
+      return exp(-0.5 * x * x);
+   };
+   interpolantd const ig(g, -5.0, +5.0, tol);
    REQUIRE(ig.integral() == Approx(sqrt(2.0 * M_PI)).epsilon(tol));
    ofstream ofg("gaussian.dat");
    ofg << ig.points();

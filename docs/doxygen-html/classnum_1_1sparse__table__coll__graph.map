@@ -1,4 +1,5 @@
-<map id="sparse_table&lt; A, F &gt;" name="sparse_table&lt; A, F &gt;">
-<area shape="rect" id="node3" href="$structnum_1_1sparse__table_1_1rec.html" title="Type of record in table. " alt="" coords="54,109,94,136"/>
-<area shape="rect" id="node6" title="STL class. " alt="" coords="118,109,209,136"/>
+<map id="sparse_table&lt; A &gt;" name="sparse_table&lt; A &gt;">
+<area shape="rect" id="node2" href="$structnum_1_1sparse__table__base.html" title="Base class for sparse_table. " alt="" coords="5,199,136,225"/>
+<area shape="rect" id="node5" href="$structnum_1_1sparse__table_1_1rec.html" title="Type of record in table. " alt="" coords="159,109,199,136"/>
+<area shape="rect" id="node8" title="STL class. " alt="" coords="223,109,313,136"/>
 </map>
