@@ -1,10 +1,6 @@
 <map id="interpolant.hpp" name="interpolant.hpp">
-<area shape="rect" id="node11" href="$ilist_8hpp.html" title="Definition of ipoint, ilist, and output&#45;stream operator for each. " alt="" coords="717,304,784,331"/>
-<area shape="rect" id="node12" href="$integral-stats_8hpp.html" title="Source for num::integral_stats, which is used by num::integral() and by num::interpolant. " alt="" coords="963,304,1085,331"/>
-<area shape="rect" id="node13" href="$interval_8hpp.html" title="Source for class interval and class subinterval_stack, which are used by num::integral() and by num::..." alt="" coords="195,304,285,331"/>
-<area shape="rect" id="node15" href="$sparse-table_8hpp.html" title="Definition of num::sparse&#45;table. " alt="" coords="107,80,226,107"/>
-<area shape="rect" id="node17" href="$dimval_8hpp.html" title="Definition of conversions dealing with angle, num::dimval_base, num::statdim, and num::dyndim..." alt="" coords="499,155,584,181"/>
-<area shape="rect" id="node20" href="$dim-exps_8hpp.html" title="Definition of class num::dim_exps. " alt="" coords="302,229,402,256"/>
-<area shape="rect" id="node22" href="$integral_8hpp.html" title="Source for num::integral(), which numerically integrates via adaptive quadrature and the trapezoidal ..." alt="" coords="669,229,758,256"/>
-<area shape="rect" id="node23" href="$util_8hpp.html" title="Basic utilities. " alt="" coords="528,304,592,331"/>
+<area shape="rect" id="node11" href="$ilist_8hpp.html" title="Definition of ipoint, ilist, and output&#45;stream operator for each. " alt="" coords="388,80,455,107"/>
+<area shape="rect" id="node12" href="$integral-stats_8hpp.html" title="Source for num::integral_stats, which is used by num::integral() and by num::interpolant. " alt="" coords="1041,80,1164,107"/>
+<area shape="rect" id="node13" href="$interval_8hpp.html" title="Source for class interval and class subinterval_stack, which are used by num::integral() and by num::..." alt="" coords="223,80,313,107"/>
+<area shape="rect" id="node15" href="$sparse-table_8hpp.html" title="Definition of num::sparse&#45;table. " alt="" coords="81,80,199,107"/>
 </map>

@@ -17,21 +17,6 @@
 
 namespace num
 {
-   template <typename A>
-   class sparse_table;
-
-   template <typename D>
-   class dimval;
-
-   template <typename A, typename D>
-   sparse_table<A> operator*(sparse_table<A> const &tab, dimval<D> const &fac);
-
-   template <typename A, typename D>
-   sparse_table<A> operator*(dimval<D> const &fac, sparse_table<A> const &tab);
-
-   template <typename A, typename D>
-   sparse_table<A> operator/(sparse_table<A> const &tab, dimval<D> const &fac);
-
    /// Base class for sparse_table.
    struct sparse_table_base
    {
@@ -85,26 +70,6 @@ namespace num
    template <typename A>
    class sparse_table : public sparse_table_base
    {
-      /// Allow other type of sparse_table to access private members.
-      /// \tparam OA  Type of other sparse_table's argument.
-      template <typename OA>
-      friend class sparse_table;
-
-      /// Allow for external operator to use private constructor.
-      template <typename OA, typename D>
-      friend sparse_table<OA>
-      operator*(sparse_table<OA> const &tab, dimval<D> const &fac);
-
-      /// Allow for external operator to use private constructor.
-      template <typename OA, typename D>
-      friend sparse_table<OA>
-      operator*(dimval<D> const &fac, sparse_table<OA> const &tab);
-
-      /// Allow for external operator to use private constructor.
-      template <typename OA, typename D>
-      friend sparse_table<OA>
-      operator/(sparse_table<OA> const &tab, dimval<D> const &fac);
-
    public:
       /// Type of record in table.
       struct rec
@@ -267,7 +232,7 @@ namespace num
       }
 
       /// Multiply table by scale factor on right.
-      sparse_table operator*(/** Factor. */ double fac) const
+      sparse_table operator*(/** Factor. */ GiNaC::ex const &fac) const
       {
          data d(dat_.size()); // Initializer for return value.
          for (unsigned i = 0; i < dat_.size(); ++i) {
@@ -280,7 +245,8 @@ namespace num
 
       /// Multiply table by scale factor on left.
       friend sparse_table operator*(
-            /** Factor. */ double fac, /** Table. */ sparse_table const &tab)
+            /** Factor. */ GiNaC::ex const &   fac,
+            /** Table.  */ sparse_table const &tab)
       {
          data d(tab.dat_.size()); // Initializer for return value.
          for (unsigned i = 0; i < tab.dat_.size(); ++i) {
@@ -291,8 +257,20 @@ namespace num
          return sparse_table(std::move(d));
       }
 
+      /// Divide table by scale denominator on right.
+      sparse_table operator/(/** Denominator. */ GiNaC::ex const &den) const
+      {
+         data d(dat_.size()); // Initializer for return value.
+         for (unsigned i = 0; i < dat_.size(); ++i) {
+            d[i].a  = dat_[i].a;
+            d[i].da = dat_[i].da;
+            d[i].f  = dat_[i].f / den;
+         }
+         return sparse_table(std::move(d));
+      }
+
       /// Multiplicative assignment.
-      sparse_table &operator*=(/** Factor. */ double rf)
+      sparse_table &operator*=(/** Factor. */ GiNaC::ex const &rf)
       {
          for (unsigned i = 0; i < dat_.size(); ++i) {
             dat_[i].f *= rf;
@@ -301,7 +279,7 @@ namespace num
       }
 
       /// Divisive assignment.
-      sparse_table &operator/=(/** Factor. */ double rf)
+      sparse_table &operator/=(/** Factor. */ GiNaC::ex const& rf)
       {
          for (unsigned i = 0; i < dat_.size(); ++i) {
             dat_[i].f /= rf;
@@ -374,65 +352,6 @@ namespace num
          return sparse_table(std::move(d));
       }
    };
-}
-
-#include <dimval.hpp>
-
-namespace num
-{
-   /// Multiply table by dimval on right.
-   /// \tparam A  Type of argument to function modeled by table.
-   /// \tparam D  Derived type of dimval.
-   template <typename A, typename D>
-   sparse_table<A> operator*(
-         /** Table.  */ sparse_table<A> const &tab,
-         /** Factor. */ dimval<D> const &fac)
-   {
-      // Initializer for return value.
-      typename sparse_table<A>::data d(tab.dat().size());
-      for (unsigned i = 0; i < d.size(); ++i) {
-         d[i].a  = tab.dat()[i].a;
-         d[i].da = tab.dat()[i].da;
-         d[i].f  = tab.dat()[i].f * fac.d();
-      }
-      return sparse_table<A>(std::move(d));
-   }
-
-   /// Multiply table by dimval on left.
-   /// \tparam A  Type of argument to function modeled by table.
-   /// \tparam D  Derived type of dimval.
-   template <typename A, typename D>
-   sparse_table<A> operator*(
-         /** Factor. */ dimval<D> const &fac,
-         /** Table.  */ sparse_table<A> const &tab)
-   {
-      // Initializer for return value.
-      typename sparse_table<A>::data d(tab.dat().size());
-      for (unsigned i = 0; i < d.size(); ++i) {
-         d[i].a  = tab.dat()[i].a;
-         d[i].da = tab.dat()[i].da;
-         d[i].f  = fac.d() * tab.dat()[i].f;
-      }
-      return sparse_table<A>(std::move(d));
-   }
-
-   /// Divide table by dimval.
-   /// \tparam A  Type of argument to function modeled by table.
-   /// \tparam D  Derived type of dimval.
-   template <typename A, typename D>
-   sparse_table<A> operator/(
-         /** Table.  */ sparse_table<A> const &tab,
-         /** Factor. */ dimval<D> const &fac)
-   {
-      // Initializer for return value.
-      typename sparse_table<A>::data d(tab.dat().size());
-      for (unsigned i = 0; i < d.size(); ++i) {
-         d[i].a  = tab.dat()[i].a;
-         d[i].da = tab.dat()[i].da;
-         d[i].f  = tab.dat()[i].f / fac.d();
-      }
-      return sparse_table<A>(std::move(d));
-   }
 }
 
 #endif // ndef NUMERIC_SPARSE_TABLE_HPP
