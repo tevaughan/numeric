@@ -5,7 +5,7 @@
 # of the GNU LPGL, Version 3 or later.
 
 EXTRA_DIST = interp_1.gpi interp_2.gpi
-LDADD = ../../src/libnumeric.la -lcln -lginac
+LDADD = ../../src/libnumeric.la
 
 noinst_PROGRAMS =\
  dense_table_1\

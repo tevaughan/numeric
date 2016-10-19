@@ -53,7 +53,7 @@ libnumeric_la_CPPFLAGS = $(CODE_COVERAGE_CPPFLAGS)
 libnumeric_la_CXXFLAGS = $(CODE_COVERAGE_CXXFLAGS)
 libnumeric_la_CFLAGS = $(CODE_COVERAGE_CFLAGS)
 libnumeric_la_LDFLAGS = -version-info $(current):$(revision):$(age)
-libnumeric_la_LIBADD = $(CODE_COVERAGE_LIBS) -lcln -lginac
+libnumeric_la_LIBADD = $(CODE_COVERAGE_LIBS)
 
 dimensions.hpp : dimensions.txt dimensions.pl
 	./dimensions.pl

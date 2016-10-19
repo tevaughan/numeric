@@ -24,7 +24,7 @@ tests_SOURCES =\
 
 # Need to move -lcln and -lginac to autoconf variable of some kind and add test
 # for them to configure script.
-tests_LDADD = ../src/libnumeric.la $(CODE_COVERAGE_LIBS) -lcln -lginac
+tests_LDADD = ../src/libnumeric.la $(CODE_COVERAGE_LIBS)
 tests_CPPFLAGS = $(CODE_COVERAGE_CPPFLAGS)
 tests_CXXFLAGS = $(CODE_COVERAGE_CXXFLAGS)
 tests_CFLAGS = $(CODE_COVERAGE_CFLAGS)

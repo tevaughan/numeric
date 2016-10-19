@@ -36,6 +36,8 @@ fi
 # Checks for libraries.
 
 AC_CHECK_LIB([m], [pow])
+AC_CHECK_LIB([cln], [pow])
+AC_CHECK_LIB([ginac], [pow])
 
 # Checks for header files.
 
