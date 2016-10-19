@@ -71,12 +71,14 @@ namespace num
    class sparse_table : public sparse_table_base
    {
    public:
+      using ex = GiNaC::ex; ///< Short-hand for type of expression.
+
       /// Type of record in table.
       struct rec
       {
-         A         a;  ///< Center of sub-domain.
-         A         da; ///< Length of sub-domain.
-         GiNaC::ex f;  ///< Sub-function.
+         A  a;  ///< Center of sub-domain.
+         A  da; ///< Length of sub-domain.
+         ex f;  ///< Sub-function.
       };
 
       using data = std::vector<rec>; ///< Type of data structure for table.
@@ -94,6 +96,98 @@ namespace num
       /// sorted.
       explicit sparse_table(data &&d) : dat_(std::move(d)) {}
 
+      /// Type of function that combines two tables.
+      using cmb_func = std::function<ex(ex, ex)>;
+
+      /// Structure for stepping through two tables to combine them via a
+      /// specified function, such as multiplication.  An instance of this is
+      /// used in sparse_table::combine().
+      struct cmb_data
+      {
+         data     d; ///< Data for table returned by sparse_table::combine().
+         unsigned i; ///< Offset into array of data.
+         cmb_func const &cmb; ///< Combining function.
+
+         /// Initialize size and offset.
+         cmb_data(
+               /** Max size of array.  */ unsigned        sz,
+               /** Combining function. */ cmb_func const &cf)
+            : d(sz), i(0), cmb(cf)
+         {
+         }
+
+         /// Take a step in combining two tables.  This function should be
+         /// called with parameters arranged in a way that identifies which
+         /// piece starts first in the space of arguments of type A.
+         void step(
+               /** Beg of scnd piece.                     */ A const &  b2,
+               /** End of frst piece.                     */ A const &  e1,
+               /** End of scnd piece.                     */ A const &  e2,
+               /** Piece from table on left side of comb. */ rec const &d1,
+               /** Piece from table on rght side of comb. */ rec const &d2,
+               /** Offset into frst piece's table.        */ unsigned & i1,
+               /** Offset into scnd piece's table.        */ unsigned & i2)
+         {
+            if (e1 < b2) {
+               // d1 ends before d2 starts.
+               ++i1;
+            } else if (e1 < e2) {
+               // d1 ends before d2 ends.
+               d[i].a  = 0.5 * (b2 + e1);
+               d[i].da = e1 - b2;
+               d[i].f  = cmb(d1.f, d2.f);
+               ++i1;
+               ++i;
+            } else {
+               // d1 ends after d2 ends.
+               d[i].a  = d2.a;
+               d[i].da = d2.da;
+               d[i].f  = cmb(d1.f, d2.f);
+               ++i2;
+               ++i;
+            }
+         }
+
+         /// Shrink down to size if necessary. This is meant to be called after
+         /// all of the calls to step() are done.
+         void resize() { d.resize(i); }
+      };
+
+      /// Combine table with other table, for example by multiplication if \a
+      /// cmb represents the function for multiplication of two expressions.
+      ///
+      /// \return Resutlant table.
+      sparse_table combine(
+            /** Other table.        */ sparse_table const &st,
+            /** Combining function. */ std::function<ex(ex, ex)> const &cmb)
+            const
+      {
+         // Initializer for return value.  The initial size might be too large
+         // and is reduced if necessary at the end.
+         cmb_data c(dat_.size() + st.dat().size(), cmb);
+         unsigned i1 = 0; // offset into dat_
+         unsigned i2 = 0; // offset into st.dat_
+         while (i1 < dat_.size() && i2 < st.dat().size()) {
+            auto const &d1   = dat_[i1];     // piece from left table
+            auto const &d2   = st.dat()[i2]; // piece from right table
+            auto const  hda1 = 0.5 * d1.da;
+            auto const  hda2 = 0.5 * d2.da;
+            auto const  l1   = d1.a - hda1;
+            auto const  l2   = d2.a - hda2;
+            auto const  r1   = d1.a + hda1;
+            auto const  r2   = d2.a + hda2;
+            if (l1 < l2) {
+               // d1 starts before d2.
+               c.step(l2, r1, r2, d1, d2, i1, i2);
+            } else {
+               // d2 starts before d1.
+               c.step(l1, r2, r1, d1, d2, i2, i1);
+            }
+         }
+         c.resize(); // Shrink down to size if necessary.
+         return sparse_table(std::move(c.d));
+      }
+
    public:
       /// Construct null table.
       sparse_table() {}
@@ -107,7 +201,7 @@ namespace num
             /// sub-function for that sub-domain.  The first pair in \a vf is
             /// interpreted as \f$ (\Delta a_0, f_0) \f$, the second as \f$
             /// (\Delta a_1, f_1) \f$, etc.
-            std::vector<std::pair<A, GiNaC::ex>> vf)
+            std::vector<std::pair<A, ex>> vf)
          : dat_(vf.size())
       {
          if (vf.size() == 0) {
@@ -144,7 +238,7 @@ namespace num
       /// then return 0.
       ///
       /// \return \f$ f_i(a) \f$.
-      GiNaC::ex operator()(/** Argument to function. */ A const &a) const
+      ex operator()(/** Argument to function. */ A const &a) const
       {
          auto const &frst = *dat_.begin();
          auto const &last = *dat_.rbegin();
@@ -162,9 +256,9 @@ namespace num
       }
 
       /// Integral of piece-wise function over all pieces.
-      GiNaC::ex integral() const
+      ex integral() const
       {
-         GiNaC::ex rv = 0; // Return value.
+         ex rv = 0; // Return value.
          for (auto i : dat_) {
             rv += GiNaC::integral(x, i.a - 0.5 * i.da, i.a + 0.5 * i.da, i.f);
          }
@@ -172,15 +266,14 @@ namespace num
       }
 
       /// Integral of piece-wise function over range.
-      GiNaC::ex
-      integral(/** Beginning of range. */ A a, /** End of range. */ A b) const
+      ex integral(/** Beg of range. */ A a, /** End of range. */ A b) const
       {
          double sign = 1.0;
          if (a > b) {
             sign = -1.0;
             std::swap(a, b);
          }
-         GiNaC::ex rv = 0; // Return value.
+         ex rv = 0; // Return value.
          if (dat_.size() == 0) {
             return rv; // There are no pieces over which to integrate.
          }
@@ -213,18 +306,18 @@ namespace num
          }
          auto const pend = pb + 1;
          for (auto i = pa; i != pend; ++i) {
-            A aa;                        // Current beg of integration.
-            A bb;                        // Current end of integration.
-            if (i == pa) {               //
-               aa = a;                   // Beg of interval.
-            } else {                     //
-               aa = i->a - 0.5 * i->da;  // Beg of piece.
-            }                            //
-            if (i == pb) {               //
-               bb = b;                   // End of interval.
-            } else {                     //
-               bb = i->a + 0.5 * i->da;  // End of piece.
-            }                            //
+            A aa;                       // Current beg of integration.
+            A bb;                       // Current end of integration.
+            if (i == pa) {              //
+               aa = a;                  // Beg of interval.
+            } else {                    //
+               aa = i->a - 0.5 * i->da; // Beg of piece.
+            }                           //
+            if (i == pb) {              //
+               bb = b;                  // End of interval.
+            } else {                    //
+               bb = i->a + 0.5 * i->da; // End of piece.
+            }                           //
             // Integral over current piece.
             rv += GiNaC::integral(x, aa, bb, i->f);
          }
@@ -232,7 +325,7 @@ namespace num
       }
 
       /// Multiply table by scale factor on right.
-      sparse_table operator*(/** Factor. */ GiNaC::ex const &fac) const
+      sparse_table operator*(/** Factor. */ ex const &fac) const
       {
          data d(dat_.size()); // Initializer for return value.
          for (unsigned i = 0; i < dat_.size(); ++i) {
@@ -245,7 +338,7 @@ namespace num
 
       /// Multiply table by scale factor on left.
       friend sparse_table operator*(
-            /** Factor. */ GiNaC::ex const &   fac,
+            /** Factor. */ ex const &          fac,
             /** Table.  */ sparse_table const &tab)
       {
          data d(tab.dat_.size()); // Initializer for return value.
@@ -258,7 +351,7 @@ namespace num
       }
 
       /// Divide table by scale denominator on right.
-      sparse_table operator/(/** Denominator. */ GiNaC::ex const &den) const
+      sparse_table operator/(/** Denominator. */ ex const &den) const
       {
          data d(dat_.size()); // Initializer for return value.
          for (unsigned i = 0; i < dat_.size(); ++i) {
@@ -270,7 +363,7 @@ namespace num
       }
 
       /// Multiplicative assignment.
-      sparse_table &operator*=(/** Factor. */ GiNaC::ex const &rf)
+      sparse_table &operator*=(/** Factor. */ ex const &rf)
       {
          for (unsigned i = 0; i < dat_.size(); ++i) {
             dat_[i].f *= rf;
@@ -279,7 +372,7 @@ namespace num
       }
 
       /// Divisive assignment.
-      sparse_table &operator/=(/** Factor. */ GiNaC::ex const& rf)
+      sparse_table &operator/=(/** Factor. */ ex const &rf)
       {
          for (unsigned i = 0; i < dat_.size(); ++i) {
             dat_[i].f /= rf;
@@ -288,68 +381,15 @@ namespace num
       }
 
       /// Multiply table by other table.
-      sparse_table
-      operator*(sparse_table const &st)
+      sparse_table operator*(/** Other table. */ sparse_table const &st) const
       {
-         // Initializer for return value.  The initial size might be too large
-         // and is reduced if necessary at the end.
-         data d(dat_.size() + st.dat().size());
-         unsigned i  = 0; // offset into returned array
-         unsigned i1 = 0; // offset into dat_
-         unsigned i2 = 0; // offset into st.dat_
-         while (i1 < dat_.size() && i2 < st.dat().size()) {
-            auto const &d1   = dat_[i1];
-            auto const &d2   = st.dat()[i2];
-            auto const  hda1 = 0.5 * d1.da;
-            auto const  hda2 = 0.5 * d2.da;
-            auto const  l1   = d1.a - hda1;
-            auto const  l2   = d2.a - hda2;
-            auto const  r1   = d1.a + hda1;
-            auto const  r2   = d2.a + hda2;
-            if (l1 < l2) {
-               // d1 starts before d2.
-               if (r1 < l2) {
-                  // d1 ends before d2 starts.
-                  ++i1;
-               } else if (r1 < r2) {
-                  // d1 ends before d2 ends.
-                  d[i].a  = 0.5 * (l2 + r1);
-                  d[i].da = r1 - l2;
-                  d[i].f  = d1.f * d2.f;
-                  ++i1;
-                  ++i;
-               } else {
-                  // d1 ends after d2 ends.
-                  d[i].a  = d2.a;
-                  d[i].da = d2.da;
-                  d[i].f  = d1.f * d2.f;
-                  ++i2;
-                  ++i;
-               }
-            } else {
-               // d2 starts before d1.
-               if (r2 < l1) {
-                  // d2 ends before d1 starts.
-                  ++i2;
-               } else if (r2 < r1) {
-                  // d2 ends before d1 ends.
-                  d[i].a  = 0.5 * (l1 + r2);
-                  d[i].da = r2 - l1;
-                  d[i].f  = d1.f * d2.f;
-                  ++i2;
-                  ++i;
-               } else {
-                  // d2 ends after d1 ends.
-                  d[i].a  = d1.a;
-                  d[i].da = d1.da;
-                  d[i].f  = d1.f * d2.f;
-                  ++i1;
-                  ++i;
-               }
-            }
-         }
-         d.resize(i); // Shrink down to size if necessary.
-         return sparse_table(std::move(d));
+         return combine(st, [](ex const &a, ex const &b) { return a * b; });
+      }
+
+      /// Divide table by other table.
+      sparse_table operator/(/** Other table. */ sparse_table const &st) const
+      {
+         return combine(st, [](ex const &a, ex const &b) { return a / b; });
       }
    };
 }

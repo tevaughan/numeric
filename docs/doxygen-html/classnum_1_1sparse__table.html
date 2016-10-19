@@ -74,6 +74,7 @@ $(function() {
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-types">Private Types</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
@@ -109,12 +110,19 @@ Collaboration diagram for sparse_table&lt; A &gt;:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnum_1_1sparse__table_1_1cmb__data.html">cmb_data</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure for stepping through two tables to combine them via a specified function, such as multiplication.  <a href="structnum_1_1sparse__table_1_1cmb__data.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnum_1_1sparse__table_1_1rec.html">rec</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of record in table.  <a href="structnum_1_1sparse__table_1_1rec.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
+<tr class="memitem:a5aaf68e7aabd271cc1b305fdf4ec9a7a"><td class="memItemLeft" align="right" valign="top"><a id="a5aaf68e7aabd271cc1b305fdf4ec9a7a"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a5aaf68e7aabd271cc1b305fdf4ec9a7a">ex</a> = GiNaC::ex</td></tr>
+<tr class="memdesc:a5aaf68e7aabd271cc1b305fdf4ec9a7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Short-hand for type of expression. <br /></td></tr>
+<tr class="separator:a5aaf68e7aabd271cc1b305fdf4ec9a7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d9c3006d824f8372cadae43a871c74b"><td class="memItemLeft" align="right" valign="top"><a id="a7d9c3006d824f8372cadae43a871c74b"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a7d9c3006d824f8372cadae43a871c74b">data</a> = std::vector&lt; <a class="el" href="structnum_1_1sparse__table_1_1rec.html">rec</a> &gt;</td></tr>
 <tr class="memdesc:a7d9c3006d824f8372cadae43a871c74b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of data structure for table. <br /></td></tr>
@@ -126,44 +134,56 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#afc17d761874f87f4e73fee94790c1e57">sparse_table</a> ()</td></tr>
 <tr class="memdesc:afc17d761874f87f4e73fee94790c1e57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct null table. <br /></td></tr>
 <tr class="separator:afc17d761874f87f4e73fee94790c1e57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8e32f2e29f034ff80abf674f8531b97"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#ad8e32f2e29f034ff80abf674f8531b97">sparse_table</a> (A const &amp;a0, std::vector&lt; std::pair&lt; A, GiNaC::ex &gt;&gt; vf)</td></tr>
-<tr class="memdesc:ad8e32f2e29f034ff80abf674f8531b97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize table of sub-domain centers, sub-domain lengths, and sub-functions.  <a href="#ad8e32f2e29f034ff80abf674f8531b97">More...</a><br /></td></tr>
-<tr class="separator:ad8e32f2e29f034ff80abf674f8531b97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2921cabba006abc249001857a587821b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a2921cabba006abc249001857a587821b">sparse_table</a> (A const &amp;a0, std::vector&lt; std::pair&lt; A, <a class="el" href="classnum_1_1sparse__table.html#a5aaf68e7aabd271cc1b305fdf4ec9a7a">ex</a> &gt;&gt; vf)</td></tr>
+<tr class="memdesc:a2921cabba006abc249001857a587821b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize table of sub-domain centers, sub-domain lengths, and sub-functions.  <a href="#a2921cabba006abc249001857a587821b">More...</a><br /></td></tr>
+<tr class="separator:a2921cabba006abc249001857a587821b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3500c19d38b53745fb626818a57d229b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html#a7d9c3006d824f8372cadae43a871c74b">data</a> const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a3500c19d38b53745fb626818a57d229b">dat</a> () const</td></tr>
 <tr class="memdesc:a3500c19d38b53745fb626818a57d229b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Table of sub-domain centers, sub-domain lengths, and sub-functions: \( (a_0, \Delta a_0, f_0) \), \( (a_1, \Delta a_1, f_1) \), \( \ldots \), \( (a_{n-1}, \Delta a_{n-1}, f_{n-1}) \).  <a href="#a3500c19d38b53745fb626818a57d229b">More...</a><br /></td></tr>
 <tr class="separator:a3500c19d38b53745fb626818a57d229b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1c592816bda54badbc9bc80872c0a5f"><td class="memItemLeft" align="right" valign="top">GiNaC::ex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#aa1c592816bda54badbc9bc80872c0a5f">operator()</a> (A const &amp;a) const</td></tr>
-<tr class="memdesc:aa1c592816bda54badbc9bc80872c0a5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find \(a_i\) whose sub-domain contains \(a\), and return \(f_i(a)\).  <a href="#aa1c592816bda54badbc9bc80872c0a5f">More...</a><br /></td></tr>
-<tr class="separator:aa1c592816bda54badbc9bc80872c0a5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae976e6912bc1388a67337113e40c739e"><td class="memItemLeft" align="right" valign="top"><a id="ae976e6912bc1388a67337113e40c739e"></a>
-GiNaC::ex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#ae976e6912bc1388a67337113e40c739e">integral</a> () const</td></tr>
-<tr class="memdesc:ae976e6912bc1388a67337113e40c739e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integral of piece-wise function over all pieces. <br /></td></tr>
-<tr class="separator:ae976e6912bc1388a67337113e40c739e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a376ad67090ad1d424d1c17e43de875ba"><td class="memItemLeft" align="right" valign="top">GiNaC::ex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a376ad67090ad1d424d1c17e43de875ba">integral</a> (A a, A b) const</td></tr>
-<tr class="memdesc:a376ad67090ad1d424d1c17e43de875ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integral of piece-wise function over range.  <a href="#a376ad67090ad1d424d1c17e43de875ba">More...</a><br /></td></tr>
-<tr class="separator:a376ad67090ad1d424d1c17e43de875ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5260591711f1738d58984b4163e72065"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a5260591711f1738d58984b4163e72065">operator*</a> (GiNaC::ex const &amp;fac) const</td></tr>
-<tr class="memdesc:a5260591711f1738d58984b4163e72065"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply table by scale factor on right.  <a href="#a5260591711f1738d58984b4163e72065">More...</a><br /></td></tr>
-<tr class="separator:a5260591711f1738d58984b4163e72065"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba02719f3ce0b3baf38952fb56ec2f00"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#aba02719f3ce0b3baf38952fb56ec2f00">operator/</a> (GiNaC::ex const &amp;den) const</td></tr>
-<tr class="memdesc:aba02719f3ce0b3baf38952fb56ec2f00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divide table by scale denominator on right.  <a href="#aba02719f3ce0b3baf38952fb56ec2f00">More...</a><br /></td></tr>
-<tr class="separator:aba02719f3ce0b3baf38952fb56ec2f00"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0d9eee035f1374a7125027c2c72f8e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#ad0d9eee035f1374a7125027c2c72f8e6">operator*=</a> (GiNaC::ex const &amp;rf)</td></tr>
-<tr class="memdesc:ad0d9eee035f1374a7125027c2c72f8e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplicative assignment.  <a href="#ad0d9eee035f1374a7125027c2c72f8e6">More...</a><br /></td></tr>
-<tr class="separator:ad0d9eee035f1374a7125027c2c72f8e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a549f7740602ec47762ab96b06a87803f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a549f7740602ec47762ab96b06a87803f">operator/=</a> (GiNaC::ex const &amp;rf)</td></tr>
-<tr class="memdesc:a549f7740602ec47762ab96b06a87803f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divisive assignment.  <a href="#a549f7740602ec47762ab96b06a87803f">More...</a><br /></td></tr>
-<tr class="separator:a549f7740602ec47762ab96b06a87803f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ca04dedd250d990838d24ea678bf16e"><td class="memItemLeft" align="right" valign="top"><a id="a7ca04dedd250d990838d24ea678bf16e"></a>
-<a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a7ca04dedd250d990838d24ea678bf16e">operator*</a> (<a class="el" href="classnum_1_1sparse__table.html">sparse_table</a> const &amp;st)</td></tr>
-<tr class="memdesc:a7ca04dedd250d990838d24ea678bf16e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply table by other table. <br /></td></tr>
-<tr class="separator:a7ca04dedd250d990838d24ea678bf16e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93f85bb60b75c4af509a0d963524927b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html#a5aaf68e7aabd271cc1b305fdf4ec9a7a">ex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a93f85bb60b75c4af509a0d963524927b">operator()</a> (A const &amp;a) const</td></tr>
+<tr class="memdesc:a93f85bb60b75c4af509a0d963524927b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find \(a_i\) whose sub-domain contains \(a\), and return \(f_i(a)\).  <a href="#a93f85bb60b75c4af509a0d963524927b">More...</a><br /></td></tr>
+<tr class="separator:a93f85bb60b75c4af509a0d963524927b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49de1015116f9b4524ccf5343daaedbb"><td class="memItemLeft" align="right" valign="top"><a id="a49de1015116f9b4524ccf5343daaedbb"></a>
+<a class="el" href="classnum_1_1sparse__table.html#a5aaf68e7aabd271cc1b305fdf4ec9a7a">ex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a49de1015116f9b4524ccf5343daaedbb">integral</a> () const</td></tr>
+<tr class="memdesc:a49de1015116f9b4524ccf5343daaedbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integral of piece-wise function over all pieces. <br /></td></tr>
+<tr class="separator:a49de1015116f9b4524ccf5343daaedbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77ec7c15846d589847dca4e6151e5edb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html#a5aaf68e7aabd271cc1b305fdf4ec9a7a">ex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a77ec7c15846d589847dca4e6151e5edb">integral</a> (A a, A b) const</td></tr>
+<tr class="memdesc:a77ec7c15846d589847dca4e6151e5edb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integral of piece-wise function over range.  <a href="#a77ec7c15846d589847dca4e6151e5edb">More...</a><br /></td></tr>
+<tr class="separator:a77ec7c15846d589847dca4e6151e5edb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e61ffe266f9bb762d73b8b18cdcec9d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a8e61ffe266f9bb762d73b8b18cdcec9d">operator*</a> (<a class="el" href="classnum_1_1sparse__table.html#a5aaf68e7aabd271cc1b305fdf4ec9a7a">ex</a> const &amp;fac) const</td></tr>
+<tr class="memdesc:a8e61ffe266f9bb762d73b8b18cdcec9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply table by scale factor on right.  <a href="#a8e61ffe266f9bb762d73b8b18cdcec9d">More...</a><br /></td></tr>
+<tr class="separator:a8e61ffe266f9bb762d73b8b18cdcec9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ae7b783a8c0579e661cdf6cb21b1467"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a7ae7b783a8c0579e661cdf6cb21b1467">operator/</a> (<a class="el" href="classnum_1_1sparse__table.html#a5aaf68e7aabd271cc1b305fdf4ec9a7a">ex</a> const &amp;den) const</td></tr>
+<tr class="memdesc:a7ae7b783a8c0579e661cdf6cb21b1467"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divide table by scale denominator on right.  <a href="#a7ae7b783a8c0579e661cdf6cb21b1467">More...</a><br /></td></tr>
+<tr class="separator:a7ae7b783a8c0579e661cdf6cb21b1467"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2dc2d913dc874cf2145e5fb09542294"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#ad2dc2d913dc874cf2145e5fb09542294">operator*=</a> (<a class="el" href="classnum_1_1sparse__table.html#a5aaf68e7aabd271cc1b305fdf4ec9a7a">ex</a> const &amp;rf)</td></tr>
+<tr class="memdesc:ad2dc2d913dc874cf2145e5fb09542294"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplicative assignment.  <a href="#ad2dc2d913dc874cf2145e5fb09542294">More...</a><br /></td></tr>
+<tr class="separator:ad2dc2d913dc874cf2145e5fb09542294"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68d05bf993ddfe025378ac2b66503763"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a68d05bf993ddfe025378ac2b66503763">operator/=</a> (<a class="el" href="classnum_1_1sparse__table.html#a5aaf68e7aabd271cc1b305fdf4ec9a7a">ex</a> const &amp;rf)</td></tr>
+<tr class="memdesc:a68d05bf993ddfe025378ac2b66503763"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divisive assignment.  <a href="#a68d05bf993ddfe025378ac2b66503763">More...</a><br /></td></tr>
+<tr class="separator:a68d05bf993ddfe025378ac2b66503763"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a5beca0c90f3bb112a5dbcf60776266"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a5a5beca0c90f3bb112a5dbcf60776266">operator*</a> (<a class="el" href="classnum_1_1sparse__table.html">sparse_table</a> const &amp;st) const</td></tr>
+<tr class="memdesc:a5a5beca0c90f3bb112a5dbcf60776266"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply table by other table.  <a href="#a5a5beca0c90f3bb112a5dbcf60776266">More...</a><br /></td></tr>
+<tr class="separator:a5a5beca0c90f3bb112a5dbcf60776266"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a244a6071a2e5b0970209f5cbae3a2a7a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a244a6071a2e5b0970209f5cbae3a2a7a">operator/</a> (<a class="el" href="classnum_1_1sparse__table.html">sparse_table</a> const &amp;st) const</td></tr>
+<tr class="memdesc:a244a6071a2e5b0970209f5cbae3a2a7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divide table by other table.  <a href="#a244a6071a2e5b0970209f5cbae3a2a7a">More...</a><br /></td></tr>
+<tr class="separator:a244a6071a2e5b0970209f5cbae3a2a7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:a4e3eef55c65671f42187a84b9e7dc58a"><td class="memItemLeft" align="right" valign="top"><a id="a4e3eef55c65671f42187a84b9e7dc58a"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a4e3eef55c65671f42187a84b9e7dc58a">cmb_func</a> = std::function&lt; <a class="el" href="classnum_1_1sparse__table.html#a5aaf68e7aabd271cc1b305fdf4ec9a7a">ex</a>(<a class="el" href="classnum_1_1sparse__table.html#a5aaf68e7aabd271cc1b305fdf4ec9a7a">ex</a>, <a class="el" href="classnum_1_1sparse__table.html#a5aaf68e7aabd271cc1b305fdf4ec9a7a">ex</a>)&gt;</td></tr>
+<tr class="memdesc:a4e3eef55c65671f42187a84b9e7dc58a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of function that combines two tables. <br /></td></tr>
+<tr class="separator:a4e3eef55c65671f42187a84b9e7dc58a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a5d93d2a1e25860d2e0479730cf9fc427"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a5d93d2a1e25860d2e0479730cf9fc427">sparse_table</a> (<a class="el" href="classnum_1_1sparse__table.html#a7d9c3006d824f8372cadae43a871c74b">data</a> &amp;&amp;d)</td></tr>
 <tr class="memdesc:a5d93d2a1e25860d2e0479730cf9fc427"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct from data member, already consistently initialized and sorted.  <a href="#a5d93d2a1e25860d2e0479730cf9fc427">More...</a><br /></td></tr>
 <tr class="separator:a5d93d2a1e25860d2e0479730cf9fc427"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2673f5c8a28842fc2cfa87c8c27040d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a2673f5c8a28842fc2cfa87c8c27040d6">combine</a> (<a class="el" href="classnum_1_1sparse__table.html">sparse_table</a> const &amp;st, std::function&lt; <a class="el" href="classnum_1_1sparse__table.html#a5aaf68e7aabd271cc1b305fdf4ec9a7a">ex</a>(<a class="el" href="classnum_1_1sparse__table.html#a5aaf68e7aabd271cc1b305fdf4ec9a7a">ex</a>, <a class="el" href="classnum_1_1sparse__table.html#a5aaf68e7aabd271cc1b305fdf4ec9a7a">ex</a>)&gt; const &amp;cmb) const</td></tr>
+<tr class="memdesc:a2673f5c8a28842fc2cfa87c8c27040d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Combine table with other table, for example by multiplication if <em>cmb</em> represents the function for multiplication of two expressions.  <a href="#a2673f5c8a28842fc2cfa87c8c27040d6">More...</a><br /></td></tr>
+<tr class="separator:a2673f5c8a28842fc2cfa87c8c27040d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
@@ -185,9 +205,9 @@ Private Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
-<tr class="memitem:a9ba5cb8a3b4afc0df243b43d6bdab3ea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a9ba5cb8a3b4afc0df243b43d6bdab3ea">operator*</a> (GiNaC::ex const &amp;fac, <a class="el" href="classnum_1_1sparse__table.html">sparse_table</a> const &amp;tab)</td></tr>
-<tr class="memdesc:a9ba5cb8a3b4afc0df243b43d6bdab3ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply table by scale factor on left.  <a href="#a9ba5cb8a3b4afc0df243b43d6bdab3ea">More...</a><br /></td></tr>
-<tr class="separator:a9ba5cb8a3b4afc0df243b43d6bdab3ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08826a185dd6824e3283d71d40f464fb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1sparse__table.html#a08826a185dd6824e3283d71d40f464fb">operator*</a> (<a class="el" href="classnum_1_1sparse__table.html#a5aaf68e7aabd271cc1b305fdf4ec9a7a">ex</a> const &amp;fac, <a class="el" href="classnum_1_1sparse__table.html">sparse_table</a> const &amp;tab)</td></tr>
+<tr class="memdesc:a08826a185dd6824e3283d71d40f464fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply table by scale factor on left.  <a href="#a08826a185dd6824e3283d71d40f464fb">More...</a><br /></td></tr>
+<tr class="separator:a08826a185dd6824e3283d71d40f464fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -206,8 +226,8 @@ class num::sparse_table&lt; A &gt;</h3>
 <p>Stored in a table of \(n\) records, the sub-function corresponding to \(a\) is \(f_i\), and the center of the corresponding subdomain is \(a_i\), where \(i \in \{0, 1, \ldots, n-1\}\). The argument \(a\) is passed to \(f_i\), and the value returned by \(f_i\) is returned from the lookup.</p>
 <p>In the simplest, fastest table, each \(f_i\) ignores its argument and returns a constant value.</p>
 <p>The infrastructure provided by <a class="el" href="classnum_1_1sparse__table.html" title="A piecewise function that, in logarithmic time, looks up the sub-function appropriate to the argument...">sparse_table</a> allows for logarithmic-time lookup of any kind of sub-function (for example, a cubic interpolant). To implement logarithmic-time lookup, an instance of <a class="el" href="classnum_1_1sparse__table.html" title="A piecewise function that, in logarithmic time, looks up the sub-function appropriate to the argument...">sparse_table</a> stores \(n\) triplets \((a_0, \Delta a_0, f_0)\), \((a_1, \Delta a_1, f_1)\), \(\ldots\), \((a_{n-1}, \Delta a_{n-1}, f_{n-1})\), sorted so that \(a_0 &lt; a_1 &lt; \cdots &lt; a_{n-1}\), where \(\Delta a_i\) is the length of the sub-domain whose center is \(a_i\).</p>
-<p>The lookup occurs by way of <a class="el" href="classnum_1_1sparse__table.html#aa1c592816bda54badbc9bc80872c0a5f" title="Find  whose sub-domain contains , and return . ">operator()()</a>. When \(a &gt; a_0 - \frac{\Delta a_0}{2}\), and \(a &lt; a_{n-1} + \frac{\Delta a_{n-1}}{2}\), record \(i\) is found so that \(|a - a_i| \leq \frac{{\Delta a}_i}{2}\).</p>
-<p><a class="el" href="classnum_1_1sparse__table.html#aa1c592816bda54badbc9bc80872c0a5f" title="Find  whose sub-domain contains , and return . ">operator()()</a> returns \(f_i(a)\).</p>
+<p>The lookup occurs by way of <a class="el" href="classnum_1_1sparse__table.html#a93f85bb60b75c4af509a0d963524927b" title="Find  whose sub-domain contains , and return . ">operator()()</a>. When \(a &gt; a_0 - \frac{\Delta a_0}{2}\), and \(a &lt; a_{n-1} + \frac{\Delta a_{n-1}}{2}\), record \(i\) is found so that \(|a - a_i| \leq \frac{{\Delta a}_i}{2}\).</p>
+<p><a class="el" href="classnum_1_1sparse__table.html#a93f85bb60b75c4af509a0d963524927b" title="Find  whose sub-domain contains , and return . ">operator()()</a> returns \(f_i(a)\).</p>
 <p>See <a class="el" href="classnum_1_1dense__table.html" title="A piecewise function that, in constant time, looks up the sub-function appropriate to the argument...">dense_table</a> for a type that usually can approximate a given function so precisely as <a class="el" href="classnum_1_1sparse__table.html" title="A piecewise function that, in logarithmic time, looks up the sub-function appropriate to the argument...">sparse_table</a> but with faster lookup. The cost is that <a class="el" href="classnum_1_1dense__table.html" title="A piecewise function that, in constant time, looks up the sub-function appropriate to the argument...">dense_table</a> requires more storage for the same precision with the same sub-function type <em>F</em>.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -244,12 +264,12 @@ class num::sparse_table&lt; A &gt;</h3>
 
 <p>Construct from data member, already consistently initialized and sorted. </p>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00095">95</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00097">97</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ad8e32f2e29f034ff80abf674f8531b97"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad8e32f2e29f034ff80abf674f8531b97">&sect;&nbsp;</a></span>sparse_table() <span class="overload">[2/2]</span></h2>
+<a id="a2921cabba006abc249001857a587821b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2921cabba006abc249001857a587821b">&sect;&nbsp;</a></span>sparse_table() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -266,7 +286,7 @@ class num::sparse_table&lt; A &gt;</h3>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::vector&lt; std::pair&lt; A, GiNaC::ex &gt;&gt;&#160;</td>
+          <td class="paramtype">std::vector&lt; std::pair&lt; A, <a class="el" href="classnum_1_1sparse__table.html#a5aaf68e7aabd271cc1b305fdf4ec9a7a">ex</a> &gt;&gt;&#160;</td>
           <td class="paramname"><em>vf</em>&#160;</td>
         </tr>
         <tr>
@@ -291,12 +311,12 @@ class num::sparse_table&lt; A &gt;</h3>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00103">103</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00197">197</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classnum_1_1sparse__table_ad8e32f2e29f034ff80abf674f8531b97_cgraph.png" border="0" usemap="#classnum_1_1sparse__table_ad8e32f2e29f034ff80abf674f8531b97_cgraph" alt=""/></div>
-<map name="classnum_1_1sparse__table_ad8e32f2e29f034ff80abf674f8531b97_cgraph" id="classnum_1_1sparse__table_ad8e32f2e29f034ff80abf674f8531b97_cgraph">
+<div class="center"><img src="classnum_1_1sparse__table_a2921cabba006abc249001857a587821b_cgraph.png" border="0" usemap="#classnum_1_1sparse__table_a2921cabba006abc249001857a587821b_cgraph" alt=""/></div>
+<map name="classnum_1_1sparse__table_a2921cabba006abc249001857a587821b_cgraph" id="classnum_1_1sparse__table_a2921cabba006abc249001857a587821b_cgraph">
 <area shape="rect" id="node2" href="classnum_1_1sparse__table.html#abf23784613d8be88c06ba9568302abd0" title="Compare two records so that they can be sorted. " alt="" coords="149,5,208,32"/>
 </map>
 </div>
@@ -304,6 +324,63 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a2673f5c8a28842fc2cfa87c8c27040d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2673f5c8a28842fc2cfa87c8c27040d6">&sect;&nbsp;</a></span>combine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a> combine </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt; A &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>st</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; <a class="el" href="classnum_1_1sparse__table.html#a5aaf68e7aabd271cc1b305fdf4ec9a7a">ex</a>(<a class="el" href="classnum_1_1sparse__table.html#a5aaf68e7aabd271cc1b305fdf4ec9a7a">ex</a>, <a class="el" href="classnum_1_1sparse__table.html#a5aaf68e7aabd271cc1b305fdf4ec9a7a">ex</a>)&gt; const &amp;&#160;</td>
+          <td class="paramname"><em>cmb</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Combine table with other table, for example by multiplication if <em>cmb</em> represents the function for multiplication of two expressions. </p>
+<dl class="section return"><dt>Returns</dt><dd>Resutlant table. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">st</td><td>Other table. </td></tr>
+    <tr><td class="paramname">cmb</td><td>Combining function. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00160">160</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classnum_1_1sparse__table_a2673f5c8a28842fc2cfa87c8c27040d6_icgraph.png" border="0" usemap="#classnum_1_1sparse__table_a2673f5c8a28842fc2cfa87c8c27040d6_icgraph" alt=""/></div>
+<map name="classnum_1_1sparse__table_a2673f5c8a28842fc2cfa87c8c27040d6_icgraph" id="classnum_1_1sparse__table_a2673f5c8a28842fc2cfa87c8c27040d6_icgraph">
+<area shape="rect" id="node2" href="classnum_1_1sparse__table.html#a5a5beca0c90f3bb112a5dbcf60776266" title="Multiply table by other table. " alt="" coords="124,5,199,32"/>
+<area shape="rect" id="node3" href="classnum_1_1sparse__table.html#a244a6071a2e5b0970209f5cbae3a2a7a" title="Divide table by other table. " alt="" coords="125,56,198,83"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="a3500c19d38b53745fb626818a57d229b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3500c19d38b53745fb626818a57d229b">&sect;&nbsp;</a></span>dat()</h2>
 
@@ -329,12 +406,12 @@ Here is the call graph for this function:</div>
 
 <p>Table of sub-domain centers, sub-domain lengths, and sub-functions: \( (a_0, \Delta a_0, f_0) \), \( (a_1, \Delta a_1, f_1) \), \( \ldots \), \( (a_{n-1}, \Delta a_{n-1}, f_{n-1}) \). </p>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00138">138</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00232">232</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a376ad67090ad1d424d1c17e43de875ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a376ad67090ad1d424d1c17e43de875ba">&sect;&nbsp;</a></span>integral()</h2>
+<a id="a77ec7c15846d589847dca4e6151e5edb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77ec7c15846d589847dca4e6151e5edb">&sect;&nbsp;</a></span>integral()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -343,7 +420,7 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">GiNaC::ex integral </td>
+          <td class="memname"><a class="el" href="classnum_1_1sparse__table.html#a5aaf68e7aabd271cc1b305fdf4ec9a7a">ex</a> integral </td>
           <td>(</td>
           <td class="paramtype">A&#160;</td>
           <td class="paramname"><em>a</em>, </td>
@@ -370,26 +447,26 @@ Here is the call graph for this function:</div>
 <p>Integral of piece-wise function over range. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">a</td><td>Beginning of range. </td></tr>
+    <tr><td class="paramname">a</td><td>Beg of range. </td></tr>
     <tr><td class="paramname">b</td><td>End of range. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00176">176</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00269">269</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classnum_1_1sparse__table_a376ad67090ad1d424d1c17e43de875ba_cgraph.png" border="0" usemap="#classnum_1_1sparse__table_a376ad67090ad1d424d1c17e43de875ba_cgraph" alt=""/></div>
-<map name="classnum_1_1sparse__table_a376ad67090ad1d424d1c17e43de875ba_cgraph" id="classnum_1_1sparse__table_a376ad67090ad1d424d1c17e43de875ba_cgraph">
+<div class="center"><img src="classnum_1_1sparse__table_a77ec7c15846d589847dca4e6151e5edb_cgraph.png" border="0" usemap="#classnum_1_1sparse__table_a77ec7c15846d589847dca4e6151e5edb_cgraph" alt=""/></div>
+<map name="classnum_1_1sparse__table_a77ec7c15846d589847dca4e6151e5edb_cgraph" id="classnum_1_1sparse__table_a77ec7c15846d589847dca4e6151e5edb_cgraph">
 <area shape="rect" id="node2" href="classnum_1_1sparse__table.html#a7615d51700b1b443941ae13d1f8d4e32" title="Compare argument with record so that right record can be found. " alt="" coords="117,5,179,32"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="aa1c592816bda54badbc9bc80872c0a5f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa1c592816bda54badbc9bc80872c0a5f">&sect;&nbsp;</a></span>operator()()</h2>
+<a id="a93f85bb60b75c4af509a0d963524927b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93f85bb60b75c4af509a0d963524927b">&sect;&nbsp;</a></span>operator()()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -398,7 +475,7 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">GiNaC::ex operator() </td>
+          <td class="memname"><a class="el" href="classnum_1_1sparse__table.html#a5aaf68e7aabd271cc1b305fdf4ec9a7a">ex</a> operator() </td>
           <td>(</td>
           <td class="paramtype">A const &amp;&#160;</td>
           <td class="paramname"><em>a</em></td><td>)</td>
@@ -422,20 +499,20 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00147">147</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00241">241</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classnum_1_1sparse__table_aa1c592816bda54badbc9bc80872c0a5f_cgraph.png" border="0" usemap="#classnum_1_1sparse__table_aa1c592816bda54badbc9bc80872c0a5f_cgraph" alt=""/></div>
-<map name="classnum_1_1sparse__table_aa1c592816bda54badbc9bc80872c0a5f_cgraph" id="classnum_1_1sparse__table_aa1c592816bda54badbc9bc80872c0a5f_cgraph">
+<div class="center"><img src="classnum_1_1sparse__table_a93f85bb60b75c4af509a0d963524927b_cgraph.png" border="0" usemap="#classnum_1_1sparse__table_a93f85bb60b75c4af509a0d963524927b_cgraph" alt=""/></div>
+<map name="classnum_1_1sparse__table_a93f85bb60b75c4af509a0d963524927b_cgraph" id="classnum_1_1sparse__table_a93f85bb60b75c4af509a0d963524927b_cgraph">
 <area shape="rect" id="node2" href="classnum_1_1sparse__table.html#a7615d51700b1b443941ae13d1f8d4e32" title="Compare argument with record so that right record can be found. " alt="" coords="131,5,192,32"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a5260591711f1738d58984b4163e72065"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5260591711f1738d58984b4163e72065">&sect;&nbsp;</a></span>operator*()</h2>
+<a id="a8e61ffe266f9bb762d73b8b18cdcec9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e61ffe266f9bb762d73b8b18cdcec9d">&sect;&nbsp;</a></span>operator*() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -446,7 +523,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a> operator* </td>
           <td>(</td>
-          <td class="paramtype">GiNaC::ex const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classnum_1_1sparse__table.html#a5aaf68e7aabd271cc1b305fdf4ec9a7a">ex</a> const &amp;&#160;</td>
           <td class="paramname"><em>fac</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -466,12 +543,56 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00235">235</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00328">328</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ad0d9eee035f1374a7125027c2c72f8e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad0d9eee035f1374a7125027c2c72f8e6">&sect;&nbsp;</a></span>operator*=()</h2>
+<a id="a5a5beca0c90f3bb112a5dbcf60776266"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a5beca0c90f3bb112a5dbcf60776266">&sect;&nbsp;</a></span>operator*() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a> operator* </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt; A &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>st</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Multiply table by other table. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">st</td><td>Other table. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00384">384</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classnum_1_1sparse__table_a5a5beca0c90f3bb112a5dbcf60776266_cgraph.png" border="0" usemap="#classnum_1_1sparse__table_a5a5beca0c90f3bb112a5dbcf60776266_cgraph" alt=""/></div>
+<map name="classnum_1_1sparse__table_a5a5beca0c90f3bb112a5dbcf60776266_cgraph" id="classnum_1_1sparse__table_a5a5beca0c90f3bb112a5dbcf60776266_cgraph">
+<area shape="rect" id="node2" href="classnum_1_1sparse__table.html#a2673f5c8a28842fc2cfa87c8c27040d6" title="Combine table with other table, for example by multiplication if cmb represents the function for mult..." alt="" coords="128,5,199,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad2dc2d913dc874cf2145e5fb09542294"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2dc2d913dc874cf2145e5fb09542294">&sect;&nbsp;</a></span>operator*=()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -482,7 +603,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&amp; operator*= </td>
           <td>(</td>
-          <td class="paramtype">GiNaC::ex const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classnum_1_1sparse__table.html#a5aaf68e7aabd271cc1b305fdf4ec9a7a">ex</a> const &amp;&#160;</td>
           <td class="paramname"><em>rf</em></td><td>)</td>
           <td></td>
         </tr>
@@ -502,12 +623,12 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00273">273</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00366">366</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 
 </div>
 </div>
-<a id="aba02719f3ce0b3baf38952fb56ec2f00"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba02719f3ce0b3baf38952fb56ec2f00">&sect;&nbsp;</a></span>operator/()</h2>
+<a id="a7ae7b783a8c0579e661cdf6cb21b1467"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ae7b783a8c0579e661cdf6cb21b1467">&sect;&nbsp;</a></span>operator/() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -518,7 +639,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a> operator/ </td>
           <td>(</td>
-          <td class="paramtype">GiNaC::ex const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classnum_1_1sparse__table.html#a5aaf68e7aabd271cc1b305fdf4ec9a7a">ex</a> const &amp;&#160;</td>
           <td class="paramname"><em>den</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -538,12 +659,56 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00261">261</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00354">354</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a549f7740602ec47762ab96b06a87803f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a549f7740602ec47762ab96b06a87803f">&sect;&nbsp;</a></span>operator/=()</h2>
+<a id="a244a6071a2e5b0970209f5cbae3a2a7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a244a6071a2e5b0970209f5cbae3a2a7a">&sect;&nbsp;</a></span>operator/() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a> operator/ </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt; A &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>st</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Divide table by other table. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">st</td><td>Other table. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00390">390</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classnum_1_1sparse__table_a244a6071a2e5b0970209f5cbae3a2a7a_cgraph.png" border="0" usemap="#classnum_1_1sparse__table_a244a6071a2e5b0970209f5cbae3a2a7a_cgraph" alt=""/></div>
+<map name="classnum_1_1sparse__table_a244a6071a2e5b0970209f5cbae3a2a7a_cgraph" id="classnum_1_1sparse__table_a244a6071a2e5b0970209f5cbae3a2a7a_cgraph">
+<area shape="rect" id="node2" href="classnum_1_1sparse__table.html#a2673f5c8a28842fc2cfa87c8c27040d6" title="Combine table with other table, for example by multiplication if cmb represents the function for mult..." alt="" coords="127,5,197,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a68d05bf993ddfe025378ac2b66503763"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68d05bf993ddfe025378ac2b66503763">&sect;&nbsp;</a></span>operator/=()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -554,7 +719,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&amp; operator/= </td>
           <td>(</td>
-          <td class="paramtype">GiNaC::ex const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classnum_1_1sparse__table.html#a5aaf68e7aabd271cc1b305fdf4ec9a7a">ex</a> const &amp;&#160;</td>
           <td class="paramname"><em>rf</em></td><td>)</td>
           <td></td>
         </tr>
@@ -574,13 +739,13 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00282">282</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00375">375</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Friends And Related Function Documentation</h2>
-<a id="a9ba5cb8a3b4afc0df243b43d6bdab3ea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9ba5cb8a3b4afc0df243b43d6bdab3ea">&sect;&nbsp;</a></span>operator*</h2>
+<a id="a08826a185dd6824e3283d71d40f464fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08826a185dd6824e3283d71d40f464fb">&sect;&nbsp;</a></span>operator*</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -591,7 +756,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a> operator* </td>
           <td>(</td>
-          <td class="paramtype">GiNaC::ex const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classnum_1_1sparse__table.html#a5aaf68e7aabd271cc1b305fdf4ec9a7a">ex</a> const &amp;&#160;</td>
           <td class="paramname"><em>fac</em>, </td>
         </tr>
         <tr>
@@ -622,7 +787,7 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00247">247</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00340">340</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
 
 </div>
 </div>

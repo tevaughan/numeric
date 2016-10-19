@@ -4,6 +4,7 @@ var searchData=
   ['rat',['RAT',['../namespacenum.html#a8560e808e06e226588044e6d7c7f8ab8',1,'num']]],
   ['rcomp',['rcomp',['../classnum_1_1sparse__table.html#abf23784613d8be88c06ba9568302abd0',1,'num::sparse_table']]],
   ['rec',['rec',['../structnum_1_1sparse__table_1_1rec.html',1,'num::sparse_table']]],
+  ['resize',['resize',['../structnum_1_1sparse__table_1_1cmb__data.html#a0fc3d585aa53859602ac79c9c421f2a9',1,'num::sparse_table::cmb_data']]],
   ['rk_5fquad',['rk_quad',['../classnum_1_1rk__quad.html',1,'num']]],
   ['rk_5fquad',['rk_quad',['../classnum_1_1statdim.html#a2c6a9fedad596adb3da30d6e5277178c',1,'num::statdim::rk_quad()'],['../classnum_1_1rk__quad.html#a875f58d70d26db380f0c9c41c769a371',1,'num::rk_quad::rk_quad(std::function&lt; DYDX(X)&gt; f, X1 x1, X2 x2, double t=1.0E-06, int n=16, bool s_dydx=false, bool s_y=false)'],['../classnum_1_1rk__quad.html#a0dcc3efe0686d05aa3838ad1ed18d0d9',1,'num::rk_quad::rk_quad(DYDX(*f)(X), X1 x1, X2 x2, double t=1.0E-06, int n=16, bool s_dydx=false, bool s_y=false)']]],
   ['rk_5fquadd',['rk_quadd',['../namespacenum.html#ab9346da76ab08fbad4cd4065c54fc4be',1,'num']]],

@@ -8,6 +8,7 @@ var searchData=
   ['ergs',['ergs',['../structnum_1_1u_1_1ergs.html',1,'num::u']]],
   ['ergs',['ergs',['../structnum_1_1u_1_1ergs.html#a67bf2340a48615c3f97c851981179453',1,'num::u::ergs::ergs(double v=0.0)'],['../structnum_1_1u_1_1ergs.html#a6e2b978ffd223d279065fa207ff9434b',1,'num::u::ergs::ergs(ergs const &amp;dv)=default']]],
   ['ev',['eV',['../namespacenum_1_1u.html#a9e54e9ad6183d21c936427fea0cf15b1',1,'num::u']]],
+  ['ex',['ex',['../classnum_1_1sparse__table.html#a5aaf68e7aabd271cc1b305fdf4ec9a7a',1,'num::sparse_table']]],
   ['exps',['exps',['../classnum_1_1dimval.html#afdb461c4728fef69aab2d7c1fda51c77',1,'num::dimval::exps()'],['../classnum_1_1statdim.html#ab9e05819d4ee2381cf2d6b115a82e9e5',1,'num::statdim::exps()'],['../classnum_1_1dyndim.html#afdb461c4728fef69aab2d7c1fda51c77',1,'num::dyndim::exps()']]],
   ['exps_5f',['exps_',['../classnum_1_1statdim.html#af1b15b543971cfe95ee281c87f9974aa',1,'num::statdim::exps_()'],['../classnum_1_1dyndim.html#a1dc39b07f196ecb5dead070695d0afee',1,'num::dyndim::exps_()']]]
 ];

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['d',['d',['../classnum_1_1dimval.html#afd61e42fa86dd5c9422141644e10ecfa',1,'num::dimval::d()'],['../classnum_1_1dimval.html#ac37a88112904fe87d5f5ce88548c7b4f',1,'num::dimval::d() const'],['../classnum_1_1dim__exps.html#a4eb319ae4630e49a01919343fde67f17',1,'num::dim_exps::D()'],['../classnum_1_1dim__exps.html#a0779d3572683869ae32504d6f44e6de3',1,'num::dim_exps::D() const']]],
+  ['d',['d',['../structnum_1_1sparse__table_1_1cmb__data.html#a31a54c34e40fd88dea16ebbb9c65a7d2',1,'num::sparse_table::cmb_data::d()'],['../classnum_1_1dimval.html#afd61e42fa86dd5c9422141644e10ecfa',1,'num::dimval::d()'],['../classnum_1_1dimval.html#ac37a88112904fe87d5f5ce88548c7b4f',1,'num::dimval::d() const'],['../classnum_1_1dim__exps.html#a4eb319ae4630e49a01919343fde67f17',1,'num::dim_exps::D()'],['../classnum_1_1dim__exps.html#a0779d3572683869ae32504d6f44e6de3',1,'num::dim_exps::D() const']]],
   ['d_5f',['d_',['../classnum_1_1interpolant.html#a688a75d7286851dbf6357bf09e1498cc',1,'num::interpolant']]],
   ['da',['da',['../structnum_1_1sparse__table_1_1rec.html#ab0a59f41339d679dbf5243281314894b',1,'num::sparse_table::rec::da()'],['../classnum_1_1dense__table.html#a1c629bca1336f4f7821d6c0affbcd5f9',1,'num::dense_table::da()']]],
   ['da_5f',['da_',['../classnum_1_1dense__table.html#ad9f4d0026fea86088952758c68f6120e',1,'num::dense_table']]],

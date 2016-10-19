@@ -125,16 +125,30 @@ TEST_CASE("Verify quotient of interpolants.", "[interpolant]")
 {
    ilist<double, double> list1 = {{0.00, 0.00}, {0.50, 0.25}, {1.00, 1.00}};
    ilist<double, double> list2 = {{0.25, 2.00}, {0.75, 1.00}, {1.25, 0.50}};
+
    interpolantd i1(list1);
    interpolantd i2(list2);
-   interpolantd i3(i1 / i2);
-   REQUIRE(i3(-1.0) == 0.0);
-   REQUIRE(i3(0.0) == 0.0);
-   REQUIRE(i3(0.25) == (0.25 / 2.0) / 2.0);
-   REQUIRE(i3(0.50) == 0.25 / 1.5);
-   REQUIRE(i3(0.75) == Approx(1.25 / 2.0));
-   REQUIRE(i3(1.00) == 1.0 / 0.75);
-   REQUIRE(i3(2.00) == 1.0 / 0.5);
+
+   auto i3 = make_linear_interp(list1);
+   auto i4 = make_linear_interp(list2);
+
+   auto j1 = i1 / i2;
+   auto j2 = i3 / i4;
+
+   REQUIRE(j1(-1.0) == 0.0);
+   REQUIRE(j1(0.0) == 0.0);
+   REQUIRE(j1(0.25) == (0.25 / 2.0) / 2.0);
+   REQUIRE(j1(0.50) == 0.25 / 1.5);
+   REQUIRE(j1(0.75) == Approx(1.25 / 2.0));
+   REQUIRE(j1(1.00) == 1.0 / 0.75);
+   REQUIRE(j1(2.00) == 1.0 / 0.5);
+
+   REQUIRE(j2(-1.0) == 0.0);
+   REQUIRE(j2(0.0) == 0.0);
+   REQUIRE(j2(0.25) == (0.25 / 2.0) / 2.0);
+   REQUIRE(ex_to<numeric>(j2(0.50)).to_double() == Approx(0.25 / 1.5));
+   REQUIRE(ex_to<numeric>(j2(0.75)).to_double() == Approx(1.25 / 2.0));
+   REQUIRE(ex_to<numeric>(j2(1.00)).to_double() == Approx(1.0 / 0.75));
 }
 
 TEST_CASE("Verify file input.", "[interpolant]")

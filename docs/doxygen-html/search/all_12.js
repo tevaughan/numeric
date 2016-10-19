@@ -8,7 +8,7 @@ var searchData=
   ['sort',['sort',['../classnum_1_1interpolant.html#a47fdc9eea42b6975cdc835bb2e08810e',1,'num::interpolant']]],
   ['sparse_2dtable_2ehpp',['sparse-table.hpp',['../sparse-table_8hpp.html',1,'']]],
   ['sparse_5ftable',['sparse_table',['../classnum_1_1sparse__table.html',1,'num']]],
-  ['sparse_5ftable',['sparse_table',['../classnum_1_1statdim.html#ac50e755b02fa6738f8431703f817dfa3',1,'num::statdim::sparse_table()'],['../classnum_1_1dyndim.html#ac50e755b02fa6738f8431703f817dfa3',1,'num::dyndim::sparse_table()'],['../classnum_1_1sparse__table.html#a5d93d2a1e25860d2e0479730cf9fc427',1,'num::sparse_table::sparse_table(data &amp;&amp;d)'],['../classnum_1_1sparse__table.html#afc17d761874f87f4e73fee94790c1e57',1,'num::sparse_table::sparse_table()'],['../classnum_1_1sparse__table.html#ad8e32f2e29f034ff80abf674f8531b97',1,'num::sparse_table::sparse_table(A const &amp;a0, std::vector&lt; std::pair&lt; A, GiNaC::ex &gt;&gt; vf)']]],
+  ['sparse_5ftable',['sparse_table',['../classnum_1_1statdim.html#ac50e755b02fa6738f8431703f817dfa3',1,'num::statdim::sparse_table()'],['../classnum_1_1dyndim.html#ac50e755b02fa6738f8431703f817dfa3',1,'num::dyndim::sparse_table()'],['../classnum_1_1sparse__table.html#a5d93d2a1e25860d2e0479730cf9fc427',1,'num::sparse_table::sparse_table(data &amp;&amp;d)'],['../classnum_1_1sparse__table.html#afc17d761874f87f4e73fee94790c1e57',1,'num::sparse_table::sparse_table()'],['../classnum_1_1sparse__table.html#a2921cabba006abc249001857a587821b',1,'num::sparse_table::sparse_table(A const &amp;a0, std::vector&lt; std::pair&lt; A, ex &gt;&gt; vf)']]],
   ['sparse_5ftable_5fbase',['sparse_table_base',['../structnum_1_1sparse__table__base.html',1,'num']]],
   ['speed',['speed',['../namespacenum.html#ab7fdbb991f09bfee56e234f56e499d77',1,'num']]],
   ['sqdv_5f',['sqdv_',['../classnum_1_1integral__stats.html#a3b4ab29da3fc6a1d564d9b705f612664',1,'num::integral_stats']]],
@@ -19,8 +19,9 @@ var searchData=
   ['statdim_5fpower_3c_200_2c_20ti_2c_20d_2c_20m_2c_20c_2c_20te_20_3e',['statdim_power&lt; 0, TI, D, M, C, TE &gt;',['../structnum_1_1statdim__power_3_010_00_01TI_00_01D_00_01M_00_01C_00_01TE_01_4.html',1,'num']]],
   ['statdim_5froot',['statdim_root',['../classnum_1_1statdim.html#a04447193d355cac84f74480ecd95cd2c',1,'num::statdim']]],
   ['stdev',['stdev',['../classnum_1_1integral__stats.html#acdac6fccb715409292f6fba4a085a483',1,'num::integral_stats']]],
+  ['step',['step',['../structnum_1_1sparse__table_1_1cmb__data.html#a88aea03719ddbd48eab9f38d6c772d9e',1,'num::sparse_table::cmb_data']]],
   ['store_5fdydx',['store_dydx',['../classnum_1_1rk__quad.html#abb97b9508f9f8ea833dba6ade25a86bd',1,'num::rk_quad']]],
   ['store_5fy',['store_y',['../classnum_1_1rk__quad.html#a1571b454ffbef299a4d1c2f7d6db77d3',1,'num::rk_quad']]],
-  ['subinterval_5fstack',['subinterval_stack',['../structnum_1_1subinterval__stack.html',1,'num']]],
-  ['subinterval_5fstack',['subinterval_stack',['../structnum_1_1subinterval__stack.html#a86aea26fcc4e4e718e1c0b95cc640973',1,'num::subinterval_stack']]]
+  ['subinterval_5fstack',['subinterval_stack',['../structnum_1_1subinterval__stack.html#a86aea26fcc4e4e718e1c0b95cc640973',1,'num::subinterval_stack']]],
+  ['subinterval_5fstack',['subinterval_stack',['../structnum_1_1subinterval__stack.html',1,'num']]]
 ];
