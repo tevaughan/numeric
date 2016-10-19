@@ -1,5 +1,6 @@
 <map id="kilometers" name="kilometers">
-<area shape="rect" id="node2" href="$classnum_1_1statdim.html" title="Model of a statically dimensioned value. " alt="" coords="48,200,105,227"/>
-<area shape="rect" id="node3" href="$classnum_1_1dimval.html" title="dimval\&lt; statdim\&lt; TI,\l D, M, C, TE \&gt; \&gt;" alt="" coords="5,109,148,151"/>
-<area shape="rect" id="node4" href="$classnum_1_1dimval.html" title="Base class for statdim and dyndim. " alt="" coords="20,5,133,32"/>
+<area shape="rect" id="node2" href="$classnum_1_1statdim.html" title="Model of a statically dimensioned value. " alt="" coords="48,276,105,303"/>
+<area shape="rect" id="node3" href="$classnum_1_1dimval.html" title="dimval\&lt; statdim\&lt; TI,\l D, M, C, TE \&gt; \&gt;" alt="" coords="5,185,148,227"/>
+<area shape="rect" id="node4" href="$structnum_1_1dimval__base.html" title="Ultimate base class for dimensioned quantity. " alt="" coords="40,5,135,32"/>
+<area shape="rect" id="node5" href="$classnum_1_1dimval.html" title="Base class for statdim and dyndim. " alt="" coords="93,81,207,108"/>
 </map>

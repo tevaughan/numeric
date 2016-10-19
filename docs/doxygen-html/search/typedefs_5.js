@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['i',['I',['../classnum_1_1dense__table.html#a1942bd818035fe9b7f21849a5fd9e889',1,'num::dense_table::I()'],['../structnum_1_1subinterval__stack.html#a00fda9cc728958795fcadf3399811d98',1,'num::subinterval_stack::I()']]],
+  ['i',['I',['../structnum_1_1subinterval__stack.html#a00fda9cc728958795fcadf3399811d98',1,'num::subinterval_stack::I()'],['../classnum_1_1dense__table.html#a1942bd818035fe9b7f21849a5fd9e889',1,'num::dense_table::I()']]],
   ['ilist',['ilist',['../namespacenum.html#adf4e925e819b4813b11a93875568934f',1,'num']]],
   ['ilistd',['ilistd',['../namespacenum.html#aaca12da760a724444ebc4434b8485ca8',1,'num']]],
   ['integ',['integ',['../classnum_1_1cpoly.html#ad7e6cbee40dec5b68df8fedef5ea3692',1,'num::cpoly::integ()'],['../classnum_1_1cpoly_3_010_00_01V_00_01C_01_4.html#a37bca44bf09b1270c27aca4f216c9004',1,'num::cpoly&lt; 0, V, C &gt;::integ()'],['../classnum_1_1cpoly_3_01D_00_01dyndim_00_01dyndim_01_4.html#af188848306b5ddea7ff79fe65cc68542',1,'num::cpoly&lt; D, dyndim, dyndim &gt;::integ()'],['../classnum_1_1cpoly_3_010_00_01dyndim_00_01dyndim_01_4.html#ae8df830097f7a62d5e258f9ee0e6b65d',1,'num::cpoly&lt; 0, dyndim, dyndim &gt;::integ()']]],

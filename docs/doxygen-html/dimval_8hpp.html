@@ -80,12 +80,13 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Definition of conversions dealing with angle, num::dimval_base, <a class="el" href="classnum_1_1statdim.html" title="Model of a statically dimensioned value. ">num::statdim</a>, and <a class="el" href="classnum_1_1dyndim.html" title="Model of a dynamically dimensioned value. ">num::dyndim</a>.  
+<p>Definition of conversions dealing with angle, <a class="el" href="structnum_1_1dimval__base.html" title="Ultimate base class for dimensioned quantity. ">num::dimval_base</a>, <a class="el" href="classnum_1_1statdim.html" title="Model of a statically dimensioned value. ">num::statdim</a>, and <a class="el" href="classnum_1_1dyndim.html" title="Model of a dynamically dimensioned value. ">num::dyndim</a>.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cassert&gt;</code><br />
 <code>#include &lt;cmath&gt;</code><br />
 <code>#include &lt;functional&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;ginac/ginac.h&gt;</code><br />
 <code>#include &lt;<a class="el" href="dim-exps_8hpp_source.html">dim-exps.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="integral_8hpp_source.html">integral.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="util_8hpp_source.html">util.hpp</a>&gt;</code><br />
@@ -94,12 +95,12 @@ Include dependency graph for dimval.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="dimval_8hpp__incl.png" border="0" usemap="#dimval_8hpp" alt=""/></div>
 <map name="dimval_8hpp" id="dimval_8hpp">
-<area shape="rect" id="node6" href="dim-exps_8hpp.html" title="Definition of class num::dim_exps. " alt="" coords="976,80,1076,107"/>
-<area shape="rect" id="node8" href="integral_8hpp.html" title="Source for num::integral(), which numerically integrates via adaptive quadrature and the trapezoidal ..." alt="" coords="504,80,593,107"/>
-<area shape="rect" id="node16" href="util_8hpp.html" title="Basic utilities. " alt="" coords="837,155,901,181"/>
-<area shape="rect" id="node11" href="ilist_8hpp.html" title="Definition of ipoint, ilist, and output&#45;stream operator for each. " alt="" coords="618,155,685,181"/>
-<area shape="rect" id="node13" href="integral-stats_8hpp.html" title="Source for num::integral_stats, which is used by num::integral() and by num::interpolant. " alt="" coords="357,155,479,181"/>
-<area shape="rect" id="node14" href="interval_8hpp.html" title="Source for class interval and class subinterval_stack, which are used by num::integral() and by num::..." alt="" coords="504,155,593,181"/>
+<area shape="rect" id="node7" href="dim-exps_8hpp.html" title="Definition of class num::dim_exps. " alt="" coords="1099,80,1199,107"/>
+<area shape="rect" id="node9" href="integral_8hpp.html" title="Source for num::integral(), which numerically integrates via adaptive quadrature and the trapezoidal ..." alt="" coords="555,80,644,107"/>
+<area shape="rect" id="node17" href="util_8hpp.html" title="Basic utilities. " alt="" coords="837,155,901,181"/>
+<area shape="rect" id="node12" href="ilist_8hpp.html" title="Definition of ipoint, ilist, and output&#45;stream operator for each. " alt="" coords="618,155,685,181"/>
+<area shape="rect" id="node14" href="integral-stats_8hpp.html" title="Source for num::integral_stats, which is used by num::integral() and by num::interpolant. " alt="" coords="357,155,479,181"/>
+<area shape="rect" id="node15" href="interval_8hpp.html" title="Source for class interval and class subinterval_stack, which are used by num::integral() and by num::..." alt="" coords="504,155,593,181"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -107,12 +108,13 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="dimval_8hpp__dep__incl.png" border="0" usemap="#dimval_8hppdep" alt=""/></div>
 <map name="dimval_8hppdep" id="dimval_8hppdep">
-<area shape="rect" id="node2" href="dimensions_8hpp.html" title="Automatically generated source for generic&#45;dimension types. " alt="" coords="5,80,119,107"/>
-<area shape="rect" id="node5" href="cpoly_8hpp.html" title="Definition of num::cpoly. " alt="" coords="143,80,221,107"/>
-<area shape="rect" id="node7" href="sparse-table_8hpp.html" title="Definition of num::sparse&#45;table. " alt="" coords="245,80,364,107"/>
-<area shape="rect" id="node3" href="units_8hpp.html" title="Automatically generated header file for units. " alt="" coords="25,155,99,181"/>
-<area shape="rect" id="node4" href="units_8cpp.html" title="Automatically generated implementation file for units. " alt="" coords="25,229,99,256"/>
-<area shape="rect" id="node6" href="interpolant_8hpp.html" title="Source code for num::interpolant, num::ipoint, num::ilist, num::interpolantd, and num::ilistd..." alt="" coords="190,155,297,181"/>
+<area shape="rect" id="node2" href="dimval_8cpp_source.html" title="dimval.cpp" alt="" coords="5,80,91,107"/>
+<area shape="rect" id="node3" href="dimensions_8hpp.html" title="Automatically generated source for generic&#45;dimension types. " alt="" coords="115,80,229,107"/>
+<area shape="rect" id="node6" href="cpoly_8hpp.html" title="Definition of num::cpoly. " alt="" coords="253,80,331,107"/>
+<area shape="rect" id="node8" href="sparse-table_8hpp.html" title="Definition of num::sparse&#45;table. " alt="" coords="355,80,474,107"/>
+<area shape="rect" id="node4" href="units_8hpp.html" title="Automatically generated header file for units. " alt="" coords="135,155,209,181"/>
+<area shape="rect" id="node5" href="units_8cpp.html" title="Automatically generated implementation file for units. " alt="" coords="135,229,209,256"/>
+<area shape="rect" id="node7" href="interpolant_8hpp.html" title="Source code for num::interpolant, num::ipoint, num::ilist, num::interpolantd, and num::ilistd..." alt="" coords="300,155,407,181"/>
 </map>
 </div>
 </div>
@@ -128,6 +130,9 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html">dimval&lt; DER &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class for statdim and dyndim.  <a href="classnum_1_1dimval.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnum_1_1dimval__base.html">dimval_base</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ultimate base class for dimensioned quantity.  <a href="structnum_1_1dimval__base.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html">dimval&lt; DER &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class for statdim and dyndim.  <a href="classnum_1_1dimval.html#details">More...</a><br /></td></tr>
@@ -216,7 +221,7 @@ Variables</h2></td></tr>
 <tr class="separator:a42ee7b36d0b41703f2c4bea042efa5a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Definition of conversions dealing with angle, num::dimval_base, <a class="el" href="classnum_1_1statdim.html" title="Model of a statically dimensioned value. ">num::statdim</a>, and <a class="el" href="classnum_1_1dyndim.html" title="Model of a dynamically dimensioned value. ">num::dyndim</a>. </p>
+<div class="textblock"><p>Definition of conversions dealing with angle, <a class="el" href="structnum_1_1dimval__base.html" title="Ultimate base class for dimensioned quantity. ">num::dimval_base</a>, <a class="el" href="classnum_1_1statdim.html" title="Model of a statically dimensioned value. ">num::statdim</a>, and <a class="el" href="classnum_1_1dyndim.html" title="Model of a dynamically dimensioned value. ">num::dyndim</a>. </p>
 
 <p>Definition in file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 </div></div><!-- contents -->

@@ -1,8 +1,9 @@
 <map id="milliseconds" name="milliseconds">
-<area shape="rect" id="node2" href="$classnum_1_1statdim.html" title="Model of a statically dimensioned value. " alt="" coords="139,303,185,329"/>
-<area shape="rect" id="node3" href="$classnum_1_1dimval.html" title="dimval\&lt; statdim\&lt; TI,\l D, M, C, TE \&gt; \&gt;" alt="" coords="5,199,148,240"/>
-<area shape="rect" id="node4" href="$classdouble.html" title="double" alt="" coords="29,5,89,32"/>
-<area shape="rect" id="node5" href="$classnum_1_1dimval.html" title="Base class for statdim and dyndim. " alt="" coords="64,95,177,121"/>
-<area shape="rect" id="node6" href="$classnum_1_1dim__exps.html" title="Dimensional exponents. " alt="" coords="183,206,261,233"/>
-<area shape="rect" id="node7" href="$unionnum_1_1dim__exps_1_1s.html" title="Type of storage for exponents. " alt="" coords="213,95,252,121"/>
+<area shape="rect" id="node2" href="$classnum_1_1statdim.html" title="Model of a statically dimensioned value. " alt="" coords="164,451,211,477"/>
+<area shape="rect" id="node3" href="$classnum_1_1dimval.html" title="dimval\&lt; statdim\&lt; TI,\l D, M, C, TE \&gt; \&gt;" alt="" coords="19,347,161,388"/>
+<area shape="rect" id="node4" href="$structnum_1_1dimval__base.html" title="Ultimate base class for dimensioned quantity. " alt="" coords="108,153,203,180"/>
+<area shape="rect" id="node7" href="$classnum_1_1dimval.html" title="Base class for statdim and dyndim. " alt="" coords="69,243,183,269"/>
+<area shape="rect" id="node6" href="$classdouble.html" title="double" alt="" coords="5,153,65,180"/>
+<area shape="rect" id="node8" href="$classnum_1_1dim__exps.html" title="Dimensional exponents. " alt="" coords="216,354,295,381"/>
+<area shape="rect" id="node9" href="$unionnum_1_1dim__exps_1_1s.html" title="Type of storage for exponents. " alt="" coords="259,243,297,269"/>
 </map>

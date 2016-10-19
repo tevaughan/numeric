@@ -537,7 +537,10 @@ tests_SOURCES = \
  tests.cpp\
  units_test.cpp
 
-tests_LDADD = ../src/libnumeric.la $(CODE_COVERAGE_LIBS)
+
+# Need to move -lcln and -lginac to autoconf variable of some kind and add test
+# for them to configure script.
+tests_LDADD = ../src/libnumeric.la $(CODE_COVERAGE_LIBS) -lcln -lginac
 tests_CPPFLAGS = $(CODE_COVERAGE_CPPFLAGS)
 tests_CXXFLAGS = $(CODE_COVERAGE_CXXFLAGS)
 tests_CFLAGS = $(CODE_COVERAGE_CFLAGS)

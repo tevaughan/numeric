@@ -164,7 +164,8 @@ am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(pkgincludedir)" \
 LTLIBRARIES = $(lib_LTLIBRARIES)
 am__DEPENDENCIES_1 =
 libnumeric_la_DEPENDENCIES = $(am__DEPENDENCIES_1)
-nodist_libnumeric_la_OBJECTS = libnumeric_la-units.lo
+nodist_libnumeric_la_OBJECTS = libnumeric_la-dimval.lo \
+	libnumeric_la-units.lo
 libnumeric_la_OBJECTS = $(nodist_libnumeric_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -392,12 +393,12 @@ pkginclude_HEADERS = \
 
 nodist_pkginclude_HEADERS = dimensions.hpp units.hpp
 lib_LTLIBRARIES = libnumeric.la
-nodist_libnumeric_la_SOURCES = units.cpp
+nodist_libnumeric_la_SOURCES = dimval.cpp units.cpp
 libnumeric_la_CPPFLAGS = $(CODE_COVERAGE_CPPFLAGS)
 libnumeric_la_CXXFLAGS = $(CODE_COVERAGE_CXXFLAGS)
 libnumeric_la_CFLAGS = $(CODE_COVERAGE_CFLAGS)
 libnumeric_la_LDFLAGS = -version-info $(current):$(revision):$(age)
-libnumeric_la_LIBADD = $(CODE_COVERAGE_LIBS)
+libnumeric_la_LIBADD = $(CODE_COVERAGE_LIBS) -lcln -lginac
 all: $(BUILT_SOURCES) config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-am
 
@@ -492,6 +493,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libnumeric_la-dimval.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libnumeric_la-units.Plo@am__quote@
 
 .cpp.o:
@@ -514,6 +516,13 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LTCXXCOMPILE) -c -o $@ $<
+
+libnumeric_la-dimval.lo: dimval.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libnumeric_la_CPPFLAGS) $(CPPFLAGS) $(libnumeric_la_CXXFLAGS) $(CXXFLAGS) -MT libnumeric_la-dimval.lo -MD -MP -MF $(DEPDIR)/libnumeric_la-dimval.Tpo -c -o libnumeric_la-dimval.lo `test -f 'dimval.cpp' || echo '$(srcdir)/'`dimval.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libnumeric_la-dimval.Tpo $(DEPDIR)/libnumeric_la-dimval.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='dimval.cpp' object='libnumeric_la-dimval.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libnumeric_la_CPPFLAGS) $(CPPFLAGS) $(libnumeric_la_CXXFLAGS) $(CXXFLAGS) -c -o libnumeric_la-dimval.lo `test -f 'dimval.cpp' || echo '$(srcdir)/'`dimval.cpp
 
 libnumeric_la-units.lo: units.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libnumeric_la_CPPFLAGS) $(CPPFLAGS) $(libnumeric_la_CXXFLAGS) $(CXXFLAGS) -MT libnumeric_la-units.lo -MD -MP -MF $(DEPDIR)/libnumeric_la-units.Tpo -c -o libnumeric_la-units.lo `test -f 'units.cpp' || echo '$(srcdir)/'`units.cpp

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['i',['I',['../classnum_1_1dense__table.html#a1942bd818035fe9b7f21849a5fd9e889',1,'num::dense_table::I()'],['../structnum_1_1subinterval__stack.html#a00fda9cc728958795fcadf3399811d98',1,'num::subinterval_stack::I()']]],
+  ['i',['I',['../structnum_1_1subinterval__stack.html#a00fda9cc728958795fcadf3399811d98',1,'num::subinterval_stack::I()'],['../classnum_1_1dense__table.html#a1942bd818035fe9b7f21849a5fd9e889',1,'num::dense_table::I()']]],
   ['ida_5f',['ida_',['../classnum_1_1dense__table.html#a645dfb18fcc74395a779347858e4767e',1,'num::dense_table']]],
   ['ifstr',['ifstr',['../classnum_1_1interpolant.html#ac4f4df939e53436743219201bada84d5',1,'num::interpolant']]],
   ['ii',['ii',['../classnum_1_1rk__quad.html#a92f3d29b7ccd5d550a74d1423ef0cd7c',1,'num::rk_quad']]],

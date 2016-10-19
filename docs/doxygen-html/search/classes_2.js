@@ -6,6 +6,7 @@ var searchData=
   ['dimval',['dimval',['../classnum_1_1dimval.html',1,'num']]],
   ['dimval_3c_20dyndim_20_3e',['dimval&lt; dyndim &gt;',['../classnum_1_1dimval.html',1,'num']]],
   ['dimval_3c_20statdim_3c_20ti_2c_20d_2c_20m_2c_20c_2c_20te_20_3e_20_3e',['dimval&lt; statdim&lt; TI, D, M, C, TE &gt; &gt;',['../classnum_1_1dimval.html',1,'num']]],
+  ['dimval_5fbase',['dimval_base',['../structnum_1_1dimval__base.html',1,'num']]],
   ['dyndim',['dyndim',['../classnum_1_1dyndim.html',1,'num']]],
   ['dynes',['dynes',['../structnum_1_1u_1_1dynes.html',1,'num::u']]]
 ];

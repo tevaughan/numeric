@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['c',['C',['../classnum_1_1dim__exps.html#a13b2e7ea9335e2b25d6686ccfec5f3f3',1,'num::dim_exps::C()'],['../classnum_1_1dim__exps.html#a01265fa0463b377466f1dac7a2dd5296',1,'num::dim_exps::C() const'],['../namespacenum_1_1u.html#ab790e703908df1043b861f0881309468',1,'num::u::C()']]],
+  ['c',['C',['../structnum_1_1dimval__base.html#a59d49c8f2bfccce8242207d29ad59729',1,'num::dimval_base::C()'],['../classnum_1_1dim__exps.html#a13b2e7ea9335e2b25d6686ccfec5f3f3',1,'num::dim_exps::C()'],['../classnum_1_1dim__exps.html#a01265fa0463b377466f1dac7a2dd5296',1,'num::dim_exps::C() const'],['../namespacenum_1_1u.html#ab790e703908df1043b861f0881309468',1,'num::u::C()']]],
   ['c1',['c1',['../classnum_1_1rk__quad.html#a0f3e1e0b560bdd2bddb906de1686bd85',1,'num::rk_quad']]],
   ['c3',['c3',['../classnum_1_1rk__quad.html#af6a2926a7be70a843648a3d640cee25f',1,'num::rk_quad']]],
   ['c4',['c4',['../classnum_1_1rk__quad.html#a76ec9120566cfd6dae7fc7dba8d76d14',1,'num::rk_quad']]],

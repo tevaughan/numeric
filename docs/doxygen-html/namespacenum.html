@@ -121,6 +121,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dimval.html">dimval</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class for statdim and dyndim.  <a href="classnum_1_1dimval.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnum_1_1dimval__base.html">dimval_base</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ultimate base class for dimensioned quantity.  <a href="structnum_1_1dimval__base.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html">dyndim</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Model of a dynamically dimensioned value.  <a href="classnum_1_1dyndim.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -154,6 +157,18 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr class="memitem:ab9346da76ab08fbad4cd4065c54fc4be"><td class="memItemLeft" align="right" valign="top"><a id="ab9346da76ab08fbad4cd4065c54fc4be"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#ab9346da76ab08fbad4cd4065c54fc4be">rk_quadd</a> = <a class="el" href="classnum_1_1rk__quad.html">rk_quad</a>&lt; <a class="el" href="classdouble.html">double</a>, <a class="el" href="classdouble.html">double</a> &gt;</td></tr>
+<tr class="memdesc:ab9346da76ab08fbad4cd4065c54fc4be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Short alias for Runge-Kutta solver for ordinary double-precision values. <br /></td></tr>
+<tr class="separator:ab9346da76ab08fbad4cd4065c54fc4be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8560e808e06e226588044e6d7c7f8ab8"><td class="memTemplParams" colspan="2">template&lt;typename Y , typename X &gt; </td></tr>
+<tr class="memitem:a8560e808e06e226588044e6d7c7f8ab8"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a8560e808e06e226588044e6d7c7f8ab8">RAT</a> = decltype(Y()/X())</td></tr>
+<tr class="memdesc:a8560e808e06e226588044e6d7c7f8ab8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of ratio of two tings.  <a href="#a8560e808e06e226588044e6d7c7f8ab8">More...</a><br /></td></tr>
+<tr class="separator:a8560e808e06e226588044e6d7c7f8ab8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0acd09937ff29e12de4cc106550751ed"><td class="memTemplParams" colspan="2">template&lt;typename X , typename Y &gt; </td></tr>
+<tr class="memitem:a0acd09937ff29e12de4cc106550751ed"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a0acd09937ff29e12de4cc106550751ed">PRD</a> = decltype(X() *Y())</td></tr>
+<tr class="memdesc:a0acd09937ff29e12de4cc106550751ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of product of two things.  <a href="#a0acd09937ff29e12de4cc106550751ed">More...</a><br /></td></tr>
+<tr class="separator:a0acd09937ff29e12de4cc106550751ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af575cfc8d85c26231af246f9245a47e7"><td class="memItemLeft" align="right" valign="top"><a id="af575cfc8d85c26231af246f9245a47e7"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#af575cfc8d85c26231af246f9245a47e7">time</a> = <a class="el" href="classnum_1_1statdim.html">statdim</a>&lt; 1, 0, 0, 0, 0 &gt;</td></tr>
 <tr class="memdesc:af575cfc8d85c26231af246f9245a47e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for generic dimensioned quantity. <br /></td></tr>
@@ -222,18 +237,6 @@ using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nam
 using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a9289d56c13af85be0ffda211cbbf20e0">current</a> = <a class="el" href="classnum_1_1statdim.html">statdim</a>&lt;-1, 0, 0, 1, 0 &gt;</td></tr>
 <tr class="memdesc:a9289d56c13af85be0ffda211cbbf20e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for generic dimensioned quantity. <br /></td></tr>
 <tr class="separator:a9289d56c13af85be0ffda211cbbf20e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab9346da76ab08fbad4cd4065c54fc4be"><td class="memItemLeft" align="right" valign="top"><a id="ab9346da76ab08fbad4cd4065c54fc4be"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#ab9346da76ab08fbad4cd4065c54fc4be">rk_quadd</a> = <a class="el" href="classnum_1_1rk__quad.html">rk_quad</a>&lt; <a class="el" href="classdouble.html">double</a>, <a class="el" href="classdouble.html">double</a> &gt;</td></tr>
-<tr class="memdesc:ab9346da76ab08fbad4cd4065c54fc4be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Short alias for Runge-Kutta solver for ordinary double-precision values. <br /></td></tr>
-<tr class="separator:ab9346da76ab08fbad4cd4065c54fc4be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8560e808e06e226588044e6d7c7f8ab8"><td class="memTemplParams" colspan="2">template&lt;typename Y , typename X &gt; </td></tr>
-<tr class="memitem:a8560e808e06e226588044e6d7c7f8ab8"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a8560e808e06e226588044e6d7c7f8ab8">RAT</a> = decltype(Y()/X())</td></tr>
-<tr class="memdesc:a8560e808e06e226588044e6d7c7f8ab8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of ratio of two tings.  <a href="#a8560e808e06e226588044e6d7c7f8ab8">More...</a><br /></td></tr>
-<tr class="separator:a8560e808e06e226588044e6d7c7f8ab8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0acd09937ff29e12de4cc106550751ed"><td class="memTemplParams" colspan="2">template&lt;typename X , typename Y &gt; </td></tr>
-<tr class="memitem:a0acd09937ff29e12de4cc106550751ed"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a0acd09937ff29e12de4cc106550751ed">PRD</a> = decltype(X() *Y())</td></tr>
-<tr class="memdesc:a0acd09937ff29e12de4cc106550751ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of product of two things.  <a href="#a0acd09937ff29e12de4cc106550751ed">More...</a><br /></td></tr>
-<tr class="separator:a0acd09937ff29e12de4cc106550751ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aecf042ab6b895357dd13471266377348"><td class="memTemplParams" colspan="2">template&lt;typename I , typename D &gt; </td></tr>
 <tr class="memitem:aecf042ab6b895357dd13471266377348"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#aecf042ab6b895357dd13471266377348">ipoint</a> = std::pair&lt; I, D &gt;</td></tr>
 <tr class="memdesc:aecf042ab6b895357dd13471266377348"><td class="mdescLeft">&#160;</td><td class="mdescRight">Point used as one of the constraints of a linear interpolant.  <a href="#aecf042ab6b895357dd13471266377348">More...</a><br /></td></tr>
@@ -315,6 +318,14 @@ template&lt;typename DER &gt; </td></tr>
 <tr class="memitem:a8fd4c40887e7985c60729b71f316b853"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdouble.html">double</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html#a8fd4c40887e7985c60729b71f316b853">pow</a> (<a class="el" href="classdouble.html">double</a> x, int e)</td></tr>
 <tr class="memdesc:a8fd4c40887e7985c60729b71f316b853"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integer power of a double. This is an alias for <a class="el" href="namespacenum.html#affe013befb82ebee3bcf4305fae4089a">ipow()</a>.  <a href="#a8fd4c40887e7985c60729b71f316b853">More...</a><br /></td></tr>
 <tr class="separator:a8fd4c40887e7985c60729b71f316b853"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a702f02a1b8109d5fdf12d6b187e93f07"><td class="memTemplParams" colspan="2">template&lt;typename I , typename D &gt; </td></tr>
+<tr class="memitem:a702f02a1b8109d5fdf12d6b187e93f07"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a702f02a1b8109d5fdf12d6b187e93f07">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="namespacenum.html#aecf042ab6b895357dd13471266377348">ipoint</a>&lt; I, D &gt; const &amp;p)</td></tr>
+<tr class="memdesc:a702f02a1b8109d5fdf12d6b187e93f07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send point to output stream.  <a href="#a702f02a1b8109d5fdf12d6b187e93f07">More...</a><br /></td></tr>
+<tr class="separator:a702f02a1b8109d5fdf12d6b187e93f07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5eb307b1a69d6c912cdf820e0b7f7cc"><td class="memTemplParams" colspan="2">template&lt;typename I , typename D &gt; </td></tr>
+<tr class="memitem:aa5eb307b1a69d6c912cdf820e0b7f7cc"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#aa5eb307b1a69d6c912cdf820e0b7f7cc">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="namespacenum.html#adf4e925e819b4813b11a93875568934f">ilist</a>&lt; I, D &gt; const &amp;list)</td></tr>
+<tr class="memdesc:aa5eb307b1a69d6c912cdf820e0b7f7cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send ilist to output stream.  <a href="#aa5eb307b1a69d6c912cdf820e0b7f7cc">More...</a><br /></td></tr>
+<tr class="separator:aa5eb307b1a69d6c912cdf820e0b7f7cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1219cb0201b90471a48aa6f06326f1d3"><td class="memTemplParams" colspan="2"><a id="a1219cb0201b90471a48aa6f06326f1d3"></a>
 template&lt;unsigned D, typename V , typename C &gt; </td></tr>
 <tr class="memitem:a1219cb0201b90471a48aa6f06326f1d3"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a1219cb0201b90471a48aa6f06326f1d3">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; D, V, C &gt; const &amp;p)</td></tr>
@@ -344,14 +355,6 @@ template&lt;unsigned D, typename V , typename C &gt; </td></tr>
 <tr class="memitem:a29979c970af38905d9adfb4a452d4aa8"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; D, <a class="el" href="classnum_1_1dyndim.html">dyndim</a>, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a29979c970af38905d9adfb4a452d4aa8">operator/</a> (<a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; D, <a class="el" href="classnum_1_1dyndim.html">dyndim</a>, <a class="el" href="classnum_1_1dyndim.html">dyndim</a> &gt; const &amp;cp, F const &amp;fac)</td></tr>
 <tr class="memdesc:a29979c970af38905d9adfb4a452d4aa8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divide cpoly by scale factor.  <a href="#a29979c970af38905d9adfb4a452d4aa8">More...</a><br /></td></tr>
 <tr class="separator:a29979c970af38905d9adfb4a452d4aa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a702f02a1b8109d5fdf12d6b187e93f07"><td class="memTemplParams" colspan="2">template&lt;typename I , typename D &gt; </td></tr>
-<tr class="memitem:a702f02a1b8109d5fdf12d6b187e93f07"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a702f02a1b8109d5fdf12d6b187e93f07">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="namespacenum.html#aecf042ab6b895357dd13471266377348">ipoint</a>&lt; I, D &gt; const &amp;p)</td></tr>
-<tr class="memdesc:a702f02a1b8109d5fdf12d6b187e93f07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send point to output stream.  <a href="#a702f02a1b8109d5fdf12d6b187e93f07">More...</a><br /></td></tr>
-<tr class="separator:a702f02a1b8109d5fdf12d6b187e93f07"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5eb307b1a69d6c912cdf820e0b7f7cc"><td class="memTemplParams" colspan="2">template&lt;typename I , typename D &gt; </td></tr>
-<tr class="memitem:aa5eb307b1a69d6c912cdf820e0b7f7cc"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#aa5eb307b1a69d6c912cdf820e0b7f7cc">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="namespacenum.html#adf4e925e819b4813b11a93875568934f">ilist</a>&lt; I, D &gt; const &amp;list)</td></tr>
-<tr class="memdesc:aa5eb307b1a69d6c912cdf820e0b7f7cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send ilist to output stream.  <a href="#aa5eb307b1a69d6c912cdf820e0b7f7cc">More...</a><br /></td></tr>
-<tr class="separator:aa5eb307b1a69d6c912cdf820e0b7f7cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2709014e5395262d3992f15c6928fcc4"><td class="memTemplParams" colspan="2">template&lt;typename X  = double, typename Y  = double&gt; </td></tr>
 <tr class="memitem:a2709014e5395262d3992f15c6928fcc4"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt; X, <a class="el" href="classnum_1_1cpoly.html">cpoly</a>&lt; 0, X, Y &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a2709014e5395262d3992f15c6928fcc4">make_const_interp</a> (std::string file, X const &amp;xu=1, Y const &amp;yu=1)</td></tr>
 <tr class="memdesc:a2709014e5395262d3992f15c6928fcc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a (<a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>) piecewise-constant interpolant from the first two space-delimited columns in an ASCII file.  <a href="#a2709014e5395262d3992f15c6928fcc4">More...</a><br /></td></tr>
@@ -533,7 +536,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00034">34</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00036">36</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>
@@ -568,7 +571,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00040">40</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00042">42</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>
@@ -603,7 +606,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00031">31</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00033">33</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>
@@ -809,11 +812,10 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespacenum_affe013befb82ebee3bcf4305fae4089a_icgraph.png" border="0" usemap="#namespacenum_affe013befb82ebee3bcf4305fae4089a_icgraph" alt=""/></div>
 <map name="namespacenum_affe013befb82ebee3bcf4305fae4089a_icgraph" id="namespacenum_affe013befb82ebee3bcf4305fae4089a_icgraph">
-<area shape="rect" id="node2" href="classnum_1_1dyndim.html#ade598022f282d117752b2397c979ad89" title="Integer power. " alt="" coords="103,5,233,32"/>
-<area shape="rect" id="node3" href="namespacenum.html#a8fd4c40887e7985c60729b71f316b853" title="Integer power of a double. This is an alias for ipow(). " alt="" coords="145,56,191,83"/>
-<area shape="rect" id="node4" href="classnum_1_1rk__quad.html#aa60d8946dd8df2d358d32763b977073d" title="Fifth&#45;order Runge&#45;Kutta step with monitoring of local truncation error to ensure accurcy and adjust s..." alt="" coords="281,56,415,83"/>
-<area shape="rect" id="node5" href="classnum_1_1rk__quad.html#a8ed4dbe1331bee582e94c01a1c7947f7" title="This function is based on odeint() on Page 721 of Numerical Recipes in C, Second Edition. " alt="" coords="463,56,590,83"/>
-<area shape="rect" id="node6" href="classnum_1_1rk__quad.html#a875f58d70d26db380f0c9c41c769a371" title="Numerically integrate a function, and store the result in rk_quad::y. " alt="" coords="638,56,793,83"/>
+<area shape="rect" id="node2" href="namespacenum.html#a8fd4c40887e7985c60729b71f316b853" title="Integer power of a double. This is an alias for ipow(). " alt="" coords="103,29,149,56"/>
+<area shape="rect" id="node3" href="classnum_1_1rk__quad.html#aa60d8946dd8df2d358d32763b977073d" title="Fifth&#45;order Runge&#45;Kutta step with monitoring of local truncation error to ensure accurcy and adjust s..." alt="" coords="197,29,332,56"/>
+<area shape="rect" id="node4" href="classnum_1_1rk__quad.html#a8ed4dbe1331bee582e94c01a1c7947f7" title="This function is based on odeint() on Page 721 of Numerical Recipes in C, Second Edition. " alt="" coords="380,29,507,56"/>
+<area shape="rect" id="node5" href="classnum_1_1rk__quad.html#a875f58d70d26db380f0c9c41c769a371" title="Numerically integrate a function, and store the result in rk_quad::y. " alt="" coords="555,29,709,56"/>
 </map>
 </div>
 
@@ -996,6 +998,14 @@ Here is the caller graph for this function:</div>
 </dl>
 
 <p>Definition at line <a class="el" href="interpolant_8hpp_source.html#l00213">213</a> of file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacenum_a7229bab00e45295764e7f9b7be7be80c_cgraph.png" border="0" usemap="#namespacenum_a7229bab00e45295764e7f9b7be7be80c_cgraph" alt=""/></div>
+<map name="namespacenum_a7229bab00e45295764e7f9b7be7be80c_cgraph" id="namespacenum_a7229bab00e45295764e7f9b7be7be80c_cgraph">
+<area shape="rect" id="node2" href="classnum_1_1sparse__table.html#a3500c19d38b53745fb626818a57d229b" title="Table of sub&#45;domain centers, sub&#45;domain lengths, and sub&#45;functions: , , , . " alt="" coords="184,5,339,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -1043,6 +1053,14 @@ Here is the caller graph for this function:</div>
 </dl>
 
 <p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00392">392</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacenum_ace272068a024e36447c5e72350065cae_cgraph.png" border="0" usemap="#namespacenum_ace272068a024e36447c5e72350065cae_cgraph" alt=""/></div>
+<map name="namespacenum_ace272068a024e36447c5e72350065cae_cgraph" id="namespacenum_ace272068a024e36447c5e72350065cae_cgraph">
+<area shape="rect" id="node2" href="classnum_1_1sparse__table.html#a3500c19d38b53745fb626818a57d229b" title="Table of sub&#45;domain centers, sub&#45;domain lengths, and sub&#45;functions: , , , . " alt="" coords="128,5,283,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -1090,6 +1108,14 @@ Here is the caller graph for this function:</div>
 </dl>
 
 <p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00412">412</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacenum_a189d636b8dbdb4ab4d05bdbdfd635ee4_cgraph.png" border="0" usemap="#namespacenum_a189d636b8dbdb4ab4d05bdbdfd635ee4_cgraph" alt=""/></div>
+<map name="namespacenum_a189d636b8dbdb4ab4d05bdbdfd635ee4_cgraph" id="namespacenum_a189d636b8dbdb4ab4d05bdbdfd635ee4_cgraph">
+<area shape="rect" id="node2" href="classnum_1_1sparse__table.html#a3500c19d38b53745fb626818a57d229b" title="Table of sub&#45;domain centers, sub&#45;domain lengths, and sub&#45;functions: , , , . " alt="" coords="128,5,283,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -1122,7 +1148,7 @@ Here is the caller graph for this function:</div>
 <p>Multiply a statdim by a dyndim. </p>
 <p>Global multiplication operator against statdim needs access to v_ and exps_.</p>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00795">795</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00807">807</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>
@@ -1155,7 +1181,7 @@ Here is the caller graph for this function:</div>
 <p>Multiply a dyndim by a statdim. </p>
 <p>Global multiplication operator against statdim needs access to v_ and exps_.</p>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00802">802</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00814">814</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>
@@ -1363,6 +1389,14 @@ Here is the caller graph for this function:</div>
 </dl>
 
 <p>Definition at line <a class="el" href="sparse-table_8hpp_source.html#l00432">432</a> of file <a class="el" href="sparse-table_8hpp_source.html">sparse-table.hpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacenum_a9b72623d4fe798bba978257184d3f06b_cgraph.png" border="0" usemap="#namespacenum_a9b72623d4fe798bba978257184d3f06b_cgraph" alt=""/></div>
+<map name="namespacenum_a9b72623d4fe798bba978257184d3f06b_cgraph" id="namespacenum_a9b72623d4fe798bba978257184d3f06b_cgraph">
+<area shape="rect" id="node2" href="classnum_1_1sparse__table.html#a3500c19d38b53745fb626818a57d229b" title="Table of sub&#45;domain centers, sub&#45;domain lengths, and sub&#45;functions: , , , . " alt="" coords="127,5,281,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -1395,7 +1429,7 @@ Here is the caller graph for this function:</div>
 <p>Divide a statdim by a dyndim. </p>
 <p>Global division operator against statdim needs access to v_ and exps_.</p>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00809">809</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00821">821</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>
@@ -1428,7 +1462,7 @@ Here is the caller graph for this function:</div>
 <p>Divide a dyndim by a statdim. </p>
 <p>Global division operator against statdim needs access to v_ and exps_.</p>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00816">816</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00828">828</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>
@@ -1681,9 +1715,9 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespacenum_a8fd4c40887e7985c60729b71f316b853_icgraph.png" border="0" usemap="#namespacenum_a8fd4c40887e7985c60729b71f316b853_icgraph" alt=""/></div>
 <map name="namespacenum_a8fd4c40887e7985c60729b71f316b853_icgraph" id="namespacenum_a8fd4c40887e7985c60729b71f316b853_icgraph">
-<area shape="rect" id="node2" href="classnum_1_1rk__quad.html#aa60d8946dd8df2d358d32763b977073d" title="Fifth&#45;order Runge&#45;Kutta step with monitoring of local truncation error to ensure accurcy and adjust s..." alt="" coords="100,5,235,32"/>
-<area shape="rect" id="node3" href="classnum_1_1rk__quad.html#a8ed4dbe1331bee582e94c01a1c7947f7" title="This function is based on odeint() on Page 721 of Numerical Recipes in C, Second Edition. " alt="" coords="283,5,409,32"/>
-<area shape="rect" id="node4" href="classnum_1_1rk__quad.html#a875f58d70d26db380f0c9c41c769a371" title="Numerically integrate a function, and store the result in rk_quad::y. " alt="" coords="457,5,612,32"/>
+<area shape="rect" id="node2" href="classnum_1_1rk__quad.html#aa60d8946dd8df2d358d32763b977073d" title="Fifth&#45;order Runge&#45;Kutta step with monitoring of local truncation error to ensure accurcy and adjust s..." alt="" coords="100,29,235,56"/>
+<area shape="rect" id="node3" href="classnum_1_1rk__quad.html#a8ed4dbe1331bee582e94c01a1c7947f7" title="This function is based on odeint() on Page 721 of Numerical Recipes in C, Second Edition. " alt="" coords="283,29,409,56"/>
+<area shape="rect" id="node4" href="classnum_1_1rk__quad.html#a875f58d70d26db380f0c9c41c769a371" title="Numerically integrate a function, and store the result in rk_quad::y. " alt="" coords="457,29,612,56"/>
 </map>
 </div>
 
@@ -1708,7 +1742,7 @@ Here is the caller graph for this function:</div>
 <p>Integer root of dyndim. </p>
 <p>Integer root. </p>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00739">739</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00751">751</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>

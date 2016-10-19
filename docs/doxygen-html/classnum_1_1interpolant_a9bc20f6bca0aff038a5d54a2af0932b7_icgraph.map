@@ -1,0 +1,9 @@
+<map id="operator/" name="operator/">
+<area shape="rect" id="node2" href="$classnum_1_1interpolant.html#a386a5cc3e8a66a07a01ee544c97deac8" title="num::interpolant\&lt; X,\l Y \&gt;::points" alt="" coords="127,5,267,47"/>
+<area shape="rect" id="node3" href="$classnum_1_1interpolant.html#af60a8a9bf0bd204e7ac9edba558c0ac5" title="Interpolate. " alt="" coords="127,71,267,112"/>
+<area shape="rect" id="node4" href="$classnum_1_1interpolant.html#a8086dc44b91929da8bb9a33533d69cba" title="Integrate interpolant. " alt="" coords="127,136,267,177"/>
+<area shape="rect" id="node5" href="$classnum_1_1interpolant.html#aff902e29765d0d66ec95aac0ce92801e" title="Multiply the present instance I1 by another interpolant I2 such that there is a point in the product ..." alt="" coords="127,201,267,243"/>
+<area shape="rect" id="node6" href="$classnum_1_1interpolant.html#ad7aad56c41af09de988fa2d6627d49ff" title="Divide the present instance I1 by another interpolant I2 such that there is a point in the product in..." alt="" coords="127,267,267,308"/>
+<area shape="rect" id="node7" href="$classnum_1_1interpolant.html#aeddcaf2e51a9badfdc797c3f71a25cea" title="Modify every y&#45;value by scalar multiplication. " alt="" coords="127,332,267,373"/>
+<area shape="rect" id="node8" href="$classnum_1_1interpolant.html#a9004344de843e5b2a69b89c98cb7f0f0" title="Modify every y&#45;value by scalar division. " alt="" coords="127,397,267,439"/>
+</map>

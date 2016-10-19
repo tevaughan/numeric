@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['m',['m',['../namespacenum_1_1u.html#a1614128bca233a7ca6220a04b71ea894',1,'num::u']]],
+  ['m',['m',['../structnum_1_1dimval__base.html#a4fb72ae11a33186b0c1cc1cf5de8ea4c',1,'num::dimval_base::m()'],['../namespacenum_1_1u.html#a1614128bca233a7ca6220a04b71ea894',1,'num::u::m()']]],
   ['mg',['mg',['../namespacenum_1_1u.html#af4d995f470ace122bfcd843c185d0d85',1,'num::u']]],
   ['mhz',['MHz',['../namespacenum_1_1u.html#ab2b245582a8d589150e1efb9c27778ed',1,'num::u']]],
   ['mi',['mi',['../namespacenum_1_1u.html#a96c84589aa28ca08531f8d6e56f37469',1,'num::u']]],

@@ -48,12 +48,12 @@ pkginclude_HEADERS =\
 nodist_pkginclude_HEADERS = dimensions.hpp units.hpp
 
 lib_LTLIBRARIES = libnumeric.la
-nodist_libnumeric_la_SOURCES = units.cpp
+nodist_libnumeric_la_SOURCES = dimval.cpp units.cpp
 libnumeric_la_CPPFLAGS = $(CODE_COVERAGE_CPPFLAGS)
 libnumeric_la_CXXFLAGS = $(CODE_COVERAGE_CXXFLAGS)
 libnumeric_la_CFLAGS = $(CODE_COVERAGE_CFLAGS)
 libnumeric_la_LDFLAGS = -version-info $(current):$(revision):$(age)
-libnumeric_la_LIBADD = $(CODE_COVERAGE_LIBS)
+libnumeric_la_LIBADD = $(CODE_COVERAGE_LIBS) -lcln -lginac
 
 dimensions.hpp : dimensions.txt dimensions.pl
 	./dimensions.pl

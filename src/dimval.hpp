@@ -17,6 +17,8 @@
 #include <functional> // for function
 #include <iostream>   // for ostream
 
+#include <ginac/ginac.h> // for ex, symbol
+
 #include <dim-exps.hpp> // for dim_exps
 #include <integral.hpp> // for integral()
 #include <util.hpp>     // for RAT and PRD
@@ -60,12 +62,22 @@ namespace num
    template <typename DER>
    dyndim pow(dimval<DER> const &dv, int p);
 
+   /// Ultimate base class for dimensioned quantity.
+   struct dimval_base
+   {
+      static GiNaC::symbol s;  ///< Symbol for second.
+      static GiNaC::symbol m;  ///< Symbol for meter.
+      static GiNaC::symbol kg; ///< Symbol for kilogram.
+      static GiNaC::symbol C;  ///< Symbol for Coulomb.
+      static GiNaC::symbol K;  ///< Symbol for Kelvin.
+   };
+
    /// Base class for statdim and dyndim.
    ///
    /// \tparam DER  Type of descendant, either statdim or dyndim.  This is the
    ///              curiously recurring template pattern (CRTP).
    template <typename DER>
-   class dimval
+   class dimval : public dimval_base
    {
       /// Needed to allow statdim to access v_ in some circumstances.
       friend class dyndim;

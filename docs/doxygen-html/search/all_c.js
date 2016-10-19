@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['m',['M',['../classnum_1_1dim__exps.html#a1f7fd4e1ba40c71ccb3162d713e63522',1,'num::dim_exps::M()'],['../classnum_1_1dim__exps.html#a67e0a144fee2f77af6a77e55f7dd9905',1,'num::dim_exps::M() const'],['../namespacenum_1_1u.html#a1614128bca233a7ca6220a04b71ea894',1,'num::u::m()']]],
+  ['m',['m',['../structnum_1_1dimval__base.html#a4fb72ae11a33186b0c1cc1cf5de8ea4c',1,'num::dimval_base::m()'],['../classnum_1_1dim__exps.html#a1f7fd4e1ba40c71ccb3162d713e63522',1,'num::dim_exps::M()'],['../classnum_1_1dim__exps.html#a67e0a144fee2f77af6a77e55f7dd9905',1,'num::dim_exps::M() const'],['../namespacenum_1_1u.html#a1614128bca233a7ca6220a04b71ea894',1,'num::u::m()']]],
   ['make_5fconst_5finterp',['make_const_interp',['../namespacenum.html#a2709014e5395262d3992f15c6928fcc4',1,'num']]],
   ['make_5flinear_5finterp',['make_linear_interp',['../namespacenum.html#a557e463f44d69cb9ff3a7f17e04f7d13',1,'num::make_linear_interp(ilist&lt; X, Y &gt; const &amp;cp)'],['../namespacenum.html#a7229bab00e45295764e7f9b7be7be80c',1,'num::make_linear_interp(std::string file=&quot;&quot;, X const &amp;xu=1, Y const &amp;yu=1)']]],
   ['mass',['mass',['../namespacenum.html#a0b9cf178eb1d0849530fb0bc38daf662',1,'num']]],
