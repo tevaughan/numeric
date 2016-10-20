@@ -12,7 +12,8 @@ var searchData=
   ['dc5',['dc5',['../classnum_1_1rk__base.html#a82dad7279ecb47d4e64ce54646560fc4',1,'num::rk_base']]],
   ['dc6',['dc6',['../classnum_1_1rk__base.html#aa8d3045c15689b623a2d248424b3d705',1,'num::rk_base']]],
   ['deg',['deg',['../namespacenum.html#ac0cc51411dcc845e6fa5096d15f10420',1,'num']]],
-  ['deriv',['deriv',['../classnum_1_1rk__quad.html#aa7a34fb72a060fcaa082d07b534c5763',1,'num::rk_quad']]],
+  ['deriv',['deriv',['../classnum_1_1rk__quad.html#aa63446e1a6375ef79ae355063fb5e423',1,'num::rk_quad']]],
+  ['dl',['dl',['../classnum_1_1rk__quad.html#a32edd2b54428583cba8c4102fbf84d3e',1,'num::rk_quad']]],
   ['dydx',['dydx',['../classnum_1_1rk__quad.html#ab3467d80f47e4b752c4a6048a26a54fa',1,'num::rk_quad']]],
   ['dyn',['dyn',['../namespacenum_1_1u.html#ada87a1d385bf930895d965b118896b68',1,'num::u']]]
 ];

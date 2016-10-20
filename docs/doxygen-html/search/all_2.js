@@ -9,6 +9,7 @@ var searchData=
   ['centimeters',['centimeters',['../structnum_1_1u_1_1centimeters.html#ae8b858254e74cf6b55304a487941e4cc',1,'num::u::centimeters::centimeters(double v=0.0)'],['../structnum_1_1u_1_1centimeters.html#a14be25c1564d838cbe81e885aa185d97',1,'num::u::centimeters::centimeters(centimeters const &amp;dv)=default']]],
   ['cfunc',['cfunc',['../classnum_1_1rk__quad.html#aa3b42b180adef56b97364caace89b25e',1,'num::rk_quad']]],
   ['charge',['charge',['../namespacenum.html#aa58f9cbba972b004ad19daebead96234',1,'num']]],
+  ['check_5ftol',['check_tol',['../classnum_1_1rk__quad.html#afa66c559d364abb4ba713dd162324b07',1,'num::rk_quad']]],
   ['cm',['cm',['../namespacenum_1_1u.html#aa14612ab485502951b7d5e6548c8630d',1,'num::u']]],
   ['cmb',['cmb',['../structnum_1_1sparse__table_1_1cmb__data.html#a43987d8baaa7c8a762a1b3e9109fee55',1,'num::sparse_table::cmb_data']]],
   ['cmb_5fdata',['cmb_data',['../structnum_1_1sparse__table_1_1cmb__data.html',1,'num::sparse_table']]],
@@ -20,7 +21,7 @@ var searchData=
   ['compare',['compare',['../structnum_1_1subinterval__stack.html#a5d4b460ad10fbbe8ef23bdb1706fd9a7',1,'num::subinterval_stack']]],
   ['coulombs',['coulombs',['../structnum_1_1u_1_1coulombs.html',1,'num::u']]],
   ['coulombs',['coulombs',['../structnum_1_1u_1_1coulombs.html#a26b7da202ccb4b39db6edbbdf488ab3e',1,'num::u::coulombs::coulombs(double v=0.0)'],['../structnum_1_1u_1_1coulombs.html#a381d9139313059593f4dd0456d9bfba8',1,'num::u::coulombs::coulombs(coulombs const &amp;dv)=default']]],
-  ['cpoly',['cpoly',['../classnum_1_1cpoly.html',1,'num']]],
   ['cpoly',['cpoly',['../classnum_1_1statdim.html#ae872aa8945052410c1bcd2ae5a7bda0c',1,'num::statdim']]],
+  ['cpoly',['cpoly',['../classnum_1_1cpoly.html',1,'num']]],
   ['current',['current',['../namespacenum.html#a9289d56c13af85be0ffda211cbbf20e0',1,'num']]]
 ];

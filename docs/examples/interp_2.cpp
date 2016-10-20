@@ -17,7 +17,7 @@ double g(double x) { return exp(-0.5 * x * x) / sqrt(2.0 * M_PI); }
 int main()
 {
    rk_quadd const i(g, -5.0, 5.0, 1.0E-04, 2, true);
-   cout << i.interp_func().points();
+   cout << i.intermed_fnc() << endl;
    return 0;
 }
 

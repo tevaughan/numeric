@@ -78,22 +78,33 @@ namespace num
    template <typename X, typename Y>
    class rk_quad : rk_base
    {
-      using DYDX = RAT<Y, X>; ///< Type of the integrand.
+      /// Type returned by function to be integrated.
+      using DYDX = RAT<Y, X>;
 
+   public:
+      /// Type of function to be integrated.
+      using func = std::function<DYDX(X)>;
+
+      /// Type of list of values returned by function to be integrated.
+      using dlist = ilist<X, DYDX>;
+
+      /// Type of list of partial integrations of function.
+      using ylist = ilist<X,Y>;
+
+   private:
       /// Function to be integrated.  This is called \a deriv because
       /// Runge-Kutta integrates a derivative.
-      std::function<DYDX(X)> deriv;
+      func deriv;
 
       X      x;     ///< Independent variable.
       Y      y;     ///< Variable accumulated during integration.
       DYDX   dydx;  ///< Value of \a deriv at beginning of interval.
       double tol;   ///< Error tolerance.
       bool   store; ///< True if intermediate values should be stored.
-      ilist<X, DYDX>       fi_list; ///< Storage for values from \a deriv.
-      interpolant<X, DYDX> fi;      ///< Interpolant for integrand.
-      interpolant<X, Y>    ii;      ///< Interpolant for integral.
-      int nok;                      ///< Number of propagations with planned h.
-      int nbad; ///< Number of propagations with unplanned h.
+      dlist  dl;    ///< Storage for values from \a deriv.
+      ylist  yl;    ///< Storage for integrated values.
+      int    nok;   ///< Number of propagations with planned h.
+      int    nbad;  ///< Number of propagations with unplanned h.
 
       /// Given the value for variable \a y and the value for its derivative \a
       /// dydx, use the fifth-order Cash-Karp Runge-Kutta method to advance the
@@ -183,7 +194,7 @@ namespace num
          Y      ytemp;
          X      h = htry; // initial trial value
          while (true) {
-            rkck(h, ytemp, yerr); // Take a step.
+            rkck(h, ytemp, yerr); // Take a trial step.
             err = fabs(yerr / yscal / tol);
             if (err <= 1.0) {
                break;
@@ -206,13 +217,8 @@ namespace num
          y = ytemp;
       }
 
-      /// This function is based on `odeint()` on Page 721 of Numerical Recipes
-      /// in C, Second Edition.
-      ///
-      void
-      init(/** Lower limit of integration.   */ X   x1,
-           /** Upper limit of integration.   */ X   x2,
-           /** Inverse of initial step size. */ int n)
+      /// Make sure that tolerance is neither negative nor too small.
+      void check_tol()
       {
          double constexpr eps     = std::numeric_limits<double>::epsilon();
          double constexpr min_tol = 100.0 * eps;
@@ -221,30 +227,47 @@ namespace num
          } else if (tol < min_tol) {
             tol = min_tol;
          }
-         X const hmin(0.0);
+      }
+
+      /// Make sure that n is reasonable, and pick initial guess at stepsize.
+      X initial_h(
+            /** Lower limit of integration. */ X const &x1,
+            /** Upper limit of integration. */ X const &x2,
+            /** Number of equal-size steps. */ int &    n)
+      {
          if (n < 2) {
             n = 2;
          }
          X const h1 = (X(x2) - X(x1)) / (n - 1);
-         X       h;
          if (x2 - x1 > X(0.0)) {
-            h = +fabs(h1);
+            return +fabs(h1);
          } else {
-            h = -fabs(h1);
+            return -fabs(h1);
          }
-         ilist<X, Y> ii_list;
+      }
+
+      /// This function is based on `odeint()` on Page 721 of Numerical Recipes
+      /// in C, Second Edition.
+      void
+      init(/** Lower limit of integration. */ X   x1,
+           /** Upper limit of integration. */ X   x2,
+           /** Number of equal-size steps. */ int n)
+      {
+         check_tol();
+         X h = initial_h(x1, x2, n);
+         using namespace std;
+         static const PRD<X, X> XSQR_0 = 0.0;
          while (true) {
             dydx = deriv(x);
             static Y const TINY(1.0E-300);
             // General-purpose scaling used to monitor accuracy.
             Y const yscal = fabs(y) + fabs(dydx * h) + TINY;
             if (store) {
-               fi_list.push_back({x, dydx});
-               ii_list.push_back({x, y});
+               dl.push_back({x, dydx});
+               yl.push_back({x, y});
             }
             X const xh = x + h;
-            using XSQR = PRD<X, X>;
-            if ((xh - x2) * (xh - x1) > XSQR(0.0)) {
+            if ((xh - x2) * (xh - x1) > XSQR_0) {
                h = x2 - x; // Decrease stepsize to avoid overshoot.
             }
             X hdid, hnext;
@@ -254,29 +277,23 @@ namespace num
             } else {
                ++nbad;
             }
-            if ((x - x2) * (x2 - x1) >= XSQR(0.0)) {
+            if ((x - x2) * (x2 - x1) >= XSQR_0) {
                if (store) {
-                  fi_list.push_back({x, deriv(x)});
-                  ii_list.push_back({x, y});
-                  fi = interpolant<X, DYDX>(fi_list);
-                  ii = interpolant<X, Y>(ii_list);
+                  dl.push_back({x, deriv(x)});
+                  yl.push_back({x, y});
                }
                return; // We are done; exit normally.
             }
-            if (fabs(hnext) <= hmin) {
-               std::cerr << "rk_quad: WARNING: step size too small"
-                         << std::endl;
+            if (fabs(hnext) <= 0.0) {
+               cerr << "rk_quad: WARNING: step size too small" << endl;
                return;
             }
             h = hnext;
          }
-         std::cerr << "rk_quad: WARNING: too many steps" << std::endl;
+         cerr << "rk_quad: WARNING: too many steps" << endl;
       }
 
    public:
-      /// Type of function to be integrated.
-      using func = std::function<DYDX(X)>;
-
       /// Type of ordinary C function to be integrated.
       typedef DYDX (*cfunc)(X);
 
@@ -340,11 +357,13 @@ namespace num
       /// Tolerance used for computing definite integral.
       double tolerance() const { return tol; }
 
-      /// Interpolant representing the function that was integrated.
-      interpolant<X, DYDX> const &interp_func() const { return fi; }
+      /// List values returned by function to be integrated. Each of these has
+      /// a corresponding element in the list returned by intermed_int().
+      dlist const& intermed_fnc() const { return dl; }
 
-      /// Interpolant representing indefinite integral.
-      interpolant<X, Y> const &interp_indef_int() const { return ii; }
+      /// List of partial values of definite integral. Each of these has a
+      /// corresponding element in the list returned by intermed_fnc().
+      ylist const& intermed_int() const { return yl; }
    };
 
    /// Short alias for Runge-Kutta solver for ordinary double-precision values.

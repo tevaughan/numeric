@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structnum_1_1sparse__table_1_1cmb__data.html" title="Structure for stepping through two tables to combine them via a specified function, such as multiplication. " alt="" coords="5,5,143,47"/>
+<area shape="rect" id="node1" href="$structnum_1_1sparse__table__base.html" title="Base class for sparse_table. " alt="" coords="5,5,136,32"/>
+<area shape="rect" id="node2" href="$classnum_1_1sparse__table.html" title="A piecewise function that, in logarithmic time, looks up the sub&#45;function appropriate to the argument..." alt="" coords="184,5,313,32"/>
 </map>

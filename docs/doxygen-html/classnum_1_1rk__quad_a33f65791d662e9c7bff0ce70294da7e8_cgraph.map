@@ -1,8 +1,10 @@
 <map id="rk_quad" name="rk_quad">
 <area shape="rect" id="node2" href="$classnum_1_1rk__quad.html#a8ed4dbe1331bee582e94c01a1c7947f7" title="This function is based on odeint() on Page 721 of Numerical Recipes in C, Second Edition. " alt="" coords="121,56,160,83"/>
-<area shape="rect" id="node3" href="$classnum_1_1rk__quad.html#aa60d8946dd8df2d358d32763b977073d" title="Fifth&#45;order Runge&#45;Kutta step with monitoring of local truncation error to ensure accurcy and adjust s..." alt="" coords="208,56,255,83"/>
-<area shape="rect" id="node4" href="$classnum_1_1rk__quad.html#a18ea5ab0827221518f88b7b06d97662d" title="Given the value for variable y and the value for its derivative dydx, use the fifth&#45;order Cash&#45;Karp R..." alt="" coords="341,5,388,32"/>
-<area shape="rect" id="node5" href="$classnum_1_1rk__quad.html#a1c72640e0394a8fa3dbc72bf3bc0564c" title="Reduce stepsize no more than a factor of 10. " alt="" coords="303,56,427,83"/>
-<area shape="rect" id="node6" href="$namespacenum.html#a8fd4c40887e7985c60729b71f316b853" title="Integer power of a double. This is an alias for ipow(). " alt="" coords="475,81,553,108"/>
-<area shape="rect" id="node7" href="$namespacenum.html#affe013befb82ebee3bcf4305fae4089a" title="Integer power of a double. " alt="" coords="601,81,684,108"/>
+<area shape="rect" id="node3" href="$classnum_1_1rk__quad.html#afa66c559d364abb4ba713dd162324b07" title="Make sure that tolerance is neither negative nor too small. " alt="" coords="208,5,287,32"/>
+<area shape="rect" id="node4" href="$classnum_1_1rk__quad.html#a90f094356857a5876d66051222d5c733" title="Make sure that n is reasonable, and pick initial guess at stepsize. " alt="" coords="214,56,281,83"/>
+<area shape="rect" id="node5" href="$classnum_1_1rk__quad.html#aa60d8946dd8df2d358d32763b977073d" title="Fifth&#45;order Runge&#45;Kutta step with monitoring of local truncation error to ensure accurcy and adjust s..." alt="" coords="224,107,271,133"/>
+<area shape="rect" id="node6" href="$classnum_1_1rk__quad.html#a18ea5ab0827221518f88b7b06d97662d" title="Given the value for variable y and the value for its derivative dydx, use the fifth&#45;order Cash&#45;Karp R..." alt="" coords="373,56,420,83"/>
+<area shape="rect" id="node7" href="$classnum_1_1rk__quad.html#a1c72640e0394a8fa3dbc72bf3bc0564c" title="Reduce stepsize no more than a factor of 10. " alt="" coords="335,107,459,133"/>
+<area shape="rect" id="node8" href="$namespacenum.html#a8fd4c40887e7985c60729b71f316b853" title="Integer power of a double. This is an alias for ipow(). " alt="" coords="507,132,585,159"/>
+<area shape="rect" id="node9" href="$namespacenum.html#affe013befb82ebee3bcf4305fae4089a" title="Integer power of a double. " alt="" coords="633,132,716,159"/>
 </map>

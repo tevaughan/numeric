@@ -1,7 +1,9 @@
 <map id="init" name="init">
-<area shape="rect" id="node2" href="$classnum_1_1rk__quad.html#aa60d8946dd8df2d358d32763b977073d" title="Fifth&#45;order Runge&#45;Kutta step with monitoring of local truncation error to ensure accurcy and adjust s..." alt="" coords="92,56,139,83"/>
-<area shape="rect" id="node3" href="$classnum_1_1rk__quad.html#a18ea5ab0827221518f88b7b06d97662d" title="Given the value for variable y and the value for its derivative dydx, use the fifth&#45;order Cash&#45;Karp R..." alt="" coords="225,5,272,32"/>
-<area shape="rect" id="node4" href="$classnum_1_1rk__quad.html#a1c72640e0394a8fa3dbc72bf3bc0564c" title="Reduce stepsize no more than a factor of 10. " alt="" coords="187,56,311,83"/>
-<area shape="rect" id="node5" href="$namespacenum.html#a8fd4c40887e7985c60729b71f316b853" title="Integer power of a double. This is an alias for ipow(). " alt="" coords="359,81,437,108"/>
-<area shape="rect" id="node6" href="$namespacenum.html#affe013befb82ebee3bcf4305fae4089a" title="Integer power of a double. " alt="" coords="485,81,568,108"/>
+<area shape="rect" id="node2" href="$classnum_1_1rk__quad.html#afa66c559d364abb4ba713dd162324b07" title="Make sure that tolerance is neither negative nor too small. " alt="" coords="92,5,171,32"/>
+<area shape="rect" id="node3" href="$classnum_1_1rk__quad.html#a90f094356857a5876d66051222d5c733" title="Make sure that n is reasonable, and pick initial guess at stepsize. " alt="" coords="98,56,165,83"/>
+<area shape="rect" id="node4" href="$classnum_1_1rk__quad.html#aa60d8946dd8df2d358d32763b977073d" title="Fifth&#45;order Runge&#45;Kutta step with monitoring of local truncation error to ensure accurcy and adjust s..." alt="" coords="108,107,155,133"/>
+<area shape="rect" id="node5" href="$classnum_1_1rk__quad.html#a18ea5ab0827221518f88b7b06d97662d" title="Given the value for variable y and the value for its derivative dydx, use the fifth&#45;order Cash&#45;Karp R..." alt="" coords="257,56,304,83"/>
+<area shape="rect" id="node6" href="$classnum_1_1rk__quad.html#a1c72640e0394a8fa3dbc72bf3bc0564c" title="Reduce stepsize no more than a factor of 10. " alt="" coords="219,107,343,133"/>
+<area shape="rect" id="node7" href="$namespacenum.html#a8fd4c40887e7985c60729b71f316b853" title="Integer power of a double. This is an alias for ipow(). " alt="" coords="391,132,469,159"/>
+<area shape="rect" id="node8" href="$namespacenum.html#affe013befb82ebee3bcf4305fae4089a" title="Integer power of a double. " alt="" coords="517,132,600,159"/>
 </map>
