@@ -387,8 +387,10 @@ namespace num
             DYDX const &   y1  = dl[i].second;
             DYDX const &   y2  = dl[j].second;
             DYDX const     dy  = y2 - y1;
+            Y const        a1  = (y1 + 0.5 * dy) * dx;
+            Y const        a2  = yl[j].second - yl[i].second;
+            Y const        da  = a2 - a1;
             auto const     dx3 = dx * dx * dx;
-            Y const da = yl[j].second - yl[i].second - y1 * dx - 0.5 * dx * dy;
             auto const     c2  = -6.0 * da / dx3;
             auto const     c1  = dy / dx - c2 * (x1 + x2);
             DYDX const     c0  = y1 - (c1 + c2 * x1) * x1;
