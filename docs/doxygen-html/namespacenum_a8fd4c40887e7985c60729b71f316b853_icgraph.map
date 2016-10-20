@@ -1,5 +1,6 @@
 <map id="pow" name="pow">
-<area shape="rect" id="node2" href="$classnum_1_1rk__quad.html#aa60d8946dd8df2d358d32763b977073d" title="Fifth&#45;order Runge&#45;Kutta step with monitoring of local truncation error to ensure accurcy and adjust s..." alt="" coords="100,5,235,32"/>
-<area shape="rect" id="node3" href="$classnum_1_1rk__quad.html#a8ed4dbe1331bee582e94c01a1c7947f7" title="This function is based on odeint() on Page 721 of Numerical Recipes in C, Second Edition. " alt="" coords="283,5,409,32"/>
-<area shape="rect" id="node4" href="$classnum_1_1rk__quad.html#a875f58d70d26db380f0c9c41c769a371" title="Numerically integrate a function, and store the result in rk_quad::y. " alt="" coords="457,5,612,32"/>
+<area shape="rect" id="node2" href="$classnum_1_1rk__quad.html#a1c72640e0394a8fa3dbc72bf3bc0564c" title="Reduce stepsize no more than a factor of 10. " alt="" coords="100,5,248,47"/>
+<area shape="rect" id="node3" href="$classnum_1_1rk__quad.html#aa60d8946dd8df2d358d32763b977073d" title="Fifth&#45;order Runge&#45;Kutta step with monitoring of local truncation error to ensure accurcy and adjust s..." alt="" coords="296,42,431,69"/>
+<area shape="rect" id="node4" href="$classnum_1_1rk__quad.html#a8ed4dbe1331bee582e94c01a1c7947f7" title="This function is based on odeint() on Page 721 of Numerical Recipes in C, Second Edition. " alt="" coords="479,42,605,69"/>
+<area shape="rect" id="node5" href="$classnum_1_1rk__quad.html#a33f65791d662e9c7bff0ce70294da7e8" title="Numerically integrate a function, and store the result in rk_quad::y. " alt="" coords="653,42,808,69"/>
 </map>

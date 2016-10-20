@@ -19,19 +19,18 @@
 
 namespace num
 {
-   /// Runge-Kutta solver optimized for quadrature.  rk_quad is intended to be
-   /// a descendant of a class implementing a more general Runge-Kutta solver.
-   ///
-   /// \tparam X  Type of the independent variable.
-   /// \tparam Y  Type of the variable that is accumulated during integration.
-   template <typename X, typename Y>
-   class rk_quad
+   /// Base class for rk_quad and, eventually, for the class implementing the
+   /// general Runge-Kutta integrator.
+   class rk_base
    {
-      using DYDX = RAT<Y, X>; ///< Type of the integrand.
-
-      // These constant expressions ought to be moved to the base class.  There
-      // are more such constants used by the general solver.  The ones listed
-      // here are the ones used by the version optimized for quadrature.
+   protected:
+      // These constant expressions are used by rk_quad and will also be used
+      // by the general Runge-Kutta integrator, when it is implemented.  There
+      // are more such constants used only by the general integrator.
+      //
+      // It might be interesting to see how much slow-down occurs if we
+      // implement all calculations via GiNaC's (CLN's) numeric type instead of
+      // double.
 
       /// Fraction of step size to Substep 3.
       static double constexpr a3 = 0.3;
@@ -71,22 +70,30 @@ namespace num
 
       /// Error coefficient at Substep 6.
       static double constexpr dc6 = c6 - 0.25;
+   };
+
+   /// Runge-Kutta integrator optimized for quadrature.
+   /// \tparam X  Type of the independent variable.
+   /// \tparam Y  Type of the variable that is accumulated during integration.
+   template <typename X, typename Y>
+   class rk_quad : rk_base
+   {
+      using DYDX = RAT<Y, X>; ///< Type of the integrand.
 
       /// Function to be integrated.  This is called \a deriv because
       /// Runge-Kutta integrates a derivative.
       std::function<DYDX(X)> deriv;
 
-      X x;             ///< Independent variable.
-      Y y;             ///< Variable accumulated during integration.
-      DYDX dydx;       ///< Value of \a deriv at beginning of interval.
-      double tol;      ///< Error tolerance.
-      bool store_dydx; ///< True if values from \a deriv should be stored.
-      bool store_y;    ///< True if values of \a y should be stored.
-      ilist<X, DYDX> fi_list;  ///< Storage for values from \a deriv.
-      interpolant<X, DYDX> fi; ///< Interpolant for integrand.
-      interpolant<X, Y> ii;    ///< Interpolant for integral.
-      int nok;                 ///< Number of propagations with planned h.
-      int nbad;                ///< Number of propagations with unplanned h.
+      X      x;     ///< Independent variable.
+      Y      y;     ///< Variable accumulated during integration.
+      DYDX   dydx;  ///< Value of \a deriv at beginning of interval.
+      double tol;   ///< Error tolerance.
+      bool   store; ///< True if intermediate values should be stored.
+      ilist<X, DYDX>       fi_list; ///< Storage for values from \a deriv.
+      interpolant<X, DYDX> fi;      ///< Interpolant for integrand.
+      interpolant<X, Y>    ii;      ///< Interpolant for integral.
+      int nok;                      ///< Number of propagations with planned h.
+      int nbad; ///< Number of propagations with unplanned h.
 
       /// Given the value for variable \a y and the value for its derivative \a
       /// dydx, use the fifth-order Cash-Karp Runge-Kutta method to advance the
@@ -103,8 +110,8 @@ namespace num
       ///
       void
       rkck(/** Length of interval.                   */ X const &h,
-           /** Accumulated value at end of interval. */ Y &      yout,
-           /** Estimate of local truncation error.   */ Y &      yerr)
+           /** Accumulated value at end of interval. */ Y &      out,
+           /** Estimate of local truncation error.   */ Y &      e)
       {
          // 1st step is given as dydx on input.
          // 2nd step not needed because deriv() does not need y as input.
@@ -116,18 +123,40 @@ namespace num
          RAT<Y, X> const ak4 = deriv(x4); // 4th step.
          RAT<Y, X> const ak5 = deriv(x5); // 5th step.
          RAT<Y, X> const ak6 = deriv(x6); // 6th step.
-         if (store_dydx) {
-            fi_list.push_back({x3, ak3});
-            fi_list.push_back({x4, ak4});
-            fi_list.push_back({x5, ak5});
-            fi_list.push_back({x6, ak6});
-         }
          // Accumulate increments with proper weights.
-         yout = y + h * (c1 * dydx + c3 * ak3 + c4 * ak4 + c6 * ak6);
-         // Estimate error as difference between fourth- and fifth-order
+         out = y + h * (c1 * dydx + c3 * ak3 + c4 * ak4 + c6 * ak6);
+         // Estimate eor as difference between fourth- and fifth-order
          // methods.
-         yerr = h *
-                (dc1 * dydx + dc3 * ak3 + dc4 * ak4 + dc5 * ak5 + dc6 * ak6);
+         e = h * (dc1 * dydx + dc3 * ak3 + dc4 * ak4 + dc5 * ak5 + dc6 * ak6);
+      }
+
+      /// See implementation of `rkqs()` on Paqe 719 in Numerical Recipes in C,
+      /// Second Edition.
+      static double constexpr SAFETY = 0.9;
+
+      /// Reduce stepsize no more than a factor of 10.
+      /// \return  New stepsize.
+      static X reduce_step_size(
+            /** Old stepsize. */ X h, /** Truncation error. */ double err)
+      {
+         static double constexpr PSHRNK = -0.25;
+         X const        htemp           = SAFETY * h * pow(err, PSHRNK);
+         X const        tenth           = 0.1 * h;
+         static X const zero(0.0);
+         if (h >= zero) {
+            if (htemp > tenth) {
+               h = htemp;
+            } else {
+               h = tenth;
+            }
+         } else {
+            if (htemp < tenth) {
+               h = htemp;
+            } else {
+               h = tenth;
+            }
+         }
+         return h;
       }
 
       /// Fifth-order Runge-Kutta step with monitoring of local truncation
@@ -143,50 +172,31 @@ namespace num
       /// This function is based on `rkqs()` found on Page 719 in Numerical
       /// Recipes in C, Second Edition.
       ///
-      void rkqs(X const &htry,  ///< Stepsize to be attempted.
-                Y const &yscal, ///< Scaling used to monitor accuracy.
-                X &hdid,        ///< Stepsize that was accomplished.
-                X &hnext        ///< Estimated next stepsize.
-                )
+      void
+      rkqs(/** Stepsize to be attempted.         */ X const &htry,
+           /** Scaling used to monitor accuracy. */ Y const &yscal,
+           /** Stepsize that was accomplished.   */ X &      hdid,
+           /** Estimated next stepsize.          */ X &      hnext)
       {
-         static double constexpr SAFETY = 0.9, PGROW = -0.2, PSHRNK = -0.25;
-         static double const ERRCON = pow(5.0 / SAFETY, 1.0 / PGROW);
          double err;
-         Y yerr;
-         Y ytemp;
-         X h = htry; // Set stepsize to the initial trial value.
+         Y      yerr;
+         Y      ytemp;
+         X      h = htry; // initial trial value
          while (true) {
             rkck(h, ytemp, yerr); // Take a step.
             err = fabs(yerr / yscal / tol);
             if (err <= 1.0) {
                break;
             }
-            X const htemp = SAFETY * h * pow(err, PSHRNK);
-            // Truncation error is too large.  Reduce stepsize no more than a
-            // factor of 10.
-            X const tenth = 0.1 * h;
-            static X const zero(0.0);
-            if (h >= zero) {
-               if (htemp > tenth) {
-                  h = htemp;
-               } else {
-                  h = tenth;
-               }
-            } else {
-               if (htemp < tenth) {
-                  h = htemp;
-               } else {
-                  h = tenth;
-               }
-            }
-            X const xnew = x + h;
-            if (xnew == x) {
-               std::cerr << "rkqs: WARNING: stepsize underflow" << std::endl;
-               h = std::numeric_limits<double>::epsilon() * 100.0 * x;
-               break;
+            // Truncation error is too large.
+            h = reduce_step_size(h, err);
+            if (x + h == x) {
+               throw "stepsize underflow";
             }
          }
          // Increase stepsize no more than a factor of 5.
+         static double constexpr PGROW = -0.2;
+         static double const ERRCON    = pow(5.0 / SAFETY, 1.0 / PGROW);
          if (err > ERRCON) {
             hnext = SAFETY * h * pow(err, PGROW);
          } else {
@@ -204,7 +214,7 @@ namespace num
            /** Upper limit of integration.   */ X   x2,
            /** Inverse of initial step size. */ int n)
       {
-         double constexpr eps = std::numeric_limits<double>::epsilon();
+         double constexpr eps     = std::numeric_limits<double>::epsilon();
          double constexpr min_tol = 100.0 * eps;
          if (tol <= 0.0) {
             throw "tolerance not positive";
@@ -216,7 +226,7 @@ namespace num
             n = 2;
          }
          X const h1 = (X(x2) - X(x1)) / (n - 1);
-         X h;
+         X       h;
          if (x2 - x1 > X(0.0)) {
             h = +fabs(h1);
          } else {
@@ -228,10 +238,8 @@ namespace num
             static Y const TINY(1.0E-300);
             // General-purpose scaling used to monitor accuracy.
             Y const yscal = fabs(y) + fabs(dydx * h) + TINY;
-            if (store_dydx) {
+            if (store) {
                fi_list.push_back({x, dydx});
-            }
-            if (store_y) {
                ii_list.push_back({x, y});
             }
             X const xh = x + h;
@@ -247,11 +255,10 @@ namespace num
                ++nbad;
             }
             if ((x - x2) * (x2 - x1) >= XSQR(0.0)) {
-               if (store_dydx) {
-                  fi = interpolant<X, DYDX>(fi_list);
-               }
-               if (store_y) {
+               if (store) {
+                  fi_list.push_back({x, deriv(x)});
                   ii_list.push_back({x, y});
+                  fi = interpolant<X, DYDX>(fi_list);
                   ii = interpolant<X, Y>(ii_list);
                }
                return; // We are done; exit normally.
@@ -267,6 +274,12 @@ namespace num
       }
 
    public:
+      /// Type of function to be integrated.
+      using func = std::function<DYDX(X)>;
+
+      /// Type of ordinary C function to be integrated.
+      typedef DYDX (*cfunc)(X);
+
       /// Numerically integrate a function, and store the result in rk_quad::y.
       /// Use fifth-order Runge-Kutta with adaptive stepsize for quadrature.
       /// The initial guess for the step size is used at the lower limit of
@@ -282,23 +295,14 @@ namespace num
       /// \tparam X1  Type of lower limit of integration; X1 must convert to X.
       /// \tparam X2  Type of upper limit of integration; X2 must convert to X.
       template <typename X1, typename X2>
-      rk_quad(std::function<DYDX(X)> f, ///< Function to be integrated.
-              X1 x1,                    ///< Lower limit of integration.
-              X2 x2,                    ///< Upper limit of integration.
-              double t = 1.0E-06,       ///< Error tolerance.
-              int n = 16,               ///< Inverse of initial step size.
-              /// If true, store approximant to function \a f.
-              bool s_dydx = false,
-              /// If true, store approximant to indefinite integral of \a f.
-              bool s_y = false)
-         : deriv(f)
-         , x(x1)
-         , y(0.0)
-         , tol(t)
-         , store_dydx(s_dydx)
-         , store_y(s_y)
-         , nok(0)
-         , nbad(0)
+      rk_quad(
+            /** Function to be integrated.            */ func   f,
+            /** Lower limit of integration.           */ X1     x1,
+            /** Upper limit of integration.           */ X2     x2,
+            /** Error tolerance.                      */ double t = 1.0E-06,
+            /** Inverse of initial step size.         */ int    n = 16,
+            /** Whether to store intermediate values. */ bool   s = false)
+         : deriv(f), x(x1), y(0.0), tol(t), store(s), nok(0), nbad(0)
       {
          init(x1, x2, n);
       }
@@ -318,23 +322,14 @@ namespace num
       /// \tparam X1  Type of lower limit of integration; X1 must convert to X.
       /// \tparam X2  Type of upper limit of integration; X2 must convert to X.
       template <typename X1, typename X2>
-      rk_quad(DYDX (*f)(X),       ///< Function to be integrated.
-              X1 x1,              ///< Lower limit of integration.
-              X2 x2,              ///< Upper limit of integration.
-              double t = 1.0E-06, ///< Error tolerance.
-              int n = 16,         ///< Inverse size of initial step.
-              /// If true, store approximant to function \a f.
-              bool s_dydx = false,
-              /// If true, store approximant to indefinite integral.
-              bool s_y = false)
-         : deriv(f)
-         , x(x1)
-         , y(0.0)
-         , tol(t)
-         , store_dydx(s_dydx)
-         , store_y(s_y)
-         , nok(0)
-         , nbad(0)
+      rk_quad(
+            /** Function to be integrated.            */ cfunc  f,
+            /** Lower limit of integration.           */ X1     x1,
+            /** Upper limit of integration.           */ X2     x2,
+            /** Error tolerance.                      */ double t = 1.0E-06,
+            /** Inverse of initial step size.         */ int    n = 16,
+            /** Whether to store intermediate values. */ bool   s = false)
+         : deriv(f), x(x1), y(0.0), tol(t), store(s), nok(0), nbad(0)
       {
          init(x1, x2, n);
       }
@@ -357,5 +352,4 @@ namespace num
 }
 
 #endif // ndef NUMERIC_RK_HPP
-
 

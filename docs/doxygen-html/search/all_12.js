@@ -3,6 +3,7 @@ var searchData=
   ['s',['s',['../unionnum_1_1dim__exps_1_1s.html',1,'num::dim_exps']]],
   ['s',['s',['../structnum_1_1dimval__base.html#a4687445a03f9fccfcd82462ebdc38dc2',1,'num::dimval_base::s()'],['../classnum_1_1integral__stats.html#a1e31a79e8ca3081a4843c2c7912ccf7c',1,'num::integral_stats::S()'],['../namespacenum_1_1u.html#a7d1cdb24d894ff61e1029eba2034a173',1,'num::u::s()']]],
   ['s_5f',['s_',['../classnum_1_1dim__exps.html#af794b5d4027aa21e33288c4b4a30c515',1,'num::dim_exps']]],
+  ['safety',['SAFETY',['../classnum_1_1rk__quad.html#ab5cb5c2628029763651d71525f93e8cf',1,'num::rk_quad']]],
   ['seconds',['seconds',['../structnum_1_1u_1_1seconds.html',1,'num::u']]],
   ['seconds',['seconds',['../structnum_1_1u_1_1seconds.html#adf705154442e710632a9689a3911eb77',1,'num::u::seconds::seconds(double v=0.0)'],['../structnum_1_1u_1_1seconds.html#a4b1d5f99cf4f01f7901d7fb29f6a626a',1,'num::u::seconds::seconds(seconds const &amp;dv)=default']]],
   ['sort',['sort',['../classnum_1_1interpolant.html#a47fdc9eea42b6975cdc835bb2e08810e',1,'num::interpolant']]],
@@ -20,8 +21,7 @@ var searchData=
   ['statdim_5froot',['statdim_root',['../classnum_1_1statdim.html#a04447193d355cac84f74480ecd95cd2c',1,'num::statdim']]],
   ['stdev',['stdev',['../classnum_1_1integral__stats.html#acdac6fccb715409292f6fba4a085a483',1,'num::integral_stats']]],
   ['step',['step',['../structnum_1_1sparse__table_1_1cmb__data.html#a88aea03719ddbd48eab9f38d6c772d9e',1,'num::sparse_table::cmb_data']]],
-  ['store_5fdydx',['store_dydx',['../classnum_1_1rk__quad.html#abb97b9508f9f8ea833dba6ade25a86bd',1,'num::rk_quad']]],
-  ['store_5fy',['store_y',['../classnum_1_1rk__quad.html#a1571b454ffbef299a4d1c2f7d6db77d3',1,'num::rk_quad']]],
-  ['subinterval_5fstack',['subinterval_stack',['../structnum_1_1subinterval__stack.html#a86aea26fcc4e4e718e1c0b95cc640973',1,'num::subinterval_stack']]],
-  ['subinterval_5fstack',['subinterval_stack',['../structnum_1_1subinterval__stack.html',1,'num']]]
+  ['store',['store',['../classnum_1_1rk__quad.html#a86c0e52eeb2243d66bc032096c160a0b',1,'num::rk_quad']]],
+  ['subinterval_5fstack',['subinterval_stack',['../structnum_1_1subinterval__stack.html',1,'num']]],
+  ['subinterval_5fstack',['subinterval_stack',['../structnum_1_1subinterval__stack.html#a86aea26fcc4e4e718e1c0b95cc640973',1,'num::subinterval_stack']]]
 ];

@@ -1,6 +1,7 @@
 <map id="rk_quad&lt; X, Y &gt;" name="rk_quad&lt; X, Y &gt;">
-<area shape="rect" id="node2" href="$classdouble.html" title="double" alt="" coords="536,149,596,176"/>
-<area shape="rect" id="node9" href="$classnum_1_1interpolant.html" title="interpolant\&lt; X, DYDX \&gt;" alt="" coords="485,465,647,492"/>
-<area shape="rect" id="node13" href="$classnum_1_1interpolant.html" title="interpolant\&lt; X, Y \&gt;" alt="" coords="500,579,632,605"/>
-<area shape="rect" id="node10" href="$classnum_1_1interpolant.html" title="Linear interpolant. " alt="" coords="225,405,353,432"/>
+<area shape="rect" id="node2" href="$classnum_1_1rk__base.html" title="Base class for rk_quad and, eventually, for the class implementing the general Runge&#45;Kutta integrator..." alt="" coords="532,137,600,164"/>
+<area shape="rect" id="node3" href="$classdouble.html" title="double" alt="" coords="259,177,319,204"/>
+<area shape="rect" id="node10" href="$classnum_1_1interpolant.html" title="interpolant\&lt; X, DYDX \&gt;" alt="" coords="485,593,647,620"/>
+<area shape="rect" id="node14" href="$classnum_1_1interpolant.html" title="interpolant\&lt; X, Y \&gt;" alt="" coords="500,644,632,671"/>
+<area shape="rect" id="node11" href="$classnum_1_1interpolant.html" title="Linear interpolant. " alt="" coords="225,677,353,704"/>
 </map>
