@@ -27,12 +27,12 @@ dox : $(EXTRA_DIST:.gpi=.png)
 interp_1.png : interp_1.gpi interp_1.dat
 	gnuplot $<
 
-interp_2.png : interp_2.gpi interp_2.dat
+interp_2.png : interp_2.gpi interp_2.dat interp_2a.dat
 	gnuplot $<
 
 interp_1.dat : interp_1
 	./$< > $@
 
-interp_2.dat : interp_2
-	./$< > $@
+interp_2.dat interp_2a.dat : interp_2
+	./$<
 
