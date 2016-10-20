@@ -177,7 +177,8 @@ namespace num
       // subsequent control points.
       X const        a0      = 0.5 * (cp[0].first + cp[1].first);
       unsigned const ndeltas = cp.size() - 1;
-      std::vector<std::pair<X, GiNaC::ex>> vf(ndeltas);
+      using namespace std;
+      vector<pair<X, GiNaC::ex>> vf(ndeltas);
       for (unsigned i = 0; i < ndeltas; ++i) {
          unsigned const j  = i + 1;
          X const &      x1 = cp[i].first;

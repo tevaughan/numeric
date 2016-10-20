@@ -13,9 +13,9 @@
 #include <functional> // for function
 #include <limits>     // for numeric_limits
 
-#include <ilist.hpp>       // for ilist
-#include <interpolant.hpp> // for interpolant
-#include <util.hpp>        // for RAT
+#include <ilist.hpp>        // for ilist
+#include <sparse-table.hpp> // for sparse_table
+#include <util.hpp>         // for RAT
 
 namespace num
 {
@@ -89,7 +89,7 @@ namespace num
       using dlist = ilist<X, DYDX>;
 
       /// Type of list of partial integrations of function.
-      using ylist = ilist<X,Y>;
+      using ylist = ilist<X, Y>;
 
    private:
       /// Function to be integrated.  This is called \a deriv because
@@ -264,7 +264,7 @@ namespace num
             Y const yscal = fabs(y) + fabs(dydx * h) + TINY;
             if (store) {
                dl.push_back({x, dydx});
-               yl.push_back({x, y});
+               yl.push_back({x, y}); // y=0 on first time through loop.
             }
             X const xh = x + h;
             if ((xh - x2) * (xh - x1) > XSQR_0) {
@@ -359,11 +359,45 @@ namespace num
 
       /// List values returned by function to be integrated. Each of these has
       /// a corresponding element in the list returned by intermed_int().
-      dlist const& intermed_fnc() const { return dl; }
+      dlist const &intermed_fnc() const { return dl; }
 
       /// List of partial values of definite integral. Each of these has a
       /// corresponding element in the list returned by intermed_fnc().
-      ylist const& intermed_int() const { return yl; }
+      ylist const &intermed_int() const { return yl; }
+
+      /// Construct quadratic interpolant through intermediate points (same
+      /// points as returned by intermed_fnc()), so that curvature of each
+      /// piece is adjusted for agreement with integral (returned by
+      /// intermed_int()) of the same piece.
+      sparse_table<X> make_fnc_interp() const
+      {
+         if (dl.size() < 2) {
+            throw "Must have at least two control points.";
+         }
+         // Each subdomain is the x region between subsequent control points.
+         X const        a0 = 0.5 * (dl[0].first + dl[1].first);
+         unsigned const nd = dl.size() - 1; // number of deltas
+         using namespace std;
+         vector<pair<X, GiNaC::ex>> vf(nd);
+         for (unsigned i = 0; i < nd; ++i) {
+            unsigned const j   = i + 1;
+            X const &      x1  = dl[i].first;
+            X const &      x2  = dl[j].first;
+            X const        dx  = x2 - x1;
+            DYDX const &   y1  = dl[i].second;
+            DYDX const &   y2  = dl[j].second;
+            DYDX const     dy  = y2 - y1;
+            auto const     dx3 = dx * dx * dx;
+            Y const        da  = yl[j].second - yl[i].second;
+            auto const     c2  = -6.0 * da / dx3;
+            auto const     c1  = dy / dx - c2 * (x1 + x2);
+            DYDX const     c0  = y1 - (c1 + c2 * x1) * x1;
+            auto const &   x   = sparse_table<X>::x;
+            vf[i].first        = dx;
+            vf[i].second       = c0 + c1 * x + c2 * pow(x, 2);
+         }
+         return sparse_table<X>(a0, move(vf));
+      }
    };
 
    /// Short alias for Runge-Kutta solver for ordinary double-precision values.
