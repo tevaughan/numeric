@@ -104,11 +104,11 @@ namespace num
       /// used in sparse_table::combine().
       struct cmb_data
       {
-         data     d; ///< Data for table returned by sparse_table::combine().
-         unsigned i; ///< Offset into array of data.
+         data            d;   ///< Data returned by sparse_table::combine().
+         unsigned        i;   ///< Offset into array of data.
          cmb_func const &cmb; ///< Combining function.
 
-         /// Initialize size and offset.
+         /// Initialize size, offset, and reference to combining function.
          cmb_data(
                /** Max size of array.  */ unsigned        sz,
                /** Combining function. */ cmb_func const &cf)
@@ -378,6 +378,18 @@ namespace num
             dat_[i].f /= rf;
          }
          return *this;
+      }
+
+      /// Add table to other table.
+      sparse_table operator+(/** Other table. */ sparse_table const &st) const
+      {
+         return combine(st, [](ex const &a, ex const &b) { return a + b; });
+      }
+
+      /// Subtract other table from table.
+      sparse_table operator-(/** Other table. */ sparse_table const &st) const
+      {
+         return combine(st, [](ex const &a, ex const &b) { return a - b; });
       }
 
       /// Multiply table by other table.

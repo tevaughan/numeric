@@ -5,8 +5,7 @@
 #include <cmath>
 #include <iostream>
 
-#include "interpolant.hpp"
-#include "integral.hpp"
+#include "rk.hpp"
 
 using namespace num;
 using namespace std;

@@ -94,7 +94,7 @@ Collaboration diagram for sparse_table&lt; A &gt;::cmb_data:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:af85d1dc61faee8062025cf495cac9901"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnum_1_1sparse__table_1_1cmb__data.html#af85d1dc61faee8062025cf495cac9901">cmb_data</a> (unsigned sz, <a class="el" href="classnum_1_1sparse__table.html#a4e3eef55c65671f42187a84b9e7dc58a">cmb_func</a> const &amp;cf)</td></tr>
-<tr class="memdesc:af85d1dc61faee8062025cf495cac9901"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize size and offset.  <a href="#af85d1dc61faee8062025cf495cac9901">More...</a><br /></td></tr>
+<tr class="memdesc:af85d1dc61faee8062025cf495cac9901"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize size, offset, and reference to combining function.  <a href="#af85d1dc61faee8062025cf495cac9901">More...</a><br /></td></tr>
 <tr class="separator:af85d1dc61faee8062025cf495cac9901"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a88aea03719ddbd48eab9f38d6c772d9e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnum_1_1sparse__table_1_1cmb__data.html#a88aea03719ddbd48eab9f38d6c772d9e">step</a> (A const &amp;b2, A const &amp;e1, A const &amp;e2, <a class="el" href="structnum_1_1sparse__table_1_1rec.html">rec</a> const &amp;d1, <a class="el" href="structnum_1_1sparse__table_1_1rec.html">rec</a> const &amp;d2, unsigned &amp;i1, unsigned &amp;i2)</td></tr>
 <tr class="memdesc:a88aea03719ddbd48eab9f38d6c772d9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Take a step in combining two tables.  <a href="#a88aea03719ddbd48eab9f38d6c772d9e">More...</a><br /></td></tr>
@@ -107,7 +107,7 @@ Public Member Functions</h2></td></tr>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a31a54c34e40fd88dea16ebbb9c65a7d2"><td class="memItemLeft" align="right" valign="top"><a id="a31a54c34e40fd88dea16ebbb9c65a7d2"></a>
 <a class="el" href="classnum_1_1sparse__table.html#a7d9c3006d824f8372cadae43a871c74b">data</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnum_1_1sparse__table_1_1cmb__data.html#a31a54c34e40fd88dea16ebbb9c65a7d2">d</a></td></tr>
-<tr class="memdesc:a31a54c34e40fd88dea16ebbb9c65a7d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data for table returned by <a class="el" href="classnum_1_1sparse__table.html#a2673f5c8a28842fc2cfa87c8c27040d6" title="Combine table with other table, for example by multiplication if cmb represents the function for mult...">sparse_table::combine()</a>. <br /></td></tr>
+<tr class="memdesc:a31a54c34e40fd88dea16ebbb9c65a7d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data returned by <a class="el" href="classnum_1_1sparse__table.html#a2673f5c8a28842fc2cfa87c8c27040d6" title="Combine table with other table, for example by multiplication if cmb represents the function for mult...">sparse_table::combine()</a>. <br /></td></tr>
 <tr class="separator:a31a54c34e40fd88dea16ebbb9c65a7d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac23062089f3a5a2693cbb4ce7a75f1e5"><td class="memItemLeft" align="right" valign="top"><a id="ac23062089f3a5a2693cbb4ce7a75f1e5"></a>
 unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnum_1_1sparse__table_1_1cmb__data.html#ac23062089f3a5a2693cbb4ce7a75f1e5">i</a></td></tr>
@@ -161,7 +161,7 @@ struct num::sparse_table&lt; A &gt;::cmb_data</h3>
 </table>
 </div><div class="memdoc">
 
-<p>Initialize size and offset. </p>
+<p>Initialize size, offset, and reference to combining function. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">sz</td><td>Max size of array. </td></tr>

@@ -9,6 +9,7 @@
 #include "catch.hpp"
 #include "integral.hpp"
 #include "interpolant.hpp"
+#include "rk.hpp"
 #include "units.hpp"
 
 using namespace num;

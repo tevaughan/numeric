@@ -1,4 +1,6 @@
 <map id="combine" name="combine">
-<area shape="rect" id="node2" href="$classnum_1_1sparse__table.html#a5a5beca0c90f3bb112a5dbcf60776266" title="Multiply table by other table. " alt="" coords="124,5,199,32"/>
-<area shape="rect" id="node3" href="$classnum_1_1sparse__table.html#a244a6071a2e5b0970209f5cbae3a2a7a" title="Divide table by other table. " alt="" coords="125,56,198,83"/>
+<area shape="rect" id="node2" href="$classnum_1_1sparse__table.html#ac48e1e2c8e88d6a1dba10d7060ed0641" title="Add table to other table. " alt="" coords="124,5,201,32"/>
+<area shape="rect" id="node3" href="$classnum_1_1sparse__table.html#aadc1e65d4c5ffa507e189751c99db1fb" title="Subtract other table from table. " alt="" coords="126,56,199,83"/>
+<area shape="rect" id="node4" href="$classnum_1_1sparse__table.html#a5a5beca0c90f3bb112a5dbcf60776266" title="Multiply table by other table. " alt="" coords="125,107,200,133"/>
+<area shape="rect" id="node5" href="$classnum_1_1sparse__table.html#a244a6071a2e5b0970209f5cbae3a2a7a" title="Divide table by other table. " alt="" coords="126,157,199,184"/>
 </map>

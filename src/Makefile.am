@@ -40,6 +40,7 @@ pkginclude_HEADERS =\
  integral-stats.hpp\
  interpolant.hpp\
  interval.hpp\
+ rk.hpp\
  sparse-table.hpp\
  util.hpp
 
