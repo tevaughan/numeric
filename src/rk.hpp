@@ -365,10 +365,48 @@ namespace num
       /// corresponding element in the list returned by intermed_fnc().
       ylist const &intermed_int() const { return yl; }
 
-      /// Construct quadratic interpolant through intermediate points (same
-      /// points as returned by intermed_fnc()), so that curvature of each
-      /// piece is adjusted for agreement with integral (returned by
-      /// intermed_int()) of the same piece.
+      /// Construct the quadratic interpolant through the integrated function's
+      /// evaluated points (the same points as returned by intermed_fnc()), so
+      /// that the curvature of each piece is adjusted for agreement with the
+      /// Runge-Kutta estimate (returned by intermed_int()) of the integral
+      /// over the same piece.
+      ///
+      /// The coefficients of a quadratic interpolant between two points can be
+      /// determined if the area under the interpolant be known. For each piece
+      /// between subsequent points \f$p_i = (x_i,y_i)\f$ and \f$p_{i+1} =
+      /// (x_{i+1},y_{i+1})\f$ returned by intermed_fnc(), there are two
+      /// corresponding points \f$(x_i,Y_i)\f$ and \f$(x_{i+1},Y_{i+1})\f$
+      /// returned by intermed_int().  The difference,
+      /// \f[
+      ///    A_i = Y_{i+1} - Y_i
+      /// \f]
+      /// is the Runge-Kutta estimate of the area under the function that
+      /// passes through \f$p_i\f$ and \f$p_{i+1}\f$.
+      ///
+      /// The linear interpolant between the points has the form
+      /// \f[
+      ///    \lambda_i(x) = y_i + m_i [x - x_i],
+      /// \f]
+      /// where the slope is
+      /// \f[
+      ///    m_i = \frac{\Delta y_i}{\Delta x_i};
+      /// \f]
+      /// the area under the line is
+      /// \f[
+      ///    a_i = \Delta x_i \; \left[ y_i + \frac{\Delta y_i}{2} \right];
+      /// \f]
+      /// and where \f$\Delta x_i = x_{i+1} - x_i\f$, and \f$\Delta y_i =
+      /// y_{i+1} - y_i\f$.
+      ///
+      /// The quadratic interpolant that not only passes through \f$p_i\f$ and
+      /// \f$p_{i+1}\f$ but also covers the area \f$A_i\f$ is of the form
+      /// \f[
+      ///    q_i(x) = y_i + [m_i + c_i[x - x_{i+1}]][x - x_i],
+      /// \f]
+      /// where
+      /// \f[
+      ///    c_i = -\frac{6 [A_i - a_i]}{[\Delta x_i]^3}.
+      /// \f]
       sparse_table<X> make_fnc_interp() const
       {
          if (dl.size() < 2) {
@@ -380,23 +418,27 @@ namespace num
          using namespace std;
          vector<pair<X, GiNaC::ex>> vf(nd);
          for (unsigned i = 0; i < nd; ++i) {
-            unsigned const j   = i + 1;
-            X const &      x1  = dl[i].first;
-            X const &      x2  = dl[j].first;
-            X const        dx  = x2 - x1;
-            DYDX const &   y1  = dl[i].second;
-            DYDX const &   y2  = dl[j].second;
-            DYDX const     dy  = y2 - y1;
-            Y const        a1  = (y1 + 0.5 * dy) * dx;
-            Y const        a2  = yl[j].second - yl[i].second;
-            Y const        da  = a2 - a1;
-            auto const     dx3 = dx * dx * dx;
-            auto const     c2  = -6.0 * da / dx3;
-            auto const     c1  = dy / dx - c2 * (x1 + x2);
-            DYDX const     c0  = y1 - (c1 + c2 * x1) * x1;
-            auto const &   x   = sparse_table<X>::x;
-            vf[i].first        = dx;
-            vf[i].second       = c0 + c1 * x + c2 * pow(x, 2);
+            unsigned const j = i + 1;
+            // horizontal geometry
+            X const &x1 = dl[i].first; // left edge of piece
+            X const &x2 = dl[j].first; // right edge of piece
+            X const  dx = x2 - x1;     // width of piece
+            // vertical geometry
+            DYDX const &y1 = dl[i].second; // func val at left
+            DYDX const &y2 = dl[j].second; // func val at right
+            DYDX const  dy = y2 - y1;      // change in func val
+            // areas
+            Y const a1 = (y1 + 0.5 * dy) * dx;        // under linear interp
+            Y const a2 = yl[j].second - yl[i].second; // of R-K estimate
+            Y const da = a2 - a1;                     // difference
+            // calculation of coefficients
+            auto const dx3 = dx * dx * dx;
+            auto const c   = -6.0 * da / dx3; // quadratic coef
+            auto const m   = dy / dx;         // slope of linear interp
+            // construction of expression for piece
+            auto const &x = sparse_table<X>::x; // independent var's symbol
+            vf[i].first   = dx;                 // width of piece
+            vf[i].second  = y1 + (m + c * (x - x2)) * (x - x1); // expression
          }
          return sparse_table<X>(a0, move(vf));
       }

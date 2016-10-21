@@ -150,7 +150,7 @@ Y const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 <tr class="memdesc:a268eec1fd213727f34c2a6110721c83b"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of partial values of definite integral.  <a href="#a268eec1fd213727f34c2a6110721c83b">More...</a><br /></td></tr>
 <tr class="separator:a268eec1fd213727f34c2a6110721c83b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d8330c64a1d46e38f265111dd92d010"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>&lt; X &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1rk__quad.html#a6d8330c64a1d46e38f265111dd92d010">make_fnc_interp</a> () const</td></tr>
-<tr class="memdesc:a6d8330c64a1d46e38f265111dd92d010"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct quadratic interpolant through intermediate points (same points as returned by <a class="el" href="classnum_1_1rk__quad.html#ab9712d64260dcbe5a3e0e5139b52a2d5" title="List values returned by function to be integrated. ">intermed_fnc()</a>), so that curvature of each piece is adjusted for agreement with integral (returned by <a class="el" href="classnum_1_1rk__quad.html#a268eec1fd213727f34c2a6110721c83b" title="List of partial values of definite integral. ">intermed_int()</a>) of the same piece.  <a href="#a6d8330c64a1d46e38f265111dd92d010">More...</a><br /></td></tr>
+<tr class="memdesc:a6d8330c64a1d46e38f265111dd92d010"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the quadratic interpolant through the integrated function's evaluated points (the same points as returned by <a class="el" href="classnum_1_1rk__quad.html#ab9712d64260dcbe5a3e0e5139b52a2d5" title="List values returned by function to be integrated. ">intermed_fnc()</a>), so that the curvature of each piece is adjusted for agreement with the Runge-Kutta estimate (returned by <a class="el" href="classnum_1_1rk__quad.html#a268eec1fd213727f34c2a6110721c83b" title="List of partial values of definite integral. ">intermed_int()</a>) of the integral over the same piece.  <a href="#a6d8330c64a1d46e38f265111dd92d010">More...</a><br /></td></tr>
 <tr class="separator:a6d8330c64a1d46e38f265111dd92d010"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
@@ -724,9 +724,29 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Construct quadratic interpolant through intermediate points (same points as returned by <a class="el" href="classnum_1_1rk__quad.html#ab9712d64260dcbe5a3e0e5139b52a2d5" title="List values returned by function to be integrated. ">intermed_fnc()</a>), so that curvature of each piece is adjusted for agreement with integral (returned by <a class="el" href="classnum_1_1rk__quad.html#a268eec1fd213727f34c2a6110721c83b" title="List of partial values of definite integral. ">intermed_int()</a>) of the same piece. </p>
-
-<p>Definition at line <a class="el" href="rk_8hpp_source.html#l00372">372</a> of file <a class="el" href="rk_8hpp_source.html">rk.hpp</a>.</p>
+<p>Construct the quadratic interpolant through the integrated function's evaluated points (the same points as returned by <a class="el" href="classnum_1_1rk__quad.html#ab9712d64260dcbe5a3e0e5139b52a2d5" title="List values returned by function to be integrated. ">intermed_fnc()</a>), so that the curvature of each piece is adjusted for agreement with the Runge-Kutta estimate (returned by <a class="el" href="classnum_1_1rk__quad.html#a268eec1fd213727f34c2a6110721c83b" title="List of partial values of definite integral. ">intermed_int()</a>) of the integral over the same piece. </p>
+<p>The coefficients of a quadratic interpolant between two points can be determined if the area under the interpolant be known. For each piece between subsequent points \(p_i = (x_i,y_i)\) and \(p_{i+1} = (x_{i+1},y_{i+1})\) returned by <a class="el" href="classnum_1_1rk__quad.html#ab9712d64260dcbe5a3e0e5139b52a2d5" title="List values returned by function to be integrated. ">intermed_fnc()</a>, there are two corresponding points \((x_i,Y_i)\) and \((x_{i+1},Y_{i+1})\) returned by <a class="el" href="classnum_1_1rk__quad.html#a268eec1fd213727f34c2a6110721c83b" title="List of partial values of definite integral. ">intermed_int()</a>. The difference, </p><p class="formulaDsp">
+\[ A_i = Y_{i+1} - Y_i \]
+</p>
+<p> is the Runge-Kutta estimate of the area under the function that passes through \(p_i\) and \(p_{i+1}\).</p>
+<p>The linear interpolant between the points has the form </p><p class="formulaDsp">
+\[ \lambda_i(x) = y_i + m_i [x - x_i], \]
+</p>
+<p> where the slope is </p><p class="formulaDsp">
+\[ m_i = \frac{\Delta y_i}{\Delta x_i}; \]
+</p>
+<p> the area under the line is </p><p class="formulaDsp">
+\[ a_i = \Delta x_i \; \left[ y_i + \frac{\Delta y_i}{2} \right]; \]
+</p>
+<p> and where \(\Delta x_i = x_{i+1} - x_i\), and \(\Delta y_i = y_{i+1} - y_i\).</p>
+<p>The quadratic interpolant that not only passes through \(p_i\) and \(p_{i+1}\) but also covers the area \(A_i\) is of the form </p><p class="formulaDsp">
+\[ q_i(x) = y_i + [m_i + c_i[x - x_{i+1}]][x - x_i], \]
+</p>
+<p> where </p><p class="formulaDsp">
+\[ c_i = -\frac{6 [A_i - a_i]}{[\Delta x_i]^3}. \]
+</p>
+ 
+<p>Definition at line <a class="el" href="rk_8hpp_source.html#l00410">410</a> of file <a class="el" href="rk_8hpp_source.html">rk.hpp</a>.</p>
 
 </div>
 </div>

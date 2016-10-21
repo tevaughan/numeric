@@ -4,7 +4,6 @@
 
 #include <cmath>
 #include <fstream>
-#include <iostream>
 
 #include "rk.hpp"
 
@@ -20,8 +19,6 @@ int main()
    double const x1 = -5.0;
    double const x2 = +5.0;
    rk_quadd const i(g, x1, x2, 1.0E-04, 2, true);
-   cout << "fnc_points:\n" << i.intermed_fnc() << endl;
-   cout << "int_points:\n" << i.intermed_int() << endl;
    ofstream os("interp_2.dat");
    ofstream osa("interp_2a.dat");
    ofstream osb("interp_2b.dat");
