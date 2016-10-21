@@ -6,21 +6,18 @@
 
 /// \file   interpolant.hpp
 ///
-/// \brief  Source code for num::interpolant, num::ipoint, num::ilist,
-///         num::interpolantd, and num::ilistd.
+/// \brief  Definition for each of num::make_const_interp() and
+///         num_make_linear_interp().
 
 #ifndef NUMERIC_INTERPOLANT_HPP
 #define NUMERIC_INTERPOLANT_HPP
 
 #include <algorithm> // for sort()
-#include <fstream>   // for ifstream
 #include <iostream>  // for cerr, endl
 #include <limits>    // for numeric_limits::epsilon()
 #include <memory>    // for unique_ptr
-#include <sstream>   // for istringstream
 #include <string>    // for string
 #include <utility>   // for pair
-#include <vector>    // for vector
 
 #include <ilist.hpp>          // for ipoint, ilist
 #include <integral-stats.hpp> // for integral_stats
@@ -29,89 +26,6 @@
 
 namespace num
 {
-   /// Namespace for utility functions used by numeric.
-   namespace util
-   {
-      /// Extract point from space-delimited ASCII line.
-      /// \tparam X  Type of first column, representing X coordinate.
-      /// \tparam Y  Type of second column, representing Y coordinate.
-      template <typename X, typename Y>
-      ipoint<X, Y> get_point(
-            /** Line of non-blank ASCII text. */ std::string line,
-            /** Unit to multiply against first column. */ X  xu,
-            /** Unit to multiply against secnd column. */ Y  yu)
-      {
-         std::istringstream iss(line);
-         double             x, y;
-         if (!(iss >> x)) {
-            throw "error reading x";
-         }
-         if (!(iss >> y)) {
-            throw "error reading y";
-         }
-         return ipoint<X, Y>(x * xu, y * yu);
-      }
-
-      /// Extract a set of points from a space-delimited ASCII file.  Each line
-      /// of the file must consist either
-      ///
-      /// - of only white space, optionally followed by the '#' character and a
-      ///   subsequent comment or
-      ///
-      /// - of white space followed by at least two space-delimited
-      ///   floating-point numbers (after which everything else on the line is
-      ///   ignored).
-      ///
-      /// \tparam X  Type of first column, representing X coordinate.
-      /// \tparam Y  Type of second column, representing Y coordinate.
-      template <typename X, typename Y>
-      ilist<X, Y> get_points(
-            /** Name of ASCII file.          */ std::string file,
-            /** Unit to multiply against first column. */ X xu,
-            /** Unit to multiply against secnd column. */ Y yu)
-      {
-         std::ifstream is(file);
-         if (!is) {
-            throw "Failed to open '" + file + "'.";
-         }
-         std::string line;
-         ilist<X, Y> points;
-         while (getline(is, line)) {
-            size_t const p = line.find_first_not_of(" \f\n\r\t");
-            if (p == std::string::npos || line[p] == '#') {
-               continue;
-            }
-            points.push_back(get_point(line, xu, yu));
-         }
-         auto comp = [](ipoint<X, Y> const &a, ipoint<X, Y> const &b) {
-            return a.first < b.first;
-         };
-         sort(points.begin(), points.end(), comp);
-         return points;
-      }
-
-      /// Return the list of midpoints, each between a subsequent pair of
-      /// points in a sorted list.
-      ///
-      /// \tparam V  Type of vector of points.
-      /// \return    Midpoints sorted by x coordinate.
-      template <typename V>
-      V midpoints(/** Points sorted by x coordinate. */ V const &v)
-      {
-         if (v.size() < 2) {
-            return V();
-         }
-         V rv(v.size() - 1); // Return value.
-         for (unsigned j = 1; j < v.size(); ++j) {
-            unsigned const i  = j - 1;
-            auto const &   xi = v[i].first, &yi = v[i].second;
-            auto const &   xj = v[j].first, &yj = v[j].second;
-            rv[i] = {0.5 * (xi + xj), 0.5 * (yi + yj)};
-         }
-         return rv;
-      }
-   }
-
    /// Construct a (\ref sparse_table) piecewise-constant interpolant from the
    /// first two space-delimited columns in an ASCII file.  Each line of the
    /// file must consist either
@@ -122,10 +36,6 @@ namespace num
    /// - of white space followed by at least two space-delimited floating-point
    ///   numbers (after which everything else on the line is ignored).
    ///
-   /// FIXME: This was written when every subfunction in sparse_table took as
-   /// its argument the coordinate relative to the center of the subdomain.
-   /// That has changed, and so the implementation here is probably now wrong.
-   ///
    /// \tparam X  Type of first column, representing the x coordinate.
    /// \tparam Y  Type of second column, representing the Y coordinate.
    template <typename X = double, typename Y = double>
@@ -135,7 +45,7 @@ namespace num
          /** Unit multiplying secnd col. */ Y const &yu = 1)
    {
       using V    = ilist<X, Y>;
-      V const cp = util::get_points(file, xu, yu); // control points
+      V const cp = get_points(file, xu, yu); // control points
       if (cp.size() < 1) {
          throw "Must have at least one control point.";
       }
@@ -145,7 +55,7 @@ namespace num
       // control points, each between a pair of control points.  However, in
       // general only each of the first and last points lies in the center of
       // its subdomain.
-      V const cpmid = util::midpoints(cp); // control midpoints
+      V const cpmid = midpoints(cp); // control midpoints
       X const a0    = cp[0].first;
       std::vector<std::pair<X, GiNaC::ex>> vf(cp.size());
       vf[0].first  = 2.0 * (cpmid[0].first - cp[0].first);
@@ -166,13 +76,14 @@ namespace num
    /// \tparam X  Type of first element of each ordered pair.
    /// \tparam Y  Type of second element of each ordered pair.
    template <typename X = double, typename Y = double>
-   sparse_table<X> make_linear_interp(ilist<X, Y> const &cp)
+   sparse_table<X> make_linear_interp(ilist<X, Y> cp)
    {
       if (cp.size() == 0) {
          return sparse_table<X>();
       } else if (cp.size() == 1) {
          throw "Must have at least two control points.";
       }
+      std::sort(cp.begin(), cp.end());
       // For linear interpolation, each subdomain is just the x region between
       // subsequent control points.
       X const        a0      = 0.5 * (cp[0].first + cp[1].first);
@@ -216,7 +127,157 @@ namespace num
       if (file == "") {
          return sparse_table<X>();
       }
-      return make_linear_interp(util::get_points(file, xu, yu));
+      return make_linear_interp(get_points(file, xu, yu));
+   }
+
+   /// Initialize control points from copy of initial subinterval_stack.
+   /// \tparam X  Type of independent variable.
+   /// \tparam Y  Type of dependent variable.
+   template <typename X, typename Y>
+   void init_from_stack(
+         /** Copy of stack.                  */ subinterval_stack<X, Y> s,
+         /** Initially empty list of points. */ ilist<X, Y> &           d)
+   {
+      using interval = interval<X, Y>;
+      // Default ordering of stack is not what we want here.
+      auto comp = [](interval const &i1, interval const &i2) {
+         return i1.a < i2.a;
+      };
+      // Work from right-most to left-most subinterval.
+      std::sort(s.begin(), s.end(), comp);
+      while (s.size() > 1) {
+         // Push right-most end of every subinterval except for left-most
+         // subinterval.
+         interval const r = *s.rbegin();
+         s.pop_back();
+         d.push_back({r.b, r.fb});
+      }
+      // For left-most subinterval, push both ends.
+      interval const r = *s.rbegin();
+      s.pop_back();
+      d.push_back({r.b, r.fb});
+      d.push_back({r.a, r.fa});
+   }
+
+   /// Construct a (\ref sparse_table) piecewise-linear interpolant for a
+   /// continuous function over the specified interval of its domain. The
+   /// initial number of evenly spaced samples should be sufficient to allow
+   /// recursive subdivision to produce an interpolant with the desired
+   /// fractional error tolerance.  The numerical integral of the function is
+   /// computed as a by-product and---if the user supply a pointer in the final
+   /// argument---is then stored at the location indicated by the supplied
+   /// pointer.
+   ///
+   /// \tparam X   Type of independent variable.
+   /// \tparam Y   Type of dependent variable.
+   /// \param  f   Function to approximate via interpolation.
+   /// \param  aa  Left edge of domain.
+   /// \param  bb  Right edge of domain.
+   /// \param  t   Fractional tolerance of approximation.
+   /// \param  n   Initial number of evenly spaced samples of function.
+   /// \param  i   If non-null, pointer to storage integral.
+   template <typename X, typename Y>
+   sparse_table<X> make_linear_interp(
+         std::function<Y(X)> f, X aa, X bb, double t = 1.0E-06,
+         unsigned n = 16, decltype(X() * Y()) *i = nullptr)
+   {
+      double constexpr eps     = std::numeric_limits<double>::epsilon();
+      double constexpr min_tol = 1000.0 * eps;
+      double tol               = t;
+      if (tol <= 0.0) {
+         throw "tolerance not positive";
+      } else if (tol < min_tol) {
+         tol = min_tol;
+      }
+      double sign = 1.0;
+      if (aa > bb) {
+         std::swap(aa, bb);
+         sign = -1.0;
+      }
+      subinterval_stack<X, Y> s(n, aa, bb, f); // Stack of intervals.
+      ilist<X, Y>             d;               // Control points.
+      init_from_stack(s, d);                   // Add initial n points to d.
+      using A = decltype(X() * Y());
+      integral_stats<A> stats(0.0 * aa * f(aa));
+      while (s.size()) {
+         using interval   = interval<X, Y>;
+         interval const r = *s.rbegin();
+         s.pop_back();
+         X const midp  = 0.5 * (r.a + r.b);   // midpoint of interval
+         Y const fmid  = f(midp);             // function value at midpoint
+         X const len   = r.b - r.a;           // length of interval
+         Y const mean  = 0.5 * (r.fa + r.fb); // mean of function values
+         Y const rmean = 0.5 * (mean + fmid); // refined mean
+         Y const u0    = fabs(rmean);
+         Y const u1    = fabs(mean - rmean);
+         Y const u2    = fabs(mean + rmean);
+         Y const u3    = u0 * tol;
+         A const ds    = rmean * len;
+         if (u1 <= u3) {
+            // Estimated error sufficiently small.  Stop refining estimate.
+            stats.add(ds, u1 * len);
+            d.push_back({midp, fmid});
+         } else if (u1 <= u2 * tol) {
+            // Calculated error too small.  Stop refining estimate.
+            stats.add(ds, u1 * len);
+            d.push_back({midp, fmid});
+         } else if (len <= fabs(midp) * tol) {
+            // Length of interval too small.  Stop refining estimate.
+            stats.add(ds, u1 * len);
+            d.push_back({midp, fmid});
+         } else if (fabs(ds) <= fabs(stats.area()) * tol) {
+            // Increment to integral too small.  Stop refining estimate.
+            stats.add(ds, u1 * len);
+            d.push_back({midp, fmid});
+         } else {
+            // Continue subdividing.
+            s.push_back(interval{r.a, midp, r.fa, fmid});
+            s.push_back(interval{midp, r.b, fmid, r.fb});
+         }
+      }
+      A const farea = fabs(stats.area());
+      A const sigma = stats.stdev(); // statistical error
+      A const derr  = farea * t;     // desired error
+      A const rerr  = farea * eps;   // round-off error
+      A       eerr; // greater of statistical and round-off error
+      if (sigma < rerr) {
+         eerr = rerr;
+      } else {
+         eerr = sigma;
+      }
+      if (eerr > derr) {
+         std::cerr << "integral: WARNING: Estimated error " << eerr / farea
+                   << " is greater than tolerance " << t << "." << std::endl;
+      }
+      if (i) {
+         *i = sign * stats.area();
+      }
+      return make_linear_interp(d);
+   }
+
+   /// Construct a (\ref sparse_table) piecewise-linear interpolant for a
+   /// continuous function over the specified interval of its domain. The
+   /// initial number of evenly spaced samples should be sufficient to allow
+   /// recursive subdivision to produce an interpolant with the desired
+   /// fractional error tolerance.  The numerical integral of the function is
+   /// computed as a by-product and---if the user supply a pointer in the final
+   /// argument---is then stored at the location indicated by the supplied
+   /// pointer.
+   ///
+   /// \tparam X   Type of independent variable.
+   /// \tparam Y   Type of dependent variable.
+   /// \param  f   Function to approximate via interpolation.
+   /// \param  aa  Left edge of domain.
+   /// \param  bb  Right edge of domain.
+   /// \param  t   Fractional tolerance of approximation.
+   /// \param  n   Initial number of evenly spaced samples of function.
+   /// \param  i   If non-null, pointer to storage integral.
+   template <typename X = double, typename Y = double>
+   sparse_table<X> make_linear_interp(
+         Y (*f)(X), X aa, X bb, double t = 1.0E-06, unsigned n = 16,
+         decltype(X() * Y()) *i = nullptr)
+   {
+      return make_linear_interp(std::function<Y(X)>(f), aa, bb, t, n, i);
    }
 
    template <char TI, char D, char M, char C, char TE>

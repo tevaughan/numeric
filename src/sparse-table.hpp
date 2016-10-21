@@ -260,7 +260,8 @@ namespace num
       {
          ex rv = 0; // Return value.
          for (auto i : dat_) {
-            rv += GiNaC::integral(x, i.a - 0.5 * i.da, i.a + 0.5 * i.da, i.f);
+            rv += GiNaC::integral(x, i.a - 0.5 * i.da, i.a + 0.5 * i.da, i.f)
+                        .eval_integ();
          }
          return rv.evalf();
       }
@@ -295,7 +296,9 @@ namespace num
          auto pb = std::upper_bound(dat_.begin(), dat_.end(), b, acomp);
          if (pa == dat_.end()) {
             // Beginning of interval is after last center.
-            return (sign * GiNaC::integral(x, a, b, dat_.rbegin()->f)).evalf();
+            return (sign * GiNaC::integral(x, a, b, dat_.rbegin()->f))
+                  .eval_integ()
+                  .evalf();
          } else if (pa->a - a > 0.5 * pa->da) {
             --pa; // Beginning of interval is too far from subsequent center.
          }
@@ -319,7 +322,7 @@ namespace num
                bb = i->a + 0.5 * i->da; // End of piece.
             }                           //
             // Integral over current piece.
-            rv += GiNaC::integral(x, aa, bb, i->f);
+            rv += GiNaC::integral(x, aa, bb, i->f).eval_integ();
          }
          return (sign * rv).evalf();
       }

@@ -80,17 +80,14 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Source code for <a class="el" href="classnum_1_1interpolant.html" title="Linear interpolant. ">num::interpolant</a>, <a class="el" href="namespacenum.html#aecf042ab6b895357dd13471266377348" title="Point used as one of the constraints of a linear interpolant. ">num::ipoint</a>, <a class="el" href="namespacenum.html#adf4e925e819b4813b11a93875568934f" title="List of points used to constrain a linear interpolant. ">num::ilist</a>, <a class="el" href="namespacenum.html#ae9147eb230dfb0f7a14fba97a2998f2d" title="Alias for interpolant and maps from double to double. ">num::interpolantd</a>, and <a class="el" href="namespacenum.html#aaca12da760a724444ebc4434b8485ca8" title="Alias for initializer for interpolantd. ">num::ilistd</a>.  
+<p>Definition for each of <a class="el" href="namespacenum.html#a61fedfb3066b45f72b7b79855b1b5d3f" title="Construct a (sparse_table) piecewise-constant interpolant from the first two space-delimited columns ...">num::make_const_interp()</a> and num_make_linear_interp().  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;algorithm&gt;</code><br />
-<code>#include &lt;fstream&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;limits&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
-<code>#include &lt;sstream&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;utility&gt;</code><br />
-<code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;<a class="el" href="ilist_8hpp_source.html">ilist.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="integral-stats_8hpp_source.html">integral-stats.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="interval_8hpp_source.html">interval.hpp</a>&gt;</code><br />
@@ -100,10 +97,10 @@ Include dependency graph for interpolant.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="interpolant_8hpp__incl.png" border="0" usemap="#interpolant_8hpp" alt=""/></div>
 <map name="interpolant_8hpp" id="interpolant_8hpp">
-<area shape="rect" id="node11" href="ilist_8hpp.html" title="Definition of ipoint, ilist, and output&#45;stream operator for each. " alt="" coords="388,80,455,107"/>
-<area shape="rect" id="node12" href="integral-stats_8hpp.html" title="Source for num::integral_stats, which is used by num::integral() and by num::interpolant. " alt="" coords="1041,80,1164,107"/>
-<area shape="rect" id="node13" href="interval_8hpp.html" title="Source for class interval and class subinterval_stack, which are used by num::integral() and by num::..." alt="" coords="223,80,313,107"/>
-<area shape="rect" id="node15" href="sparse-table_8hpp.html" title="Definition of num::sparse&#45;table. " alt="" coords="81,80,199,107"/>
+<area shape="rect" id="node8" href="ilist_8hpp.html" title="Definition for each of num::ipoint, num::ilist, corresponding output&#45;stream operators, num::get_point(), num::get_points(), and num::midpoints(). " alt="" coords="96,80,163,107"/>
+<area shape="rect" id="node12" href="integral-stats_8hpp.html" title="Source for num::integral_stats, which is used by num::integral() and by num::interpolant. " alt="" coords="629,80,752,107"/>
+<area shape="rect" id="node13" href="interval_8hpp.html" title="Source for class interval and class subinterval_stack, which are used by num::integral() and by num::..." alt="" coords="515,80,605,107"/>
+<area shape="rect" id="node15" href="sparse-table_8hpp.html" title="Definition of num::sparse&#45;table. " alt="" coords="777,80,895,107"/>
 </map>
 </div>
 </div>
@@ -123,9 +120,6 @@ Namespaces</h2></td></tr>
 <tr class="memitem:namespacenum"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum.html">num</a></td></tr>
 <tr class="memdesc:namespacenum"><td class="mdescLeft">&#160;</td><td class="mdescRight">Namespace for C++-11 library enabling numerical computation. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespacenum_1_1util"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenum_1_1util.html">num::util</a></td></tr>
-<tr class="memdesc:namespacenum_1_1util"><td class="mdescLeft">&#160;</td><td class="mdescRight">Namespace for utility functions used by numeric. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -140,33 +134,33 @@ using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nam
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a10fb703957fac85204b09865ba8139d0"><td class="memTemplParams" colspan="2">template&lt;typename X , typename Y &gt; </td></tr>
-<tr class="memitem:a10fb703957fac85204b09865ba8139d0"><td class="memTemplItemLeft" align="right" valign="top">ipoint&lt; X, Y &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum_1_1util.html#a10fb703957fac85204b09865ba8139d0">get_point</a> (std::string line, X xu, Y yu)</td></tr>
-<tr class="memdesc:a10fb703957fac85204b09865ba8139d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extract point from space-delimited ASCII line.  <a href="namespacenum_1_1util.html#a10fb703957fac85204b09865ba8139d0">More...</a><br /></td></tr>
-<tr class="separator:a10fb703957fac85204b09865ba8139d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a956eded51d2b54b1e191f635beb2bae9"><td class="memTemplParams" colspan="2">template&lt;typename X , typename Y &gt; </td></tr>
-<tr class="memitem:a956eded51d2b54b1e191f635beb2bae9"><td class="memTemplItemLeft" align="right" valign="top">ilist&lt; X, Y &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum_1_1util.html#a956eded51d2b54b1e191f635beb2bae9">get_points</a> (std::string file, X xu, Y yu)</td></tr>
-<tr class="memdesc:a956eded51d2b54b1e191f635beb2bae9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extract a set of points from a space-delimited ASCII file.  <a href="namespacenum_1_1util.html#a956eded51d2b54b1e191f635beb2bae9">More...</a><br /></td></tr>
-<tr class="separator:a956eded51d2b54b1e191f635beb2bae9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a10274738ef08518d8c4280048a75639c"><td class="memTemplParams" colspan="2">template&lt;typename V &gt; </td></tr>
-<tr class="memitem:a10274738ef08518d8c4280048a75639c"><td class="memTemplItemLeft" align="right" valign="top">V&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum_1_1util.html#a10274738ef08518d8c4280048a75639c">midpoints</a> (V const &amp;v)</td></tr>
-<tr class="memdesc:a10274738ef08518d8c4280048a75639c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the list of midpoints, each between a subsequent pair of points in a sorted list.  <a href="namespacenum_1_1util.html#a10274738ef08518d8c4280048a75639c">More...</a><br /></td></tr>
-<tr class="separator:a10274738ef08518d8c4280048a75639c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61fedfb3066b45f72b7b79855b1b5d3f"><td class="memTemplParams" colspan="2">template&lt;typename X  = double, typename Y  = double&gt; </td></tr>
 <tr class="memitem:a61fedfb3066b45f72b7b79855b1b5d3f"><td class="memTemplItemLeft" align="right" valign="top">sparse_table&lt; X &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a61fedfb3066b45f72b7b79855b1b5d3f">make_const_interp</a> (std::string file, X const &amp;xu=1, Y const &amp;yu=1)</td></tr>
 <tr class="memdesc:a61fedfb3066b45f72b7b79855b1b5d3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a (<a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>) piecewise-constant interpolant from the first two space-delimited columns in an ASCII file.  <a href="namespacenum.html#a61fedfb3066b45f72b7b79855b1b5d3f">More...</a><br /></td></tr>
 <tr class="separator:a61fedfb3066b45f72b7b79855b1b5d3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7241688799e9a5581c105a672c3f55a7"><td class="memTemplParams" colspan="2">template&lt;typename X  = double, typename Y  = double&gt; </td></tr>
-<tr class="memitem:a7241688799e9a5581c105a672c3f55a7"><td class="memTemplItemLeft" align="right" valign="top">sparse_table&lt; X &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a7241688799e9a5581c105a672c3f55a7">make_linear_interp</a> (ilist&lt; X, Y &gt; const &amp;cp)</td></tr>
-<tr class="memdesc:a7241688799e9a5581c105a672c3f55a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a (<a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>) piecewise-linear interpolant from a set of ordered pairs.  <a href="namespacenum.html#a7241688799e9a5581c105a672c3f55a7">More...</a><br /></td></tr>
-<tr class="separator:a7241688799e9a5581c105a672c3f55a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a516e723428429d82badb6c9bcfad7eda"><td class="memTemplParams" colspan="2">template&lt;typename X  = double, typename Y  = double&gt; </td></tr>
+<tr class="memitem:a516e723428429d82badb6c9bcfad7eda"><td class="memTemplItemLeft" align="right" valign="top">sparse_table&lt; X &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a516e723428429d82badb6c9bcfad7eda">make_linear_interp</a> (ilist&lt; X, Y &gt; cp)</td></tr>
+<tr class="memdesc:a516e723428429d82badb6c9bcfad7eda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a (<a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>) piecewise-linear interpolant from a set of ordered pairs.  <a href="namespacenum.html#a516e723428429d82badb6c9bcfad7eda">More...</a><br /></td></tr>
+<tr class="separator:a516e723428429d82badb6c9bcfad7eda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23201466955a009d1ace6b95b3261eb3"><td class="memTemplParams" colspan="2">template&lt;typename X  = double, typename Y  = double&gt; </td></tr>
 <tr class="memitem:a23201466955a009d1ace6b95b3261eb3"><td class="memTemplItemLeft" align="right" valign="top">sparse_table&lt; X &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a23201466955a009d1ace6b95b3261eb3">make_linear_interp</a> (std::string file=&quot;&quot;, X const &amp;xu=1, Y const &amp;yu=1)</td></tr>
 <tr class="memdesc:a23201466955a009d1ace6b95b3261eb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a (<a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>) piecewise-linear interpolant from the first two space-delimited columns in an ASCII file.  <a href="namespacenum.html#a23201466955a009d1ace6b95b3261eb3">More...</a><br /></td></tr>
 <tr class="separator:a23201466955a009d1ace6b95b3261eb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5ca59c97edd58abe2b92aeb18206830"><td class="memTemplParams" colspan="2">template&lt;typename X , typename Y &gt; </td></tr>
+<tr class="memitem:ae5ca59c97edd58abe2b92aeb18206830"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#ae5ca59c97edd58abe2b92aeb18206830">init_from_stack</a> (subinterval_stack&lt; X, Y &gt; s, ilist&lt; X, Y &gt; &amp;d)</td></tr>
+<tr class="memdesc:ae5ca59c97edd58abe2b92aeb18206830"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize control points from copy of initial <a class="el" href="structnum_1_1subinterval__stack.html" title="Stack used by integral() and by class interpolant. ">subinterval_stack</a>.  <a href="namespacenum.html#ae5ca59c97edd58abe2b92aeb18206830">More...</a><br /></td></tr>
+<tr class="separator:ae5ca59c97edd58abe2b92aeb18206830"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac657d0de135af552db4495044480640f"><td class="memTemplParams" colspan="2">template&lt;typename X , typename Y &gt; </td></tr>
+<tr class="memitem:ac657d0de135af552db4495044480640f"><td class="memTemplItemLeft" align="right" valign="top">sparse_table&lt; X &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#ac657d0de135af552db4495044480640f">make_linear_interp</a> (std::function&lt; Y(X)&gt; f, X aa, X bb, <a class="el" href="classdouble.html">double</a> t=1.0E-06, unsigned n=16, decltype(X() *Y()) *i=nullptr)</td></tr>
+<tr class="memdesc:ac657d0de135af552db4495044480640f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a (<a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>) piecewise-linear interpolant for a continuous function over the specified interval of its domain.  <a href="namespacenum.html#ac657d0de135af552db4495044480640f">More...</a><br /></td></tr>
+<tr class="separator:ac657d0de135af552db4495044480640f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a936024a0e9a2ba3111318bd64e92e600"><td class="memTemplParams" colspan="2">template&lt;typename X  = double, typename Y  = double&gt; </td></tr>
+<tr class="memitem:a936024a0e9a2ba3111318bd64e92e600"><td class="memTemplItemLeft" align="right" valign="top">sparse_table&lt; X &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a936024a0e9a2ba3111318bd64e92e600">make_linear_interp</a> (Y(*f)(X), X aa, X bb, <a class="el" href="classdouble.html">double</a> t=1.0E-06, unsigned n=16, decltype(X() *Y()) *i=nullptr)</td></tr>
+<tr class="memdesc:a936024a0e9a2ba3111318bd64e92e600"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a (<a class="el" href="classnum_1_1sparse__table.html">sparse_table</a>) piecewise-linear interpolant for a continuous function over the specified interval of its domain.  <a href="namespacenum.html#a936024a0e9a2ba3111318bd64e92e600">More...</a><br /></td></tr>
+<tr class="separator:a936024a0e9a2ba3111318bd64e92e600"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Source code for <a class="el" href="classnum_1_1interpolant.html" title="Linear interpolant. ">num::interpolant</a>, <a class="el" href="namespacenum.html#aecf042ab6b895357dd13471266377348" title="Point used as one of the constraints of a linear interpolant. ">num::ipoint</a>, <a class="el" href="namespacenum.html#adf4e925e819b4813b11a93875568934f" title="List of points used to constrain a linear interpolant. ">num::ilist</a>, <a class="el" href="namespacenum.html#ae9147eb230dfb0f7a14fba97a2998f2d" title="Alias for interpolant and maps from double to double. ">num::interpolantd</a>, and <a class="el" href="namespacenum.html#aaca12da760a724444ebc4434b8485ca8" title="Alias for initializer for interpolantd. ">num::ilistd</a>. </p>
+<div class="textblock"><p>Definition for each of <a class="el" href="namespacenum.html#a61fedfb3066b45f72b7b79855b1b5d3f" title="Construct a (sparse_table) piecewise-constant interpolant from the first two space-delimited columns ...">num::make_const_interp()</a> and num_make_linear_interp(). </p>
 
 <p>Definition in file <a class="el" href="interpolant_8hpp_source.html">interpolant.hpp</a>.</p>
 </div></div><!-- contents -->

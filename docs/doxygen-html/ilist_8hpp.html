@@ -79,9 +79,11 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Definition of ipoint, ilist, and output-stream operator for each.  
+<p>Definition for each of <a class="el" href="namespacenum.html#aecf042ab6b895357dd13471266377348" title="Point used as one of the constraints of a linear interpolant. ">num::ipoint</a>, <a class="el" href="namespacenum.html#adf4e925e819b4813b11a93875568934f" title="List of points used to constrain a linear interpolant. ">num::ilist</a>, corresponding output-stream operators, <a class="el" href="namespacenum.html#a58b4ef7f1f5ab9df9c3301a1c2adf66b" title="Extract point from space-delimited ASCII line. ">num::get_point()</a>, <a class="el" href="namespacenum.html#a9f5e5d74dff045022b2664ad2a34f89d" title="Extract a set of points from a space-delimited ASCII file. ">num::get_points()</a>, and <a class="el" href="namespacenum.html#adf5ae0c12df88ab650b2a92b0796eabd" title="Return the list of midpoints, each between a subsequent pair of points in a sorted list...">num::midpoints()</a>.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
+<div class="textblock"><code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for ilist.hpp:</div>
@@ -95,7 +97,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="ilist_8hpp__dep__incl.png" border="0" usemap="#ilist_8hppdep" alt=""/></div>
 <map name="ilist_8hppdep" id="ilist_8hppdep">
-<area shape="rect" id="node2" href="interpolant_8hpp.html" title="Source code for num::interpolant, num::ipoint, num::ilist, num::interpolantd, and num::ilistd..." alt="" coords="5,80,112,107"/>
+<area shape="rect" id="node2" href="interpolant_8hpp.html" title="Definition for each of num::make_const_interp() and num_make_linear_interp(). " alt="" coords="5,80,112,107"/>
 <area shape="rect" id="node3" href="rk_8hpp.html" title="Definition of num::rk_base and num::rk_quad. " alt="" coords="136,80,195,107"/>
 </map>
 </div>
@@ -129,9 +131,21 @@ Functions</h2></td></tr>
 <tr class="memitem:aa5eb307b1a69d6c912cdf820e0b7f7cc"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#aa5eb307b1a69d6c912cdf820e0b7f7cc">operator&lt;&lt;</a> (std::ostream &amp;os, ilist&lt; I, D &gt; const &amp;list)</td></tr>
 <tr class="memdesc:aa5eb307b1a69d6c912cdf820e0b7f7cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send ilist to output stream.  <a href="namespacenum.html#aa5eb307b1a69d6c912cdf820e0b7f7cc">More...</a><br /></td></tr>
 <tr class="separator:aa5eb307b1a69d6c912cdf820e0b7f7cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58b4ef7f1f5ab9df9c3301a1c2adf66b"><td class="memTemplParams" colspan="2">template&lt;typename X , typename Y &gt; </td></tr>
+<tr class="memitem:a58b4ef7f1f5ab9df9c3301a1c2adf66b"><td class="memTemplItemLeft" align="right" valign="top">ipoint&lt; X, Y &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a58b4ef7f1f5ab9df9c3301a1c2adf66b">get_point</a> (std::string line, X xu, Y yu)</td></tr>
+<tr class="memdesc:a58b4ef7f1f5ab9df9c3301a1c2adf66b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extract point from space-delimited ASCII line.  <a href="namespacenum.html#a58b4ef7f1f5ab9df9c3301a1c2adf66b">More...</a><br /></td></tr>
+<tr class="separator:a58b4ef7f1f5ab9df9c3301a1c2adf66b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f5e5d74dff045022b2664ad2a34f89d"><td class="memTemplParams" colspan="2">template&lt;typename X , typename Y &gt; </td></tr>
+<tr class="memitem:a9f5e5d74dff045022b2664ad2a34f89d"><td class="memTemplItemLeft" align="right" valign="top">ilist&lt; X, Y &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a9f5e5d74dff045022b2664ad2a34f89d">get_points</a> (std::string file, X xu, Y yu)</td></tr>
+<tr class="memdesc:a9f5e5d74dff045022b2664ad2a34f89d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extract a set of points from a space-delimited ASCII file.  <a href="namespacenum.html#a9f5e5d74dff045022b2664ad2a34f89d">More...</a><br /></td></tr>
+<tr class="separator:a9f5e5d74dff045022b2664ad2a34f89d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf5ae0c12df88ab650b2a92b0796eabd"><td class="memTemplParams" colspan="2">template&lt;typename V &gt; </td></tr>
+<tr class="memitem:adf5ae0c12df88ab650b2a92b0796eabd"><td class="memTemplItemLeft" align="right" valign="top">V&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#adf5ae0c12df88ab650b2a92b0796eabd">midpoints</a> (V const &amp;v)</td></tr>
+<tr class="memdesc:adf5ae0c12df88ab650b2a92b0796eabd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the list of midpoints, each between a subsequent pair of points in a sorted list.  <a href="namespacenum.html#adf5ae0c12df88ab650b2a92b0796eabd">More...</a><br /></td></tr>
+<tr class="separator:adf5ae0c12df88ab650b2a92b0796eabd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Definition of ipoint, ilist, and output-stream operator for each. </p>
+<div class="textblock"><p>Definition for each of <a class="el" href="namespacenum.html#aecf042ab6b895357dd13471266377348" title="Point used as one of the constraints of a linear interpolant. ">num::ipoint</a>, <a class="el" href="namespacenum.html#adf4e925e819b4813b11a93875568934f" title="List of points used to constrain a linear interpolant. ">num::ilist</a>, corresponding output-stream operators, <a class="el" href="namespacenum.html#a58b4ef7f1f5ab9df9c3301a1c2adf66b" title="Extract point from space-delimited ASCII line. ">num::get_point()</a>, <a class="el" href="namespacenum.html#a9f5e5d74dff045022b2664ad2a34f89d" title="Extract a set of points from a space-delimited ASCII file. ">num::get_points()</a>, and <a class="el" href="namespacenum.html#adf5ae0c12df88ab650b2a92b0796eabd" title="Return the list of midpoints, each between a subsequent pair of points in a sorted list...">num::midpoints()</a>. </p>
 
 <p>Definition in file <a class="el" href="ilist_8hpp_source.html">ilist.hpp</a>.</p>
 </div></div><!-- contents -->

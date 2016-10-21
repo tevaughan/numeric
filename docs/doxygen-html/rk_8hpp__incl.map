@@ -1,5 +1,5 @@
 <map id="rk.hpp" name="rk.hpp">
-<area shape="rect" id="node4" href="$ilist_8hpp.html" title="Definition of ipoint, ilist, and output&#45;stream operator for each. " alt="" coords="186,80,253,107"/>
-<area shape="rect" id="node7" href="$sparse-table_8hpp.html" title="Definition of num::sparse&#45;table. " alt="" coords="277,80,396,107"/>
-<area shape="rect" id="node10" href="$util_8hpp.html" title="Basic utilities. " alt="" coords="421,80,485,107"/>
+<area shape="rect" id="node4" href="$ilist_8hpp.html" title="Definition for each of num::ipoint, num::ilist, corresponding output&#45;stream operators, num::get_point(), num::get_points(), and num::midpoints(). " alt="" coords="193,80,260,107"/>
+<area shape="rect" id="node9" href="$sparse-table_8hpp.html" title="Definition of num::sparse&#45;table. " alt="" coords="285,80,403,107"/>
+<area shape="rect" id="node12" href="$util_8hpp.html" title="Basic utilities. " alt="" coords="428,80,492,107"/>
 </map>
