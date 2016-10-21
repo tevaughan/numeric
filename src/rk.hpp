@@ -373,10 +373,17 @@ namespace num
       ///
       /// The coefficients of a quadratic interpolant between two points can be
       /// determined if the area under the interpolant be known. For each piece
-      /// between subsequent points \f$p_i = (x_i,y_i)\f$ and \f$p_{i+1} =
-      /// (x_{i+1},y_{i+1})\f$ returned by intermed_fnc(), there are two
-      /// corresponding points \f$(x_i,Y_i)\f$ and \f$(x_{i+1},Y_{i+1})\f$
-      /// returned by intermed_int().  The difference,
+      /// between subsequent points
+      /// \f[
+      ///    p_i = (x_i,y_i)
+      /// \f]
+      /// \f[
+      ///    p_{i+1} = (x_{i+1},y_{i+1})
+      /// \f]
+      /// returned by intermed_fnc(), there are two corresponding points
+      /// \f$(x_i,Y_i)\f$ and \f$(x_{i+1},Y_{i+1})\f$ returned by
+      /// intermed_int(). (The notation used here is different from that used
+      /// in the documentation for intermed_int().)  The difference,
       /// \f[
       ///    A_i = Y_{i+1} - Y_i
       /// \f]
@@ -395,8 +402,13 @@ namespace num
       /// \f[
       ///    a_i = \Delta x_i \; \left[ y_i + \frac{\Delta y_i}{2} \right];
       /// \f]
-      /// and where \f$\Delta x_i = x_{i+1} - x_i\f$, and \f$\Delta y_i =
-      /// y_{i+1} - y_i\f$.
+      /// and where
+      /// \f[
+      ///    \Delta x_i = x_{i+1} - x_i
+      /// \f]
+      /// \f[
+      ///    \Delta y_i = y_{i+1} - y_i.
+      /// \f]
       ///
       /// The quadratic interpolant that not only passes through \f$p_i\f$ and
       /// \f$p_{i+1}\f$ but also covers the area \f$A_i\f$ is of the form
@@ -439,6 +451,87 @@ namespace num
             auto const &x = sparse_table<X>::x; // independent var's symbol
             vf[i].first   = dx;                 // width of piece
             vf[i].second  = y1 + (m + c * (x - x2)) * (x - x1); // expression
+         }
+         return sparse_table<X>(a0, move(vf));
+      }
+
+      /// Construct the cubic interpolant through the integral's partial-sum
+      /// points (the same points as returned by intermed_int()), so that the
+      /// curvature of each piece is adjusted for agreement with the derivative
+      /// values (returned by intermed_fnc()) at the endpoints of the same
+      /// piece.
+      ///
+      /// The coefficients of a cubic interpolant between two points can be
+      /// determined if the derivative be known at each piece's endpoint.  For
+      /// each piece between subsequent points
+      /// \f[
+      ///    p_i = (x_i,y_i)
+      /// \f]
+      /// \f[
+      ///    p_{i+1} = (x_{i+1},y_{i+1})
+      /// \f]
+      /// returned by intermed_int(), there are two corresponding derivative
+      /// constraints \f$(x_i,y'_i)\f$ and \f$(x_{i+1},y'_{i+1})\f$ returned by
+      /// intermed_fnc(). (The notation used here is different from that used
+      /// in the documentation for intermed_fnc().)
+      ///
+      /// The linear interpolant between the points has the form
+      /// \f[
+      ///    \lambda_i(x) = y_i + m_i [x - x_i],
+      /// \f]
+      /// where the slope is
+      /// \f[
+      ///    m_i = \frac{\Delta y_i}{\Delta x_i},
+      /// \f]
+      /// and where
+      /// \f[
+      ///    \Delta x_i = x_{i+1} - x_i
+      /// \f]
+      /// \f[
+      ///    \Delta y_i = y_{i+1} - y_i.
+      /// \f]
+      ///
+      /// The cubic interpolant that not only passes through \f$p_i\f$ and
+      /// \f$p_{i+1}\f$ but also obeys the constraints on the derivative
+      /// returned by intermed_fnc() has the form
+      /// \f[
+      ///    \kappa_i(x) = y_i + y'_i [x - x_i] + \frac{3m_i - 2y'_i -
+      ///    y'_{i+1}}{\Delta x_i} [x - x_i]^2 + \frac{y'_i + y'_{i+1} -
+      ///    2m_i}{[\Delta x_i]^2} [x - x_i]^3.
+      /// \f]
+      sparse_table<X> make_int_interp() const
+      {
+         if (dl.size() < 2) {
+            throw "Must have at least two control points.";
+         }
+         // Each subdomain is the x region between subsequent control points.
+         X const        a0 = 0.5 * (dl[0].first + dl[1].first);
+         unsigned const nd = dl.size() - 1; // number of deltas
+         using namespace std;
+         vector<pair<X, GiNaC::ex>> vf(nd);
+         for (unsigned i = 0; i < nd; ++i) {
+            unsigned const j = i + 1;
+            // horizontal geometry
+            X const &x1 = yl[i].first; // left edge of piece
+            X const &x2 = yl[j].first; // right edge of piece
+            X const  dx = x2 - x1;     // width of piece
+            // vertical geometry
+            Y const &y1 = yl[i].second; // func val at left
+            Y const &y2 = yl[j].second; // func val at right
+            Y const  dy = y2 - y1;      // change in func val
+            // derivatives
+            DYDX const &yp1 = dl[i].second; // derivative at left edge
+            DYDX const &yp2 = dl[j].second; // derivative at right edge
+            // calculation of coefficients
+            auto const dx2 = dx * dx;
+            auto const m   = dy / dx; // slope of linear interp
+            auto const c = (3.0 * m - 2.0 * yp1 - yp2) / dx; // quadratic coef
+            auto const d = (yp1 + yp2 - 2.0 * m) / dx2;      // cubic coef
+            // construction of expression for piece
+            auto const &x  = sparse_table<X>::x; // independent var's symbol
+            auto const  xt = x - x1;             // change of variable
+            vf[i].first    = dx;                 // width of piece
+            vf[i].second   = y1 + yp1 * xt + c * pow(xt, 2) + d * pow(xt, 3);
          }
          return sparse_table<X>(a0, move(vf));
       }

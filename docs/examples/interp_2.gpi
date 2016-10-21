@@ -2,12 +2,14 @@
 set grid
 set key below
 set term pngcairo size 800,600
-set title "Evaluation of Gaussian in Runge-Kutta Quadrature,\nArea Accurate to One Part in Ten Thousand"
+set title "Gaussian Integrated in Runge-Kutta Quadrature,\nIntegral Accurate to One Part in Ten Thousand"
 set output "interp_2.png"
-set yrange [-0.02:0.42]
+set xrange [-5.30:5.30]
+set yrange [-0.04:1.04]
 
 plot\
- "interp_2.dat" title "evaluation points in Runge-Kutta integration",\
+ "interp_2.dat" title "Gaussian evaluation points in Runge-Kutta integration",\
  "interp_2a.dat" with lines title "quadratic interpolant consistent with Runge-Kutta solution",\
- "interp_2b.dat" with lines title "exact curve"
+ "interp_2c.dat" title "intermediate integration points in Runge-Kutta integration",\
+ "interp_2d.dat" with lines title "cubic interpolant through intermediate Runge-Kutta sums"
 
