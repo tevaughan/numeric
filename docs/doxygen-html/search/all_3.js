@@ -35,7 +35,7 @@ var searchData=
   ['dimval_5fbase',['dimval_base',['../structnum_1_1dimval__base.html',1,'num']]],
   ['dl',['dl',['../classnum_1_1rk__quad.html#a32edd2b54428583cba8c4102fbf84d3e',1,'num::rk_quad']]],
   ['dlist',['dlist',['../classnum_1_1rk__quad.html#a1588386acaa85661ea0bc0096d5d823e',1,'num::rk_quad']]],
-  ['dydx',['DYDX',['../classnum_1_1rk__quad.html#acd9a2068c17608311027ef1d48ba149d',1,'num::rk_quad::DYDX()'],['../classnum_1_1rk__quad.html#ab3467d80f47e4b752c4a6048a26a54fa',1,'num::rk_quad::dydx()']]],
+  ['dydx',['dydx',['../classnum_1_1rk__quad.html#ab3467d80f47e4b752c4a6048a26a54fa',1,'num::rk_quad::dydx()'],['../classnum_1_1rk__quad.html#acd9a2068c17608311027ef1d48ba149d',1,'num::rk_quad::DYDX()']]],
   ['dyn',['dyn',['../namespacenum_1_1u.html#ada87a1d385bf930895d965b118896b68',1,'num::u']]],
   ['dyndim',['dyndim',['../classnum_1_1dyndim.html',1,'num']]],
   ['dyndim',['dyndim',['../classnum_1_1dimval.html#a19425b210cb0862d8423dd0c852b6917',1,'num::dimval::dyndim()'],['../classnum_1_1statdim.html#a19425b210cb0862d8423dd0c852b6917',1,'num::statdim::dyndim()'],['../classnum_1_1dyndim.html#accab0f8f5c8e1ea2ece4d34d79837f77',1,'num::dyndim::dyndim(double v, dim_exps e)'],['../classnum_1_1dyndim.html#a8ef93e3cbb0e3807e9ac67d376582f22',1,'num::dyndim::dyndim()=default'],['../classnum_1_1dyndim.html#af5799f85a4590e36fabef50cfad61873',1,'num::dyndim::dyndim(statdim&lt; TI, D, M, C, TE &gt; const &amp;sd)'],['../classnum_1_1dyndim.html#a3c4e6646b3e323cf1f95178490b589bf',1,'num::dyndim::dyndim(dyndim const &amp;dd)=default']]],

@@ -1,5 +1,6 @@
 <map id="integral.hpp" name="integral.hpp">
-<area shape="rect" id="node6" href="$integral-stats_8hpp.html" title="Source for num::integral_stats, which is used by num::integral() and by num::interpolant. " alt="" coords="312,80,435,107"/>
-<area shape="rect" id="node7" href="$interval_8hpp.html" title="Source for class interval and class subinterval_stack, which are used by num::integral() and by num::..." alt="" coords="459,80,549,107"/>
-<area shape="rect" id="node10" href="$util_8hpp.html" title="Basic utilities. " alt="" coords="573,80,637,107"/>
+<area shape="rect" id="node2" href="$rk_8hpp.html" title="Definition of num::rk_base and num::rk_quad. " alt="" coords="197,80,256,107"/>
+<area shape="rect" id="node5" href="$ilist_8hpp.html" title="Definition for each of num::ipoint, num::ilist, corresponding output&#45;stream operators, num::get_point(), num::get_points(), and num::midpoints(). " alt="" coords="193,155,260,181"/>
+<area shape="rect" id="node10" href="$sparse-table_8hpp.html" title="Definition of num::sparse&#45;table. " alt="" coords="285,155,403,181"/>
+<area shape="rect" id="node13" href="$util_8hpp.html" title="Basic utilities. " alt="" coords="428,155,492,181"/>
 </map>

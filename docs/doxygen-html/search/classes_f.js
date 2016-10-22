@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['watts',['watts',['../structnum_1_1u_1_1watts.html',1,'num::u']]],
-  ['weeks',['weeks',['../structnum_1_1u_1_1weeks.html',1,'num::u']]]
+  ['tiny',['tiny',['../classnum_1_1tiny.html',1,'num']]],
+  ['tiny_3c_20dyndim_20_3e',['tiny&lt; dyndim &gt;',['../classnum_1_1tiny_3_01dyndim_01_4.html',1,'num']]]
 ];

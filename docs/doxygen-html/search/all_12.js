@@ -1,7 +1,7 @@
 var searchData=
 [
   ['s',['s',['../unionnum_1_1dim__exps_1_1s.html',1,'num::dim_exps']]],
-  ['s',['s',['../structnum_1_1dimval__base.html#a4687445a03f9fccfcd82462ebdc38dc2',1,'num::dimval_base::s()'],['../classnum_1_1integral__stats.html#a1e31a79e8ca3081a4843c2c7912ccf7c',1,'num::integral_stats::S()'],['../namespacenum_1_1u.html#a7d1cdb24d894ff61e1029eba2034a173',1,'num::u::s()']]],
+  ['s',['S',['../classnum_1_1integral__stats.html#a1e31a79e8ca3081a4843c2c7912ccf7c',1,'num::integral_stats::S()'],['../structnum_1_1dimval__base.html#a4687445a03f9fccfcd82462ebdc38dc2',1,'num::dimval_base::s()'],['../namespacenum_1_1u.html#a7d1cdb24d894ff61e1029eba2034a173',1,'num::u::s()']]],
   ['s_5f',['s_',['../classnum_1_1dim__exps.html#af794b5d4027aa21e33288c4b4a30c515',1,'num::dim_exps']]],
   ['safety',['SAFETY',['../classnum_1_1rk__quad.html#ab5cb5c2628029763651d71525f93e8cf',1,'num::rk_quad']]],
   ['seconds',['seconds',['../structnum_1_1u_1_1seconds.html',1,'num::u']]],

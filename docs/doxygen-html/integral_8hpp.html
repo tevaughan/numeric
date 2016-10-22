@@ -78,23 +78,18 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Definition of <a class="el" href="namespacenum.html#a25fb944b0428e15f5a842447b90ed77a" title="Numerically integrate a function, and return the result. ">num::integral()</a>.  
+<p>Definition of <a class="el" href="namespacenum.html#a9f6ecbc551189b2a8b0716beeaadc6a5" title="Numerically integrate a function, and return the result. ">num::integral()</a>.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;cmath&gt;</code><br />
-<code>#include &lt;functional&gt;</code><br />
-<code>#include &lt;iostream&gt;</code><br />
-<code>#include &lt;limits&gt;</code><br />
-<code>#include &lt;<a class="el" href="integral-stats_8hpp_source.html">integral-stats.hpp</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="interval_8hpp_source.html">interval.hpp</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="util_8hpp_source.html">util.hpp</a>&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="rk_8hpp_source.html">rk.hpp</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for integral.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="integral_8hpp__incl.png" border="0" usemap="#integral_8hpp" alt=""/></div>
 <map name="integral_8hpp" id="integral_8hpp">
-<area shape="rect" id="node6" href="integral-stats_8hpp.html" title="Source for num::integral_stats, which is used by num::integral() and by num::interpolant. " alt="" coords="312,80,435,107"/>
-<area shape="rect" id="node7" href="interval_8hpp.html" title="Source for class interval and class subinterval_stack, which are used by num::integral() and by num::..." alt="" coords="459,80,549,107"/>
-<area shape="rect" id="node10" href="util_8hpp.html" title="Basic utilities. " alt="" coords="573,80,637,107"/>
+<area shape="rect" id="node2" href="rk_8hpp.html" title="Definition of num::rk_base and num::rk_quad. " alt="" coords="197,80,256,107"/>
+<area shape="rect" id="node5" href="ilist_8hpp.html" title="Definition for each of num::ipoint, num::ilist, corresponding output&#45;stream operators, num::get_point(), num::get_points(), and num::midpoints(). " alt="" coords="193,155,260,181"/>
+<area shape="rect" id="node10" href="sparse-table_8hpp.html" title="Definition of num::sparse&#45;table. " alt="" coords="285,155,403,181"/>
+<area shape="rect" id="node13" href="util_8hpp.html" title="Basic utilities. " alt="" coords="428,155,492,181"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -120,17 +115,17 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a25fb944b0428e15f5a842447b90ed77a"><td class="memTemplParams" colspan="2">template&lt;typename R , typename A , typename A1 , typename A2 &gt; </td></tr>
-<tr class="memitem:a25fb944b0428e15f5a842447b90ed77a"><td class="memTemplItemLeft" align="right" valign="top">PRD&lt; R, A &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a25fb944b0428e15f5a842447b90ed77a">integral</a> (std::function&lt; R(A)&gt; f, A1 aa, A2 bb, <a class="el" href="classdouble.html">double</a> t=1.0E-06, unsigned n=16)</td></tr>
-<tr class="memdesc:a25fb944b0428e15f5a842447b90ed77a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Numerically integrate a function, and return the result.  <a href="namespacenum.html#a25fb944b0428e15f5a842447b90ed77a">More...</a><br /></td></tr>
-<tr class="separator:a25fb944b0428e15f5a842447b90ed77a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5d9f666c77573e755118cca28786bbe"><td class="memTemplParams" colspan="2">template&lt;typename R , typename A , typename A1 , typename A2 &gt; </td></tr>
-<tr class="memitem:ae5d9f666c77573e755118cca28786bbe"><td class="memTemplItemLeft" align="right" valign="top">PRD&lt; R, A &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#ae5d9f666c77573e755118cca28786bbe">integral</a> (R(*f)(A), A1 a, A2 b, <a class="el" href="classdouble.html">double</a> t=1.0E-06, unsigned n=16)</td></tr>
-<tr class="memdesc:ae5d9f666c77573e755118cca28786bbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integrate an ordinary function by way of its function pointer.  <a href="namespacenum.html#ae5d9f666c77573e755118cca28786bbe">More...</a><br /></td></tr>
-<tr class="separator:ae5d9f666c77573e755118cca28786bbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f6ecbc551189b2a8b0716beeaadc6a5"><td class="memTemplParams" colspan="2">template&lt;typename X , typename Y , typename X1 , typename X2 &gt; </td></tr>
+<tr class="memitem:a9f6ecbc551189b2a8b0716beeaadc6a5"><td class="memTemplItemLeft" align="right" valign="top">PRD&lt; X, Y &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#a9f6ecbc551189b2a8b0716beeaadc6a5">integral</a> (std::function&lt; Y(X)&gt; f, X1 aa, X2 bb, <a class="el" href="classdouble.html">double</a> t=1.0E-06, unsigned n=16)</td></tr>
+<tr class="memdesc:a9f6ecbc551189b2a8b0716beeaadc6a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Numerically integrate a function, and return the result.  <a href="namespacenum.html#a9f6ecbc551189b2a8b0716beeaadc6a5">More...</a><br /></td></tr>
+<tr class="separator:a9f6ecbc551189b2a8b0716beeaadc6a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdc1967c9c3ddb13c040a121ef7e46a2"><td class="memTemplParams" colspan="2">template&lt;typename X , typename Y , typename X1 , typename X2 &gt; </td></tr>
+<tr class="memitem:afdc1967c9c3ddb13c040a121ef7e46a2"><td class="memTemplItemLeft" align="right" valign="top">PRD&lt; X, Y &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacenum.html#afdc1967c9c3ddb13c040a121ef7e46a2">integral</a> (Y(*f)(X), X1 a, X2 b, <a class="el" href="classdouble.html">double</a> t=1.0E-06, unsigned n=16)</td></tr>
+<tr class="memdesc:afdc1967c9c3ddb13c040a121ef7e46a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Numerically integrate a function, and return the result.  <a href="namespacenum.html#afdc1967c9c3ddb13c040a121ef7e46a2">More...</a><br /></td></tr>
+<tr class="separator:afdc1967c9c3ddb13c040a121ef7e46a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Definition of <a class="el" href="namespacenum.html#a25fb944b0428e15f5a842447b90ed77a" title="Numerically integrate a function, and return the result. ">num::integral()</a>. </p>
+<div class="textblock"><p>Definition of <a class="el" href="namespacenum.html#a9f6ecbc551189b2a8b0716beeaadc6a5" title="Numerically integrate a function, and return the result. ">num::integral()</a>. </p>
 
 <p>Definition in file <a class="el" href="integral_8hpp_source.html">integral.hpp</a>.</p>
 </div></div><!-- contents -->

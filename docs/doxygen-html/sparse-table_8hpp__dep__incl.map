@@ -1,5 +1,11 @@
 <map id="sparse&#45;table.hpp" name="sparse&#45;table.hpp">
 <area shape="rect" id="node2" href="$sparse-table_8cpp_source.html" title="sparse&#45;table.cpp" alt="" coords="5,80,124,107"/>
-<area shape="rect" id="node3" href="$interpolant_8hpp.html" title="Definition for each of num::make_const_interp() and num_make_linear_interp(). " alt="" coords="149,80,255,107"/>
-<area shape="rect" id="node4" href="$rk_8hpp.html" title="Definition of num::rk_base and num::rk_quad. " alt="" coords="279,80,338,107"/>
+<area shape="rect" id="node3" href="$rk_8hpp.html" title="Definition of num::rk_base and num::rk_quad. " alt="" coords="147,80,206,107"/>
+<area shape="rect" id="node10" href="$interpolant_8hpp.html" title="Definition for each of num::make_const_interp() and num_make_linear_interp(). " alt="" coords="230,80,337,107"/>
+<area shape="rect" id="node4" href="$integral_8hpp.html" title="Definition of num::integral(). " alt="" coords="132,155,221,181"/>
+<area shape="rect" id="node5" href="$dimval_8hpp.html" title="Definition of conversions dealing with angle, num::dimval_base, num::statdim, and num::dyndim..." alt="" coords="134,229,219,256"/>
+<area shape="rect" id="node6" href="$dimval_8cpp_source.html" title="dimval.cpp" alt="" coords="73,304,158,331"/>
+<area shape="rect" id="node7" href="$dimensions_8hpp.html" title="Automatically generated source for generic&#45;dimension types. " alt="" coords="183,304,296,331"/>
+<area shape="rect" id="node8" href="$units_8hpp.html" title="Automatically generated header file for units. " alt="" coords="202,379,277,405"/>
+<area shape="rect" id="node9" href="$units_8cpp.html" title="Automatically generated implementation file for units. " alt="" coords="202,453,277,480"/>
 </map>

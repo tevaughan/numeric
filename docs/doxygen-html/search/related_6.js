@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['rk_5fquad',['rk_quad',['../classnum_1_1statdim.html#a2c6a9fedad596adb3da30d6e5277178c',1,'num::statdim']]],
-  ['root',['root',['../classnum_1_1dimval.html#ad6c896a004846cb60c6b0880036cc764',1,'num::dimval::root()'],['../classnum_1_1statdim.html#a6bb7dbbf738d893073fe3ddca343cd1b',1,'num::statdim::root()'],['../classnum_1_1dyndim.html#acaaab6eb8f1eafd68785243928f7cadd',1,'num::dyndim::root()'],['../classnum_1_1dyndim.html#aa3fea0e487be43a548fe911ebc92d6e7',1,'num::dyndim::root()']]]
+  ['sparse_5ftable',['sparse_table',['../classnum_1_1statdim.html#ac50e755b02fa6738f8431703f817dfa3',1,'num::statdim::sparse_table()'],['../classnum_1_1dyndim.html#ac50e755b02fa6738f8431703f817dfa3',1,'num::dyndim::sparse_table()']]],
+  ['sqrt',['sqrt',['../classnum_1_1statdim.html#aad7fc4a37c85fd6f82aacd018030b1b2',1,'num::statdim::sqrt()'],['../classnum_1_1dyndim.html#afa98eff024ddd06fecdf55658b424c4d',1,'num::dyndim::sqrt()']]],
+  ['statdim',['statdim',['../classnum_1_1statdim.html#aeea3f817c8236ff7593bfffe2898b640',1,'num::statdim']]]
 ];

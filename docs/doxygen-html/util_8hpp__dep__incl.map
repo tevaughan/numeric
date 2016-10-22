@@ -1,9 +1,9 @@
 <map id="util.hpp" name="util.hpp">
-<area shape="rect" id="node2" href="$dimval_8hpp.html" title="Definition of conversions dealing with angle, num::dimval_base, num::statdim, and num::dyndim..." alt="" coords="67,155,152,181"/>
-<area shape="rect" id="node7" href="$integral_8hpp.html" title="Definition of num::integral(). " alt="" coords="106,80,195,107"/>
-<area shape="rect" id="node8" href="$rk_8hpp.html" title="Definition of num::rk_base and num::rk_quad. " alt="" coords="220,80,279,107"/>
-<area shape="rect" id="node3" href="$dimval_8cpp_source.html" title="dimval.cpp" alt="" coords="5,229,91,256"/>
-<area shape="rect" id="node4" href="$dimensions_8hpp.html" title="Automatically generated source for generic&#45;dimension types. " alt="" coords="115,229,229,256"/>
-<area shape="rect" id="node5" href="$units_8hpp.html" title="Automatically generated header file for units. " alt="" coords="135,304,209,331"/>
-<area shape="rect" id="node6" href="$units_8cpp.html" title="Automatically generated implementation file for units. " alt="" coords="135,379,209,405"/>
+<area shape="rect" id="node2" href="$dimval_8hpp.html" title="Definition of conversions dealing with angle, num::dimval_base, num::statdim, and num::dyndim..." alt="" coords="67,229,152,256"/>
+<area shape="rect" id="node7" href="$rk_8hpp.html" title="Definition of num::rk_base and num::rk_quad. " alt="" coords="113,80,172,107"/>
+<area shape="rect" id="node3" href="$dimval_8cpp_source.html" title="dimval.cpp" alt="" coords="5,304,91,331"/>
+<area shape="rect" id="node4" href="$dimensions_8hpp.html" title="Automatically generated source for generic&#45;dimension types. " alt="" coords="115,304,229,331"/>
+<area shape="rect" id="node5" href="$units_8hpp.html" title="Automatically generated header file for units. " alt="" coords="135,379,209,405"/>
+<area shape="rect" id="node6" href="$units_8cpp.html" title="Automatically generated implementation file for units. " alt="" coords="135,453,209,480"/>
+<area shape="rect" id="node8" href="$integral_8hpp.html" title="Definition of num::integral(). " alt="" coords="106,155,195,181"/>
 </map>

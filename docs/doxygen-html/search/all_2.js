@@ -5,8 +5,8 @@ var searchData=
   ['c3',['c3',['../classnum_1_1rk__base.html#af6a2926a7be70a843648a3d640cee25f',1,'num::rk_base']]],
   ['c4',['c4',['../classnum_1_1rk__base.html#a76ec9120566cfd6dae7fc7dba8d76d14',1,'num::rk_base']]],
   ['c6',['c6',['../classnum_1_1rk__base.html#a827b1d0d28d765174a816cecf22f9ca0',1,'num::rk_base']]],
-  ['centimeters',['centimeters',['../structnum_1_1u_1_1centimeters.html',1,'num::u']]],
   ['centimeters',['centimeters',['../structnum_1_1u_1_1centimeters.html#ae8b858254e74cf6b55304a487941e4cc',1,'num::u::centimeters::centimeters(double v=0.0)'],['../structnum_1_1u_1_1centimeters.html#a14be25c1564d838cbe81e885aa185d97',1,'num::u::centimeters::centimeters(centimeters const &amp;dv)=default']]],
+  ['centimeters',['centimeters',['../structnum_1_1u_1_1centimeters.html',1,'num::u']]],
   ['cfunc',['cfunc',['../classnum_1_1rk__quad.html#aa3b42b180adef56b97364caace89b25e',1,'num::rk_quad']]],
   ['charge',['charge',['../namespacenum.html#aa58f9cbba972b004ad19daebead96234',1,'num']]],
   ['check_5ftol',['check_tol',['../classnum_1_1rk__quad.html#afa66c559d364abb4ba713dd162324b07',1,'num::rk_quad']]],
@@ -19,9 +19,7 @@ var searchData=
   ['combine',['combine',['../classnum_1_1sparse__table.html#a2673f5c8a28842fc2cfa87c8c27040d6',1,'num::sparse_table::combine()'],['../classnum_1_1interpolant.html#a5872248ab8ae11ae702029a519ebf931',1,'num::interpolant::combine()']]],
   ['combined',['combined',['../classnum_1_1interpolant.html#af28f26852f8b2d3d4c2556114cccb695',1,'num::interpolant']]],
   ['compare',['compare',['../structnum_1_1subinterval__stack.html#a5d4b460ad10fbbe8ef23bdb1706fd9a7',1,'num::subinterval_stack']]],
-  ['coulombs',['coulombs',['../structnum_1_1u_1_1coulombs.html',1,'num::u']]],
   ['coulombs',['coulombs',['../structnum_1_1u_1_1coulombs.html#a26b7da202ccb4b39db6edbbdf488ab3e',1,'num::u::coulombs::coulombs(double v=0.0)'],['../structnum_1_1u_1_1coulombs.html#a381d9139313059593f4dd0456d9bfba8',1,'num::u::coulombs::coulombs(coulombs const &amp;dv)=default']]],
-  ['cpoly',['cpoly',['../classnum_1_1statdim.html#ae872aa8945052410c1bcd2ae5a7bda0c',1,'num::statdim']]],
-  ['cpoly',['cpoly',['../classnum_1_1cpoly.html',1,'num']]],
+  ['coulombs',['coulombs',['../structnum_1_1u_1_1coulombs.html',1,'num::u']]],
   ['current',['current',['../namespacenum.html#a9289d56c13af85be0ffda211cbbf20e0',1,'num']]]
 ];

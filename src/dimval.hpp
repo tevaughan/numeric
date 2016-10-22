@@ -49,11 +49,6 @@ namespace num
    template <typename A, typename R>
    class interpolant;
 
-   // Forward declaration needed to allow a class to declare rk_quad as a
-   // friend.
-   template <typename X, typename Y>
-   class rk_quad;
-
    class dyndim;
 
    template <typename DER>
@@ -209,8 +204,13 @@ namespace num
       using type = double;
    };
 
-   template <unsigned D, typename V, typename C>
-   class cpoly;
+   // Forward declaration needed to allow a class to declare rk_quad as a
+   // friend.
+   template <typename X, typename Y>
+   class rk_quad;
+
+   template <typename T>
+   class tiny;
 
    /// Model of a statically dimensioned value.  For a dynamically dimensioned
    /// value, see dyndim.
@@ -231,6 +231,14 @@ namespace num
       template <typename I>
       friend class integral_stats;
 
+      /// Allow rk_quad to construct from known MKS quantity.
+      template <typename X, typename Y>
+      friend class rk_quad;
+
+      /// Allow tiny to construct from known MKS quantity.
+      template <typename T>
+      friend class tiny;
+
       /// Type of std::function that can be integrated.  A single-argument
       /// function is required.
       template <typename R, typename A>
@@ -240,10 +248,6 @@ namespace num
       template <typename A, typename R>
       friend class interpolant;
 
-      /// Allow rk_quad to construct from known MKS quantity.
-      template <typename X, typename Y>
-      friend class rk_quad;
-
       /// Allow \ref sparse_table to call constructor.
       template <typename A>
       friend class sparse_table;
@@ -251,10 +255,6 @@ namespace num
       /// Allow \ref dense_table to call constructor.
       template <typename A, typename F>
       friend class dense_table;
-
-      /// Allow \ref cpoly to construct from double.
-      template <unsigned DD, typename VV, typename CC>
-      friend class cpoly;
 
       /// Allow integral() to construct from known MKS quantity.
       template <typename R, typename A, typename A1, typename A2>
@@ -324,8 +324,14 @@ namespace num
       /// Multiplication by number on right side.
       statdim operator*(double s) const { return v_ * s; }
 
+      /// Multiplication by number on right side.
+      statdim operator*(int s) const { return v_ * s; }
+
       /// Multiplication of statdim by number on left side.
       friend statdim operator*(double s, statdim dv) { return s * dv.v_; }
+
+      /// Multiplication of statdim by number on left side.
+      friend statdim operator*(int s, statdim dv) { return s * dv.v_; }
 
       /// Type of product of present statdim with other statdim.
       template <char OTI, char OD, char OM, char OC, char OTE>
@@ -478,6 +484,10 @@ namespace num
       template <typename I>
       friend class integral_stats;
 
+      /// Allow tiny to construct from known MKS quantity.
+      template <typename T>
+      friend class tiny;
+
       /// Allow interpolant to cast to double.
       template <typename X, typename Y>
       friend class interpolant;
@@ -489,9 +499,6 @@ namespace num
       /// Allow \ref dense_table to call constructor.
       template <typename A, typename F>
       friend class dense_table;
-
-      template <unsigned D, typename V, typename C>
-      friend class cpoly;
 
       /// Type of std::function that can be integrated.  A single-argument
       /// function is required.
@@ -537,9 +544,7 @@ namespace num
       dim_exps exps_;            ///< Storage for dimensional exponents.
 
       /// Initialize numeric value and dimensional exponents.
-      dyndim(double v,  ///< Numeric value corresponding to MKS units.
-             dim_exps e ///< Dimensional exponents.
-             )
+      dyndim(/** Number. */ double v, /** MKS unit. */ dim_exps e)
          : PT(v), exps_(e)
       {
       }
@@ -572,6 +577,21 @@ namespace num
 
       /// Multiplication by number on right side.
       dyndim operator*(double s) const { return dyndim(v_ * s, exps_); }
+
+      /// Multiplication by number on right side.
+      dyndim operator*(int s) const { return dyndim(v_ * s, exps_); }
+
+      /// Multiplication of dyndim by number on left side.
+      friend dyndim operator*(double s, dyndim dv)
+      {
+         return dyndim(s * dv.v_, dv.exps_);
+      }
+
+      /// Multiplication of dyndim by number on left side.
+      friend dyndim operator*(int s, dyndim dv)
+      {
+         return dyndim(s * dv.v_, dv.exps_);
+      }
 
       /// Multiply dyndim by dyndim.
       dyndim operator*(dyndim const &dd) const
@@ -781,7 +801,7 @@ namespace num
          return dyndim(fabs(dv.v_), dv.exps_);
       }
 
-      /// Convert to double, but throw exception if not dimensionless.
+      /// Convert to double, but throw exception if dimensioned.
       double number() const
       {
          if (exps_.n() != 0) {
@@ -789,10 +809,10 @@ namespace num
          }
          return v_;
       }
-   };
 
-   /// Multiplication of dyndim by number on left side.
-   inline dyndim operator*(double s, dyndim dv) { return dv * s; }
+      /// Convert to double, but throw exception if dimensioned.
+      operator double() const { return number(); }
+   };
 
    /// Integer power.
    template <typename DER>
@@ -845,6 +865,25 @@ namespace num
    {
       return dyndim(dd.v_ / sd.v_, dd.exps_ - sd.exps_);
    }
+
+   /// Specialization of tiny for dyndim.
+   template <>
+   class tiny<dyndim>
+   {
+   public:
+      /// Return dyndim with very small value and with units taken from
+      /// argument. The number in the passed-in quantity \a u is ignore, but
+      /// the units are extracted and included in the return value.
+      ///
+      /// \tparam D  Intended to by dyndim or statdim.
+      /// \return    Very small number attached to units in \a u.
+      template <typename D>
+      static dyndim
+      val(/** Value whose units are extracted. */ dimval<D> const &u)
+      {
+         return dyndim(1.0E-300, u.exps());
+      }
+   };
 }
 
 #endif // ndef NUMERIC_DIMVAL_HPP

@@ -72,9 +72,32 @@ namespace num
       static double constexpr dc6 = c6 - 0.25;
    };
 
+   /// General template class holding a tiny value.  Specialization for dyndim
+   /// is implemented below.
+   ///
+   /// \tparam T  Intended to be statdim or double.
+   template <typename T>
+   class tiny
+   {
+      static T const val_; ///< Tiny value used by rk_quad.
+
+   public:
+      /// Return tiny value and ignore argument. (Specialization of tiny for
+      /// dyndim pays attention to the argument.)
+      template <typename U>
+      static T const &val(U const &)
+      {
+         return val_;
+      }
+   };
+
+   template <typename T>
+   T const tiny<T>::val_(1.0E-300);
+
    /// Runge-Kutta integrator optimized for quadrature.
    /// \tparam X  Type of the independent variable.
-   /// \tparam Y  Type of the variable that is accumulated during integration.
+   /// \tparam Y  Type of the variable that is accumulated during
+   /// integration.
    template <typename X, typename Y>
    class rk_quad : rk_base
    {
@@ -153,7 +176,7 @@ namespace num
          static double constexpr PSHRNK = -0.25;
          X const        htemp           = SAFETY * h * pow(err, PSHRNK);
          X const        tenth           = 0.1 * h;
-         static X const zero(0.0);
+         static X const zero            = 0.0 * h;
          if (h >= zero) {
             if (htemp > tenth) {
                h = htemp;
@@ -239,7 +262,7 @@ namespace num
             n = 2;
          }
          X const h1 = (X(x2) - X(x1)) / (n - 1);
-         if (x2 - x1 > X(0.0)) {
+         if (x2 - x1 > 0.0 * x2) {
             return +fabs(h1);
          } else {
             return -fabs(h1);
@@ -256,10 +279,11 @@ namespace num
          check_tol();
          X h = initial_h(x1, x2, n);
          using namespace std;
-         static const PRD<X, X> XSQR_0 = 0.0;
+         static const PRD<X, X> XSQR_0 = 0.0 * x1 * x1;
          while (true) {
             dydx = deriv(x);
-            static Y const TINY(1.0E-300);
+            // This doesn't work when Y is dyndim.
+            static Y const TINY = tiny<Y>::val(dydx * h);
             // General-purpose scaling used to monitor accuracy.
             Y const yscal = fabs(y) + fabs(dydx * h) + TINY;
             if (store) {
@@ -284,7 +308,7 @@ namespace num
                }
                return; // We are done; exit normally.
             }
-            if (fabs(hnext) <= 0.0) {
+            if (fabs(hnext) <= 0.0 * hnext) {
                cerr << "rk_quad: WARNING: step size too small" << endl;
                return;
             }
@@ -302,12 +326,12 @@ namespace num
       /// The initial guess for the step size is used at the lower limit of
       /// integration.
       ///
-      /// Optionally store an approximant to the function integrated and an
-      /// approximant to the indefinite integral, zeroed at the lower limit of
-      /// integration.
-      ///
       /// The optional parameter \a n indicates that the initial step should be
       /// 1/n of the interval of integration.
+      ///
+      /// Optionally store intermediate values. When \a s be \c true on
+      /// construction, the one may call make_fnc_interp() or
+      /// make_int_interp().
       ///
       /// \tparam X1  Type of lower limit of integration; X1 must convert to X.
       /// \tparam X2  Type of upper limit of integration; X2 must convert to X.
@@ -319,7 +343,13 @@ namespace num
             /** Error tolerance.                      */ double t = 1.0E-06,
             /** Inverse of initial step size.         */ int    n = 16,
             /** Whether to store intermediate values. */ bool   s = false)
-         : deriv(f), x(x1), y(0.0), tol(t), store(s), nok(0), nbad(0)
+         : deriv(f)
+         , x(x1)
+         , y(0 * x * f(x1))
+         , tol(t)
+         , store(s)
+         , nok(0)
+         , nbad(0)
       {
          init(x1, x2, n);
       }
@@ -329,12 +359,12 @@ namespace num
       /// The initial guess for the step size is used at the lower limit of
       /// integration.
       ///
-      /// Optionally store an approximant to the function integrated and an
-      /// approximant to the indefinite integral, zeroed at the lower limit of
-      /// integration.
-      ///
       /// The optional parameter \a n indicates that the initial step should be
       /// 1/n of the interval of integration.
+      ///
+      /// Optionally store intermediate values. When \a s be \c true on
+      /// construction, the one may call make_fnc_interp() or
+      /// make_int_interp().
       ///
       /// \tparam X1  Type of lower limit of integration; X1 must convert to X.
       /// \tparam X2  Type of upper limit of integration; X2 must convert to X.
@@ -346,7 +376,13 @@ namespace num
             /** Error tolerance.                      */ double t = 1.0E-06,
             /** Inverse of initial step size.         */ int    n = 16,
             /** Whether to store intermediate values. */ bool   s = false)
-         : deriv(f), x(x1), y(0.0), tol(t), store(s), nok(0), nbad(0)
+         : deriv(f)
+         , x(x1)
+         , y(0 * x1 * f(x1))
+         , tol(t)
+         , store(s)
+         , nok(0)
+         , nbad(0)
       {
          init(x1, x2, n);
       }
