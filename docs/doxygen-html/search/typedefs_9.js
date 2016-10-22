@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['point',['point',['../classnum_1_1interpolant.html#a60e69b45727214ecbd9ff2e812f4edda',1,'num::interpolant']]],
   ['power',['power',['../namespacenum.html#a73f538d825d4e54052af5e0dc8844ce5',1,'num']]],
   ['power_5ftype',['power_type',['../classnum_1_1statdim.html#af543140ee8413ed393fd4dd4a80bf4b7',1,'num::statdim']]],
   ['prd',['PRD',['../namespacenum.html#a0acd09937ff29e12de4cc106550751ed',1,'num']]],

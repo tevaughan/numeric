@@ -1,12 +1,11 @@
 var searchData=
 [
   ['s',['s',['../unionnum_1_1dim__exps_1_1s.html',1,'num::dim_exps']]],
-  ['s',['S',['../classnum_1_1integral__stats.html#a1e31a79e8ca3081a4843c2c7912ccf7c',1,'num::integral_stats::S()'],['../structnum_1_1dimval__base.html#a4687445a03f9fccfcd82462ebdc38dc2',1,'num::dimval_base::s()'],['../namespacenum_1_1u.html#a7d1cdb24d894ff61e1029eba2034a173',1,'num::u::s()']]],
+  ['s',['s',['../structnum_1_1dimval__base.html#a4687445a03f9fccfcd82462ebdc38dc2',1,'num::dimval_base::s()'],['../classnum_1_1integral__stats.html#a1e31a79e8ca3081a4843c2c7912ccf7c',1,'num::integral_stats::S()'],['../namespacenum_1_1u.html#a7d1cdb24d894ff61e1029eba2034a173',1,'num::u::s()']]],
   ['s_5f',['s_',['../classnum_1_1dim__exps.html#af794b5d4027aa21e33288c4b4a30c515',1,'num::dim_exps']]],
   ['safety',['SAFETY',['../classnum_1_1rk__quad.html#ab5cb5c2628029763651d71525f93e8cf',1,'num::rk_quad']]],
   ['seconds',['seconds',['../structnum_1_1u_1_1seconds.html',1,'num::u']]],
   ['seconds',['seconds',['../structnum_1_1u_1_1seconds.html#adf705154442e710632a9689a3911eb77',1,'num::u::seconds::seconds(double v=0.0)'],['../structnum_1_1u_1_1seconds.html#a4b1d5f99cf4f01f7901d7fb29f6a626a',1,'num::u::seconds::seconds(seconds const &amp;dv)=default']]],
-  ['sort',['sort',['../classnum_1_1interpolant.html#a47fdc9eea42b6975cdc835bb2e08810e',1,'num::interpolant']]],
   ['sparse_2dtable_2ehpp',['sparse-table.hpp',['../sparse-table_8hpp.html',1,'']]],
   ['sparse_5ftable',['sparse_table',['../classnum_1_1sparse__table.html',1,'num']]],
   ['sparse_5ftable',['sparse_table',['../classnum_1_1statdim.html#ac50e755b02fa6738f8431703f817dfa3',1,'num::statdim::sparse_table()'],['../classnum_1_1dyndim.html#ac50e755b02fa6738f8431703f817dfa3',1,'num::dyndim::sparse_table()'],['../classnum_1_1sparse__table.html#a5d93d2a1e25860d2e0479730cf9fc427',1,'num::sparse_table::sparse_table(data &amp;&amp;d)'],['../classnum_1_1sparse__table.html#afc17d761874f87f4e73fee94790c1e57',1,'num::sparse_table::sparse_table()'],['../classnum_1_1sparse__table.html#a2921cabba006abc249001857a587821b',1,'num::sparse_table::sparse_table(A const &amp;a0, std::vector&lt; std::pair&lt; A, ex &gt;&gt; vf)']]],

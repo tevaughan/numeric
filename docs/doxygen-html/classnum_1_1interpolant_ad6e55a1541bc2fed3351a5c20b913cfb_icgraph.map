@@ -1,7 +1,0 @@
-<map id="cmpr_pts" name="cmpr_pts">
-<area shape="rect" id="node2" href="$classnum_1_1interpolant.html#a47fdc9eea42b6975cdc835bb2e08810e" title="Sort points. " alt="" coords="146,31,190,57"/>
-<area shape="rect" id="node5" href="$classnum_1_1interpolant.html#af60a8a9bf0bd204e7ac9edba558c0ac5" title="Interpolate. " alt="" coords="129,81,207,108"/>
-<area shape="rect" id="node6" href="$classnum_1_1interpolant.html#a8086dc44b91929da8bb9a33533d69cba" title="Integrate interpolant. " alt="" coords="136,132,200,159"/>
-<area shape="rect" id="node3" href="$classnum_1_1interpolant.html#a7dda4c95bb885d074090a5df3ea4514a" title="Initialize from a continuous function and from an interval on its domain. " alt="" coords="277,5,315,32"/>
-<area shape="rect" id="node4" href="$classnum_1_1interpolant.html#a62ad1a4eb68852901933de13951facc2" title="Initialize ifrom an ilist. " alt="" coords="255,56,337,83"/>
-</map>

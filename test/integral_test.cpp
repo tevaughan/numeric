@@ -117,26 +117,28 @@ TEST_CASE("Trigger coverage of code requiring at least two samples.",
 TEST_CASE("Verify integration of interpolant.", "[integral]")
 {
    ilist<double, double> list = {{0.00, 0.50}, {0.50, 1.00}, {1.00, -1.00}};
-   interpolantd i(list);
-   function<double(double)> f(i);
-   REQUIRE(integral(f, -0.50, -0.10) == Approx(0.2));
-   REQUIRE(rk_quadd(f, -0.50, -0.10).def_int() == Approx(0.2));
+   auto i = make_linear_interp(list);
+   function<double(double)> f = [&i](double x) {
+      return GiNaC::ex_to<GiNaC::numeric>(i(x)).to_double();
+   };
+   REQUIRE(integral(f, -0.50, -0.10) == Approx(0.0));
+   REQUIRE(rk_quadd(f, -0.50, -0.10).def_int() == Approx(0.0));
    REQUIRE(integral(f, -0.25, +0.25) ==
-           Approx(0.25 * 0.5 + 0.25 * 0.5 * (0.5 + 0.75)));
+           Approx(0.25 * 0.5 * (0.5 + 0.75)));
    REQUIRE(rk_quadd(f, -0.25, +0.25).def_int() ==
-           Approx(0.25 * 0.5 + 0.25 * 0.5 * (0.5 + 0.75)));
+           Approx(0.25 * 0.5 * (0.5 + 0.75)));
    REQUIRE(integral(f, +0.25, +1.25) ==
-           Approx(0.5 * 0.25 * (0.75 + 1.0) - 0.25));
+           Approx(0.5 * 0.25 * (0.75 + 1.0)));
    REQUIRE(rk_quadd(f, +0.25, +1.25).def_int() ==
-           Approx(0.5 * 0.25 * (0.75 + 1.0) - 0.25));
+           Approx(0.5 * 0.25 * (0.75 + 1.0)));
    REQUIRE(integral(f, +0.55, +0.95) == Approx(0.0));
    REQUIRE(rk_quadd(f, +0.55, +0.95).def_int() == Approx(0.0));
-   REQUIRE(integral(f, +0.75, +1.25) == Approx(-0.375));
-   REQUIRE(rk_quadd(f, +0.75, +1.25).def_int() == Approx(-0.375));
-   REQUIRE(integral(f, +1.25, +1.50) == Approx(-0.25));
-   REQUIRE(rk_quadd(f, +1.25, +1.50).def_int() == Approx(-0.25));
-   REQUIRE(integral(f, +1.50, +1.25) == Approx(+0.25));
-   REQUIRE(rk_quadd(f, +1.50, +1.25).def_int() == Approx(+0.25));
+   REQUIRE(integral(f, +0.75, +1.25) == Approx(-0.125));
+   REQUIRE(rk_quadd(f, +0.75, +1.25).def_int() == Approx(-0.125));
+   REQUIRE(integral(f, +1.25, +1.50) == Approx(0.0));
+   REQUIRE(rk_quadd(f, +1.25, +1.50).def_int() == Approx(0.0));
+   REQUIRE(integral(f, +1.50, +1.25) == Approx(0.0));
+   REQUIRE(rk_quadd(f, +1.50, +1.25).def_int() == Approx(0.0));
 }
 
 TEST_CASE("Verify throw on illegal tolerance.", "[integral]")

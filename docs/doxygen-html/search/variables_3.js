@@ -1,7 +1,6 @@
 var searchData=
 [
   ['d',['d',['../structnum_1_1sparse__table_1_1cmb__data.html#a31a54c34e40fd88dea16ebbb9c65a7d2',1,'num::sparse_table::cmb_data']]],
-  ['d_5f',['d_',['../classnum_1_1interpolant.html#a688a75d7286851dbf6357bf09e1498cc',1,'num::interpolant']]],
   ['da',['da',['../structnum_1_1sparse__table_1_1rec.html#ab0a59f41339d679dbf5243281314894b',1,'num::sparse_table::rec']]],
   ['da_5f',['da_',['../classnum_1_1dense__table.html#ad9f4d0026fea86088952758c68f6120e',1,'num::dense_table']]],
   ['dat_5f',['dat_',['../classnum_1_1sparse__table.html#a89e695660d7ff2e7b48e26842d0d6c9b',1,'num::sparse_table']]],
