@@ -10,6 +10,7 @@
 #ifndef NUMERIC_RK_HPP
 #define NUMERIC_RK_HPP
 
+#include <cmath>      // for fabs()
 #include <functional> // for function
 #include <limits>     // for numeric_limits
 
