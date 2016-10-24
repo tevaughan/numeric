@@ -10,13 +10,23 @@
 #ifndef NUMERIC_SPARSE_TABLE_HPP
 #define NUMERIC_SPARSE_TABLE_HPP
 
-#include <ginac/ginac.h> // for ex
-
 #include <algorithm> // for upper_bound()
 #include <vector>    // for vector
 
+#include <ginac/ginac.h> // for ex
+
 namespace num
 {
+   /// Allow easy conversion from expression to double.
+   inline double dbl(/** Numeric expression. */ GiNaC::ex const &e)
+   {
+      using namespace GiNaC;
+      if (is_a<numeric>(e)) {
+         return ex_to<numeric>(e).to_double();
+      }
+      throw "expression not numeric";
+   }
+
    /// Base class for sparse_table.
    struct sparse_table_base
    {

@@ -44,11 +44,6 @@ namespace num
       return n * arcsec;
    }
 
-   // Forward declaration needed to allow a class to declare interpolant as a
-   // friend.
-   template <typename A, typename R>
-   class interpolant;
-
    class dyndim;
 
    template <typename DER>
@@ -65,6 +60,19 @@ namespace num
       static GiNaC::symbol kg; ///< Symbol for kilogram.
       static GiNaC::symbol C;  ///< Symbol for Coulomb.
       static GiNaC::symbol K;  ///< Symbol for Kelvin.
+
+      /// Extract exponents from expression, which is treated as a polynomial
+      /// over the MKS unit symbols.
+      static dim_exps exps(/** Expression. */ GiNaC::ex const &e)
+      {
+         dim_exps r; // return value
+         r.TI() = e.degree(s);
+         r.D()  = e.degree(m);
+         r.M()  = e.degree(kg);
+         r.C()  = e.degree(C);
+         r.TE() = e.degree(K);
+         return r;
+      }
    };
 
    /// Base class for statdim and dyndim.
@@ -244,12 +252,8 @@ namespace num
       template <typename R, typename A>
       using func = std::function<R(A)>;
 
-      /// Allow interpolant to construct from known MKS quantity.
-      template <typename A, typename R>
-      friend class interpolant;
-
       /// Allow \ref sparse_table to call constructor.
-      template <typename A>
+      template <typename X>
       friend class sparse_table;
 
       /// Allow \ref dense_table to call constructor.
@@ -308,6 +312,18 @@ namespace num
 
       /// Use default copy construction for statdim of same dimension.
       statdim(statdim const &sd) = default;
+
+      /// Convert from expression.
+      explicit statdim(GiNaC::ex const &e)
+      {
+         using namespace GiNaC;
+         static statdim const unit(1.0);
+         ex const             n = e / unit;
+         if (!is_a<numeric>(n)) {
+            throw "expression not numeric";
+         }
+         v_ = ex_to<numeric>(n).to_double();
+      }
 
       /// Dimensional exponents.
       static dim_exps exps() { return exps_; }
@@ -488,12 +504,8 @@ namespace num
       template <typename T>
       friend class tiny;
 
-      /// Allow interpolant to cast to double.
-      template <typename X, typename Y>
-      friend class interpolant;
-
       /// Allow \ref sparse_table to call constructor.
-      template <typename A>
+      template <typename X>
       friend class sparse_table;
 
       /// Allow \ref dense_table to call constructor.
@@ -553,19 +565,33 @@ namespace num
       using PT::operator*=;         ///< Inherit multiplicative assignment.
       using PT::operator/=;         ///< Inherit divisive assignment.
       using PT::operator GiNaC::ex; ///< Inherit conversion to expression.
+      using dimval_base::exps;      ///< Inherit extraction of units.
 
       /// By default, construct a dimensionless quantity of magnitude zero.
       dyndim() = default;
 
-      /// Construct from statdim.
+      /// Copy from statdim.
       template <char TI, char D, char M, char C, char TE>
-      dyndim(statdim<TI, D, M, C, TE> const &sd)
+      dyndim(/** Object to be copied. */ statdim<TI, D, M, C, TE> const &sd)
          : PT(sd.v_), exps_(sd.exps())
       {
       }
 
       /// Use default copy constructor.
-      dyndim(dyndim const& dd) = default;
+      dyndim(/** Object to be copied. */ dyndim const& dd) = default;
+
+      /// Copy from expression.
+      explicit dyndim(/** Object to be copied. */ GiNaC::ex const &e)
+      {
+         exps_ = exps(e);
+         using namespace GiNaC;
+         dyndim const unit(1.0, exps_);
+         ex const     n = e / unit;
+         if (!is_a<numeric>(n)) {
+            throw "expression not numeric";
+         }
+         v_ = ex_to<numeric>(n).to_double();
+      }
 
       dim_exps exps() const { return exps_; } ///< Dimensional exponents.
 

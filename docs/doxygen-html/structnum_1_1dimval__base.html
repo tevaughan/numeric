@@ -71,6 +71,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="structnum_1_1dimval__base-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -143,6 +144,12 @@ Collaboration diagram for dimval_base:</div>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:afa13460826c5242e5c3bde4db49a48ef"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classnum_1_1dim__exps.html">dim_exps</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnum_1_1dimval__base.html#afa13460826c5242e5c3bde4db49a48ef">exps</a> (GiNaC::ex const &amp;e)</td></tr>
+<tr class="memdesc:afa13460826c5242e5c3bde4db49a48ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extract exponents from expression, which is treated as a polynomial over the MKS unit symbols.  <a href="#afa13460826c5242e5c3bde4db49a48ef">More...</a><br /></td></tr>
+<tr class="separator:afa13460826c5242e5c3bde4db49a48ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:a4687445a03f9fccfcd82462ebdc38dc2"><td class="memItemLeft" align="right" valign="top"><a id="a4687445a03f9fccfcd82462ebdc38dc2"></a>
@@ -169,8 +176,65 @@ static GiNaC::symbol&#160;</td><td class="memItemRight" valign="bottom"><a class
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Ultimate base class for dimensioned quantity. </p>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00061">61</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
-</div><hr/>The documentation for this struct was generated from the following files:<ul>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00056">56</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="afa13460826c5242e5c3bde4db49a48ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa13460826c5242e5c3bde4db49a48ef">&sect;&nbsp;</a></span>exps()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classnum_1_1dim__exps.html">dim_exps</a> exps </td>
+          <td>(</td>
+          <td class="paramtype">GiNaC::ex const &amp;&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Extract exponents from expression, which is treated as a polynomial over the MKS unit symbols. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>Expression. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00066">66</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="structnum_1_1dimval__base_afa13460826c5242e5c3bde4db49a48ef_cgraph.png" border="0" usemap="#structnum_1_1dimval__base_afa13460826c5242e5c3bde4db49a48ef_cgraph" alt=""/></div>
+<map name="structnum_1_1dimval__base_afa13460826c5242e5c3bde4db49a48ef_cgraph" id="structnum_1_1dimval__base_afa13460826c5242e5c3bde4db49a48ef_cgraph">
+<area shape="rect" id="node2" href="classnum_1_1dim__exps.html#a44346dc8f6ec385f8898a5757f4d962c" title="Reference to mutable exponent of time. " alt="" coords="107,5,237,32"/>
+<area shape="rect" id="node3" href="classnum_1_1dim__exps.html#a4eb319ae4630e49a01919343fde67f17" title="Reference to mutable exponent of distance. " alt="" coords="107,56,237,83"/>
+<area shape="rect" id="node4" href="classnum_1_1dim__exps.html#a1f7fd4e1ba40c71ccb3162d713e63522" title="Reference to mutable exponent of mass. " alt="" coords="107,107,237,133"/>
+<area shape="rect" id="node5" href="classnum_1_1dim__exps.html#a13b2e7ea9335e2b25d6686ccfec5f3f3" title="Reference to mutable exponent of charge. " alt="" coords="107,157,237,184"/>
+<area shape="rect" id="node6" href="classnum_1_1dim__exps.html#af558c4adc6556d290f1c72f9c0358314" title="Reference to mutable exponent of temperature. " alt="" coords="104,208,240,235"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="structnum_1_1dimval__base_afa13460826c5242e5c3bde4db49a48ef_icgraph.png" border="0" usemap="#structnum_1_1dimval__base_afa13460826c5242e5c3bde4db49a48ef_icgraph" alt=""/></div>
+<map name="structnum_1_1dimval__base_afa13460826c5242e5c3bde4db49a48ef_icgraph" id="structnum_1_1dimval__base_afa13460826c5242e5c3bde4db49a48ef_icgraph">
+<area shape="rect" id="node2" href="classnum_1_1dyndim.html#a0c2c02c2045c4eca90151229804c7e4f" title="Copy from expression. " alt="" coords="104,5,251,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following files:<ul>
 <li><a class="el" href="dimval_8hpp_source.html">dimval.hpp</a></li>
 <li><a class="el" href="dimval_8cpp_source.html">dimval.cpp</a></li>
 </ul>

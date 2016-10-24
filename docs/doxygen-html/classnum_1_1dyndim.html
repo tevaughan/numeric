@@ -113,17 +113,18 @@ Collaboration diagram for dyndim:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a8ef93e3cbb0e3807e9ac67d376582f22"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a8ef93e3cbb0e3807e9ac67d376582f22">dyndim</a> ()=default</td></tr>
-<tr class="memdesc:a8ef93e3cbb0e3807e9ac67d376582f22"><td class="mdescLeft">&#160;</td><td class="mdescRight">&lt; Inherit conversion to expression.  <a href="#a8ef93e3cbb0e3807e9ac67d376582f22">More...</a><br /></td></tr>
+<tr class="memdesc:a8ef93e3cbb0e3807e9ac67d376582f22"><td class="mdescLeft">&#160;</td><td class="mdescRight">&lt; Inherit extraction of units.  <a href="#a8ef93e3cbb0e3807e9ac67d376582f22">More...</a><br /></td></tr>
 <tr class="separator:a8ef93e3cbb0e3807e9ac67d376582f22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5799f85a4590e36fabef50cfad61873"><td class="memTemplParams" colspan="2"><a id="af5799f85a4590e36fabef50cfad61873"></a>
-template&lt;char TI, char D, char M, char C, char TE&gt; </td></tr>
+<tr class="memitem:af5799f85a4590e36fabef50cfad61873"><td class="memTemplParams" colspan="2">template&lt;char TI, char D, char M, char C, char TE&gt; </td></tr>
 <tr class="memitem:af5799f85a4590e36fabef50cfad61873"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#af5799f85a4590e36fabef50cfad61873">dyndim</a> (<a class="el" href="classnum_1_1statdim.html">statdim</a>&lt; TI, D, M, <a class="el" href="structnum_1_1dimval__base.html#a59d49c8f2bfccce8242207d29ad59729">C</a>, TE &gt; const &amp;sd)</td></tr>
-<tr class="memdesc:af5799f85a4590e36fabef50cfad61873"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct from statdim. <br /></td></tr>
+<tr class="memdesc:af5799f85a4590e36fabef50cfad61873"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy from statdim.  <a href="#af5799f85a4590e36fabef50cfad61873">More...</a><br /></td></tr>
 <tr class="separator:af5799f85a4590e36fabef50cfad61873"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c4e6646b3e323cf1f95178490b589bf"><td class="memItemLeft" align="right" valign="top"><a id="a3c4e6646b3e323cf1f95178490b589bf"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a3c4e6646b3e323cf1f95178490b589bf">dyndim</a> (<a class="el" href="classnum_1_1dyndim.html">dyndim</a> const &amp;dd)=default</td></tr>
-<tr class="memdesc:a3c4e6646b3e323cf1f95178490b589bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use default copy constructor. <br /></td></tr>
+<tr class="memitem:a3c4e6646b3e323cf1f95178490b589bf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a3c4e6646b3e323cf1f95178490b589bf">dyndim</a> (<a class="el" href="classnum_1_1dyndim.html">dyndim</a> const &amp;dd)=default</td></tr>
+<tr class="memdesc:a3c4e6646b3e323cf1f95178490b589bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use default copy constructor.  <a href="#a3c4e6646b3e323cf1f95178490b589bf">More...</a><br /></td></tr>
 <tr class="separator:a3c4e6646b3e323cf1f95178490b589bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c2c02c2045c4eca90151229804c7e4f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a0c2c02c2045c4eca90151229804c7e4f">dyndim</a> (GiNaC::ex const &amp;e)</td></tr>
+<tr class="memdesc:a0c2c02c2045c4eca90151229804c7e4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy from expression.  <a href="#a0c2c02c2045c4eca90151229804c7e4f">More...</a><br /></td></tr>
+<tr class="separator:a0c2c02c2045c4eca90151229804c7e4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afdb461c4728fef69aab2d7c1fda51c77"><td class="memItemLeft" align="right" valign="top"><a id="afdb461c4728fef69aab2d7c1fda51c77"></a>
 <a class="el" href="classnum_1_1dim__exps.html">dim_exps</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#afdb461c4728fef69aab2d7c1fda51c77">exps</a> () const</td></tr>
 <tr class="memdesc:afdb461c4728fef69aab2d7c1fda51c77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dimensional exponents. <br /></td></tr>
@@ -315,13 +316,8 @@ template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a69164a8fa8c4528f99c834bf857b545b"><td class="memTemplItemLeft" align="right" valign="top">class&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a69164a8fa8c4528f99c834bf857b545b">tiny</a></td></tr>
 <tr class="memdesc:a69164a8fa8c4528f99c834bf857b545b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow tiny to construct from known MKS quantity. <br /></td></tr>
 <tr class="separator:a69164a8fa8c4528f99c834bf857b545b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1bf07d2865c0692bdb0e7abed75f5b75"><td class="memTemplParams" colspan="2"><a id="a1bf07d2865c0692bdb0e7abed75f5b75"></a>
-template&lt;typename X , typename Y &gt; </td></tr>
-<tr class="memitem:a1bf07d2865c0692bdb0e7abed75f5b75"><td class="memTemplItemLeft" align="right" valign="top">class&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#a1bf07d2865c0692bdb0e7abed75f5b75">interpolant</a></td></tr>
-<tr class="memdesc:a1bf07d2865c0692bdb0e7abed75f5b75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow interpolant to cast to double. <br /></td></tr>
-<tr class="separator:a1bf07d2865c0692bdb0e7abed75f5b75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac50e755b02fa6738f8431703f817dfa3"><td class="memTemplParams" colspan="2"><a id="ac50e755b02fa6738f8431703f817dfa3"></a>
-template&lt;typename A &gt; </td></tr>
+template&lt;typename X &gt; </td></tr>
 <tr class="memitem:ac50e755b02fa6738f8431703f817dfa3"><td class="memTemplItemLeft" align="right" valign="top">class&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classnum_1_1dyndim.html#ac50e755b02fa6738f8431703f817dfa3">sparse_table</a></td></tr>
 <tr class="memdesc:ac50e755b02fa6738f8431703f817dfa3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow <a class="el" href="classnum_1_1sparse__table.html">sparse_table</a> to call constructor. <br /></td></tr>
 <tr class="separator:ac50e755b02fa6738f8431703f817dfa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -398,6 +394,10 @@ template&lt;int R&gt; </td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_static_methods_structnum_1_1dimval__base"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_structnum_1_1dimval__base')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="structnum_1_1dimval__base.html">dimval_base</a></td></tr>
+<tr class="memitem:afa13460826c5242e5c3bde4db49a48ef inherit pub_static_methods_structnum_1_1dimval__base"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classnum_1_1dim__exps.html">dim_exps</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnum_1_1dimval__base.html#afa13460826c5242e5c3bde4db49a48ef">exps</a> (GiNaC::ex const &amp;e)</td></tr>
+<tr class="memdesc:afa13460826c5242e5c3bde4db49a48ef inherit pub_static_methods_structnum_1_1dimval__base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extract exponents from expression, which is treated as a polynomial over the MKS unit symbols.  <a href="structnum_1_1dimval__base.html#afa13460826c5242e5c3bde4db49a48ef">More...</a><br /></td></tr>
+<tr class="separator:afa13460826c5242e5c3bde4db49a48ef inherit pub_static_methods_structnum_1_1dimval__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_static_attribs_structnum_1_1dimval__base"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_structnum_1_1dimval__base')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="structnum_1_1dimval__base.html">dimval_base</a></td></tr>
 <tr class="memitem:a4687445a03f9fccfcd82462ebdc38dc2 inherit pub_static_attribs_structnum_1_1dimval__base"><td class="memItemLeft" align="right" valign="top"><a id="a4687445a03f9fccfcd82462ebdc38dc2"></a>
 static GiNaC::symbol&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnum_1_1dimval__base.html#a4687445a03f9fccfcd82462ebdc38dc2">s</a></td></tr>
@@ -433,7 +433,7 @@ static GiNaC::symbol&#160;</td><td class="memItemRight" valign="bottom"><a class
 <div class="textblock"><p>Model of a dynamically dimensioned value. </p>
 <p>For a statically dimensioned value, see statdim. </p>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00478">478</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00494">494</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a385f53f375a572872c2703889dcf64bf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a385f53f375a572872c2703889dcf64bf">&sect;&nbsp;</a></span>func</h2>
@@ -458,13 +458,13 @@ static GiNaC::symbol&#160;</td><td class="memItemRight" valign="bottom"><a class
 <p>Type of std::function that can be integrated. </p>
 <p>A single-argument function is required. </p>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00506">506</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00518">518</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="accab0f8f5c8e1ea2ece4d34d79837f77"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#accab0f8f5c8e1ea2ece4d34d79837f77">&sect;&nbsp;</a></span>dyndim() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#accab0f8f5c8e1ea2ece4d34d79837f77">&sect;&nbsp;</a></span>dyndim() <span class="overload">[1/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -506,7 +506,7 @@ static GiNaC::symbol&#160;</td><td class="memItemRight" valign="bottom"><a class
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00547">547</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00559">559</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -520,18 +520,19 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classnum_1_1dyndim_accab0f8f5c8e1ea2ece4d34d79837f77_icgraph.png" border="0" usemap="#classnum_1_1dyndim_accab0f8f5c8e1ea2ece4d34d79837f77_icgraph" alt=""/></div>
 <map name="classnum_1_1dyndim_accab0f8f5c8e1ea2ece4d34d79837f77_icgraph" id="classnum_1_1dyndim_accab0f8f5c8e1ea2ece4d34d79837f77_icgraph">
-<area shape="rect" id="node2" href="classnum_1_1dyndim.html#a73b4c9613e0178e88f1f05676baf7ddf" title="Multiplication by number on right side. " alt="" coords="117,5,192,32"/>
-<area shape="rect" id="node3" href="classnum_1_1dyndim.html#a75fb9a9e68c3453bdfd5dff80e69faa6" title="Division by number. " alt="" coords="118,56,191,83"/>
-<area shape="rect" id="node4" href="classnum_1_1dyndim.html#ade598022f282d117752b2397c979ad89" title="Integer power. " alt="" coords="131,107,178,133"/>
-<area shape="rect" id="node5" href="classnum_1_1dyndim.html#a366a8a55ea32a2e964fbb1fcdf77daa5" title="Integer root. " alt="" coords="133,157,177,184"/>
-<area shape="rect" id="node6" href="classnum_1_1dyndim.html#a244b3951de64a46ae00733580426ee0f" title="Square root. " alt="" coords="240,157,284,184"/>
+<area shape="rect" id="node2" href="classnum_1_1dyndim.html#a0c2c02c2045c4eca90151229804c7e4f" title="Copy from expression. " alt="" coords="123,5,187,32"/>
+<area shape="rect" id="node3" href="classnum_1_1dyndim.html#a73b4c9613e0178e88f1f05676baf7ddf" title="Multiplication by number on right side. " alt="" coords="117,56,192,83"/>
+<area shape="rect" id="node4" href="classnum_1_1dyndim.html#a75fb9a9e68c3453bdfd5dff80e69faa6" title="Division by number. " alt="" coords="118,107,191,133"/>
+<area shape="rect" id="node5" href="classnum_1_1dyndim.html#ade598022f282d117752b2397c979ad89" title="Integer power. " alt="" coords="131,157,178,184"/>
+<area shape="rect" id="node6" href="classnum_1_1dyndim.html#a366a8a55ea32a2e964fbb1fcdf77daa5" title="Integer root. " alt="" coords="133,208,177,235"/>
+<area shape="rect" id="node7" href="classnum_1_1dyndim.html#a244b3951de64a46ae00733580426ee0f" title="Square root. " alt="" coords="240,208,284,235"/>
 </map>
 </div>
 
 </div>
 </div>
 <a id="a8ef93e3cbb0e3807e9ac67d376582f22"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ef93e3cbb0e3807e9ac67d376582f22">&sect;&nbsp;</a></span>dyndim() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ef93e3cbb0e3807e9ac67d376582f22">&sect;&nbsp;</a></span>dyndim() <span class="overload">[2/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -553,8 +554,129 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>&lt; Inherit conversion to expression. </p>
+<p>&lt; Inherit extraction of units. </p>
 <p>By default, construct a dimensionless quantity of magnitude zero. </p>
+
+</div>
+</div>
+<a id="af5799f85a4590e36fabef50cfad61873"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5799f85a4590e36fabef50cfad61873">&sect;&nbsp;</a></span>dyndim() <span class="overload">[3/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classnum_1_1dyndim.html">dyndim</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classnum_1_1statdim.html">statdim</a>&lt; TI, D, M, <a class="el" href="structnum_1_1dimval__base.html#a59d49c8f2bfccce8242207d29ad59729">C</a>, TE &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>sd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Copy from statdim. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sd</td><td>Object to be copied. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00575">575</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a3c4e6646b3e323cf1f95178490b589bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c4e6646b3e323cf1f95178490b589bf">&sect;&nbsp;</a></span>dyndim() <span class="overload">[4/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classnum_1_1dyndim.html">dyndim</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classnum_1_1dyndim.html">dyndim</a> const &amp;&#160;</td>
+          <td class="paramname"><em>dd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Use default copy constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dd</td><td>Object to be copied. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0c2c02c2045c4eca90151229804c7e4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c2c02c2045c4eca90151229804c7e4f">&sect;&nbsp;</a></span>dyndim() <span class="overload">[5/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classnum_1_1dyndim.html">dyndim</a> </td>
+          <td>(</td>
+          <td class="paramtype">GiNaC::ex const &amp;&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Copy from expression. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>Object to be copied. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00584">584</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classnum_1_1dyndim_a0c2c02c2045c4eca90151229804c7e4f_cgraph.png" border="0" usemap="#classnum_1_1dyndim_a0c2c02c2045c4eca90151229804c7e4f_cgraph" alt=""/></div>
+<map name="classnum_1_1dyndim_a0c2c02c2045c4eca90151229804c7e4f_cgraph" id="classnum_1_1dyndim_a0c2c02c2045c4eca90151229804c7e4f_cgraph">
+<area shape="rect" id="node2" href="structnum_1_1dimval__base.html#afa13460826c5242e5c3bde4db49a48ef" title="Extract exponents from expression, which is treated as a polynomial over the MKS unit symbols..." alt="" coords="117,132,281,159"/>
+<area shape="rect" id="node8" href="classnum_1_1dyndim.html#accab0f8f5c8e1ea2ece4d34d79837f77" title="Initialize numeric value and dimensional exponents. " alt="" coords="167,208,231,235"/>
+<area shape="rect" id="node3" href="classnum_1_1dim__exps.html#a44346dc8f6ec385f8898a5757f4d962c" title="Reference to mutable exponent of time. " alt="" coords="333,5,464,32"/>
+<area shape="rect" id="node4" href="classnum_1_1dim__exps.html#a4eb319ae4630e49a01919343fde67f17" title="Reference to mutable exponent of distance. " alt="" coords="334,56,463,83"/>
+<area shape="rect" id="node5" href="classnum_1_1dim__exps.html#a1f7fd4e1ba40c71ccb3162d713e63522" title="Reference to mutable exponent of mass. " alt="" coords="333,107,464,133"/>
+<area shape="rect" id="node6" href="classnum_1_1dim__exps.html#a13b2e7ea9335e2b25d6686ccfec5f3f3" title="Reference to mutable exponent of charge. " alt="" coords="334,157,463,184"/>
+<area shape="rect" id="node7" href="classnum_1_1dim__exps.html#af558c4adc6556d290f1c72f9c0358314" title="Reference to mutable exponent of temperature. " alt="" coords="331,208,467,235"/>
+<area shape="rect" id="node9" href="classnum_1_1dimval.html#ae46009757fcf21b2b8eb5764f4ef48ae" title="Construct from double that is known to contain value in MKS. " alt="" coords="329,259,468,285"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -595,7 +717,7 @@ Here is the caller graph for this function:</div>
 
 <p>Global multiplication operator against statdim needs access to v_ and exps_. </p>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00843">843</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00869">869</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>
@@ -635,7 +757,7 @@ Here is the caller graph for this function:</div>
 
 <p>Global multiplication operator against statdim needs access to v_ and exps_. </p>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00850">850</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00876">876</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>
@@ -675,7 +797,7 @@ Here is the caller graph for this function:</div>
 
 <p>Global division operator against statdim needs access to v_ and exps_. </p>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00857">857</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00883">883</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>
@@ -715,7 +837,7 @@ Here is the caller graph for this function:</div>
 
 <p>Global division operator against statdim needs access to v_ and exps_. </p>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00864">864</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00890">890</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>
@@ -743,7 +865,7 @@ Here is the caller graph for this function:</div>
 <p>&lt; Inherit field. </p>
 <p>Storage for dimensional exponents. </p>
 
-<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00544">544</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dimval_8hpp_source.html#l00556">556</a> of file <a class="el" href="dimval_8hpp_source.html">dimval.hpp</a>.</p>
 
 </div>
 </div>

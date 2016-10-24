@@ -1,0 +1,10 @@
+<map id="dyndim" name="dyndim">
+<area shape="rect" id="node2" href="$structnum_1_1dimval__base.html#afa13460826c5242e5c3bde4db49a48ef" title="Extract exponents from expression, which is treated as a polynomial over the MKS unit symbols..." alt="" coords="117,132,281,159"/>
+<area shape="rect" id="node8" href="$classnum_1_1dyndim.html#accab0f8f5c8e1ea2ece4d34d79837f77" title="Initialize numeric value and dimensional exponents. " alt="" coords="167,208,231,235"/>
+<area shape="rect" id="node3" href="$classnum_1_1dim__exps.html#a44346dc8f6ec385f8898a5757f4d962c" title="Reference to mutable exponent of time. " alt="" coords="333,5,464,32"/>
+<area shape="rect" id="node4" href="$classnum_1_1dim__exps.html#a4eb319ae4630e49a01919343fde67f17" title="Reference to mutable exponent of distance. " alt="" coords="334,56,463,83"/>
+<area shape="rect" id="node5" href="$classnum_1_1dim__exps.html#a1f7fd4e1ba40c71ccb3162d713e63522" title="Reference to mutable exponent of mass. " alt="" coords="333,107,464,133"/>
+<area shape="rect" id="node6" href="$classnum_1_1dim__exps.html#a13b2e7ea9335e2b25d6686ccfec5f3f3" title="Reference to mutable exponent of charge. " alt="" coords="334,157,463,184"/>
+<area shape="rect" id="node7" href="$classnum_1_1dim__exps.html#af558c4adc6556d290f1c72f9c0358314" title="Reference to mutable exponent of temperature. " alt="" coords="331,208,467,235"/>
+<area shape="rect" id="node9" href="$classnum_1_1dimval.html#ae46009757fcf21b2b8eb5764f4ef48ae" title="Construct from double that is known to contain value in MKS. " alt="" coords="329,259,468,285"/>
+</map>

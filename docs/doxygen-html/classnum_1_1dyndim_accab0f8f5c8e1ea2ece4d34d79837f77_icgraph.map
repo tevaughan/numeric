@@ -1,7 +1,8 @@
 <map id="dyndim" name="dyndim">
-<area shape="rect" id="node2" href="$classnum_1_1dyndim.html#a73b4c9613e0178e88f1f05676baf7ddf" title="Multiplication by number on right side. " alt="" coords="117,5,192,32"/>
-<area shape="rect" id="node3" href="$classnum_1_1dyndim.html#a75fb9a9e68c3453bdfd5dff80e69faa6" title="Division by number. " alt="" coords="118,56,191,83"/>
-<area shape="rect" id="node4" href="$classnum_1_1dyndim.html#ade598022f282d117752b2397c979ad89" title="Integer power. " alt="" coords="131,107,178,133"/>
-<area shape="rect" id="node5" href="$classnum_1_1dyndim.html#a366a8a55ea32a2e964fbb1fcdf77daa5" title="Integer root. " alt="" coords="133,157,177,184"/>
-<area shape="rect" id="node6" href="$classnum_1_1dyndim.html#a244b3951de64a46ae00733580426ee0f" title="Square root. " alt="" coords="240,157,284,184"/>
+<area shape="rect" id="node2" href="$classnum_1_1dyndim.html#a0c2c02c2045c4eca90151229804c7e4f" title="Copy from expression. " alt="" coords="123,5,187,32"/>
+<area shape="rect" id="node3" href="$classnum_1_1dyndim.html#a73b4c9613e0178e88f1f05676baf7ddf" title="Multiplication by number on right side. " alt="" coords="117,56,192,83"/>
+<area shape="rect" id="node4" href="$classnum_1_1dyndim.html#a75fb9a9e68c3453bdfd5dff80e69faa6" title="Division by number. " alt="" coords="118,107,191,133"/>
+<area shape="rect" id="node5" href="$classnum_1_1dyndim.html#ade598022f282d117752b2397c979ad89" title="Integer power. " alt="" coords="131,157,178,184"/>
+<area shape="rect" id="node6" href="$classnum_1_1dyndim.html#a366a8a55ea32a2e964fbb1fcdf77daa5" title="Integer root. " alt="" coords="133,208,177,235"/>
+<area shape="rect" id="node7" href="$classnum_1_1dyndim.html#a244b3951de64a46ae00733580426ee0f" title="Square root. " alt="" coords="240,208,284,235"/>
 </map>

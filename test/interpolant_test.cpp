@@ -16,14 +16,6 @@ using namespace num;
 using namespace num::u;
 using namespace std;
 
-double dbl(ex const &e)
-{
-   if (!is_a<numeric>(e)) {
-      throw "expression not numeric";
-   }
-   return ex_to<numeric>(e).to_double();
-}
-
 TEST_CASE("Verify interpolation on vector of points.", "[interpolant]")
 {
    ilist<double, double> list = {{0.00, 0.00}, {0.50, 0.25}, {1.00, 1.00}};

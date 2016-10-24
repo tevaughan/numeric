@@ -36,6 +36,7 @@ pkginclude_HEADERS =\
  dense-table.hpp\
  dim-exps.hpp\
  dimval.hpp\
+ ilist.hpp\
  integral.hpp\
  integral-stats.hpp\
  interpolant.hpp\
