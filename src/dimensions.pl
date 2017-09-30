@@ -1,12 +1,14 @@
 #!/usr/bin/env perl
 
-# Copyright 2016  Thomas E. Vaughan
+# Copyright 2016-2017  Thomas E. Vaughan
 # Distributable under the terms of the GNU LGPL, Version 3 or later.
 
 # Read 'dimensions.txt' and write 'dimensions.hpp', which will contain a
 # collection of alias (C++ 'using') definitions.  Each of these aliases gives a
 # convenient name to a value with a particular dimension.  Each alias has a
 # name like 'length', 'time', 'force', etc.
+
+use strict;
 
 open(my $iput, '<', "dimensions.txt");
 open(my $oput, '>', "dimensions.hpp");
