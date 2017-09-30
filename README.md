@@ -70,7 +70,7 @@ The "numeric" project is a C++-11 library. It provides:
 
 ## License
 
-Copyright 2016
+Copyright 2017
 Thomas E. Vaughan
 
 Distributable under the terms of the GNU LGPL, Version 3 or later.
