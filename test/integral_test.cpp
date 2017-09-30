@@ -19,7 +19,7 @@ using namespace std;
 TEST_CASE("Verify integration of lambda.", "[integral]")
 {
    function<double(double)> linear = [](double x) { return x; };
-   // Verify that integral of x of 0 to 1 is 1/2.
+   // Verify that integral of x from 0 to 1 is 1/2.
    REQUIRE(integral(linear, 0.0, 1.0) == Approx(0.5));
    REQUIRE(rk_quadd(linear, 0.0, 1.0).def_int() == Approx(0.5));
    function<double(double)> f = [](double x) { return 1.0 / (1.0 + x * x); };

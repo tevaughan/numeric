@@ -41,6 +41,8 @@ AC_CHECK_LIB([ginac], [pow])
 
 # Checks for header files.
 
+AC_CHECK_HEADER([ginac/ginac.h])
+
 # Checks for typedefs, structures, and compiler characteristics.
 AC_CHECK_HEADER_STDBOOL
 AC_C_INLINE
